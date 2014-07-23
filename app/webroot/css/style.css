@@ -87,3 +87,10 @@ select.second {
 .label{width:25%;}
 .eff{margin-bottom:10px;}
 .length{padding-left: 10%;padding-top:25px;background:#8AC007;border-radius:0 10px 10px 0;}
+#reviews a{display:inline-block;text-decoration:none;color:#FFF;background:#1ABC9C;padding:5px 10px;border: 1px solid #D0D2D2;margin:5px;}
+#reviews .sel{background:#16A085!important;}
+.form{margin:15px 0;}
+.gap{margin-bottom:10px;}
+#preci{margin-top:10px;}
+.marleft{margin-left:10px;}
+.martop{margin-top:10px;}
