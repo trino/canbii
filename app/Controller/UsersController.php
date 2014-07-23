@@ -64,6 +64,7 @@ class UsersController extends AppController {
             {
                 $this->User->saveField($k,$v);
             }
+            $this->redirect('dashboard');
             
         }
         

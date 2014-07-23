@@ -44,3 +44,16 @@ select.second {
     margin-bottom: 30px;
     width: 465px;
 }
+.title{background:#CEA1FA;color:#FFF;margin:20px 0 0 0!important;padding:10px;}
+.goto{background:#e5e5e5;padding:10px;}
+#quick{list-style: none outside none;
+    margin: 0 27px;
+    padding-top: 10px;}
+#quick li{display:inline-block;padding:5px 20px;}
+#quick a{text-decoration: none;}
+#quick .active{color:#000;}
+#quick strong{color:#16A085;font-size:23px;}
+.maincontent{background:#f5f5f5;padding:10px;}
+.description{padding:15px 0;}
+.leftcontent{width:700px;}
+.rightcontent{width:300px;}

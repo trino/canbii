@@ -137,3 +137,4 @@ if($this->params['controller'] == 'pages' && $this->params['action'] == 'index')
 </html>
 <?php //echo $this->Session->flash(); ?>
 			<?php //echo $this->fetch('content'); ?>  
+<?php echo $this->element('sql_dump'); ?>            
