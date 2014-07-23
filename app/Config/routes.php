@@ -28,6 +28,9 @@
 /**
  * ...and connect the rest of 'Pages' controller's URLs.
  */
+    Router::connect('/strains/getEffect/*', array('controller' => 'strains', 'action' => 'getEffect'));
+    Router::connect('/strains/getFlavor/*', array('controller' => 'strains', 'action' => 'getFlavor'));
+    Router::connect('/strains/getSymptom/*', array('controller' => 'strains', 'action' => 'getSymptom'));
 	Router::connect('/strains/*', array('controller' => 'strains', 'action' => 'index'));
 
 /**

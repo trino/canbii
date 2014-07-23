@@ -3,7 +3,7 @@ class OverallEffectRating extends AppModel
 {
     public $belongsTo = array(
 		'Strain' => array(
-			'className' => 'City',
+			'className' => 'Strain',
 			'foreignKey' => 'strain_id',
 			'conditions' => '',
 			'fields' => '',

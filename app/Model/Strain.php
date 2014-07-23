@@ -24,4 +24,13 @@ class Strain extends AppModel
                                 ),
                                       
                 );
+     public $belongsTo = array(
+		'StrainType' => array(
+			'className' => 'StrainType',
+			'foreignKey' => 'type_id',
+			'conditions' => '',
+			'fields' => '',
+			'order' => ''
+		)
+	);           
 }
