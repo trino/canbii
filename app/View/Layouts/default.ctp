@@ -44,8 +44,13 @@ Released   : 20131223
 					
 				</ul>
                 <ul class="right">
-                    <li><a href="<?php echo $this->webroot;?>register" accesskey="4" title="">Login</a></li>
-					<li><a href="<?php echo $this->webroot;?>register" accesskey="5" title="">Register</a></li>
+                <?php if(!$this->Session->read('User')){?>
+                    <li><a href="<?php echo $this->webroot;?>users/register" accesskey="4" title="">Login</a></li>
+					<li><a href="<?php echo $this->webroot;?>users/register" accesskey="5" title="">Register</a></li>
+                <?php }else{ ?>
+                    <li><a href="<?php echo $this->webroot;?>users/dashboard" accesskey="4" title="">Dashboard</a></li>
+					<li><a href="<?php echo $this->webroot;?>users/logout" accesskey="5" title="">Logout</a></li>
+                <?php }?>
                 </ul>
                 <div class="clear"></div>
 			</div>
@@ -89,8 +94,10 @@ if($this->params['controller'] == 'pages' && $this->params['action'] == 'index')
 }
 ?>
 <div class="wrapper">
-	<?php //echo $this->Session->flash(); ?>
+	<div id="page" class="container">
+	<?php echo $this->Session->flash(); ?>
 			<?php echo $this->fetch('content'); ?> 
+    </div>
 </div>
 <?php
 if($this->params['controller'] == 'pages' && $this->params['action'] == 'index')

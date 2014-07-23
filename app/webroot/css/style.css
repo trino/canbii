@@ -28,3 +28,19 @@ select.second {
 .logo{background:url(../images/logo.png)}
 #menu .right{background:#FFF!important;}
 #menu .right a{color:#1abc9c!important;}
+<!-- Register
+#login-account .form-wrap, #create-account .form-wrap {
+    border-top: 1px solid #e6e6e6;
+    margin-top: 10px;
+    padding-top: 20px;
+}
+#login-account {
+    float: left;
+    width: 534px;
+}
+#create-account {
+    border-left: 1px solid #e6e6e6;
+    float: right;
+    margin-bottom: 30px;
+    width: 465px;
+}
