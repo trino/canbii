@@ -113,4 +113,98 @@ select.second {
     text-decoration: none;}  
 
 .highlights .label{width:30%!important;}
- 
+
+fieldset {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin: 20px 0;
+    padding: 10px;
+}
+legend {
+    color: #3ab65a;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+.qf-slider-bar {
+    float: left;
+    margin-top: 6px;
+    width: 390px;
+}
+.qf-label-span {
+    float: left;
+    margin-right: 20px;
+    padding-top: 3px;
+    width: 320px;
+}
+.qf-slider-input-wrapper p {
+    clear: right;
+    float: right;
+    margin: 4px 10px 0 0;
+}
+.qf-label-span, .qf-input-span, .qf-select-span, .qf-textarea-span, .qf-slider-span {
+    display: block;
+}
+.qf-input-wrapper {
+    clear: both;
+}
+.qf-slider-input-wrapper {
+    height: 36px;
+}
+
+.qf-input-wrapper, .qf-select-wrapper, .qf-textarea-wrapper, .qf-slider-wrapper {
+    padding: 5px 0;
+}
+.qf-select-inner select {
+    border: 0 none;
+    margin: 0 1px 0 2px;
+    min-height: 20px;
+}
+select {
+    width: 517px;
+}
+.qf-select-inner {
+    display: inline-block;
+    height: auto;
+}
+.qf-select-inner select {
+    border: 0 none;
+    margin: 0 1px 0 2px;
+    min-height: 20px;
+}
+
+.review-selector option.selected {
+    background-color: #9ceac1;
+}
+.review-slider label {
+    float: left;
+    font-size: 0.9em;
+    font-weight: bold;
+    margin-right: 20px;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 170px;
+}
+.review-slider .slider {
+    clear: right;
+    float: left;
+    margin-top: 6px;
+    width: 240px;
+}
+.review-slider {
+    padding: 15px 0 0 15px;
+    width: 500px;
+}
+.review-slider p {
+    float: right;
+    margin: 0;
+}
+.qf-text-input-wrapper input .qf-password-input-wrapper input .qf-file-input-wrapper input, input.qf-autocomplete-input, textarea.qf-textarea, .qf-select-inner {
+    background-color: #fff;
+    border: 2px solid #ccc;
+    border-radius: 3px;
+    padding: 0;
+}
+.qf-text-input-wrapper input, .qf-password-input-wrapper input, .qf-autocomplete-input-wrapper input, .qf-file-input-wrapper input, textarea.qf-textarea, select, option {
+    text-indent: 6px;
+    width: 520px;
+}
