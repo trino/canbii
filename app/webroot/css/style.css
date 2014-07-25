@@ -208,6 +208,14 @@ select {
     text-indent: 6px;
     width: 520px;
 }
+#reviews1 option{background: none repeat scroll 0 0 #16A085;
+    border-radius: 4px;
+    color: #fff;
+    margin-bottom: 4px;
+    padding: 7px;
+    text-align: center;
+    text-indent: 6px;
+    width: 520px;}
 .title span{color:#FFF;display:inline-block;padding:4px 10px; font-size: 13px;background:#ccc;border-radius:5px;}
 .title span a{text-decoration:none;}
 .box a{text-decoration: none;}
