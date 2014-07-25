@@ -184,8 +184,11 @@ select {
     border: 2px solid #ccc;
     border-radius: 3px;
     padding: 0;
+    width: 70%;
 }
 .qf-text-input-wrapper input, .qf-password-input-wrapper input, .qf-autocomplete-input-wrapper input, .qf-file-input-wrapper input, textarea.qf-textarea, select, option {
     text-indent: 6px;
     width: 520px;
 }
+#reviews1 .btn{display:inline-block;text-decoration:none;color:#FFF;background:#1ABC9C;padding:5px;border: 1px solid #D0D2D2;margin:2px;}
+#reviews1 a:hover{background:#16A085!important;}
