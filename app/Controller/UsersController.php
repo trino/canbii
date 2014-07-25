@@ -19,7 +19,6 @@ class UsersController extends AppController {
                 $this->Session->write('User.username',$_POST['username']);
                 $this->Session->write('User.email',$user['User']['email']);
                 $this->Session->write('User.id',$user['User']['id']);
-                $this->Session->setFlash('login Successfull');
                 if(isset($_GET['url']))
                     $this->redirect(str_replace('http:/localhost/marijuana','http://localhost',$_GET['url']));
                 else
