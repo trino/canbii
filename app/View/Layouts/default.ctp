@@ -67,9 +67,9 @@ if($this->params['controller'] == 'pages' && $this->params['action'] == 'index')
 			<h2>Search Strains</h2>
 		</div>
 		<p>
-            <form action="" method="post" id="search">
+            <form action="<?php echo $this->webroot;?>strains/search" method="get" id="search">
             <div class="left">
-                <input type="text" placeholder="Title" />
+                <input type="text" placeholder="Title" name="key" />
                 <select>
                     <option>Choose Effect</option>
                 </select>

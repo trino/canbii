@@ -35,6 +35,7 @@
     Router::connect('/strains/getUserName/*', array('controller' => 'strains', 'action' => 'getUserName'));
     Router::connect('/strains/helpful/*', array('controller' => 'strains', 'action' => 'helpful'));
     Router::connect('/strains/all/*', array('controller' => 'strains', 'action' => 'all'));
+    Router::connect('/strains/search/*', array('controller' => 'strains', 'action' => 'search'));
 	Router::connect('/strains/*', array('controller' => 'strains', 'action' => 'index'));
 
 /**

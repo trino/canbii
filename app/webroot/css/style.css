@@ -74,24 +74,29 @@ select.second {
     display: inline-block;
     font-size: 24px;
     font-weight: bold;
-    margin-right: 15px;
+    
     padding: 25px;
-    text-decoration: none;}
+    text-align: center;
+    text-decoration: none;
+    width: 110px;}
 .flwrap{margin-top:20px;}  
 .attributes strong{display:block;padding:10px;color:#FFF!important;text-align:center;}
 .attributes strong.active{background:#83B218!important;}  
 .highlights h2,.attributes h2{padding-bottom:15px;}
 
-.attributes .rightcontent strong{background: none repeat scroll 0 0 #b1f9b0;
+.attributes .rightcont strong{background: none repeat scroll 0 0 #83B218;
     display: inline-block !important;
     margin-bottom: 15px;
-    min-width: 170px;}
-.attributes .rightcontent strong:hover{background:#83B218;}
+    min-width: 270px;}
+
 .attributes .leftcontent strong{margin-right:15px;}
 .attributes .rightcontent strong a{color:#FFF;text-decoration: none;text-align:center;}
-.label{width:25%;}
+.label{width:35%;}
 .eff{margin-bottom:10px;}
-.length{padding-left: 10%;padding-top:25px;background:#8AC007;border-radius:0 10px 10px 0;}
+.eff .left{position:relative;}
+.eff em{z-index: 10000;text-align: center;position: relative;top:3px;}
+.ratewrap{width: 63%;background:#FFF;text-align: center;height:25px;}
+.length{padding-top:25px;background:#8AC007;border-radius:0 10px 10px 0;position:absolute;top:0;}
 #reviews a{display:inline-block;text-decoration:none;color:#FFF;background:#1ABC9C;padding:5px 10px;border: 1px solid #D0D2D2;margin:5px;}
 #reviews .sel{background:#16A085!important;}
 .form{margin:15px 0;}
@@ -221,3 +226,5 @@ select {
 .box a{text-decoration: none;}
 #dashboard strong{display:block;margin:15px 0 5px 0;}
 #dashboard input[type="text"], #dashboard select{height:24px;padding:4px 0;}
+.third{width:25%;}
+.rightcont{margin-top:20px;}

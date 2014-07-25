@@ -56,8 +56,15 @@
     </div>
     <div class="attributes">
         <h2>Strain Attributes</h2>
-        <div class="flavors leftcontent left">
         <strong class="active">FLAVORS</strong>
+        <?php
+        $fa[0] = 0;
+        $fa[1] = 145;
+        $fa[2] = 325;
+        $fa[3] = 490;
+        ?>
+        <div class="flavors" style="border-right: none;margin:0 auto;width:<?php echo $fa[count($flavor)];?>px;">
+        
         <div class="flwrap">
             <?php
                 foreach($flavor as $f)
@@ -73,8 +80,11 @@
             ?>
         </div>
         </div>
-        <div class="rightcontent right">
-            <strong class="active first"><a href="javascript:void(0)" onclick="$('.effects').show();$('.symptoms').hide();$('.neffects').hide();$(this).parent().addClass('active');$('.second').removeClass('active');$('.third').removeClass('active');">Positive Effects</a></strong><strong class="third"><a href="javascript:void(0)" onclick="$('.effects').hide();$('.neffects').show();$('.symptoms').hide();$(this).parent().addClass('active');$('.second').removeClass('active');$('.first').removeClass('active');">Negative Effects</a></strong><strong class="second" ><a  href="javascript:void(0)" onclick="$('.effects').hide();$('.neffects').hide();$('.symptoms').show();$(this).parent().addClass('active');$('.first').removeClass('active');$('.third').removeClass('active');">Symptoms</a></strong>
+             
+        <div class="clear"></div>     
+        <div class="rightcont">
+        <div class="left third">
+            <strong class="active first">Positive Effects</strong>
             <div class="effects">
                 <?php
                 
@@ -98,16 +108,20 @@
                     if($i==6)
                     break;
                     $rate = $ar[0];
-                    $length = 7.5*$rate;;
+                    $length = 10*$rate;;
                     ?>
                     <div class="eff">
-                        <div class="label left"><?php echo $this->requestAction('/strains/getEffect/'.$ar[1]);?></div><div class="length left" style="width: <?php echo $length-10;?>%"></div><div class="clear"></div>
+                        <div class="label left"><?php echo $this->requestAction('/strains/getEffect/'.$ar[1]);?></div><div class="left ratewrap"><div class="length" style="width: <?php echo $length;?>%;text-align: center;"></div><em><?php echo $rate;?>/10</em></div><div class="clear"></div>
                     </div>
                     <?php
                 }
                 ?>
             </div>
-            <div class="neffects" style="display: none;">
+            </div>
+            <div class="left third">
+            <strong class="third">Negative Effects</strong>
+            
+            <div class="neffects">
                 <?php
                 if(isset($arr_neg))
                 rsort($arr_neg);
@@ -121,16 +135,20 @@
                     if($i==6)
                     break;
                     $rate = $ar[0];
-                    $length = 7.5*$rate;
+                    $length = 10*$rate;
                     ?>
                     <div class="eff">
-                        <div class="label left"><?php echo $this->requestAction('/strains/getEffect/'.$ar[1]);?></div><div class="length left" style="width: <?php echo $length-10;?>%"></div><div class="clear"></div>
+                        <div class="label left"><?php echo $this->requestAction('/strains/getEffect/'.$ar[1]);?></div><div class="left ratewrap"><div class="length" style="width: <?php echo $length;?>%;text-align: center;"></div><em><?php echo $rate;?>/10</em></div><div class="clear"></div>
                     </div>
                     <?php
                 }
                 ?>
             </div>
-            <div class="symptoms" style="display: none;">
+            </div>
+            <div class="left third">
+                <strong class="second" >Symptoms</strong>
+            
+            <div class="symptoms">
                 <?php
                 foreach($strain['OverallSymptomRating'] as $oer)
                 {
@@ -151,17 +169,58 @@
                     if($i==6)
                     break;
                     $rate = $ars[0];
-                    $length = 7.5*$rate;;
+                    $length = 10*$rate;;
                     ?>
                     <div class="eff">
-                        <div class="label left"><?php echo $this->requestAction('/strains/getSymptom/'.$ars[1]);?></div><div class="length left" style="width: <?php echo $length-10;?>%"></div><div class="clear"></div>
+                        <div class="label left"><?php echo $this->requestAction('/strains/getSymptom/'.$ars[1]);?></div><div class="left ratewrap"><div class="length" style="width: <?php echo $length;?>%;text-align: center;"></div><em><?php echo $rate;?>/10</em></div><div class="clear"></div>
                     </div>
                     <?php
                 }
                 ?>
             </div>
-        </div>        
-        <div class="clear"></div>        
+            </div>
+            <div class="left third">
+    <strong>Effect Ratings</strong>
+        <?php
+        $count = count($strain['Review']);
+        if($count){
+            $scale = 0;
+            $strength = 0;
+            $duration = 0;
+        foreach($strain['Review'] as $r)
+        {
+            $scale = $scale+$r['eff_scale'];
+            $strength = $strength+$r['eff_strength'];
+            $duration = $duration+$r['eff_duration'];
+            
+        }
+        $scale = ($scale/$count)*10;
+        $strength = ($strength/$count)*10;
+        $duration = ($duration/$count)*10;
+        ?>
+        
+        <div>
+            <div class="eff">
+                        <div class="label left">Length</div><div class="left ratewrap"><div class="length" style="width: <?php echo $scale;?>%;"></div><em><?php echo $scale/10;?>/10</em></div><div class="clear"></div>
+            </div>
+            <div class="eff">
+                        <div class="label left">Strength</div><div class="left ratewrap" style="width: 63%;background:#FFF;"><div class="length" style="width: <?php echo $strength;?>%;"></div><em><?php echo $strength/10;?>/10</em></div><div class="clear"></div>
+            </div>
+            <div class="eff">
+                        <div class="label left">Duration</div><div class="left ratewrap" style="width: 63%;background:#FFF;"><div class="length" style="width: <?php echo $duration;?>%;"></div><em><?php echo $duration/10;?>/10</em></div><div class="clear"></div>
+            </div>        
+        </div>
+        <div class="clear">
+        </div>
+        
+        
+        
+        <?php
+        }
+        ?>
+    </div>
+            <div class="clear"></div>
+        </div>      
         
     </div>
     <div class="highlights">
@@ -205,43 +264,7 @@
         </div>
         <div class="clear"></div>
     </div>
-    <div class="highlights">
-    <h2>Effect Ratings</h2>
-        <?php
-        $count = count($strain['Review']);
-        if($count){
-            $scale = 0;
-            $strength = 0;
-            $duration = 0;
-        foreach($strain['Review'] as $r)
-        {
-            $scale = $scale+$r['eff_scale']/$count;
-            $strength = $strength+$r['eff_strength']/$count;
-            $duration = $duration+$r['eff_duration']/$count;
-            
-        }
-        ?>
-        
-        <div class="leftcontent left">
-            <div class="eff">
-                        <div class="label left">EFFECT LENGTH</div><div class="length left" style="width: <?php echo ($scale*10)-30;?>%"></div><div class="clear"></div>
-            </div>
-            <div class="eff">
-                        <div class="label left">EFFECT STRENGTH</div><div class="length left" style="width: <?php echo ($strength*10)-30;?>%"></div><div class="clear"></div>
-            </div>
-            <div class="eff">
-                        <div class="label left">EFFECT DURATION</div><div class="length left" style="width: <?php echo ($duration*10)-30;?>%"></div><div class="clear"></div>
-            </div>        
-        </div>
-        <div class="clear">
-        </div>
-        
-        
-        
-        <?php
-        }
-        ?>
-    </div>
+    
 </div>
 <script>
 $(function(){

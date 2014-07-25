@@ -64,10 +64,18 @@ class StrainsController extends AppController{
     {
         $arr=array('indica'=>1,'sativa'=>2,'hybrid'=>3);
         if($type=='')
-        $this->set('strain',$this->Strain->find('all',array('order'=>'Strain.id DESC','limit'=>4)));
+        $this->set('strain',$this->Strain->find('all',array('order'=>'Strain.id DESC')));
         else
-        $this->set('strain',$this->Strain->find('all',array('conditions'=>array('type_id'=>$arr[$type]),'order'=>'Strain.id DESC','limit'=>4)));
+        $this->set('strain',$this->Strain->find('all',array('conditions'=>array('type_id'=>$arr[$type]),'order'=>'Strain.id DESC')));
         
+    }
+    function search()
+    {
+        if(isset($_GET['key']))
+        $key = $_GET['key'];
+        else
+        $key='';
+        $this->set('strain',$this->Strain->find('all',array('conditions'=>array('name LIKE'=>'%'.$key.'%'),'order'=>'Strain.id DESC')));
     }
 }
 
