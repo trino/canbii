@@ -2,10 +2,10 @@
 class StrainsController extends AppController{
     function index($slug)
     {
-        $this->loadModel('Flavorstrain');
+        $this->loadModel('OverallFlavorRating');
         $this->loadModel('Review');
         $q = $this->Strain->find('first',array('conditions'=>array('slug'=>$slug)));
-        $q2 = $this->Flavorstrain->find('all',array('conditions'=>array('strain_id'=>$q['Strain']['id']),'order'=>'COUNT(*) DESC','group'=>'flavor_id','limit'=>3));
+        $q2 = $this->OverallFlavorRating->find('all',array('conditions'=>array('strain_id'=>$q['Strain']['id']),'order'=>'rate DESC','limit'=>3));
         $q3 = $this->Review->find('first',array('conditions'=>array('strain_id'=>$q['Strain']['id']),'order'=>'helpful DESC'));
         $q4 = $this->Review->find('first',array('conditions'=>array('strain_id'=>$q['Strain']['id']),'order'=>'id DESC'));
         $this->set('strain',$q);
@@ -59,6 +59,15 @@ class StrainsController extends AppController{
         
         $this->Review->saveField('helpful',$helpful);
         die();
+    }
+    function all($type='')
+    {
+        $arr=array('indica'=>1,'sativa'=>2,'hybrid'=>3);
+        if($type=='')
+        $this->set('strain',$this->Strain->find('all',array('order'=>'Strain.id DESC','limit'=>4)));
+        else
+        $this->set('strain',$this->Strain->find('all',array('conditions'=>array('type_id'=>$arr[$type]),'order'=>'Strain.id DESC','limit'=>4)));
+        
     }
 }
 

@@ -208,3 +208,8 @@ select {
     text-indent: 6px;
     width: 520px;
 }
+.title span{color:#FFF;display:inline-block;padding:4px 10px; font-size: 13px;background:#ccc;border-radius:5px;}
+.title span a{text-decoration:none;}
+.box a{text-decoration: none;}
+#dashboard strong{display:block;margin:15px 0 5px 0;}
+#dashboard input[type="text"], #dashboard select{height:24px;padding:4px 0;}

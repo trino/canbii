@@ -16,6 +16,7 @@ class UsersController extends AppController {
                 $this->Session->write('User.email',$user['User']['email']);
                 $this->Session->write('User.id',$user['User']['id']);
                 $this->Session->setFlash('login Successfull');
+                $this->redirect('dashboard');
             }
             else
                 $this->Session->setFlash(__('Invalid username or password, try again'));
@@ -38,8 +39,8 @@ class UsersController extends AppController {
                 $this->Session->write('User.username',$user['username']);
                 $this->Session->write('User.email',$user['email']);
                 $this->Session->write('User.id',$this->User->id);
-                $this->Session->setFlash('You have been registered succesfully. Please login to continue','alert-box',array('class'=>'alert alert-success alert-dismissable'),'save');
-                return $this->redirect('/');
+                $this->Session->setFlash('You have been registered succesfully.','alert-box',array('class'=>'alert alert-success alert-dismissable'),'save');
+                $this->redirect('dashboard');
             }
            $this->Session->setFlash('User could not be added','alert-box',array('class'=>'alert alert-warning alert-dismissable'),'warning');
         }
@@ -64,6 +65,7 @@ class UsersController extends AppController {
             {
                 $this->User->saveField($k,$v);
             }
+            $this->Session->setFlash('Profile saved successfully.','alert-box',array('class'=>'alert alert-success alert-dismissable'),'save');
             $this->redirect('dashboard');
             
         }

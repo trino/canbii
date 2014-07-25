@@ -1,7 +1,7 @@
 <script src="<?php echo $this->webroot;?>js/raty.js"></script>
 <script src="<?php echo $this->webroot;?>js/labs.js"></script>
 <link href="<?php echo $this->webroot;?>css/raty.css" rel="stylesheet" type="text/css" />
-<h1 class="title"><?php echo $strain['Strain']['name'];?></h1>
+<h1 class="title"><?php echo $strain['Strain']['name'];?><span style="float: right;"><a href="<?php echo $this->webroot;?>review/index/<?php echo $strain['Strain']['slug'];?>">Review Strain</a></span><div class="clear"></div></h1>
 <div class="goto">
     <div class="left"><strong><img src="<?php echo $this->webroot;?>ra.png" height="50px" /></strong></div>
     <ul id="quick" class="left">        
@@ -65,7 +65,7 @@
                     ?>
                     <a class="fl" href="javascrip:void(0)">
                     <div>
-                        <?php echo $this->requestAction('/strains/getFlavor/'.$f['Flavorstrain']['flavor_id']);?>
+                        <?php echo $this->requestAction('/strains/getFlavor/'.$f['OverallFlavorRating']['flavor_id']);?>
                     </div>
                     </a>
                     <?php
@@ -77,6 +77,7 @@
             <strong class="active first"><a href="javascript:void(0)" onclick="$('.effects').show();$('.symptoms').hide();$('.neffects').hide();$(this).parent().addClass('active');$('.second').removeClass('active');$('.third').removeClass('active');">Positive Effects</a></strong><strong class="third"><a href="javascript:void(0)" onclick="$('.effects').hide();$('.neffects').show();$('.symptoms').hide();$(this).parent().addClass('active');$('.second').removeClass('active');$('.first').removeClass('active');">Negative Effects</a></strong><strong class="second" ><a  href="javascript:void(0)" onclick="$('.effects').hide();$('.neffects').hide();$('.symptoms').show();$(this).parent().addClass('active');$('.first').removeClass('active');$('.third').removeClass('active');">Symptoms</a></strong>
             <div class="effects">
                 <?php
+                
                 foreach($strain['OverallEffectRating'] as $oer)
                 {
                     if($this->requestAction('/strains/getPosEff/'.$oer['effect_id']))
@@ -84,9 +85,12 @@
                     else
                     $arr_neg[] = $oer['rate'].'_'.$oer['effect_id'];
                 }
-                if($arr)
+                if(isset($arr))
                 rsort($arr);
+                else
+                $arr = array();
                 $i=0;
+                
                 foreach($arr as $e)
                 {
                     $ar=explode('_',$e);
@@ -105,8 +109,10 @@
             </div>
             <div class="neffects" style="display: none;">
                 <?php
-                if($arr_neg)
+                if(isset($arr_neg))
                 rsort($arr_neg);
+                else
+                $arr_neg = array();
                 $i=0;
                 foreach($arr_neg as $e)
                 {
@@ -131,7 +137,10 @@
                     
                     $arrs[] = $oer['rate'].'_'.$oer['symptom_id'];
                 }
+                if(isset($arrs))
                 rsort($arrs);
+                else
+                $arrs = array();
                 $i=0;
                 foreach($arrs as $e)
                 {
@@ -160,6 +169,7 @@
         <div class="leftcontent left">
             <strong>Most Helpful</strong><br />
             <div class="gap">
+            <?php if($helpful){?>
                 <div class="userinfo">
                     <div class="names left"><?php echo $this->requestAction('/strains/getUserName/'.$helpful['Review']['user_id']);?></div>
                     <div class="dates left"><em><?php echo $helpful['Review']['on_date'];?></em></div>
@@ -173,11 +183,13 @@
                 <p class="gap martop">
                     <em>WAS THIS REVIEW HELPFUL TO YOU? </em> &nbsp; &nbsp; <a href="javascript:void(0);" id="<?php echo $rand1.'_'.$helpful['Review']['id'];?>" class="btns yes">YES</a> <a class="btns no" href="javascript:void(0);" id="<?php echo ($rand1+1).'_'.$helpful['Review']['id'];?>">NO</a>
                 </p>
+                <?php }?>
             </div>
         </div>
         <div class="rightcontent right">
             <strong>Most Recent</strong><br />
             <div class="gap">
+            <?php if($recent){?>
                 <div class="userinfo">
                     <div class="names left"><?php echo $this->requestAction('/strains/getUserName/'.$recent['Review']['user_id']);?></div>
                     <div class="dates left"><em><?php echo $recent['Review']['on_date'];?></em></div>
@@ -188,6 +200,7 @@
                 <p class="gap martop">
                     <em>WAS THIS REVIEW HELPFUL TO YOU? </em> &nbsp; &nbsp; <a href="javascript:void(0);" id="<?php echo $rand2.'_'.$recent['Review']['id'];?>" class="btns yes">YES</a> <a class="btns no" href="javascript:void(0);" id="<?php echo ($rand2+1).'_'.$recent['Review']['id'];?>">NO</a> 
                 </p>
+                <?php }?>
             </div>
         </div>
         <div class="clear"></div>

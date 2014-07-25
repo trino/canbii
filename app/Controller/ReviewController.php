@@ -93,6 +93,14 @@
                         }
                     }
                     
+                    $this->Strain->id = $strain['Strain']['id'];
+                    if($strain['Strain']['review'])
+                    {
+                        $review = $strain['Strain']['review'] + 1;
+                    }
+                    else
+                    $review = 1;
+                    $this->Strain->saveField('review',$review);
                     $this->Session->setFlash('Review Saved.');
                     $this->redirect('/');
                }

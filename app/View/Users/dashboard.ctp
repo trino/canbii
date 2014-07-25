@@ -21,7 +21,8 @@
     }
 ?>
 <div class="">
-    <form action="" method="post">
+<h1 class="title">Further Information</h1>
+    <form action="" method="post" id="dashboard">
        <strong>Nationality:</strong>
        <select name="nationality">
             <option value="">Select Nationality</option>
@@ -63,7 +64,8 @@
             <option value="occasional"<?php if($frequency=='occasional')echo "selected='selected'";?>>Occasional</option>
             <option value="often"<?php if($frequency=='often')echo "selected='selected'";?>>Often</option>
        </select>
-       <input type="submit" name="submit" value="submit" />
+       <br />
+       <input type="submit" name="submit" value="submit" class="button button-small" />
        
     
     </form>
