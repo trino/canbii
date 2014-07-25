@@ -4,6 +4,10 @@ class UsersController extends AppController {
 
            
     public function login() {
+        if(isset($_GET['url']))
+            $this->set('url',$_GET['url']);
+        else
+            $this->set('url',"");
         if(!$this->request->is('post'))
             $this->redirect('register');
 		
@@ -16,6 +20,9 @@ class UsersController extends AppController {
                 $this->Session->write('User.email',$user['User']['email']);
                 $this->Session->write('User.id',$user['User']['id']);
                 $this->Session->setFlash('login Successfull');
+                if(isset($_GET['url']))
+                    $this->redirect(str_replace('http:/localhost/marijuana','http://localhost',$_GET['url']));
+                else
                 $this->redirect('dashboard');
             }
             else
@@ -26,6 +33,10 @@ class UsersController extends AppController {
         
     
     public function register(){
+         if(isset($_GET['url']))
+            $this->set('url',$_GET['url']);
+        else
+            $this->set('url',"");
         if($this->Session->read('User'))
             $this->redirect('dashboard');
       $this->set('title_for_layout','Login/Registration');

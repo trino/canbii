@@ -2,7 +2,7 @@
                 <h2>LOGIN TO YOUR ACCOUNT</h2>
                            
                 <div class="form-wrap">
-                     <?php echo $this->Form->create('User',array('action'=>'login')); ?>
+                     <?php echo $this->Form->create('User',array('action'=>'login?url='.$url)); ?>
                             <fieldset>
                                  <?php echo $this->Form->input('username',array('div'=>array('class'=>'form-row'))); ?>
                                 <?php  //echo $this->Form->input('password',array('div'=>array('class'=>'form-row'))); ?>

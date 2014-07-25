@@ -77,6 +77,11 @@ class StrainsController extends AppController{
         $key='';
         $this->set('strain',$this->Strain->find('all',array('conditions'=>array('name LIKE'=>'%'.$key.'%'),'order'=>'Strain.id DESC')));
     }
+    function review($slug)
+    {
+        $q = $this->Strain->findBySlug($slug);
+        $this->set('strain',$q);
+    }
 }
 
 ?>

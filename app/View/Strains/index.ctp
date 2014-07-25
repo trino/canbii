@@ -2,7 +2,8 @@
 <script src="<?php echo $this->webroot;?>js/labs.js"></script>
 <link href="<?php echo $this->webroot;?>css/raty.css" rel="stylesheet" type="text/css" />
 <h1 class="title"><?php echo $strain['Strain']['name'];?><span style="float: right;"><a href="<?php echo $this->webroot;?>review/index/<?php echo $strain['Strain']['slug'];?>">Review Strain</a></span><div class="clear"></div></h1>
-<div class="goto">
+<p class="gap">&nbsp;</p>
+<!--<div class="goto">
     <div class="left"><strong><img src="<?php echo $this->webroot;?>ra.png" height="50px" /></strong></div>
     <ul id="quick" class="left">        
         <li><a href="#" class="active">Overview</a></li>
@@ -11,7 +12,7 @@
         <li><a href="#">Images</a></li>
     </ul>
     <div class="clear"></div>
-</div>
+</div>-->
 <div class="maincontent">
     <div class="general">
         <div class="description left">
@@ -263,6 +264,7 @@
             </div>
         </div>
         <div class="clear"></div>
+        <a href="<?php echo $this->webroot;?>strains/review/<?php echo $strain['Strain']['slug'];?>" class="viewall">View All Reviews</a>
     </div>
     
 </div>
