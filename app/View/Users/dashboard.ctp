@@ -21,7 +21,8 @@
     }
 ?>
 <div class="">
-    <form action="" method="post">
+<h1 class="title">Further Information</h1>
+    <form action="" method="post" id="dashboard">
        <strong>Nationality:</strong>
        <select name="nationality">
             <option value="">Select Nationality</option>
@@ -55,7 +56,17 @@
             <option value="good"<?php if($health=='good')echo "selected='selected'";?>>Good</option>
        </select><br />
        <strong>Weight:</strong><input type="text" name="weight" value="<?php echo $weight;?>" /><br/>
-       <strong>Years of Expereince:</strong><input type="text" name="years_of_experience" value="<?php echo $exp;?>" /><br/>
+       <strong>Years of Expereince:</strong>
+       <select  name="years_of_experience" >
+       <?php for($i = 1; $i<=50; $i++)
+       {
+            if($i ==$exp)
+            $sel = "selected='selected'";
+            else
+            $sel = "";
+            echo "<option value='".$i."' ".$sel.">".$i."</option>";
+       }?>
+       </select><br/>
        <strong>Frequency:</strong>
        <select name="frequency">
             <option value="">Select Frequency</option>
@@ -63,7 +74,8 @@
             <option value="occasional"<?php if($frequency=='occasional')echo "selected='selected'";?>>Occasional</option>
             <option value="often"<?php if($frequency=='often')echo "selected='selected'";?>>Often</option>
        </select>
-       <input type="submit" name="submit" value="submit" />
+       <br />
+       <input type="submit" name="submit" value="submit" class="button button-small" />
        
     
     </form>

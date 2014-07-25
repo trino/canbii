@@ -5,7 +5,10 @@
         {
             $this->loadModel("Review");
             if(!$this->Session->read('User'))
-                $this->redirect('/users/register');
+            {
+                $url = Router::url($this->here, true);
+                $this->redirect('/users/register?url='.$url);
+            }
         }
         function index($slug)
         {
@@ -93,6 +96,14 @@
                         }
                     }
                     
+                    $this->Strain->id = $strain['Strain']['id'];
+                    if($strain['Strain']['review'])
+                    {
+                        $review = $strain['Strain']['review'] + 1;
+                    }
+                    else
+                    $review = 1;
+                    $this->Strain->saveField('review',$review);
                     $this->Session->setFlash('Review Saved.');
                     $this->redirect('/');
                }
@@ -122,7 +133,7 @@
                 if($st = $this->OverallEffectRating->find('first',array('conditions'=>array("strain_id"=>$eff['strain_id'],"effect_id"=>$eff['effect_id']))))
                 {
                     $overallrate = ($st['OverallEffectRating']['rate']+$rate)/2;
-                    //return $overallrate;
+                    $overallrate = round($overallrate,2);
                     $this->OverallEffectRating->id = $st['OverallEffectRating']['id'];
                     $this->OverallEffectRating->saveField('rate',$overallrate);
                 }
@@ -142,6 +153,7 @@
                 {
                     $overallrate = ($st['OverallSymptomRating']['rate']+$rate)/2;
                     $this->OverallSymptomRating->id = $st['OverallSymptomRating']['id'];
+                    $overallrate = round($overallrate,2);
                     $this->OverallSymptomRating->saveField('rate',$overallrate);
                 }
                 else
@@ -160,6 +172,7 @@
                 {
                     $overallrate = ($st['OverallColourRating']['rate']+$rate)/2;
                     $this->OverallColourRating->id = $st['OverallColourRating']['id'];
+                    $overallrate = round($overallrate,2);
                     $this->OverallColourRating->saveField('rate',$overallrate);
                 }
                 else
@@ -177,6 +190,7 @@
                 if($st = $this->OverallFlavorRating->find('first',array('conditions'=>array("strain_id"=>$eff['strain_id'],"flavor_id"=>$eff['flavor_id']))))
                 {
                     $overallrate = ($st['OverallFlavorRating']['rate']+$rate)/2;
+                    $overallrate = round($overallrate,2);
                     $this->OverallFlavorRating->id = $st['OverallFlavorRating']['id'];
                     $this->OverallFlavorRating->saveField('rate',$overallrate);
                 }

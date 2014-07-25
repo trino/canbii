@@ -55,7 +55,8 @@ select.second {
 #quick strong{color:#16A085;font-size:23px;}
 .maincontent{background:#f5f5f5;padding:10px;}
 .general{padding:15px 0;border-bottom:5px solid #FFF;margin:15px 0;}
-.reviews{margin-bottom:15px;padding-bottom:15px;border-bottom:5px solid #FFF;}
+.reviews,.attributes,.highlights{margin-bottom:15px;padding-bottom:15px;border-bottom:5px solid #FFF;}
+
 .leftcontent{width:50%;border-right:1px solid #e5e5e5;}
 .rightcontent{width: calc(50% - 10px);padding-left:9px;}
 .rating{padding:10px 0;}
@@ -79,8 +80,12 @@ select.second {
 .flwrap{margin-top:20px;}  
 .attributes strong{display:block;padding:10px;color:#FFF!important;text-align:center;}
 .attributes strong.active{background:#83B218!important;}  
-.attributes h2{padding-bottom:15px;}
-.attributes .rightcontent strong{display:inline-block!important;min-width: 100px;background:#B1F9B0;}
+.highlights h2,.attributes h2{padding-bottom:15px;}
+
+.attributes .rightcontent strong{background: none repeat scroll 0 0 #b1f9b0;
+    display: inline-block !important;
+    margin-bottom: 15px;
+    min-width: 170px;}
 .attributes .rightcontent strong:hover{background:#83B218;}
 .attributes .leftcontent strong{margin-right:15px;}
 .attributes .rightcontent strong a{color:#FFF;text-decoration: none;text-align:center;}
@@ -94,6 +99,20 @@ select.second {
 #preci{margin-top:10px;}
 .marleft{margin-left:10px;}
 .martop{margin-top:10px;}
+.highlights strong{display:block;padding:10px;color:#FFF!important;text-align:center;background:#83B218;}
+.highlights .names,.highlights .dates,.highlights .rates{border-bottom: 1px solid #aaa;
+    height: 30px;
+    margin-bottom: 10px;
+    width: 33.33%;}
+.btns{background: none repeat scroll 0 0 #ccc;
+    border-radius: 4px;
+    color: #fff;
+    display: inline-block;
+    margin-right: 5px;
+    padding: 2px 16px;
+    text-decoration: none;}  
+
+.highlights .label{width:30%!important;}
 
 fieldset {
     border: 1px solid #ccc;
@@ -190,5 +209,21 @@ select {
     text-indent: 6px;
     width: 520px;
 }
+
 #reviews1 .btn{display:inline-block;text-decoration:none;color:#FFF;background:#1ABC9C;padding:5px;border: 1px solid #D0D2D2;margin:2px;}
 #reviews1 a:hover{background:#16A085!important;}
+
+#reviews1 option{background: none repeat scroll 0 0 #16A085;
+    border-radius: 4px;
+    color: #fff;
+    margin-bottom: 4px;
+    padding: 7px;
+    text-align: center;
+    text-indent: 6px;
+    width: 520px;}
+.title span{color:#FFF;display:inline-block;padding:4px 10px; font-size: 13px;background:#ccc;border-radius:5px;}
+.title span a{text-decoration:none;}
+.box a{text-decoration: none;}
+#dashboard strong{display:block;margin:15px 0 5px 0;}
+#dashboard input[type="text"], #dashboard select{height:24px;padding:4px 0;}
+

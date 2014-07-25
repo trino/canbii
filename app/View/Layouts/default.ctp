@@ -37,8 +37,8 @@ Released   : 20131223
 			<h1><span class="icon logo"></span><a href="#">Marijuana</a></h1>
 			<div id="menu">
 				<ul class="left">
-					<li class="current_page_item"><a href="#" accesskey="1" title="">Home</a></li>
-					<li><a href="#" accesskey="2" title="">Strains</a></li>
+					<li class="current_page_item"><a href="<?php echo $this->webroot;?>" accesskey="1" title="">Home</a></li>
+					<li><a href="<?php echo $this->webroot?>strains/all" accesskey="2" title="">Strains</a></li>
 					<li><a href="#" accesskey="3" title="">About Us</a></li>
 					<li><a href="#" accesskey="4" title="">Contact Us</a></li>
 					

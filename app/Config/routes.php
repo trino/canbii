@@ -31,6 +31,10 @@
     Router::connect('/strains/getEffect/*', array('controller' => 'strains', 'action' => 'getEffect'));
     Router::connect('/strains/getFlavor/*', array('controller' => 'strains', 'action' => 'getFlavor'));
     Router::connect('/strains/getSymptom/*', array('controller' => 'strains', 'action' => 'getSymptom'));
+    Router::connect('/strains/getPosEff/*', array('controller' => 'strains', 'action' => 'getPosEff'));
+    Router::connect('/strains/getUserName/*', array('controller' => 'strains', 'action' => 'getUserName'));
+    Router::connect('/strains/helpful/*', array('controller' => 'strains', 'action' => 'helpful'));
+    Router::connect('/strains/all/*', array('controller' => 'strains', 'action' => 'all'));
 	Router::connect('/strains/*', array('controller' => 'strains', 'action' => 'index'));
 
 /**
