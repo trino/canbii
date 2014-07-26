@@ -1,4 +1,4 @@
-#search{width:715px;margin:0 auto;}
+#search{width:600px;margin:0 auto;}
 #search input[type="text"]{width:600px;padding:7.5px;height:22px;font-size:20px;display:block;border:1px solid #e5e5e5;border-radius: 0.5em 0 0 0.5em;}
 #search select {
     
@@ -239,3 +239,34 @@ select {
 .third{width:25%;}
 .rightcont{margin-top:20px;}
 .viewall{background:#16A085;color:#FFF;padding:4px 10px;display:inline-block;text-decoration: none;margin-top:20px;}
+.block-btn{display:block;padding:5px 10px;background:#16A085;text-decoration:none;text-align:center;color:#FFF;margin:10px 0;}
+.block-btn2{display:block;padding:5px 10px;background:#3dc7ab;text-decoration:none;text-align:center;color:#FFF;margin:10px 0;}
+.small-btn{display:inline-block;padding:4px 7px;background:#99CCFF;text-decoration:none;text-align:center;color:#FFF;margin:5px 3px;}
+.searchact,.small-btn:hover{background:#16A085;}
+.list{margin-bottom:40px;text-align: left;width:650px;text-align: left!important;}
+.list .box{text-align: left!important;}
+.list .box .lista{float:left;}
+.list .box p{float:right;width:400px;text-align: left!important;}
+.button-small{float:right;padding:3px 5px;background:#16A085;color:#FFF;text-decoration: none;}
+.others{margin:10px;}
+.inline{display:inline-block;}
+.block{display:block;}
+.filter{width:400px;background:#f6ffc6;padding:15px;}
+div#spinner
+{
+    display: none;
+    width:100px;
+    height: 100px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    background:url(spinner.gif) no-repeat center #fff;
+    text-align:center;
+    padding:10px;
+    font:normal 16px Tahoma, Geneva, sans-serif;
+    border:1px solid #666;
+    margin-left: -50px;
+    margin-top: -50px;
+    z-index:2;
+    overflow: auto;
+}

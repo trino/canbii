@@ -23,6 +23,7 @@ Released   : 20131223
 <script type="text/javascript" src="<?php echo $this->webroot;?>js/jquery-1.7.1.min.js"></script>
     <script src="<?php echo $this->webroot;?>js/validate.js"></script>
     <script src="<?php echo $this->webroot;?>js/ui.js"></script>
+    <script src="<?php echo $this->webroot;?>my.js"></script>
     <link rel="stylesheet" href="<?php echo $this->webroot;?>css/ui.css" />
     <link rel="shortcut icon" href="<?php echo $this->webroot;?>favicon.ico" type="image/x-icon"/>
     <link rel="icon" href="<?php echo $this->webroot;?>favicon.ico" type="image/x-icon"/>
@@ -69,20 +70,39 @@ if($this->params['controller'] == 'pages' && $this->params['action'] == 'index')
 		<p>
             <form action="<?php echo $this->webroot;?>strains/search" method="get" id="search">
             <div class="left">
-                <input type="text" placeholder="Title" name="key" />
-                <select>
-                    <option>Choose Effect</option>
-                </select>
-                <select class="second">
-                    <option>Choose Symptom</option>
-                </select>
+                <input type="text" placeholder="Title" name="key" class="key" /><br />
+                
+                <center><strong>OR</strong></center>
+                
+                <a href="javascript:void(0);" onclick="$('.choose_eff').toggle();" class="block-btn">Choose Effect</a>
+                <div class="choose_eff" style="display: none;">
+                <?php $effect = $this->requestAction('/pages/getEff');
+                foreach($effect as $e)
+                {
+                    ?>
+                    <a href="javascript:void(0)" class="small-btn" onclick="highlighteff($(this))" id="eff_<?php echo $e['Effect']['id'];?>"><?php echo $e['Effect']['title']?></a>
+                    <?php
+                }
+                ?>
+                <p style="display: none;" class="effe"></p>
+                </div>
+                
+                <a href="javascript:void(0);" onclick="$('.choose_sym').toggle();" class="block-btn">Choose Symptom</a>
+                <div class="choose_sym" style="display: none;">
+                <?php $effect = $this->requestAction('/pages/getSym');
+                foreach($effect as $e)
+                {
+                    ?>
+                    <a href="javascript:void(0)" onclick="highlightsym($(this))" class="small-btn" id="sym_<?php echo $e['Symptom']['id'];?>"><?php echo $e['Symptom']['title']?></a>
+                    <?php
+                }
+                ?>
+                <p style="display: none;" class="symp"></p>
+                </div>
+                
                 <div class="clear"></div>
             </div>
-            <div class="right">
-                <input type="checkbox" /> Indica<br />
-                <input type="checkbox" /> Satica<br />
-                <input type="checkbox" /> Hybrid<br />
-            </div> 
+            
             <div class="clear"></div>   
             <div class="clear"></div>
                 <input type="submit" value="Search" class="button" />

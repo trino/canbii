@@ -1,6 +1,10 @@
+<script src="<?php echo $this->webroot;?>js/raty.js"></script>
+<script src="<?php echo $this->webroot;?>js/labs.js"></script>
+<link href="<?php echo $this->webroot;?>css/raty.css" rel="stylesheet" type="text/css" />
 <div id="portfolio" class="container">
     <h1 class="title" style="margin-bottom: 30px;">Strains</h1>
     <p style="margin-bottom: 30px;">&nbsp;</p>
+    <div class="left listing">
     <?php
     if($strain)
     {
@@ -9,9 +13,10 @@
         {
             $j++;
             ?>
-            <div class="column<?php echo $j;?>">
+            <div class="list">
 			<div class="box"> 
-            <a href="<?php echo $this->webroot?>strains/<?php echo $s['Strain']['slug'];?>"><div class="iconstrain">
+            <div class="others"><strong><em><?php echo $s['Strain']['published_date'];?></em></strong></div>
+            <a class="lista" href="<?php echo $this->webroot?>strains/<?php echo $s['Strain']['slug'];?>"><div class="iconstrain">
                 <h2><?php echo $s['StrainType']['title'];?></h2>
                 <strong>
                 <?php 
@@ -31,13 +36,67 @@
                 </div>
                 </a>
 				<p><?php echo substr($s['Strain']['description'],0,130).'...';?></p>
-				<a href="<?php echo $this->webroot?>strains/<?php echo $s['Strain']['slug'];?>" class="button button-small">View Detail</a> </div>
+                <div class="clear"></div>
+                <div class="others">
+				<a href="<?php echo $this->webroot?>strains/<?php echo $s['Strain']['slug'];?>" class="button-small">View Detail</a>
+                <div class="rating<?php echo $j;?> right" style="margin: 0 10px;"></div>
+                <div class="left"><em><strong><?php if($s['Strain']['review'])echo $s['Strain']['review'];else echo 0;?> Reviews</strong></em></div>
+                <div class="clear"></div>
+                <script>
+                $(function(){    
+                    $('.rating<?php echo $j;?>').raty({readOnly:true,score:<?php echo $s['Strain']['rating']/2;?>});
+                });
+                </script> 
+                </div>
+                
+                </div>
 		  </div>
             <?php
         }
     }
     ?>
     <div class="clear"></div>
-		
+	</div>
+    <div class="right filter">
+        <strong style="text-align: center;" class="block">FILTER STRAINS</strong>
+        <p>&nbsp;</p>
+        <a href="javascript:void(0);" class="block-btn2">FILTER BY EFFECTS</a>
+                <div class="choose_eff" >
+                <?php $effect = $this->requestAction('/pages/getEff');
+                foreach($effect as $e)
+                {
+                    ?>
+                    <a href="javascript:void(0)" class="small-btn" onclick="highlighteff2($(this))" id="eff_<?php echo $e['Effect']['id'];?>"><?php echo $e['Effect']['title']?></a>
+                    <?php
+                }
+                ?>
+                <p style="display: none;" class="effe"></p>
+                </div>
+                
+                <a href="javascript:void(0);" class="block-btn2">FILTER BY SYMPTOM</a>
+                <div class="choose_sym">
+                <?php $effect = $this->requestAction('/pages/getSym');
+                foreach($effect as $e)
+                {
+                    ?>
+                    <a href="javascript:void(0)" onclick="highlightsym2($(this))" class="small-btn" id="sym_<?php echo $e['Symptom']['id'];?>"><?php echo $e['Symptom']['title']?></a>
+                    <?php
+                }
+                ?>
+                <p style="display: none;" class="symp"></p>
+                </div>
+    </div>
+    <div class="clear"></div>	
 		
 	</div>
+    <div id="spinner">
+        Loading...
+    </div>
+    
+    
+    <script>
+    
+    $(function(){
+    
+    });
+    </script>
