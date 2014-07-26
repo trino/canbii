@@ -217,9 +217,11 @@ select {
     width: 520px;
 }
 
-#reviews1 .btn{display:inline-block;text-decoration:none;color:#FFF;background:#1ABC9C;padding:5px;border: 1px solid #D0D2D2;margin:2px;}
+ .btn{display:inline-block;text-decoration:none;color:#FFF;background:#1ABC9C;padding:5px;border: 1px solid #D0D2D2;margin:2px;}
 #reviews1 a:hover{background:#16A085!important;}
-
+#reviews1 .sel{background:#16A085!important;}
+.butt a:hover{background:#16A085!important;}
+.butt .sel{background:#16A085!important;}
 #reviews1 option{background: none repeat scroll 0 0 #16A085;
     border-radius: 4px;
     color: #fff;
@@ -268,5 +270,6 @@ div#spinner
     z-index:2;
     overflow: auto;
 }
+
 .sort{margin-bottom:10px;}
 .listing{width:650px;}

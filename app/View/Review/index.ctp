@@ -59,7 +59,7 @@
 <span class="qf-select-inner" id="qf_review__effects__medical__inner">
 <div class="qf-select review-selector" id="qf_review__effects__medical">
 <?php foreach($symptoms as $effect)
-{?> <a href="javascript:void(0);" onclick="$(this).addClass('sel')" title="<?php echo $effect['Symptom']['id'];?>" class="btn btn-info qf_review__effects__medical"><?php echo ucfirst($effect['Symptom']['title']);?></a>
+{?> <a href="javascript:void(0);" onclick="($(this).hasClass('sel'))?$(this).removeClass('sel'):$(this).addClass('sel');" title="<?php echo $effect['Symptom']['id'];?>" class="btn btn-info qf_review__effects__medical"><?php echo ucfirst($effect['Symptom']['title']);?></a>
 <?php }
 ?>
 </div>
@@ -86,7 +86,7 @@
 <span class="qf-select-inner" id="qf_review__effects__positive__inner">
 <div class="qf-select review-selector" id="qf_review__effects__positive">
 <?php foreach($effects as $effect)
-{?> <a href="javascript:void(0);" onclick="$(this).addClass('sel')" title="<?php echo $effect['Effect']['id'];?>" class="btn btn-info qf_review__effects__positive"><?php echo ucfirst($effect['Effect']['title']);?></a>
+{?> <a href="javascript:void(0);" onclick="($(this).hasClass('sel'))?$(this).removeClass('sel'):$(this).addClass('sel')" title="<?php echo $effect['Effect']['id'];?>" class="btn btn-info qf_review__effects__positive"><?php echo ucfirst($effect['Effect']['title']);?></a>
 <?php }
 ?>
 </div>
@@ -114,7 +114,7 @@
 <span class="qf-select-inner" id="qf_review__effects__negative__inner">
 <div class="qf-select review-selector" id="qf_review__effects__negative">
 <?php foreach($negative as $effect)
-{?> <a href="javascript:void(0);" onclick="$(this).addClass('sel')" title="<?php echo $effect['Effect']['id'];?>" class="btn btn-info qf_review__effects__negative"><?php echo ucfirst($effect['Effect']['title']);?></a>
+{?> <a href="javascript:void(0);" onclick="($(this).hasClass('sel'))?$(this).removeClass('sel'):$(this).addClass('sel')" title="<?php echo $effect['Effect']['id'];?>" class="btn btn-info qf_review__effects__negative"><?php echo ucfirst($effect['Effect']['title']);?></a>
 <?php }
 ?>
 </div>
@@ -170,7 +170,7 @@
 <span class="qf-select-inner" id="qf_review__aesthetics__color__inner">
 <div class="qf-select review-selector" id="qf_review__aesthetics__color">
 <?php foreach($colours as $colour)
-{?> <a href="javascript:void(0);" onclick="$(this).addClass('sel')" title="<?php echo $colour['Colour']['id'];?>" class="btn btn-info qf_review__aesthetics__color"><?php echo ucfirst($colour['Colour']['title']);?></a>
+{?> <a href="javascript:void(0);" onclick="($(this).hasClass('sel'))?$(this).removeClass('sel'):$(this).addClass('sel')" title="<?php echo $colour['Colour']['id'];?>" class="btn btn-info qf_review__aesthetics__color"><?php echo ucfirst($colour['Colour']['title']);?></a>
 <?php }
 ?>
 </div>
@@ -197,7 +197,7 @@
 <span class="qf-select-inner" id="qf_review__aesthetics__flavor__inner">
 <div class="qf-select review-selector" id="qf_review__aesthetics__flavor">
 <?php foreach($flavors as $flavor)
-{?> <a href="javascript:void(0);" onclick="$(this).addClass('sel')" title="<?php echo $flavor['Flavor']['id'];?>" class="btn btn-info qf_review__aesthetics__flavor"><?php echo ucfirst($flavor['Flavor']['title']);?></a>
+{?> <a href="javascript:void(0);" onclick="($(this).hasClass('sel'))?$(this).removeClass('sel'):$(this).addClass('sel')" title="<?php echo $flavor['Flavor']['id'];?>" class="btn btn-info qf_review__aesthetics__flavor"><?php echo ucfirst($flavor['Flavor']['title']);?></a>
 <?php }
 ?>
 </div>
@@ -219,10 +219,19 @@
 <span class="qf-label-span" id="qf_review__other__overall__label_span">
 <label id="qf_review__other__overall__label" for="qf_review__other__overall">Overall Rating</label>
 </span>
+<div id="preci">
+<div id="precision" class="left" style="cursor: pointer;" >
+</div>
+
+<div class="errorz" style="display: none;" >Overall Rating Is Mandatory. </div>
+
+</div>
+
+<div id="precision-hint" class="input hint left marleft"></div>
 <span class="qf-input-span qf-slider-input-span" id="qf_review__other__overall__span">
 <p id="qf_review__other__overall__prompt">1/10</p>
 <div>
-<input title="Overall Rating" value="1" type="hidden" name="rate" id="qf_review__other__overall" class="qf-hidden-input qf-slider qf-input"/>
+<input title="Overall Rating" value="0" type="hidden" name="rate" id="qf_review__other__overall" class="qf-hidden-input qf-slider qf-input"/>
 </div>
 <div class="qf-slider-bar" id="qf_review__other__overall__slider"> </div>
 </span>
@@ -241,6 +250,21 @@
 </form>
 <script>
 $(function(){
+    $('#reviews1').submit(function(){
+        //alert($('#qf_review__other__overall').val());
+        if($('#qf_review__other__overall').val()=='0')
+        {
+            $('.errorz').show();
+            return false;
+        }
+        else
+        {
+            $('.errorz').hide();
+            return true;
+        }
+            
+    });
+    
                 /*$('#qf_review__aesthetics__color').change(function() {
 					addSlider($(this), 'color');
 				});
@@ -293,6 +317,7 @@ $(function(){
 						var innerId = '#qf_review__'+cat+'__'+type+'__inner';
                         if(type == 'positive' || type == 'negative')
                             type = 'effect';
+                            
 						$(innerId).append('<div id="'+id+'" class="review-slider"><label>'+txt+'</label><input type="hidden" id="'+id+'i" name="'+type+'['+sel+']" value="0" /><div class="slider" id="'+id+'s"></div><p id="'+id+'p">0/10</p><div class="clear"> </div></div>');
 						$('#'+id+'s').slider({
 							range: "min",
@@ -312,8 +337,25 @@ $(function(){
 				$("#qf_review__general__duration__slider").slider({'min':1,'max':6,'step':1,'value':1,'slide':function(e,ui){ $('#qf_review__general__duration').val(ui.value);$('#qf_review__general__duration__prompt').html(''+ui.value+' hrs'); },'range':'min'});		
 				$("#qf_review__aesthetics__hairs__slider").slider({'min':1,'max':10,'step':1,'value':5,'slide':function(e,ui){ $('#qf_review__aesthetics__hairs').val(ui.value);$('#qf_review__aesthetics__hairs__prompt').html(''+ui.value+'/10'); },'range':'min'});		
 				$("#qf_review__aesthetics__crystals__slider").slider({'min':1,'max':10,'step':1,'value':5,'slide':function(e,ui){ $('#qf_review__aesthetics__crystals').val(ui.value);$('#qf_review__aesthetics__crystals__prompt').html(''+ui.value+'/10'); },'range':'min'});		
-				$("#qf_review__other__overall__slider").slider({'min':1,'max':10,'step':1,'value':1,'slide':function(e,ui){ $('#qf_review__other__overall').val(ui.value);$('#qf_review__other__overall__prompt').html(''+ui.value+'/10'); },'range':'min'});			
-				// strain Autocomplete Script
+				//$("#qf_review__other__overall__slider").slider({'min':1,'max':10,'step':1,'value':1,'slide':function(e,ui){ $('#qf_review__other__overall').val(ui.value);$('#qf_review__other__overall__prompt').html(''+ui.value+'/10'); },'range':'min'});			
+			$('#precision').raty({
+                  cancel     : false,
+                  cancelOff  : 'cancel-off.png',
+                  cancelOn   : 'cancel-on.png',
+                  path       : '<?php echo $this->webroot;?>raty/images',
+                  starHalf   : 'star-half.png',
+                  starOff    : 'star-off.png',
+                  starOn     : 'star-on.png',
+                  target     : '#qf_review__other__overall__prompt',
+                  targetKeep : true,
+                  precision  : false,
+                  number     : 10,
+                  hints      : ['1/10','2/10','3/10','4/10','5/10','6/10','7/10','8/10','9/10','10/10'],
+                  click      : function(score){
+                                    $('#qf_review__other__overall').val(score.toFixed(2));
+                                    $('.errorz').hide();
+                    }
+    });
 					
     
 });

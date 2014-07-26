@@ -227,6 +227,16 @@ HAVING COUNT( symptom_id ) ='.count($symptoms).'))';
         $q = $this->Strain->findBySlug($slug);
         $this->set('strain',$q);
     }
+    function ajax_search()
+    {
+        $str = $_POST['str'];
+        $search = $this->Strain->find("all",array('conditions'=>array('name LIKE'=>"%".$str."%")));
+        foreach($search as $s)
+        {
+            echo "<a href='javascript:void(0);' class='btn opt' title='".$s['Strain']['slug']."'>".$s['Strain']['name']."</a>";
+        }
+        die();
+    }
 }
 
 ?>

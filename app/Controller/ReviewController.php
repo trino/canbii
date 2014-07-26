@@ -10,6 +10,44 @@
                 $this->redirect('/users/register?url='.$url);
             }
         }
+        
+        function all()
+        {
+            $reviews = $this->Review->find('all',array("conditions"=>array('user_id'=>$this->Session->read('User.id'))));
+            $this->set("reviews",$reviews);
+            
+        }
+        function detail($id)
+        {
+            $this->loadModel('Effect');
+            $this->loadModel("Strain");
+            $this->loadModel("Colour");
+            $this->loadModel("Flavor");
+            $this->loadModel('EffectRating');
+            $this->loadModel('SymptomRating');
+            $this->loadModel('ColourRating');
+            $this->loadModel('FlavorRating');
+            
+            
+            $this->set('effects',$this->Effect->find('all',array('conditions'=>array("negative"=>'0'))));
+            $this->set('negative',$this->Effect->find('all',array('conditions'=>array("negative"=>'1'))));
+            $this->set("effectz",$this->Effect->find('all'));
+            $this->set('colours',$this->Colour->find('all'));
+            $this->set('flavors',$this->Flavor->find('all'));
+            $this->loadModel('Symptom');
+            $this->set('symptoms',$this->Symptom->find('all'));
+            $this->set('review',$this->Review->findById($id));
+            
+        }
+        function add()
+        {
+            if(isset($_POST['submit']))
+            {
+                $slug = $_POST['strain'];
+                if($slug!="")
+                    $this->redirect("index/".$slug);
+            }
+        }
         function index($slug)
         {
             $this->loadModel('Effect');
