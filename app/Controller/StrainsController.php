@@ -91,11 +91,17 @@ class StrainsController extends AppController{
             {
                 $i++;
                 if($i==1)
-                $condition = $condition.'Strain.id IN (SELECT strain_id FROM reviews WHERE id IN (SELECT review_id FROM effect_ratings WHERE effect_id IN('.$e;
+                $condition = $condition.'Strain.id IN (SELECT strain_id FROM reviews WHERE id IN (SELECT review_id
+FROM effect_ratings
+WHERE effect_id
+IN ( '.$e;
+ 
                 else
                 $condition = $condition.','.$e;
             }
-            $condition = $condition.')))';
+            $condition = $condition.')GROUP BY review_id
+HAVING COUNT( effect_id ) ='.count($effects).'))';
+            
             
         }
         if($symptoms)
@@ -107,11 +113,77 @@ class StrainsController extends AppController{
                 $condition = $condition.' AND ';
                 $i++;
                 if($i==1)
-                $condition = $condition.'Strain.id IN (SELECT strain_id FROM reviews WHERE id IN (SELECT review_id FROM symptom_ratings WHERE symptom_id IN('.$e;
+                $condition = $condition.'Strain.id IN (SELECT strain_id FROM reviews WHERE id IN (SELECT review_id
+FROM symptom_ratings
+WHERE symptom_id
+IN ( '.$e;
+ 
                 else
                 $condition = $condition.','.$e;
             }
-            $condition = $condition.')))';
+            $condition = $condition.')GROUP BY review_id
+HAVING COUNT( symptom_id ) ='.count($symptoms).'))';
+        }
+        if(!$condition)
+        $this->set('strain',$this->Strain->find('all',array('conditions'=>array('name LIKE'=>'%'.$key.'%'),'order'=>'Strain.id DESC')));
+        else
+        $this->set('strain',$this->Strain->find('all',array('conditions'=>array('name LIKE'=>'%'.$key.'%',$condition),'order'=>'Strain.id DESC')));
+        $this->render('all');
+    }
+    function filter(){
+        $this->layout = 'blank';
+        if(isset($_GET['key']))
+        $key = $_GET['key'];
+        else
+        $key='';
+        $condition='';
+        if(isset($_GET['effects']))
+        $effects = $_GET['effects'];
+        else
+        $effects = array();
+        if(isset($_GET['symptoms']))
+        $symptoms = $_GET['symptoms'];
+        else
+        $symptoms = array();
+        if($effects)
+        {
+            $i=0;
+            foreach($effects as $e)
+            {
+                $i++;
+                if($i==1)
+                $condition = $condition.'Strain.id IN (SELECT strain_id FROM reviews WHERE id IN (SELECT review_id
+FROM effect_ratings
+WHERE effect_id
+IN ( '.$e;
+ 
+                else
+                $condition = $condition.','.$e;
+            }
+            $condition = $condition.')GROUP BY review_id
+HAVING COUNT( effect_id ) ='.count($effects).'))';
+            
+            
+        }
+        if($symptoms)
+        {
+            $i=0;
+            foreach($symptoms as $e)
+            {
+                if($effects)
+                $condition = $condition.' AND ';
+                $i++;
+                if($i==1)
+                $condition = $condition.'Strain.id IN (SELECT strain_id FROM reviews WHERE id IN (SELECT review_id
+FROM symptom_ratings
+WHERE symptom_id
+IN ( '.$e;
+ 
+                else
+                $condition = $condition.','.$e;
+            }
+            $condition = $condition.')GROUP BY review_id
+HAVING COUNT( symptom_id ) ='.count($symptoms).'))';
         }
         if(!$condition)
         $this->set('strain',$this->Strain->find('all',array('conditions'=>array('name LIKE'=>'%'.$key.'%'),'order'=>'Strain.id DESC')));
