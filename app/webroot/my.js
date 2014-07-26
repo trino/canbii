@@ -34,14 +34,20 @@ if(thiss.attr('class').replace('searchact','')==thiss.attr('class'))
     $('.key').val('');
 }
 function highlighteff2(thiss){
+    
+    if(thiss!='recent' && thiss!='rated' && thiss!='alpha'){
+        var sort =0;
 if(thiss.attr('class').replace('searchact','')==thiss.attr('class'))
 {
+        
     thiss.addClass('searchact');
     $('.effe').append('<input type="hidden" name="effects[]" value="'+thiss.attr('id').replace('eff_','')+'" class="effs '+thiss.attr('id')+'"  />')}else{thiss.removeClass('searchact')
    
         $('.'+thiss.attr('id')).remove();
     }
-    $('.key').val('');
+    $('.key').val('');}
+    else
+    var sort = 1;
     showProgress();
         var i=0;
         var val = '';
@@ -64,10 +70,17 @@ if(thiss.attr('class').replace('searchact','')==thiss.attr('class'))
             val = val+'&symptoms[]='+$(this).val();  
             }       
     });
-    if(val)
+    if(val){
         val = val+'&key=';
+        }
         else
-        val = 'key='; 
+        val = 'key=';
+        if(sort)
+        {
+            val = val+'&sort='+thiss;
+        }
+         
+        
         $.ajax({
            url:'filter',
            data:val,
@@ -121,5 +134,5 @@ if(thiss.attr('class').replace('searchact','')==thiss.attr('class'))
             hideProgress();
             $('.listing').html(res);
            } 
-        });
+        });    
 }

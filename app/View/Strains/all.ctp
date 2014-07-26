@@ -1,9 +1,34 @@
 <script src="<?php echo $this->webroot;?>js/raty.js"></script>
 <script src="<?php echo $this->webroot;?>js/labs.js"></script>
 <link href="<?php echo $this->webroot;?>css/raty.css" rel="stylesheet" type="text/css" />
+<?php
+if(isset($_GET['effects'])&&$_GET['effects'])
+{
+    foreach($_GET['effects'] as $ef)
+    {
+        $effects[] = $ef;
+    }
+}
+else
+$effects = array();
+
+if(isset($_GET['symptoms'])&&$_GET['symptoms'])
+{
+    foreach($_GET['symptoms'] as $ef)
+    {
+        $symptoms[] = $ef;
+    }
+}
+else
+$symptoms = array();
+?>
 <div id="portfolio" class="container">
     <h1 class="title" style="margin-bottom: 30px;">Strains</h1>
     <p style="margin-bottom: 30px;">&nbsp;</p>
+    <div  class="sort">
+        <strong>SORT:</strong>  &nbsp; &nbsp; <a href="javascript:void(0);" onclick="highlighteff2('recent')">Most Recent</a> &nbsp; &nbsp; | &nbsp; &nbsp; <a href="javascript:void(0)" onclick="highlighteff2('rated')">Most Rated</a> &nbsp; &nbsp; | &nbsp; &nbsp; <a href="javascript:void(0)" onclick="highlighteff2('alpha')">Alphabetically</a>
+    </div>
+    <div>
     <div class="left listing">
     <?php
     if($strain)
@@ -87,6 +112,7 @@
                 </div>
     </div>
     <div class="clear"></div>	
+    </div>
 		
 	</div>
     <div id="spinner">
@@ -97,6 +123,25 @@
     <script>
     
     $(function(){
-    
+    <?php
+    if($effects)
+    {
+        foreach($effects as $eff)
+        {
+            ?>
+            $('#eff_<?php echo $eff;?>').click();
+            <?php
+        }
+    }
+    if($symptoms)
+    {
+        foreach($symptoms as $eff)
+        {
+            ?>
+            $('#sym_<?php echo $eff;?>').click();
+            <?php
+        }
+    }
+    ?>
     });
     </script>

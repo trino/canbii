@@ -109,14 +109,16 @@ HAVING COUNT( effect_id ) ='.count($effects).'))';
             $i=0;
             foreach($symptoms as $e)
             {
-                if($effects)
-                $condition = $condition.' AND ';
+                
                 $i++;
-                if($i==1)
+                if($i==1){
+                    if($effects)
+                $condition = $condition.' AND ';
                 $condition = $condition.'Strain.id IN (SELECT strain_id FROM reviews WHERE id IN (SELECT review_id
 FROM symptom_ratings
 WHERE symptom_id
 IN ( '.$e;
+}
  
                 else
                 $condition = $condition.','.$e;
@@ -130,6 +132,8 @@ HAVING COUNT( symptom_id ) ='.count($symptoms).'))';
         $this->set('strain',$this->Strain->find('all',array('conditions'=>array('name LIKE'=>'%'.$key.'%',$condition),'order'=>'Strain.id DESC')));
         $this->render('all');
     }
+    
+    
     function filter(){
         $this->layout = 'blank';
         if(isset($_GET['key']))
@@ -170,14 +174,16 @@ HAVING COUNT( effect_id ) ='.count($effects).'))';
             $i=0;
             foreach($symptoms as $e)
             {
-                if($effects)
-                $condition = $condition.' AND ';
+                
                 $i++;
-                if($i==1)
+                if($i==1){
+                    if($effects)
+                $condition = $condition.' AND ';
                 $condition = $condition.'Strain.id IN (SELECT strain_id FROM reviews WHERE id IN (SELECT review_id
 FROM symptom_ratings
 WHERE symptom_id
 IN ( '.$e;
+}
  
                 else
                 $condition = $condition.','.$e;
@@ -185,11 +191,36 @@ IN ( '.$e;
             $condition = $condition.')GROUP BY review_id
 HAVING COUNT( symptom_id ) ='.count($symptoms).'))';
         }
-        if(!$condition)
+        if(isset($_GET['sort']))
+        {
+            $sort = $_GET['sort'];
+            if($sort == 'recent')
+            {
+                $order = 'Strain.id DESC';
+            }
+            else
+            if($sort = 'rated')
+            {
+                $order = 'Strain.rating DESC';
+            }
+            else
+            $order = 'Strain.name ASC';
+        }
+        else
+        $order =array();
+        //var_dump($order);die();
+        if(!$condition){
+            if(!$order)
         $this->set('strain',$this->Strain->find('all',array('conditions'=>array('name LIKE'=>'%'.$key.'%'),'order'=>'Strain.id DESC')));
         else
+        $this->set('strain',$this->Strain->find('all',array('conditions'=>array('name LIKE'=>'%'.$key.'%'),'order'=>$order)));
+        }
+        else{
+            if(!$order)
         $this->set('strain',$this->Strain->find('all',array('conditions'=>array('name LIKE'=>'%'.$key.'%',$condition),'order'=>'Strain.id DESC')));
-        
+        else
+        $this->set('strain',$this->Strain->find('all',array('conditions'=>array('name LIKE'=>'%'.$key.'%',$condition),'order'=>$order)));
+        }
     }
     function review($slug)
     {
