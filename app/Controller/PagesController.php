@@ -47,7 +47,21 @@ class PagesController extends AppController {
  */
 	public function index()
     {
+        
         $this->loadModel('Strain');
         $this->set('strain',$this->Strain->find('all',array('order'=>'Strain.id DESC','limit'=>4)));
+        
+        
+    }
+    function getEff()
+    {
+        $this->loadModel('Effect');
+        return $this->Effect->find('all',array('order'=>'Effect.title ASC'));
+        
+    }
+    function getSym()
+    {
+        $this->loadModel('Symptom');
+        return $this->Symptom->find('all',array('order'=>'Symptom.title ASC'));
     }
 }

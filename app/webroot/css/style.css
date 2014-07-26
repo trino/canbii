@@ -1,4 +1,4 @@
-#search{width:715px;margin:0 auto;}
+#search{width:600px;margin:0 auto;}
 #search input[type="text"]{width:600px;padding:7.5px;height:22px;font-size:20px;display:block;border:1px solid #e5e5e5;border-radius: 0.5em 0 0 0.5em;}
 #search select {
     
@@ -237,3 +237,6 @@ select {
 .third{width:25%;}
 .rightcont{margin-top:20px;}
 .viewall{background:#16A085;color:#FFF;padding:4px 10px;display:inline-block;text-decoration: none;margin-top:20px;}
+.block-btn{display:block;padding:5px 10px;background:#16A085;text-decoration:none;text-align:center;color:#FFF;margin:10px 0;}
+.small-btn{display:inline-block;padding:4px 7px;background:#99CCFF;text-decoration:none;text-align:center;color:#FFF;margin:5px 3px;}
+.searchact,.small-btn:hover{background:#16A085;}
