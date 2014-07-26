@@ -83,7 +83,62 @@ class UsersController extends AppController {
         
         
     }
+    public function settings()
+    {
+        if(!$this->Session->read('User'))
+            $this->redirect('register');
+        $user =$this->User->findById($this->Session->read("User.id"));
+        $this->set('user',$user);
+        $username = $user['User']['username'];
+        if(isset($_POST['submit']))
+        {
+            if($_POST['username'])
+            {
+                $ch = $this->User->find('first',array('conditions'=>array('username'=>$_POST['username'],'id<>'.$user['User']['id'])));
+                if($ch)
+                {
+                    $this->Session->setFlash('Username Already Taken.');
+                    $this->redirect('settings');
+                }
+            }
+            if($_POST['email'])
+            {
+                $ch = $this->User->find('first',array('conditions'=>array('email'=>$_POST['email'],'id<>'.$user['User']['id'])));
+                if($ch)
+                {
+                    $this->Session->setFlash('Email Already Taken.');
+                    $this->redirect('settings');
+                }
+            }
+            if($_POST['old_password'])
+            {
+                $ch2 = $this->User->find('first',array('conditions'=>array('username'=>$username,'password'=>$_POST['old_password'])));
+                if($ch2)
+                {
+                    $arr['username'] = $_POST['username'];
+                    $arr['email'] = $_POST['email'];
+                    if($_POST['password']!="")
+                    $arr['password'] = $_POST['password'];
+                    $this->User->id = $this->Session->read("User.id");
+                    foreach($arr as $k=>$v)
+                    {
+                        $this->User->saveField($k,$v);
+                    }
+                    
+                        $this->Session->setFlash("Settings Saved.");
+                        $this->redirect("dashboard");    
+                    
+                }
+                else
+                {
+                    $this->Session->setFlash('Old Password Does Not Match!');
+                    $this->redirect('settings');
+                }
+            }
+           
+        }
     
+    }
     
     
         
