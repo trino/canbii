@@ -296,12 +296,12 @@
 </div>
 <script>
 $(function(){
-$('.rating').raty({readOnly:true,score:<?php echo $strain['Strain']['rating']/2;?>});
+$('.rating').raty({number:10,readOnly:true,score:<?php echo $strain['Strain']['rating'];?>});
 <?php if($helpful){?>
 $('.frate').raty({readOnly:true,score:<?php echo $helpful['Review']['rate']/2;?>});
 $('.srate').raty({readOnly:true,score:<?php echo $recent['Review']['rate']/2;?>});
 <?php }?>
-$('.emotion').text('<?php echo ($strain['Strain']['rating']).'/10';?> '+$('.rating img').attr('title')+'!');
+$('.emotion').text('<?php echo ($strain['Strain']['rating']).'/10';?> ');
 $('.yes').click(function(){
    var id = $(this).attr('id');
    var arr = id.split('_');
