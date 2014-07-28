@@ -53,6 +53,13 @@ class PagesController extends AppController {
         
         
     }
+    public function pages($slug)
+    {
+        
+        $detail = $this->Page->findBySlug($slug);
+        $this->set('detail',$detail);
+        
+    }
     function getEff()
     {
         $this->loadModel('Effect');

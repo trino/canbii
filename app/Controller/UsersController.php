@@ -2,7 +2,7 @@
 
 class UsersController extends AppController {
 
-           
+          
     public function login() {
         if(isset($_GET['url']))
             $this->set('url',$_GET['url']);
@@ -138,6 +138,37 @@ class UsersController extends AppController {
            
         }
     
+    }
+    function forgot()
+    {
+        
+        $this->set('title_for_layout','Forgot Password');
+        if(isset($_POST['email']))
+        {
+            $q = $this->User->find('first',array('conditions'=>array('email'=>$_POST['email'],'fbid'=>'')));
+            if($q)
+            {
+                //$r = rand(100000,999999);
+                $emails = new CakeEmail();
+                $emails->to($_POST['email']);
+                $emails->from(array('noreply@savnpik.com'=>'MARIJUANA.COM'));
+                $emails->subject("Recover Password");
+                $emails->emailFormat('html');
+                $msg = "Hi there,<br/><br/>We recently received a request from you that you forgot MARIJUANA.COM account password. <br/>Here is your new login detail:<br/>
+                Username : ".$q['User']['username']."<br/>
+                Password : ".$q['User']['password']."<br/>
+                <br/><br/>";
+                $msg .= "Regards,<br/>MARIJUANA.COM";
+                $emails->send($msg);
+                
+                $this->Session->setFlash('Password has been sent to '.$_POST['email']);
+            }
+            else
+            {
+                $this->Session->setFlash('We could not find the email associated to MARIJUANA.COM');
+            }
+            $this->redirect('forgot');
+        }
     }
     
     

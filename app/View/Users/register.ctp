@@ -8,7 +8,7 @@
                                 <?php  //echo $this->Form->input('password',array('div'=>array('class'=>'form-row'))); ?>
                                 
                                 <div class="form-row">
-                    <label>Your Password <a href="" class="forgot-password">forgot password?</a></label>
+                    <label>Your Password <a href="<?php echo $this->webroot;?>users/forgot" class="forgot-password">forgot password?</a></label>
                     <input id="UserPassword" type="password" required="required" name="data[User][password]">
                     </div>
 
