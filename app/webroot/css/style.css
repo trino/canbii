@@ -248,7 +248,7 @@ select {
 .list .box .lista{float:left;}
 .list .box p{float:right;width:400px;text-align: left!important;}
 .button-small{float:right;padding:3px 5px;background:#16A085;color:#FFF;text-decoration: none;}
-.others{margin:10px;}
+.others{margin:0 10px 10px}
 .inline{display:inline-block;}
 .block{display:block;}
 .filter{width:400px;background:#f6ffc6;padding:15px;}
@@ -271,5 +271,5 @@ div#spinner
     overflow: auto;
 }
 
-.sort{margin-bottom:10px;margin-left:555px;}
+.sort{margin-bottom:40px;}
 .listing{width:650px;}

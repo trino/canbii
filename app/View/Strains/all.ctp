@@ -25,9 +25,10 @@ $symptoms = array();
 <div id="portfolio" class="container">
     <h1 class="title" style="margin-bottom: 30px;">Strains</h1>
     <p style="margin-bottom: 30px;">&nbsp;</p>
-    <div  class="sort">
-        <strong>SORT:</strong>  &nbsp; &nbsp; <a href="javascript:void(0);" onclick="highlighteff2('recent')">Most Recent</a> &nbsp; &nbsp; | &nbsp; &nbsp; <a href="javascript:void(0)" onclick="highlighteff2('rated')">Most Rated</a> &nbsp; &nbsp; | &nbsp; &nbsp; <a href="javascript:void(0)" onclick="highlighteff2('alpha')">Alphabetically</a>
+    <div  class="sort right">
+        <strong>SORT:</strong>  &nbsp; &nbsp; <a href="javascript:void(0);" onclick="highlighteff2('recent')">Most Recent</a> &nbsp; &nbsp; | &nbsp; &nbsp; <a href="javascript:void(0)" onclick="highlighteff2('rated')">Top Rated</a> &nbsp; &nbsp; | &nbsp; &nbsp; <a href="javascript:void(0)" onclick="highlighteff2('viewed')">Most Viewed</a> &nbsp; &nbsp; | &nbsp; &nbsp; <a href="javascript:void(0)" onclick="highlighteff2('reviewed')">Most Reviewed</a> &nbsp; &nbsp; | &nbsp; &nbsp; <a href="javascript:void(0)" onclick="highlighteff2('alpha')">Alphabetically</a>
     </div>
+    <div class="clear"></div>
     <div>
     <div class="right listing">
     <?php

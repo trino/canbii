@@ -35,7 +35,7 @@ if(thiss.attr('class').replace('searchact','')==thiss.attr('class'))
 }
 function highlighteff2(thiss){
     
-    if(thiss!='recent' && thiss!='rated' && thiss!='alpha'){
+    if(thiss!='recent' && thiss!='rated' && thiss!='alpha' && thiss!='viewed' && thiss!='reviewed'){
         var sort =0;
 if(thiss.attr('class').replace('searchact','')==thiss.attr('class'))
 {

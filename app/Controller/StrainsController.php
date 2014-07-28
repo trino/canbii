@@ -12,6 +12,9 @@ class StrainsController extends AppController{
         $this->set('flavor',$q2);
         $this->set('helpful',$q3);
         $this->set('recent',$q4);
+        $this->Strain->id = $q['Strain']['id'];
+        $viewed = $q['Strain']['viewed']+1;
+        $this->Strain->saveField('viewed',$viewed);
         
     }
     function getFlavor($id)
@@ -199,9 +202,19 @@ HAVING COUNT( symptom_id ) ='.count($symptoms).'))';
                 $order = 'Strain.id DESC';
             }
             else
-            if($sort = 'rated')
+            if($sort == 'rated')
             {
                 $order = 'Strain.rating DESC';
+            }
+            else
+            if($sort == 'reviewed')
+            {
+                $order = 'Strain.review DESC';
+            }
+            else
+            if($sort == 'viewed')
+            {
+                $order = 'Strain.viewed DESC';
             }
             else
             $order = 'Strain.name ASC';
