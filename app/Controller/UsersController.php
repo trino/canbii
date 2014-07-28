@@ -1,7 +1,7 @@
 <?php
 
 class UsersController extends AppController {
-
+    
           
     public function login() {
         if(isset($_GET['url']))
