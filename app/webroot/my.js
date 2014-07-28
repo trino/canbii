@@ -33,7 +33,9 @@ if(thiss.attr('class').replace('searchact','')==thiss.attr('class'))
     }
     $('.key').val('');
 }
-function highlighteff2(thiss){
+function highlighteff2(thiss,order=null){
+
+    
     
     if(thiss!='recent' && thiss!='rated' && thiss!='alpha' && thiss!='viewed' && thiss!='reviewed'){
         var sort =0;
@@ -77,7 +79,7 @@ if(thiss.attr('class').replace('searchact','')==thiss.attr('class'))
         val = 'key=';
         if(sort)
         {
-            val = val+'&sort='+thiss;
+            val = val+'&sort='+thiss+'&order='+order;
         }
          
         

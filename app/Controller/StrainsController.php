@@ -214,25 +214,25 @@ HAVING COUNT( symptom_id ) ='.count($symptoms).'))';
             $sort = $_GET['sort'];
             if($sort == 'recent')
             {
-                $order = 'Strain.id DESC';
+                $order = 'Strain.id '.$_GET['order'];
             }
             else
             if($sort == 'rated')
             {
-                $order = 'Strain.rating DESC';
+                $order = 'Strain.rating '.$_GET['order'];
             }
             else
             if($sort == 'reviewed')
             {
-                $order = 'Strain.review DESC';
+                $order = 'Strain.review '.$_GET['order'];
             }
             else
             if($sort == 'viewed')
             {
-                $order = 'Strain.viewed DESC';
+                $order = 'Strain.viewed '.$_GET['order'];
             }
             else
-            $order = 'Strain.name ASC';
+            $order = 'Strain.name '.$_GET['order'];
         }
         else
         $order =array();
@@ -262,7 +262,7 @@ HAVING COUNT( symptom_id ) ='.count($symptoms).'))';
         }
         $this->set('strain',$q);
         $this->set('review',$q2);
-        $ip = $_SERVER['REMOTE_ADDR'];
+        
         $this->loadModel('VoteIp');
         $this->set('vip',$this->VoteIp);
         

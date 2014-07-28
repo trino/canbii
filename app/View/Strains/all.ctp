@@ -22,11 +22,18 @@ if(isset($_GET['symptoms'])&&$_GET['symptoms'])
 else
 $symptoms = array();
 ?>
+<script>
+    var recent_flag = 'ASC';
+    var rated_flag = 'ASC';
+    var alpha_flag = 'DESC';
+    var viewed_flag = 'ASC';
+    var reviewed_flag = 'ASC';
+</script>
 <div id="portfolio" class="container">
     <h1 class="title" style="margin-bottom: 30px;">Strains</h1>
     <p style="margin-bottom: 30px;">&nbsp;</p>
     <div  class="sort right">
-        <strong>SORT:</strong>  &nbsp; &nbsp; <a href="javascript:void(0);" onclick="highlighteff2('recent')">Most Recent</a> &nbsp; &nbsp; | &nbsp; &nbsp; <a href="javascript:void(0)" onclick="highlighteff2('rated')">Top Rated</a> &nbsp; &nbsp; | &nbsp; &nbsp; <a href="javascript:void(0)" onclick="highlighteff2('viewed')">Most Viewed</a> &nbsp; &nbsp; | &nbsp; &nbsp; <a href="javascript:void(0)" onclick="highlighteff2('reviewed')">Most Reviewed</a> &nbsp; &nbsp; | &nbsp; &nbsp; <a href="javascript:void(0)" onclick="highlighteff2('alpha')">Alphabetically</a>
+        <strong>SORT:</strong>  &nbsp; &nbsp; <a href="javascript:void(0);" onclick="if(recent_flag=='ASC')recent_flag='DESC';else recent_flag='ASC';highlighteff2('recent',recent_flag)">Most Recent</a> &nbsp; &nbsp; | &nbsp; &nbsp; <a href="javascript:void(0)" onclick="if(rated_flag=='ASC')rated_flag='DESC';else rated_flag='ASC';highlighteff2('rated',rated_flag)">Top Rated</a> &nbsp; &nbsp; | &nbsp; &nbsp; <a href="javascript:void(0)" onclick="if(viewed_flag=='ASC')viewed_flag='DESC';else viewed_flag='ASC';highlighteff2('viewed',viewed_flag)">Most Viewed</a> &nbsp; &nbsp; | &nbsp; &nbsp; <a href="javascript:void(0)" onclick="if(reviewed_flag=='ASC')reviewed_flag='DESC';else reviewed_flag='ASC';highlighteff2('reviewed',reviewed_flag)">Most Reviewed</a> &nbsp; &nbsp; | &nbsp; &nbsp; <a href="javascript:void(0)" onclick="if(alpha_flag=='ASC')alpha_flag='DESC';else alpha_flag='ASC';highlighteff2('alpha',alpha_flag);">Alphabetically</a>
     </div>
     <div class="clear"></div>
     <div>
