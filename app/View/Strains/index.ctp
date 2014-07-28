@@ -252,19 +252,19 @@
             
             <div>
                 <div class="eff">
-                            <div class="label left" style="width: 16%!important;">CBD</div><div class="left ratewrap" style="width: 73%;background:#FFF;"><div class="length" style="width: <?php echo $strain['Strain']['cbd'];?>;"></div><em><?php echo $strain['Strain']['cbd'];?></em></div><div class="clear"></div>
+                            <div class="label left" style="width: 16%!important;">CBD</div><div class="left ratewrap" style="width: 73%;background:#FFF;"><div class="length" style="width: <?php echo $strain['Strain']['cbd'];?>%;"></div><em><?php echo $strain['Strain']['cbd'];?>%</em></div><div class="clear"></div>
                 </div>
                 <div class="eff">
-                            <div class="label left" style="width: 16%!important;">CBN</div><div class="left ratewrap" style="width: 73%;background:#FFF;"><div class="length" style="width: <?php echo $strain['Strain']['cbn'];?>;"></div><em><?php echo $strain['Strain']['cbn'];?></em></div><div class="clear"></div>
+                            <div class="label left" style="width: 16%!important;">CBN</div><div class="left ratewrap" style="width: 73%;background:#FFF;"><div class="length" style="width: <?php echo $strain['Strain']['cbn'];?>%;"></div><em><?php echo $strain['Strain']['cbn'];?>%</em></div><div class="clear"></div>
                 </div>
                 <div class="eff">
-                            <div class="label left" style="width: 16%!important;">CBC</div><div class="left ratewrap" style="width: 73%;background:#FFF;"><div class="length" style="width: <?php echo $strain['Strain']['cbc'];?>;"></div><em><?php echo $strain['Strain']['cbc'];?></em></div><div class="clear"></div>
+                            <div class="label left" style="width: 16%!important;">CBC</div><div class="left ratewrap" style="width: 73%;background:#FFF;"><div class="length" style="width: <?php echo $strain['Strain']['cbc'];?>%;"></div><em><?php echo $strain['Strain']['cbc'];?>%</em></div><div class="clear"></div>
                 </div> 
                 <div class="eff">
-                            <div class="label left" style="width: 16%!important;">THC</div><div class="left ratewrap" style="width: 73%;background:#FFF;"><div class="length" style="width: <?php echo $strain['Strain']['thc'];?>;"></div><em><?php echo $strain['Strain']['thc'];?>%</em></div><div class="clear"></div>
+                            <div class="label left" style="width: 16%!important;">THC</div><div class="left ratewrap" style="width: 73%;background:#FFF;"><div class="length" style="width: <?php echo $strain['Strain']['thc'];?>%;"></div><em><?php echo $strain['Strain']['thc'];?>%</em></div><div class="clear"></div>
                 </div> 
                 <div class="eff">
-                            <div class="label left" style="width: 16%!important;">THCV</div><div class="left ratewrap" style="width: 73%;background:#FFF;"><div class="length" style="width: <?php echo $strain['Strain']['thcv'];?>;"></div><em><?php echo $strain['Strain']['thcv'];?></em></div><div class="clear"></div>
+                            <div class="label left" style="width: 16%!important;">THCV</div><div class="left ratewrap" style="width: 73%;background:#FFF;"><div class="length" style="width: <?php echo $strain['Strain']['thcv'];?>%;"></div><em><?php echo $strain['Strain']['thcv'];?>%</em></div><div class="clear"></div>
                 </div>        
             </div>
         </div>
@@ -333,6 +333,7 @@ $('.no').click(function(){
    $('#'+arr2[0]+'_'+r_id).attr('onclick','return false;');
    $('#'+o+'_'+r_id).attr('style','background:#FFF;color:#CCC;cursor: default;');
    $('#'+o+'_'+r_id).attr('onclick','return false;'); 
+   $(this).attr('style',$(this).attr('style').replace('background:#FFF;','background:#e5e5e5;'));
 });
 });
 </script>
