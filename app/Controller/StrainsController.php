@@ -16,6 +16,16 @@ class StrainsController extends AppController{
         $viewed = $q['Strain']['viewed']+1;
         $this->Strain->saveField('viewed',$viewed);
         
+        $ip = $_SERVER['REMOTE_ADDR'];
+        $this->loadModel('VoteIp');
+        $q5 = $this->VoteIp->find('all',array('conditions'=>array('review_id'=>$q3['Review']['id'],'ip'=>$ip)));
+        if($q5)
+        {
+            $this->set('vote',1);
+        }
+        else
+        $this->set('vote',0);
+        
     }
     function getFlavor($id)
     {
@@ -58,9 +68,14 @@ class StrainsController extends AppController{
         $helpful = $q['Review']['helpful']+1;
         else
         $helpful = $q['Review']['helpful']-1;
-        $this->Review->id = $id;
-        
+        $this->Review->id = $id;        
         $this->Review->saveField('helpful',$helpful);
+        $this->loadModel('VoteIp');
+        $ip = $_SERVER['REMOTE_ADDR'];
+        $this->VoteIp->create();
+        $arr['review_id'] = $id;
+        $arr['ip'] = $ip;
+        $this->VoteIp->save($arr);
         die();
     }
     function all($type='')
