@@ -250,10 +250,22 @@ HAVING COUNT( symptom_id ) ='.count($symptoms).'))';
         $this->set('strain',$this->Strain->find('all',array('conditions'=>array('name LIKE'=>'%'.$key.'%',$condition),'order'=>$order)));
         }
     }
-    function review($slug)
+    function review($slug,$sort=null)
     {
+        $this->loadModel('Review');
         $q = $this->Strain->findBySlug($slug);
+        if(!$sort || $sort=='recent')
+        $q2 = $this->Review->find('all',array('conditions'=>array('Review.strain_id'=>$q['Strain']['id']),'order'=>'Review.id DESC'));
+        else
+        {
+            $q2 = $this->Review->find('all',array('conditions'=>array('Review.strain_id'=>$q['Strain']['id']),'order'=>'Review.helpful DESC'));
+        }
         $this->set('strain',$q);
+        $this->set('review',$q2);
+        $ip = $_SERVER['REMOTE_ADDR'];
+        $this->loadModel('VoteIp');
+        $this->set('vip',$this->VoteIp);
+        
     }
     function ajax_search()
     {
