@@ -316,6 +316,7 @@ $('.yes').click(function(){
    $('#'+o+'_'+r_id).removeClass('no');
    $('#'+o+'_'+r_id).attr('style','background:#FFF;color:#CCC;cursor: default;');
    $('#'+o+'_'+r_id).attr('onclick','return false;'); 
+   $(this).attr('style',$(this).attr('style').replace('background:#FFF;','background:#e5e5e5;'));
 });
 $('.no').click(function(){
    var id = $(this).attr('id');

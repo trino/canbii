@@ -29,7 +29,7 @@ $symptoms = array();
         <strong>SORT:</strong>  &nbsp; &nbsp; <a href="javascript:void(0);" onclick="highlighteff2('recent')">Most Recent</a> &nbsp; &nbsp; | &nbsp; &nbsp; <a href="javascript:void(0)" onclick="highlighteff2('rated')">Most Rated</a> &nbsp; &nbsp; | &nbsp; &nbsp; <a href="javascript:void(0)" onclick="highlighteff2('alpha')">Alphabetically</a>
     </div>
     <div>
-    <div class="left listing">
+    <div class="right listing">
     <?php
     if($strain)
     {
@@ -82,7 +82,7 @@ $symptoms = array();
     ?>
     <div class="clear"></div>
 	</div>
-    <div class="right filter">
+    <div class="left filter">
         <strong style="text-align: center;" class="block">FILTER STRAINS</strong>
         <p>&nbsp;</p>
         <a href="javascript:void(0);" class="block-btn2">FILTER BY EFFECTS</a>
