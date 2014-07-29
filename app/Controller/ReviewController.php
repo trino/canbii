@@ -144,7 +144,7 @@
                     $review = 1;
                     $this->Strain->saveField('review',$review);
                     $this->Session->setFlash('Review Saved.');
-                    $this->redirect('/');
+                    $this->redirect('add/'.$slug);
                }
             }
         }
