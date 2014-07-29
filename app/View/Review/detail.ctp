@@ -4,6 +4,12 @@
 .sel{text-decoration:none;}
 </style>
 <link href="<?php echo $this->webroot;?>css/raty.css" rel="stylesheet" type="text/css" />
+<div class="tabs">
+    <a href="<?php echo $this->webroot;?>users/settings" class="button">Settings</a>
+    <a href="<?php echo $this->webroot;?>review" class="button">Add Review</a>
+    <a href="<?php echo $this->webroot;?>review/all" class="button">My Reviews</a>
+</div>
+
 <?php //var_dump($review);
     $typ = array('Extremely Active','Very Active','Active','Bit Active','Balanced','Bit Sedate','Sedate','Very Sedate','Extemely Sedate');
 ?>
@@ -189,7 +195,7 @@ foreach($review['EffectRating'] as $effect)
 <?php foreach($review['ColourRating'] as $effect)
 {?> 
  <div id="efft_<?php echo $effect['id'];?>" class="review-slider"><label><?php echo $colours[$effect['colour_id']-1]['Colour']['title'];?></label>
- <div class="slider" id="<?php echo $effect['id'];?>s"></div><p><?php echo $effect['rate'];?>/10</p><div class="clear"> </div></div>   
+ <!--<div class="slider" id="<?php echo $effect['id'];?>s"></div><p><?php echo $effect['rate'];?>/10</p><div class="clear"> </div>--></div>   
 <script>
     $('#<?php echo $effect['id'];?>s').slider({
 			range: "min",
@@ -225,7 +231,7 @@ foreach($review['EffectRating'] as $effect)
 <?php foreach($review['FlavorRating'] as $effect)
 {?> 
  <div id="efft_<?php echo $effect['id'];?>" class="review-slider"><label><?php echo $flavors[$effect['flavor_id']-1]['Flavor']['title'];?></label>
- <div class="slider" id="<?php echo $effect['id'];?>s"></div><p><?php echo $effect['rate'];?>/10</p><div class="clear"> </div></div>   
+ <!--<div class="slider" id="<?php echo $effect['id'];?>s"></div><p><?php echo $effect['rate'];?>/10</p><div class="clear"> </div>--></div>   
 <script>
     $('#<?php echo $effect['id'];?>s').slider({
 			range: "min",
