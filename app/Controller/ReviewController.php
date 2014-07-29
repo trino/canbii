@@ -17,6 +17,7 @@
             $this->set("reviews",$reviews);
             
         }
+        
         function detail($id)
         {
             $this->loadModel('Effect');
@@ -39,7 +40,7 @@
             $this->set('review',$this->Review->findById($id));
             
         }
-        function add()
+        function index()
         {
             if(isset($_POST['submit']))
             {
@@ -48,7 +49,7 @@
                     $this->redirect("index/".$slug);
             }
         }
-        function index($slug)
+        function add($slug)
         {
             $this->loadModel('Effect');
             $this->loadModel("Strain");
@@ -143,7 +144,7 @@
                     $review = 1;
                     $this->Strain->saveField('review',$review);
                     $this->Session->setFlash('Review Saved.');
-                    $this->redirect('/');
+                    $this->redirect('all');
                }
             }
         }

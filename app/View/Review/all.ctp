@@ -1,4 +1,10 @@
+<div class="tabs">
+    <a href="<?php echo $this->webroot;?>users/settings" class="button">Settings</a>
+    <a href="<?php echo $this->webroot;?>review" class="button">Add Review</a>
+    <a href="<?php echo $this->webroot;?>review/all" class="button">My Reviews</a>
+</div>
 <div>
+
 <table>
 <thead><th>Strain</th><th>Date</th><th>Comment</th><th>Overall Rating</th><th></th></thead>
 <?php 

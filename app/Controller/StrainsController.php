@@ -4,8 +4,9 @@ class StrainsController extends AppController{
     {
         $this->loadModel('OverallFlavorRating');
         $this->loadModel('Review');
+        $this->loadModel('FlavorRating');
         $q = $this->Strain->find('first',array('conditions'=>array('slug'=>$slug)));
-        $q2 = $this->OverallFlavorRating->find('all',array('conditions'=>array('strain_id'=>$q['Strain']['id']),'order'=>'rate DESC','limit'=>3));
+        $q2 = $this->FlavorRating->find('all',array('conditions'=>array('strain_id'=>$q['Strain']['id']),'order'=>'COUNT(flavor_id) DESC','group'=>'flavor_id','limit'=>3));
         $q3 = $this->Review->find('first',array('conditions'=>array('strain_id'=>$q['Strain']['id']),'order'=>'Review.helpful DESC'));
         $q4 = $this->Review->find('first',array('conditions'=>array('strain_id'=>$q['Strain']['id']),'order'=>'Review.id DESC'));
         $this->set('strain',$q);
@@ -273,7 +274,7 @@ HAVING COUNT( symptom_id ) ='.count($symptoms).'))';
         $search = $this->Strain->find("all",array('conditions'=>array('name LIKE'=>"%".$str."%")));
         foreach($search as $s)
         {
-            echo "<a href='javascript:void(0);' class='btn opt' title='".$s['Strain']['slug']."'>".$s['Strain']['name']."</a>";
+            echo "<a href='".$this->webroot."review/add/".$s['Strain']['slug']."' class='btn opt' title='".$s['Strain']['slug']."'>".$s['Strain']['name']."</a>";
         }
         die();
     }

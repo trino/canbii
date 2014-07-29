@@ -25,7 +25,9 @@
  * to use (in this case, /app/View/Pages/home.ctp)...
  */
 	Router::connect('/', array('controller' => 'pages', 'action' => 'index'));
-  //  Router::connect('/pages/:slug',array('controller'=>'pages', 'action'=>'pages'),array('pass' => array('slug')));
+
+	//  Router::connect('/pages/:slug',array('controller'=>'pages', 'action'=>'pages'),array('pass' => array('slug')));
+ 
 /**
  * ...and connect the rest of 'Pages' controller's URLs.
  */
@@ -41,7 +43,9 @@
     Router::connect('/strains/review/*', array('controller' => 'strains', 'action' => 'review'));
     Router::connect('/strains/filter/*', array('controller' => 'strains', 'action' => 'filter'));
 	Router::connect('/strains/*', array('controller' => 'strains', 'action' => 'index'));
-
+    Router::connect('/pages/getEff',array('controller'=>'pages', 'action'=>'getEff'));
+    Router::connect('/pages/getSym',array('controller'=>'pages', 'action'=>'getSym'));
+    Router::connect('/pages/*',array('controller'=>'pages', 'action'=>'view_page'));
 /**
  * Load all plugin routes. See the CakePlugin documentation on
  * how to customize the loading of plugin routes.

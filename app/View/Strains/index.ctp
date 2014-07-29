@@ -1,7 +1,7 @@
 <script src="<?php echo $this->webroot;?>js/raty.js"></script>
 <script src="<?php echo $this->webroot;?>js/labs.js"></script>
 <link href="<?php echo $this->webroot;?>css/raty.css" rel="stylesheet" type="text/css" />
-<h1 class="title"><?php echo $strain['Strain']['name'];?><span style="float: right;"><a href="<?php echo $this->webroot;?>review/index/<?php echo $strain['Strain']['slug'];?>">Review Strain</a></span><div class="clear"></div></h1>
+<h1 class="title"><?php echo $strain['Strain']['name'];?><span style="float: right;"><a href="<?php echo $this->webroot;?>review/add/<?php echo $strain['Strain']['slug'];?>">Review Strain</a></span><div class="clear"></div></h1>
 <p class="gap">&nbsp;</p>
 <!--<div class="goto">
     <div class="left"><strong><img src="<?php echo $this->webroot;?>ra.png" height="50px" /></strong></div>
@@ -52,7 +52,7 @@
         <div class="clear"></div>
         </div>
     </div>
-    <div class="rightcontent right"><strong>Reviews:</strong><br /><span class="review"><?php echo $strain['Strain']['review'];?></span></div>
+    <div class="rightcontent right"><div class="left"><strong>Reviews:</strong><br /><span class="review"><?php echo $strain['Strain']['review'];?></span></div><div class="left" style="margin-left: 150px;"><strong>Views:</strong><br /><span class="review"><?php echo $strain['Strain']['viewed'];?></span></div><div class="clear"></div></div>
     <div class="clear"></div>
     </div>
     <div class="attributes">
@@ -73,7 +73,7 @@
                     ?>
                     <a class="fl" href="javascrip:void(0)">
                     <div>
-                        <?php echo $this->requestAction('/strains/getFlavor/'.$f['OverallFlavorRating']['flavor_id']);?>
+                        <?php echo $this->requestAction('/strains/getFlavor/'.$f['FlavorRating']['flavor_id']);?>
                     </div>
                     </a>
                     <?php
