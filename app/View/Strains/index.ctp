@@ -52,7 +52,7 @@
         <div class="clear"></div>
         </div>
     </div>
-    <div class="rightcontent right"><strong>Reviews:</strong><br /><span class="review"><?php echo $strain['Strain']['review'];?></span></div>
+    <div class="rightcontent right"><div class="left"><strong>Reviews:</strong><br /><span class="review"><?php echo $strain['Strain']['review'];?></span></div><div class="left" style="margin-left: 150px;"><strong>Views:</strong><br /><span class="review"><?php echo $strain['Strain']['viewed'];?></span></div><div class="clear"></div></div>
     <div class="clear"></div>
     </div>
     <div class="attributes">
