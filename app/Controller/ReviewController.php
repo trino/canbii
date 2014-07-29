@@ -17,6 +17,7 @@
             $this->set("reviews",$reviews);
             
         }
+        
         function detail($id)
         {
             $this->loadModel('Effect');
