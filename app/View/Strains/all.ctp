@@ -74,7 +74,7 @@ $symptoms = array();
                 <div class="others">
 				<a href="<?php echo $this->webroot?>strains/<?php echo $s['Strain']['slug'];?>" class="button-small">View Detail</a>
                 <div class="rating<?php echo $j;?> right" style="margin: 0 10px;"></div>
-                <div class="left"><em><strong><?php if($s['Strain']['review'])echo $s['Strain']['review'];else echo 0;?> Reviews</strong></em></div>
+                <div class="left"><em><strong><?php if($s['Strain']['review'])echo '<a href="'.$this->webroot.'strains/review/'.$s['Strain']['slug'].'">'.$s['Strain']['review'].' Reviews</a>';else echo '0 Reviews';?></strong></em></div>
                 <div class="clear"></div>
                 <script>
                 $(function(){    
