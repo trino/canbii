@@ -53,7 +53,7 @@ class PagesController extends AppController {
         
         
     }
-    public function pages($slug)
+    public function view_page($slug)
     {
         
         $detail = $this->Page->findBySlug($slug);
