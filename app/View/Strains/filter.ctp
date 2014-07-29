@@ -37,7 +37,7 @@
                 <div class="clear"></div>
                 <script>
                 $(function(){    
-                    $('.rating<?php echo $j;?>').raty({readOnly:true,score:<?php echo $s['Strain']['rating']/2;?>});
+                    $('.rating<?php echo $j;?>').raty({number:10,readOnly:true,score:<?php echo $s['Strain']['rating'];?>});
                 });
                 </script> 
                 </div>

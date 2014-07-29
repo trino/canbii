@@ -27,6 +27,11 @@ class Strain extends AppModel
                                  'dependent'=>true,
                                  'exclusive'=>true
                                 ),
+                                'StrainImage'=>array('className'=>'StrainImage',
+                                 'foreignKey'=>'strain_id',
+                                 'dependent'=>true,
+                                 'exclusive'=>true
+                                ),
                                       
                 );
      public $belongsTo = array(

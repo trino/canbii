@@ -84,6 +84,7 @@
  * Application wide charset encoding
  */
 	Configure::write('App.encoding', 'UTF-8');
+    App::uses('CakeEmail', 'Network/Email');
 
 /**
  * To configure CakePHP *not* to use mod_rewrite and to

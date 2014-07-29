@@ -3,11 +3,14 @@
 <link href="<?php echo $this->webroot;?>css/raty.css" rel="stylesheet" type="text/css" />
 <h1 class="title">Reviews for - <?php echo $strain['Strain']['name'];?></h1>
 <p class="gap" style="margin-top: 20px;">&nbsp;</p>
+<div class="sort">
+<strong>SORT:</strong>  &nbsp; &nbsp; <a href="<?php echo $this->webroot;?>strains/review/<?php echo $strain['Strain']['slug'];?>/recent">Most Recent</a> &nbsp; &nbsp; | &nbsp; &nbsp; <a href="<?php echo $this->webroot;?>strains/review/<?php echo $strain['Strain']['slug'];?>/helpful">Most Helpful</a>
+</div>
 <?php
-if($strain['Review'])
+if($review)
 {
     $i = 0;
-    foreach($strain['Review']  as $r)
+    foreach($review as $r)
     {
         $i++;
         ?>
@@ -16,22 +19,31 @@ if($strain['Review'])
             <div class="gap">
             <?php if($r){?>
                 <div class="userinfo">
-                    <div class="names left"><strong><?php echo $this->requestAction('/strains/getUserName/'.$r['user_id']);?></strong></div>
-                    <div class="dates left"><em><?php echo $r['on_date'];?></em></div>
+                    <div class="names left"><strong><?php echo $this->requestAction('/strains/getUserName/'.$r['Review']['user_id']);?></strong></div>
+                    <div class="dates left"><em><?php echo $r['Review']['on_date'];?></em></div>
                     <div class="rates frate<?php echo $i;?> left"></div>
                     <div class="clear"></div>
                     <script>
                     $(function(){
-                       $('.frate<?php echo $i;?>').raty({readOnly:true,score:<?php echo $r['rate']/2;?>}); 
+                       $('.frate<?php echo $i;?>').raty({readOnly:true,score:<?php echo $r['Review']['rate']/2;?>}); 
                     });
                     </script>
                 </div>
-                <?php echo $r['review'];
+                <?php echo $r['Review']['review'];
+                $ip = $_SERVER['REMOTE_ADDR'];
                 $rand1 = rand(100,999);
                 $rand2 = rand(100,999);
+                $q5 = $vip->find('first',array('conditions'=>array('review_id'=>$r['Review']['id'],'ip'=>$ip)));
+        if($q5)
+        {
+            $vote = 1;
+        }
+        else
+        $vote = 0;
                 ?>
                 <p class="gap martop">
-                    <em>WAS THIS REVIEW HELPFUL TO YOU? </em> &nbsp; &nbsp; <a href="javascript:void(0);" id="<?php echo $rand1.'_'.$r['id'];?>" class="btns yes">YES</a> <a class="btns no" href="javascript:void(0);" id="<?php echo ($rand1+1).'_'.$r['id'];?>">NO</a>
+                
+                    <em>WAS THIS REVIEW HELPFUL TO YOU? </em> &nbsp; &nbsp; <?php if($vote==0){?><a href="javascript:void(0);" id="<?php echo $rand1.'_'.$r['Review']['id'];?>" class="btns yes">YES</a> <a class="btns no" href="javascript:void(0);" id="<?php echo ($rand1+1).'_'.$r['Review']['id'];?>">NO</a><?php }else{echo "<em style='color:#AAA;'>ALREADY VOTED</em>";}?>
                 </p>
                 <?php }?>
             </div>
@@ -62,6 +74,7 @@ $('.yes').click(function(){
    $('#'+o+'_'+r_id).removeClass('no');
    $('#'+o+'_'+r_id).attr('style','background:#FFF;color:#CCC;cursor: default;');
    $('#'+o+'_'+r_id).attr('onclick','return false;'); 
+   $(this).attr('style',$(this).attr('style').replace('background:#FFF;','background:#e5e5e5;'));
 });
 $('.no').click(function(){
    var id = $(this).attr('id');
@@ -78,6 +91,7 @@ $('.no').click(function(){
    $('#'+arr2[0]+'_'+r_id).attr('onclick','return false;');
    $('#'+o+'_'+r_id).attr('style','background:#FFF;color:#CCC;cursor: default;');
    $('#'+o+'_'+r_id).attr('onclick','return false;'); 
+   $(this).attr('style',$(this).attr('style').replace('background:#FFF;','background:#e5e5e5;'));
 });
 });
 </script>

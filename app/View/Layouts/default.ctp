@@ -27,6 +27,18 @@ Released   : 20131223
     <link rel="stylesheet" href="<?php echo $this->webroot;?>css/ui.css" />
     <link rel="shortcut icon" href="<?php echo $this->webroot;?>favicon.ico" type="image/x-icon"/>
     <link rel="icon" href="<?php echo $this->webroot;?>favicon.ico" type="image/x-icon"/>
+    
+    
+    <link rel="stylesheet" href="<?php echo $this->webroot;?>source/jquery.fancybox.css?v=2.1.5" type="text/css" media="screen" />
+    <script type="text/javascript" src="<?php echo $this->webroot;?>source/jquery.fancybox.pack.js?v=2.1.5"></script>
+    
+    <!-- Optionally add helpers - button, thumbnail and/or media -->
+    <link rel="stylesheet" href="<?php echo $this->webroot;?>source/helpers/jquery.fancybox-buttons.css?v=1.0.5" type="text/css" media="screen" />
+    <script type="text/javascript" src="<?php echo $this->webroot;?>source/helpers/jquery.fancybox-buttons.js?v=1.0.5"></script>
+    <script type="text/javascript" src="<?php echo $this->webroot;?>source/helpers/jquery.fancybox-media.js?v=1.0.6"></script>
+    
+    <link rel="stylesheet" href="<?php echo $this->webroot;?>source/helpers/jquery.fancybox-thumbs.css?v=1.0.7" type="text/css" media="screen" />
+    <script type="text/javascript" src="<?php echo $this->webroot;?>source/helpers/jquery.fancybox-thumbs.js?v=1.0.7"></script>
 
 <!--[if IE 6]><link href="default_ie6.css" rel="stylesheet" type="text/css" /><![endif]-->
 
@@ -40,15 +52,16 @@ Released   : 20131223
 				<ul class="left">
 					<li class="current_page_item"><a href="<?php echo $this->webroot;?>" accesskey="1" title="">Home</a></li>
 					<li><a href="<?php echo $this->webroot?>strains/all" accesskey="2" title="">Strains</a></li>
-					<li><a href="#" accesskey="3" title="">About Us</a></li>
-					<li><a href="#" accesskey="4" title="">Contact Us</a></li>
+					<li><a href="<?php echo $this->webroot;?>pages/about_us" accesskey="3" title="">About Us</a></li>
+					<li><a href="<?php echo $this->webroot;?>pages/contact_us" accesskey="4" title="">Contact Us</a></li>
 					
 				</ul>
                 <ul class="right">
                 <?php if(!$this->Session->read('User')){?>
                     <li><a href="<?php echo $this->webroot;?>users/register" accesskey="4" title="">Login</a></li>
 					<li><a href="<?php echo $this->webroot;?>users/register" accesskey="5" title="">Register</a></li>
-                <?php }else{ ?>
+                <?php }else{ 
+                        echo "<strong> Welcome, ".ucfirst($this->Session->read('User.username'))."</strong>";?>
                     <li><a href="<?php echo $this->webroot;?>users/dashboard" accesskey="4" title="">Dashboard</a></li>
 					<li><a href="<?php echo $this->webroot;?>users/logout" accesskey="5" title="">Logout</a></li>
                 <?php }?>

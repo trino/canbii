@@ -225,8 +225,9 @@
         
     </div>
     <div class="highlights">
-    <h2>Review highlights</h2>
+    
         <div class="leftcontent left">
+        <h2>Review highlights</h2>
             <strong>Most Helpful</strong><br />
             <div class="gap">
             <?php if($helpful){?>
@@ -241,41 +242,66 @@
                 $rand2 = rand(100,999);
                 ?>
                 <p class="gap martop">
-                    <em>WAS THIS REVIEW HELPFUL TO YOU? </em> &nbsp; &nbsp; <a href="javascript:void(0);" id="<?php echo $rand1.'_'.$helpful['Review']['id'];?>" class="btns yes">YES</a> <a class="btns no" href="javascript:void(0);" id="<?php echo ($rand1+1).'_'.$helpful['Review']['id'];?>">NO</a>
+                    <em>WAS THIS REVIEW HELPFUL TO YOU? </em> &nbsp; &nbsp; <?php if($vote==0){?><a href="javascript:void(0);" id="<?php echo $rand1.'_'.$helpful['Review']['id'];?>" class="btns yes">YES</a> <a class="btns no" href="javascript:void(0);" id="<?php echo ($rand1+1).'_'.$helpful['Review']['id'];?>">NO</a><?php }else{echo "<em style='color:#AAA;'>ALREADY VOTED</em>";}?>
                 </p>
                 <?php }?>
             </div>
         </div>
         <div class="rightcontent right">
-            <strong>Most Recent</strong><br />
-            <div class="gap">
-            <?php if($recent){?>
-                <div class="userinfo">
-                    <div class="names left"><?php echo $this->requestAction('/strains/getUserName/'.$recent['Review']['user_id']);?></div>
-                    <div class="dates left"><em><?php echo $recent['Review']['on_date'];?></em></div>
-                    <div class="rates srate left"></div>
-                    <div class="clear"></div>
+        <h2>Chemical Composition</h2>
+            
+            <div>
+                <div class="eff">
+                            <div class="label left" style="width: 16%!important;">CBD</div><div class="left ratewrap" style="width: 73%;background:#FFF;"><div class="length" style="width: <?php echo $strain['Strain']['cbd'];?>%;"></div><em><?php echo $strain['Strain']['cbd'];?>%</em></div><div class="clear"></div>
                 </div>
-                <?php echo $recent['Review']['review'];?>
-                <p class="gap martop">
-                    <em>WAS THIS REVIEW HELPFUL TO YOU? </em> &nbsp; &nbsp; <a href="javascript:void(0);" id="<?php echo $rand2.'_'.$recent['Review']['id'];?>" class="btns yes">YES</a> <a class="btns no" href="javascript:void(0);" id="<?php echo ($rand2+1).'_'.$recent['Review']['id'];?>">NO</a> 
-                </p>
-                <?php }?>
+                <div class="eff">
+                            <div class="label left" style="width: 16%!important;">CBN</div><div class="left ratewrap" style="width: 73%;background:#FFF;"><div class="length" style="width: <?php echo $strain['Strain']['cbn'];?>%;"></div><em><?php echo $strain['Strain']['cbn'];?>%</em></div><div class="clear"></div>
+                </div>
+                <div class="eff">
+                            <div class="label left" style="width: 16%!important;">CBC</div><div class="left ratewrap" style="width: 73%;background:#FFF;"><div class="length" style="width: <?php echo $strain['Strain']['cbc'];?>%;"></div><em><?php echo $strain['Strain']['cbc'];?>%</em></div><div class="clear"></div>
+                </div> 
+                <div class="eff">
+                            <div class="label left" style="width: 16%!important;">THC</div><div class="left ratewrap" style="width: 73%;background:#FFF;"><div class="length" style="width: <?php echo $strain['Strain']['thc'];?>%;"></div><em><?php echo $strain['Strain']['thc'];?>%</em></div><div class="clear"></div>
+                </div> 
+                <div class="eff">
+                            <div class="label left" style="width: 16%!important;">THCV</div><div class="left ratewrap" style="width: 73%;background:#FFF;"><div class="length" style="width: <?php echo $strain['Strain']['thcv'];?>%;"></div><em><?php echo $strain['Strain']['thcv'];?>%</em></div><div class="clear"></div>
+                </div>        
             </div>
         </div>
         <div class="clear"></div>
         <a href="<?php echo $this->webroot;?>strains/review/<?php echo $strain['Strain']['slug'];?>" class="viewall">View All Reviews</a>
     </div>
+    <div class="images">
+    <strong>IMAGE FOR <em><?php echo strtoupper($strain['Strain']['name']);?></em></strong>
+    <p class="gap">&nbsp;</p>
+                    <?php
+            if($strain['StrainImage'])
+            {
+                foreach($strain['StrainImage'] as $g)
+                {
+                    ?>
+                    <a class="fancybox" rel="group" href="<?php echo $this->webroot;?>images/strains/<?php echo $g['image'];?>" style="display: inline-block;"><img src="<?php echo $this->webroot;?>images/strains/<?php echo $g['image'];?>" width="120px" height="80px" /></a>
+                    <?php
+                }
+                
+            }
+            ?>
+            <script type="text/javascript">
+            	$(document).ready(function() {
+            		$(".fancybox").fancybox();
+            	});
+            </script>
+    </div>
     
 </div>
 <script>
 $(function(){
-$('.rating').raty({readOnly:true,score:<?php echo $strain['Strain']['rating']/2;?>});
+$('.rating').raty({number:10,readOnly:true,score:<?php echo $strain['Strain']['rating'];?>});
 <?php if($helpful){?>
 $('.frate').raty({readOnly:true,score:<?php echo $helpful['Review']['rate']/2;?>});
 $('.srate').raty({readOnly:true,score:<?php echo $recent['Review']['rate']/2;?>});
 <?php }?>
-$('.emotion').text('<?php echo ($strain['Strain']['rating']).'/10';?> '+$('.rating img').attr('title')+'!');
+$('.emotion').text('<?php echo ($strain['Strain']['rating']).'/10';?> ');
 $('.yes').click(function(){
    var id = $(this).attr('id');
    var arr = id.split('_');
@@ -290,6 +316,7 @@ $('.yes').click(function(){
    $('#'+o+'_'+r_id).removeClass('no');
    $('#'+o+'_'+r_id).attr('style','background:#FFF;color:#CCC;cursor: default;');
    $('#'+o+'_'+r_id).attr('onclick','return false;'); 
+   $(this).attr('style',$(this).attr('style').replace('background:#FFF;','background:#e5e5e5;'));
 });
 $('.no').click(function(){
    var id = $(this).attr('id');
@@ -306,6 +333,7 @@ $('.no').click(function(){
    $('#'+arr2[0]+'_'+r_id).attr('onclick','return false;');
    $('#'+o+'_'+r_id).attr('style','background:#FFF;color:#CCC;cursor: default;');
    $('#'+o+'_'+r_id).attr('onclick','return false;'); 
+   $(this).attr('style',$(this).attr('style').replace('background:#FFF;','background:#e5e5e5;'));
 });
 });
 </script>

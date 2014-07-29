@@ -6,12 +6,25 @@ class StrainsController extends AppController{
         $this->loadModel('Review');
         $q = $this->Strain->find('first',array('conditions'=>array('slug'=>$slug)));
         $q2 = $this->OverallFlavorRating->find('all',array('conditions'=>array('strain_id'=>$q['Strain']['id']),'order'=>'rate DESC','limit'=>3));
-        $q3 = $this->Review->find('first',array('conditions'=>array('strain_id'=>$q['Strain']['id']),'order'=>'helpful DESC'));
-        $q4 = $this->Review->find('first',array('conditions'=>array('strain_id'=>$q['Strain']['id']),'order'=>'id DESC'));
+        $q3 = $this->Review->find('first',array('conditions'=>array('strain_id'=>$q['Strain']['id']),'order'=>'Review.helpful DESC'));
+        $q4 = $this->Review->find('first',array('conditions'=>array('strain_id'=>$q['Strain']['id']),'order'=>'Review.id DESC'));
         $this->set('strain',$q);
         $this->set('flavor',$q2);
         $this->set('helpful',$q3);
         $this->set('recent',$q4);
+        $this->Strain->id = $q['Strain']['id'];
+        $viewed = $q['Strain']['viewed']+1;
+        $this->Strain->saveField('viewed',$viewed);
+        
+        $ip = $_SERVER['REMOTE_ADDR'];
+        $this->loadModel('VoteIp');
+        $q5 = $this->VoteIp->find('all',array('conditions'=>array('review_id'=>$q3['Review']['id'],'ip'=>$ip)));
+        if($q5)
+        {
+            $this->set('vote',1);
+        }
+        else
+        $this->set('vote',0);
         
     }
     function getFlavor($id)
@@ -55,9 +68,14 @@ class StrainsController extends AppController{
         $helpful = $q['Review']['helpful']+1;
         else
         $helpful = $q['Review']['helpful']-1;
-        $this->Review->id = $id;
-        
+        $this->Review->id = $id;        
         $this->Review->saveField('helpful',$helpful);
+        $this->loadModel('VoteIp');
+        $ip = $_SERVER['REMOTE_ADDR'];
+        $this->VoteIp->create();
+        $arr['review_id'] = $id;
+        $arr['ip'] = $ip;
+        $this->VoteIp->save($arr);
         die();
     }
     function all($type='')
@@ -109,14 +127,16 @@ HAVING COUNT( effect_id ) ='.count($effects).'))';
             $i=0;
             foreach($symptoms as $e)
             {
-                if($effects)
-                $condition = $condition.' AND ';
+                
                 $i++;
-                if($i==1)
+                if($i==1){
+                    if($effects)
+                $condition = $condition.' AND ';
                 $condition = $condition.'Strain.id IN (SELECT strain_id FROM reviews WHERE id IN (SELECT review_id
 FROM symptom_ratings
 WHERE symptom_id
 IN ( '.$e;
+}
  
                 else
                 $condition = $condition.','.$e;
@@ -130,6 +150,8 @@ HAVING COUNT( symptom_id ) ='.count($symptoms).'))';
         $this->set('strain',$this->Strain->find('all',array('conditions'=>array('name LIKE'=>'%'.$key.'%',$condition),'order'=>'Strain.id DESC')));
         $this->render('all');
     }
+    
+    
     function filter(){
         $this->layout = 'blank';
         if(isset($_GET['key']))
@@ -170,14 +192,16 @@ HAVING COUNT( effect_id ) ='.count($effects).'))';
             $i=0;
             foreach($symptoms as $e)
             {
-                if($effects)
-                $condition = $condition.' AND ';
+                
                 $i++;
-                if($i==1)
+                if($i==1){
+                    if($effects)
+                $condition = $condition.' AND ';
                 $condition = $condition.'Strain.id IN (SELECT strain_id FROM reviews WHERE id IN (SELECT review_id
 FROM symptom_ratings
 WHERE symptom_id
 IN ( '.$e;
+}
  
                 else
                 $condition = $condition.','.$e;
@@ -185,16 +209,63 @@ IN ( '.$e;
             $condition = $condition.')GROUP BY review_id
 HAVING COUNT( symptom_id ) ='.count($symptoms).'))';
         }
-        if(!$condition)
+        if(isset($_GET['sort']))
+        {
+            $sort = $_GET['sort'];
+            if($sort == 'recent')
+            {
+                $order = 'Strain.id '.$_GET['order'];
+            }
+            else
+            if($sort == 'rated')
+            {
+                $order = 'Strain.rating '.$_GET['order'];
+            }
+            else
+            if($sort == 'reviewed')
+            {
+                $order = 'Strain.review '.$_GET['order'];
+            }
+            else
+            if($sort == 'viewed')
+            {
+                $order = 'Strain.viewed '.$_GET['order'];
+            }
+            else
+            $order = 'Strain.name '.$_GET['order'];
+        }
+        else
+        $order =array();
+        //var_dump($order);die();
+        if(!$condition){
+            if(!$order)
         $this->set('strain',$this->Strain->find('all',array('conditions'=>array('name LIKE'=>'%'.$key.'%'),'order'=>'Strain.id DESC')));
         else
+        $this->set('strain',$this->Strain->find('all',array('conditions'=>array('name LIKE'=>'%'.$key.'%'),'order'=>$order)));
+        }
+        else{
+            if(!$order)
         $this->set('strain',$this->Strain->find('all',array('conditions'=>array('name LIKE'=>'%'.$key.'%',$condition),'order'=>'Strain.id DESC')));
-        
+        else
+        $this->set('strain',$this->Strain->find('all',array('conditions'=>array('name LIKE'=>'%'.$key.'%',$condition),'order'=>$order)));
+        }
     }
-    function review($slug)
+    function review($slug,$sort=null)
     {
+        $this->loadModel('Review');
         $q = $this->Strain->findBySlug($slug);
+        if(!$sort || $sort=='recent')
+        $q2 = $this->Review->find('all',array('conditions'=>array('Review.strain_id'=>$q['Strain']['id']),'order'=>'Review.id DESC'));
+        else
+        {
+            $q2 = $this->Review->find('all',array('conditions'=>array('Review.strain_id'=>$q['Strain']['id']),'order'=>'Review.helpful DESC'));
+        }
         $this->set('strain',$q);
+        $this->set('review',$q2);
+        
+        $this->loadModel('VoteIp');
+        $this->set('vip',$this->VoteIp);
+        
     }
     function ajax_search()
     {

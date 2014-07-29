@@ -1,10 +1,43 @@
 <script src="<?php echo $this->webroot;?>js/raty.js"></script>
 <script src="<?php echo $this->webroot;?>js/labs.js"></script>
 <link href="<?php echo $this->webroot;?>css/raty.css" rel="stylesheet" type="text/css" />
+<?php
+if(isset($_GET['effects'])&&$_GET['effects'])
+{
+    foreach($_GET['effects'] as $ef)
+    {
+        $effects[] = $ef;
+    }
+}
+else
+$effects = array();
+
+if(isset($_GET['symptoms'])&&$_GET['symptoms'])
+{
+    foreach($_GET['symptoms'] as $ef)
+    {
+        $symptoms[] = $ef;
+    }
+}
+else
+$symptoms = array();
+?>
+<script>
+    var recent_flag = 'ASC';
+    var rated_flag = 'ASC';
+    var alpha_flag = 'DESC';
+    var viewed_flag = 'ASC';
+    var reviewed_flag = 'ASC';
+</script>
 <div id="portfolio" class="container">
     <h1 class="title" style="margin-bottom: 30px;">Strains</h1>
     <p style="margin-bottom: 30px;">&nbsp;</p>
-    <div class="left listing">
+    <div  class="sort right">
+        <strong>SORT:</strong>  &nbsp; &nbsp; <a href="javascript:void(0);" onclick="if(recent_flag=='ASC')recent_flag='DESC';else recent_flag='ASC';highlighteff2('recent',recent_flag)">Most Recent</a> &nbsp; &nbsp; | &nbsp; &nbsp; <a href="javascript:void(0)" onclick="if(rated_flag=='ASC')rated_flag='DESC';else rated_flag='ASC';highlighteff2('rated',rated_flag)">Top Rated</a> &nbsp; &nbsp; | &nbsp; &nbsp; <a href="javascript:void(0)" onclick="if(viewed_flag=='ASC')viewed_flag='DESC';else viewed_flag='ASC';highlighteff2('viewed',viewed_flag)">Most Viewed</a> &nbsp; &nbsp; | &nbsp; &nbsp; <a href="javascript:void(0)" onclick="if(reviewed_flag=='ASC')reviewed_flag='DESC';else reviewed_flag='ASC';highlighteff2('reviewed',reviewed_flag)">Most Reviewed</a> &nbsp; &nbsp; | &nbsp; &nbsp; <a href="javascript:void(0)" onclick="if(alpha_flag=='ASC')alpha_flag='DESC';else alpha_flag='ASC';highlighteff2('alpha',alpha_flag);">Alphabetically</a>
+    </div>
+    <div class="clear"></div>
+    <div>
+    <div class="right listing">
     <?php
     if($strain)
     {
@@ -44,7 +77,7 @@
                 <div class="clear"></div>
                 <script>
                 $(function(){    
-                    $('.rating<?php echo $j;?>').raty({readOnly:true,score:<?php echo $s['Strain']['rating']/2;?>});
+                    $('.rating<?php echo $j;?>').raty({number:10,readOnly:true,score:<?php echo $s['Strain']['rating'];?>});
                 });
                 </script> 
                 </div>
@@ -57,7 +90,7 @@
     ?>
     <div class="clear"></div>
 	</div>
-    <div class="right filter">
+    <div class="left filter">
         <strong style="text-align: center;" class="block">FILTER STRAINS</strong>
         <p>&nbsp;</p>
         <a href="javascript:void(0);" class="block-btn2">FILTER BY EFFECTS</a>
@@ -87,6 +120,7 @@
                 </div>
     </div>
     <div class="clear"></div>	
+    </div>
 		
 	</div>
     <div id="spinner">
@@ -97,6 +131,25 @@
     <script>
     
     $(function(){
-    
+    <?php
+    if($effects)
+    {
+        foreach($effects as $eff)
+        {
+            ?>
+            $('#eff_<?php echo $eff;?>').click();
+            <?php
+        }
+    }
+    if($symptoms)
+    {
+        foreach($symptoms as $eff)
+        {
+            ?>
+            $('#sym_<?php echo $eff;?>').click();
+            <?php
+        }
+    }
+    ?>
     });
     </script>
