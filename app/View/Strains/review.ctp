@@ -60,6 +60,7 @@ $('.rates img').each(function(){
     src = src.replace('../','<?php echo $this->webroot;?>');
     $(this).attr('src',src);
 });
+
 $('.yes').click(function(){
    var id = $(this).attr('id');
    var arr = id.split('_');
