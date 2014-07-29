@@ -39,7 +39,7 @@
             $this->set('review',$this->Review->findById($id));
             
         }
-        function add()
+        function index()
         {
             if(isset($_POST['submit']))
             {
@@ -48,7 +48,7 @@
                     $this->redirect("index/".$slug);
             }
         }
-        function index($slug)
+        function add($slug)
         {
             $this->loadModel('Effect');
             $this->loadModel("Strain");

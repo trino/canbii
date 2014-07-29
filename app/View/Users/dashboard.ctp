@@ -20,10 +20,12 @@
         $frequency = "";
     }
 ?>
+<div class="tabs">
+    <a href="<?php echo $this->webroot;?>users/settings" class="button">Settings</a>
+    <a href="<?php echo $this->webroot;?>review" class="button">Add Review</a>
+    <a href="<?php echo $this->webroot;?>review/all" class="button">My Reviews</a>
+</div>
 <div class="">
-<a href="<?php echo $this->webroot;?>users/settings" class="button">Settings</a>
-<a href="<?php echo $this->webroot;?>review/add" class="button">Add Review</a>
-<a href="<?php echo $this->webroot;?>review/all" class="button">My Reviews</a>
 
 <h1 class="title">Further Information</h1>
 
