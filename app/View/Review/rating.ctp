@@ -1,6 +1,4 @@
-
-<div id="precision1" style="cursor: pointer;" >
-</div>
+<div id="precision1" style="cursor: pointer;" ></div>
 <div id="precision-hint1" class="input hint"></div>
 <script>
 $(function(){

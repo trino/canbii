@@ -1,76 +1,138 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<!--
-Design by TEMPLATED
-http://templated.co
-Released for free under the Creative Commons Attribution License
-
-Name       : Cerulean 
-Description: A two-column, fixed-width design with dark color scheme.
-Version    : 1.0
-Released   : 20131223
-
--->
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title></title>
-<meta name="keywords" content="" />
-<meta name="description" content="" />
-<link href="<?php echo $this->webroot;?>font.css" rel="stylesheet" />
-<link href="<?php echo $this->webroot;?>css/style.css" rel="stylesheet" />
-<link href="<?php echo $this->webroot;?>default.css" rel="stylesheet" type="text/css" media="all" />
-<link href="<?php echo $this->webroot;?>fonts.css" rel="stylesheet" type="text/css" media="all" />
-<script type="text/javascript" src="<?php echo $this->webroot;?>js/jquery-1.7.1.min.js"></script>
-    <script src="<?php echo $this->webroot;?>js/validate.js"></script>
-    <script src="<?php echo $this->webroot;?>js/ui.js"></script>
-    <!--<script src="<?php echo $this->webroot;?>my.js"></script>-->
-    <link rel="stylesheet" href="<?php echo $this->webroot;?>css/ui.css" />
-    <link rel="shortcut icon" href="<?php echo $this->webroot;?>favicon.ico" type="image/x-icon"/>
-    <link rel="icon" href="<?php echo $this->webroot;?>favicon.ico" type="image/x-icon"/>
-    
-    
-    <link rel="stylesheet" href="<?php echo $this->webroot;?>source/jquery.fancybox.css?v=2.1.5" type="text/css" media="screen" />
-    <script type="text/javascript" src="<?php echo $this->webroot;?>source/jquery.fancybox.pack.js?v=2.1.5"></script>
-    
-    <!-- Optionally add helpers - button, thumbnail and/or media -->
-    <link rel="stylesheet" href="<?php echo $this->webroot;?>source/helpers/jquery.fancybox-buttons.css?v=1.0.5" type="text/css" media="screen" />
-    <script type="text/javascript" src="<?php echo $this->webroot;?>source/helpers/jquery.fancybox-buttons.js?v=1.0.5"></script>
-    <script type="text/javascript" src="<?php echo $this->webroot;?>source/helpers/jquery.fancybox-media.js?v=1.0.6"></script>
-    
-    <link rel="stylesheet" href="<?php echo $this->webroot;?>source/helpers/jquery.fancybox-thumbs.css?v=1.0.7" type="text/css" media="screen" />
-    <script type="text/javascript" src="<?php echo $this->webroot;?>source/helpers/jquery.fancybox-thumbs.js?v=1.0.7"></script>
 
-<!--[if IE 6]><link href="default_ie6.css" rel="stylesheet" type="text/css" /><![endif]-->
+<head>
+
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+<meta name="format-detection" content="telephone=no" />
+<meta name="keywords" content="Medic, Medical Center" />
+<meta name="description" content="Responsive Medical Health Template" />
+
+<link rel="shortcut icon" href="<?php echo $this->webroot;?>favicon.ico" type="image/x-icon"/>
+<link rel="icon" href="<?php echo $this->webroot;?>favicon.ico" type="image/x-icon"/>
+
+<!--link href="<?php echo $this->webroot;?>font.css" rel="stylesheet" /-->
+
+
+
+<link rel="stylesheet" href="<?php echo $this->webroot;?>css/ui.css" />
+<script type="text/javascript" src="<?php echo $this->webroot;?>js2/jquery-1.11.0.min.js"></script>
+
+
+<!--link href="<?php echo $this->webroot;?>default.css" rel="stylesheet" type="text/css" media="all" /-->
+<!--link rel="stylesheet" href="<?php echo $this->webroot;?>source/jquery.fancybox.css?v=2.1.5" type="text/css" media="screen" />
+<link rel="stylesheet" href="<?php echo $this->webroot;?>source/helpers/jquery.fancybox-buttons.css?v=1.0.5" type="text/css" media="screen" />
+<link rel="stylesheet" href="<?php echo $this->webroot;?>source/helpers/jquery.fancybox-thumbs.css?v=1.0.7" type="text/css" media="screen" /-->
+
+
+<!--script type="text/javascript" src="<?php echo $this->webroot;?>source/jquery.fancybox.pack.js?v=2.1.5"></script>
+<script type="text/javascript" src="<?php echo $this->webroot;?>source/helpers/jquery.fancybox-buttons.js?v=1.0.5"></script>
+<script type="text/javascript" src="<?php echo $this->webroot;?>source/helpers/jquery.fancybox-media.js?v=1.0.6"></script>
+<script type="text/javascript" src="<?php echo $this->webroot;?>source/helpers/jquery.fancybox-thumbs.js?v=1.0.7"></script-->
+
+
+<script src="<?php echo $this->webroot;?>js/validate.js"></script>
+<script src="<?php echo $this->webroot;?>js/ui.js"></script>
+
+<!-- //////////////////////////////////////////////////////////////////////////////////////////// NEW SITE-->
+
+<link href='http://fonts.googleapis.com/css?family=PT+Sans' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Volkhov:400italic' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" type="text/css" href="<?php echo $this->webroot;?>style2/reset.css" />
+<link rel="stylesheet" type="text/css" href="<?php echo $this->webroot;?>style2/superfish.css" />
+<link rel="stylesheet" type="text/css" href="<?php echo $this->webroot;?>style2/fancybox/jquery.fancybox.css" />
+<link rel="stylesheet" type="text/css" href="<?php echo $this->webroot;?>style2/jquery.qtip.css" />
+<link rel="stylesheet" type="text/css" href="<?php echo $this->webroot;?>style2/jquery-ui-1.9.2.custom.css" />
+<link rel="stylesheet" type="text/css" href="<?php echo $this->webroot;?>style2/style.css" />
+<link rel="stylesheet" type="text/css" href="<?php echo $this->webroot;?>style2/responsive.css" />
+<link rel="stylesheet" type="text/css" href="<?php echo $this->webroot;?>style2/animations.css" />
+
+
+<script type="text/javascript" src="<?php echo $this->webroot;?>js2/jquery-migrate-1.2.1.min.js"></script>
+<script type="text/javascript" src="<?php echo $this->webroot;?>js2/jquery.ba-bbq.min.js"></script>
+<script type="text/javascript" src="<?php echo $this->webroot;?>js2/jquery-ui-1.9.2.custom.min.js"></script>
+<script type="text/javascript" src="<?php echo $this->webroot;?>js2/jquery.easing.1.3.js"></script>
+<script type="text/javascript" src="<?php echo $this->webroot;?>js2/jquery.carouFredSel-5.6.4-packed.js"></script>
+<script type="text/javascript" src="<?php echo $this->webroot;?>js2/jquery.sliderControl.js"></script>
+<script type="text/javascript" src="<?php echo $this->webroot;?>js2/jquery.timeago.js"></script>
+<script type="text/javascript" src="<?php echo $this->webroot;?>js2/jquery.hint.js"></script>
+<script type="text/javascript" src="<?php echo $this->webroot;?>js2/jquery.isotope.min.js"></script>
+<script type="text/javascript" src="<?php echo $this->webroot;?>js2/jquery.isotope.masonry.js"></script>
+<script type="text/javascript" src="<?php echo $this->webroot;?>js2/jquery.fancybox-1.3.4.pack.js"></script>
+<script type="text/javascript" src="<?php echo $this->webroot;?>js2/jquery.qtip.min.js"></script>
+<script type="text/javascript" src="<?php echo $this->webroot;?>js2/jquery.blockUI.js"></script>
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+<script type="text/javascript" src="<?php echo $this->webroot;?>js2/main.js"></script>
+
+<!-- //////////////////////////////////////////////////////////////////////////////////////////// NEW SITE-->
 
 </head>
 <body>
-<div id="header-wrapper">
-	<div id="header" class="container">
-		<div id="logo">
-			<h1><span class="icon logo"></span><a href="#">Marijuana</a></h1>
-			<div id="menu">
-				<ul class="left">
+
+
+
+
+<!-- //////////////////////////////////////////////////////////////////////////////////////////// NEW SITE-->
+
+		<div class="site_container">
+			<div class="header_container">
+				<div class="header clearfix">
+					<div class="header_left">
+						<a href="<?php echo $this->webroot;?>" title="MEDICALMARIJUANA">
+							<img src="<?php echo $this->webroot;?>images/header_logo.png" alt="logo" />
+							<span class="logo">medical marijuana</span>
+						</a>
+					</div>
+					
+					<ul class="sf-menu header_right">
+			
+
 					<li class="current_page_item"><a href="<?php echo $this->webroot;?>" accesskey="1" title="">Home</a></li>
 					<li><a href="<?php echo $this->webroot?>strains/all" accesskey="2" title="">Strains</a></li>
 					<li><a href="<?php echo $this->webroot;?>pages/about_us" accesskey="3" title="">About Us</a></li>
 					<li><a href="<?php echo $this->webroot;?>pages/contact_us" accesskey="4" title="">Contact Us</a></li>
+					<?php if(!$this->Session->read('User')){?>
+					<li><a href="<?php echo $this->webroot;?>users/register" accesskey="4" title="">Login / Register</a></li>
+					<?php }else{?>
 					
-				</ul>
-                <ul class="right">
-                <?php if(!$this->Session->read('User')){?>
-                    <li><a href="<?php echo $this->webroot;?>users/register" accesskey="4" title="">Login</a></li>
-					<li><a href="<?php echo $this->webroot;?>users/register" accesskey="5" title="">Register</a></li>
-                <?php }else{ 
-                        echo "<strong> Welcome, ".ucfirst($this->Session->read('User.username'))."</strong>";?>
-                    <li><a href="<?php echo $this->webroot;?>users/dashboard" accesskey="4" title="">Dashboard</a></li>
-					<li><a href="<?php echo $this->webroot;?>users/logout" accesskey="5" title="">Logout</a></li>
-                <?php }?>
-                </ul>
-                <div class="clear"></div>
+					
+		
+					
+					
+						<li class="submenu<?php echo ($_GET["page"]=="" || $_GET["page"]=="home" ? " selected" : ""); ?>">
+<a href="<?php echo $this->webroot;?>users/dashboard" accesskey="4" title=""><?=ucfirst($this->Session->read('User.username'))?> Dashboard</a>
+						<ul>
+														<li<?php echo ($_GET["page"]=="home" ? " class='selected'" : ""); ?>>
+
+							<a href="<?php echo $this->webroot;?>users/logout" accesskey="5" title="">Logout</a>
+														</li>
+
+						</ul>
+					</li>
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					<?php }?>
+					</ul>
+				</div>
 			</div>
-		</div>
-	</div>
-</div>
+
+			<!-- //////////////////////////////////////////////////////////////////////////////////////////// NEW SITE-->
+
+
+
+
+<!-- can you create a separate page for the following and include here? -->
+
 <script>
 var spinnerVisible = false;
 function showProgress() {
@@ -109,8 +171,6 @@ if(thiss.attr('class').replace('searchact','')==thiss.attr('class'))
 }
 function highlighteff2(thiss,order=null){
 
-    
-    
     if(thiss!='recent' && thiss!='rated' && thiss!='alpha' && thiss!='viewed' && thiss!='reviewed'){
         var sort =0;
 if(thiss.attr('class').replace('searchact','')==thiss.attr('class'))
@@ -213,103 +273,193 @@ if(thiss.attr('class').replace('searchact','')==thiss.attr('class'))
         });    
 }
 </script>
-<?php
-if($this->params['controller'] == 'pages' && $this->params['action'] == 'index')
-{
-?>
-<div id="page-wrapper">
-	<div id="page" class="container">
-		<div class="title">
-			<h2>Search Strains</h2>
-		</div>
-		<p>
-            <form action="<?php echo $this->webroot;?>strains/search" method="get" id="search">
-            <div class="left">
-                <input type="text" placeholder="Title" name="key" class="key" /><br />
-                
-                <center><strong>OR</strong></center>
-                
-                <a href="javascript:void(0);" onclick="$('.choose_eff').toggle();" class="block-btn">Choose Effect</a>
-                <div class="choose_eff" style="display: none;">
-                <?php $effect = $this->requestAction('/pages/getEff');
-                foreach($effect as $e)
-                {
-                    ?>
-                    <a href="javascript:void(0)" class="small-btn" onclick="highlighteff($(this))" id="eff_<?php echo $e['Effect']['id'];?>"><?php echo $e['Effect']['title']?></a>
-                    <?php
-                }
-                ?>
-                <p style="display: none;" class="effe"></p>
-                </div>
-                
-                <a href="javascript:void(0);" onclick="$('.choose_sym').toggle();" class="block-btn">Choose Symptom</a>
-                <div class="choose_sym" style="display: none;">
-                <?php $effect = $this->requestAction('/pages/getSym');
-                foreach($effect as $e)
-                {
-                    ?>
-                    <a href="javascript:void(0)" onclick="highlightsym($(this))" class="small-btn" id="sym_<?php echo $e['Symptom']['id'];?>"><?php echo $e['Symptom']['title']?></a>
-                    <?php
-                }
-                ?>
-                <p style="display: none;" class="symp"></p>
-                </div>
-                
-                <div class="clear"></div>
-            </div>
-            
-            <div class="clear"></div>   
-            <div class="clear"></div>
-                <input type="submit" value="Search" class="button" />
-            </form>
-        </p>
-	</div>
-</div>
-<?php
-}
-?>
-<div class="wrapper">
-	<div id="page" class="container">
+
+
+<div class="page">
+
+
 	<?php echo $this->Session->flash(); ?>
-			<?php echo $this->fetch('content'); ?> 
-    </div>
+	<?php echo $this->fetch('content'); ?> 
+
 </div>
-<?php
-if($this->params['controller'] == 'pages' && $this->params['action'] == 'index')
-{
-?>
-<div id="wrapper2">
-	<div id="tools">
-		<div class="title">
-			<h2>Vivamus fermentum nibh</h2>
+
+
+<!-- //////////////////////////////////////////////////////////////////////////////////////////// NEW SITE-->
+
+
+
+
+<div class="footer_container">
+				<div class="footer">
+					<ul class="footer_banner_box_container clearfix">
+						<li class="footer_banner_box super_light_blue animated_element animation-fadeIn duration-500">
+							<h2>
+								Say
+							</h2>
+							<p>
+								<a class="icon_small_arrow right_white" href="#">Here in medicenter we have individual</a>
+							</p>
+						</li>
+						<li class="footer_banner_box light_blue animated_element animation-slideRight duration-800 delay-500">
+							<h2>
+								Something
+							</h2>
+							<p>
+								<a class="icon_small_arrow right_white" href="#">Here in medicenter we have individual</a>
+							</p>
+						</li>
+						<li class="footer_banner_box blue animated_element animation-slideRight200 duration-800 delay-1000">
+							<h2>
+								Here
+							</h2>
+							<p>
+								<a class="icon_small_arrow right_white" href="#">Here in medicenter we have individual</a>
+							</p>
+						</li>
+						
+					</ul>
+					<div class="footer_box_container clearfix">
+						<div class="footer_box">
+							<h3 class="box_header">
+								Medicenter Clinic
+							</h3>
+							<p class="info">
+								Mauris adipiscing mauris fringilla turpis interdum sed pulvinar nisi malesuada individual.
+							</p>
+							<ul class="footer_contact_info_container clearfix">
+								<li class="footer_contact_info_row">
+									<div class="footer_contact_info_left">
+										Medicenter Clinic
+									</div>
+								</li>
+								<li class="footer_contact_info_row">
+									<div class="footer_contact_info_left">
+										33 Farlane Street
+									</div>
+									<div class="footer_contact_info_right">
+										+123 655 655
+									</div>
+								</li>
+								<li class="footer_contact_info_row">
+									<div class="footer_contact_info_left">
+										Keilor East
+									</div>
+									<div class="footer_contact_info_right">
+										+123 755 755
+									</div>
+								</li>
+								<li class="footer_contact_info_row">
+									<div class="footer_contact_info_left">
+										VIC 3033, Australia
+									</div>
+									<div class="footer_contact_info_right">
+										<a href="mailto:medicenter@mail.com" title="Send Email">
+											medicenter@mail.com
+										</a>
+									</div>
+								</li>
+							</ul>
+							<ul class="social_icons clearfix">
+								<li>
+									<a class="social_icon facebook" href="http://facebook.com/QuanticaLabs" title="" target="_blank">
+										&nbsp;
+									</a>
+								</li>
+								<li>
+									<a class="social_icon twitter" href="https://twitter.com/QuanticaLabs" title="" target="_blank">
+										&nbsp;
+									</a>
+								</li>
+								<li>
+									<a class="social_icon googleplus" href="#" title="">
+										&nbsp;
+									</a>
+								</li>
+								<li>
+									<a class="social_icon mail" href="mailto:medicenter@mail.com" title="">
+										&nbsp;
+									</a>
+								</li>
+							</ul>
+						</div>
+						<div class="footer_box">
+							<div class="clearfix">
+								<div class="header_left">
+									<h3 class="box_header">
+										Latest Posts
+									</h3>
+								</div>
+								<div class="header_right">
+									<a href="#" id="footer_recent_posts_prev" class="scrolling_list_control_left icon_small_arrow left_white"></a>
+									<a href="#" id="footer_recent_posts_next" class="scrolling_list_control_right icon_small_arrow right_white"></a>
+								</div>
+							</div>
+							<div class="scrolling_list_wrapper">
+								<ul class="scrolling_list footer_recent_posts">
+									<li class="icon_small_arrow right_white">
+										<a href="?page=post">
+											Mauris adipiscing mauris fringilla turpis interdum sed pulvinar nisi malesuada.
+										</a>
+										<abbr title="29 May 2012" class="timeago">29 May 2012</abbr>
+									</li>
+									<li class="icon_small_arrow right_white">
+										<a href="?page=post">
+											Lorem ipsum dolor sit amat velum.
+										</a>
+										<abbr title="04 Apr 2012" class="timeago">04 Apr 2012</abbr>
+									</li>
+									<li class="icon_small_arrow right_white">
+										<a href="?page=post">
+											Mauris adipiscing mauris fringilla turpis interdum sed pulvinar nisi malesuada.
+										</a>
+										<abbr title="02 Feb 2012" class="timeago">02 Feb 2012</abbr>
+									</li>
+									<li class="icon_small_arrow right_white">
+										<a href="?page=post">
+											Lorem ipsum dolor sit amat velum, consectetur adipiscing elit.
+										</a>
+										<abbr title="24 Jan 2011" class="timeago">24 Jan 2011</abbr>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<div class="footer_box last">
+							<div class="clearfix">
+								<div class="header_left">
+									<h3 class="box_header">
+										Latest Tweets
+									</h3>
+								</div>
+								<div class="header_right">
+									<a href="#" id="latest_tweets_prev" class="scrolling_list_control_left icon_small_arrow left_white"></a>
+									<a href="#" id="latest_tweets_next" class="scrolling_list_control_right icon_small_arrow right_white"></a>
+								</div>
+							</div>
+							<div class="scrolling_list_wrapper">
+
+							</div>
+						</div>
+					</div>
+					<div class="copyright_area clearfix">
+						<div class="copyright_left">
+							© Copyright - <a href="http://themeforest.net/item/medicenter-responsive-medical-health-template/4000598?ref=QuanticaLabs" title="MediCenter Template" target="_blank">MediCenter Template</a> by <a href="http://quanticalabs.com" title="QuanticaLabs" target="_blank">QuanticaLabs</a>
+						</div>
+						<div class="copyright_right">
+							<a class="scroll_top icon_small_arrow top_white" href="#top" title="Scroll to top">Top</a>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
-		<ul class="tools">
-			<li><a href="#" class="icon icon-legal"></a></li>
-			<li><a href="#" class="icon icon-random"></a></li>
-			<li><a href="#" class="icon icon-key"></a></li>
-			<li><a href="#" class="icon icon-wrench"></a></li>
-			<li><a href="#" class="icon icon-cut"></a></li>
-			<li><a href="#" class="icon icon-filter"></a></li>
-			<li><a href="#" class="icon icon-lock"></a></li>
-		</ul>
-	
-	</div>
-</div>
-<?php
-}
-?>
-<div id="copyright" class="container">
-	<p>&copy; Untitled. All rights reserved. | Photos by <a href="http://fotogrph.com/">Fotogrph</a> | Design by <a href="http://templated.co" rel="nofollow">TEMPLATED</a>.</p>
-		<ul class="contact">
-			<li><a href="#" class="icon icon-twitter"><span>Twitter</span></a></li>
-			<li><a href="#" class="icon icon-facebook"><span></span></a></li>
-			<li><a href="#" class="icon icon-dribbble"><span>Pinterest</span></a></li>
-			<li><a href="#" class="icon icon-tumblr"><span>Google+</span></a></li>
-			<li><a href="#" class="icon icon-rss"><span>Pinterest</span></a></li>
-		</ul>
-</div>
 </body>
 </html>
+
+
+<!-- //////////////////////////////////////////////////////////////////////////////////////////// NEW SITE-->
+
+
+
+
 <?php //echo $this->Session->flash(); ?>
-			<?php //echo $this->fetch('content'); ?>  
+<?php //echo $this->fetch('content'); ?>  
 <?php echo $this->element('sql_dump'); ?>            

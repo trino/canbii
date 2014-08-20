@@ -697,7 +697,7 @@
     noRatedMsg   : 'Not rated yet!',
     number       : 5,
     numberMax    : 20,
-    path         : "../raty/images",
+    path         : "http://localhost/marijuana/raty/images",
     precision    : false,
     readOnly     : false,
     round        : { down: 0.25, full: 0.6, up: 0.76 },

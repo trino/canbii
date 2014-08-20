@@ -73,7 +73,6 @@ function load_model(strain_id, eff_id,table)
 }
 function insert_val(values,cls)
 {
-    
     $('.'+cls).val(values);
 }
 $(function(){
