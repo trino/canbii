@@ -2950,6 +2950,29 @@ a.social_icon,
 }
 .sym2{background: #006ab4!important;}
 .searchact2{background: #000!important;}
+.one-third{width:33.33%;float:left;text-align:center;}
+.clearfix{clear:both;}
+.dark{background:#0384CE;height:80px;margin:10px 0;}
+.light{background:#42B3E5;height:80px;margin:10px 0;}
+.lighter{background:#5BF0FA;height:80px;margin:10px 0;}
+.dark p,.light p,.lighter p{color:#FFF!important;font-weight:bold;}
+.ptitle{font-weight:bold;}
+.fl{display:inline-block;background:#42B3E5;color:#fff;font-size:20px;text-align:center;padding: 50px;border-radius:30px;}
+.martop25{margin-top:25px;}
+.half{width:45%;float:left;}
+.second-half{margin-left:10%;}
+.clear{clear:both;}
+.left{float:left;}
+.label{width:160px;}
+.half .eff{margin-bottom: 7px;}
+.half p{font-weight:bold!important;}
+.ratewrap{color:#BBB;}
+.length{border-radius:0 5px 5px 0;}
+.one-third .rating{padding-left:25px}
+.half .frate{padding:5px 0;border-bottom:1px solid #fFF;}
+.white{background: #FFF;margin:10px 0;padding:10px;border-radius:5px;}
+.white i{font-size:17px;padding-top:5px;}
+.chemical h2{margin:10px 0 10px 0;}
 
 
 

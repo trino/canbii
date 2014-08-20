@@ -1,36 +1,4 @@
 <div class="page_layout page_margin_top clearfix">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 	<div class="page_header clearfix">
 		<div class="page_header_left">
 			<h1 class="page_title">Login / Register</h1>
@@ -96,7 +64,7 @@
 <?php echo $this->Form->input('password',array('div'=>array('class'=>'form-row'))); ?>
 <?php echo $this->Form->input('confirm_password',array('div'=>array('class'=>'form-row'),'type'=>'password')); ?>
 
-<label class="checkbox"><input type="checkbox" name="check_field" class="chh" onchange="if($('.chh').is(':checked'))$('.sbmt').removeAttr('disabled');else{$('.sbmt').attr('disabled','');}"/>I certify I am at least 18 years old and have read & agreed to the <a href="">Privacy Policy</a> and <a href="">Terms & Conditions</a>.
+<label class="checkbox"><input type="checkbox" name="check_field" class="chh" onchange="if($('.chh').is(':checked'))$('.sbmt').removeAttr('disabled');else{$('.sbmt').attr('disabled','');}"/>&nbsp; &nbsp; I certify I am at least 18 years old and have read & agreed to the <a href="">Privacy Policy</a> and <a href="">Terms & Conditions</a>.
 </label>
 
 </fieldset>

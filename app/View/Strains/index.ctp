@@ -2,7 +2,7 @@
 .eff .left{position:relative;}
 .eff em{z-index: 10000;text-align: center;position: relative;top:3px;}
 .ratewrap{width: 63%;background:#fff;text-align: center;height:25px;}
-.length{padding-top:25px;background:#8AC007;position:absolute;top:0;}
+.length{padding-top:25px;background:#42B3E5;position:absolute;top:0;}
 </style>
 
 <script src="<?php echo $this->webroot;?>js/raty.js"></script>
@@ -51,21 +51,28 @@ Home
 <p>Description:</p>
 <p><?php echo $strain['Strain']['description']; ?></p>
 
-<p><?php echo $strain['StrainType']['title'];?></p>
-<?php echo $strain['Strain']['name'];?>
-
+<!--<p><?php echo $strain['StrainType']['title'];?></p>
+<?php echo $strain['Strain']['name'];?>-->
+<h2>Reviews:</h2>
+<div class="one-third dark">
 <p>OVERALL RATING:</p>
 <div class="rating left"></div>
+</div>
 
-<p>Reviews:</p>
+<div class="one-third light">
+<p>Reviews</p>
 <?php echo $strain['Strain']['review'];?>
-
+</div>
+<div class="one-third lighter">
 <p>Views:</p>
-<p><?php echo $strain['Strain']['viewed'];?></p>
+<?php echo $strain['Strain']['viewed'];?>
+</div>
+<div  class="clearfix"></div>
 
-<h2>Strain Attributes</h2>
+<h2 class="martop25">Strain Attributes</h2>
 
-<p class="active">FLAVORS</p>
+<div class="flavors">
+<p class="ptitle">FLAVORS</p>
 <?php
 foreach($flavor as $f)
 {
@@ -76,8 +83,9 @@ foreach($flavor as $f)
 <?php
 }
 ?>
-
-
+</div>
+<div>
+<div class="half">
 <p>Positive Effects</p>
 <?php
 foreach($strain['OverallEffectRating'] as $oer)
@@ -111,7 +119,8 @@ $length = 10*$rate;;
 <?php
 }
 ?>
-
+</div>
+<div class="half  second-half">
 
 
 
@@ -140,10 +149,11 @@ $length = 10*$rate;
 <?php
 }
 ?>
-
-
-
-
+</div>
+<div class="clearfix"></div>
+</div>
+<div>
+<div class="half">
 
 <p class="second" >Symptoms</p>
 <?php
@@ -176,7 +186,9 @@ $length = 10*$rate;;
 <?php
 }
 ?>
+</div>
 
+<div  class="half second-half">
 <p>Effect Ratings</p>
 <?php
 $count = count($strain['Review']);
@@ -209,30 +221,36 @@ $duration = ($duration/$count)*10;
 <?php
 }
 ?>
+</div>
+<div class="clearfix"></div>
+</div>
 
-
-<h2>Review highlights</h2>
+<h2 class="martop25">Review highlights</h2>
+<div class="half white">
 <p>Most Helpful</p>
 <?php if($helpful){?>
 <div class="userinfo">
-<div class="names left"><?php echo $this->requestAction('/strains/getUserName/'.$helpful['Review']['user_id']);?></div>
-<div class="dates left"><em><?php echo $helpful['Review']['on_date'];?></em></div>
-<div class="rates frate left"></div>
+<div class="names left"><strong>Reviewed By: </strong><?php echo $this->requestAction('/strains/getUserName/'.$helpful['Review']['user_id']);?> (<em><?php echo $helpful['Review']['on_date'];?></em>)</div>
+<div class="clear"></div>
+<div class="rates frate"></div>
 <div class="clear"></div>
 </div>
-<?php echo $helpful['Review']['review'];
+<i><?php echo $helpful['Review']['review'];?></i>
+<?php
 $rand1 = rand(100,999);
 $rand2 = rand(100,999);
 ?>
 <p>
 <em>WAS THIS REVIEW HELPFUL TO YOU? </em> &nbsp; &nbsp; <?php if($vote==0){?><a href="javascript:void(0);" id="<?php echo $rand1.'_'.$helpful['Review']['id'];?>" class="btns yes">YES</a> <a class="btns no" href="javascript:void(0);" id="<?php echo ($rand1+1).'_'.$helpful['Review']['id'];?>">NO</a><?php }else{echo "<em style='color:#AAA;'>ALREADY VOTED</em>";}?>
+<br />
+<a href="<?php echo $this->webroot;?>strains/review/<?php echo $strain['Strain']['slug'];?>" class="viewall">View All Reviews</a>
 </p>
 <?php }?>
-
-
-
+</div>
+<div class="clearfix"></div>
+<div class="chemical">
 <h2>Chemical Composition</h2>
-
+<div class="half">
 
 <div class="eff">
 <div class="label left" style="width: 16%!important;">CBD</div><div class="left ratewrap" style="width: 73%;background:#FFF;"><div class="length" style="width: <?php echo $strain['Strain']['cbd'];?>%;"></div><em><?php echo $strain['Strain']['cbd'];?>%</em></div><div class="clear"></div>
@@ -249,10 +267,11 @@ $rand2 = rand(100,999);
 <div class="eff">
 <div class="label left" style="width: 16%!important;">THCV</div><div class="left ratewrap" style="width: 73%;background:#FFF;"><div class="length" style="width: <?php echo $strain['Strain']['thcv'];?>%;"></div><em><?php echo $strain['Strain']['thcv'];?>%</em></div><div class="clear"></div>
 </div>        
-
-<a href="<?php echo $this->webroot;?>strains/review/<?php echo $strain['Strain']['slug'];?>" class="viewall">View All Reviews</a>
-<p>IMAGE FOR <em><?php echo strtoupper($strain['Strain']['name']);?></em></p>
-
+</div>
+<div class="half second-half">
+<b>IMAGE FOR <em><?php echo strtoupper($strain['Strain']['name']);?></em></b>
+<br />
+<br />
 <?php
 if($strain['StrainImage'])
 {
@@ -270,7 +289,9 @@ $(document).ready(function() {
 $(".fancybox").fancybox();
 });
 </script>
-
+</div>
+<div  class="clear"></div>
+</div>
 </div>
 </div>
 
