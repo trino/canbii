@@ -100,10 +100,17 @@
 		
 					
 					
+<<<<<<< HEAD
 						<li class="submenu<?php echo ($_GET["page"]=="" || $_GET["page"]=="home" ? " selected" : ""); ?>">
 <a href="<?php echo $this->webroot;?>users/dashboard" accesskey="4" title=""><?=ucfirst($this->Session->read('User.username'))?> Dashboard</a>
 						<ul>
 														<li<?php echo ($_GET["page"]=="home" ? " class='selected'" : ""); ?>>
+=======
+						<li class="submenu<?php echo (isset($_GET['page'])&& ($_GET["page"]=="" || $_GET["page"]=="home") ? " selected" : ""); ?>">
+<a href="<?php echo $this->webroot;?>users/dashboard" accesskey="4" title=""><?=ucfirst($this->Session->read('User.username'))?> Dashboard</a>
+						<ul>
+														<li<?php echo (isset($_GET['page'])&&$_GET["page"]=="home" ? " class='selected'" : ""); ?>>
+>>>>>>> c86d1e6f6cce31fb6f7b1a4e935b7e3c4471fe1a
 
 							<a href="<?php echo $this->webroot;?>users/logout" accesskey="5" title="">Logout</a>
 														</li>

@@ -27,7 +27,11 @@
 
 <a title="Read more"  href="<?php echo $this->webroot;?>users/dashboard" class="more large dark_blue icon_small_arrow margin_right_white">Dashboard</a>
 <a title="Read more"  href="<?php echo $this->webroot;?>users/settings" class="more large dark_blue icon_small_arrow margin_right_white margin_left_10">Settings</a>
+<<<<<<< HEAD
 <a title="Read more" href="<?php echo $this->webroot;?>review"  class="more large dark_blue icon_small_arrow margin_right_white margin_left_10">Add Review</a>
+=======
+<a title="Read more" href="<?php echo $this->webroot;?>review"  class="active more large dark_blue icon_small_arrow margin_right_white margin_left_10">Add Review</a>
+>>>>>>> c86d1e6f6cce31fb6f7b1a4e935b7e3c4471fe1a
 <a title="Read more" href="<?php echo $this->webroot;?>review/all"  class="more large dark_blue icon_small_arrow margin_right_white margin_left_10">My Reviews</a>
 
 <div class="clearfix"></div>

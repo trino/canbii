@@ -1,21 +1,48 @@
 <script src="<?php echo $this->webroot;?>js/raty.js"></script>
 <script src="<?php echo $this->webroot;?>js/labs.js"></script>
-<style>
-.sel{text-decoration:none;}
-</style>
 <link href="<?php echo $this->webroot;?>css/raty.css" rel="stylesheet" type="text/css" />
-<div class="tabs">
-    <a href="<?php echo $this->webroot;?>users/settings" class="button">Settings</a>
-    <a href="<?php echo $this->webroot;?>review" class="button">Add Review</a>
-    <a href="<?php echo $this->webroot;?>review/all" class="button">My Reviews</a>
-</div>
 
+<style>
+#qf_review__aesthetics__color .review-slider{display:inline-block;}
+#qf_review__aesthetics__flavor .review-slider{display:inline-block;}
+</style>
+
+<div class="page_layout page_margin_top clearfix">
+<div class="page_header clearfix">
+		<div class="page_header_left">
+			<h1 class="page_title">Review Detail of <?php echo ucfirst($review['Strain']['name'])." on ". $review['Review']['on_date'];?></h1>
+			<ul class="bread_crumb">
+				<li>
+					<a href="?page=home" title="Home">
+						Home
+					</a>
+				</li>
+				<li class="separator icon_small_arrow right_gray">
+					&nbsp;
+				</li>
+				<li>
+					New Cannabis Review
+				</li>
+			</ul>
+		</div>
+		<div class="page_header_right">
+			<!--form class="search">
+				<input class="search_input hint" type="text" value="To search type and hit enter..." placeholder="To search type and hit enter...">
+			</form-->
+		</div>
+	</div>
+    <div class="clearfix page_margin_top ">
+        <a title="Read more"  href="<?php echo $this->webroot;?>users/dashboard" class="more large dark_blue icon_small_arrow margin_right_white">Dashboard</a>
+        <a title="Read more"  href="<?php echo $this->webroot;?>users/settings" class="more large dark_blue icon_small_arrow margin_right_white margin_left_10">Settings</a>
+        <a title="Read more" href="<?php echo $this->webroot;?>review"  class="active more large dark_blue icon_small_arrow margin_right_white margin_left_10">Add Review</a>
+        <a title="Read more" href="<?php echo $this->webroot;?>review/all"  class="more large dark_blue icon_small_arrow margin_right_white margin_left_10">My Review</a>
+        <div class="clearfix"></div>
 <?php //var_dump($review);
     $typ = array('Extremely Active','Very Active','Active','Bit Active','Balanced','Bit Sedate','Sedate','Very Sedate','Extemely Sedate');
 ?>
-<h2 class="title">Review Detail of <?php echo ucfirst($review['Strain']['name'])." on ". $review['Review']['on_date'];?></h2>
+
 <fieldset id="qf_review__general" class="qf-fieldset">
-<legend>GENERAL RATING</legend>
+<h2 class="slide page_margin_top">General Rating</h2>
 <div id="qf_review__general__mscale__wrapper" class="qf-input-wrapper qf-slider-input-wrapper">
     <span id="qf_review__general__mscale__label_span" class="qf-label-span">
         <label id="qf_review__general__mscale__label" for="qf_review__general__mscale">Effect Scale (Active to Sedative)</label>
@@ -58,7 +85,7 @@
 </div>
 </fieldset>
 <fieldset id="qf_review__effects" class="qf-fieldset">
-<legend>Effect Ratings</legend>
+<h2 class="slide page_margin_top">Effect Ratings</h2>
 <div class="qf-select-wrapper" id="qf_review__effects__medical__wrapper">
 <span class="qf-label-span" id="qf_review__effects__medical__label_span">
 <label id="qf_review__effects__medical__label" for="qf_review__effects__medical">Medicinal Effects</label>
@@ -183,7 +210,7 @@ foreach($review['EffectRating'] as $effect)
 </div>
 </fieldset>
 <fieldset id="qf_review__aesthetics" class="qf-fieldset">
-<legend>Aesthetic Rating</legend>
+<h2 class="slide page_margin_top">Aesthetic Rating</h2>
 <div class="qf-select-wrapper" id="qf_review__aesthetics__color__wrapper">
 <span class="qf-label-span" id="qf_review__aesthetics__color__label_span">
 <label id="qf_review__aesthetics__color__label" for="qf_review__aesthetics__color">Color</label>
@@ -282,11 +309,13 @@ foreach($review['EffectRating'] as $effect)
 <label id="qf_review__other__comments__label" for="qf_review__other__comments">Comments</label>
 
 </span>
-<?php echo $review['Review']['review'];?>
+<br /><br />
+<em><?php echo $review['Review']['review'];?></em>
 
 </div>
 </fieldset>
-
+</div>
+</div>
 <script>
 $(function(){
    

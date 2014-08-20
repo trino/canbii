@@ -2,7 +2,11 @@
 .eff .left{position:relative;}
 .eff em{z-index: 10000;text-align: center;position: relative;top:3px;}
 .ratewrap{width: 63%;background:#fff;text-align: center;height:25px;}
+<<<<<<< HEAD
 .length{padding-top:25px;background:#8AC007;position:absolute;top:0;}
+=======
+.length{padding-top:25px;background:#42B3E5;position:absolute;top:0;}
+>>>>>>> c86d1e6f6cce31fb6f7b1a4e935b7e3c4471fe1a
 </style>
 
 <script src="<?php echo $this->webroot;?>js/raty.js"></script>
@@ -51,6 +55,7 @@ Home
 <p>Description:</p>
 <p><?php echo $strain['Strain']['description']; ?></p>
 
+<<<<<<< HEAD
 <p><?php echo $strain['StrainType']['title'];?></p>
 <?php echo $strain['Strain']['name'];?>
 
@@ -66,6 +71,30 @@ Home
 <h2>Strain Attributes</h2>
 
 <p class="active">FLAVORS</p>
+=======
+<!--<p><?php echo $strain['StrainType']['title'];?></p>
+<?php echo $strain['Strain']['name'];?>-->
+<h2>Reviews:</h2>
+<div class="one-third dark">
+<p>OVERALL RATING:</p>
+<div class="rating left"></div>
+</div>
+
+<div class="one-third light">
+<p>Reviews</p>
+<?php echo $strain['Strain']['review'];?>
+</div>
+<div class="one-third lighter">
+<p>Views:</p>
+<?php echo $strain['Strain']['viewed'];?>
+</div>
+<div  class="clearfix"></div>
+
+<h2 class="martop25">Strain Attributes</h2>
+
+<div class="flavors">
+<p class="ptitle">FLAVORS</p>
+>>>>>>> c86d1e6f6cce31fb6f7b1a4e935b7e3c4471fe1a
 <?php
 foreach($flavor as $f)
 {
@@ -76,8 +105,14 @@ foreach($flavor as $f)
 <?php
 }
 ?>
+<<<<<<< HEAD
 
 
+=======
+</div>
+<div>
+<div class="half">
+>>>>>>> c86d1e6f6cce31fb6f7b1a4e935b7e3c4471fe1a
 <p>Positive Effects</p>
 <?php
 foreach($strain['OverallEffectRating'] as $oer)
@@ -111,7 +146,12 @@ $length = 10*$rate;;
 <?php
 }
 ?>
+<<<<<<< HEAD
 
+=======
+</div>
+<div class="half  second-half">
+>>>>>>> c86d1e6f6cce31fb6f7b1a4e935b7e3c4471fe1a
 
 
 
@@ -140,10 +180,18 @@ $length = 10*$rate;
 <?php
 }
 ?>
+<<<<<<< HEAD
 
 
 
 
+=======
+</div>
+<div class="clearfix"></div>
+</div>
+<div>
+<div class="half">
+>>>>>>> c86d1e6f6cce31fb6f7b1a4e935b7e3c4471fe1a
 
 <p class="second" >Symptoms</p>
 <?php
@@ -176,7 +224,13 @@ $length = 10*$rate;;
 <?php
 }
 ?>
+<<<<<<< HEAD
 
+=======
+</div>
+
+<div  class="half second-half">
+>>>>>>> c86d1e6f6cce31fb6f7b1a4e935b7e3c4471fe1a
 <p>Effect Ratings</p>
 <?php
 $count = count($strain['Review']);
@@ -209,6 +263,7 @@ $duration = ($duration/$count)*10;
 <?php
 }
 ?>
+<<<<<<< HEAD
 
 
 <h2>Review highlights</h2>
@@ -221,11 +276,30 @@ $duration = ($duration/$count)*10;
 <div class="clear"></div>
 </div>
 <?php echo $helpful['Review']['review'];
+=======
+</div>
+<div class="clearfix"></div>
+</div>
+
+<h2 class="martop25">Review highlights</h2>
+<div class="half white">
+<p>Most Helpful</p>
+<?php if($helpful){?>
+<div class="userinfo">
+<div class="names left"><strong>Reviewed By: </strong><?php echo $this->requestAction('/strains/getUserName/'.$helpful['Review']['user_id']);?> (<em><?php echo $helpful['Review']['on_date'];?></em>)</div>
+<div class="clear"></div>
+<div class="rates frate"></div>
+<div class="clear"></div>
+</div>
+<i><?php echo $helpful['Review']['review'];?></i>
+<?php
+>>>>>>> c86d1e6f6cce31fb6f7b1a4e935b7e3c4471fe1a
 $rand1 = rand(100,999);
 $rand2 = rand(100,999);
 ?>
 <p>
 <em>WAS THIS REVIEW HELPFUL TO YOU? </em> &nbsp; &nbsp; <?php if($vote==0){?><a href="javascript:void(0);" id="<?php echo $rand1.'_'.$helpful['Review']['id'];?>" class="btns yes">YES</a> <a class="btns no" href="javascript:void(0);" id="<?php echo ($rand1+1).'_'.$helpful['Review']['id'];?>">NO</a><?php }else{echo "<em style='color:#AAA;'>ALREADY VOTED</em>";}?>
+<<<<<<< HEAD
 </p>
 <?php }?>
 
@@ -233,6 +307,17 @@ $rand2 = rand(100,999);
 
 <h2>Chemical Composition</h2>
 
+=======
+<br />
+<a href="<?php echo $this->webroot;?>strains/review/<?php echo $strain['Strain']['slug'];?>" class="viewall more blue martop25">View All Reviews</a>
+</p>
+<?php }?>
+</div>
+<div class="clearfix"></div>
+<div class="chemical">
+<h2>Chemical Composition</h2>
+<div class="half">
+>>>>>>> c86d1e6f6cce31fb6f7b1a4e935b7e3c4471fe1a
 
 <div class="eff">
 <div class="label left" style="width: 16%!important;">CBD</div><div class="left ratewrap" style="width: 73%;background:#FFF;"><div class="length" style="width: <?php echo $strain['Strain']['cbd'];?>%;"></div><em><?php echo $strain['Strain']['cbd'];?>%</em></div><div class="clear"></div>
@@ -249,10 +334,18 @@ $rand2 = rand(100,999);
 <div class="eff">
 <div class="label left" style="width: 16%!important;">THCV</div><div class="left ratewrap" style="width: 73%;background:#FFF;"><div class="length" style="width: <?php echo $strain['Strain']['thcv'];?>%;"></div><em><?php echo $strain['Strain']['thcv'];?>%</em></div><div class="clear"></div>
 </div>        
+<<<<<<< HEAD
 
 <a href="<?php echo $this->webroot;?>strains/review/<?php echo $strain['Strain']['slug'];?>" class="viewall">View All Reviews</a>
 <p>IMAGE FOR <em><?php echo strtoupper($strain['Strain']['name']);?></em></p>
 
+=======
+</div>
+<div class="half second-half">
+<b>IMAGE FOR <em><?php echo strtoupper($strain['Strain']['name']);?></em></b>
+<br />
+<br />
+>>>>>>> c86d1e6f6cce31fb6f7b1a4e935b7e3c4471fe1a
 <?php
 if($strain['StrainImage'])
 {
@@ -270,7 +363,13 @@ $(document).ready(function() {
 $(".fancybox").fancybox();
 });
 </script>
+<<<<<<< HEAD
 
+=======
+</div>
+<div  class="clear"></div>
+</div>
+>>>>>>> c86d1e6f6cce31fb6f7b1a4e935b7e3c4471fe1a
 </div>
 </div>
 

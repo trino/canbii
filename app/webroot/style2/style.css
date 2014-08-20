@@ -34,7 +34,10 @@ body
 }
 a
 {
+<<<<<<< HEAD
 	border-bottom: 1px dotted #3156A3;
+=======
+>>>>>>> c86d1e6f6cce31fb6f7b1a4e935b7e3c4471fe1a
 	color: #3156A3;
 	text-decoration: none;
 	outline: none;
@@ -1254,6 +1257,14 @@ a.social_icon:hover
 	background-color: #3156A3;
 	border-color: #3156A3;
 }
+<<<<<<< HEAD
+=======
+.more.active
+{
+	background-color: #3156A3;
+	border-color: #3156A3;
+}
+>>>>>>> c86d1e6f6cce31fb6f7b1a4e935b7e3c4471fe1a
 .more.light
 {
 	color: #666;
@@ -1916,6 +1927,10 @@ a.social_icon:hover
 	float: left;
 	margin-top: 0;
 	margin-right: 20px;
+<<<<<<< HEAD
+=======
+    height:30px;
+>>>>>>> c86d1e6f6cce31fb6f7b1a4e935b7e3c4471fe1a
 }
 .tabs_navigation2 li:last-child
 {
@@ -1932,9 +1947,16 @@ a.social_icon:hover
 }
 .tabs_navigation2 li a:hover,
 .tabs_navigation2 li a.selected,
+<<<<<<< HEAD
 .tabs_navigation2 li.ui-tabs-active a
 {
 	border-bottom-width: 2px;
+=======
+.tabs_navigation2 li.ui-tabs-active a,
+.searchact
+{
+	border-bottom-width: 2px!important;
+>>>>>>> c86d1e6f6cce31fb6f7b1a4e935b7e3c4471fe1a
 	padding-bottom: 7px;
 }
 /* --- tabs box navigation --- */
@@ -2043,6 +2065,30 @@ a.social_icon:hover
 {
 	width: 223px;
 }
+<<<<<<< HEAD
+=======
+/* --- columns_4 --- */
+.columns_4 .column
+{
+	float: left;
+	width: 210px;
+	margin-left: 30px;
+}
+.columns_4 .column:first-child
+{
+	margin-left: 0;
+}
+.columns_4 .item_content .features_image, .columns_3 .features_image img,
+.features_icons_small .features_image, .features_icons_small .features_image img
+{
+	width: 57px;
+	height: 66px;
+}
+.columns_4 .item_content .text
+{
+	width: 223px;
+}
+>>>>>>> c86d1e6f6cce31fb6f7b1a4e935b7e3c4471fe1a
 /* --- dropcap --- */
 .dropcap
 {
@@ -2863,9 +2909,15 @@ ul.gallery_item_details_list
 .tabs_navigation2 li.ui-tabs-active a,
 .categories li a:hover,
 .scrolling_list li a:hover .number,
+<<<<<<< HEAD
 .controls .close:hover, .controls .prev:hover, .controls .next:hover
 {
 	border-color: #42B3E5;
+=======
+.controls .close:hover, .controls .prev:hover, .controls .next:hover,.searchact
+{
+	border-color: #42B3E5!important;
+>>>>>>> c86d1e6f6cce31fb6f7b1a4e935b7e3c4471fe1a
 	color: #000;
 }
 .bread_crumb li,
@@ -2939,7 +2991,58 @@ a.social_icon,
 {
 	border: none;
 }
+<<<<<<< HEAD
 
 
 
 
+=======
+.block-title{margin-bottom:5px;}
+#qf_review__aesthetics__flavor label,#qf_review__aesthetics__color label,.eff2,.eff3,.sym2{background: none repeat scroll 0 0 #0384CE;
+    border-radius: 4px;
+    color: white;
+    display: inline-block!important;
+    padding: 2px 5px;
+    margin-bottom:5px;
+}
+#qf_review__aesthetics__flavor label,#qf_review__aesthetics__color label,.eff3{padding:9px!important;}
+.sym2{background: #006ab4!important;}
+.searchact2,.eff3.sel{background: #000!important;}
+.one-third{width:33.33%;float:left;text-align:center;}
+.clearfix{clear:both;}
+.dark{background:#0384CE;height:80px;margin:10px 0;}
+.light{background:#42B3E5;height:80px;margin:10px 0;}
+.lighter{background:#5BF0FA;height:80px;margin:10px 0;}
+.dark p,.light p,.lighter p{color:#FFF!important;font-weight:bold;}
+.ptitle{font-weight:bold;}
+.fl{display:inline-block;background:#42B3E5;color:#fff;font-size:20px;text-align:center;padding: 50px;border-radius:30px;}
+.martop25{margin-top:25px;}
+.half{width:45%;float:left;}
+.second-half{margin-left:10%;}
+.clear{clear:both;}
+.left{float:left;}
+.label{width:160px;}
+.half .eff{margin-bottom: 7px;}
+.half p{font-weight:bold!important;}
+.ratewrap{color:#BBB;}
+.length{border-radius:0 5px 5px 0;}
+.one-third .rating{padding-left:25px}
+.half .frate{padding:5px 0;border-bottom:1px solid #fFF;}
+.white{background: #FFF;margin:10px 0;padding:10px;border-radius:5px;}
+.white i{font-size:17px;padding-top:5px;}
+.chemical h2{margin:10px 0 10px 0;}
+#dashboard strong{display:block;margin:15px 0 5px 0;}
+#dashboard select{width:250px;height:25px;}
+#dashboard input[type="text"]{width:240px;height:25px;padding:0 5px;}
+#dashboard input[type="submit"]{float:left!important;}
+.qf-fieldset label{display:block;font-weight: bold;margin-top:35px;}
+#qf_review__other__comments{width:500px;margin-bottom:15px;border:1px solid #CCC;border-radius:4px;}
+.review-slider label{margin-bottom:10px;margin-top:5px!important;}
+.list-review{padding:15px 10px;background:#FFF;width:500px;margin-top:15px;border-radius:10px;}
+.revi h3{margin:15px 0;}
+.rat{margin-top:5px;}
+.list-review p {font-size:17px;font-style: italic;line-height:50%;}
+.names,.dates,.rates{width:150px;}
+.names,.dates{margin-top:5px;}
+.gap .userinfo{padding-bottom:5px;}
+>>>>>>> c86d1e6f6cce31fb6f7b1a4e935b7e3c4471fe1a
