@@ -2967,14 +2967,14 @@ a.social_icon,
 	border: none;
 }
 .block-title{margin-bottom:5px;}
-.eff2,.eff3,.sym2{background: none repeat scroll 0 0 #0384CE;
+#qf_review__aesthetics__flavor label,#qf_review__aesthetics__color label,.eff2,.eff3,.sym2{background: none repeat scroll 0 0 #0384CE;
     border-radius: 4px;
     color: white;
-    display: inline-block;
+    display: inline-block!important;
     padding: 2px 5px;
     margin-bottom:5px;
 }
-.eff3{padding:9px!important;}
+#qf_review__aesthetics__flavor label,#qf_review__aesthetics__color label,.eff3{padding:9px!important;}
 .sym2{background: #006ab4!important;}
 .searchact2,.eff3.sel{background: #000!important;}
 .one-third{width:33.33%;float:left;text-align:center;}
@@ -3007,4 +3007,8 @@ a.social_icon,
 .qf-fieldset label{display:block;font-weight: bold;margin-top:35px;}
 #qf_review__other__comments{width:500px;margin-bottom:15px;border:1px solid #CCC;border-radius:4px;}
 .review-slider label{margin-bottom:10px;margin-top:5px!important;}
+.list-review{padding:15px 10px;background:#FFF;width:500px;margin-top:15px;border-radius:10px;}
+.revi h3{margin:15px 0;}
+.rat{margin-top:5px;}
+.list-review p {font-size:17px;font-style: italic;line-height:50%;}
 

@@ -2,12 +2,6 @@
 <script src="<?php echo $this->webroot;?>js/labs.js"></script>
 <link href="<?php echo $this->webroot;?>css/raty.css" rel="stylesheet" type="text/css" />
 
-
-
-
-
-
-
 <div class="page_layout page_margin_top clearfix">
 	<div class="page_header clearfix">
 		<div class="page_header_left">
