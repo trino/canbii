@@ -35,9 +35,9 @@
 
 	<div class="clearfix page_margin_top ">
 
-
-<a title="Read more"  href="<?php echo $this->webroot;?>users/settings" class="more large dark_blue icon_small_arrow margin_right_white">Settings</a>
-<a title="Read more" href="<?php echo $this->webroot;?>review"  class="more large dark_blue icon_small_arrow margin_right_white margin_left_10">Add Review</a>
+<a title="Read more"  href="<?php echo $this->webroot;?>users/dashboard" class="more large dark_blue icon_small_arrow margin_right_white">Dashboard</a>
+<a title="Read more"  href="<?php echo $this->webroot;?>users/settings" class="more large dark_blue icon_small_arrow margin_right_white margin_left_10">Settings</a>
+<a title="Read more" href="<?php echo $this->webroot;?>review"  class="active more large dark_blue icon_small_arrow margin_right_white margin_left_10">Add Review</a>
 <a title="Read more" href="<?php echo $this->webroot;?>review/all"  class="more large dark_blue icon_small_arrow margin_right_white margin_left_10">My Review</a>
 <div class="clearfix"></div>
 
@@ -50,7 +50,7 @@
 
 <fieldset id="qf_review__general" class="qf-fieldset">
 
-<h2 class="box_header slide page_margin_top">
+<h2 class="slide page_margin_top">
 General Rating
 </h2>
 
@@ -102,14 +102,14 @@ General Rating
 
 <fieldset id="qf_review__effects" class="qf-fieldset">
 
-<h2 class="box_header slide page_margin_top">
+<h2 class="slide page_margin_top">
 Effects Rating
 </h2>
 
 <div class="clear"> </div>
 
 
-<h3 class="box_header slide page_margin_top">
+<h3 class="slide page_margin_top">
 Medicinal Effects
 </h3>
 
@@ -120,7 +120,7 @@ Medicinal Effects
 <?php foreach($symptoms as $effect)
 {
 ?>
-<a href="javascript:void(0);" onclick="($(this).hasClass('sel'))?$(this).removeClass('sel'):$(this).addClass('sel');" title="<?php echo $effect['Symptom']['id'];?>" class="btn qf_review__effects__medical"><?php echo ucfirst($effect['Symptom']['title']);?></a>
+<a href="javascript:void(0);" onclick="($(this).hasClass('sel'))?$(this).removeClass('sel'):$(this).addClass('sel');" title="<?php echo $effect['Symptom']['id'];?>" class="eff3 btn qf_review__effects__medical"><?php echo ucfirst($effect['Symptom']['title']);?></a>
 <?php
 }
 ?>
@@ -128,7 +128,7 @@ Medicinal Effects
 
 <div class="clear"></div>
 
-<h3 class="box_header slide page_margin_top">
+<h3 class="slide page_margin_top">
 Positive Effects
 </h3>
 
@@ -136,12 +136,12 @@ Positive Effects
 
 <span id="qf_review__effects__positive__inner">
 <?php foreach($effects as $effect)
-{?> <a href="javascript:void(0);" onclick="($(this).hasClass('sel'))?$(this).removeClass('sel'):$(this).addClass('sel')" title="<?php echo $effect['Effect']['id'];?>" class="btn qf_review__effects__positive"><?php echo ucfirst($effect['Effect']['title']);?></a>
+{?> <a href="javascript:void(0);" onclick="($(this).hasClass('sel'))?$(this).removeClass('sel'):$(this).addClass('sel')" title="<?php echo $effect['Effect']['id'];?>" class="eff3 btn qf_review__effects__positive"><?php echo ucfirst($effect['Effect']['title']);?></a>
 <?php }
 ?>
 </span>
 
-<h3 class="box_header slide page_margin_top">
+<h3 class="slide page_margin_top">
 Negative Effects
 </h3>
 
@@ -152,7 +152,7 @@ Negative Effects
 
 
 <?php foreach($negative as $effect)
-{?> <a href="javascript:void(0);" onclick="($(this).hasClass('sel'))?$(this).removeClass('sel'):$(this).addClass('sel')" title="<?php echo $effect['Effect']['id'];?>" class="btn btn-info qf_review__effects__negative"><?php echo ucfirst($effect['Effect']['title']);?></a>
+{?> <a href="javascript:void(0);" onclick="($(this).hasClass('sel'))?$(this).removeClass('sel'):$(this).addClass('sel')" title="<?php echo $effect['Effect']['id'];?>" class="eff3 btn btn-info qf_review__effects__negative"><?php echo ucfirst($effect['Effect']['title']);?></a>
 <?php }
 ?>
 
@@ -164,14 +164,14 @@ Negative Effects
 
 <fieldset id="qf_review__aesthetics" class="qf-fieldset">
 
-<h2 class="box_header slide page_margin_top">
+<h2 class="slide page_margin_top">
 Aesthetic Rating
 </h2>
 
 
 
 
-<h3 class="box_header slide page_margin_top">
+<h3 class="slide page_margin_top">
 Color
 </h3>
 
@@ -180,7 +180,7 @@ Color
 
 <span  id="qf_review__aesthetics__color__inner">
 <?php foreach($colours as $colour)
-{?> <a href="javascript:void(0);" onclick="($(this).hasClass('sel'))?$(this).removeClass('sel'):$(this).addClass('sel')" title="<?php echo $colour['Colour']['id'];?>" class="btn btn-info qf_review__aesthetics__color"><?php echo ucfirst($colour['Colour']['title']);?></a>
+{?> <a href="javascript:void(0);" onclick="($(this).hasClass('sel'))?$(this).removeClass('sel'):$(this).addClass('sel')" title="<?php echo $colour['Colour']['id'];?>" class="eff3 btn btn-info qf_review__aesthetics__color"><?php echo ucfirst($colour['Colour']['title']);?></a>
 <?php }
 ?>
 
@@ -192,7 +192,7 @@ Color
 
 <div class="clear"> </div>
 
-<h3 class="box_header slide page_margin_top">
+<h3 class="slide page_margin_top">
 Flavor / Scent
 </h3>
 
@@ -202,7 +202,7 @@ Flavor / Scent
 
 <span id="qf_review__aesthetics__flavor__inner">
 <?php foreach($flavors as $flavor)
-{?> <a href="javascript:void(0);" onclick="($(this).hasClass('sel'))?$(this).removeClass('sel'):$(this).addClass('sel')" title="<?php echo $flavor['Flavor']['id'];?>" class="btn btn-info qf_review__aesthetics__flavor"><?php echo ucfirst($flavor['Flavor']['title']);?></a>
+{?> <a href="javascript:void(0);" onclick="($(this).hasClass('sel'))?$(this).removeClass('sel'):$(this).addClass('sel')" title="<?php echo $flavor['Flavor']['id'];?>" class="eff3 btn btn-info qf_review__aesthetics__flavor"><?php echo ucfirst($flavor['Flavor']['title']);?></a>
 <?php }
 ?>
 
@@ -216,7 +216,7 @@ Flavor / Scent
 
 
 
-<h2 class="box_header slide page_margin_top">
+<h2 class="slide page_margin_top">
 Comments, etc.
 </h2>
 
@@ -242,7 +242,7 @@ Comments, etc.
 <textarea title="Comments" rows="8" maxlength="4000" name="review" id="qf_review__other__comments" class="qf-maxlength-4000 qf-required qf-textarea" required="required"></textarea>
 
 <div class="submit">
-<input type="submit" name="submit" value="Save My Review" class="button"/>
+<input type="submit" name="submit" value="Save My Review" class="button more blue"/>
 </div>
 
 

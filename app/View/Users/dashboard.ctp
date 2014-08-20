@@ -51,7 +51,7 @@
 <div class="clearfix page_margin_top">
 
 
-<a title="Read more"  href="<?php echo $this->webroot;?>users/dashboard" class="more large dark_blue icon_small_arrow margin_right_white">Dashboard</a>
+<a title="Read more"  href="<?php echo $this->webroot;?>users/dashboard" class="active more large dark_blue icon_small_arrow margin_right_white">Dashboard</a>
 <a title="Read more"  href="<?php echo $this->webroot;?>users/settings" class="more large dark_blue icon_small_arrow margin_right_white margin_left_10">Settings</a>
 <a title="Read more" href="<?php echo $this->webroot;?>review"  class="more large dark_blue icon_small_arrow margin_right_white margin_left_10">Add Review</a>
 <a title="Read more" href="<?php echo $this->webroot;?>review/all"  class="more large dark_blue icon_small_arrow margin_right_white margin_left_10">My Reviews</a>
