@@ -94,15 +94,15 @@ Strain Types
 <div class="text">
 
 <h3>
-<a href="?page=about" title="Lorem ipsum">
+<a href="<?php echo $this->webroot;?>strains/all/indica" title="Browse Strains">
 Indica
 </a>
 </h3>
 
 Indica plants typically grow short and wide. Indica plants are better suited for indoor growing because of their short growth. The smoking of Indica bud will make you sleepy and provides a deep relaxation feeling. This type of strain has great medecal benefit as well as treatment to certain illness.
 <div class="item_footer clearfix">
-<a title="Read more" href="?page=about" class="more">
-Read more →
+<a title="Browse Strains" href="<?php echo $this->webroot;?>strains/all/indica" class="more">
+Browse Strains →
 </a>
 </div>
 </div>
@@ -121,7 +121,7 @@ Read more →
 <div class="text">
 
 <h3>
-<a href="?page=about" title="Lorem ipsum">
+<a href="<?php echo $this->webroot;?>strains/all/sativa" title="Browse Strains">
 Sativa
 </a>
 </h3>
@@ -129,8 +129,8 @@ Sativa
 
 Sativa plants grow tall and thin. sativa plants are better suited for outdoor growing because some strains can reach over 25 ft. in height. Sativa smoking is known for its energetic and uplifting feeling. This type of strain has great medecal benefit as well as treatment to certain illness.
 <div class="item_footer clearfix">
-<a title="Read more" href="?page=about" class="more">
-Read more →
+<a title="Browse Strains" href="<?php echo $this->webroot;?>strains/all/sativa" class="more">
+Browse Strains →
 </a>
 </div>
 </div>
@@ -144,15 +144,15 @@ Read more →
 <div class="text">
 
 <h3>
-<a href="?page=about" title="Lorem ipsum">
+<a href="<?php echo $this->webroot;?>strains/all/hybrid" title="Browse Strains">
 Hybrid
 </a>
 </h3>
 
 Sativa and Indica are the two major types of cannabis plants which can mix together to create hybrid strains. Marijuana strains range from pure sativas to pure indicas and hybrid strains consisting of both indica and sativa (30% indica – 70% sativa, 50% – 50% combinations, 80% indica – 20% sativa).
 <div class="item_footer clearfix">
-<a title="Read more" href="?page=about" class="more">
-Read more →
+<a title="Browse Strains" href="<?php echo $this->webroot;?>strains/all/hybrid" class="more">
+Browse Strains →
 </a>
 </div>
 
