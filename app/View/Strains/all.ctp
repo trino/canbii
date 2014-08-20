@@ -324,11 +324,11 @@ foreach($effect as $e)
     $('.sym2').click(function(){
         
         var sort =0;
-if($(this).attr('class').replace('searchact','')==$(this).attr('class'))
+if($(this).attr('class').replace('searchact2','')==$(this).attr('class'))
 {
         
-    $(this).addClass('searchact');
-    $('.effe').append('<input type="hidden" name="symptoms[]" value="'+$(this).attr('id').replace('sym_','')+'" class="symps '+$(this).attr('id')+'"  />')}else{$(this).removeClass('searchact')
+    $(this).addClass('searchact2');
+    $('.effe').append('<input type="hidden" name="symptoms[]" value="'+$(this).attr('id').replace('sym_','')+'" class="symps '+$(this).attr('id')+'"  />')}else{$(this).removeClass('searchact2')
    
         $('.'+$(this).attr('id')).remove();
     }
@@ -369,7 +369,7 @@ if($(this).attr('class').replace('searchact','')==$(this).attr('class'))
          
         
         $.ajax({
-           url:'filter',
+           url:'<?php echo $this->webroot;?>strains/filter',
            data:val,
            type:'get',
            success:function(res){
@@ -387,11 +387,11 @@ if($(this).attr('class').replace('searchact','')==$(this).attr('class'))
 
     $('.eff2').click(function(){
         var sort =0;
-if($(this).attr('class').replace('searchact','')==$(this).attr('class'))
+if($(this).attr('class').replace('searchact2','')==$(this).attr('class'))
 {
         
-    $(this).addClass('searchact');
-    $('.effe').append('<input type="hidden" name="effects[]" value="'+$(this).attr('id').replace('eff_','')+'" class="effs '+$(this).attr('id')+'"  />')}else{$(this).removeClass('searchact')
+    $(this).addClass('searchact2');
+    $('.effe').append('<input type="hidden" name="effects[]" value="'+$(this).attr('id').replace('eff_','')+'" class="effs '+$(this).attr('id')+'"  />')}else{$(this).removeClass('searchact2')
    
         $('.'+$(this).attr('id')).remove();
     }
@@ -432,7 +432,7 @@ if($(this).attr('class').replace('searchact','')==$(this).attr('class'))
          
         
         $.ajax({
-           url:'filter',
+           url:'<?php echo $this->webroot;?>strains/filter',
            data:val,
            type:'get',
            success:function(res){
@@ -505,7 +505,7 @@ if($(this).attr('class').replace('searchact','')==$(this).attr('class'))
          
         
         $.ajax({
-           url:'filter',
+           url:'<?php echo $this->webroot;?>strains/filter',
            data:val,
            type:'get',
            success:function(res){

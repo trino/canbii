@@ -2941,7 +2941,15 @@ a.social_icon,
 	border: none;
 }
 .block-title{margin-bottom:5px;}
-
+.eff2,.sym2{background: none repeat scroll 0 0 #0384CE;
+    border-radius: 4px;
+    color: white;
+    display: inline-block;
+    padding: 2px 5px;
+    margin-bottom:5px;
+}
+.sym2{background: #006ab4!important;}
+.searchact2{background: #000!important;}
 
 
 
