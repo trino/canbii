@@ -3011,4 +3011,6 @@ a.social_icon,
 .revi h3{margin:15px 0;}
 .rat{margin-top:5px;}
 .list-review p {font-size:17px;font-style: italic;line-height:50%;}
-
+.names,.dates,.rates{width:150px;}
+.names,.dates{margin-top:5px;}
+.gap .userinfo{padding-bottom:5px;}

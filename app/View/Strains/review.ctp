@@ -14,7 +14,7 @@ if($review)
     {
         $i++;
         ?>
-        <div class="rev <?php if($i%2==1){?>leftcontents left<?php }else{?>rightcontents left<?php }?>">
+        <div class="list-review">
             
             <div class="gap">
             <?php if($r){?>
