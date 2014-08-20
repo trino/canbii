@@ -189,6 +189,7 @@ Latest Strains
 if($strain)
 {
 ?>
+<div class="columns columns_4 page_margin_top clearfix">
 
 <?php
 $j=0;
@@ -196,8 +197,9 @@ foreach($strain as $s)
 {
 $j++;
 ?>
+<ul class="column">
+<li class="item_content clearfix">
 
-<div style="float:left;width:23%;margin-right:1%;">
 
 
 <div style="float:left;background-image: url('images/features_small/icon.png');width:57px;height:66px;margin-right:10px;">
@@ -260,7 +262,9 @@ Outpatient surgery
 
 </div>
 
-</div>
+
+</li>
+</ul>
 
 <?
 if(false){
@@ -339,5 +343,5 @@ John Doe
 <?php
 }
 ?>
-
+</div>
 </div></div>
