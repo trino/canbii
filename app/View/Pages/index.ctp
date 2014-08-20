@@ -221,15 +221,15 @@ else echo strtolower($na[0]);
 
 
 <div style="float:left;">
-<h3>
+<h3 class="block-title">
 <a href="<?php echo $this->webroot?>strains/<?php echo $s['Strain']['slug'];?>">
 <?php echo $s['Strain']['name'];?>
 </a>
 </h3>
 
 <ul class="">
-<li>Posted in</li>
-<li>
+<li><?php echo $s['StrainType']['title'];?></li>
+<!--<li>
 <a href="#" title="General">
 General,
 </a>
@@ -238,7 +238,7 @@ General,
 <a href="#" title="Outpatient surgery">
 Outpatient surgery
 </a>
-</li>
+</li>-->
 </ul>
 
 
@@ -251,16 +251,9 @@ Outpatient surgery
 </p>
 
 <ul class="post_footer_details">
-<li>Posted in</li>
+<li>Added on</li>
 <li>
-<a href="#" title="General">
-General,
-</a>
-</li>
-<li>
-<a href="#" title="Outpatient surgery">
-Outpatient surgery
-</a>
+<?php echo $s['Strain']['published_date'];?>
 </li>
 </ul>
 

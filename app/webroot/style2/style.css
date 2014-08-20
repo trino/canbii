@@ -34,7 +34,6 @@ body
 }
 a
 {
-	border-bottom: 1px dotted #3156A3;
 	color: #3156A3;
 	text-decoration: none;
 	outline: none;
@@ -1916,6 +1915,7 @@ a.social_icon:hover
 	float: left;
 	margin-top: 0;
 	margin-right: 20px;
+    height:30px;
 }
 .tabs_navigation2 li:last-child
 {
@@ -1932,9 +1932,10 @@ a.social_icon:hover
 }
 .tabs_navigation2 li a:hover,
 .tabs_navigation2 li a.selected,
-.tabs_navigation2 li.ui-tabs-active a
+.tabs_navigation2 li.ui-tabs-active a,
+.searchact
 {
-	border-bottom-width: 2px;
+	border-bottom-width: 2px!important;
 	padding-bottom: 7px;
 }
 /* --- tabs box navigation --- */
@@ -2863,9 +2864,9 @@ ul.gallery_item_details_list
 .tabs_navigation2 li.ui-tabs-active a,
 .categories li a:hover,
 .scrolling_list li a:hover .number,
-.controls .close:hover, .controls .prev:hover, .controls .next:hover
+.controls .close:hover, .controls .prev:hover, .controls .next:hover,.searchact
 {
-	border-color: #42B3E5;
+	border-color: #42B3E5!important;
 	color: #000;
 }
 .bread_crumb li,
@@ -2939,6 +2940,7 @@ a.social_icon,
 {
 	border: none;
 }
+.block-title{margin-bottom:5px;}
 
 
 
