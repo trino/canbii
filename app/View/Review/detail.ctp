@@ -96,10 +96,11 @@
 <div class="qf-select review-selector" id="qf_review__effects__medical">
 <?php foreach($review['SymptomRating'] as $effect)
 {?> 
- <div id="efft_<?php echo $effect['id'];?>" class="review-slider"><label><?php echo $symptoms[$effect['symptom_id']-1]['Symptom']['title'];?></label>
- <div class="slider" id="<?php echo $effect['id'];?>s"></div><p><?php echo $effect['rate'];?>/10</p><div class="clear"> </div></div>   
+ <div id="efft_<?php echo $effect['id'];?>er" class="review-slider"><label><?php echo $symptoms[$effect['symptom_id']-1]['Symptom']['title'];?></label>
+ <div  id="<?php echo $effect['id'];?>er"></div><p><?php echo $effect['rate'];?>/10</p><div class="clear"> </div></div>   
 <script>
-    $('#<?php echo $effect['id'];?>s').slider({
+$(function(){
+    $('#<?php echo $effect['id'];?>er').slider({
 			range: "min",
             disabled: true,
 			value: <?php echo $effect['rate'];?>,
@@ -110,6 +111,7 @@
 				$('#'+id+'i').val(ui.value);
 			}
 		});
+        });
 </script>
 <?php }
 ?>
@@ -139,10 +141,10 @@ foreach($effects as $e)
 foreach($review['EffectRating'] as $effect)
 {
     if(in_array($effect['effect_id'],$pos)){?> 
-     <div id="efft_<?php echo $effect['id'];?>" class="review-slider"><label><?php echo $effects[$effect['effect_id']-1]['Effect']['title'];?></label>
-     <div class="slider" id="<?php echo $effect['id'];?>s"></div><p><?php echo $effect['rate'];?>/10</p><div class="clear"> </div></div>   
+     <div id="efft_<?php echo $effect['id'];?>pe" class="review-slider"><label><?php echo $effects[$effect['effect_id']-1]['Effect']['title'];?></label>
+     <div  id="<?php echo $effect['id'];?>pe"></div><p><?php echo $effect['rate'];?>/10</p><div class="clear"> </div></div>   
     <script>
-        $('#<?php echo $effect['id'];?>s').slider({
+        $('#<?php echo $effect['id'];?>pe').slider({
     			range: "min",
                 disabled: true,
     			value: <?php echo $effect['rate'];?>,
@@ -184,10 +186,10 @@ foreach($negative as $e)
 foreach($review['EffectRating'] as $effect)
 {
     if(in_array($effect['effect_id'],$pos)){?> 
-     <div id="efft_<?php echo $effect['id'];?>" class="review-slider"><label><?php echo $effectz[$effect['effect_id']-1]['Effect']['title'];?></label>
-     <div class="slider" id="<?php echo $effect['id'];?>s"></div><p><?php echo $effect['rate'];?>/10</p><div class="clear"> </div></div>   
+     <div id="efft_<?php echo $effect['id'];?>ne" class="review-slider"><label><?php echo $effectz[$effect['effect_id']-1]['Effect']['title'];?></label>
+     <div  id="<?php echo $effect['id'];?>ne"></div><p><?php echo $effect['rate'];?>/10</p><div class="clear"> </div></div>   
     <script>
-        $('#<?php echo $effect['id'];?>s').slider({
+        $('#<?php echo $effect['id'];?>ne').slider({
     			range: "min",
                 disabled: true,
     			value: <?php echo $effect['rate'];?>,

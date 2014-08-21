@@ -160,6 +160,7 @@
             {
                 $st = $this->Strain->findById($id);
                 $overallrate = ($st['Strain']['rating']+$rate)/2;
+                $overallrate = round($overallrate,2);
                 //return $overallrate;
                 $this->Strain->id = $st['Strain']['id'];
                 $this->Strain->saveField('rating',$overallrate);

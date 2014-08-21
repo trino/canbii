@@ -209,13 +209,13 @@ $duration = ($duration/$count)*10;
 
 
 <div class="eff">
-<div class="label left">Length</div><div class="left ratewrap"><div class="length" style="width: <?php echo $scale;?>%;"></div><em><?php echo $scale/10;?>/10</em></div><div class="clear"></div>
+<div class="label left">Length</div><div class="left ratewrap"><div class="length" style="width: <?php echo round($scale,2);?>%;"></div><em><?php echo round($scale/10,2);?>/10</em></div><div class="clear"></div>
 </div>
 <div class="eff">
-<div class="label left">Strength</div><div class="left ratewrap" style="width: 63%;background:#FFF;"><div class="length" style="width: <?php echo $strength;?>%;"></div><em><?php echo $strength/10;?>/10</em></div><div class="clear"></div>
+<div class="label left">Strength</div><div class="left ratewrap" style="width: 63%;background:#FFF;"><div class="length" style="width: <?php echo round($strength,2);?>%;"></div><em><?php echo round($strength/10,2);?>/10</em></div><div class="clear"></div>
 </div>
 <div class="eff">
-<div class="label left">Duration</div><div class="left ratewrap" style="width: 63%;background:#FFF;"><div class="length" style="width: <?php echo $duration;?>%;"></div><em><?php echo $duration/10;?>/10</em></div><div class="clear"></div>
+<div class="label left">Duration</div><div class="left ratewrap" style="width: 63%;background:#FFF;"><div class="length" style="width: <?php echo round($duration,2);?>%;"></div><em><?php echo round($duration/10,2);?>/10</em></div><div class="clear"></div>
 </div>        
 
 <?php

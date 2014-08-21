@@ -2984,7 +2984,7 @@ a.social_icon,
 .lighter{background:#5BF0FA;height:80px;margin:10px 0;}
 .dark p,.light p,.lighter p{color:#FFF!important;font-weight:bold;}
 .ptitle{font-weight:bold;}
-.fl{display:inline-block;background:#42B3E5;color:#fff;font-size:20px;text-align:center;padding: 50px;border-radius:30px;}
+.fl{display:inline-block;background:#42B3E5;color:#fff;font-size:20px;text-align:center;padding: 5px;}
 .martop25{margin-top:25px;}
 .half{width:45%;float:left;}
 .second-half{margin-left:10%;}

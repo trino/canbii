@@ -95,34 +95,33 @@
 					<?php if(!$this->Session->read('User')){?>
 					<li><a href="<?php echo $this->webroot;?>users/register" accesskey="4" title="">Login / Register</a></li>
 					<?php }else{?>
-					
-					
-		
-					
-					
-						<li class="submenu<?php echo (isset($_GET['page'])&& ($_GET["page"]=="" || $_GET["page"]=="home") ? " selected" : ""); ?>">
-<a href="<?php echo $this->webroot;?>users/dashboard" accesskey="4" title=""><?=ucfirst($this->Session->read('User.username'))?> Dashboard</a>
+					<li class="submenu<?php echo (isset($_GET['page'])&& ($_GET["page"]=="" || $_GET["page"]=="home") ? " selected" : ""); ?>">
+                        <a href="<?php echo $this->webroot;?>users/dashboard" accesskey="4" title=""><?=ucfirst($this->Session->read('User.username'))?> Dashboard</a>
 						<ul>
-														<li<?php echo (isset($_GET['page'])&&$_GET["page"]=="home" ? " class='selected'" : ""); ?>>
-
-							<a href="<?php echo $this->webroot;?>users/logout" accesskey="5" title="">Logout</a>
-														</li>
+                            <li<?php echo (isset($_GET['page'])&&$_GET["page"]=="home" ? " class='selected'" : ""); ?>>
+                            <a href="<?php echo $this->webroot;?>users/logout" accesskey="5" title="">Logout</a>
+							</li>
 
 						</ul>
 					</li>
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
+				
 					<?php }?>
 					</ul>
+                    <div class="mobile_menu">
+    	               <select> 
+                        <option value="<?php echo $this->webroot?>">Home</option>
+                        <option value="<?php echo $this->webroot?>strains/all" >Strains</option>
+    					<option value="<?php echo $this->webroot;?>pages/about_us" >About Us</option>
+    					<option value="<?php echo $this->webroot;?>pages/contact_us" >Contact Us</option>
+    					<?php if(!$this->Session->read('User')){?>
+    					<option value="<?php echo $this->webroot;?>users/register" >Login / Register</option>
+    					<?php }else{?>
+    					<option value="<?php echo $this->webroot;?>users/dashboard" ><?=ucfirst($this->Session->read('User.username'))?> Dashboard</option>
+						<option value="<?php echo $this->webroot;?>users/logout" >Logout</option>
+						<?php }?>	
+                       </select>
+                    </div>
+
 				</div>
 			</div>
 
