@@ -1,7 +1,21 @@
 .message{background: url('../images/notification_error.png') no-repeat 20px center #EB6D58;
 padding: 20px 30px 20px 80px;
 line-height: 150%;}
-
+.good { 
+background: #e5f2be; 
+border:2px solid #bedf5d; 
+padding:10px; 
+font-weight:bold;
+}
+.bad { 
+background: #eccecf;
+border:2px solid #9e0b0f;
+padding:10px;
+font-weight:bold;
+}
+.good img, .bad img {
+float:right;
+}
 /* --- general --- */
 .clearfix:after
 {

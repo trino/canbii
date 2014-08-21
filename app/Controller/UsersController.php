@@ -19,13 +19,14 @@ class UsersController extends AppController {
                 $this->Session->write('User.username',$_POST['username']);
                 $this->Session->write('User.email',$user['User']['email']);
                 $this->Session->write('User.id',$user['User']['id']);
+                
                 if(isset($_GET['url']))
                     $this->redirect(str_replace('http:/localhost/marijuana','http://localhost',$_GET['url']));
                 else
                 $this->redirect('dashboard');
             }
             else
-                $this->Session->setFlash(__('Invalid username or password, try again'));
+                $this->Session->setFlash(__('Invalid username or password, try again', 'default', array('class' => 'bad')));
         }
         $this->render('register');
     }
@@ -45,14 +46,15 @@ class UsersController extends AppController {
             $user['email'] = $_POST['User']['email'];
             $user['password'] = $_POST['User']['password'];
             $this->User->create();
-            if ($this->User->save($user)) {
+            if ($this->User->save($user)) 
+            {
                 $this->Session->write('User.username',$user['username']);
                 $this->Session->write('User.email',$user['email']);
                 $this->Session->write('User.id',$this->User->id);
-                $this->Session->setFlash('You have been registered succesfully.','alert-box',array('class'=>'alert alert-success alert-dismissable'),'save');
+                $this->Session->setFlash('You have been registered succesfully.', 'default', array('class' => 'good'));
                 $this->redirect('dashboard');
             }
-           $this->Session->setFlash('User could not be added','alert-box',array('class'=>'alert alert-warning alert-dismissable'),'warning');
+           $this->Session->setFlash('User could not be added', 'default', array('class' => 'bad'));
         }
     }
     
@@ -75,7 +77,7 @@ class UsersController extends AppController {
             {
                 $this->User->saveField($k,$v);
             }
-            $this->Session->setFlash('Profile saved successfully.','alert-box',array('class'=>'alert alert-success alert-dismissable'),'save');
+            $this->Session->setFlash('Profile saved successfully.', 'default', array('class' => 'good'));
             $this->redirect('dashboard');
             
         }
@@ -97,7 +99,7 @@ class UsersController extends AppController {
                 $ch = $this->User->find('first',array('conditions'=>array('username'=>$_POST['username'],'id<>'.$user['User']['id'])));
                 if($ch)
                 {
-                    $this->Session->setFlash('Username Already Taken.');
+                    $this->Session->setFlash('Username Already Taken.', 'default', array('class' => 'bad'));
                     $this->redirect('settings');
                 }
             }
@@ -106,7 +108,7 @@ class UsersController extends AppController {
                 $ch = $this->User->find('first',array('conditions'=>array('email'=>$_POST['email'],'id<>'.$user['User']['id'])));
                 if($ch)
                 {
-                    $this->Session->setFlash('Email Already Taken.');
+                    $this->Session->setFlash('Email Already Taken.', 'default', array('class' => 'bad'));
                     $this->redirect('settings');
                 }
             }
@@ -125,13 +127,13 @@ class UsersController extends AppController {
                         $this->User->saveField($k,$v);
                     }
                     
-                        $this->Session->setFlash("Settings Saved.");
+                        $this->Session->setFlash("Settings Saved.", 'default', array('class' => 'good'));
                         $this->redirect("dashboard");    
                     
                 }
                 else
                 {
-                    $this->Session->setFlash('Old Password Does Not Match!');
+                    $this->Session->setFlash('Old Password Does Not Match!', 'default', array('class' => 'bad'));
                     $this->redirect('settings');
                 }
             }
@@ -161,11 +163,11 @@ class UsersController extends AppController {
                 $msg .= "Regards,<br/>MARIJUANA.COM";
                 $emails->send($msg);
                 
-                $this->Session->setFlash('Password has been sent to '.$_POST['email']);
+                $this->Session->setFlash('Password has been sent to '.$_POST['email'], 'default', array('class' => 'good'));
             }
             else
             {
-                $this->Session->setFlash('We could not find the email associated to MARIJUANA.COM');
+                $this->Session->setFlash('We could not find the email associated to MARIJUANA.COM', 'default', array('class' => 'bad'));
             }
             $this->redirect('forgot');
         }
