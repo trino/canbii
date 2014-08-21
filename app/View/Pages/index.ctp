@@ -94,24 +94,15 @@ Strain Types
 <div class="text">
 
 <h3>
-<<<<<<< HEAD
-<a href="?page=about" title="Lorem ipsum">
-=======
 <a href="<?php echo $this->webroot;?>strains/all/indica" title="Browse Strains">
->>>>>>> c86d1e6f6cce31fb6f7b1a4e935b7e3c4471fe1a
 Indica
 </a>
 </h3>
 
 Indica plants typically grow short and wide. Indica plants are better suited for indoor growing because of their short growth. The smoking of Indica bud will make you sleepy and provides a deep relaxation feeling. This type of strain has great medecal benefit as well as treatment to certain illness.
 <div class="item_footer clearfix">
-<<<<<<< HEAD
-<a title="Read more" href="?page=about" class="more">
-Read more →
-=======
 <a title="Browse Strains" href="<?php echo $this->webroot;?>strains/all/indica" class="more">
 Browse Strains →
->>>>>>> c86d1e6f6cce31fb6f7b1a4e935b7e3c4471fe1a
 </a>
 </div>
 </div>
@@ -130,11 +121,7 @@ Browse Strains →
 <div class="text">
 
 <h3>
-<<<<<<< HEAD
-<a href="?page=about" title="Lorem ipsum">
-=======
 <a href="<?php echo $this->webroot;?>strains/all/sativa" title="Browse Strains">
->>>>>>> c86d1e6f6cce31fb6f7b1a4e935b7e3c4471fe1a
 Sativa
 </a>
 </h3>
@@ -142,13 +129,8 @@ Sativa
 
 Sativa plants grow tall and thin. sativa plants are better suited for outdoor growing because some strains can reach over 25 ft. in height. Sativa smoking is known for its energetic and uplifting feeling. This type of strain has great medecal benefit as well as treatment to certain illness.
 <div class="item_footer clearfix">
-<<<<<<< HEAD
-<a title="Read more" href="?page=about" class="more">
-Read more →
-=======
 <a title="Browse Strains" href="<?php echo $this->webroot;?>strains/all/sativa" class="more">
 Browse Strains →
->>>>>>> c86d1e6f6cce31fb6f7b1a4e935b7e3c4471fe1a
 </a>
 </div>
 </div>
@@ -162,24 +144,15 @@ Browse Strains →
 <div class="text">
 
 <h3>
-<<<<<<< HEAD
-<a href="?page=about" title="Lorem ipsum">
-=======
 <a href="<?php echo $this->webroot;?>strains/all/hybrid" title="Browse Strains">
->>>>>>> c86d1e6f6cce31fb6f7b1a4e935b7e3c4471fe1a
 Hybrid
 </a>
 </h3>
 
 Sativa and Indica are the two major types of cannabis plants which can mix together to create hybrid strains. Marijuana strains range from pure sativas to pure indicas and hybrid strains consisting of both indica and sativa (30% indica – 70% sativa, 50% – 50% combinations, 80% indica – 20% sativa).
 <div class="item_footer clearfix">
-<<<<<<< HEAD
-<a title="Read more" href="?page=about" class="more">
-Read more →
-=======
 <a title="Browse Strains" href="<?php echo $this->webroot;?>strains/all/hybrid" class="more">
 Browse Strains →
->>>>>>> c86d1e6f6cce31fb6f7b1a4e935b7e3c4471fe1a
 </a>
 </div>
 
@@ -216,10 +189,7 @@ Latest Strains
 if($strain)
 {
 ?>
-<<<<<<< HEAD
-=======
 <div class="columns columns_4 page_margin_top clearfix">
->>>>>>> c86d1e6f6cce31fb6f7b1a4e935b7e3c4471fe1a
 
 <?php
 $j=0;
@@ -227,14 +197,9 @@ foreach($strain as $s)
 {
 $j++;
 ?>
-<<<<<<< HEAD
-
-<div style="float:left;width:23%;margin-right:1%;">
-=======
 <ul class="column">
 <li class="item_content clearfix">
 
->>>>>>> c86d1e6f6cce31fb6f7b1a4e935b7e3c4471fe1a
 
 
 <div style="float:left;background-image: url('images/features_small/icon.png');width:57px;height:66px;margin-right:10px;">
@@ -258,24 +223,15 @@ else echo strtolower($na[0]);
 
 
 <div style="float:left;">
-<<<<<<< HEAD
-<h3>
-=======
 <h3 class="block-title">
->>>>>>> c86d1e6f6cce31fb6f7b1a4e935b7e3c4471fe1a
 <a href="<?php echo $this->webroot?>strains/<?php echo $s['Strain']['slug'];?>">
 <?php echo $s['Strain']['name'];?>
 </a>
 </h3>
 
 <ul class="">
-<<<<<<< HEAD
-<li>Posted in</li>
-<li>
-=======
 <li><?php echo $s['StrainType']['title'];?></li>
 <!--<li>
->>>>>>> c86d1e6f6cce31fb6f7b1a4e935b7e3c4471fe1a
 <a href="#" title="General">
 General,
 </a>
@@ -284,11 +240,7 @@ General,
 <a href="#" title="Outpatient surgery">
 Outpatient surgery
 </a>
-<<<<<<< HEAD
-</li>
-=======
 </li>-->
->>>>>>> c86d1e6f6cce31fb6f7b1a4e935b7e3c4471fe1a
 </ul>
 
 
@@ -301,35 +253,18 @@ Outpatient surgery
 </p>
 
 <ul class="post_footer_details">
-<<<<<<< HEAD
-<li>Posted in</li>
-<li>
-<a href="#" title="General">
-General,
-</a>
-</li>
-<li>
-<a href="#" title="Outpatient surgery">
-Outpatient surgery
-</a>
-=======
 <li>Added on</li>
 <li>
 <?php echo $s['Strain']['published_date'];?>
->>>>>>> c86d1e6f6cce31fb6f7b1a4e935b7e3c4471fe1a
 </li>
 </ul>
 
 
 </div>
 
-<<<<<<< HEAD
-</div>
-=======
 
 </li>
 </ul>
->>>>>>> c86d1e6f6cce31fb6f7b1a4e935b7e3c4471fe1a
 
 <?
 if(false){
@@ -408,9 +343,5 @@ John Doe
 <?php
 }
 ?>
-<<<<<<< HEAD
-
-=======
 </div>
->>>>>>> c86d1e6f6cce31fb6f7b1a4e935b7e3c4471fe1a
 </div></div>

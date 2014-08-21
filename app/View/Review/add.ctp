@@ -2,15 +2,6 @@
 <script src="<?php echo $this->webroot;?>js/labs.js"></script>
 <link href="<?php echo $this->webroot;?>css/raty.css" rel="stylesheet" type="text/css" />
 
-<<<<<<< HEAD
-
-
-
-
-
-
-=======
->>>>>>> c86d1e6f6cce31fb6f7b1a4e935b7e3c4471fe1a
 <div class="page_layout page_margin_top clearfix">
 	<div class="page_header clearfix">
 		<div class="page_header_left">
@@ -38,15 +29,9 @@
 
 	<div class="clearfix page_margin_top ">
 
-<<<<<<< HEAD
-
-<a title="Read more"  href="<?php echo $this->webroot;?>users/settings" class="more large dark_blue icon_small_arrow margin_right_white">Settings</a>
-<a title="Read more" href="<?php echo $this->webroot;?>review"  class="more large dark_blue icon_small_arrow margin_right_white margin_left_10">Add Review</a>
-=======
 <a title="Read more"  href="<?php echo $this->webroot;?>users/dashboard" class="more large dark_blue icon_small_arrow margin_right_white">Dashboard</a>
 <a title="Read more"  href="<?php echo $this->webroot;?>users/settings" class="more large dark_blue icon_small_arrow margin_right_white margin_left_10">Settings</a>
 <a title="Read more" href="<?php echo $this->webroot;?>review"  class="active more large dark_blue icon_small_arrow margin_right_white margin_left_10">Add Review</a>
->>>>>>> c86d1e6f6cce31fb6f7b1a4e935b7e3c4471fe1a
 <a title="Read more" href="<?php echo $this->webroot;?>review/all"  class="more large dark_blue icon_small_arrow margin_right_white margin_left_10">My Review</a>
 <div class="clearfix"></div>
 
@@ -59,11 +44,7 @@
 
 <fieldset id="qf_review__general" class="qf-fieldset">
 
-<<<<<<< HEAD
-<h2 class="box_header slide page_margin_top">
-=======
 <h2 class="slide page_margin_top">
->>>>>>> c86d1e6f6cce31fb6f7b1a4e935b7e3c4471fe1a
 General Rating
 </h2>
 
@@ -115,22 +96,14 @@ General Rating
 
 <fieldset id="qf_review__effects" class="qf-fieldset">
 
-<<<<<<< HEAD
-<h2 class="box_header slide page_margin_top">
-=======
 <h2 class="slide page_margin_top">
->>>>>>> c86d1e6f6cce31fb6f7b1a4e935b7e3c4471fe1a
 Effects Rating
 </h2>
 
 <div class="clear"> </div>
 
 
-<<<<<<< HEAD
-<h3 class="box_header slide page_margin_top">
-=======
 <h3 class="slide page_margin_top">
->>>>>>> c86d1e6f6cce31fb6f7b1a4e935b7e3c4471fe1a
 Medicinal Effects
 </h3>
 
@@ -141,11 +114,7 @@ Medicinal Effects
 <?php foreach($symptoms as $effect)
 {
 ?>
-<<<<<<< HEAD
-<a href="javascript:void(0);" onclick="($(this).hasClass('sel'))?$(this).removeClass('sel'):$(this).addClass('sel');" title="<?php echo $effect['Symptom']['id'];?>" class="btn qf_review__effects__medical"><?php echo ucfirst($effect['Symptom']['title']);?></a>
-=======
 <a href="javascript:void(0);" onclick="($(this).hasClass('sel'))?$(this).removeClass('sel'):$(this).addClass('sel');" title="<?php echo $effect['Symptom']['id'];?>" class="eff3 btn qf_review__effects__medical"><?php echo ucfirst($effect['Symptom']['title']);?></a>
->>>>>>> c86d1e6f6cce31fb6f7b1a4e935b7e3c4471fe1a
 <?php
 }
 ?>
@@ -153,11 +122,7 @@ Medicinal Effects
 
 <div class="clear"></div>
 
-<<<<<<< HEAD
-<h3 class="box_header slide page_margin_top">
-=======
 <h3 class="slide page_margin_top">
->>>>>>> c86d1e6f6cce31fb6f7b1a4e935b7e3c4471fe1a
 Positive Effects
 </h3>
 
@@ -165,20 +130,12 @@ Positive Effects
 
 <span id="qf_review__effects__positive__inner">
 <?php foreach($effects as $effect)
-<<<<<<< HEAD
-{?> <a href="javascript:void(0);" onclick="($(this).hasClass('sel'))?$(this).removeClass('sel'):$(this).addClass('sel')" title="<?php echo $effect['Effect']['id'];?>" class="btn qf_review__effects__positive"><?php echo ucfirst($effect['Effect']['title']);?></a>
-=======
 {?> <a href="javascript:void(0);" onclick="($(this).hasClass('sel'))?$(this).removeClass('sel'):$(this).addClass('sel')" title="<?php echo $effect['Effect']['id'];?>" class="eff3 btn qf_review__effects__positive"><?php echo ucfirst($effect['Effect']['title']);?></a>
->>>>>>> c86d1e6f6cce31fb6f7b1a4e935b7e3c4471fe1a
 <?php }
 ?>
 </span>
 
-<<<<<<< HEAD
-<h3 class="box_header slide page_margin_top">
-=======
 <h3 class="slide page_margin_top">
->>>>>>> c86d1e6f6cce31fb6f7b1a4e935b7e3c4471fe1a
 Negative Effects
 </h3>
 
@@ -189,11 +146,7 @@ Negative Effects
 
 
 <?php foreach($negative as $effect)
-<<<<<<< HEAD
-{?> <a href="javascript:void(0);" onclick="($(this).hasClass('sel'))?$(this).removeClass('sel'):$(this).addClass('sel')" title="<?php echo $effect['Effect']['id'];?>" class="btn btn-info qf_review__effects__negative"><?php echo ucfirst($effect['Effect']['title']);?></a>
-=======
 {?> <a href="javascript:void(0);" onclick="($(this).hasClass('sel'))?$(this).removeClass('sel'):$(this).addClass('sel')" title="<?php echo $effect['Effect']['id'];?>" class="eff3 btn btn-info qf_review__effects__negative"><?php echo ucfirst($effect['Effect']['title']);?></a>
->>>>>>> c86d1e6f6cce31fb6f7b1a4e935b7e3c4471fe1a
 <?php }
 ?>
 
@@ -205,22 +158,14 @@ Negative Effects
 
 <fieldset id="qf_review__aesthetics" class="qf-fieldset">
 
-<<<<<<< HEAD
-<h2 class="box_header slide page_margin_top">
-=======
 <h2 class="slide page_margin_top">
->>>>>>> c86d1e6f6cce31fb6f7b1a4e935b7e3c4471fe1a
 Aesthetic Rating
 </h2>
 
 
 
 
-<<<<<<< HEAD
-<h3 class="box_header slide page_margin_top">
-=======
 <h3 class="slide page_margin_top">
->>>>>>> c86d1e6f6cce31fb6f7b1a4e935b7e3c4471fe1a
 Color
 </h3>
 
@@ -241,11 +186,7 @@ Color
 
 <div class="clear"> </div>
 
-<<<<<<< HEAD
-<h3 class="box_header slide page_margin_top">
-=======
 <h3 class="slide page_margin_top">
->>>>>>> c86d1e6f6cce31fb6f7b1a4e935b7e3c4471fe1a
 Flavor / Scent
 </h3>
 
@@ -269,11 +210,7 @@ Flavor / Scent
 
 
 
-<<<<<<< HEAD
-<h2 class="box_header slide page_margin_top">
-=======
 <h2 class="slide page_margin_top">
->>>>>>> c86d1e6f6cce31fb6f7b1a4e935b7e3c4471fe1a
 Comments, etc.
 </h2>
 

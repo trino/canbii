@@ -34,10 +34,6 @@ body
 }
 a
 {
-<<<<<<< HEAD
-	border-bottom: 1px dotted #3156A3;
-=======
->>>>>>> c86d1e6f6cce31fb6f7b1a4e935b7e3c4471fe1a
 	color: #3156A3;
 	text-decoration: none;
 	outline: none;
@@ -1257,14 +1253,11 @@ a.social_icon:hover
 	background-color: #3156A3;
 	border-color: #3156A3;
 }
-<<<<<<< HEAD
-=======
 .more.active
 {
 	background-color: #3156A3;
 	border-color: #3156A3;
 }
->>>>>>> c86d1e6f6cce31fb6f7b1a4e935b7e3c4471fe1a
 .more.light
 {
 	color: #666;
@@ -1927,10 +1920,7 @@ a.social_icon:hover
 	float: left;
 	margin-top: 0;
 	margin-right: 20px;
-<<<<<<< HEAD
-=======
     height:30px;
->>>>>>> c86d1e6f6cce31fb6f7b1a4e935b7e3c4471fe1a
 }
 .tabs_navigation2 li:last-child
 {
@@ -1947,16 +1937,10 @@ a.social_icon:hover
 }
 .tabs_navigation2 li a:hover,
 .tabs_navigation2 li a.selected,
-<<<<<<< HEAD
-.tabs_navigation2 li.ui-tabs-active a
-{
-	border-bottom-width: 2px;
-=======
 .tabs_navigation2 li.ui-tabs-active a,
 .searchact
 {
 	border-bottom-width: 2px!important;
->>>>>>> c86d1e6f6cce31fb6f7b1a4e935b7e3c4471fe1a
 	padding-bottom: 7px;
 }
 /* --- tabs box navigation --- */
@@ -2065,8 +2049,6 @@ a.social_icon:hover
 {
 	width: 223px;
 }
-<<<<<<< HEAD
-=======
 /* --- columns_4 --- */
 .columns_4 .column
 {
@@ -2088,7 +2070,6 @@ a.social_icon:hover
 {
 	width: 223px;
 }
->>>>>>> c86d1e6f6cce31fb6f7b1a4e935b7e3c4471fe1a
 /* --- dropcap --- */
 .dropcap
 {
@@ -2909,15 +2890,9 @@ ul.gallery_item_details_list
 .tabs_navigation2 li.ui-tabs-active a,
 .categories li a:hover,
 .scrolling_list li a:hover .number,
-<<<<<<< HEAD
-.controls .close:hover, .controls .prev:hover, .controls .next:hover
-{
-	border-color: #42B3E5;
-=======
 .controls .close:hover, .controls .prev:hover, .controls .next:hover,.searchact
 {
 	border-color: #42B3E5!important;
->>>>>>> c86d1e6f6cce31fb6f7b1a4e935b7e3c4471fe1a
 	color: #000;
 }
 .bread_crumb li,
@@ -2991,12 +2966,6 @@ a.social_icon,
 {
 	border: none;
 }
-<<<<<<< HEAD
-
-
-
-
-=======
 .block-title{margin-bottom:5px;}
 #qf_review__aesthetics__flavor label,#qf_review__aesthetics__color label,.eff2,.eff3,.sym2{background: none repeat scroll 0 0 #0384CE;
     border-radius: 4px;
@@ -3045,4 +3014,3 @@ a.social_icon,
 .names,.dates,.rates{width:150px;}
 .names,.dates{margin-top:5px;}
 .gap .userinfo{padding-bottom:5px;}
->>>>>>> c86d1e6f6cce31fb6f7b1a4e935b7e3c4471fe1a
