@@ -1945,6 +1945,15 @@ a.social_icon:hover
 	width: auto;
 	display: block;
 	text-align: center;
+	color: #BBB;
+	padding: 8px 0;
+	border-bottom: 1px solid #E0E0E0;
+}
+#search .tabs_navigation2 li a
+{
+	width: auto;
+	display: block;
+	text-align: center;
 	color: #FFF;
 	padding: 8px 0;
 	border-bottom: 1px solid #E0E0E0;
@@ -2904,9 +2913,13 @@ ul.gallery_item_details_list
 .tabs_navigation2 li.ui-tabs-active a,
 .categories li a:hover,
 .scrolling_list li a:hover .number,
-.controls .close:hover, .controls .prev:hover, .controls .next:hover,.searchact
+.controls .close:hover, .controls .prev:hover, .controls .next:hover
 {
-	border-color: #000!important;
+	border-color: #42B3E5!important;
+	color: #BBB;
+}
+.searchact{
+    border-color: #000!important;
 	color: #000!important;
 }
 .bread_crumb li,
@@ -3007,7 +3020,7 @@ a.social_icon,
 .label{width:160px;}
 .half .eff{margin-bottom: 7px;}
 .half p{font-weight:bold!important;}
-.ratewrap{color:#BBB;}
+.ratewrap{color:#000;}
 .length{border-radius:0 5px 5px 0;}
 .one-third .rating{padding-left:25px}
 .half .frate{padding:5px 0;border-bottom:1px solid #fFF;}
@@ -3045,3 +3058,6 @@ a.social_icon,
 #search{font-weight:bold;}
 #search strong{font-size:17px;}
  #search strong a{border-bottom:none!important;}
+ .print{margin-top:40px;}
+ .print .more{float:none!important;margin-top:20px;}
+ .searchact:hover{border-color: #000!important;}

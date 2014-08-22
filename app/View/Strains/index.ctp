@@ -47,7 +47,7 @@ Home
 
 
 <a href="<?php echo $this->webroot;?>review/add/<?php echo $strain['Strain']['slug'];?>">Review Strain</a>
-
+<div class="toprint">
 <p>Description:</p>
 <p><?php echo $strain['Strain']['description']; ?></p>
 
@@ -291,10 +291,33 @@ $(".fancybox").fancybox();
 </script>
 </div>
 <div  class="clear"></div>
-</div>
-</div>
-</div>
 
+</div>
+</div>
+</div>
+<div class="print">
+    <center><a class="blue more" href="javascript:void(0)" onclick="window.print();">Print Report</a></center>
+</div>
+</div>
+<style>
+
+/*@media print {
+  body * {
+    visibility:hidden;
+  }
+  .toprint, .toprint * {
+    width:100%;
+    visibility:visible;
+  }
+  .toprint {
+    position:absolute;
+    left:0;
+    top:0;
+  }
+  
+}*/
+
+</style>
 <script>
 $(function(){
 $('.rating').raty({number:5,readOnly:true,score:<?php echo $strain['Strain']['rating'];?>});
