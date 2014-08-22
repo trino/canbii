@@ -109,7 +109,7 @@ $i++;
 if($i==6)
 break;
 $rate = $ar[0];
-$length = 10*$rate;;
+$length = 20*$rate;;
 ?>
 <div class="eff">
 <div class="label left"><?php echo $this->requestAction('/strains/getEffect/'.$ar[1]);?></div>
@@ -139,7 +139,7 @@ $i++;
 if($i==6)
 break;
 $rate = $ar[0];
-$length = 10*$rate;
+$length = 20*$rate;
 ?>
 <div class="eff">
 <div class="label left"><?php echo $this->requestAction('/strains/getEffect/'.$ar[1]);?></div>
@@ -173,7 +173,7 @@ $i++;
 if($i==6)
 break;
 $rate = $ars[0];
-$length = 10*$rate;;
+$length = 20*$rate;;
 ?>
 <div class="eff">
 <div class="label left"><?php echo $this->requestAction('/strains/getSymptom/'.$ars[1]);?></div>
@@ -202,20 +202,20 @@ $scale = $scale+$r['eff_scale'];
 $strength = $strength+$r['eff_strength'];
 $duration = $duration+$r['eff_duration'];
 }
-$scale = ($scale/$count)*10;
-$strength = ($strength/$count)*10;
-$duration = ($duration/$count)*10;
+$scale = ($scale/$count)*20;
+$strength = ($strength/$count)*20;
+$duration = ($duration/$count)*20;
 ?>
 
 
 <div class="eff">
-<div class="label left">Length</div><div class="left ratewrap"><div class="length" style="width: <?php echo round($scale,2);?>%;"></div><em><?php echo round($scale/10,2);?>/10</em></div><div class="clear"></div>
+<div class="label left">Length</div><div class="left ratewrap"><div class="length" style="width: <?php echo round($scale,2);?>%;"></div><em><?php echo round($scale/20,2);?>/5</em></div><div class="clear"></div>
 </div>
 <div class="eff">
-<div class="label left">Strength</div><div class="left ratewrap" style="width: 63%;background:#FFF;"><div class="length" style="width: <?php echo round($strength,2);?>%;"></div><em><?php echo round($strength/10,2);?>/5</em></div><div class="clear"></div>
+<div class="label left">Strength</div><div class="left ratewrap" style="width: 63%;background:#FFF;"><div class="length" style="width: <?php echo round($strength,2);?>%;"></div><em><?php echo round($strength/20,2);?>/5</em></div><div class="clear"></div>
 </div>
 <div class="eff">
-<div class="label left">Duration</div><div class="left ratewrap" style="width: 63%;background:#FFF;"><div class="length" style="width: <?php echo round($duration,2);?>%;"></div><em><?php echo round($duration/10,2);?>/5</em></div><div class="clear"></div>
+<div class="label left">Duration</div><div class="left ratewrap" style="width: 63%;background:#FFF;"><div class="length" style="width: <?php echo round($duration,2);?>%;"></div><em><?php echo round($duration/20,2);?>/5</em></div><div class="clear"></div>
 </div>        
 
 <?php
@@ -230,9 +230,15 @@ $duration = ($duration/$count)*10;
 <p>Most Helpful</p>
 <?php if($helpful){?>
 <div class="userinfo">
-<div class="names left"><strong>Reviewed By: </strong><?php echo $this->requestAction('/strains/getUserName/'.$helpful['Review']['user_id']);?> (<em><?php echo $helpful['Review']['on_date'];?></em>)</div>
-<div class="clear"></div>
-<div class="rates frate"></div>
+<div class="names left"><strong><?php echo $this->requestAction('/strains/getUserName/'.$helpful['Review']['user_id']);?></strong></div>
+
+
+<div class="dates left">
+<em><?php echo $helpful['Review']['on_date'];?></em>
+</div>
+
+<div class="rates frate left"></div>
+
 <div class="clear"></div>
 </div>
 <i><?php echo $helpful['Review']['review'];?></i>
@@ -241,7 +247,7 @@ $rand1 = rand(100,999);
 $rand2 = rand(100,999);
 ?>
 <p>
-<em>WAS THIS REVIEW HELPFUL TO YOU? </em> &nbsp; &nbsp; <?php if($vote==0){?><a href="javascript:void(0);" id="<?php echo $rand1.'_'.$helpful['Review']['id'];?>" class="btns yes">YES</a> <a class="btns no" href="javascript:void(0);" id="<?php echo ($rand1+1).'_'.$helpful['Review']['id'];?>">NO</a><?php }else{echo "<em style='color:#AAA;'>ALREADY VOTED</em>";}?>
+<em>WAS THIS REVIEW HELPFUL TO YOU? </em> &nbsp; &nbsp; <?php if($vote==0){?><a href="javascript:void(0);" id="<?php echo $rand1.'_'.$helpful['Review']['id'];?>" class="btns yes">YES</a> <a class="btns no" href="javascript:void(0);" id="<?php echo ($rand1+1).'_'.$helpful['Review']['id'];?>">NO</a><?php }else{?><a href="javascript:void(0);" id="" class="faded">YES</a> <a class="faded" href="javascript:void(0);" id="">NO</a><?php }?>
 <br />
 <a href="<?php echo $this->webroot;?>strains/review/<?php echo $strain['Strain']['slug'];?>" class="viewall more blue martop25">View All Reviews</a>
 </p>
@@ -332,7 +338,7 @@ var o = parseFloat(arr[0])+1;
 $('#'+o+'_'+r_id).removeClass('no');
 $('#'+o+'_'+r_id).attr('style','background:#FFF;color:#CCC;cursor: default;');
 $('#'+o+'_'+r_id).attr('onclick','return false;'); 
-$(this).attr('style',$(this).attr('style').replace('background:#FFF;','background:#e5e5e5;'));
+$(this).attr('style',$(this).attr('style').replace('background:#FFF;','background:#e5e5e5;display:inline-block;padding:4px 7px;'));
 });
 $('.no').click(function(){
 var id = $(this).attr('id');
@@ -349,7 +355,7 @@ $('#'+arr2[0]+'_'+r_id).attr('style','background:#FFF;color:#CCC;cursor: default
 $('#'+arr2[0]+'_'+r_id).attr('onclick','return false;');
 $('#'+o+'_'+r_id).attr('style','background:#FFF;color:#CCC;cursor: default;');
 $('#'+o+'_'+r_id).attr('onclick','return false;'); 
-$(this).attr('style',$(this).attr('style').replace('background:#FFF;','background:#e5e5e5;'));
+$(this).attr('style',$(this).attr('style').replace('background:#FFF;','background:#e5e5e5;display:inline-block;padding:4px 7px;'));
 });
 });
 </script>
