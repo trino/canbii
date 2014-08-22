@@ -179,7 +179,7 @@ $('.rating<?php echo $j;?>').raty({number:10,readOnly:true,score:<?php echo $s['
 
 <script>
 $(function(){    
-$('.rating<?php echo $j;?>').raty({number:10,readOnly:true,score:<?php echo $s['Strain']['rating'];?>});
+$('.rating<?php echo $j;?>').raty({number:5,readOnly:true,score:<?php echo $s['Strain']['rating'];?>});
 });
 </script> 
 
