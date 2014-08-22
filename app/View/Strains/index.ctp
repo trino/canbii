@@ -47,7 +47,7 @@ Home
 
 
 <a href="<?php echo $this->webroot;?>review/add/<?php echo $strain['Strain']['slug'];?>">Review Strain</a>
-
+<div class="toprint">
 <p>Description:</p>
 <p><?php echo $strain['Strain']['description']; ?></p>
 
@@ -113,7 +113,7 @@ $length = 10*$rate;;
 ?>
 <div class="eff">
 <div class="label left"><?php echo $this->requestAction('/strains/getEffect/'.$ar[1]);?></div>
-<div class="left ratewrap"><div class="length" style="width: <?php echo $length;?>%;text-align: center;"></div><em><?php echo $rate;?>/10</em></div>
+<div class="left ratewrap"><div class="length" style="width: <?php echo $length;?>%;text-align: center;"></div><em><?php echo $rate;?>/5</em></div>
 <div class="clear"></div>
 </div>
 <?php
@@ -143,7 +143,7 @@ $length = 10*$rate;
 ?>
 <div class="eff">
 <div class="label left"><?php echo $this->requestAction('/strains/getEffect/'.$ar[1]);?></div>
-<div class="left ratewrap"><div class="length" style="width: <?php echo $length;?>%;text-align: center;"></div><em><?php echo $rate;?>/10</em></div>
+<div class="left ratewrap"><div class="length" style="width: <?php echo $length;?>%;text-align: center;"></div><em><?php echo $rate;?>/5</em></div>
 <div class="clear"></div>
 </div>
 <?php
@@ -179,7 +179,7 @@ $length = 10*$rate;;
 <div class="label left"><?php echo $this->requestAction('/strains/getSymptom/'.$ars[1]);?></div>
 <div class="left ratewrap">
 <div class="length" style="width: <?php echo $length;?>%;text-align: center;"></div>
-<em><?php echo $rate;?>/10</em>
+<em><?php echo $rate;?>/5</em>
 </div>
 <div class="clear"></div>
 </div>
@@ -212,10 +212,10 @@ $duration = ($duration/$count)*10;
 <div class="label left">Length</div><div class="left ratewrap"><div class="length" style="width: <?php echo round($scale,2);?>%;"></div><em><?php echo round($scale/10,2);?>/10</em></div><div class="clear"></div>
 </div>
 <div class="eff">
-<div class="label left">Strength</div><div class="left ratewrap" style="width: 63%;background:#FFF;"><div class="length" style="width: <?php echo round($strength,2);?>%;"></div><em><?php echo round($strength/10,2);?>/10</em></div><div class="clear"></div>
+<div class="label left">Strength</div><div class="left ratewrap" style="width: 63%;background:#FFF;"><div class="length" style="width: <?php echo round($strength,2);?>%;"></div><em><?php echo round($strength/10,2);?>/5</em></div><div class="clear"></div>
 </div>
 <div class="eff">
-<div class="label left">Duration</div><div class="left ratewrap" style="width: 63%;background:#FFF;"><div class="length" style="width: <?php echo round($duration,2);?>%;"></div><em><?php echo round($duration/10,2);?>/10</em></div><div class="clear"></div>
+<div class="label left">Duration</div><div class="left ratewrap" style="width: 63%;background:#FFF;"><div class="length" style="width: <?php echo round($duration,2);?>%;"></div><em><?php echo round($duration/10,2);?>/5</em></div><div class="clear"></div>
 </div>        
 
 <?php
@@ -291,18 +291,33 @@ $(".fancybox").fancybox();
 </script>
 </div>
 <div  class="clear"></div>
-</div>
-</div>
-</div>
 
+</div>
+</div>
+</div>
+<div class="print">
+    <center><a class="blue more" href="javascript:void(0)" onclick="window.print();">Print Report</a></center>
+</div>
+</div>
+<style>
+
+@media print {
+  .header_container{display:none;}
+  .footer_container{display:none;}
+  .cake-sql-log{display:none;}
+  .footer_banner_box_container{display:none;}
+  .print{display:none}
+}
+
+</style>
 <script>
 $(function(){
-$('.rating').raty({number:10,readOnly:true,score:<?php echo $strain['Strain']['rating'];?>});
+$('.rating').raty({number:5,readOnly:true,score:<?php echo $strain['Strain']['rating'];?>});
 <?php if($helpful){?>
-$('.frate').raty({readOnly:true,score:<?php echo $helpful['Review']['rate']/2;?>});
-$('.srate').raty({readOnly:true,score:<?php echo $recent['Review']['rate']/2;?>});
+$('.frate').raty({readOnly:true,score:<?php echo $helpful['Review']['rate'];?>});
+$('.srate').raty({readOnly:true,score:<?php echo $recent['Review']['rate'];?>});
 <?php }?>
-$('.emotion').text('<?php echo ($strain['Strain']['rating']).'/10';?> ');
+$('.emotion').text('<?php echo ($strain['Strain']['rating']).'/5';?> ');
 $('.yes').click(function(){
 var id = $(this).attr('id');
 var arr = id.split('_');

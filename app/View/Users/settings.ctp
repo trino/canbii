@@ -31,7 +31,7 @@
 <a title="Read more" href="<?php echo $this->webroot;?>review"  class="more large dark_blue icon_small_arrow margin_right_white margin_left_10">Add Review</a>
 <a title="Read more" href="<?php echo $this->webroot;?>review/all"  class="more large dark_blue icon_small_arrow margin_right_white margin_left_10">My Reviews</a>
 
-
+<div class="clear"></div>
 <!--form action="" method="post" id="myform">
 <table>
 <tr><td><strong>User Name</strong></td><td><input type="text" name="username" value="<?php echo $user['User']['username'];?>" /></td></tr>

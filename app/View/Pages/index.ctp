@@ -28,10 +28,7 @@ Filter Strains
 
 <form class="contact_form" action="<?php echo $this->webroot;?>strains/search" method="get" id="search" style="margin:0px;">
 
-<center>
-<input type="text" placeholder="Search Strain" name="key" class="key" style="width:50%;"/>
-<h1>or</h1>
-</center>
+
 <ul class="tabs_navigation2" style="padding-top:10px;">
 <li><strong><a href="#">Search Effects</a></strong></li>
 
@@ -45,7 +42,7 @@ foreach($effect as $e)
 <?php
 }
 ?>
-
+<div class="clear"></div>
 </ul>
 <p style="display: none;" class="effe"></p>
 
@@ -63,15 +60,23 @@ foreach($effect as $e)
 <?php
 }
 ?>
-
+<div class="clear"></div>
 
 </ul>
+
+<center>
+<h1>or</h1>
+
+<input type="text" placeholder="Search Strain" name="key" class="key" style="width:50%;"/><input type="submit" value="Search" class="more large dark_blue" style="" />
+
+</center>
+
 
 
 
 
 <p style="display: none;" class="symp"></p>
-<input type="submit" value="Search" class="more large dark_blue" style="" />
+
 
 <div class="clearfix"></div>
 </form>
@@ -345,3 +350,25 @@ John Doe
 ?>
 </div>
 </div></div>
+<script>
+function highlighteff(thiss){
+if(thiss.attr('class').replace('searchact','')==thiss.attr('class'))
+{
+    thiss.addClass('searchact');
+    $('.effe').append('<input type="hidden" name="effects[]" value="'+thiss.attr('id').replace('eff_','')+'" class="'+thiss.attr('id')+'"  />')}else{thiss.removeClass('searchact')
+   
+        $('.'+thiss.attr('id')).remove();
+    }
+    $('.key').val('');
+}
+function highlightsym(thiss){
+if(thiss.attr('class').replace('searchact','')==thiss.attr('class'))
+{
+    thiss.addClass('searchact');
+    $('.symp').append('<input type="hidden" name="symptoms[]" value="'+thiss.attr('id').replace('sym_','')+'" class="'+thiss.attr('id')+'"  />')}else{thiss.removeClass('searchact')
+    
+        $('.'+thiss.attr('id')).remove();
+    }
+    $('.key').val('');
+}
+</script>

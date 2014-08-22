@@ -68,7 +68,7 @@ General Rating
         <label id="qf_review__general__strength__label" for="qf_review__general__strength">Effect Strength</label>
     </span>
     <span id="qf_review__general__strength__span" class="qf-input-span qf-slider-input-span">
-        <p id="qf_review__general__strength__prompt">1/10</p>
+        <p id="qf_review__general__strength__prompt">1/5</p>
     <div>
         <input id="qf_review__general__strength" class="qf-hidden-input qf-slider qf-input" type="hidden" name="eff_strength" value="1" title="Effect Strength">
     </div>
@@ -222,7 +222,7 @@ Comments, etc.
 <div class="errorz" style="display: none;" >Overall Rating Is Mandatory.</div>
 </div>
 
-<p id="qf_review__other__overall__prompt">1/10</p>
+<p id="qf_review__other__overall__prompt">1/5</p>
 
 <input title="Overall Rating" value="0" type="hidden" name="rate" id="qf_review__other__overall" class="qf-hidden-input qf-slider qf-input"/>
 
@@ -303,14 +303,14 @@ $(function(){
                         if(type == 'positive' || type == 'negative')
                             type = 'effect';
                             
-						$(innerId).append('<div id="'+id+'" class="review-slider" style="'+h+'"><label>'+txt+'</label><input type="hidden" id="'+id+'i" name="'+type+'['+sel+']" value="0" /><div class="slider"  id="'+id+'s"></div><p id="'+id+'p" >0/10</p><div class="clear"> </div></div>');
+						$(innerId).append('<div id="'+id+'" class="review-slider" style="'+h+'"><label>'+txt+'</label><input type="hidden" id="'+id+'i" name="'+type+'['+sel+']" value="0" /><div class="slider"  id="'+id+'s"></div><p id="'+id+'p" >0/5</p><div class="clear"> </div></div>');
 						$('#'+id+'s').slider({
 							range: "min",
 							value: 0,
 							min: 0,
-							max: 10,
+							max: 5,
 							slide: function( event, ui ) {
-								$('#'+id+'p').html(''+ui.value+'/10');
+								$('#'+id+'p').html(''+ui.value+'/5');
 								$('#'+id+'i').val(ui.value);
 							}
 						});
@@ -318,10 +318,10 @@ $(function(){
 					jQ.val("");
 				}
                 $("#qf_review__general__mscale__slider").slider({'min':1,'max':9,'step':1,'value':1,'slide':function(e,ui){ $('#qf_review__general__mscale').val(ui.value);var vals = ['Extremely Active','Very Active','Active','Bit Active','Balanced','Bit Sedate','Sedate','Very Sedate','Extemely Sedate'];$('#qf_review__general__mscale__prompt').html(vals[Math.ceil( ((ui.value+1-1)/(9+1-1))*vals.length )-1]); },'range':'min'});		
-				$("#qf_review__general__strength__slider").slider({'min':1,'max':10,'step':1,'value':1,'slide':function(e,ui){ $('#qf_review__general__strength').val(ui.value);$('#qf_review__general__strength__prompt').html(''+ui.value+'/10'); },'range':'min'});		
-				$("#qf_review__general__duration__slider").slider({'min':1,'max':6,'step':1,'value':1,'slide':function(e,ui){ $('#qf_review__general__duration').val(ui.value);$('#qf_review__general__duration__prompt').html(''+ui.value+' hrs'); },'range':'min'});		
-				$("#qf_review__aesthetics__hairs__slider").slider({'min':1,'max':10,'step':1,'value':5,'slide':function(e,ui){ $('#qf_review__aesthetics__hairs').val(ui.value);$('#qf_review__aesthetics__hairs__prompt').html(''+ui.value+'/10'); },'range':'min'});		
-				$("#qf_review__aesthetics__crystals__slider").slider({'min':1,'max':10,'step':1,'value':5,'slide':function(e,ui){ $('#qf_review__aesthetics__crystals').val(ui.value);$('#qf_review__aesthetics__crystals__prompt').html(''+ui.value+'/10'); },'range':'min'});		
+				$("#qf_review__general__strength__slider").slider({'min':1,'max':5,'step':1,'value':1,'slide':function(e,ui){ $('#qf_review__general__strength').val(ui.value);$('#qf_review__general__strength__prompt').html(''+ui.value+'/5'); },'range':'min'});		
+				$("#qf_review__general__duration__slider").slider({'min':1,'max':5,'step':1,'value':1,'slide':function(e,ui){ $('#qf_review__general__duration').val(ui.value);$('#qf_review__general__duration__prompt').html(''+ui.value+' hrs'); },'range':'min'});		
+				$("#qf_review__aesthetics__hairs__slider").slider({'min':1,'max':5,'step':1,'value':5,'slide':function(e,ui){ $('#qf_review__aesthetics__hairs').val(ui.value);$('#qf_review__aesthetics__hairs__prompt').html(''+ui.value+'/5'); },'range':'min'});		
+				$("#qf_review__aesthetics__crystals__slider").slider({'min':1,'max':5,'step':1,'value':5,'slide':function(e,ui){ $('#qf_review__aesthetics__crystals').val(ui.value);$('#qf_review__aesthetics__crystals__prompt').html(''+ui.value+'/5'); },'range':'min'});		
 		
 			$('#precision').raty({
                   cancel     : false,
@@ -333,9 +333,9 @@ $(function(){
                   starOn     : 'star-on.png',
                   target     : '#qf_review__other__overall__prompt',
                   targetKeep : true,
-                  precision  : false,
-                  number     : 10,
-                  hints      : ['1/10','2/10','3/10','4/10','5/10','6/10','7/10','8/10','9/10','10/10'],
+                  precision  : true,
+                  number     : 5,
+                  //hints      : ['1/5','2/5','3/5','4/5','5/5'],
                   click      : function(score){
                                     $('#qf_review__other__overall').val(score.toFixed(2));
                                     $('.errorz').hide();

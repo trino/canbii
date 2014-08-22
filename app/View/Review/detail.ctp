@@ -38,7 +38,7 @@
         <a title="Read more" href="<?php echo $this->webroot;?>review/all"  class="more large dark_blue icon_small_arrow margin_right_white margin_left_10">My Review</a>
         <div class="clearfix"></div>
 <?php //var_dump($review);
-    $typ = array('Extremely Active','Very Active','Active','Bit Active','Balanced','Bit Sedate','Sedate','Very Sedate','Extemely Sedate');
+    $typ = array('','Extremely Active','Very Active','Active','Bit Active','Balanced','Bit Sedate','Sedate','Very Sedate','Extemely Sedate');
 ?>
 
 <fieldset id="qf_review__general" class="qf-fieldset">
@@ -62,7 +62,7 @@
         <label id="qf_review__general__strength__label" for="qf_review__general__strength">Effect Strength</label>
     </span>
     <span id="qf_review__general__strength__span" class="qf-input-span qf-slider-input-span">
-        <p id="qf_review__general__strength__prompt"><?php echo $review['Review']['eff_strength'];?>/10</p>
+        <p id="qf_review__general__strength__prompt"><?php echo $review['Review']['eff_strength'];?>/5</p>
     <div>
         <input id="qf_review__general__strength" class="qf-hidden-input qf-slider qf-input" type="hidden" name="eff_strength" value="1" title="Effect Strength">
     </div>
@@ -97,7 +97,7 @@
 <?php foreach($review['SymptomRating'] as $effect)
 {?> 
  <div id="efft_<?php echo $effect['id'];?>er" class="review-slider"><label><?php echo $symptoms[$effect['symptom_id']-1]['Symptom']['title'];?></label>
- <div  id="<?php echo $effect['id'];?>er"></div><p><?php echo $effect['rate'];?>/10</p><div class="clear"> </div></div>   
+ <div  id="<?php echo $effect['id'];?>er"></div><p><?php echo $effect['rate'];?>/5</p><div class="clear"> </div></div>   
 <script>
 $(function(){
     $('#<?php echo $effect['id'];?>er').slider({
@@ -105,9 +105,9 @@ $(function(){
             disabled: true,
 			value: <?php echo $effect['rate'];?>,
 			min: 0,
-			max: 10,
+			max: 5,
 			slide: function( event, ui ) {
-				$('#'+id+'p').html(''+ui.value+'/10');
+				$('#'+id+'p').html(''+ui.value+'/5');
 				$('#'+id+'i').val(ui.value);
 			}
 		});
@@ -142,16 +142,16 @@ foreach($review['EffectRating'] as $effect)
 {
     if(in_array($effect['effect_id'],$pos)){?> 
      <div id="efft_<?php echo $effect['id'];?>pe" class="review-slider"><label><?php echo $effects[$effect['effect_id']-1]['Effect']['title'];?></label>
-     <div  id="<?php echo $effect['id'];?>pe"></div><p><?php echo $effect['rate'];?>/10</p><div class="clear"> </div></div>   
+     <div  id="<?php echo $effect['id'];?>pe"></div><p><?php echo $effect['rate'];?>/5</p><div class="clear"> </div></div>   
     <script>
         $('#<?php echo $effect['id'];?>pe').slider({
     			range: "min",
                 disabled: true,
     			value: <?php echo $effect['rate'];?>,
     			min: 0,
-    			max: 10,
+    			max: 5,
     			slide: function( event, ui ) {
-    				$('#'+id+'p').html(''+ui.value+'/10');
+    				$('#'+id+'p').html(''+ui.value+'/5');
     				$('#'+id+'i').val(ui.value);
     			}
     		});
@@ -187,16 +187,16 @@ foreach($review['EffectRating'] as $effect)
 {
     if(in_array($effect['effect_id'],$pos)){?> 
      <div id="efft_<?php echo $effect['id'];?>ne" class="review-slider"><label><?php echo $effectz[$effect['effect_id']-1]['Effect']['title'];?></label>
-     <div  id="<?php echo $effect['id'];?>ne"></div><p><?php echo $effect['rate'];?>/10</p><div class="clear"> </div></div>   
+     <div  id="<?php echo $effect['id'];?>ne"></div><p><?php echo $effect['rate'];?>/5</p><div class="clear"> </div></div>   
     <script>
         $('#<?php echo $effect['id'];?>ne').slider({
     			range: "min",
                 disabled: true,
     			value: <?php echo $effect['rate'];?>,
     			min: 0,
-    			max: 10,
+    			max: 5,
     			slide: function( event, ui ) {
-    				$('#'+id+'p').html(''+ui.value+'/10');
+    				$('#'+id+'p').html(''+ui.value+'/5');
     				$('#'+id+'i').val(ui.value);
     			}
     		});
@@ -224,16 +224,16 @@ foreach($review['EffectRating'] as $effect)
 <?php foreach($review['ColourRating'] as $effect)
 {?> 
  <div id="efft_<?php echo $effect['id'];?>" class="review-slider"><label><?php echo $colours[$effect['colour_id']-1]['Colour']['title'];?></label>
- <!--<div class="slider" id="<?php echo $effect['id'];?>s"></div><p><?php echo $effect['rate'];?>/10</p><div class="clear"> </div>--></div>   
+ <!--<div class="slider" id="<?php echo $effect['id'];?>s"></div><p><?php echo $effect['rate'];?>/5</p><div class="clear"> </div>--></div>   
 <script>
     $('#<?php echo $effect['id'];?>s').slider({
 			range: "min",
             disabled: true,
 			value: <?php echo $effect['rate'];?>,
 			min: 0,
-			max: 10,
+			max: 5,
 			slide: function( event, ui ) {
-				$('#'+id+'p').html(''+ui.value+'/10');
+				$('#'+id+'p').html(''+ui.value+'/5');
 				$('#'+id+'i').val(ui.value);
 			}
 		});
@@ -260,16 +260,16 @@ foreach($review['EffectRating'] as $effect)
 <?php foreach($review['FlavorRating'] as $effect)
 {?> 
  <div id="efft_<?php echo $effect['id'];?>" class="review-slider"><label><?php echo $flavors[$effect['flavor_id']-1]['Flavor']['title'];?></label>
- <!--<div class="slider" id="<?php echo $effect['id'];?>s"></div><p><?php echo $effect['rate'];?>/10</p><div class="clear"> </div>--></div>   
+ <!--<div class="slider" id="<?php echo $effect['id'];?>s"></div><p><?php echo $effect['rate'];?>/5</p><div class="clear"> </div>--></div>   
 <script>
     $('#<?php echo $effect['id'];?>s').slider({
 			range: "min",
             disabled: true,
 			value: <?php echo $effect['rate'];?>,
 			min: 0,
-			max: 10,
+			max: 5,
 			slide: function( event, ui ) {
-				$('#'+id+'p').html(''+ui.value+'/10');
+				$('#'+id+'p').html(''+ui.value+'/5');
 				$('#'+id+'i').val(ui.value);
 			}
 		});
@@ -299,7 +299,7 @@ foreach($review['EffectRating'] as $effect)
 
 <div id="precision-hint" class="input hint left marleft"></div>
 <span class="qf-input-span qf-slider-input-span" id="qf_review__other__overall__span">
-<p id="qf_review__other__overall__prompt">1/10</p>
+<p id="qf_review__other__overall__prompt">1/5</p>
 <div>
 <input title="Overall Rating" value="0" type="hidden" name="rate" id="qf_review__other__overall" class="qf-hidden-input qf-slider qf-input"/>
 </div>
@@ -322,11 +322,11 @@ foreach($review['EffectRating'] as $effect)
 $(function(){
    
                 $("#qf_review__general__mscale__slider").slider({'min':1,disabled: true,'max':9,'step':1,'value':<?php echo $review['Review']['eff_scale'];?>,'slide':function(e,ui){ $('#qf_review__general__mscale').val(ui.value);var vals = ['Extremely Active','Very Active','Active','Bit Active','Balanced','Bit Sedate','Sedate','Very Sedate','Extemely Sedate'];$('#qf_review__general__mscale__prompt').html(vals[Math.ceil( ((ui.value+1-1)/(9+1-1))*vals.length )-1]); },'range':'min'});		
-				$("#qf_review__general__strength__slider").slider({'min':1,'max':10,disabled: true,'step':1,'value':<?php echo $review['Review']['eff_strength'];?>,'slide':function(e,ui){ $('#qf_review__general__strength').val(ui.value);$('#qf_review__general__strength__prompt').html(''+ui.value+'/10'); },'range':'min'});		
-				$("#qf_review__general__duration__slider").slider({'min':1,'max':6,'step':1,disabled: true,'value':<?php echo $review['Review']['eff_duration'];?>,'slide':function(e,ui){ $('#qf_review__general__duration').val(ui.value);$('#qf_review__general__duration__prompt').html(''+ui.value+' hrs'); },'range':'min'});		
-				$("#qf_review__aesthetics__hairs__slider").slider({'min':1,'max':10,'step':1,disabled: true,'value':<?php echo $review['Review']['eff_scale'];?>,'slide':function(e,ui){ $('#qf_review__aesthetics__hairs').val(ui.value);$('#qf_review__aesthetics__hairs__prompt').html(''+ui.value+'/10'); },'range':'min'});		
-				$("#qf_review__aesthetics__crystals__slider").slider({'min':1,'max':10,'step':1,disabled: true,'value':<?php echo $review['Review']['eff_scale'];?>,'slide':function(e,ui){ $('#qf_review__aesthetics__crystals').val(ui.value);$('#qf_review__aesthetics__crystals__prompt').html(''+ui.value+'/10'); },'range':'min'});		
-				//$("#qf_review__other__overall__slider").slider({'min':1,'max':10,'step':1,'value':1,'slide':function(e,ui){ $('#qf_review__other__overall').val(ui.value);$('#qf_review__other__overall__prompt').html(''+ui.value+'/10'); },'range':'min'});			
+				$("#qf_review__general__strength__slider").slider({'min':1,'max':5,disabled: true,'step':1,'value':<?php echo $review['Review']['eff_strength'];?>,'slide':function(e,ui){ $('#qf_review__general__strength').val(ui.value);$('#qf_review__general__strength__prompt').html(''+ui.value+'/5'); },'range':'min'});		
+				$("#qf_review__general__duration__slider").slider({'min':1,'max':5,'step':1,disabled: true,'value':<?php echo $review['Review']['eff_duration'];?>,'slide':function(e,ui){ $('#qf_review__general__duration').val(ui.value);$('#qf_review__general__duration__prompt').html(''+ui.value+' hrs'); },'range':'min'});		
+				$("#qf_review__aesthetics__hairs__slider").slider({'min':1,'max':5,'step':1,disabled: true,'value':<?php echo $review['Review']['eff_scale'];?>,'slide':function(e,ui){ $('#qf_review__aesthetics__hairs').val(ui.value);$('#qf_review__aesthetics__hairs__prompt').html(''+ui.value+'/5'); },'range':'min'});		
+				$("#qf_review__aesthetics__crystals__slider").slider({'min':1,'max':5,'step':1,disabled: true,'value':<?php echo $review['Review']['eff_scale'];?>,'slide':function(e,ui){ $('#qf_review__aesthetics__crystals').val(ui.value);$('#qf_review__aesthetics__crystals__prompt').html(''+ui.value+'/5'); },'range':'min'});		
+				//$("#qf_review__other__overall__slider").slider({'min':1,'max':5,'step':1,'value':1,'slide':function(e,ui){ $('#qf_review__other__overall').val(ui.value);$('#qf_review__other__overall__prompt').html(''+ui.value+'/5'); },'range':'min'});			
 			$('#precision').raty({
                   cancel     : false,
                   readOnly   : true,
@@ -338,10 +338,10 @@ $(function(){
                   starOn     : 'star-on.png',
                   target     : '#qf_review__other__overall__prompt',
                   targetKeep : true,
-                  precision  : false,
-                  number     : 10,
+                  precision  : true,
+                  number     : 5,
                   score      : <?php echo $review['Review']['rate'];?>,
-                  hints      : ['1/10','2/10','3/10','4/10','5/10','6/10','7/10','8/10','9/10','10/10'],
+                  //hints      : ['1/10','2/10','3/10','4/10','5/10','6/10','7/10','8/10','9/10','10/10'],
                   click      : function(score){
                                     $('#qf_review__other__overall').val(score.toFixed(2));
                                     $('.errorz').hide();

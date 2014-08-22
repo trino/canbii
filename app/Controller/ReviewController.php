@@ -143,7 +143,7 @@
                     else
                     $review = 1;
                     $this->Strain->saveField('review',$review);
-                    $this->Session->setFlash('Review Saved.');
+                    $this->Session->setFlash('Review Saved.','default',array('class'=>'good'));
                     $this->redirect('all');
                }
             }
