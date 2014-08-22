@@ -3028,10 +3028,10 @@ a.social_icon,
 .names,.dates,.rates{width:150px;}
 .names,.dates{margin-top:5px;}
 .gap .userinfo{padding-bottom:5px;}
-#search{background: url("../images/search-bg.jpg") repeat-x scroll 0 0 rgba(0, 0, 0, 0);
+#search{background: url("../images/search-bg.jpg") repeat scroll 0 0 rgba(0, 0, 0, 0);
     padding-left: 30px;
     padding-top: 20px;
-    width: 960px;}
+    width: 100%;}
 #search input[type="text"]{font-size: 20px;height: 20px;margin: 0;padding: 15px 18px;margin-top:20px;}
 #search input[type="submit"]{    float: none;
     font-weight: bold;
