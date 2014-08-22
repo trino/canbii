@@ -3038,7 +3038,7 @@ a.social_icon,
 .revi h3{margin:15px 0;}
 .rat{margin-top:5px;}
 .list-review p {font-size:17px;font-style: italic;line-height:50%;}
-.names,.dates,.rates{width:150px;}
+.names,.dates,.rates{width:148px;}
 .names,.dates{margin-top:5px;}
 .gap .userinfo{padding-bottom:5px;}
 #search{background: url("../images/search-bg.jpg") repeat scroll 0 0 rgba(0, 0, 0, 0);
@@ -3061,3 +3061,4 @@ a.social_icon,
  .print{margin-top:40px;}
  .print .more{float:none!important;margin-top:20px;}
  .searchact:hover{border-color: #000!important;}
+ .faded{color:#CCC;cursor:default;}

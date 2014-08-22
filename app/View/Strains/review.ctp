@@ -43,7 +43,7 @@ if($review)
                 ?>
                 <p class="gap martop">
                 
-                    <em>WAS THIS REVIEW HELPFUL TO YOU? </em> &nbsp; &nbsp; <?php if($vote==0){?><a href="javascript:void(0);" id="<?php echo $rand1.'_'.$r['Review']['id'];?>" class="btns yes">YES</a> <a class="btns no" href="javascript:void(0);" id="<?php echo ($rand1+1).'_'.$r['Review']['id'];?>">NO</a><?php }else{echo "<em style='color:#AAA;'>ALREADY VOTED</em>";}?>
+                    <em>WAS THIS REVIEW HELPFUL TO YOU? </em> &nbsp; &nbsp; <?php if($vote==0){?><a href="javascript:void(0);" id="<?php echo $rand1.'_'.$r['Review']['id'];?>" class="btns yes">YES</a> <a class="btns no" href="javascript:void(0);" id="<?php echo ($rand1+1).'_'.$r['Review']['id'];?>">NO</a><?php }else{?><a href="javascript:void(0);" id="" class="faded">YES</a> <a class="faded" href="javascript:void(0);" id="">NO</a><?php }?>
                 </p>
                 <?php }?>
             </div>
@@ -75,7 +75,7 @@ $('.yes').click(function(){
    $('#'+o+'_'+r_id).removeClass('no');
    $('#'+o+'_'+r_id).attr('style','background:#FFF;color:#CCC;cursor: default;');
    $('#'+o+'_'+r_id).attr('onclick','return false;'); 
-   $(this).attr('style',$(this).attr('style').replace('background:#FFF;','background:#e5e5e5;'));
+   $(this).attr('style',$(this).attr('style').replace('background:#FFF;','background:#e5e5e5;display:inline-block;padding:8px 7px;'));
 });
 $('.no').click(function(){
    var id = $(this).attr('id');
@@ -92,7 +92,7 @@ $('.no').click(function(){
    $('#'+arr2[0]+'_'+r_id).attr('onclick','return false;');
    $('#'+o+'_'+r_id).attr('style','background:#FFF;color:#CCC;cursor: default;');
    $('#'+o+'_'+r_id).attr('onclick','return false;'); 
-   $(this).attr('style',$(this).attr('style').replace('background:#FFF;','background:#e5e5e5;'));
+   $(this).attr('style',$(this).attr('style').replace('background:#FFF;','background:#e5e5e5;display:inline-block;padding:8px 7px;'));
 });
 });
 </script>
