@@ -301,21 +301,13 @@ $(".fancybox").fancybox();
 </div>
 <style>
 
-/*@media print {
-  body * {
-    visibility:hidden;
-  }
-  .toprint, .toprint * {
-    width:100%;
-    visibility:visible;
-  }
-  .toprint {
-    position:absolute;
-    left:0;
-    top:0;
-  }
-  
-}*/
+@media print {
+  .header_container{display:none;}
+  .footer_container{display:none;}
+  .cake-sql-log{display:none;}
+  .footer_banner_box_container{display:none;}
+  .print{display:none}
+}
 
 </style>
 <script>
