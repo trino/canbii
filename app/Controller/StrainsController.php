@@ -1,5 +1,8 @@
 <?php
 class StrainsController extends AppController{
+    
+      public $components = array('Paginator','RequestHandler');
+      public $helpers = array('Js');
     function index($slug)
     {
         $this->loadModel('OverallFlavorRating');
@@ -82,11 +85,27 @@ class StrainsController extends AppController{
     function all($type='')
     {
         $arr=array('indica'=>1,'sativa'=>2,'hybrid'=>3);
-        if($type=='')
-        $this->set('strain',$this->Strain->find('all',array('order'=>'Strain.id DESC')));
-        else
-        $this->set('strain',$this->Strain->find('all',array('conditions'=>array('type_id'=>$arr[$type]),'order'=>'Strain.id DESC')));
         
+        
+        if($type=='')
+        {
+            $this->Paginator->settings = array(
+                'order' => array('Strain.id' => 'desc'),
+                'limit' => 1
+            );
+            
+            $this->set('strain',$this->Paginator->paginate('Strain'));
+        }
+        
+        else
+        {
+            $this->Paginator->settings = array(
+                'order' => array('Strain.id' => 'desc'),
+                'conditions'=>array('type_id'=>$arr[$type]),
+                'limit' => 1
+            );
+            $this->set('strain',$this->Paginator->paginate('Strain'));
+        }
     }
     function search()
     {

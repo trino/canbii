@@ -1,5 +1,6 @@
 <script src="<?php echo $this->webroot;?>js/raty.js"></script>
 <script src="<?php echo $this->webroot;?>js/labs.js"></script>
+<script src="<?php echo $this->webroot;?>js/scroll.js"></script>
 <link href="<?php echo $this->webroot;?>css/raty.css" rel="stylesheet" type="text/css" />
 
 <?php
@@ -24,6 +25,7 @@ else
 $symptoms = array();
 ?>
 <script>
+
     var recent_flag = 'ASC';
     var rated_flag = 'ASC';
     var alpha_flag = 'DESC';
@@ -96,8 +98,8 @@ $symptoms = array();
 
 	
 	
-	
-    <div class="page_left listing">    <?php
+	<div class="page_left">
+    <div class="listing">    <?php
     if($strain)
     {
         $j=0;
@@ -122,35 +124,19 @@ $symptoms = array();
 
 <script>
 $(function(){    
-$('.rating<?php echo $j;?>').raty({number:10,readOnly:true,score:<?php echo $s['Strain']['rating'];?>});
+$('.rating<?php echo $j;?>').raty({number:5,readOnly:true,score:<?php echo $s['Strain']['rating'];?>});
 });
 </script--> 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+ <div class="post-item">
 <ul class="blog">
 <li class="post">
 <ul class="comment_box clearfix" style="">
 	<li class="date clearfix">
 		<div class="value">
 		<a style="color:white;" href="<?php echo $this->webroot?>strains/<?php echo $s['Strain']['slug'];?>">
-<?php echo $s['StrainType']['title'];?>
-
-</a>
+        <?php echo $s['StrainType']['title'];?>
+        
+        </a>
 		</div>
 	</li>
 	<li class="comments_number" style="">
@@ -159,29 +145,24 @@ $('.rating<?php echo $j;?>').raty({number:10,readOnly:true,score:<?php echo $s['
 </ul>
 <div class="post_content">
 	<h2>
-		<a target="_blank" href="http://themeforest.net/item/medicenter-responsive-medical-health-template/4000598?ref=QuanticaLabs" title="Lorem ipsum dolor sit amat velum">
-			
-			
-			
-<a href="<?php echo $this->webroot?>strains/<?php echo $s['Strain']['slug'];?>">
+		<a href="<?php echo $this->webroot?>strains/<?php echo $s['Strain']['slug'];?>">
 <?php echo $s['Strain']['name'];?>
+        </a>
 
-</a>
-
-		</a>
 	</h2>
 <p>
 <?php echo substr($s['Strain']['description'],0,160).'...';?>
 
 </p>
-<div class="rating<?php echo $j;?> " style=""></div>
-
-
 <script>
 $(function(){    
-$('.rating<?php echo $j;?>').raty({number:5,readOnly:true,score:<?php echo $s['Strain']['rating'];?>});
+    $('.rating<?php echo $s['Strain']['id'];?>').raty({number:5,readOnly:true,score:<?php echo $s['Strain']['rating'];?>});
 });
 </script> 
+<div class="rating<?php echo $s['Strain']['id'];?> " style=""></div>
+
+
+
 
 	<div class="post_footer">
 		<ul class="post_footer_details">
@@ -209,19 +190,22 @@ $('.rating<?php echo $j;?>').raty({number:5,readOnly:true,score:<?php echo $s['S
 </div>
 </li>
 </ul>
-
+</div>
 
 	<?php
         }
     }
     ?>
     <div class="clear"></div>
+    
 	</div>
-	
-
-	
-	
-	
+    <div id="spinner">
+    <button id="more">Load More</button>
+     <?php
+         echo $this->Paginator->next('Show more...',array('style'=>'display:none;'));
+    ?>
+    </div>
+    </div>
 			<div class="page_right page_margin_top">
 	<ul>
 				<li class="home_box light_blue animated_element animation-fadeIn duration-500" style="z-index: 3;">
@@ -232,44 +216,18 @@ $('.rating<?php echo $j;?>').raty({number:5,readOnly:true,score:<?php echo $s['S
 					</h2>
 					<div class="news clearfix">
 
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-
-
 <div class="choose_eff" >
 <?php $effect = $this->requestAction('/pages/getEff');
 foreach($effect as $e)
 {
 ?>
-					
 <a style="color:white;" href="javascript:void(0)" class="small-btn eff2" id="eff_<?php echo $e['Effect']['id'];?>"><?php echo $e['Effect']['title']?></a>
 <?php
 }
 ?>
 <p style="display: none;" class="effe"></p>
 </div>
-
-
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					</div>
+			</div>
 				</li>
 				<li class="home_box blue animated_element animation-slideDown duration-800 delay-250" style="z-index: 2;">
 					<h2>
@@ -296,17 +254,12 @@ foreach($effect as $e)
 			</ul>
 
 			</div>
-	
-	
-	
-			</div>
-	
-			</div>
-	
-    <div id="spinner">
-        Loading...
 
-    </div>
+			</div>
+	
+			</div>
+	
+    
 	
     <input type="hidden" class="recent" value="ASC" />
     <input type="hidden" class="rated" value="ASC" />
@@ -319,9 +272,31 @@ foreach($effect as $e)
 	
     <script>
     var spinnerVisible = false;
+   
     
     $(function(){
-
+   
+   $("#more").click(function(){
+    $('.listing').infinitescroll('retrieve');
+        return false;
+});
+        var $container = $('.listing');
+ 
+    $container.infinitescroll({
+      behavior: 'local',
+      navSelector  : '.next',    // selector for the paged navigation
+      nextSelector : '.next a',  // selector for the NEXT link (to page 2)
+      itemSelector : '.post-item',     // selector for all items you'll retrieve
+      debug         : true,
+      dataType      : 'html',
+      loading: {
+          finishedMsg: 'No more Strains.',
+          img: '<?php echo $this->webroot; ?>img/spinner.gif'
+        }
+      }
+    );
+    
+   $(window).unbind('.infscr');
     $('.sym2').click(function(){
         
         var sort =0;
