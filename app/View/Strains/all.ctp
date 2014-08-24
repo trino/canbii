@@ -308,12 +308,6 @@ foreach($effect as $e)
 			</div>
 	
 
-    <div id="spinner">
-        Loading...
-
-    </div>
-
-	
     <input type="hidden" class="recent" value="ASC" />
     <input type="hidden" class="rated" value="ASC" />
     <input type="hidden" class="viewed" value="ASC" />
