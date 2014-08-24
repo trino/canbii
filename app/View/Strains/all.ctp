@@ -216,6 +216,10 @@ $('.rating<?php echo $j;?>').raty({number:5,readOnly:true,score:<?php echo $s['S
     }
     ?>
     <div class="clear"></div>
+    <div class="morelist" style="">
+    <div class="loadmore"><a href="javascript:void(0);">Load More</a></div>
+    </div>
+    
 	</div>
 	
 
@@ -303,9 +307,7 @@ foreach($effect as $e)
 	
 			</div>
 	
-    <div id="spinner">
-        Loading...
-    </div>
+    
 	
     <input type="hidden" class="recent" value="ASC" />
     <input type="hidden" class="rated" value="ASC" />
@@ -317,30 +319,15 @@ foreach($effect as $e)
 	
 	
     <script>
+    var more='<?php echo $limit?>';    
     var spinnerVisible = false;
     
     $(function(){
-
-    $('.sym2').click(function(){
-        
-        var sort =0;
-if($(this).attr('class').replace('searchact2','')==$(this).attr('class'))
-{
-        
-    $(this).addClass('searchact2');
-    $('.effe').append('<input type="hidden" name="symptoms[]" value="'+$(this).attr('id').replace('sym_','')+'" class="symps '+$(this).attr('id')+'"  />')}else{$(this).removeClass('searchact2')
-   
-        $('.'+$(this).attr('id')).remove();
-    }
-    $('.key').val('');
-    /*else
-    var sort = 1;*/
-    if (!spinnerVisible) {
-        $("div#spinner").fadeIn("fast");
-        spinnerVisible = true;
-    }
-        var i=0;
+    var sort='';    
+    $('.loadmore a').live('click',function(){
+        more=parseFloat(more)+4;
         var val = '';
+        var i=0;
        $('.effs').each(function(){
         if($(this).val()){
         i++;
@@ -365,11 +352,110 @@ if($(this).attr('class').replace('searchact2','')==$(this).attr('class'))
         }
         else
         val = 'key=';
-        
-         
+        $('.eff1c').each(function(){
+            
+        //alert('test');
+        var id = $(this).attr('id');
+        var sort = $('.'+id).val();
+        if(sort == 'DESC')
+        {
+            sort = 'DESC';
+            //$('.'+id).val('DESC');
+        }
+        else
+        {
+            sort = 'ASC';
+           // $('.'+id).val('ASC');
+        }
+        val = val+'&sort='+id+'&order='+sort;
+        });
         
         $.ajax({
-           url:'<?php echo $this->webroot;?>strains/filter',
+           url:'<?php echo $this->webroot;?>strains/filter/'+more+'<?php if($type)echo '/'.$type?>',
+           data:val,
+           type:'get',
+           success:function(res){
+             if (spinnerVisible) {
+        var spinner = $("div#spinner");
+        spinner.stop();
+        spinner.fadeOut("fast");
+        spinnerVisible = false;
+    }
+            $('.morelist').show();
+            $('.morelist').addClass('morelist2');
+            $('.morelist2').removeClass('morelist');
+            $('.morelist2').html(res);
+            $('.morelist2').removeClass('morelist2');
+           } 
+        });
+    });
+    $('.sym2').click(function(){
+        
+        //var sort =0;
+        more=0;
+if($(this).attr('class').replace('searchact2','')==$(this).attr('class'))
+{
+        
+    $(this).addClass('searchact2');
+    $('.effe').append('<input type="hidden" name="symptoms[]" value="'+$(this).attr('id').replace('sym_','')+'" class="symps '+$(this).attr('id')+'"  />')}else{$(this).removeClass('searchact2')
+   
+        $('.'+$(this).attr('id')).remove();
+    }
+    $('.key').val('');
+    /*else
+    var sort = 1;*/
+    if (!spinnerVisible) {
+        $("div#spinner").fadeIn("fast");
+        spinnerVisible = true;
+    }
+        var i=0;
+        
+       $('.effs').each(function(){
+        if($(this).val()){
+        i++;
+        if(i==1)
+            val = 'effects[]='+$(this).val();
+        else
+            val = val+'&effects[]='+$(this).val();
+            }
+            
+                
+       });
+       $('.symps').each(function(){
+        if($(this).val()){
+        i++;
+        if(i==1)
+            val = 'symptoms[]='+$(this).val();
+        else
+            val = val+'&symptoms[]='+$(this).val();  
+            }       
+    });
+    if(val){
+        val = val+'&key=';
+        }
+        else
+        val = 'key=';
+        
+        $('.eff1c').each(function(){
+            
+        alert('test');
+        var id = $(this).attr('id');
+        var sort = $('.'+id).val();
+        if(sort == 'DESC')
+        {
+            sort = 'DESC';
+            //$('.'+id).val('DESC');
+        }
+        else
+        {
+            sort = 'ASC';
+           // $('.'+id).val('ASC');
+        }
+        val = val+'&sort='+id+'&order='+sort;
+        });
+        
+        $.ajax({
+           url:'<?php echo $this->webroot;?>strains/filter/0<?php if($type)echo '/'.$type?>',
            data:val,
            type:'get',
            success:function(res){
@@ -386,7 +472,8 @@ if($(this).attr('class').replace('searchact2','')==$(this).attr('class'))
     }); 
 
     $('.eff2').click(function(){
-        var sort =0;
+        more=0;
+        //var sort =0;
 if($(this).attr('class').replace('searchact2','')==$(this).attr('class'))
 {
         
@@ -430,9 +517,25 @@ if($(this).attr('class').replace('searchact2','')==$(this).attr('class'))
         val = 'key=';
         
          
-        
+        $('.eff1c').each(function(){
+            
+        alert('test');
+        var id = $(this).attr('id');
+        var sort = $('.'+id).val();
+        if(sort == 'DESC')
+        {
+            sort = 'DESC';
+            //$('.'+id).val('DESC');
+        }
+        else
+        {
+            sort = 'ASC';
+           // $('.'+id).val('ASC');
+        }
+        val = val+'&sort='+id+'&order='+sort;
+        });
         $.ajax({
-           url:'<?php echo $this->webroot;?>strains/filter',
+           url:'<?php echo $this->webroot;?>strains/filter<?php if($type)echo '/0/'.$type?>',
            data:val,
            type:'get',
            success:function(res){
@@ -449,6 +552,11 @@ if($(this).attr('class').replace('searchact2','')==$(this).attr('class'))
     });
     
     $('.eff1').click(function(){
+        more=0;
+        $('.eff1').each(function(){
+           $(this).removeClass('eff1c'); 
+        });
+        $(this).addClass('eff1c');
         var id = $(this).attr('id');
         var sort = $('.'+id).val();
         if(sort == 'ASC')
@@ -502,10 +610,11 @@ if($(this).attr('class').replace('searchact2','')==$(this).attr('class'))
             val = val+'&sort='+id+'&order='+sort;
         }
         
+        
          
         
         $.ajax({
-           url:'<?php echo $this->webroot;?>strains/filter',
+           url:'<?php echo $this->webroot;?>strains/filter<?php if($type)echo '/0/'.$type?>',
            data:val,
            type:'get',
            success:function(res){
