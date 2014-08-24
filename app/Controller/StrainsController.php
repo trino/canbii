@@ -82,22 +82,28 @@ class StrainsController extends AppController{
         $this->VoteIp->save($arr);
         die();
     }
-    function all($type='')
+    function all($type='',$limit=0)
     {
+        $this->set('type',$type);
+        $this->set('limit',$limit);
+        if($limit){
+            $offset =$limit;
+        $limit = '4';
+         
+        }
+        else{
+        $limit = 4;
+        $offset = 0;
+        }
         $arr=array('indica'=>1,'sativa'=>2,'hybrid'=>3);
         
         
         if($type=='')
-        {
-            $this->Paginator->settings = array(
-                'order' => array('Strain.id' => 'desc'),
-                'limit' => 1
-            );
-            
-            $this->set('strain',$this->Paginator->paginate('Strain'));
-        }
-        
+            $this->set('strain',$this->Strain->find('all',array('order'=>'Strain.id DESC','limit'=>$limit)));
         else
+            $this->set('strain',$this->Strain->find('all',array('conditions'=>array('type_id'=>$arr[$type]),'order'=>'Strain.id DESC','limit'=>$limit,'offset'=>$offset)));
+
+        /*      
         {
             $this->Paginator->settings = array(
                 'order' => array('Strain.id' => 'desc'),
@@ -105,10 +111,21 @@ class StrainsController extends AppController{
                 'limit' => 1
             );
             $this->set('strain',$this->Paginator->paginate('Strain'));
-        }
+        }*/
     }
-    function search()
+    function search($type='',$limit=0)
     {
+        $this->set('type',$type);
+        $this->set('limit',$limit);
+        if($limit){
+            $offset =$limit;
+        $limit = '4';
+         
+        }
+        else{
+        $limit = 4;
+        $offset = 0;
+        }
         if(isset($_GET['key']))
         $key = $_GET['key'];
         else
@@ -165,14 +182,27 @@ IN ( '.$e;
 HAVING COUNT( symptom_id ) ='.count($symptoms).'))';
         }
         if(!$condition)
-        $this->set('strain',$this->Strain->find('all',array('conditions'=>array('name LIKE'=>'%'.$key.'%'),'order'=>'Strain.id DESC')));
+        $this->set('strain',$this->Strain->find('all',array('conditions'=>array('name LIKE'=>'%'.$key.'%'),'order'=>'Strain.id DESC','limit'=>$limit,'offset'=>$offset)));
         else
-        $this->set('strain',$this->Strain->find('all',array('conditions'=>array('name LIKE'=>'%'.$key.'%',$condition),'order'=>'Strain.id DESC')));
+        $this->set('strain',$this->Strain->find('all',array('conditions'=>array('name LIKE'=>'%'.$key.'%',$condition),'order'=>'Strain.id DESC','limit'=>$limit,'offset'=>$offset)));
         $this->render('all');
     }
     
     
-    function filter(){
+    function filter($limit=0,$type=''){
+        
+        $this->set('limit',$limit);
+        $this->set('type',$type);
+        if($limit){
+            $offset =$limit;
+        $limit = '4';
+         
+        }
+        else{
+        $limit = 4;
+        $offset = 0;
+        }
+        //echo $limit;die();
         $this->layout = 'blank';
         if(isset($_GET['key']))
         $key = $_GET['key'];
@@ -257,17 +287,35 @@ HAVING COUNT( symptom_id ) ='.count($symptoms).'))';
         else
         $order =array();
         //var_dump($order);die();
+        if($type==''){
         if(!$condition){
             if(!$order)
-        $this->set('strain',$this->Strain->find('all',array('conditions'=>array('name LIKE'=>'%'.$key.'%'),'order'=>'Strain.id DESC')));
+        $this->set('strain',$this->Strain->find('all',array('conditions'=>array('name LIKE'=>'%'.$key.'%'),'order'=>'Strain.id DESC','limit'=>$limit,'offset'=>$offset)));
         else
-        $this->set('strain',$this->Strain->find('all',array('conditions'=>array('name LIKE'=>'%'.$key.'%'),'order'=>$order)));
+        $this->set('strain',$this->Strain->find('all',array('conditions'=>array('name LIKE'=>'%'.$key.'%'),'order'=>$order,'limit'=>$limit,'offset'=>$offset)));
         }
         else{
             if(!$order)
-        $this->set('strain',$this->Strain->find('all',array('conditions'=>array('name LIKE'=>'%'.$key.'%',$condition),'order'=>'Strain.id DESC')));
+        $this->set('strain',$this->Strain->find('all',array('conditions'=>array('name LIKE'=>'%'.$key.'%',$condition),'order'=>'Strain.id DESC','limit'=>$limit,'offset'=>$offset)));
         else
-        $this->set('strain',$this->Strain->find('all',array('conditions'=>array('name LIKE'=>'%'.$key.'%',$condition),'order'=>$order)));
+        $this->set('strain',$this->Strain->find('all',array('conditions'=>array('name LIKE'=>'%'.$key.'%',$condition),'order'=>$order,'limit'=>$limit,'offset'=>$offset)));
+        }
+        }
+        else
+        {
+        $arr=array('indica'=>1,'sativa'=>2,'hybrid'=>3);            
+        if(!$condition){
+            if(!$order)
+        $this->set('strain',$this->Strain->find('all',array('conditions'=>array('type_id'=>$arr[$type],'name LIKE'=>'%'.$key.'%'),'order'=>'Strain.id DESC','limit'=>$limit,'offset'=>$offset)));
+        else
+        $this->set('strain',$this->Strain->find('all',array('conditions'=>array('type_id'=>$arr[$type],'name LIKE'=>'%'.$key.'%'),'order'=>$order,'limit'=>$limit,'offset'=>$offset)));
+        }
+        else{
+            if(!$order)
+        $this->set('strain',$this->Strain->find('all',array('conditions'=>array('type_id'=>$arr[$type],'name LIKE'=>'%'.$key.'%',$condition),'order'=>'Strain.id DESC','limit'=>$limit,'offset'=>$offset)));
+        else
+        $this->set('strain',$this->Strain->find('all',array('conditions'=>array('type_id'=>$arr[$type],'name LIKE'=>'%'.$key.'%',$condition),'order'=>$order,'limit'=>$limit,'offset'=>$offset)));
+        }    
         }
     }
     function review($slug,$sort=null)

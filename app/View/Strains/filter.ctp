@@ -1,7 +1,7 @@
 <?php
     if($strain)
     {
-        $j=0;
+        $j=rand(1000000,9999999999);
         foreach($strain as $s)
         {
             $j++;
@@ -117,3 +117,19 @@ $('.rating<?php echo $j;?>').raty({number:10,readOnly:true,score:<?php echo $s['
     }
     ?>
     <div class="clear"></div>
+    <div class="morelist" style="display: none;"></div>
+    <?php if($strain){?>
+    <div class="loadmore"><a href="javascript:void(0);">Load More</a></div>
+    <?php }?>
+    <script>
+    $(function(){
+        var m=0
+       $('.loadmore').each(function(){
+        m++;
+        if(m!=1)
+        {
+            $(this).remove();
+        }
+       }); 
+    });
+    </script>
