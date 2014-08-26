@@ -19,7 +19,6 @@
 <link rel="stylesheet" href="<?php echo $this->webroot;?>css/ui.css" />
 <script type="text/javascript" src="<?php echo $this->webroot;?>js2/jquery-1.11.0.min.js"></script>
 
-
 <!--link href="<?php echo $this->webroot;?>default.css" rel="stylesheet" type="text/css" media="all" /-->
 <!--link rel="stylesheet" href="<?php echo $this->webroot;?>source/jquery.fancybox.css?v=2.1.5" type="text/css" media="screen" />
 <link rel="stylesheet" href="<?php echo $this->webroot;?>source/helpers/jquery.fancybox-buttons.css?v=1.0.5" type="text/css" media="screen" />
