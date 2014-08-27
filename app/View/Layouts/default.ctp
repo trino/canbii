@@ -292,7 +292,7 @@ if(thiss.attr('class').replace('searchact','')==thiss.attr('class'))
 					<ul class="footer_banner_box_container clearfix">
 						<li class="footer_banner_box super_light_blue animated_element animation-fadeIn duration-500">
 							<h2>
-								Say
+								About Medical Marijuana:
 							</h2>
 							<p>
 								<a class="icon_small_arrow right_white" href="#">Here in medicenter we have individual</a>
@@ -300,7 +300,7 @@ if(thiss.attr('class').replace('searchact','')==thiss.attr('class'))
 						</li>
 						<li class="footer_banner_box light_blue animated_element animation-slideRight duration-800 delay-500">
 							<h2>
-								Something
+								Featured Strain:
 							</h2>
 							<p>
 								<a class="icon_small_arrow right_white" href="#">Here in medicenter we have individual</a>
@@ -308,10 +308,10 @@ if(thiss.attr('class').replace('searchact','')==thiss.attr('class'))
 						</li>
 						<li class="footer_banner_box blue animated_element animation-slideRight200 duration-800 delay-1000">
 							<h2>
-								Here
+								Contact Us:
 							</h2>
 							<p>
-								<a class="icon_small_arrow right_white" href="#">Here in medicenter we have individual</a>
+								<a href="mailto:medicenter@mail.com" title="Send Email">medicenter@mail.com</a>
 							</p>
 						</li>
 						
@@ -319,44 +319,11 @@ if(thiss.attr('class').replace('searchact','')==thiss.attr('class'))
 					<div class="footer_box_container clearfix">
 						<div class="footer_box">
 							<h3 class="box_header">
-								Medicenter Clinic
+								Name of website
 							</h3>
 							<p class="info">
-								Mauris adipiscing mauris fringilla turpis interdum sed pulvinar nisi malesuada individual.
+								(name of site) is an online database to educated the public about the benefits of medical marijuana to help those who suffer from chronic pain.
 							</p>
-							<ul class="footer_contact_info_container clearfix">
-								<li class="footer_contact_info_row">
-									<div class="footer_contact_info_left">
-										Medicenter Clinic
-									</div>
-								</li>
-								<li class="footer_contact_info_row">
-									<div class="footer_contact_info_left">
-										33 Farlane Street
-									</div>
-									<div class="footer_contact_info_right">
-										+123 655 655
-									</div>
-								</li>
-								<li class="footer_contact_info_row">
-									<div class="footer_contact_info_left">
-										Keilor East
-									</div>
-									<div class="footer_contact_info_right">
-										+123 755 755
-									</div>
-								</li>
-								<li class="footer_contact_info_row">
-									<div class="footer_contact_info_left">
-										VIC 3033, Australia
-									</div>
-									<div class="footer_contact_info_right">
-										<a href="mailto:medicenter@mail.com" title="Send Email">
-											medicenter@mail.com
-										</a>
-									</div>
-								</li>
-							</ul>
 							<ul class="social_icons clearfix">
 								<li>
 									<a class="social_icon facebook" href="http://facebook.com/QuanticaLabs" title="" target="_blank">
@@ -365,11 +332,6 @@ if(thiss.attr('class').replace('searchact','')==thiss.attr('class'))
 								</li>
 								<li>
 									<a class="social_icon twitter" href="https://twitter.com/QuanticaLabs" title="" target="_blank">
-										&nbsp;
-									</a>
-								</li>
-								<li>
-									<a class="social_icon googleplus" href="#" title="">
 										&nbsp;
 									</a>
 								</li>
@@ -440,7 +402,7 @@ if(thiss.attr('class').replace('searchact','')==thiss.attr('class'))
 					</div>
 					<div class="copyright_area clearfix">
 						<div class="copyright_left">
-							© Copyright - <a href="http://themeforest.net/item/medicenter-responsive-medical-health-template/4000598?ref=QuanticaLabs" title="MediCenter Template" target="_blank">MediCenter Template</a> by <a href="http://quanticalabs.com" title="QuanticaLabs" target="_blank">QuanticaLabs</a>
+							© Copyright - <a href="http://themeforest.net/item/medicenter-responsive-medical-health-template/4000598?ref=QuanticaLabs" title="MediCenter Template" target="_blank">MediCenter Template</a> 
 						</div>
 						<div class="copyright_right">
 							<a class="scroll_top icon_small_arrow top_white" href="#top" title="Scroll to top">Top</a>

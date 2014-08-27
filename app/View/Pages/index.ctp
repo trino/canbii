@@ -30,7 +30,7 @@ Filter Strains
 
 
 <ul class="tabs_navigation2" style="padding-top:10px;">
-<li><strong><a href="#">Search Effects</a></strong></li>
+<li><strong><a href="#">Search Effects:</a></strong></li>
 
 
 <?php $effect = $this->requestAction('/pages/getEff');
@@ -49,13 +49,13 @@ foreach($effect as $e)
 
 <ul class="tabs_navigation2" style="padding-top:30px;">
 
-<li><strong><a href="#">Search by Symptoms</a></strong></li>
+<li><strong><a href="#">Search by Symptoms:</a></strong></li>
 
 <?php $effect = $this->requestAction('/pages/getSym');
 foreach($effect as $e)
 {
 ?><li>
-<a href="javascript:void(0)" onclick="highlightsym($(this))" class="small-btn" id="sym_<?php echo $e['Symptom']['id'];?>"><?php echo $e['Symptom']['title']?></a>
+<a href="javascript:void(0)" onclick="highlightsym($(this))" class="                                                                         " id="sym_<?php echo $e['Symptom']['id'];?>"><?php echo $e['Symptom']['title']?></a>
 </li>
 <?php
 }
@@ -83,9 +83,9 @@ foreach($effect as $e)
 
 
 
-<h3 class="box_header page_margin_top_section slide clearfix" style="">
+<h2 class="box_header page_margin_top_section slide clearfix" style="">
 Strain Types
-</h3>
+</h2>
 
 
 
@@ -169,12 +169,9 @@ Browse Strains →
 
 
 
-<h3 class="box_header page_margin_top_section slide">
+<h2 class="box_header page_margin_top_section slide">
 Latest Strains
-</h3>
-
-<br>
-
+</h2>
 
 
 
@@ -349,7 +346,10 @@ John Doe
 }
 ?>
 </div>
-</div></div>
+</div>
+</div>
+
+
 <script>
 function highlighteff(thiss){
 if(thiss.attr('class').replace('searchact','')==thiss.attr('class'))

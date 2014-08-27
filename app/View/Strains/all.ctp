@@ -217,7 +217,7 @@ $('.rating<?php echo $j;?>').raty({number:5,readOnly:true,score:<?php echo $s['S
     ?>
     <div class="clear"></div>
     <div class="morelist" style="">
-    <div class="loadmore"><a href="javascript:void(0);">Load More</a></div>
+    <div class="blue more"><a href="javascript:void(0);"><font color="white">Load More</font></a></div>
     </div>
     
 	</div>
