@@ -32,7 +32,7 @@
 
 <div class="clearfix"></div>
 <p>
-Lorem ipsum some laki a  ipsum some laki a  ipsum some laki a  ipsum some laki a  ipsum some laki a  ipsum some laki a  ipsum some laki a  ipsum some laki a  ipsum some laki a  ipsum some laki a  ipsum some laki a  ipsum some laki a  ipsum some laki a  ipsum some laki a  ipsum some laki a  ipsum some laki a  ipsum some laki a  i ipsum some laki a psum some laki a  ipsum some laki a 
+We value your opinion. Share your experience with others to help guide them towards the strain that will benefit them the most. Thank you!
 </p>
 
 <form class="contact_form" action="" method="post">

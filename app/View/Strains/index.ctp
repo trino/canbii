@@ -31,13 +31,15 @@ Home
 <!--form class="search">
 <input class="search_input hint" type="text" value="To search type and hit enter..." placeholder="To search type and hit enter...">
 </form-->
+<a class="blue more" href="<?php echo $this->webroot;?>review/add/<?php echo $strain['Strain']['slug'];?>">Review Strain</a>
 </div>
+
 </div>
 
 
 
 
-<div class="clearfix page_margin_top ">
+<div class="clearfix page_margin_top " style="margin-bottom: 10px">
 
 
 
@@ -45,34 +47,32 @@ Home
 
 
 
-
-<a href="<?php echo $this->webroot;?>review/add/<?php echo $strain['Strain']['slug'];?>">Review Strain</a>
 <div class="toprint">
-<p>Description:</p>
+<p class="ptitle" style="margin-top: 0px">DESCRIPTION:</p>
 <p><?php echo $strain['Strain']['description']; ?></p>
 
 <!--<p><?php echo $strain['StrainType']['title'];?></p>
 <?php echo $strain['Strain']['name'];?>-->
-<h2>Reviews:</h2>
+<h2 class="box_header page_margin_top_section slide clearfix" style="margin-top: 10px">Reviews</h2><br />
 <div class="one-third dark">
 <p>OVERALL RATING:</p>
-<div class="rating left"></div>
+<div class="rating"></div>
 </div>
 
 <div class="one-third light">
-<p>Reviews</p>
-<?php echo $strain['Strain']['review'];?>
+<p>REVIEWS:</p>
+<h3><?php echo $strain['Strain']['review'];?></h3>
 </div>
-<div class="one-third lighter">
-<p>Views:</p>
-<?php echo $strain['Strain']['viewed'];?>
+<div class="one-third dark">
+<p>VIEWS:</p>
+<h3><?php echo $strain['Strain']['viewed'];?></h3>
 </div>
 <div  class="clearfix"></div>
 
-<h2 class="martop25">Strain Attributes</h2>
+<h2 class="box_header page_margin_top_section slide clearfix" style="margin-top: 10px">Strain Attributes</h2>
 
 <div class="flavors">
-<p class="ptitle">FLAVORS</p>
+<p class="ptitle">FLAVORS:</p>
 <?php
 foreach($flavor as $f)
 {
@@ -86,7 +86,7 @@ foreach($flavor as $f)
 </div>
 <div>
 <div class="half">
-<p>Positive Effects</p>
+<p>POSITIVE EFFECTS:</p>
 <?php
 foreach($strain['OverallEffectRating'] as $oer)
 {
@@ -124,7 +124,7 @@ $length = 20*$rate;;
 
 
 
-<p class="third">Negative Effects</p>
+<p class="third">NEGATIVE EFFECTS:</p>
 <?php
 if(isset($arr_neg))
 rsort($arr_neg);
@@ -155,7 +155,7 @@ $length = 20*$rate;
 <div>
 <div class="half">
 
-<p class="second" >Symptoms</p>
+<p class="second" >SYMPTOMS:</p>
 <?php
 foreach($strain['OverallSymptomRating'] as $oer)
 {
@@ -189,7 +189,7 @@ $length = 20*$rate;;
 </div>
 
 <div  class="half second-half">
-<p>Effect Ratings</p>
+<p>EFFECT RATINGS:</p>
 <?php
 $count = count($strain['Review']);
 if($count){
@@ -221,41 +221,13 @@ $duration = ($duration/$count)*20;
 <?php
 }
 ?>
+
 </div>
-<div class="clearfix"></div>
-</div>
-
-<h2 class="martop25">Review highlights</h2>
-<div class="half white">
-<p>Most Helpful</p>
-<?php if($helpful){?>
-<div class="userinfo">
-<div class="names left"><strong><?php echo $this->requestAction('/strains/getUserName/'.$helpful['Review']['user_id']);?></strong></div>
-
-
-<div class="dates left">
-<em><?php echo $helpful['Review']['on_date'];?></em>
-</div>
-
-<div class="rates frate left"></div>
-
-<div class="clear"></div>
-</div>
-<i><?php echo $helpful['Review']['review'];?></i>
-<?php
-$rand1 = rand(100,999);
-$rand2 = rand(100,999);
-?>
-<p>
-<em>WAS THIS REVIEW HELPFUL TO YOU? </em> &nbsp; &nbsp; <?php if($vote==0){?><a href="javascript:void(0);" id="<?php echo $rand1.'_'.$helpful['Review']['id'];?>" class="btns yes">YES</a> <a class="btns no" href="javascript:void(0);" id="<?php echo ($rand1+1).'_'.$helpful['Review']['id'];?>">NO</a><?php }else{?><a href="javascript:void(0);" id="" class="faded">YES</a> <a class="faded" href="javascript:void(0);" id="">NO</a><?php }?>
 <br />
-<a href="<?php echo $this->webroot;?>strains/review/<?php echo $strain['Strain']['slug'];?>" class="viewall more blue martop25">View All Reviews</a>
-</p>
-<?php }?>
-</div>
 <div class="clearfix"></div>
 <div class="chemical">
-<h2>Chemical Composition</h2>
+<br />
+<h2 class="box_header page_margin_top_section slide clearfix" style="margin-top: 10px">Chemical Composition</h2><br />
 <div class="half">
 
 <div class="eff">
@@ -285,10 +257,48 @@ if($strain['StrainImage'])
 	{
 	?>
 	<a class="fancybox" rel="group" href="<?php echo $this->webroot;?>images/strains/<?php echo $g['image'];?>" style="display: inline-block;"><img src="<?php echo $this->webroot;?>images/strains/<?php echo $g['image'];?>" width="120px" height="80px" /></a>
+	
+	
 	<?php
 	}
 }
 ?>
+
+<div class="clearfix"></div>
+</div>
+
+<h2 class="box_header page_margin_top_section slide clearfix" style="margin-top:5cm">Review Highlights</h2><br />
+<div class="half white">
+<p>Most Helpful</p>
+<?php if($helpful){?>
+<div class="userinfo">
+<div class="names left"><strong><?php echo $this->requestAction('/strains/getUserName/'.$helpful['Review']['user_id']);?></strong></div>
+
+
+<div class="dates left">
+<em><?php echo $helpful['Review']['on_date'];?></em>
+</div>
+
+<div class="rates frate left"></div>
+
+<div class="clear"></div>
+</div>
+<i><?php echo $helpful['Review']['review'];?></i>
+<?php
+$rand1 = rand(100,999);
+$rand2 = rand(100,999);
+?>
+<p>
+<em>WAS THIS REVIEW HELPFUL TO YOU? </em> &nbsp; &nbsp; <?php if($vote==0){?><a href="javascript:void(0);" id="<?php echo $rand1.'_'.$helpful['Review']['id'];?>" class="btns yes">YES</a> <a class="btns no" href="javascript:void(0);" id="<?php echo ($rand1+1).'_'.$helpful['Review']['id'];?>">NO</a><?php }else{?><a href="javascript:void(0);" id="" class="faded">YES</a> <a class="faded" href="javascript:void(0);" id="">NO</a><?php }?>
+<br />
+<a href="<?php echo $this->webroot;?>strains/review/<?php echo $strain['Strain']['slug'];?>" class="viewall more blue martop25">View All Reviews</a>
+</p>
+<?php }?>
+</div>
+
+
+
+
 
 <script type="text/javascript">
 $(document).ready(function() {
