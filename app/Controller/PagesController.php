@@ -47,7 +47,7 @@ class PagesController extends AppController {
  */
 	public function index()
     {
-        
+        //asd
         $this->loadModel('Strain');
         $this->set('strain',$this->Strain->find('all',array('order'=>'Strain.id DESC','limit'=>4)));
         $this->set('homepage','1');
