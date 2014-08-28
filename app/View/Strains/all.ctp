@@ -152,8 +152,8 @@ $('.rating<?php echo $j;?>').raty({number:10,readOnly:true,score:<?php echo $s['
 
 
 
-<div style="float:left;background-image: url('<?php echo $this->webroot?>images/features_small/icon.png');width:57px;height:66px;margin-right:10px;">
-<p style="vertical-align:middle;text-align:center;color:white;font-size:18px;">
+<div style="float:left;background-image: url('<?php echo $this->webroot?>images/features_small/icon.png');width:57px;height:66px;margin-left:12px;margin-bottom: 8px">
+<p style="vertical-align:middle;text-align:center;color:white;font-size:18px; margin-top:10px">
 
 
 <?php 

@@ -51,9 +51,10 @@ if($review)
             <div class="gap">
             <?php if($r){?>
                 <div class="userinfo">
-                    <div class="names left"><strong><?php echo $this->requestAction('/strains/getUserName/'.$r['Review']['user_id']);?></strong></div>
-                    <div class="dates left"><em><?php echo $r['Review']['on_date'];?></em></div>
-                    <div class="rates frate<?php echo $i;?> left"></div>
+                    <div><img src="<?php echo $this->webroot;?>images/BlankProfile.png" alt="" style="float: left; margin-right:10px;"></div>
+					<div class="names left"><strong><?php echo $this->requestAction('/strains/getUserName/'.$r['Review']['user_id']);?></strong></div>
+                    <div class="dates left" style="align:left"><em><?php echo $r['Review']['on_date'];?></em></div>
+                    <div class="rates frate<?php echo $i;?> left" style="margin-top:18px"></div>
                     <div class="clear"></div>
                     <script>
                     $(function(){
@@ -73,9 +74,10 @@ if($review)
         else
         $vote = 0;
                 ?>
+				<div style="width:60px; height: 3.5px;background-color: #40b2e2;margin-top:5px"></div>
                 <p class="gap martop">
                 
-                    <em>WAS THIS REVIEW HELPFUL TO YOU? </em> &nbsp; &nbsp; <?php if($vote==0){?><a href="javascript:void(0);" id="<?php echo $rand1.'_'.$r['Review']['id'];?>" class="btns yes">YES</a> <a class="btns no" href="javascript:void(0);" id="<?php echo ($rand1+1).'_'.$r['Review']['id'];?>">NO</a><?php }else{?><a href="javascript:void(0);" id="" class="faded">YES</a> <a class="faded" href="javascript:void(0);" id="">NO</a><?php }?>
+                    <em>WAS THIS REVIEW HELPFUL TO YOU? </em> &nbsp; &nbsp; <?php if($vote==0){?><a href="javascript:void(0);" id="<?php echo $rand1.'_'.$r['Review']['id'];?>" class="btns yes" style="background-color: #40b2e2; padding-left:6px; padding-right:6px; padding-top: 5px; padding-bottom: 5px; margin-right:5px"><strong style="color: white">YES</strong></a> <a class="btns no" href="javascript:void(0);" id="<?php echo ($rand1+1).'_'.$r['Review']['id'];?>" style="background-color: #1e84c6; padding-left:10px; padding-right:10px; padding-top: 5px; padding-bottom: 5px; margin-right:5px"><strong style="color: white">NO</strong></a><?php }else{?><a href="javascript:void(0);" id="" class="faded">YES</a> <a class="faded" href="javascript:void(0);" id="">NO</a><?php }?>
                 </p>
                 <?php }?>
             </div>

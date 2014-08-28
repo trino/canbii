@@ -94,7 +94,7 @@ Strain Types
 <ul class="column">
 <li class="item_content clearfix">
 <a class="features_image" href="#" title="">
-<img src="images/features_small/lab.png" alt="">
+<img src="images/IndicaIcon.png" alt="">
 </a>
 <div class="text">
 
@@ -121,7 +121,7 @@ Browse Strains →
 <ul class="column">
 <li class="item_content clearfix">
 <a class="features_image" href="#" title="">
-<img src="images/features_small/dropper.png" alt="">
+<img src="images/SativaIcon.png" alt="">
 </a>
 <div class="text">
 
@@ -144,7 +144,7 @@ Browse Strains →
 <ul class="column">
 <li class="item_content clearfix">
 <a class="features_image" href="#" title="">
-<img src="images/features_small/pill.png" alt="">
+<img src="images/HybridIcon.png" alt="">
 </a>
 <div class="text">
 
@@ -205,7 +205,7 @@ $j++;
 
 
 <div style="float:left;background-image: url('images/features_small/icon.png');width:57px;height:66px;margin-right:10px;">
-<p style="vertical-align:middle;text-align:center;color:white;font-size:18px;">
+<p style="vertical-align:middle;text-align:center;color:white;font-size:18px;margin-top:-5px">
 
 
 <?php 

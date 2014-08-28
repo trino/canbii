@@ -35,6 +35,9 @@
 
 <div class="clearfix"></div>
 
+<p style="margin-top:7px">
+	<img src="<?php echo $this->webroot;?>images/IndicaIcon.png" alt="" style="margin-right: 28px"><img src="<?php echo $this->webroot;?>images/SativaIcon.png" alt="" style="margin-right: 28px"><img src="<?php echo $this->webroot;?>images/HybridIcon.png" alt="">
+</p>
 <h2 class="martop25">My Reviews</h2>
 <!--<table style="width:100%;" class="page_margin_top timetable">
 <thead><th>Strain</th><th>Date</th><th>Comment</th><th>Overall Rating</th><th></th></thead>-->
@@ -48,6 +51,7 @@ foreach($reviews as $review)
     <h3><?php echo $review['Strain']['name'];?></h3>
 	<strong>Reviewed on: </strong><?php echo $review['Review']['on_date'];?>
     <div class="rating<?php echo $j;?> rat" style=""></div>
+	<div style="width:60px; height: 3.5px;background-color: #40b2e2;margin-top:5px"></div>
        <script>
         $(function(){    
         $('.rating<?php echo $j;?>').raty({number:10,readOnly:true,score:<?php echo $review['Review']['rate'];?>});
@@ -56,7 +60,7 @@ foreach($reviews as $review)
     <p>
 	   <?php echo $review['Review']['review'];?>
     </p>
-    
+    <div style="width:60px; height: 3.5px;background-color: #40b2e2;margin-top:4px; margin-bottom: 10px"></div>
 	   
     
 	<a href="<?php echo $this->webroot;?>review/detail/<?php echo $review['Review']['id'];?>" class="more blue">View Detail</a>
