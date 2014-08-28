@@ -145,6 +145,34 @@ $('.rating<?php echo $j;?>').raty({number:10,readOnly:true,score:<?php echo $s['
 <ul class="blog">
 <li class="post">
 <ul class="comment_box clearfix" style="">
+
+
+
+	<li class="date clearfix">
+
+
+
+<div style="float:left;background-image: url('<?php echo $this->webroot?>images/features_small/icon.png');width:57px;height:66px;margin-right:10px;">
+<p style="vertical-align:middle;text-align:center;color:white;font-size:18px;">
+
+
+<?php 
+$name_arr = explode(' ',$s['Strain']['name']);
+$i=0;
+foreach($name_arr as $na)
+{
+$i++;
+if($i==1){
+echo ucfirst($na[0]);
+}
+else echo strtolower($na[0]);
+}
+?>
+</p>
+</div>
+
+</li>
+
 	<li class="date clearfix">
 		<div class="value">
 		<a style="color:white;" href="<?php echo $this->webroot?>strains/<?php echo $s['Strain']['slug'];?>">
