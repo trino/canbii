@@ -30,7 +30,7 @@ Filter Strains
 
 
 <ul class="tabs_navigation2" style="padding-top:10px;">
-<li><strong><a href="#">Search Effects:</a></strong></li>
+<li><strong style="font-size: 18pt; color: white">Search Effects:</strong></li>
 
 
 <?php $effect = $this->requestAction('/pages/getEff');
@@ -49,7 +49,7 @@ foreach($effect as $e)
 
 <ul class="tabs_navigation2" style="padding-top:30px;">
 
-<li><strong><a href="#">Search by Symptoms:</a></strong></li>
+<li><strong style="font-size: 18pt; color: white">Search by Symptoms:</strong></li>
 
 <?php $effect = $this->requestAction('/pages/getSym');
 foreach($effect as $e)

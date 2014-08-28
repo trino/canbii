@@ -31,7 +31,7 @@ Home
 <!--form class="search">
 <input class="search_input hint" type="text" value="To search type and hit enter..." placeholder="To search type and hit enter...">
 </form-->
-<a class="blue more" href="<?php echo $this->webroot;?>review/add/<?php echo $strain['Strain']['slug'];?>">Review Strain</a>
+<a class="blue more" style="margin-right: 10px" href="<?php echo $this->webroot;?>review/add/<?php echo $strain['Strain']['slug'];?>">Review Strain</a><a class="blue more" href="javascript:void(0)" onclick="window.print();">Print Report</a>
 </div>
 
 </div>
@@ -39,7 +39,7 @@ Home
 
 
 
-<div class="clearfix page_margin_top " style="margin-bottom: 10px">
+
 
 
 
@@ -48,12 +48,18 @@ Home
 
 
 <div class="toprint">
-<p class="ptitle" style="margin-top: 0px">DESCRIPTION:</p>
+
+<div style="width: 60%; float: left; margin-top: 10px">
+<p class="ptitle">DESCRIPTION:</p>
 <p><?php echo $strain['Strain']['description']; ?></p>
+</div>
+<div style="width: 40%; float: left; margin-top: 20px">
+<b>IMAGE FOR <em><?php echo strtoupper($strain['Strain']['name']);?></em></b>
+</div>
 
 <!--<p><?php echo $strain['StrainType']['title'];?></p>
 <?php echo $strain['Strain']['name'];?>-->
-<h2 class="box_header page_margin_top_section slide clearfix" style="margin-top: 10px">Reviews</h2><br />
+<h2 class="box_header page_margin_top_section slide clearfix" style="margin-top: 15px">Reviews</h2><br />
 <div class="one-third dark">
 <p>OVERALL RATING:</p>
 <div class="rating"></div>
@@ -246,10 +252,11 @@ $duration = ($duration/$count)*20;
 <div class="label left" style="width: 16%!important;">THCV</div><div class="left ratewrap" style="width: 73%;background:#FFF;"><div class="length" style="width: <?php echo $strain['Strain']['thcv'];?>%;"></div><em><?php echo $strain['Strain']['thcv'];?>%</em></div><div class="clear"></div>
 </div>        
 </div>
-<div class="half second-half">
+<!--<div class="half second-half">
 <b>IMAGE FOR <em><?php echo strtoupper($strain['Strain']['name']);?></em></b>
 <br />
 <br />
+-->
 <?php
 if($strain['StrainImage'])
 {
@@ -267,7 +274,7 @@ if($strain['StrainImage'])
 <div class="clearfix"></div>
 </div>
 
-<h2 class="box_header page_margin_top_section slide clearfix" style="margin-top:5cm">Review Highlights</h2><br />
+<h2 class="box_header page_margin_top_section slide clearfix" style="margin-top:10px">Review Highlights</h2><br />
 <div class="half white">
 <p>Most Helpful</p>
 <?php if($helpful){?>

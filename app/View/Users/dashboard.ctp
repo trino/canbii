@@ -60,7 +60,7 @@
 <form action="" method="post" id="dashboard" class="contact_form">
    <strong>Nationality:</strong>
    <select name="nationality"> 
-		<option value="">Select Nationality</option>
+		<option style="padding-top: 20px; padding-bottom:20px" value="">Select Nationality</option>
 		<option value="asian" <?php if($nationality=='asian')echo "selected='selected'";?>>Asian</option>
 		<option value="indian"<?php if($nationality=='indian')echo "selected='selected'";?>>Indian</option>
 		<option value="white"<?php if($nationality=='white')echo "selected='selected'";?>>White</option>

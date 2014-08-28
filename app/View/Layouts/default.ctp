@@ -292,7 +292,7 @@ if(thiss.attr('class').replace('searchact','')==thiss.attr('class'))
 					<ul class="footer_banner_box_container clearfix">
 						<li class="footer_banner_box super_light_blue animated_element animation-fadeIn duration-500">
 							<h2>
-								About Medical Marijuana:
+								Why Go Natural?
 							</h2>
 							<p>
 								<a class="icon_small_arrow right_white" href="#">Here in medicenter we have individual</a>
@@ -302,16 +302,25 @@ if(thiss.attr('class').replace('searchact','')==thiss.attr('class'))
 							<h2>
 								Featured Strain:
 							</h2>
-							<p>
-								<a class="icon_small_arrow right_white" href="#">Here in medicenter we have individual</a>
-							</p>
+							<br />
+							<div>
+							<div style="float: left; width:33%">
+							Indica
+							</div>
+							<div style="float: left; width:33%">
+							Sativa
+							</div>
+							<div style="float: left; width:33%">
+							Hybrid
+							</div>
+							</div>
 						</li>
 						<li class="footer_banner_box blue animated_element animation-slideRight200 duration-800 delay-1000">
 							<h2>
-								Contact Us:
+								Questions or Concerns?
 							</h2>
 							<p>
-								<a href="mailto:medicenter@mail.com" title="Send Email">medicenter@mail.com</a>
+								<font color="white">Please contact us at</font> <a href="mailto:medicenter@mail.com" title="Send Email">medicenter@mail.com</a>
 							</p>
 						</li>
 						
@@ -322,7 +331,9 @@ if(thiss.attr('class').replace('searchact','')==thiss.attr('class'))
 								Name of website
 							</h3>
 							<p class="info">
-								(name of site) is an online database to educated the public about the benefits of medical marijuana to help those who suffer from chronic pain.
+								(name of site) is an online database to educated the public about the benefits of medical marijuana to help those who suffer from chronic pain.<br />
+								<br />
+								Medicinal marijuana is a growing movement and we want to do our part to help spread the word. Be it Indica, Sativa, or a Hybrid strain, this natural plant helps many people cope with debilitating pain that affect their daily lives.
 							</p>
 							<ul class="social_icons clearfix">
 								<li>

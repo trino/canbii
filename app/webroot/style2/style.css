@@ -1249,13 +1249,6 @@ a.social_icon:hover
 	color: #FFF;
 	border: 1px solid #FFF;
 }
-.more.newblue
-{
-	padding: 5px 8px 7px;
-	background-position: right center;
-	color: #FFF;
-	border: 1px solid #FFF;
-}
 .more.dark_blue:hover,
 .more.light:hover,
 .more.blue:hover
@@ -2925,8 +2918,8 @@ ul.gallery_item_details_list
 	color: #BBB;
 }
 .searchact{
-    border-color: #FF6D00!important;
-	color: #aeaeae!important;
+    border-color: #1b83c6!important;
+	color: #eaeaeai!important;
 }
 .bread_crumb li,
 #comments_list .comment_details .posted_by a,
@@ -3034,8 +3027,8 @@ a.social_icon,
 .white i{font-size:17px;padding-top:5px;}
 .chemical h2{margin:10px 0 10px 0;}
 #dashboard strong{display:block;margin:15px 0 5px 0;}
-#dashboard select{width:250px;height:25px;background:#F0F0F0;border: 1px solid #e5e5e5;}
-#dashboard input[type="text"]{width:240px;height:25px;padding:0 5px;}
+#dashboard select{width:250px;height:40px;background:#F0F0F0;border: 1px solid #e5e5e5;}
+#dashboard input[type="text"]{width:240px;height:40px;padding:0 5px;}
 #dashboard input[type="submit"]{float:left!important;}
 .qf-fieldset label{display:block;font-weight: bold;margin-top:35px;}
 #qf_review__other__comments{width:500px;margin-bottom:15px;border:1px solid #CCC;border-radius:4px;}
