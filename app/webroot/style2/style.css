@@ -1932,8 +1932,8 @@ a.social_icon:hover
 {
 	float: left;
 	margin-top: 0;
-	margin-right: 20px;
-    height:30px;
+	margin-right: 8px;
+    height:26px;
 }
 .tabs_navigation2 li:last-child
 {
@@ -3040,11 +3040,9 @@ a.social_icon,
 .names,.dates,.rates{width:148px;}
 .names,.dates{margin-top:5px;}
 .gap .userinfo{padding-bottom:5px;}
-#search{background: url("../images/search-bg.jpg") repeat scroll 0 0 rgba(0, 0, 0, 0);
-    padding-left: 30px;
-    padding-top: 20px;
+#search{
     width: 97%;}
-#search input[type="text"]{font-size: 20px;height: 20px;margin: 0;padding: 15px 18px;margin-top:20px;}
+#search input[type="text"]{margin: 0;padding: 15px 18px;width:50%;}
 #search input[type="submit"]{    float: none;
     font-weight: bold;
     height: 51px !important;
@@ -3054,7 +3052,6 @@ a.social_icon,
     width:155px;
     }
 #search h1{margin-top:20px;color:#FFF;}   
-#search{font-weight:bold;}
 #search strong{font-size:17px;}
  #search strong a{border-bottom:none!important;}
  .print{margin-top:40px;}

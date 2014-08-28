@@ -272,19 +272,70 @@ if(thiss.attr('class').replace('searchact','')==thiss.attr('class'))
 }
 </script>
 
+<?if(isset($homepage)){?>
+<div style="text-shadow: 1px 1px #333; width: 100%;height:500px; background-image: url(http://localhost/marijuana/images/bg4.jpg);">
+<div class="page clearfix">
+<h1 class="" style="padding:40px 20px;text-align:center;font-size:48px;color:white;">Canada's Largest Medical Marijuana Database</h1>
 
-<div class="page">
+<form class="contact_form" action="<?php echo $this->webroot;?>strains/search" method="get" id="search" style="margin:0px;">
+
+<strong style="font-size: 24px; color: white;">Effects:</strong>
+<?php $effect = $this->requestAction('/pages/getEff');
+foreach($effect as $e)
+{
+?>
+<a style="color:white;line-height:20px;padding:2px;" href="javascript:void(0)" class="small-btn" onclick="highlighteff($(this))" id="eff_<?php echo $e['Effect']['id'];?>"><?php echo $e['Effect']['title']?></a>
+</a>
+<?php
+}
+?>
+<div class="clear"></div>
+<p style="display: none;" class="effe"></p>
 
 
+
+<ul class="tabs_navigation2" style="padding-top:20px;">
+<li><strong style="font-size: 22px; color: white">Symptoms:</strong></li>
+<?php $effect = $this->requestAction('/pages/getSym');
+foreach($effect as $e)
+{
+?><li>
+<a href="javascript:void(0)" onclick="highlightsym($(this))" class=""  id="sym_<?php echo $e['Symptom']['id'];?>"><?php echo $e['Symptom']['title']?></a>
+</li>
+<?php
+}
+?>
+<div class="clear"></div>
+</ul>
+
+<div style="text-align:center">
+<input type="text" placeholder="Search Strain" name="key" class="key" style="border:2px solid #3156A3;"/><input type="submit" value="Search" class="more blue medium " style="" />
+
+						
+</div>
+
+<p style="display: none;" class="symp"></p>
+
+
+
+<div class="clearfix"></div>
+
+</form>
+
+
+
+
+</div>
+</div>
+<?}?>
+	
+<div class="page clearfix">
 	<?php echo $this->Session->flash(); ?>
 	<?php echo $this->fetch('content'); ?> 
 
 </div>
 
-
 <!-- //////////////////////////////////////////////////////////////////////////////////////////// NEW SITE-->
-
-
 
 
 <div class="footer_container">

@@ -1,89 +1,9 @@
 <div class="page_layout page_margin_top clearfix">
-<div class="page_header clearfix">
-<div class="page_header_left">
-<h1 class="page_title">The Internet's Largest Marijuana Strain Database</h1>
-<!--ul class="bread_crumb">
-<li>
-<a href="?page=home" title="Home">
-Home
-</a>
-</li>
-<li class="separator icon_small_arrow right_gray">
-&nbsp;
-</li>
-<li>
-Filter Strains
-</li>
-</ul-->
-</div>
-<div class="page_header_right">
-<!--form class="search">
-<input class="search_input hint" type="text" value="To search type and hit enter..." placeholder="To search type and hit enter...">
-</form-->
-</div>
-</div>
-
-<div class="clearfix">
-
-
-<form class="contact_form" action="<?php echo $this->webroot;?>strains/search" method="get" id="search" style="margin:0px;">
-
-
-<ul class="tabs_navigation2" style="padding-top:10px;">
-<li><strong style="font-size: 18pt; color: white">Search Effects:</strong></li>
-
-
-<?php $effect = $this->requestAction('/pages/getEff');
-foreach($effect as $e)
-{
-?><li>
-<a href="javascript:void(0)" class="small-btn" onclick="highlighteff($(this))" id="eff_<?php echo $e['Effect']['id'];?>"><?php echo $e['Effect']['title']?></a>
-</a></li>
-<?php
-}
-?>
-<div class="clear"></div>
-</ul>
-<p style="display: none;" class="effe"></p>
-
-
-<ul class="tabs_navigation2" style="padding-top:30px;">
-
-<li><strong style="font-size: 18pt; color: white">Search by Symptoms:</strong></li>
-
-<?php $effect = $this->requestAction('/pages/getSym');
-foreach($effect as $e)
-{
-?><li>
-<a href="javascript:void(0)" onclick="highlightsym($(this))" class="                                                                         " id="sym_<?php echo $e['Symptom']['id'];?>"><?php echo $e['Symptom']['title']?></a>
-</li>
-<?php
-}
-?>
-<div class="clear"></div>
-
-</ul>
-
-<center>
-<h1>or</h1>
-
-<input type="text" placeholder="Search Strain" name="key" class="key" style="width:50%;"/><input type="submit" value="Search" class="more large dark_blue" style="" />
-
-</center>
 
 
 
 
-
-<p style="display: none;" class="symp"></p>
-
-
-<div class="clearfix"></div>
-</form>
-
-
-
-<h2 class="box_header page_margin_top_section slide clearfix" style="">
+<h2 class="box_header slide clearfix" style="">
 Strain Types
 </h2>
 
@@ -347,8 +267,26 @@ John Doe
 ?>
 </div>
 </div>
-</div>
 
+
+
+<div class="announcement page_margin_top_section clearfix">
+			<ul class="columns no_width">
+				<li class="column_left">
+					<h1>We offer a no obligation a free initial consultation</h1>
+					<p>Fees are an estimate only and may be more depending on your situation</p>
+				</li>
+				<li class="column_right">
+					<div class="vertical_align">
+						<div class="vertical_align_cell">
+							<a title="Make an Appointment" href="?page=contact" class="more blue medium animated_element animation-slideLeft slideLeft" style="-webkit-animation: 600ms 0ms; transition: 0ms; -webkit-transition: 0ms;">Make an Appointment</a>
+						</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+		
+		
 
 <script>
 function highlighteff(thiss){
