@@ -279,6 +279,7 @@ if($strain['StrainImage'])
 <p>Most Helpful</p>
 <?php if($helpful){?>
 <div class="userinfo">
+ <div><img src="<?php echo $this->webroot;?>images/BlankProfile.png" alt="" style="float: left; margin-right:10px;"></div>
 <div class="names left"><strong><?php echo $this->requestAction('/strains/getUserName/'.$helpful['Review']['user_id']);?></strong></div>
 
 
@@ -286,7 +287,7 @@ if($strain['StrainImage'])
 <em><?php echo $helpful['Review']['on_date'];?></em>
 </div>
 
-<div class="rates frate left"></div>
+<div class="rates frate left" style="margin-top:14px"></div>
 
 <div class="clear"></div>
 </div>
@@ -295,8 +296,9 @@ if($strain['StrainImage'])
 $rand1 = rand(100,999);
 $rand2 = rand(100,999);
 ?>
+<div style="width:60px; height: 3.5px;background-color: #40b2e2;margin-top:5px"></div>
 <p>
-<em>WAS THIS REVIEW HELPFUL TO YOU? </em> &nbsp; &nbsp; <?php if($vote==0){?><a href="javascript:void(0);" id="<?php echo $rand1.'_'.$helpful['Review']['id'];?>" class="btns yes">YES</a> <a class="btns no" href="javascript:void(0);" id="<?php echo ($rand1+1).'_'.$helpful['Review']['id'];?>">NO</a><?php }else{?><a href="javascript:void(0);" id="" class="faded">YES</a> <a class="faded" href="javascript:void(0);" id="">NO</a><?php }?>
+<em>WAS THIS REVIEW HELPFUL TO YOU? </em> &nbsp; &nbsp; <?php if($vote==0){?><a href="javascript:void(0);" id="<?php echo $rand1.'_'.$helpful['Review']['id'];?>" class="btns yes" style="background-color: #40b2e2; padding-left:6px; padding-right:6px; padding-top: 5px; padding-bottom: 5px; margin-right:5px"><strong style="color: white">YES</strong></a> <a class="btns no" href="javascript:void(0);" id="<?php echo ($rand1+1).'_'.$helpful['Review']['id'];?>" style="background-color: #1e84c6; padding-left:10px; padding-right:10px; padding-top: 5px; padding-bottom: 5px; margin-right:5px"><strong style="color: white">NO</strong></a><?php }else{?><a href="javascript:void(0);" id="" class="faded">YES</a> <a class="faded" href="javascript:void(0);" id="">NO</a><?php }?>
 <br />
 <a href="<?php echo $this->webroot;?>strains/review/<?php echo $strain['Strain']['slug'];?>" class="viewall more blue martop25">View All Reviews</a>
 </p>

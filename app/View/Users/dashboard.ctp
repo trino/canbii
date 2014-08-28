@@ -110,7 +110,7 @@
 		<option value="often"<?php if($frequency=='often')echo "selected='selected'";?>>Often</option>
    </select>
    <br />
-   <input type="submit" name="submit" value="submit" class="button button-small" />
+   <input type="submit" name="submit" value="submit" class="blue more" />
 </form>
 
 <div class="clearfix"></div>

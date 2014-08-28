@@ -29,14 +29,20 @@
 <a title="Read more"  href="<?php echo $this->webroot;?>users/settings" class="more large dark_blue icon_small_arrow margin_right_white margin_left_10">Settings</a>
 <a title="Read more" href="<?php echo $this->webroot;?>review"  class="active more large dark_blue icon_small_arrow margin_right_white margin_left_10">Add Review</a>
 <a title="Read more" href="<?php echo $this->webroot;?>review/all"  class="more large dark_blue icon_small_arrow margin_right_white margin_left_10">My Reviews</a>
-
-<div class="clearfix"></div>
+<br />
+<br />
+<br />
+<br />
 <p>
+<img src="<?php echo $this->webroot;?>images/IndicaIcon.png" alt="" style="margin-right: 28px"><img src="<?php echo $this->webroot;?>images/SativaIcon.png" alt="" style="margin-right: 28px"><img src="<?php echo $this->webroot;?>images/HybridIcon.png" alt="">
+</p>
+<div class="clearfix"></div>
+<p style="width: 50%">
 We value your opinion. Share your experience with others to help guide them towards the strain that will benefit them the most. Thank you!
 </p>
 
 <form class="contact_form" action="" method="post">
-<label for="searchName">Enter Name:</label>
+<label for="searchName">Enter Name of Cannabis:</label>
 <input type="text" id="searchName" value="" />
 <span class="extra">(e.g. Purple Kush, Purple Nepal, Blue Dream)</span>
 <div class="results" style="display: none;">
