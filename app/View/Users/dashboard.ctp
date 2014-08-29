@@ -57,6 +57,7 @@
 <a title="Read more" href="<?php echo $this->webroot;?>review/all"  class="more large dark_blue icon_small_arrow margin_right_white margin_left_10">My Reviews</a>
 
 <div class="clear"></div>
+<p style="width: 50%; margin-top: 20px">Welcome to your corner of (site name). It's great to see you. Please enter accurate information so we can further help personalize medication for other users. We thank you for your help and support.</p> 
 <form action="" method="post" id="dashboard" class="contact_form">
    <strong>Nationality:</strong>
    <select name="nationality"> 
