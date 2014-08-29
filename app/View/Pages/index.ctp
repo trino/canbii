@@ -1,105 +1,71 @@
 <div class="page_layout page_margin_top clearfix">
 
+<div class="announcement  clearfix">
+	<ul class="columns no_width">
+		<li class="column_left">
+			<h1>There's a strain for that.. Lorem Ipsum</h1>
+			<p>Fees are an estimate only and may be more depending on your situatio depending on your situation</p>
+		</li>
+		<li class="column_right">
+			<div class="vertical_align">
+				<div class="vertical_align_cell">
+					<a title="Make an Appointment" href="?page=contact" class="more blue medium animated_element animation-slideLeft slideLeft" style="-webkit-animation: 600ms 0ms; transition: 0ms; -webkit-transition: 0ms;">View the Strains</a>
+				</div>
+			</div>
+		</li>
+	</ul>
+</div>
+		
+<h2 class="box_header page_margin_top clearfix" style="">Strain Types</h2>
 
-
-
-<h2 class="box_header slide clearfix" style="">
-Strain Types
-</h2>
-
-
-
-
-<div class="columns columns_3 page_margin_top clearfix">
-<ul class="column">
-<li class="item_content clearfix">
-<a class="features_image" href="#" title="">
-<img src="images/IndicaIcon.png" alt="">
-</a>
-<div class="text">
-
-<h3>
-<a href="<?php echo $this->webroot;?>strains/all/indica" title="Browse Strains">
-Indica
-</a>
-</h3>
-
+<ul class="columns_3 clearfix page_margin_top">
+			<li class="column">
+				<h3 class="box_header">
+					Indica
+				</h3>
+<img src="images/IndicaIcon.png" alt="" style="float:right;">
+<p>
 Indica plants typically grow short and wide. Indica plants are better suited for indoor growing because of their short growth. The smoking of Indica bud will make you sleepy and provides a deep relaxation feeling. This type of strain has great medecal benefit as well as treatment to certain illness.
-<div class="item_footer clearfix">
+</p>
 <a title="Browse Strains" href="<?php echo $this->webroot;?>strains/all/indica" class="more">
 Browse Strains →
 </a>
-</div>
-</div>
-</li>
-</ul>
+			</li>
+			<li class="column">
+				<h3 class="box_header slide">
+					Sativa
+				</h3>
 
-
-
-
-
-<ul class="column">
-<li class="item_content clearfix">
-<a class="features_image" href="#" title="">
-<img src="images/SativaIcon.png" alt="">
-</a>
-<div class="text">
-
-<h3>
-<a href="<?php echo $this->webroot;?>strains/all/sativa" title="Browse Strains">
-Sativa
-</a>
-</h3>
-
-
+				
+		<img src="images/SativaIcon.png" alt="" style="float:right;">
+		<p>
 Sativa plants grow tall and thin. sativa plants are better suited for outdoor growing because some strains can reach over 25 ft. in height. Sativa smoking is known for its energetic and uplifting feeling. This type of strain has great medecal benefit as well as treatment to certain illness.
-<div class="item_footer clearfix">
+</p>
 <a title="Browse Strains" href="<?php echo $this->webroot;?>strains/all/sativa" class="more">
 Browse Strains →
 </a>
-</div>
-</div>
-</li>
-</ul>
-<ul class="column">
-<li class="item_content clearfix">
-<a class="features_image" href="#" title="">
-<img src="images/HybridIcon.png" alt="">
-</a>
-<div class="text">
 
-<h3>
-<a href="<?php echo $this->webroot;?>strains/all/hybrid" title="Browse Strains">
-Hybrid
-</a>
-</h3>
-
+			</li>
+			<li class="column">
+				<h3 class="box_header slide">
+					Hybrid
+				</h3>
+				
+				<img src="images/HybridIcon.png" alt="" style="float:right;">
+<p>
 Sativa and Indica are the two major types of cannabis plants which can mix together to create hybrid strains. Marijuana strains range from pure sativas to pure indicas and hybrid strains consisting of both indica and sativa (30% indica – 70% sativa, 50% – 50% combinations, 80% indica – 20% sativa).
-<div class="item_footer clearfix">
+</p>
 <a title="Browse Strains" href="<?php echo $this->webroot;?>strains/all/hybrid" class="more">
 Browse Strains →
 </a>
-</div>
-
-</div>
-</li>
-</ul>
-</div>
-
+			</li>
+		</ul>
 
 
 
 <h2 class="box_header page_margin_top_section slide">
 Latest Strains
 </h2>
-
-
-
-
-
-
-
-
 
 
 <script src="<?php echo $this->webroot;?>js/raty.js"></script>
@@ -153,16 +119,7 @@ else echo strtolower($na[0]);
 
 <ul class="">
 <li><?php echo $s['StrainType']['title'];?></li>
-<!--<li>
-<a href="#" title="General">
-General,
-</a>
-</li>
-<li>
-<a href="#" title="Outpatient surgery">
-Outpatient surgery
-</a>
-</li>-->
+
 </ul>
 
 
@@ -269,23 +226,6 @@ John Doe
 </div>
 
 
-
-<div class="announcement page_margin_top_section clearfix">
-			<ul class="columns no_width">
-				<li class="column_left">
-					<h1>We offer a no obligation a free initial consultation</h1>
-					<p>Fees are an estimate only and may be more depending on your situation</p>
-				</li>
-				<li class="column_right">
-					<div class="vertical_align">
-						<div class="vertical_align_cell">
-							<a title="Make an Appointment" href="?page=contact" class="more blue medium animated_element animation-slideLeft slideLeft" style="-webkit-animation: 600ms 0ms; transition: 0ms; -webkit-transition: 0ms;">Make an Appointment</a>
-						</div>
-					</div>
-				</li>
-			</ul>
-		</div>
-		
 		
 
 <script>

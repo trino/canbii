@@ -12,23 +12,9 @@
 <link rel="shortcut icon" href="<?php echo $this->webroot;?>favicon.ico" type="image/x-icon"/>
 <link rel="icon" href="<?php echo $this->webroot;?>favicon.ico" type="image/x-icon"/>
 
-<!--link href="<?php echo $this->webroot;?>font.css" rel="stylesheet" /-->
-
-
-
 <link rel="stylesheet" href="<?php echo $this->webroot;?>css/ui.css" />
 <script type="text/javascript" src="<?php echo $this->webroot;?>js2/jquery-1.11.0.min.js"></script>
 
-<!--link href="<?php echo $this->webroot;?>default.css" rel="stylesheet" type="text/css" media="all" /-->
-<!--link rel="stylesheet" href="<?php echo $this->webroot;?>source/jquery.fancybox.css?v=2.1.5" type="text/css" media="screen" />
-<link rel="stylesheet" href="<?php echo $this->webroot;?>source/helpers/jquery.fancybox-buttons.css?v=1.0.5" type="text/css" media="screen" />
-<link rel="stylesheet" href="<?php echo $this->webroot;?>source/helpers/jquery.fancybox-thumbs.css?v=1.0.7" type="text/css" media="screen" /-->
-
-
-<!--script type="text/javascript" src="<?php echo $this->webroot;?>source/jquery.fancybox.pack.js?v=2.1.5"></script>
-<script type="text/javascript" src="<?php echo $this->webroot;?>source/helpers/jquery.fancybox-buttons.js?v=1.0.5"></script>
-<script type="text/javascript" src="<?php echo $this->webroot;?>source/helpers/jquery.fancybox-media.js?v=1.0.6"></script>
-<script type="text/javascript" src="<?php echo $this->webroot;?>source/helpers/jquery.fancybox-thumbs.js?v=1.0.7"></script-->
 
 
 <script src="<?php echo $this->webroot;?>js/validate.js"></script>
@@ -68,9 +54,6 @@
 
 </head>
 <body>
-
-
-
 
 <!-- //////////////////////////////////////////////////////////////////////////////////////////// NEW SITE-->
 
@@ -273,30 +256,36 @@ if(thiss.attr('class').replace('searchact','')==thiss.attr('class'))
 </script>
 
 <?if(isset($homepage)){?>
-<div style="text-shadow: 1px 1px #333; width: 100%;height:500px; background-image: url(http://localhost/marijuana/images/bg4.jpg);">
-<div class="page clearfix">
-<h1 class="" style="padding:40px 20px;text-align:center;font-size:48px;color:white;">Canada's Largest Medical Marijuana Database</h1>
+<div style="height:100%; background-image: url(http://localhost/marijuana/images/bg.jpg);">
+<div class="page clearfix" style="">
+<h1 class="" style="padding:40px 0 0 0;text-align:center;font-size:46px;color:white;">Canada's Largest Medicinal Marijuana Database</h1>
+<h2 style="color: white;padding:30px;text-align:center"> - search by - </h2> 
 
 <form class="contact_form" action="<?php echo $this->webroot;?>strains/search" method="get" id="search" style="margin:0px;">
 
-<strong style="font-size: 24px; color: white;">Effects:</strong>
+<ul class="tabs_navigation2" style="">
+<li>	
+<h2 style="color: white;">Effects: </h2> 
+</li>
 <?php $effect = $this->requestAction('/pages/getEff');
 foreach($effect as $e)
 {
-?>
+?><li>
 <a style="color:white;line-height:20px;padding:2px;" href="javascript:void(0)" class="small-btn" onclick="highlighteff($(this))" id="eff_<?php echo $e['Effect']['id'];?>"><?php echo $e['Effect']['title']?></a>
 </a>
+</li>
 <?php
 }
 ?>
+</ul>
+
 <div class="clear"></div>
 <p style="display: none;" class="effe"></p>
 
-
-
 <ul class="tabs_navigation2" style="padding-top:20px;">
-<li><strong style="font-size: 22px; color: white">Symptoms:</strong></li>
-<?php $effect = $this->requestAction('/pages/getSym');
+<li>	
+<h2 style="color: white;">Symptoms: </h2> 
+</li><?php $effect = $this->requestAction('/pages/getSym');
 foreach($effect as $e)
 {
 ?><li>
@@ -309,6 +298,8 @@ foreach($effect as $e)
 </ul>
 
 <div style="text-align:center">
+<h2 style="color: white;padding-top:30px;"> - or - </h2> 
+
 <input type="text" placeholder="Search Strain" name="key" class="key" style="border:2px solid #3156A3;"/><input type="submit" value="Search" class="more blue medium " style="" />
 
 						
@@ -316,14 +307,9 @@ foreach($effect as $e)
 
 <p style="display: none;" class="symp"></p>
 
-
-
 <div class="clearfix"></div>
 
 </form>
-
-
-
 
 </div>
 </div>
