@@ -351,7 +351,7 @@ foreach($effect as $e)
 						</li>
 						<li class="footer_banner_box light_blue animated_element animation-slideRight duration-800 delay-500">
 							<h2>
-								Featured Strain:
+								Featured Strains:
 							</h2>
 							<br />
 							<div>
