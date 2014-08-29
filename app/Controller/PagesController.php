@@ -53,13 +53,25 @@ class PagesController extends AppController {
         $this->set('homepage','1');
         
     }
-    public function view_page($slug)
+    // public function view_page($slug)
+    // {
+        
+        // $detail = $this->Page->findBySlug($slug);
+        // $this->set('detail',$detail);
+        
+    // }
+	
+	function contact_us()
     {
-        
-        $detail = $this->Page->findBySlug($slug);
-        $this->set('detail',$detail);
-        
+
     }
+	
+		function about_us()
+    {
+
+    }
+	
+	
     function getEff()
     {
         $this->loadModel('Effect');

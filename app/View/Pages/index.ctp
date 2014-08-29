@@ -128,7 +128,6 @@ else echo strtolower($na[0]);
 <div style="clear:both;">
 <p>
 <?php echo substr($s['Strain']['description'],0,160).'...';?>
-
 </p>
 
 <ul class="post_footer_details">

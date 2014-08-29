@@ -256,7 +256,7 @@ if(thiss.attr('class').replace('searchact','')==thiss.attr('class'))
 </script>
 
 <?if(isset($homepage)){?>
-<div style="height:100%; background-image: url(http://localhost/marijuana/images/bg.jpg);">
+<div style="height:100%; background-image: url(http://localhost/marijuana/images/bgtest2.jpg);">
 <div class="page clearfix" style="">
 <h1 class="" style="padding:40px 0 0 0;text-align:center;font-size:46px;color:white;">Canada's Largest Medicinal Marijuana Database</h1>
 <h2 style="color: white;padding:30px;text-align:center"> - search by - </h2> 
