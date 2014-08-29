@@ -12,7 +12,7 @@
 <div class="page_layout page_margin_top clearfix">
 <div class="page_header clearfix">
 <div class="page_header_left">
-<h1 class="page_title"><?php echo $strain['Strain']['name'];?></h1>
+<h1 class="page_title"><?php echo $strain['Strain']['name'];?> Medical Report</h1>
 <ul class="bread_crumb">
 <li>
 <a href="?page=home" title="Home">
@@ -23,14 +23,12 @@ Home
 &nbsp;
 </li>
 <li>
-<?php echo $strain['Strain']['name'];?>
+<?php echo $strain['Strain']['name'];?> Medical Report
 </li>
 </ul>
 </div>
 <div class="page_header_right">
-<!--form class="search">
-<input class="search_input hint" type="text" value="To search type and hit enter..." placeholder="To search type and hit enter...">
-</form-->
+
 <a class="blue more" style="margin-right: 10px" href="<?php echo $this->webroot;?>review/add/<?php echo $strain['Strain']['slug'];?>">Review Strain</a><a class="blue more" href="javascript:void(0)" onclick="window.print();">Print Report</a>
 </div>
 
@@ -39,46 +37,50 @@ Home
 
 
 
-
-
-
-
-
-
-
-
 <div class="toprint">
 
-<div style="width: 60%; float: left; margin-top: 10px">
-<p class="ptitle">DESCRIPTION:</p>
+<div style="width: 60%; float: left; margin-top: 10px; margin-right:2%;">
 <p><?php echo $strain['Strain']['description']; ?></p>
 </div>
-<div style="width: 40%; float: left; margin-top: 20px">
-<b>IMAGE FOR <em><?php echo strtoupper($strain['Strain']['name']);?></em></b>
-</div>
+<div style="width: 38%; float: left; margin-top: 10px">
+<p class="ptitle">Images for <?php echo ($strain['Strain']['name']);?></p>
 
-<!--<p><?php echo $strain['StrainType']['title'];?></p>
-<?php echo $strain['Strain']['name'];?>-->
-<h2 class="box_header page_margin_top_section slide clearfix" style="margin-top: 15px">Reviews</h2><br />
+
+<?php
+if($strain['StrainImage'])
+{
+	foreach($strain['StrainImage'] as $g)
+	{
+	?>
+	<a class="fancybox" rel="group" href="<?php echo $this->webroot;?>images/strains/<?php echo $g['image'];?>" style="display: inline-block;"><img src="<?php echo $this->webroot;?>images/strains/<?php echo $g['image'];?>" width="120px" height="80px" /></a>
+	
+	
+	<?php
+	}
+}
+?>
+
+
+
+
+</div>
+<div  class="clearfix"></div>
+
+
 <div class="one-third dark">
-<p>OVERALL RATING:</p>
+<p>Overall Rating:</p>
 <div class="rating"></div>
 </div>
 
 <div class="one-third light">
-<p>REVIEWS:</p>
-<h3><?php echo $strain['Strain']['review'];?></h3>
+<p><?php echo $strain['Strain']['review'];?> reviews</p>
+<p><?php echo $strain['Strain']['viewed'];?> views</p>
+
 </div>
 <div class="one-third dark">
-<p>VIEWS:</p>
-<h3><?php echo $strain['Strain']['viewed'];?></h3>
-</div>
-<div  class="clearfix"></div>
-
-<h2 class="box_header page_margin_top_section slide clearfix" style="margin-top: 10px">Strain Attributes</h2>
 
 <div class="flavors">
-<p class="ptitle">FLAVORS:</p>
+<p class="ptitle">Flavors:</p>
 <?php
 foreach($flavor as $f)
 {
@@ -90,9 +92,17 @@ foreach($flavor as $f)
 }
 ?>
 </div>
+
+
+</div>
+<div  class="clearfix"></div>
+
+<h2 class="box_header page_margin_top_section slide clearfix" style="margin-top: 10px">Strain Attributes</h2>
+
+
 <div>
 <div class="half">
-<p>POSITIVE EFFECTS:</p>
+<p>Effects:</p>
 <?php
 foreach($strain['OverallEffectRating'] as $oer)
 {
@@ -130,7 +140,7 @@ $length = 20*$rate;;
 
 
 
-<p class="third">NEGATIVE EFFECTS:</p>
+<p class="third">Negative Effects:</p>
 <?php
 if(isset($arr_neg))
 rsort($arr_neg);
@@ -161,7 +171,7 @@ $length = 20*$rate;
 <div>
 <div class="half">
 
-<p class="second" >SYMPTOMS:</p>
+<p class="second" >Symptoms:</p>
 <?php
 foreach($strain['OverallSymptomRating'] as $oer)
 {
@@ -195,7 +205,7 @@ $length = 20*$rate;;
 </div>
 
 <div  class="half second-half">
-<p>EFFECT RATINGS:</p>
+<p>Effect Ratings:</p>
 <?php
 $count = count($strain['Review']);
 if($count){
@@ -252,24 +262,6 @@ $duration = ($duration/$count)*20;
 <div class="label left" style="width: 16%!important;">THCV</div><div class="left ratewrap" style="width: 73%;background:#FFF;"><div class="length" style="width: <?php echo $strain['Strain']['thcv'];?>%;"></div><em><?php echo $strain['Strain']['thcv'];?>%</em></div><div class="clear"></div>
 </div>        
 </div>
-<!--<div class="half second-half">
-<b>IMAGE FOR <em><?php echo strtoupper($strain['Strain']['name']);?></em></b>
-<br />
-<br />
--->
-<?php
-if($strain['StrainImage'])
-{
-	foreach($strain['StrainImage'] as $g)
-	{
-	?>
-	<a class="fancybox" rel="group" href="<?php echo $this->webroot;?>images/strains/<?php echo $g['image'];?>" style="display: inline-block;"><img src="<?php echo $this->webroot;?>images/strains/<?php echo $g['image'];?>" width="120px" height="80px" /></a>
-	
-	
-	<?php
-	}
-}
-?>
 
 <div class="clearfix"></div>
 </div>
@@ -318,12 +310,25 @@ $(".fancybox").fancybox();
 <div  class="clear"></div>
 
 </div>
-</div>
-</div>
+
+
+
+
 <div class="print">
     <center><a class="blue more" href="javascript:void(0)" onclick="window.print();">Print Report</a></center>
 </div>
+
+
+
 </div>
+
+
+
+
+
+
+
+
 <style>
 
 @media print {

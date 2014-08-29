@@ -51,7 +51,11 @@ $symptoms = array();
 		</div>
 		<div class="page_header_right">
 			<form class="search">
-				<input class="search_input hint" type="text" value="To search type and hit enter..." placeholder="To search type and hit enter...">
+				<input class="search_input hint" type="text" value="Search by strain name..." placeholder="Search by strain name...">
+				
+				<input type="submit" value="Search" class="more blue medium " style="height:38px;">
+				<input type="submit" value="Reset" class="more dark " style="height:38px;">
+
 			</form>
 		</div>
 	</div>
@@ -83,105 +87,22 @@ $symptoms = array();
 	<!-- page left --> 
 	
 <div class="page_left listing page_margin_top">
-	<?php
-    if($strain)
-    {
-        $j=0;
-        foreach($strain as $s)
-        {
-            $j++;
-            ?>
+
+
+<?php include_once('combine/filter.php');?>
 
 
 
-<div style="clear:both;
-text-align: center; float:left;background-image: url('<?php echo $this->webroot?>images/features_small/icon.png');width:57px;height:66px;">
-<p style="vertical-align:middle;text-align:center;color:white;font-size:18px; margin-top:10px">
-<?php 
-$name_arr = explode(' ',$s['Strain']['name']);
-$i=0;
-foreach($name_arr as $na)
-{
-$i++;
-if($i==1){
-echo ucfirst($na[0]);
-}
-else echo strtolower($na[0]);
-}
-?>
-</p>
-</div>
-
-
-<div style="
-
-float: right;
-width: 520px;
-padding-bottom: 10px;
-border-bottom: 1px solid #E0E0E0;
-">
-<h2>
-<a href="<?php echo $this->webroot?>strains/<?php echo $s['Strain']['slug'];?>">
-<?php echo $s['Strain']['name'];?>
-</a>
-</h2>
-
-
-<p>
-<?php echo substr($s['Strain']['description'],0,150).'...';?>
-</p>
-
-<div class="">
-
-<ul class="post_footer_details">
-<li class="">
-<?php echo $s['StrainType']['title'];?>
-</li>
-<li class="" style="">
-<?php if($s['Strain']['review']){
-echo $s['Strain']['review'].' Reviews';
-}else
-{
-echo '0 Reviews';
-}
-?>
-</li>
-</ul>
-
-<ul class="post_footer_details" style="float:right;margin-top:-5px;"><li>
-<div class="rating<?php echo $j;?> " style=""></div>
-<script>
-$(function(){    
-$('.rating<?php echo $j;?>').raty({number:5,readOnly:true,score:<?php echo $s['Strain']['rating'];?>});
-});
-</script> 
-</li>
-</ul>
-
-</div>
-
-</div>
-
-
-	<?php
-        }
-    }
-    ?>
-    <div class="clear"></div>
-    <div class="morelist" style="">
-    <div class="blue more"><a href="javascript:void(0);"><font color="white">Load More</font></a></div>
-    </div>
 </div>
 	<!-- end page left --> 
 
 	<!-- page right --> 
 	
 				<div class="page_right" style="">
-				Reset Search
 				<ul>
 				<li class="home_box light_blue animated_element animation-fadeIn duration-500" style="z-index: 3;">
 					<h2>
-							FILTER BY EFFECTS
+							Filter by Effects
 					</h2>
 					<div class="news clearfix">
 
@@ -192,7 +113,10 @@ $('.rating<?php echo $j;?>').raty({number:5,readOnly:true,score:<?php echo $s['S
 				{
 				?>
 									
+								
+									
 				<a style="color:white;" href="javascript:void(0)" class="small-btn eff2" id="eff_<?php echo $e['Effect']['id'];?>"><?php echo $e['Effect']['title']?></a>
+				
 				<?php
 				}
 				?>
@@ -203,7 +127,7 @@ $('.rating<?php echo $j;?>').raty({number:5,readOnly:true,score:<?php echo $s['S
 				</li>
 				<li class="home_box blue animated_element animation-slideDown duration-800 delay-250" style="z-index: 2;">
 				<h2>
-				FILTER BY SYMPTOMS
+				Filter by Symptoms
 				</h2>
 				<div class="news clearfix">
 				<div class="choose_sym">
@@ -225,8 +149,6 @@ $('.rating<?php echo $j;?>').raty({number:5,readOnly:true,score:<?php echo $s['S
 	<!-- end page right --> 
 </div>
 </div>
-
-
 
 <input type="hidden" class="recent" value="ASC" />
 <input type="hidden" class="rated" value="ASC" />

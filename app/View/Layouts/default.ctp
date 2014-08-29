@@ -63,7 +63,9 @@
 					<div class="header_left">
 						<a href="<?php echo $this->webroot;?>" title="MEDICALMARIJUANA">
 							<img src="<?php echo $this->webroot;?>images/header_logo.png" alt="logo" />
-							<span class="logo">medical marijuana</span>
+							
+							
+							<span class="logo">Canbii</span>
 						</a>
 					</div>
 					
@@ -256,10 +258,10 @@ if(thiss.attr('class').replace('searchact','')==thiss.attr('class'))
 </script>
 
 <?if(isset($homepage)){?>
-<div style="height:100%; background-image: url(http://localhost/marijuana/images/bgtest2.jpg);">
+
+<div style="height:100%; background-image: url(http://localhost/marijuana/images/bgtest2.jpg);text-shadow: 0px 1px 0px rgba(0,0,0,1);">
 <div class="page clearfix" style="">
-<h1 class="" style="padding:40px 0 0 0;text-align:center;font-size:46px;color:white;">Canada's Largest Medicinal Marijuana Database</h1>
-<h2 style="color: white;padding:30px;text-align:center"> - search by - </h2> 
+<h1 class="" style="padding:40px 0 30px 0;text-align:center;font-size:46px;color:white;">Canada's Largest Medicinal Marijuana Database</h1>
 
 <form class="contact_form" action="<?php echo $this->webroot;?>strains/search" method="get" id="search" style="margin:0px;">
 
@@ -271,7 +273,7 @@ if(thiss.attr('class').replace('searchact','')==thiss.attr('class'))
 foreach($effect as $e)
 {
 ?><li>
-<a style="color:white;line-height:20px;padding:2px;" href="javascript:void(0)" class="small-btn" onclick="highlighteff($(this))" id="eff_<?php echo $e['Effect']['id'];?>"><?php echo $e['Effect']['title']?></a>
+<a style="color:white;line-height:20px;padding:2px;" href="javascript:void(0)" class="small-btn " onclick="highlighteff($(this))" id="eff_<?php echo $e['Effect']['id'];?>"><?php echo $e['Effect']['title']?></a>
 </a>
 </li>
 <?php
@@ -313,6 +315,7 @@ foreach($effect as $e)
 
 </div>
 </div>
+
 <?}?>
 	
 <div class="page clearfix">
@@ -462,12 +465,6 @@ foreach($effect as $e)
 </body>
 </html>
 
-
 <!-- //////////////////////////////////////////////////////////////////////////////////////////// NEW SITE-->
 
-
-
-
-<?php //echo $this->Session->flash(); ?>
-<?php //echo $this->fetch('content'); ?>  
 <?php echo $this->element('sql_dump'); ?>            
