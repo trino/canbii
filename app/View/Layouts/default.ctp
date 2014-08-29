@@ -341,14 +341,14 @@ foreach($effect as $e)
 							</h2>
 							<br />
 							<div>
-							<div style="float: left; width:33%">
-							Indica
+							<div style="float: left; width:33%; color: white">
+							Jack Herer
 							</div>
-							<div style="float: left; width:33%">
-							Sativa
+							<div style="float: left; width:33%; color: white">
+							Sour Diesel
 							</div>
-							<div style="float: left; width:33%">
-							Hybrid
+							<div style="float: left; width:33%; color: white">
+							Blue Dream
 							</div>
 							</div>
 						</li>
@@ -368,9 +368,9 @@ foreach($effect as $e)
 								Name of website
 							</h3>
 							<p class="info">
-								(name of site) is an online database to educated the public about the benefits of medical marijuana to help those who suffer from chronic pain.<br />
+								Medicinal marijuana is a growing movement and we're doing our part to spread the word.(name of site) is an online database dedicated to educate the public on the benefits of medical marijuana. This all natural plant is used to treat illnesses and to help those who suffer from chronic pain that affects their daily lives.<br />
 								<br />
-								Medicinal marijuana is a growing movement and we want to do our part to help spread the word. Be it Indica, Sativa, or a Hybrid strain, this natural plant helps many people cope with debilitating pain that affect their daily lives.
+								We need your input to enhance our information so we can help as many people as we can. <a href="<?php echo $this->webroot;?>users/register" accesskey="4" title="">Sign up</a> today!
 							</p>
 							<ul class="social_icons clearfix">
 								<li>

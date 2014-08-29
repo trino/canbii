@@ -40,7 +40,7 @@
 
 <div class="columns page_margin_top full_width clearfix">
 <div class="column_left">
-
+<p style="margin-bottom: 7px">Returning user? Please sign in below.</p>
 <h2 class="page_title">Login</h2>
 <?php echo $this->Form->create('User',array('action'=>'login?url='.$url, 'class'=>'contact_form')); ?>
 
@@ -55,7 +55,7 @@
 <div class="column_right">
 
 
-
+<p style="margin-bottom: 7px">Looking to sign up? Please enter your information below.</p>
 <h2>Register</h2>
 <?php echo $this->Form->create('User',array('action'=>'register', 'class'=>'contact_form')); ?>
 <fieldset>
