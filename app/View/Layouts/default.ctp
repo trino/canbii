@@ -331,8 +331,8 @@ foreach($effect as $e)
 							<h2>
 								Why Go Natural?
 							</h2>
-							<p>
-								<a class="icon_small_arrow right_white" href="#">Here in medicenter we have individual</a>
+							<p style="color: white">
+								Medical marijuana is less addictive than most pain and anti-convulsive medications.</a>
 							</p>
 						</li>
 						<li class="footer_banner_box light_blue animated_element animation-slideRight duration-800 delay-500">
