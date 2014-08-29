@@ -80,8 +80,9 @@ $symptoms = array();
 	</li>
 </ul>
 
+	<!-- page left --> 
 	
-    <div class="page_left listing page_margin_top">
+<div class="page_left listing page_margin_top">
 	<?php
     if($strain)
     {
@@ -91,14 +92,11 @@ $symptoms = array();
             $j++;
             ?>
 
-<ul class="blog">
-<li class="post">
-<ul class="comment_box clearfix" style="">
-<li class="date clearfix">
 
-<div style="float:left;background-image: url('<?php echo $this->webroot?>images/features_small/icon.png');width:57px;height:66px;margin-left:12px;margin-bottom: 8px">
+
+<div style="clear:both;
+text-align: center; float:left;background-image: url('<?php echo $this->webroot?>images/features_small/icon.png');width:57px;height:66px;">
 <p style="vertical-align:middle;text-align:center;color:white;font-size:18px; margin-top:10px">
-
 <?php 
 $name_arr = explode(' ',$s['Strain']['name']);
 $i=0;
@@ -114,70 +112,56 @@ else echo strtolower($na[0]);
 </p>
 </div>
 
-</li>
 
-	<li class="date clearfix">
-		<div class="value">
-		<a style="color:white;" href="<?php echo $this->webroot?>strains/<?php echo $s['Strain']['slug'];?>">
-<?php echo $s['StrainType']['title'];?>
+<div style="
 
-</a>
-		</div>
-	</li>
-	<li class="comments_number" style="">
-<?php if($s['Strain']['review'])echo '<a href="'.$this->webroot.'strains/review/'.$s['Strain']['slug'].'">'.$s['Strain']['review'].' Reviews</a>';else echo '0 Reviews';?>
-	</li>
-</ul>
-<div class="post_content">
-	<h2>
-		<a target="_blank" href="http://themeforest.net/item/medicenter-responsive-medical-health-template/4000598?ref=QuanticaLabs" title="Lorem ipsum dolor sit amat velum">
-
-		
+float: right;
+width: 520px;
+padding-bottom: 10px;
+border-bottom: 1px solid #E0E0E0;
+">
+<h2>
 <a href="<?php echo $this->webroot?>strains/<?php echo $s['Strain']['slug'];?>">
 <?php echo $s['Strain']['name'];?>
-
-</a>
 </a>
 </h2>
+
+
 <p>
-<?php echo substr($s['Strain']['description'],0,160).'...';?>
-
+<?php echo substr($s['Strain']['description'],0,150).'...';?>
 </p>
+
+<div class="">
+
+<ul class="post_footer_details">
+<li class="">
+<?php echo $s['StrainType']['title'];?>
+</li>
+<li class="" style="">
+<?php if($s['Strain']['review']){
+echo $s['Strain']['review'].' Reviews';
+}else
+{
+echo '0 Reviews';
+}
+?>
+</li>
+</ul>
+
+<ul class="post_footer_details" style="float:right;margin-top:-5px;"><li>
 <div class="rating<?php echo $j;?> " style=""></div>
-
-
 <script>
 $(function(){    
 $('.rating<?php echo $j;?>').raty({number:5,readOnly:true,score:<?php echo $s['Strain']['rating'];?>});
 });
 </script> 
-
-	<div class="post_footer">
-		<ul class="post_footer_details">
-			<li>Posted in</li>
-			<li>
-				<a href="#" title="General">
-					General,
-				</a>
-			</li>
-			<li>
-				<a href="#" title="Outpatient surgery">
-					Outpatient surgery
-				</a>
-			</li>
-		</ul>
-		<ul class="post_footer_details">
-			<li>Posted by </li>
-			<li>
-				<a href="#" title="John Doe">
-					John Doe
-				</a>
-			</li>
-		</ul>
-	</div>
-</div>
 </li>
 </ul>
+
+</div>
+
+</div>
+
 
 	<?php
         }
@@ -187,67 +171,71 @@ $('.rating<?php echo $j;?>').raty({number:5,readOnly:true,score:<?php echo $s['S
     <div class="morelist" style="">
     <div class="blue more"><a href="javascript:void(0);"><font color="white">Load More</font></a></div>
     </div>
-	</div>
+</div>
+	<!-- end page left --> 
 
+	<!-- page right --> 
 	
-<div class="page_right" style="">
-<ul>
-<li class="home_box light_blue animated_element animation-fadeIn duration-500" style="z-index: 3;">
-	<h2>
-			FILTER BY EFFECTS
-	</h2>
-	<div class="news clearfix">
+				<div class="page_right" style="">
+				Reset Search
+				<ul>
+				<li class="home_box light_blue animated_element animation-fadeIn duration-500" style="z-index: 3;">
+					<h2>
+							FILTER BY EFFECTS
+					</h2>
+					<div class="news clearfix">
 
-	
-<div class="choose_eff" >
-<?php $effect = $this->requestAction('/pages/getEff');
-foreach($effect as $e)
-{
-?>
 					
-<a style="color:white;" href="javascript:void(0)" class="small-btn eff2" id="eff_<?php echo $e['Effect']['id'];?>"><?php echo $e['Effect']['title']?></a>
-<?php
-}
-?>
-<p style="display: none;" class="effe"></p>
+				<div class="choose_eff" >
+				<?php $effect = $this->requestAction('/pages/getEff');
+				foreach($effect as $e)
+				{
+				?>
+									
+				<a style="color:white;" href="javascript:void(0)" class="small-btn eff2" id="eff_<?php echo $e['Effect']['id'];?>"><?php echo $e['Effect']['title']?></a>
+				<?php
+				}
+				?>
+				<p style="display: none;" class="effe"></p>
+				</div>
+
+				</div>
+				</li>
+				<li class="home_box blue animated_element animation-slideDown duration-800 delay-250" style="z-index: 2;">
+				<h2>
+				FILTER BY SYMPTOMS
+				</h2>
+				<div class="news clearfix">
+				<div class="choose_sym">
+				<?php $effect = $this->requestAction('/pages/getSym');
+				foreach($effect as $e)
+				{
+				?>
+				<a style="color:white;"  href="javascript:void(0)" class="sym2 small-btn" id="sym_<?php echo $e['Symptom']['id'];?>"><?php echo $e['Symptom']['title']?></a>
+				<?php
+				}
+				?>
+				<p style="display: none;" class="symp"></p>
+				</div>
+				</div>
+				</li>
+				</ul>
+				</div>
+
+	<!-- end page right --> 
+</div>
 </div>
 
-</div>
-</li>
-<li class="home_box blue animated_element animation-slideDown duration-800 delay-250" style="z-index: 2;">
-<h2>
-FILTER BY SYMPTOMS
-</h2>
-<div class="news clearfix">
-<div class="choose_sym">
-<?php $effect = $this->requestAction('/pages/getSym');
-foreach($effect as $e)
-{
-?>
-<a style="color:white;"  href="javascript:void(0)" class="sym2 small-btn" id="sym_<?php echo $e['Symptom']['id'];?>"><?php echo $e['Symptom']['title']?></a>
-<?php
-}
-?>
-<p style="display: none;" class="symp"></p>
-</div>
-</div>
-</li>
-</ul>
-</div>
-</div>
-</div>
 
 
-    <input type="hidden" class="recent" value="ASC" />
-    <input type="hidden" class="rated" value="ASC" />
-    <input type="hidden" class="viewed" value="ASC" />
-    <input type="hidden" class="reviewed" value="ASC" />
-    <input type="hidden" class="alpha" value="DESC" />
-	
-	<div class="clearfix"></div>
-	
-	
-    <script>
+<input type="hidden" class="recent" value="ASC" />
+<input type="hidden" class="rated" value="ASC" />
+<input type="hidden" class="viewed" value="ASC" />
+<input type="hidden" class="reviewed" value="ASC" />
+<input type="hidden" class="alpha" value="DESC" />
+<div class="clearfix"></div>
+
+<script>
     var more='<?php echo $limit?>';    
     var spinnerVisible = false;
     
@@ -538,10 +526,7 @@ if($(this).attr('class').replace('searchact2','')==$(this).attr('class'))
         {
             val = val+'&sort='+id+'&order='+sort;
         }
-        
-        
-         
-        
+
         $.ajax({
            url:'<?php echo $this->webroot;?>strains/filter<?php if($type)echo '/0/'.$type?>',
            data:val,
@@ -557,7 +542,8 @@ if($(this).attr('class').replace('searchact2','')==$(this).attr('class'))
            } 
         });
         
-    });    
+    });
+	
     <?php
     if($effects)
     {
@@ -579,4 +565,4 @@ if($(this).attr('class').replace('searchact2','')==$(this).attr('class'))
     }
     ?>
     });
-    </script>
+</script>
