@@ -62,10 +62,9 @@
 				<div class="header clearfix">
 					<div class="header_left">
 						<a href="<?php echo $this->webroot;?>" title="MEDICALMARIJUANA">
-							<img src="<?php echo $this->webroot;?>images/header_logo.png" alt="logo" />
+							<img src="<?php echo $this->webroot;?>images/logo2.png" height=100 alt="logo" />
 							
 							
-							<span class="logo">Canbii</span>
 						</a>
 					</div>
 					
@@ -80,7 +79,7 @@
 					<li><a href="<?php echo $this->webroot;?>users/register" accesskey="4" title="">Login / Register</a></li>
 					<?php }else{?>
 					<li class="submenu<?php echo (isset($_GET['page'])&& ($_GET["page"]=="" || $_GET["page"]=="home") ? " selected" : ""); ?>">
-                        <a href="<?php echo $this->webroot;?>users/dashboard" accesskey="4" title=""><?=ucfirst($this->Session->read('User.username'))?> Dashboard</a>
+                        <a href="<?php echo $this->webroot;?>users/dashboard" accesskey="4" title=""><?=ucfirst($this->Session->read('User.username'))?></a>
 						<ul>
                             <li<?php echo (isset($_GET['page'])&&$_GET["page"]=="home" ? " class='selected'" : ""); ?>>
                             <a href="<?php echo $this->webroot;?>users/logout" accesskey="5" title="">Logout</a>
@@ -259,9 +258,22 @@ if(thiss.attr('class').replace('searchact','')==thiss.attr('class'))
 
 <?if(isset($homepage)){?>
 
-<div style="height:100%; background-image: url(http://localhost/marijuana/images/bgtest2.jpg);text-shadow: 0px 1px 0px rgba(0,0,0,1);">
-<div class="page clearfix" style="">
-<h1 class="" style="padding:40px 0 30px 0;text-align:center;font-size:46px;color:white;">Canada's Largest Medicinal Marijuana Database</h1>
+<div style="height:100%; background-image: url(http://localhost/marijuana/images/bg4.jpg);text-shadow: 0px 1px 0px rgba(0,0,0,1);padding:20px 0px;">
+
+
+
+
+
+<div class="page" style="border-top:0;padding-bottom:0px;
+">
+<div class=" clearfix" style="
+background: #000;
+background: rgba(0,0,0,0.7);
+border-radius: 3px;
+margin: 0 auto;
+padding:0px 20px;
+">
+<h1 class="" style="padding:40px 0 30px 0;text-align:center;font-size:42px;color:white;">Canada's Largest Medicinal Marijuana Database</h1>
 
 <form class="contact_form" action="<?php echo $this->webroot;?>strains/search" method="get" id="search" style="margin:0px;">
 
@@ -291,7 +303,7 @@ foreach($effect as $e)
 foreach($effect as $e)
 {
 ?><li>
-<a href="javascript:void(0)" onclick="highlightsym($(this))" class=""  id="sym_<?php echo $e['Symptom']['id'];?>"><?php echo $e['Symptom']['title']?></a>
+<a style="color:white;line-height:20px;padding:2px;" href="javascript:void(0)" onclick="highlightsym($(this))" class=""  id="sym_<?php echo $e['Symptom']['id'];?>"><?php echo $e['Symptom']['title']?></a>
 </li>
 <?php
 }
@@ -299,10 +311,10 @@ foreach($effect as $e)
 <div class="clear"></div>
 </ul>
 
-<div style="text-align:center">
-<h2 style="color: white;padding-top:30px;"> - or - </h2> 
+<div style="text-align:center; padding:30px;">
+<h2 style="color: white;"> - or - </h2> 
 
-<input type="text" placeholder="Search Strain" name="key" class="key" style="border:2px solid #3156A3;"/><input type="submit" value="Search" class="more blue medium " style="" />
+<input type="text" placeholder="Search Strain" name="key" class="key" style=""/><input type="submit" value="Search" class="more blue medium " style="" />
 
 						
 </div>
@@ -313,6 +325,7 @@ foreach($effect as $e)
 
 </form>
 
+</div>
 </div>
 </div>
 

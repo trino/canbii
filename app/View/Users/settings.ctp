@@ -26,12 +26,10 @@
 	<div class="clearfix page_margin_top ">
 
 
-<a title="Read more"  href="<?php echo $this->webroot;?>users/dashboard" class="more large dark_blue icon_small_arrow margin_right_white">Dashboard</a>
-<a title="Read more"  href="<?php echo $this->webroot;?>users/settings" class="active more large dark_blue icon_small_arrow margin_right_white margin_left_10">Settings</a>
-<a title="Read more" href="<?php echo $this->webroot;?>review"  class="more large dark_blue icon_small_arrow margin_right_white margin_left_10">Add Review</a>
-<a title="Read more" href="<?php echo $this->webroot;?>review/all"  class="more large dark_blue icon_small_arrow margin_right_white margin_left_10">My Reviews</a>
 
-<div class="clear"></div>
+
+<div class="page_left">
+
 <!--form action="" method="post" id="myform">
 <table>
 <tr><td><strong>User Name</strong></td><td><input type="text" name="username" value="<?php echo $user['User']['username'];?>" /></td></tr>
@@ -73,7 +71,43 @@
 </form>
 
 
-<div class="clearfix"></div>
+		</div>
+
+<div class="page_right page_margin_top">
+
+
+
+
+
+<a style="width:120px;float:right;" title="Read more"  href="<?php echo $this->webroot;?>users/dashboard" class=" more large dark_blue icon_small_arrow margin_right_white">Dashboard</a>
+
+
+<div class="clear"></div>
+<a style="width:120px;float:right;"  title="Read more"  href="<?php echo $this->webroot;?>users/settings" class="more large dark_blue icon_small_arrow margin_right_white page_margin_top active">Settings</a>
+
+
+<div class="clear"></div>
+<a style="width:120px;float:right;" title="Read more" href="<?php echo $this->webroot;?>review"  class="more large dark_blue icon_small_arrow margin_right_white page_margin_top ">Add Review</a>
+
+
+<div class="clear"></div>
+<a style="width:120px;float:right;" title="Read more" href="<?php echo $this->webroot;?>review/all"  class="more large dark_blue icon_small_arrow margin_right_white page_margin_top ">My Reviews</a>
+
+
+
+
+
+
+
+
+
+
+
+		</div>
+
+
+
+
 
 
 	</div>

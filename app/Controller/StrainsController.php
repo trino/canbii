@@ -342,7 +342,7 @@ HAVING COUNT( symptom_id ) ='.count($symptoms).'))';
         $search = $this->Strain->find("all",array('conditions'=>array('name LIKE'=>"%".$str."%")));
         foreach($search as $s)
         {
-            echo "<a href='".$this->webroot."review/add/".$s['Strain']['slug']."' class='more large light' title='".$s['Strain']['slug']."'>".$s['Strain']['name']."</a>";
+            echo "<a href='".$this->webroot."review/add/".$s['Strain']['slug']."' class='more blue icon_small_arrow margin_right_white page_margin_top' style='margin-right:10px;' title='".$s['Strain']['slug']."'>".$s['Strain']['name']."</a>";
         }
         die();
     }

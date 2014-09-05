@@ -40,33 +40,39 @@
 
 <div class="columns page_margin_top full_width clearfix">
 <div class="column_left">
-<p style="margin-bottom: 7px">Returning user? Please sign in below.</p>
-<h2 class="page_title">Login</h2>
+<!--div class="backgroundcolor ">
+Returning user? Please sign in below.
+</div-->
+<h2 class="box_header  page_margin_top ">Login</h2>
+<br>
 <?php echo $this->Form->create('User',array('action'=>'login?url='.$url, 'class'=>'contact_form')); ?>
 
 <?php echo $this->Form->input('username',array('div'=>array('class'=>''))); ?>
 <?php echo $this->Form->input('password',array('div'=>array('class'=>''))); ?>
 
-<a href="<?php echo $this->webroot;?>users/forgot" class="forgot-password">forgot password?</a>
 <?php echo $this->Form->submit('Login',array('class'=>'more blue ', 'style'=>'float:left;'))?>
-<?php echo $this->Form->end(); ?> 
+<?php echo $this->Form->end(); ?> <div class="clearfix"></div>
+<div class="page_margin_top clearfix">
+<a href="<?php echo $this->webroot;?>users/forgot" class="forgot-password">Forgot Password?</a>
 
+</div>
 </div>
 <div class="column_right">
 
-
-<p style="margin-bottom: 7px">Looking to sign up? Please enter your information below.</p>
-<h2>Register</h2>
+<!--div class="backgroundcolor ">
+Looking to sign up? Please enter your information below.</div-->
+<h2 class="box_header  page_margin_top">Register</h2><br>
 <?php echo $this->Form->create('User',array('action'=>'register', 'class'=>'contact_form')); ?>
 <fieldset>
 <?php echo $this->Form->input('email',array('div'=>array('class'=>'form-row'),'label'=>'Email Address','type'=>'text')); ?> 
 <?php echo $this->Form->input('username',array('div'=>array('class'=>'form-row'))); ?>
 <?php echo $this->Form->input('password',array('div'=>array('class'=>'form-row'))); ?>
 <?php echo $this->Form->input('confirm_password',array('div'=>array('class'=>'form-row'),'type'=>'password')); ?>
+<div class="backgroundcolor page_margin_top ">
 
-<label class="checkbox"><input type="checkbox" name="check_field" class="chh" onchange="if($('.chh').is(':checked'))$('.sbmt').removeAttr('disabled');else{$('.sbmt').attr('disabled','');}"/>&nbsp; &nbsp; I certify I am at least 18 years old and have read & agreed to the <a href="">Privacy Policy</a> and <a href="">Terms & Conditions</a>.
+<label class="checkbox" style="margin:0px;"><input type="checkbox" name="check_field" class="chh" onchange="if($('.chh').is(':checked'))$('.sbmt').removeAttr('disabled');else{$('.sbmt').attr('disabled','');}"/>&nbsp; &nbsp; I agree to the <a href="">Privacy Policy</a> and <a href="">Terms & Conditions</a>.
 </label>
-
+</div>
 </fieldset>
 
 <?php echo $this->Form->submit('Register',array('class'=>'more blue ', 'style'=>'float:left;'))?>

@@ -25,26 +25,24 @@
 
 	<div class="clearfix page_margin_top ">
 
-<a title="Read more"  href="<?php echo $this->webroot;?>users/dashboard" class="more large dark_blue icon_small_arrow margin_right_white">Dashboard</a>
-<a title="Read more"  href="<?php echo $this->webroot;?>users/settings" class="more large dark_blue icon_small_arrow margin_right_white margin_left_10">Settings</a>
-<a title="Read more" href="<?php echo $this->webroot;?>review"  class="active more large dark_blue icon_small_arrow margin_right_white margin_left_10">Add Review</a>
-<a title="Read more" href="<?php echo $this->webroot;?>review/all"  class="more large dark_blue icon_small_arrow margin_right_white margin_left_10">My Reviews</a>
-<br />
-<br />
-<br />
-<br />
-<p>
-<img src="<?php echo $this->webroot;?>images/IndicaIcon.png" alt="" style="margin-right: 28px"><img src="<?php echo $this->webroot;?>images/SativaIcon.png" alt="" style="margin-right: 28px"><img src="<?php echo $this->webroot;?>images/HybridIcon.png" alt="">
-</p>
+
+
+<div class="page_left">
+
+<img src="<?php echo $this->webroot;?>images/IndicaIcon.png" alt="" style="margin-right: 28px">
+<img src="<?php echo $this->webroot;?>images/SativaIcon.png" alt="" style="margin-right: 28px">
+<img src="<?php echo $this->webroot;?>images/HybridIcon.png" alt="">
+
+
 <div class="clearfix"></div>
-<p style="width: 50%">
-We value your opinion. Share your experience with others to help guide them towards the strain that will benefit them the most. Thank you!
-</p>
+<div class="backgroundcolor page_margin_top"><p>
+We value your opinion. Share your experience with others to help guide them towards the strain that will benefit them the most. Thank you!</p>
+</div>
 
 <form class="contact_form" action="" method="post">
-<label for="searchName">Enter Name of Cannabis:</label>
+<label for="searchName">Cannabis Name</label>
 <input type="text" id="searchName" value="" />
-<span class="extra">(e.g. Purple Kush, Purple Nepal, Blue Dream)</span>
+<span class="extra">(e.g. Purple Kush, Blueberry Yum Yum, Blue Dream)</span>
 <div class="results" style="display: none;">
 <label>Select Item to Review:</label><br />
 <input type="hidden" name="strain" value="" id="strainz" />
@@ -52,6 +50,32 @@ We value your opinion. Share your experience with others to help guide them towa
 </div>
 </form>
 
+</div>
+
+<div class="page_right page_margin_top">
+
+<a style="width:120px;float:right;" title="Read more"  href="<?php echo $this->webroot;?>users/dashboard" class=" more large dark_blue icon_small_arrow margin_right_white">Dashboard</a>
+
+
+<div class="clear"></div>
+<a style="width:120px;float:right;"  title="Read more"  href="<?php echo $this->webroot;?>users/settings" class="more large dark_blue icon_small_arrow margin_right_white page_margin_top ">Settings</a>
+
+
+<div class="clear"></div>
+<a style="width:120px;float:right;" title="Read more" href="<?php echo $this->webroot;?>review"  class="more large dark_blue icon_small_arrow margin_right_white page_margin_top active">Add Review</a>
+
+
+<div class="clear"></div>
+<a style="width:120px;float:right;" title="Read more" href="<?php echo $this->webroot;?>review/all"  class="more large dark_blue icon_small_arrow margin_right_white page_margin_top ">My Reviews</a>
+
+</div>
+
+
+
+
+
+		
+		
 
 </div>
 </div>

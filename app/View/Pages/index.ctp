@@ -16,7 +16,7 @@
 	</ul>
 </div>
 		
-<h2 class="box_header page_margin_top clearfix" style="">Strain Types</h2>
+<h2 class="box_header page_margin_top_section clearfix" style="">Strain Types</h2>
 
 <ul class="columns_3 clearfix page_margin_top">
 			<li class="column">

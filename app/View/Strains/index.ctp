@@ -64,23 +64,43 @@ if($strain['StrainImage'])
 
 
 </div>
-<div  class="clearfix"></div>
 
+<div class="clearfix"></div>
 
-<div class="one-third dark">
-<p>Overall Rating:</p>
-<div class="rating"></div>
-</div>
+<ul class="page_margin_top clearfix">
+						<li class="footer_banner_box super_light_blue animated_element animation-fadeIn duration-500 fadeIn" style="-webkit-animation: 500ms 0ms; transition: 0ms; -webkit-transition: 0ms;">
+							<h2>
+								Overall Rating
+							</h2>
+						<p>
+							
+							<div class="rating"></div>
+</p>
+							
+						</li>
+						<li class="footer_banner_box light_blue animated_element animation-slideRight duration-800 delay-500 slideRight" style="-webkit-animation: 800ms 500ms; transition: 500ms; -webkit-transition: 500ms;">
+							<h2>
+								Chemical Composition
+							</h2>
+							<br>
+<font color="white">CBD
+<?php echo $strain['Strain']['cbd'];?>%
+CBN
+<?php echo $strain['Strain']['cbn'];?>%
+CBC
+<?php echo $strain['Strain']['cbc'];?>%
+THC
+<?php echo $strain['Strain']['thc'];?>%
+THCV
+<?php echo $strain['Strain']['thcv'];?>%
 
-<div class="one-third light">
-<p><?php echo $strain['Strain']['review'];?> reviews</p>
-<p><?php echo $strain['Strain']['viewed'];?> views</p>
-
-</div>
-<div class="one-third dark">
-
-<div class="flavors">
-<p class="ptitle">Flavors:</p>
+</font>
+						</li>
+						<li class="footer_banner_box blue animated_element animation-slideRight200 duration-800 delay-1000 slideRight200" style="-webkit-animation: 800ms 1000ms; transition: 1000ms; -webkit-transition: 1000ms;">
+							<h2>
+								Flavors
+							</h2>
+						
 <?php
 foreach($flavor as $f)
 {
@@ -91,17 +111,28 @@ foreach($flavor as $f)
 <?php
 }
 ?>
-</div>
+					
+						</li>
+
+						
+					</ul>
 
 
-</div>
 <div  class="clearfix"></div>
 
-<h2 class="box_header page_margin_top_section slide clearfix" style="margin-top: 10px">Strain Attributes</h2>
+<h2 class="box_header page_margin_top_section slide clearfix" style="">Strain Attributes</h2>
 
 
-<div>
-<div class="half">
+
+
+
+
+<ul class="columns full_width page_margin_top clearfix">
+					<li class="column_left">
+					
+					
+					
+<div class="">
 <p>Effects:</p>
 <?php
 foreach($strain['OverallEffectRating'] as $oer)
@@ -136,40 +167,11 @@ $length = 20*$rate;;
 }
 ?>
 </div>
-<div class="half  second-half">
 
+					</li>
+					<li class="column_right">
 
-
-<p class="third">Negative Effects:</p>
-<?php
-if(isset($arr_neg))
-rsort($arr_neg);
-else
-$arr_neg = array();
-$i=0;
-
-foreach($arr_neg as $e)
-{
-$ar=explode('_',$e);
-$i++;
-if($i==6)
-break;
-$rate = $ar[0];
-$length = 20*$rate;
-?>
-<div class="eff">
-<div class="label left"><?php echo $this->requestAction('/strains/getEffect/'.$ar[1]);?></div>
-<div class="left ratewrap"><div class="length" style="width: <?php echo $length;?>%;text-align: center;"></div><em><?php echo $rate;?>/5</em></div>
-<div class="clear"></div>
-</div>
-<?php
-}
-?>
-</div>
-<div class="clearfix"></div>
-</div>
-<div>
-<div class="half">
+<div class="">
 
 <p class="second" >Symptoms:</p>
 <?php
@@ -203,8 +205,61 @@ $length = 20*$rate;;
 }
 ?>
 </div>
+<div class="clearfix"></div>
 
-<div  class="half second-half">
+
+
+					</li>
+				</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+<ul class="columns full_width page_margin_top clearfix">
+					<li class="column_left">
+
+
+<div class="">
+<p class="third">Negative Effects:</p>
+<?php
+if(isset($arr_neg))
+rsort($arr_neg);
+else
+$arr_neg = array();
+$i=0;
+
+foreach($arr_neg as $e)
+{
+$ar=explode('_',$e);
+$i++;
+if($i==6)
+break;
+$rate = $ar[0];
+$length = 20*$rate;
+?>
+<div class="eff">
+<div class="label left"><?php echo $this->requestAction('/strains/getEffect/'.$ar[1]);?></div>
+<div class="left ratewrap"><div class="length" style="width: <?php echo $length;?>%;text-align: center;"></div><em><?php echo $rate;?>/5</em></div>
+<div class="clear"></div>
+</div>
+<?php
+}
+?>
+</div>
+
+
+					</li>
+					<li class="column_right">
+
+<div  class="">
 <p>Effect Ratings:</p>
 <?php
 $count = count($strain['Review']);
@@ -222,8 +277,6 @@ $scale = ($scale/$count)*20;
 $strength = ($strength/$count)*20;
 $duration = ($duration/$count)*20;
 ?>
-
-
 <div class="eff">
 <div class="label left">Length</div><div class="left ratewrap"><div class="length" style="width: <?php echo round($scale,2);?>%;"></div><em><?php echo round($scale/20,2);?>/5</em></div><div class="clear"></div>
 </div>
@@ -239,34 +292,21 @@ $duration = ($duration/$count)*20;
 ?>
 
 </div>
-<br />
-<div class="clearfix"></div>
-<div class="chemical">
-<br />
-<h2 class="box_header page_margin_top_section slide clearfix" style="margin-top: 10px">Chemical Composition</h2><br />
-<div class="half">
 
-<div class="eff">
-<div class="label left" style="width: 16%!important;">CBD</div><div class="left ratewrap" style="width: 73%;background:#FFF;"><div class="length" style="width: <?php echo $strain['Strain']['cbd'];?>%;"></div><em><?php echo $strain['Strain']['cbd'];?>%</em></div><div class="clear"></div>
-</div>
-<div class="eff">
-<div class="label left" style="width: 16%!important;">CBN</div><div class="left ratewrap" style="width: 73%;background:#FFF;"><div class="length" style="width: <?php echo $strain['Strain']['cbn'];?>%;"></div><em><?php echo $strain['Strain']['cbn'];?>%</em></div><div class="clear"></div>
-</div>
-<div class="eff">
-<div class="label left" style="width: 16%!important;">CBC</div><div class="left ratewrap" style="width: 73%;background:#FFF;"><div class="length" style="width: <?php echo $strain['Strain']['cbc'];?>%;"></div><em><?php echo $strain['Strain']['cbc'];?>%</em></div><div class="clear"></div>
-</div> 
-<div class="eff">
-<div class="label left" style="width: 16%!important;">THC</div><div class="left ratewrap" style="width: 73%;background:#FFF;"><div class="length" style="width: <?php echo $strain['Strain']['thc'];?>%;"></div><em><?php echo $strain['Strain']['thc'];?>%</em></div><div class="clear"></div>
-</div> 
-<div class="eff">
-<div class="label left" style="width: 16%!important;">THCV</div><div class="left ratewrap" style="width: 73%;background:#FFF;"><div class="length" style="width: <?php echo $strain['Strain']['thcv'];?>%;"></div><em><?php echo $strain['Strain']['thcv'];?>%</em></div><div class="clear"></div>
-</div>        
-</div>
+					</li>
+				</ul>
+
+
+
+
+
+
+
 
 <div class="clearfix"></div>
-</div>
 
-<h2 class="box_header page_margin_top_section slide clearfix" style="margin-top:10px">Review Highlights</h2><br />
+
+<h2 class="box_header page_margin_top_section slide clearfix" style="">User Reviews</h2><br />
 <div class="half white">
 <p>Most Helpful</p>
 <?php if($helpful){?>
@@ -306,7 +346,9 @@ $(document).ready(function() {
 $(".fancybox").fancybox();
 });
 </script>
-</div>
+
+
+
 <div  class="clear"></div>
 
 </div>
