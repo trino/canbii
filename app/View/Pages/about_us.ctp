@@ -54,10 +54,10 @@ for their hybrids like Pineapple Express, Bubba Kush, and Blue Dream to name a f
 				<ul class="column_left">
 					<li class="item_content clearfix">
 						<a class="features_image" href="#" title="">
-							<img src="<?php echo $this->webroot;?>images/FactIcon.png" alt="" class="animated_element animation-scale scale" style="-webkit-animation: 600ms 0ms; transition: 0ms; -webkit-transition: 0ms;">
+							<img src="<?php echo $this->webroot;?>images/FactIcon1.png" alt="" class="animated_element animation-scale scale" style="-webkit-animation: 600ms 0ms; transition: 0ms; -webkit-transition: 0ms;">
 						</a>
 						<div class="text" style="margin-top: 23px">
-							The earliest documented use of medical marijuana is 2737 BC in ancient China. 
+							The earliest documented use of medical marijuana is in 2737 BC in ancient China. 
 							<div class="item_footer clearfix">
 								
 							</div>
@@ -65,7 +65,7 @@ for their hybrids like Pineapple Express, Bubba Kush, and Blue Dream to name a f
 					</li>
 					<li class="item_content clearfix">
 						<a class="features_image" href="#" title="">
-							<img src="<?php echo $this->webroot;?>images/FactIcon.png" alt="" class="animated_element animation-scale scale" style="-webkit-animation: 600ms 0ms; transition: 0ms; -webkit-transition: 0ms;">
+							<img src="<?php echo $this->webroot;?>images/FactIcon2.png" alt="" class="animated_element animation-scale scale" style="-webkit-animation: 600ms 0ms; transition: 0ms; -webkit-transition: 0ms;">
 						</a>
 						<div class="text" style="margin-top: 23px">
 							Even within the same strain, the concentration of THC will vary from different growers.  
@@ -78,7 +78,7 @@ for their hybrids like Pineapple Express, Bubba Kush, and Blue Dream to name a f
 				<ul class="column_right">
 					<li class="item_content clearfix">
 						<a class="features_image" href="#" title="">
-							<img src="<?php echo $this->webroot;?>images/FactIcon.png" alt="" class="animated_element animation-scale scale" style="-webkit-animation: 600ms 0ms; transition: 0ms; -webkit-transition: 0ms;">
+							<img src="<?php echo $this->webroot;?>images/FactIcon3.png" alt="" class="animated_element animation-scale scale" style="-webkit-animation: 600ms 0ms; transition: 0ms; -webkit-transition: 0ms;">
 						</a>
 						<div class="text" style="margin-top: 23px">
 							Medical marijuana found its way into Western medicine in the mid-1800s.
@@ -89,7 +89,7 @@ for their hybrids like Pineapple Express, Bubba Kush, and Blue Dream to name a f
 					</li>
 					<li class="item_content clearfix">
 						<a class="features_image" href="#" title="">
-							<img src="<?php echo $this->webroot;?>images/FactIcon.png" alt="" class="animated_element animation-scale scale" style="-webkit-animation: 600ms 0ms; transition: 0ms; -webkit-transition: 0ms;">
+							<img src="<?php echo $this->webroot;?>images/FactIcon4.png" alt="" class="animated_element animation-scale scale" style="-webkit-animation: 600ms 0ms; transition: 0ms; -webkit-transition: 0ms;">
 						</a>
 						<div class="text" style="margin-top: 23px">
 							In 2003, Canada became the first country to offer medical marijuana to pain suffering patients.
