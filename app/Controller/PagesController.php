@@ -53,6 +53,11 @@ class PagesController extends AppController {
         $this->set('homepage','1');
         
     }
+    function get_strain()
+    {
+        $this->loadModel('Strain');
+        return $this->Strain->find('all',array('order'=>'Strain.id DESC','limit'=>4));
+    }
     // public function view_page($slug)
     // {
         

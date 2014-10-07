@@ -76,15 +76,20 @@ class StrainsController extends AppController{
         $not_helpful = $q['Review']['not_helpful']+1;
         $helpful = $q['Review']['helpful'];
         }
+        $this->loadModel('VoteIp');
+        $ip = $_SERVER['REMOTE_ADDR'];
+        if(!$this->VoteIp->find('first',array('conditions'=>array('review_id'=>$id,'ip'=>$ip)))){
         $this->Review->id = $id;        
         $this->Review->saveField('helpful',$helpful);
         $this->Review->saveField('not_helpful',$not_helpful);
-        $this->loadModel('VoteIp');
-        $ip = $_SERVER['REMOTE_ADDR'];
+        
+        
         $this->VoteIp->create();
         $arr['review_id'] = $id;
         $arr['ip'] = $ip;
+        
         $this->VoteIp->save($arr);
+        }
         die();
     }
     function all($type='',$limit=0)
