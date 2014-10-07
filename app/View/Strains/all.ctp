@@ -32,7 +32,7 @@ $symptoms = array();
 </script>
 
 <div class="page_layout page_margin_top clearfix">
-	<div class="page_header clearfix">
+	<div class="page_header clearfix" <?php if(isset($_GET['key'])){?>style="padding-bottom:10px;"<?php }?>>
 		<div class="page_header_left">
 			<h1 class="page_title">Filter Strains</h1>
 			<ul class="bread_crumb">
@@ -50,28 +50,32 @@ $symptoms = array();
 			</ul>
 		</div>
 		<div class="page_header_right">
-			<form class="search">
-				<input class="search_input hint" type="text" value="Search by strain name..." placeholder="Search by strain name...">
+			<form class="search" method="get" action="<?php echo $this->webroot;?>strains/search">
+				<input class="search_input hint" name="key" type="text" value="" placeholder="Search by strain name...">
 				
 				<input type="submit" value="Search" class="more blue medium " style="height:38px;">
-					<a href="" class="  " style="height:38px;
+					<a href="" class="  " style="height:14px;
 					float: left;
 					padding: 12px 18px;				
 					">Reset</a>
 
 			</form>
 		</div>
+        <div class="clear"></div>
+        <?php if(isset($_GET['key'])){?><p style="padding-top: 10px;"><strong>Result for</strong> "<?php echo $_GET['key'];?>"</p><?php }?>
+        
 	</div>
-
+    
 	<div class="clearfix page_margin_top ">
 
 
 <ul class="tabs_navigation2" >
 <li style=""><p>Sort By:</p></li>
-<li>
+<!--<li>
 	<a href="javascript:void(0);" class="eff1" id="recent">
 	Most Recent</a> 
-	</li><li>
+	</li>-->
+    <li>
 	<a href="javascript:void(0)" class="eff1" id="rated">
 	Top Rated</a> 
 	</li><li>
@@ -274,7 +278,7 @@ if($(this).attr('class').replace('searchact2','')==$(this).attr('class'))
         
         $('.eff1c').each(function(){
             
-        alert('test');
+        //alert('test');
         var id = $(this).attr('id');
         var sort = $('.'+id).val();
         if(sort == 'DESC')
@@ -355,7 +359,7 @@ if($(this).attr('class').replace('searchact2','')==$(this).attr('class'))
          
         $('.eff1c').each(function(){
             
-        alert('test');
+        //alert('test');
         var id = $(this).attr('id');
         var sort = $('.'+id).val();
         if(sort == 'DESC')
