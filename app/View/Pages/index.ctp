@@ -1,188 +1,38 @@
 <div class="page_layout page_margin_top clearfix">
-<div class="page_header clearfix">
-<div class="page_header_left">
-<h1 class="page_title">The Internet's Largest Marijuana Strain Database</h1>
-<!--ul class="bread_crumb">
-<li>
-<a href="?page=home" title="Home">
-Home
-</a>
-</li>
-<li class="separator icon_small_arrow right_gray">
-&nbsp;
-</li>
-<li>
-Filter Strains
-</li>
-</ul-->
+
+<div class="announcement  clearfix">
+	<ul class="columns no_width">
+		<li class="column_left">
+			<h1>There's a strain for that</h1>
+			<p>Fees are an estimate only and may be more depending on your situatio depending on your situation</p>
+		</li>
+		<li class="column_right">
+			<div class="vertical_align">
+				<div class="vertical_align_cell">
+					<a title="Make an Appointment" href="?page=contact" class="more blue medium animated_element animation-slideLeft slideLeft" style="-webkit-animation: 600ms 0ms; transition: 0ms; -webkit-transition: 0ms;">View the Strains</a>
+				</div>
+			</div>
+		</li>
+	</ul>
 </div>
-<div class="page_header_right">
-<!--form class="search">
-<input class="search_input hint" type="text" value="To search type and hit enter..." placeholder="To search type and hit enter...">
-</form-->
-</div>
-</div>
+<!--div class="backgroundcolor">
 
-<div class="clearfix">
-
-
-<form class="contact_form" action="<?php echo $this->webroot;?>strains/search" method="get" id="search" style="margin:0px;">
+<h2 class="box_header page_margin_top slide">
+Combining cutting edge research to PERSONALIZE what's right for you.
+</h2>
+<p>canbii uses customize algorithsm to see what strains help people similiar to you... IMAG HERE - asian male, reacts well to purple kush for joint pains. </p>
+</div-->
+<?php include_once('combine/strains.php');?>
+		
 
 
-<ul class="tabs_navigation2" style="padding-top:10px;">
-<li><strong><a href="#">Search Effects</a></strong></li>
 
-
-<?php $effect = $this->requestAction('/pages/getEff');
-foreach($effect as $e)
-{
-?><li>
-<a href="javascript:void(0)" class="small-btn" onclick="highlighteff($(this))" id="eff_<?php echo $e['Effect']['id'];?>"><?php echo $e['Effect']['title']?></a>
-</a></li>
 <?php
-}
+if(false){
 ?>
-<div class="clear"></div>
-</ul>
-<p style="display: none;" class="effe"></p>
-
-
-<ul class="tabs_navigation2" style="padding-top:30px;">
-
-<li><strong><a href="#">Search by Symptoms</a></strong></li>
-
-<?php $effect = $this->requestAction('/pages/getSym');
-foreach($effect as $e)
-{
-?><li>
-<a href="javascript:void(0)" onclick="highlightsym($(this))" class="small-btn" id="sym_<?php echo $e['Symptom']['id'];?>"><?php echo $e['Symptom']['title']?></a>
-</li>
-<?php
-}
-?>
-<div class="clear"></div>
-
-</ul>
-
-<center>
-<h1>or</h1>
-
-<input type="text" placeholder="Search Strain" name="key" class="key" style="width:50%;"/><input type="submit" value="Search" class="more large dark_blue" style="" />
-
-</center>
-
-
-
-
-
-<p style="display: none;" class="symp"></p>
-
-
-<div class="clearfix"></div>
-</form>
-
-
-
-<h3 class="box_header page_margin_top_section slide clearfix" style="">
-Strain Types
-</h3>
-
-
-
-
-<div class="columns columns_3 page_margin_top clearfix">
-<ul class="column">
-<li class="item_content clearfix">
-<a class="features_image" href="#" title="">
-<img src="images/features_small/lab.png" alt="">
-</a>
-<div class="text">
-
-<h3>
-<a href="<?php echo $this->webroot;?>strains/all/indica" title="Browse Strains">
-Indica
-</a>
-</h3>
-
-Indica plants typically grow short and wide. Indica plants are better suited for indoor growing because of their short growth. The smoking of Indica bud will make you sleepy and provides a deep relaxation feeling. This type of strain has great medecal benefit as well as treatment to certain illness.
-<div class="item_footer clearfix">
-<a title="Browse Strains" href="<?php echo $this->webroot;?>strains/all/indica" class="more">
-Browse Strains →
-</a>
-</div>
-</div>
-</li>
-</ul>
-
-
-
-
-
-<ul class="column">
-<li class="item_content clearfix">
-<a class="features_image" href="#" title="">
-<img src="images/features_small/dropper.png" alt="">
-</a>
-<div class="text">
-
-<h3>
-<a href="<?php echo $this->webroot;?>strains/all/sativa" title="Browse Strains">
-Sativa
-</a>
-</h3>
-
-
-Sativa plants grow tall and thin. sativa plants are better suited for outdoor growing because some strains can reach over 25 ft. in height. Sativa smoking is known for its energetic and uplifting feeling. This type of strain has great medecal benefit as well as treatment to certain illness.
-<div class="item_footer clearfix">
-<a title="Browse Strains" href="<?php echo $this->webroot;?>strains/all/sativa" class="more">
-Browse Strains →
-</a>
-</div>
-</div>
-</li>
-</ul>
-<ul class="column">
-<li class="item_content clearfix">
-<a class="features_image" href="#" title="">
-<img src="images/features_small/pill.png" alt="">
-</a>
-<div class="text">
-
-<h3>
-<a href="<?php echo $this->webroot;?>strains/all/hybrid" title="Browse Strains">
-Hybrid
-</a>
-</h3>
-
-Sativa and Indica are the two major types of cannabis plants which can mix together to create hybrid strains. Marijuana strains range from pure sativas to pure indicas and hybrid strains consisting of both indica and sativa (30% indica – 70% sativa, 50% – 50% combinations, 80% indica – 20% sativa).
-<div class="item_footer clearfix">
-<a title="Browse Strains" href="<?php echo $this->webroot;?>strains/all/hybrid" class="more">
-Browse Strains →
-</a>
-</div>
-
-</div>
-</li>
-</ul>
-</div>
-
-
-
-
-<h3 class="box_header page_margin_top_section slide">
+<h2 class="box_header page_margin_top_section slide">
 Latest Strains
-</h3>
-
-<br>
-
-
-
-
-
-
-
-
-
+</h2>
 
 
 <script src="<?php echo $this->webroot;?>js/raty.js"></script>
@@ -190,7 +40,7 @@ Latest Strains
 <link href="<?php echo $this->webroot;?>css/raty.css" rel="stylesheet" type="text/css" />
 
 
-<?php
+<?
 if($strain)
 {
 ?>
@@ -208,9 +58,7 @@ $j++;
 
 
 <div style="float:left;background-image: url('images/features_small/icon.png');width:57px;height:66px;margin-right:10px;">
-<p style="vertical-align:middle;text-align:center;color:white;font-size:18px;">
-
-
+<p style="vertical-align:middle;text-align:center;color:white;font-size:18px;margin-top:-5px">
 <?php 
 $name_arr = explode(' ',$s['Strain']['name']);
 $i=0;
@@ -227,6 +75,52 @@ else echo strtolower($na[0]);
 </div>
 
 
+
+ <!--div class="icon2">
+ 
+ 
+ <p style="vertical-align:middle;text-align:center;color:white;font-size:18px;margin-top:-5px">
+<?php 
+$name_arr = explode(' ',$s['Strain']['name']);
+$i=0;
+foreach($name_arr as $na)
+{
+$i++;
+if($i==1){
+echo ucfirst($na[0]);
+}
+else echo strtolower($na[0]);
+}
+?>
+</p>
+ 
+ 
+ </div>
+
+
+<div class="hexagon">123</div>
+<div class="hex">
+
+123
+
+</div-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <div style="float:left;">
 <h3 class="block-title">
 <a href="<?php echo $this->webroot?>strains/<?php echo $s['Strain']['slug'];?>">
@@ -236,16 +130,7 @@ else echo strtolower($na[0]);
 
 <ul class="">
 <li><?php echo $s['StrainType']['title'];?></li>
-<!--<li>
-<a href="#" title="General">
-General,
-</a>
-</li>
-<li>
-<a href="#" title="Outpatient surgery">
-Outpatient surgery
-</a>
-</li>-->
+
 </ul>
 
 
@@ -254,7 +139,6 @@ Outpatient surgery
 <div style="clear:both;">
 <p>
 <?php echo substr($s['Strain']['description'],0,160).'...';?>
-
 </p>
 
 <ul class="post_footer_details">
@@ -347,9 +231,12 @@ John Doe
 
 <?php
 }
+}
 ?>
 </div>
-</div></div>
+</div>
+
+
 <script>
 function highlighteff(thiss){
 if(thiss.attr('class').replace('searchact','')==thiss.attr('class'))

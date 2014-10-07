@@ -61,6 +61,7 @@
             $this->loadModel('FlavorRating');
             $strain = $this->Strain->findBySlug($slug);
             $this->set("strain_id",$strain['Strain']['id']);
+            $this->set("strain_name",$strain['Strain']['name']);
             $this->set('effects',$this->Effect->find('all',array('conditions'=>array("negative"=>'0'))));
             $this->set('negative',$this->Effect->find('all',array('conditions'=>array("negative"=>'1'))));
             $this->set('colours',$this->Colour->find('all'));
@@ -143,7 +144,7 @@
                     else
                     $review = 1;
                     $this->Strain->saveField('review',$review);
-                    $this->Session->setFlash('Review Saved.','default',array('class'=>'good'));
+                    $this->Session->setFlash('Review Saved','default',array('class'=>'good'));
                     $this->redirect('all');
                }
             }

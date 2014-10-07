@@ -47,19 +47,31 @@ class PagesController extends AppController {
  */
 	public function index()
     {
-        
+        //asd
         $this->loadModel('Strain');
         $this->set('strain',$this->Strain->find('all',array('order'=>'Strain.id DESC','limit'=>4)));
-        
+        $this->set('homepage','1');
         
     }
-    public function view_page($slug)
+    // public function view_page($slug)
+    // {
+        
+        // $detail = $this->Page->findBySlug($slug);
+        // $this->set('detail',$detail);
+        
+    // }
+	
+	function contact_us()
     {
-        
-        $detail = $this->Page->findBySlug($slug);
-        $this->set('detail',$detail);
-        
+
     }
+	
+		function about()
+    {
+
+    }
+	
+	
     function getEff()
     {
         $this->loadModel('Effect');

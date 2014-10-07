@@ -1,5 +1,8 @@
 <?php
 class StrainsController extends AppController{
+    
+      public $components = array('Paginator','RequestHandler');
+      public $helpers = array('Js');
     function index($slug)
     {
         $this->loadModel('OverallFlavorRating');
@@ -85,19 +88,30 @@ class StrainsController extends AppController{
         $this->set('limit',$limit);
         if($limit){
             $offset =$limit;
-        $limit = '4';
+        $limit = '8';
          
         }
         else{
-        $limit = 4;
+        $limit = 8;
         $offset = 0;
         }
         $arr=array('indica'=>1,'sativa'=>2,'hybrid'=>3);
-        if($type=='')
-        $this->set('strain',$this->Strain->find('all',array('order'=>'Strain.id DESC','limit'=>$limit)));
-        else
-        $this->set('strain',$this->Strain->find('all',array('conditions'=>array('type_id'=>$arr[$type]),'order'=>'Strain.id DESC','limit'=>$limit,'offset'=>$offset)));
         
+        
+        if($type=='')
+            $this->set('strain',$this->Strain->find('all',array('order'=>'Strain.id DESC','limit'=>$limit)));
+        else
+            $this->set('strain',$this->Strain->find('all',array('conditions'=>array('type_id'=>$arr[$type]),'order'=>'Strain.id DESC','limit'=>$limit,'offset'=>$offset)));
+
+        /*      
+        {
+            $this->Paginator->settings = array(
+                'order' => array('Strain.id' => 'desc'),
+                'conditions'=>array('type_id'=>$arr[$type]),
+                'limit' => 1
+            );
+            $this->set('strain',$this->Paginator->paginate('Strain'));
+        }*/
     }
     function search($type='',$limit=0)
     {
@@ -105,11 +119,11 @@ class StrainsController extends AppController{
         $this->set('limit',$limit);
         if($limit){
             $offset =$limit;
-        $limit = '4';
+        $limit = '8';
          
         }
         else{
-        $limit = 4;
+        $limit = 8;
         $offset = 0;
         }
         if(isset($_GET['key']))
@@ -181,11 +195,11 @@ HAVING COUNT( symptom_id ) ='.count($symptoms).'))';
         $this->set('type',$type);
         if($limit){
             $offset =$limit;
-        $limit = '4';
+        $limit = '8';
          
         }
         else{
-        $limit = 4;
+        $limit = 8;
         $offset = 0;
         }
         //echo $limit;die();
@@ -303,6 +317,7 @@ HAVING COUNT( symptom_id ) ='.count($symptoms).'))';
         $this->set('strain',$this->Strain->find('all',array('conditions'=>array('type_id'=>$arr[$type],'name LIKE'=>'%'.$key.'%',$condition),'order'=>$order,'limit'=>$limit,'offset'=>$offset)));
         }    
         }
+		
     }
     function review($slug,$sort=null)
     {
@@ -327,7 +342,7 @@ HAVING COUNT( symptom_id ) ='.count($symptoms).'))';
         $search = $this->Strain->find("all",array('conditions'=>array('name LIKE'=>"%".$str."%")));
         foreach($search as $s)
         {
-            echo "<a href='".$this->webroot."review/add/".$s['Strain']['slug']."' class='more large light' title='".$s['Strain']['slug']."'>".$s['Strain']['name']."</a>";
+            echo "<a href='".$this->webroot."review/add/".$s['Strain']['slug']."' class='more blue icon_small_arrow margin_right_white page_margin_top' style='margin-right:10px;' title='".$s['Strain']['slug']."'>".$s['Strain']['name']."</a>";
         }
         die();
     }

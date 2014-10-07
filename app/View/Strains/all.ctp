@@ -31,10 +31,6 @@ $symptoms = array();
     var reviewed_flag = 'ASC';
 </script>
 
-
-
-
-
 <div class="page_layout page_margin_top clearfix">
 	<div class="page_header clearfix">
 		<div class="page_header_left">
@@ -54,9 +50,16 @@ $symptoms = array();
 			</ul>
 		</div>
 		<div class="page_header_right">
-			<!--form class="search">
-				<input class="search_input hint" type="text" value="To search type and hit enter..." placeholder="To search type and hit enter...">
-			</form-->
+			<form class="search">
+				<input class="search_input hint" type="text" value="Search by strain name..." placeholder="Search by strain name...">
+				
+				<input type="submit" value="Search" class="more blue medium " style="height:38px;">
+					<a href="" class="  " style="height:38px;
+					float: left;
+					padding: 12px 18px;				
+					">Reset</a>
+
+			</form>
 		</div>
 	</div>
 
@@ -64,261 +67,94 @@ $symptoms = array();
 
 
 <ul class="tabs_navigation2" >
+<li style=""><p>Sort By:</p></li>
 <li>
-
-	
-		<a href="#" class="eff1" id="recent">
-
-	<strong>SORT:</strong></a> 
-	
-	</li><li>
 	<a href="javascript:void(0);" class="eff1" id="recent">
-
 	Most Recent</a> 
-	</li>	<li>
+	</li><li>
 	<a href="javascript:void(0)" class="eff1" id="rated">
-	
 	Top Rated</a> 
-	</li>	<li>
+	</li><li>
 	<a href="javascript:void(0)" class="eff1" id="viewed">
-	
 	Most Viewed</a>  
-		</li>	<li>
+	</li><li>
 	<a href="javascript:void(0)" class="eff1" id="reviewed">
 	Most Reviewed</a>  
-		</li>	<li>
+	</li><li>
 	<a href="javascript:void(0)" class="eff1" id="alpha">
-	
 	Alphabetically</a>
-	
-		</li>
-</ul>
-
-	
-	
-	
-    <div class="page_left listing">    <?php
-    if($strain)
-    {
-        $j=0;
-        foreach($strain as $s)
-        {
-            $j++;
-            ?>
-
-			<!--?php echo $s['Strain']['published_date'];?>
-
-<a class="" href="<?php echo $this->webroot?>strains/<?php echo $s['Strain']['slug'];?>">
-<h2>
-<?php echo $s['Strain']['name'];?>
-</h2><?php echo $s['StrainType']['title'];?>
-</a>
-
-<p><?php echo substr($s['Strain']['description'],0,130).'...';?></p>
-<a href="<?php echo $this->webroot?>strains/<?php echo $s['Strain']['slug'];?>" class="button-small">View Detail</a>
-<div class="rating<?php echo $j;?> " style=""></div>
-
-<?php if($s['Strain']['review'])echo '<a href="'.$this->webroot.'strains/review/'.$s['Strain']['slug'].'">'.$s['Strain']['review'].' Reviews</a>';else echo '0 Reviews';?>
-
-<script>
-$(function(){    
-$('.rating<?php echo $j;?>').raty({number:10,readOnly:true,score:<?php echo $s['Strain']['rating'];?>});
-});
-</script--> 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<ul class="blog">
-<li class="post">
-<ul class="comment_box clearfix" style="">
-	<li class="date clearfix">
-		<div class="value">
-		<a style="color:white;" href="<?php echo $this->webroot?>strains/<?php echo $s['Strain']['slug'];?>">
-<?php echo $s['StrainType']['title'];?>
-
-</a>
-		</div>
-	</li>
-	<li class="comments_number" style="">
-<?php if($s['Strain']['review'])echo '<a href="'.$this->webroot.'strains/review/'.$s['Strain']['slug'].'">'.$s['Strain']['review'].' Reviews</a>';else echo '0 Reviews';?>
 	</li>
 </ul>
-<div class="post_content">
-	<h2>
-		<a target="_blank" href="http://themeforest.net/item/medicenter-responsive-medical-health-template/4000598?ref=QuanticaLabs" title="Lorem ipsum dolor sit amat velum">
-			
-			
-			
-<a href="<?php echo $this->webroot?>strains/<?php echo $s['Strain']['slug'];?>">
-<?php echo $s['Strain']['name'];?>
 
-</a>
-
-		</a>
-	</h2>
-<p>
-<?php echo substr($s['Strain']['description'],0,160).'...';?>
-
-</p>
-<div class="rating<?php echo $j;?> " style=""></div>
-
-
-<script>
-$(function(){    
-$('.rating<?php echo $j;?>').raty({number:5,readOnly:true,score:<?php echo $s['Strain']['rating'];?>});
-});
-</script> 
-
-	<div class="post_footer">
-		<ul class="post_footer_details">
-			<li>Posted in</li>
-			<li>
-				<a href="#" title="General">
-					General,
-				</a>
-			</li>
-			<li>
-				<a href="#" title="Outpatient surgery">
-					Outpatient surgery
-				</a>
-			</li>
-		</ul>
-		<ul class="post_footer_details">
-			<li>Posted by </li>
-			<li>
-				<a href="#" title="John Doe">
-					John Doe
-				</a>
-			</li>
-		</ul>
-	</div>
+	<!-- page left --> 
+	
+<div class="page_left listing page_margin_top">
+<?php include_once('combine/filter.php');?>
 </div>
-</li>
-</ul>
+	<!-- end page left --> 
 
-
-	<?php
-        }
-    }
-    ?>
-    <div class="clear"></div>
-    <div class="morelist" style="">
-    <div class="loadmore"><a href="javascript:void(0);">Load More</a></div>
-    </div>
-    
-	</div>
+	<!-- page right --> 
 	
-
-	
-	
-	
-			<div class="page_right page_margin_top">
-	<ul>
+				<div class="page_right" style="">
+				<ul>
 				<li class="home_box light_blue animated_element animation-fadeIn duration-500" style="z-index: 3;">
 					<h2>
-						<a href="?page=contact" title="Emergency Case">
-							FILTER BY EFFECTS
-						</a>
+							Filter by Effects
 					</h2>
 					<div class="news clearfix">
 
 					
-					
-					
-					
-					
-					
-					
-					
-					
-					
+				<div class="choose_eff" >
+				<?php $effect = $this->requestAction('/pages/getEff');
+				foreach($effect as $e)
+				{
+				?>
+									
+								
+									
+				<a style="color:white;" href="javascript:void(0)" class="small-btn eff2" id="eff_<?php echo $e['Effect']['id'];?>"><?php echo $e['Effect']['title']?></a>
+				
+				<?php
+				}
+				?>
+				<p style="display: none;" class="effe"></p>
+				</div>
 
-
-<div class="choose_eff" >
-<?php $effect = $this->requestAction('/pages/getEff');
-foreach($effect as $e)
-{
-?>
-					
-<a style="color:white;" href="javascript:void(0)" class="small-btn eff2" id="eff_<?php echo $e['Effect']['id'];?>"><?php echo $e['Effect']['title']?></a>
-<?php
-}
-?>
-<p style="display: none;" class="effe"></p>
-</div>
-
-
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					</div>
+				</div>
 				</li>
 				<li class="home_box blue animated_element animation-slideDown duration-800 delay-250" style="z-index: 2;">
-					<h2>
-						<a href="?page=timetable" title="Doctors Timetable">
-		FILTER BY SYMPTOM
-						</a>
-					</h2>
-					<div class="news clearfix">
-<div class="choose_sym">
-<?php $effect = $this->requestAction('/pages/getSym');
-foreach($effect as $e)
-{
-?>
-<a  style="color:white;"  href="javascript:void(0)" class="sym2 small-btn" id="sym_<?php echo $e['Symptom']['id'];?>"><?php echo $e['Symptom']['title']?></a>
-<?php
-}
-?>
-<p style="display: none;" class="symp"></p>
-</div>
-					
-					</div>
+				<h2>
+				Filter by Symptoms
+				</h2>
+				<div class="news clearfix">
+				<div class="choose_sym">
+				<?php $effect = $this->requestAction('/pages/getSym');
+				foreach($effect as $e)
+				{
+				?>
+				<a style="color:white;"  href="javascript:void(0)" class="sym2 small-btn" id="sym_<?php echo $e['Symptom']['id'];?>"><?php echo $e['Symptom']['title']?></a>
+				<?php
+				}
+				?>
+				<p style="display: none;" class="symp"></p>
+				</div>
+				</div>
 				</li>
+				</ul>
+				</div>
 
-			</ul>
+	<!-- end page right --> 
+</div>
+</div>
 
-			</div>
-	
-	
-	
-			</div>
-	
-			</div>
-	
-    
-	
-    <input type="hidden" class="recent" value="ASC" />
-    <input type="hidden" class="rated" value="ASC" />
-    <input type="hidden" class="viewed" value="ASC" />
-    <input type="hidden" class="reviewed" value="ASC" />
-    <input type="hidden" class="alpha" value="DESC" />
-	
-	<div class="clearfix"></div>
-	
-	
-    <script>
+<input type="hidden" class="recent" value="ASC" />
+<input type="hidden" class="rated" value="ASC" />
+<input type="hidden" class="viewed" value="ASC" />
+<input type="hidden" class="reviewed" value="ASC" />
+<input type="hidden" class="alpha" value="DESC" />
+<div class="clearfix"></div>
+
+<script>
     var more='<?php echo $limit?>';    
     var spinnerVisible = false;
     
@@ -609,10 +445,7 @@ if($(this).attr('class').replace('searchact2','')==$(this).attr('class'))
         {
             val = val+'&sort='+id+'&order='+sort;
         }
-        
-        
-         
-        
+
         $.ajax({
            url:'<?php echo $this->webroot;?>strains/filter<?php if($type)echo '/0/'.$type?>',
            data:val,
@@ -628,7 +461,8 @@ if($(this).attr('class').replace('searchact2','')==$(this).attr('class'))
            } 
         });
         
-    });    
+    });
+	
     <?php
     if($effects)
     {
@@ -650,4 +484,4 @@ if($(this).attr('class').replace('searchact2','')==$(this).attr('class'))
     }
     ?>
     });
-    </script>
+</script>
