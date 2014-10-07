@@ -88,12 +88,12 @@ class StrainsController extends AppController{
         $this->set('limit',$limit);
         if($limit){
             $offset =$limit;
-        $limit = '8';
+            $limit = '8';
          
         }
         else{
-        $limit = 8;
-        $offset = 0;
+            $limit = 8;
+            $offset = 0;
         }
         $arr=array('indica'=>1,'sativa'=>2,'hybrid'=>3);
         

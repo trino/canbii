@@ -71,7 +71,14 @@ class PagesController extends AppController {
 
     }
 	
-	
+	function privacy()
+    {
+        
+    }
+    function terms()
+    {
+        
+    }
     function getEff()
     {
         $this->loadModel('Effect');
