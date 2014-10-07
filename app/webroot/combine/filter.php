@@ -22,13 +22,14 @@
 <?php 
 $name_arr = explode(' ',$s['Strain']['name']);
 $i=0;
+
 foreach($name_arr as $na)
 {
 $i++;
-if($i==1){
+if($i==1 && $na){
 echo ucfirst($na[0]);
 }
-else echo strtolower($na[0]);
+elseif($na) echo strtolower($na[0]);
 }
 ?>
 </p>

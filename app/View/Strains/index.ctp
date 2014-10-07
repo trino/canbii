@@ -163,7 +163,7 @@ $length = 20*$rate;;
 ?>
 <div class="eff">
 <div class="label left"><?php echo $this->requestAction('/strains/getEffect/'.$ar[1]);?></div>
-<div class="left ratewrap"><div class="length" style="width: <?php echo $length;?>%;text-align: center;"></div><em><?php echo $rate;?>/5</em></div>
+<div class="left ratewrap"><img src="<?php echo $this->webroot;?>Capture.PNG" style="width: <?php echo $length;?>%;height:25px;position: absolute; text-align: center;left:0;" /><em><?php echo $rate;?>/5</em></div>
 <div class="clear"></div>
 </div>
 <?php
@@ -202,7 +202,7 @@ $length = 20*$rate;;
 <div class="eff">
 <div class="label left"><?php echo $this->requestAction('/strains/getSymptom/'.$ars[1]);?></div>
 <div class="left ratewrap">
-<div class="length" style="width: <?php echo $length;?>%;text-align: center;"></div>
+<img src="<?php echo $this->webroot;?>Capture.PNG" style="width: <?php echo $length;?>%;height:25px;position: absolute; text-align: center;left:0;" />
 <em><?php echo $rate;?>/5</em>
 </div>
 <div class="clear"></div>
@@ -256,7 +256,7 @@ $length = 20*$rate;
 ?>
 <div class="eff">
 <div class="label left"><?php echo $this->requestAction('/strains/getEffect/'.$ar[1]);?></div>
-<div class="left ratewrap"><div class="length" style="width: <?php echo $length;?>%;text-align: center;"></div><em><?php echo $rate;?>/5</em></div>
+<div class="left ratewrap"><img src="<?php echo $this->webroot;?>Capture.PNG" style="width: <?php echo $length;?>%;height:25px;position: absolute; text-align: center;left:0;" /><em><?php echo $rate;?>/5</em></div>
 <div class="clear"></div>
 </div>
 <?php
@@ -292,13 +292,13 @@ $strength = ($strength/$count)*20;
 $duration = ($duration/$count)*20;
 ?>
 <div class="eff">
-<div class="label left">Length</div><div class="left ratewrap"><div class="length" style="width: <?php echo round($scale,2);?>%;"></div><em><?php echo round($scale/20,2);?>/5</em></div><div class="clear"></div>
+<div class="label left">Length</div><div class="left ratewrap"><img src="<?php echo $this->webroot;?>Capture.PNG" style="width: <?php echo round($scale,2);?>%;height:25px;position: absolute;left:0;" /><em><?php echo round($scale/20,2);?>/5</em></div><div class="clear"></div>
 </div>
 <div class="eff">
-<div class="label left">Strength</div><div class="left ratewrap" style="width: 63%;background:#FFF;"><div class="length" style="width: <?php echo round($strength,2);?>%;"></div><em><?php echo round($strength/20,2);?>/5</em></div><div class="clear"></div>
+<div class="label left">Strength</div><div class="left ratewrap" style="width: 63%;background:#FFF;"><img src="<?php echo $this->webroot;?>Capture.PNG" style="width: <?php echo round($strength,2);?>%;height:25px;position: absolute;left:0;" /><em><?php echo round($strength/20,2);?>/5</em></div><div class="clear"></div>
 </div>
 <div class="eff">
-<div class="label left">Duration</div><div class="left ratewrap" style="width: 63%;background:#FFF;"><div class="length" style="width: <?php echo round($duration,2);?>%;"></div><em><?php echo round($duration/20,2);?>/5</em></div><div class="clear"></div>
+<div class="label left">Duration</div><div class="left ratewrap" style="width: 63%;background:#FFF;"><img src="<?php echo $this->webroot;?>Capture.PNG" style="width: <?php echo round($duration,2);?>%;height:25px;position: absolute;left:0;" /><em><?php echo round($duration/20,2);?>/5</em></div><div class="clear"></div>
 </div>        
 
 <?php
@@ -403,7 +403,7 @@ var r_id = arr2[1];
 $.ajax({
 url:'<?php echo $this->webroot;?>strains/helpful/'+r_id+'/no',
 });
-$('#'+arr2[0]+'_'+rid).removeClass('yes');
+$('#'+arr2[0]+'_'+r_id).removeClass('yes');
 var o = parseFloat(arr2[0])+1;
 $('#'+o+'_'+r_id).removeClass('no'); 
 $('#'+arr2[0]+'_'+r_id).attr('style','background:#FFF;color:#CCC;cursor: default;')

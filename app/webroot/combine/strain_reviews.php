@@ -1,5 +1,5 @@
 <p>Most Helpful</p>
-<?php if($helpful || $isset($show_all)){
+<?php if($helpful || isset($show_all)){
 // debug( $helpful);
 ?>
 

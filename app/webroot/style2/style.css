@@ -705,11 +705,7 @@ ul.sf-menu li li li:hover ul, ul.sf-menu li li li.sfHover ul
 {
 	color: #666666;
 }
-.search .search_input:focus
-{
-	width: 25px;
-	border-color: #42B3E5;
-}
+
 /* --- bread crumb --- */
 .bread_crumb
 {
@@ -3353,6 +3349,9 @@ width:30%;
  .main2{text-align:center;}
 .main2 .div12,
 .main2 .div22  {display:inline-block;width:50%;}
+.loadmore{margin-top:10px;text-align:center;}
+.loadmore a{background:#42B3E5;color:#FFF;padding:8px 15px;display:inline-block;}
+#fancybox-wrap{z-index:9999999;}
  
  
  
