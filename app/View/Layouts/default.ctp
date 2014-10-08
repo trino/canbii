@@ -443,13 +443,13 @@ or <a class="A_6" href="">view more</a>
 								
 								<?
 								
-								
-if($strain)
+$strains = $this->requestAction('pages/get_strain');								
+if($strains)
 {
 ?>
 
 <?php
-foreach($strain as $s)
+foreach($strains as $s)
 {
 ?>
 

@@ -36,10 +36,10 @@ $rand2 = rand(100,999);
 
 <p>
 Was this review helpful? <?php if($vote==0){?>
-<a href="javascript:void(0);" id="<?php echo $rand1.'_'.$helpful['Review']['id'];?>" class="btns yes" style="background-color: #40b2e2; padding-left:6px; padding-right:6px; padding-top: 5px; padding-bottom: 5px; margin-right:5px"><strong style="color: white">YES</strong></a>
-<a class="btns no" href="javascript:void(0);" id="<?php echo ($rand1+1).'_'.$helpful['Review']['id'];?>" style="background-color: #1e84c6; padding-left:10px; padding-right:10px; padding-top: 5px; padding-bottom: 5px; margin-right:5px"><strong style="color: white">NO</strong></a>
+<a href="javascript:void(0);" id="<?php echo $rand1.'_'.$helpful['Review']['id'];?>" class="btns yes" style="background-color: #40b2e2; padding-left:6px; padding-right:6px; padding-top: 5px; padding-bottom: 5px; margin-right:5px"><strong style="color: white">YES<?php if($helpful['Review']['helpful']){?> (<?php echo $helpful['Review']['helpful'];?>)<?php }?></strong></a>
+<a class="btns no" href="javascript:void(0);" id="<?php echo ($rand1+1).'_'.$helpful['Review']['id'];?>" style="background-color: #1e84c6; padding-left:10px; padding-right:10px; padding-top: 5px; padding-bottom: 5px; margin-right:5px"><strong style="color: white">NO<?php if($helpful['Review']['not_helpful']){?> (<?php echo $helpful['Review']['not_helpful'];?>)<?php }?></strong></a>
 <?php }else{?>
-<a href="javascript:void(0);" id="" class="faded">YES</a> <a class="faded" href="javascript:void(0);" id="">NO</a><?php }?>
+<a href="javascript:void(0);" id="" class="faded">YES<?php if($helpful['Review']['helpful']){?> (<?php echo $helpful['Review']['helpful'];?>)<?php }?></a> <a class="faded" href="javascript:void(0);" id="">NO<?php if($helpful['Review']['not_helpful']){?> (<?php echo $helpful['Review']['not_helpful'];?>)<?php }?></a><?php }?>
 </p>
 
 <a class="more reply_button" href="#comment_form">

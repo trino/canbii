@@ -379,38 +379,47 @@ $('.frate').raty({readOnly:true,score:<?php echo $helpful['Review']['rate'];?>})
 $('.srate').raty({readOnly:true,score:<?php echo $recent['Review']['rate'];?>});
 <?php }?>
 $('.emotion').text('<?php echo ($strain['Strain']['rating']).'/5';?> ');
+var check = 0;
 $('.yes').click(function(){
+if(check==0){
+    check++;
 var id = $(this).attr('id');
 var arr = id.split('_');
 var r_id = arr[1];
 $.ajax({
 url:'<?php echo $this->webroot;?>strains/helpful/'+r_id+'/yes',
 });
-$('#'+arr[0]+'_'+r_id).removeClass('yes');
+//$('#'+arr[0]+'_'+r_id).removeClass('yes');
 $('#'+arr[0]+'_'+r_id).attr('style','background:#FFF;color:#CCC;cursor: default;');
-$('#'+arr[0]+'_'+r_id).attr('onclick','return false;');
+//$('#'+arr[0]+'_'+r_id).attr('onclick','return false;');
 var o = parseFloat(arr[0])+1;
-$('#'+o+'_'+r_id).removeClass('no');
-$('#'+o+'_'+r_id).attr('style','background:#FFF;color:#CCC;cursor: default;');
-$('#'+o+'_'+r_id).attr('onclick','return false;'); 
+//$('#'+o+'_'+r_id).removeClass('no');
+$('#'+o+'_'+r_id).attr('style','background:#FFF;cursor: default;display:inline-block;padding:4px 7px;');
+$('#'+o+'_'+r_id+' strong').attr('style','color:#eee');
+$//('#'+o+'_'+r_id).attr('onclick','return false;'); 
 $(this).attr('style',$(this).attr('style').replace('background:#FFF;','background:#e5e5e5;display:inline-block;padding:4px 7px;'));
+}
 });
 $('.no').click(function(){
+if(check==0){    
+    check++;
 var id = $(this).attr('id');
 
 var arr2 = id.split('_');
+var num = parseFloat(arr2[0])-1;
 var r_id = arr2[1];
 $.ajax({
 url:'<?php echo $this->webroot;?>strains/helpful/'+r_id+'/no',
 });
 $('#'+arr2[0]+'_'+r_id).removeClass('yes');
 var o = parseFloat(arr2[0])+1;
-$('#'+o+'_'+r_id).removeClass('no'); 
-$('#'+arr2[0]+'_'+r_id).attr('style','background:#FFF;color:#CCC;cursor: default;')
-$('#'+arr2[0]+'_'+r_id).attr('onclick','return false;');
+//$('#'+o+'_'+r_id).removeClass('no'); 
+$('#'+num+'_'+r_id).attr('style','background:#FFF;color:#CCC;cursor: default;display:inline-block;padding:4px 7px;')
+$('#'+num+'_'+r_id+' strong').attr('style','color:#CCC;')
+//$('#'+arr2[0]+'_'+r_id).attr('onclick','return false;');
 $('#'+o+'_'+r_id).attr('style','background:#FFF;color:#CCC;cursor: default;');
-$('#'+o+'_'+r_id).attr('onclick','return false;'); 
-$(this).attr('style',$(this).attr('style').replace('background:#FFF;','background:#e5e5e5;display:inline-block;padding:4px 7px;'));
+//$('#'+o+'_'+r_id).attr('onclick','return false;'); 
+$(this).attr('style','padding-left:10px; padding-right:10px; padding-top: 5px; padding-bottom: 5px; margin-right:5px;background:#e5e5e5;cursor:default;');}
 });
 });
 </script>

@@ -110,7 +110,7 @@ if($q5){$vote = 1;}else{$vote = 0;}
 ?>
 
 
-Was this review helpful? <?php if($vote==0){?><a href="javascript:void(0);" id="<?php echo $rand1.'_'.$r['Review']['id'];?>" class="btns yes" style="background-color: #40b2e2; padding-left:6px; padding-right:6px; padding-top: 5px; padding-bottom: 5px; margin-right:5px"><strong style="color: white">YES</strong></a> <a class="btns no" href="javascript:void(0);" id="<?php echo ($rand1+1).'_'.$r['Review']['id'];?>" style="background-color: #1e84c6; padding-left:10px; padding-right:10px; padding-top: 5px; padding-bottom: 5px; margin-right:5px"><strong style="color: white">NO</strong></a><?php }else{?><a href="javascript:void(0);" id="" class="faded">YES</a> <a class="faded" href="javascript:void(0);" id="">NO</a><?php }?>
+Was this review helpful? <?php if($vote==0){?><a href="javascript:void(0);" id="<?php echo $rand1.'_'.$r['Review']['id'];?>" class="btns yes" style="background-color: #40b2e2; padding-left:6px; padding-right:6px; padding-top: 5px; padding-bottom: 5px; margin-right:5px"><strong style="color: white">YES<?php if($r['Review']['helpful']){?> (<?php echo $r['Review']['helpful'];?>)<?php }?></strong></a> <a class="btns no" href="javascript:void(0);" id="<?php echo ($rand1+1).'_'.$r['Review']['id'];?>" style="background-color: #1e84c6; padding-left:10px; padding-right:10px; padding-top: 5px; padding-bottom: 5px; margin-right:5px"><strong style="color: white">NO<?php if($r['Review']['not_helpful']){?> (<?php echo $r['Review']['not_helpful'];?>)<?php }?></strong></a><?php }else{?><a href="javascript:void(0);" id="" class="faded">YES<?php if($r['Review']['helpful']){?> (<?php echo $r['Review']['helpful'];?>)<?php }?></a> <a class="faded" href="javascript:void(0);" id="">NO<?php if($r['Review']['not_helpful']){?> (<?php echo $r['Review']['not_helpful'];?>)<?php }?></a><?php }?>
 
 
 
@@ -166,7 +166,8 @@ $('.yes').click(function(){
    $('#'+arr[0]+'_'+r_id).attr('onclick','return false;');
    var o = parseFloat(arr[0])+1;
    $('#'+o+'_'+r_id).removeClass('no');
-   $('#'+o+'_'+r_id).attr('style','background:#FFF;color:#CCC;cursor: default;');
+   $('#'+o+'_'+r_id).attr('style','background:#FFF;color:#CCC;cursor: default;display:inline-block;padding:8px 7px;');
+   $('#'+o+'_'+r_id+' strong').attr('style','color:#CCC;');
    $('#'+o+'_'+r_id).attr('onclick','return false;'); 
    $(this).attr('style',$(this).attr('style').replace('background:#FFF;','background:#e5e5e5;display:inline-block;padding:8px 7px;'));
 });
@@ -174,18 +175,20 @@ $('.no').click(function(){
    var id = $(this).attr('id');
    
    var arr2 = id.split('_');
+   var num = parseFloat(arr2[0]-1);
    var r_id = arr2[1];
    $.ajax({
     url:'<?php echo $this->webroot;?>strains/helpful/'+r_id+'/no',
    });
-   $('#'+arr2[0]+'_'+rid).removeClass('yes');
-   var o = parseFloat(arr2[0])+1;
+   $('#'+num+'_'+r_id).removeClass('yes');
+   var o = parseFloat(num)+1;
    $('#'+o+'_'+r_id).removeClass('no'); 
-   $('#'+arr2[0]+'_'+r_id).attr('style','background:#FFF;color:#CCC;cursor: default;')
-   $('#'+arr2[0]+'_'+r_id).attr('onclick','return false;');
-   $('#'+o+'_'+r_id).attr('style','background:#FFF;color:#CCC;cursor: default;');
-   $('#'+o+'_'+r_id).attr('onclick','return false;'); 
-   $(this).attr('style',$(this).attr('style').replace('background:#FFF;','background:#e5e5e5;display:inline-block;padding:8px 7px;'));
+   $('#'+num+'_'+r_id).attr('style','background:#FFF;color:#CCC;cursor: default;display:inline-block;padding:8px 7px;')
+   $('#'+num+'_'+r_id+' strong').attr('style','color:#CCC;');
+   //$('#'+num+'_'+r_id).attr('onclick','return false;');
+   //$('#'+o+'_'+r_id).attr('style','background:#FFF;color:#CCC;cursor: default;');
+   //$('#'+o+'_'+r_id).attr('onclick','return false;'); 
+   $(this).attr('style','background:#e5e5e5;display:inline-block;padding:8px 7px;color:#CCC;cursor: default;');
 });
 });
 </script>
