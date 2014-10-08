@@ -66,7 +66,7 @@ class PagesController extends AppController {
 
     }
 	
-		function about_us()
+		function about()
     {
 
     }

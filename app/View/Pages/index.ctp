@@ -3,7 +3,7 @@
 <div class="announcement  clearfix">
 	<ul class="columns no_width">
 		<li class="column_left">
-			<h1>There's a strain for that.. Lorem Ipsum</h1>
+			<h1>There's a strain for that</h1>
 			<p>Fees are an estimate only and may be more depending on your situatio depending on your situation</p>
 		</li>
 		<li class="column_right">
@@ -15,54 +15,21 @@
 		</li>
 	</ul>
 </div>
+<!--div class="backgroundcolor">
+
+<h2 class="box_header page_margin_top slide">
+Combining cutting edge research to PERSONALIZE what's right for you.
+</h2>
+<p>canbii uses customize algorithsm to see what strains help people similiar to you... IMAG HERE - asian male, reacts well to purple kush for joint pains. </p>
+</div-->
+<?php include_once('combine/strains.php');?>
 		
-<h2 class="box_header page_margin_top_section clearfix" style="">Strain Types</h2>
-
-<ul class="columns_3 clearfix page_margin_top">
-			<li class="column">
-				<h3 class="box_header">
-					Indica
-				</h3>
-<img src="images/IndicaIcon.png" alt="" style="float:right;">
-<p>
-Indica plants typically grow short and wide. Indica plants are better suited for indoor growing because of their short growth. The smoking of Indica bud will make you sleepy and provides a deep relaxation feeling. This type of strain has great medecal benefit as well as treatment to certain illness.
-</p>
-<a title="Browse Strains" href="<?php echo $this->webroot;?>strains/all/indica" class="more">
-Browse Strains →
-</a>
-			</li>
-			<li class="column">
-				<h3 class="box_header slide">
-					Sativa
-				</h3>
-
-				
-		<img src="images/SativaIcon.png" alt="" style="float:right;">
-		<p>
-Sativa plants grow tall and thin. sativa plants are better suited for outdoor growing because some strains can reach over 25 ft. in height. Sativa smoking is known for its energetic and uplifting feeling. This type of strain has great medecal benefit as well as treatment to certain illness.
-</p>
-<a title="Browse Strains" href="<?php echo $this->webroot;?>strains/all/sativa" class="more">
-Browse Strains →
-</a>
-
-			</li>
-			<li class="column">
-				<h3 class="box_header slide">
-					Hybrid
-				</h3>
-				
-				<img src="images/HybridIcon.png" alt="" style="float:right;">
-<p>
-Sativa and Indica are the two major types of cannabis plants which can mix together to create hybrid strains. Marijuana strains range from pure sativas to pure indicas and hybrid strains consisting of both indica and sativa (30% indica – 70% sativa, 50% – 50% combinations, 80% indica – 20% sativa).
-</p>
-<a title="Browse Strains" href="<?php echo $this->webroot;?>strains/all/hybrid" class="more">
-Browse Strains →
-</a>
-			</li>
-		</ul>
 
 
 
+<?php
+if(false){
+?>
 <h2 class="box_header page_margin_top_section slide">
 Latest Strains
 </h2>
@@ -73,7 +40,7 @@ Latest Strains
 <link href="<?php echo $this->webroot;?>css/raty.css" rel="stylesheet" type="text/css" />
 
 
-<?php
+<?
 if($strain)
 {
 ?>
@@ -92,8 +59,6 @@ $j++;
 
 <div style="float:left;background-image: url('images/features_small/icon.png');width:57px;height:66px;margin-right:10px;">
 <p style="vertical-align:middle;text-align:center;color:white;font-size:18px;margin-top:-5px">
-
-
 <?php 
 $name_arr = explode(' ',$s['Strain']['name']);
 $i=0;
@@ -108,6 +73,52 @@ else echo strtolower($na[0]);
 ?>
 </p>
 </div>
+
+
+
+ <!--div class="icon2">
+ 
+ 
+ <p style="vertical-align:middle;text-align:center;color:white;font-size:18px;margin-top:-5px">
+<?php 
+$name_arr = explode(' ',$s['Strain']['name']);
+$i=0;
+foreach($name_arr as $na)
+{
+$i++;
+if($i==1){
+echo ucfirst($na[0]);
+}
+else echo strtolower($na[0]);
+}
+?>
+</p>
+ 
+ 
+ </div>
+
+
+<div class="hexagon">123</div>
+<div class="hex">
+
+123
+
+</div-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 <div style="float:left;">
@@ -220,12 +231,11 @@ John Doe
 
 <?php
 }
+}
 ?>
 </div>
 </div>
 
-
-		
 
 <script>
 function highlighteff(thiss){

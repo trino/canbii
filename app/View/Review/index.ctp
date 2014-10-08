@@ -39,10 +39,10 @@
 We value your opinion. Share your experience with others to help guide them towards the strain that will benefit them the most. Thank you!</p>
 </div>
 
-<form class="contact_form" action="" method="post">
+<form class="contact_form page_margin_top" action="" method="post">
 <label for="searchName">Cannabis Name</label>
 <input type="text" id="searchName" value="" />
-<span class="extra">(e.g. Purple Kush, Blueberry Yum Yum, Blue Dream)</span>
+<span class="extra">(e.g. Purple Kush, AK47, Blue Dream)</span>
 <div class="results" style="display: none;">
 <label>Select Item to Review:</label><br />
 <input type="hidden" name="strain" value="" id="strainz" />

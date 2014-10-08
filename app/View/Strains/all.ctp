@@ -54,7 +54,10 @@ $symptoms = array();
 				<input class="search_input hint" type="text" value="Search by strain name..." placeholder="Search by strain name...">
 				
 				<input type="submit" value="Search" class="more blue medium " style="height:38px;">
-				<input type="submit" value="Reset" class="more dark " style="height:38px;">
+					<a href="" class="  " style="height:38px;
+					float: left;
+					padding: 12px 18px;				
+					">Reset</a>
 
 			</form>
 		</div>
@@ -64,9 +67,8 @@ $symptoms = array();
 
 
 <ul class="tabs_navigation2" >
+<li style=""><p>Sort By:</p></li>
 <li>
-	<a href="#" class="eff1" id="recent"><strong>SORT:</strong></a> 
-	</li><li>
 	<a href="javascript:void(0);" class="eff1" id="recent">
 	Most Recent</a> 
 	</li><li>
@@ -87,12 +89,7 @@ $symptoms = array();
 	<!-- page left --> 
 	
 <div class="page_left listing page_margin_top">
-
-
 <?php include_once('combine/filter.php');?>
-
-
-
 </div>
 	<!-- end page left --> 
 

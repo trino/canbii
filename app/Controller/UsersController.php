@@ -51,7 +51,7 @@ class UsersController extends AppController {
                 $this->Session->write('User.username',$user['username']);
                 $this->Session->write('User.email',$user['email']);
                 $this->Session->write('User.id',$this->User->id);
-                $this->Session->setFlash('You have been registered succesfully.', 'default', array('class' => 'good'));
+                $this->Session->setFlash('You have been registered successfully', 'default', array('class' => 'good'));
                 $this->redirect('dashboard');
             }
            $this->Session->setFlash('User could not be added', 'default', array('class' => 'bad'));
@@ -77,7 +77,7 @@ class UsersController extends AppController {
             {
                 $this->User->saveField($k,$v);
             }
-            $this->Session->setFlash('Profile saved successfully.', 'default', array('class' => 'good'));
+            $this->Session->setFlash('Profile saved successfully', 'default', array('class' => 'good'));
             $this->redirect('dashboard');
             
         }
@@ -99,7 +99,7 @@ class UsersController extends AppController {
                 $ch = $this->User->find('first',array('conditions'=>array('username'=>$_POST['username'],'id<>'.$user['User']['id'])));
                 if($ch)
                 {
-                    $this->Session->setFlash('Username Already Taken.', 'default', array('class' => 'bad'));
+                    $this->Session->setFlash('Username already taken', 'default', array('class' => 'bad'));
                     $this->redirect('settings');
                 }
             }
@@ -108,7 +108,7 @@ class UsersController extends AppController {
                 $ch = $this->User->find('first',array('conditions'=>array('email'=>$_POST['email'],'id<>'.$user['User']['id'])));
                 if($ch)
                 {
-                    $this->Session->setFlash('Email Already Taken.', 'default', array('class' => 'bad'));
+                    $this->Session->setFlash('Email already taken', 'default', array('class' => 'bad'));
                     $this->redirect('settings');
                 }
             }
@@ -153,21 +153,21 @@ class UsersController extends AppController {
                 //$r = rand(100000,999999);
                 $emails = new CakeEmail();
                 $emails->to($_POST['email']);
-                $emails->from(array('noreply@savnpik.com'=>'MARIJUANA.COM'));
+                $emails->from(array('noreply@canbii.com'=>'canbii.com'));
                 $emails->subject("Recover Password");
                 $emails->emailFormat('html');
-                $msg = "Hi there,<br/><br/>We recently received a request from you that you forgot MARIJUANA.COM account password. <br/>Here is your new login detail:<br/>
+                $msg = "Hello,<br/><br/>We received a request to reset your password. <br/>Here is your new login credentials:<br/>
                 Username : ".$q['User']['username']."<br/>
                 Password : ".$q['User']['password']."<br/>
                 <br/><br/>";
-                $msg .= "Regards,<br/>MARIJUANA.COM";
+                $msg .= "Regards,<br/>canbii.com";
                 $emails->send($msg);
                 
                 $this->Session->setFlash('Password has been sent to '.$_POST['email'], 'default', array('class' => 'good'));
             }
             else
             {
-                $this->Session->setFlash('We could not find the email associated to MARIJUANA.COM', 'default', array('class' => 'bad'));
+                $this->Session->setFlash('We could not find the email address associated with your account', 'default', array('class' => 'bad'));
             }
             $this->redirect('forgot');
         }

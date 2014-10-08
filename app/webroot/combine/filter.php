@@ -12,24 +12,12 @@
             ?>
 
 			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-						<li class="item_content clearfix" style="border-bottom:1px solid #E8E8E8;">
+<li class="item_content clearfix" style="border-bottom:1px solid #E8E8E8;">
 
 			
 <a class="thumb_image" href="#" style="margin:0px;">
 
-<div style="text-align: center; float:left;background-image: url('<?php echo $this->webroot?>images/features_small/icon.png');width:57px;height:66px;background-repeat: no-repeat;">
+<div style="text-align: center; float:left;background-image: url('<?php echo $this->webroot?>images/<?php echo $s['StrainType']['title'];?>.png');width:57px;height:66px;background-repeat: no-repeat;">
 <p style="vertical-align:middle;text-align:center;color:white;font-size:18px; margin-top:15px">
 <?php 
 $name_arr = explode(' ',$s['Strain']['name']);
@@ -94,17 +82,15 @@ $('.rating<?php echo $j;?>').raty({number:5,readOnly:true,score:<?php echo $s['S
 			
 
 
-	<?php
-        }
-    
-	?>
-	</ul>
-	
-	<?
-	}
-    ?>
-	
-	
+<?php
+}
+?>
+</ul>
+<?
+}
+?>
+
+
 	
 	
 		

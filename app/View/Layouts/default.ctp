@@ -62,7 +62,7 @@
 				<div class="header clearfix">
 					<div class="header_left">
 						<a href="<?php echo $this->webroot;?>" title="MEDICALMARIJUANA">
-							<img src="<?php echo $this->webroot;?>images/logo2.png" height=100 alt="logo" />
+							<img src="<?php echo $this->webroot;?>images/logo.png" height=100 alt="logo" />
 							
 							
 						</a>
@@ -73,7 +73,7 @@
 
 					<li class="current_page_item"><a href="<?php echo $this->webroot;?>" accesskey="1" title="">Home</a></li>
 					<li><a href="<?php echo $this->webroot?>strains/all" accesskey="2" title="">Strains</a></li>
-					<li><a href="<?php echo $this->webroot;?>pages/about_us" accesskey="3" title="">About Us</a></li>
+					<li><a href="<?php echo $this->webroot;?>pages/about" accesskey="3" title="">About</a></li>
 					<li><a href="<?php echo $this->webroot;?>pages/contact_us" accesskey="4" title="">Contact Us</a></li>
 					<?php if(!$this->Session->read('User')){?>
 					<li><a href="<?php echo $this->webroot;?>users/register" accesskey="4" title="">Login / Register</a></li>
@@ -94,7 +94,7 @@
     	               <select> 
                         <option value="<?php echo $this->webroot?>">Home</option>
                         <option value="<?php echo $this->webroot?>strains/all" >Strains</option>
-    					<option value="<?php echo $this->webroot;?>pages/about_us" >About Us</option>
+    					<option value="<?php echo $this->webroot;?>pages/about" >About</option>
     					<option value="<?php echo $this->webroot;?>pages/contact_us" >Contact Us</option>
     					<?php if(!$this->Session->read('User')){?>
     					<option value="<?php echo $this->webroot;?>users/register" >Login / Register</option>
@@ -263,7 +263,6 @@ if(thiss.attr('class').replace('searchact','')==thiss.attr('class'))
 
 
 
-
 <div class="page" style="border-top:0;padding-bottom:0px;
 ">
 <div class=" clearfix" style="
@@ -271,61 +270,79 @@ background: #000;
 background: rgba(0,0,0,0.7);
 border-radius: 3px;
 margin: 0 auto;
-padding:0px 20px;
+padding:30px;
 ">
-<h1 class="" style="padding:40px 0 30px 0;text-align:center;font-size:42px;color:white;">Canada's Largest Medicinal Marijuana Database</h1>
 
-<form class="contact_form" action="<?php echo $this->webroot;?>strains/search" method="get" id="search" style="margin:0px;">
 
-<ul class="tabs_navigation2" style="">
-<li>	
-<h2 style="color: white;">Effects: </h2> 
-</li>
+
+
+			<!--h1 id="H1_4">
+				The Personalized Medical Marijuana Database
+			</h1>
+			<p id="P_5">
+				for <a href="/category/site-templates" id="A_6">HTML</a>, <a href="/category/marketing/email-templates" id="A_6">Email</a>, <a href="/category/wordpress" id="A_6">WordPress</a>, <a href="/category/psd-templates" id="A_6">PSD</a>, <a href="/category/cms-themes/joomla" id="A_6">Joomla</a>, <a href="/category/ecommerce/magento" id="A_6">Magento</a> and more
+			</p>
+			
+						<div id="DIV_18">
+				 <a href="/page/top_sellers" id="A_19">Browse Popular Items</a> <a href="/category/all" id="A_20">Browse Latest Items</a>
+			</div-->
+
+<h1 id="H1_4">The Personalized Medical Marijuana Database</h1>
+
+<form  id="FORM_13" class="contact_form" action="<?php echo $this->webroot;?>strains/search" method="get" id="search" style="">
+
+<p id="P_5">
+filter by symptoms:
+<?php $effect = $this->requestAction('/pages/getSym');
+foreach($effect as $e)
+{
+?>
+<a class="A_6" style="" href="javascript:void(0)" onclick="highlightsym($(this))" class=""  id="sym_<?php echo $e['Symptom']['id'];?>"><?php echo $e['Symptom']['title']?></a>
+<?php
+}
+?>
+or <a class="A_6" href="">view more</a>
+</p>
+
+<p id="P_5">
+filter by effects:
 <?php $effect = $this->requestAction('/pages/getEff');
 foreach($effect as $e)
 {
-?><li>
-<a style="color:white;line-height:20px;padding:2px;" href="javascript:void(0)" class="small-btn " onclick="highlighteff($(this))" id="eff_<?php echo $e['Effect']['id'];?>"><?php echo $e['Effect']['title']?></a>
+?>
+<a  href="javascript:void(0)" class="A_6" onclick="highlighteff($(this))" id="eff_<?php echo $e['Effect']['id'];?>"><?php echo $e['Effect']['title']?></a>
 </a>
-</li>
 <?php
 }
 ?>
-</ul>
+or <a class="A_6" href="">view more</a>
+</p>
 
-<div class="clear"></div>
 <p style="display: none;" class="effe"></p>
-
-<ul class="tabs_navigation2" style="padding-top:20px;">
-<li>	
-<h2 style="color: white;">Symptoms: </h2> 
-</li><?php $effect = $this->requestAction('/pages/getSym');
-foreach($effect as $e)
-{
-?><li>
-<a style="color:white;line-height:20px;padding:2px;" href="javascript:void(0)" onclick="highlightsym($(this))" class=""  id="sym_<?php echo $e['Symptom']['id'];?>"><?php echo $e['Symptom']['title']?></a>
-</li>
-<?php
-}
-?>
-<div class="clear"></div>
-</ul>
-
-<div style="text-align:center; padding:30px;">
-<h2 style="color: white;"> - or - </h2> 
-
-<input type="text" placeholder="Search Strain" name="key" class="key" style=""/><input type="submit" value="Search" class="more blue medium " style="" />
-
-						
-</div>
-
 <p style="display: none;" class="symp"></p>
 
-<div class="clearfix"></div>
+<div class="main2">
+<div class="div12"><input  id="INPUT_16"  type="text" placeholder="Search by name" name="key" class="key" style=""/>
+<input  id="BUTTON_17" type="submit" value="Search" class="more blue medium " style="" />
+</div>
+</div>
+
+
+<!-- dont know why but this div needs to be here -->
+<div style="float:left;"></div>
+
 
 </form>
 
+
+
 </div>
+
+
+
+
+			
+			
 </div>
 </div>
 
@@ -334,7 +351,6 @@ foreach($effect as $e)
 <div class="page clearfix">
 	<?php echo $this->Session->flash(); ?>
 	<?php echo $this->fetch('content'); ?> 
-
 </div>
 
 <!-- //////////////////////////////////////////////////////////////////////////////////////////// NEW SITE-->
@@ -347,16 +363,14 @@ foreach($effect as $e)
 							<h2>
 								Why Go Natural?
 							</h2>
-							<p style="color: white">
-								Medical marijuana is less addictive than most pain and anti-convulsive medications.</a>
+							<p style="color: white;margin-bottom:20px;">
+								 <a href="<?php echo $this->webroot;?>pages/about" title="">The guide to Medical Marijuana &raquo;</a>
 							</p>
 						</li>
 						<li class="footer_banner_box light_blue animated_element animation-slideRight duration-800 delay-500">
 							<h2>
-								Featured Strains:
-							</h2>
-							<br />
-							<div>
+								Featured Strains
+							</h2><p>
 							<div style="float: left; width:33%; color: white">
 							Jack Herer
 							</div>
@@ -365,15 +379,14 @@ foreach($effect as $e)
 							</div>
 							<div style="float: left; width:33%; color: white">
 							Blue Dream
-							</div>
-							</div>
+							</div></p>
 						</li>
 						<li class="footer_banner_box blue animated_element animation-slideRight200 duration-800 delay-1000">
 							<h2>
 								Questions or Concerns?
 							</h2>
 							<p>
-								<font color="white">Please contact us at</font> <a href="mailto:medicenter@mail.com" title="Send Email">medicenter@mail.com</a>
+								 <a href="<?php echo $this->webroot;?>pages/contact_us" title="">Feel free to contact us by clicking here  &raquo;</a>
 							</p>
 						</li>
 						
@@ -381,7 +394,7 @@ foreach($effect as $e)
 					<div class="footer_box_container clearfix">
 						<div class="footer_box">
 							<h3 class="box_header">
-								Name of website
+								canbii
 							</h3>
 							<p class="info">
 								Medicinal marijuana is a growing movement and we're doing our part to spread the word.(name of site) is an online database dedicated to educate the public on the benefits of medical marijuana. This all natural plant is used to treat illnesses and to help those who suffer from chronic pain that affects their daily lives.<br />
@@ -400,7 +413,7 @@ foreach($effect as $e)
 									</a>
 								</li>
 								<li>
-									<a class="social_icon mail" href="mailto:medicenter@mail.com" title="">
+									<a class="social_icon mail" href="mailto:info@canbii.com" title="">
 										&nbsp;
 									</a>
 								</li>
@@ -410,7 +423,7 @@ foreach($effect as $e)
 							<div class="clearfix">
 								<div class="header_left">
 									<h3 class="box_header">
-										Latest Posts
+										Latest Reviews
 									</h3>
 								</div>
 								<div class="header_right">
@@ -419,31 +432,48 @@ foreach($effect as $e)
 								</div>
 							</div>
 							<div class="scrolling_list_wrapper">
+							
+							
+							
+
+
+
 								<ul class="scrolling_list footer_recent_posts">
-									<li class="icon_small_arrow right_white">
+								
+								
+								<?
+								
+								
+if($strain)
+{
+?>
+
+<?php
+foreach($strain as $s)
+{
+?>
+
+				<li class="icon_small_arrow right_white">
 										<a href="?page=post">
-											Mauris adipiscing mauris fringilla turpis interdum sed pulvinar nisi malesuada.
+										<b><?php echo $s['Strain']['name'];?></b><br>
+
+<?php echo substr($s['Strain']['description'],0,80) . '...';?>
+
 										</a>
-										<abbr title="29 May 2012" class="timeago">29 May 2012</abbr>
+<abbr title="" class="timeago"><?php echo $s['Strain']['published_date'];?></abbr>
 									</li>
-									<li class="icon_small_arrow right_white">
-										<a href="?page=post">
-											Lorem ipsum dolor sit amat velum.
-										</a>
-										<abbr title="04 Apr 2012" class="timeago">04 Apr 2012</abbr>
-									</li>
-									<li class="icon_small_arrow right_white">
-										<a href="?page=post">
-											Mauris adipiscing mauris fringilla turpis interdum sed pulvinar nisi malesuada.
-										</a>
-										<abbr title="02 Feb 2012" class="timeago">02 Feb 2012</abbr>
-									</li>
-									<li class="icon_small_arrow right_white">
-										<a href="?page=post">
-											Lorem ipsum dolor sit amat velum, consectetur adipiscing elit.
-										</a>
-										<abbr title="24 Jan 2011" class="timeago">24 Jan 2011</abbr>
-									</li>
+									
+									
+									
+<?php
+}
+}
+?>
+								
+								
+								
+					
+	
 								</ul>
 							</div>
 						</div>
@@ -455,18 +485,21 @@ foreach($effect as $e)
 									</h3>
 								</div>
 								<div class="header_right">
-									<a href="#" id="latest_tweets_prev" class="scrolling_list_control_left icon_small_arrow left_white"></a>
-									<a href="#" id="latest_tweets_next" class="scrolling_list_control_right icon_small_arrow right_white"></a>
+									<!--a href="#" id="latest_tweets_prev" class="scrolling_list_control_left icon_small_arrow left_white"></a>
+									<a href="#" id="latest_tweets_next" class="scrolling_list_control_right icon_small_arrow right_white"></a-->
 								</div>
 							</div>
 							<div class="scrolling_list_wrapper">
 
+
+<a class="twitter-timeline"   data-chrome="noborders"  href="https://twitter.com/canbiionline" data-widget-id="511869655112114176">Tweets by @canbiionline</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 							</div>
 						</div>
 					</div>
 					<div class="copyright_area clearfix">
 						<div class="copyright_left">
-							© Copyright - <a href="http://themeforest.net/item/medicenter-responsive-medical-health-template/4000598?ref=QuanticaLabs" title="MediCenter Template" target="_blank">MediCenter Template</a> 
+							© Copyright 2014 - <a href="" title="canbii" target="_blank">canbii</a> 
 						</div>
 						<div class="copyright_right">
 							<a class="scroll_top icon_small_arrow top_white" href="#top" title="Scroll to top">Top</a>

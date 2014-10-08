@@ -5,8 +5,9 @@
 <div class="page_layout page_margin_top clearfix">
 	<div class="page_header clearfix">
 		<div class="page_header_left">
-			<h1 class="page_title">New Cannabis Review</h1>
-			<ul class="bread_crumb">
+			<h1 class="page_title">					New Review for <?=$strain_name?>
+</h1>
+			<!--ul class="bread_crumb">
 				<li>
 					<a href="?page=home" title="Home">
 						Home
@@ -16,9 +17,9 @@
 					&nbsp;
 				</li>
 				<li>
-					New Cannabis Review
+					New Review for <?=$strain_name?>
 				</li>
-			</ul>
+			</ul-->
 		</div>
 		<div class="page_header_right">
 			<!--form class="search">
@@ -29,70 +30,54 @@
 
 	<div class="clearfix page_margin_top ">
 
-<a title="Read more"  href="<?php echo $this->webroot;?>users/dashboard" class="more large dark_blue icon_small_arrow margin_right_white">Dashboard</a>
+<!--a title="Read more"  href="<?php echo $this->webroot;?>users/dashboard" class="more large dark_blue icon_small_arrow margin_right_white">Dashboard</a>
 <a title="Read more"  href="<?php echo $this->webroot;?>users/settings" class="more large dark_blue icon_small_arrow margin_right_white margin_left_10">Settings</a>
 <a title="Read more" href="<?php echo $this->webroot;?>review"  class="active more large dark_blue icon_small_arrow margin_right_white margin_left_10">Add Review</a>
 <a title="Read more" href="<?php echo $this->webroot;?>review/all"  class="more large dark_blue icon_small_arrow margin_right_white margin_left_10">My Review</a>
-<div class="clearfix"></div>
+<div class="clearfix"></div-->
 
 
+
+<div class="page_left page_margin_top">
+
+<div class="backgroundcolor  "><p>Please be as precise as possible so we can further help personalize medication for other users. We thank you for your help and support.</p></div> 
 
 
 <form class="page_margin_top" action="" method="post" id="reviews1" >
 
-
-
 <fieldset id="qf_review__general" class="qf-fieldset">
 
-<h2 class="slide page_margin_top">
+<h2 class="slide">
 General Rating
 </h2>
-
-
-<div id="qf_review__general__mscale__wrapper" class="qf-input-wrapper qf-slider-input-wrapper">
-    <span id="qf_review__general__mscale__label_span" class="qf-label-span">
-        <label id="qf_review__general__mscale__label" for="qf_review__general__mscale">Effect Scale (Active to Sedative)</label>
-    </span>
-    <span id="qf_review__general__mscale__span" class="qf-input-span qf-slider-input-span">
+<div class="backgroundcolor">
+<h3>Effect Scale (Active to Sedative)</h3>
         <p id="qf_review__general__mscale__prompt">Extremely Active</p>
         <div>
             <input id="qf_review__general__mscale" class="qf-hidden-input qf-slider qf-input" type="hidden" name="eff_scale" value="1" title="Effect Scale (Active to Sedative)"/>
         </div>
         <div id="qf_review__general__mscale__slider" class="qf-slider-bar ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all">
         </div>
-    </span>
-</div>
 
-<div id="qf_review__general__strength__wrapper" class="qf-input-wrapper qf-slider-input-wrapper">
-    <span id="qf_review__general__strength__label_span" class="qf-label-span">
-        <label id="qf_review__general__strength__label" for="qf_review__general__strength">Effect Strength</label>
-    </span>
-    <span id="qf_review__general__strength__span" class="qf-input-span qf-slider-input-span">
+<h3>Effect Strength</h3>
         <p id="qf_review__general__strength__prompt">1/5</p>
     <div>
         <input id="qf_review__general__strength" class="qf-hidden-input qf-slider qf-input" type="hidden" name="eff_strength" value="1" title="Effect Strength">
     </div>
     <div id="qf_review__general__strength__slider" class="qf-slider-bar ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all">
     </div>
-    </span>
-</div>
-<div id="qf_review__general__duration__wrapper" class="qf-input-wrapper qf-slider-input-wrapper">
-    <span id="qf_review__general__duration__label_span" class="qf-label-span">
-        <label id="qf_review__general__duration__label" for="qf_review__general__duration">Effect Duration</label>
-    </span>
-    <span id="qf_review__general__duration__span" class="qf-input-span qf-slider-input-span">
+<h3>Effect Duration</h3>
     <p id="qf_review__general__duration__prompt">1 hr</p>
     <div>
         <input id="qf_review__general__duration" class="qf-hidden-input qf-slider qf-input" type="hidden" name="eff_duration" value="1" title="Effect Duration">
     </div>
     <div id="qf_review__general__duration__slider" class="qf-slider-bar ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all">
     </div>
-    </span>
+
 </div>
 </fieldset>
 
 <div class="clear"> </div>
-
 
 <fieldset id="qf_review__effects" class="qf-fieldset">
 
@@ -100,13 +85,11 @@ General Rating
 Effects Rating
 </h2>
 
-<div class="clear"> </div>
+<div class="backgroundcolor">
 
-
-<h3 class="slide page_margin_top">
+<h3>
 Medicinal Effects
 </h3>
-
 
 <p>How well did this strain help your medical condition(s)?</p>
 
@@ -121,8 +104,9 @@ Medicinal Effects
 </span>
 
 <div class="clear"></div>
+<div style="border-bottom: 1px solid #dadada;margin:10px 0;"></div>
 
-<h3 class="slide page_margin_top">
+<h3>
 Positive Effects
 </h3>
 
@@ -134,27 +118,24 @@ Positive Effects
 <?php }
 ?>
 </span>
+<div style="border-bottom: 1px solid #dadada;margin:10px 0;"></div>
 
-<h3 class="slide page_margin_top">
+<h3>
 Negative Effects
 </h3>
 
 <p>What negative effect(s) did this strain have on you?</p>
 
-
 <span id="qf_review__effects__negative__inner">
-
 
 <?php foreach($negative as $effect)
 {?> <a href="javascript:void(0);" onclick="($(this).hasClass('sel'))?$(this).removeClass('sel'):$(this).addClass('sel')" title="<?php echo $effect['Effect']['id'];?>" class="eff3 btn btn-info qf_review__effects__negative"><?php echo ucfirst($effect['Effect']['title']);?></a>
 <?php }
 ?>
 
-
 </span>
-
+</div>
 </fieldset>
-
 
 <fieldset id="qf_review__aesthetics" class="qf-fieldset">
 
@@ -162,35 +143,25 @@ Negative Effects
 Aesthetic Rating
 </h2>
 
+<div class="backgroundcolor">
 
-
-
-<h3 class="slide page_margin_top">
+<h3>
 Color
 </h3>
-
 
 <p>What color(s) stand out in this bud?</p>
 
 <span  id="qf_review__aesthetics__color__inner">
 <?php foreach($colours as $colour)
 {?> <a href="javascript:void(0);" onclick="($(this).hasClass('sel'))?$(this).removeClass('sel'):$(this).addClass('sel')" title="<?php echo $colour['Colour']['id'];?>" class="eff3 btn btn-info qf_review__aesthetics__color"><?php echo ucfirst($colour['Colour']['title']);?></a>
-<?php }
-?>
-
-
+<?php }?>
 </span>
-
-
-
-
 <div class="clear"> </div>
+<div style="border-bottom: 1px solid #dadada;margin:10px 0;"></div>
 
-<h3 class="slide page_margin_top">
-Flavor / Scent
+<h3>
+Flavor & Scent
 </h3>
-
-
 
 <p>How does this strain taste & smell?</p>
 
@@ -203,19 +174,15 @@ Flavor / Scent
 
 
 </span>
-
-
-
+</div>
 </fieldset>
 
-
-
 <h2 class="slide page_margin_top">
-Comments, etc.
+Rating & Comment (Required)
 </h2>
+<div class="backgroundcolor">
 
-<p>Overall Rating*</p>
-
+<h3>Overall Rating</h3>
 
 <div id="preci">
 <div id="precision" class="left" style="cursor: pointer;" ></div>
@@ -228,10 +195,7 @@ Comments, etc.
 
 <div class="qf-slider-bar" id="qf_review__other__overall__slider"> </div>
 
-
-
-<p>Final Thoughts*</p>
-
+<h3 class="page_margin_top">Final Thoughts</h3>
 
 <textarea title="Comments" rows="8" maxlength="4000" name="review" id="qf_review__other__comments" class="qf-maxlength-4000 qf-required qf-textarea" required="required"></textarea>
 
@@ -239,10 +203,34 @@ Comments, etc.
 <input type="submit" name="submit" value="Save My Review" class="button more blue"/>
 </div>
 
+<div class="clear"></div>
+
+
+</div>
 
 
 </form>
+</div>
 
+
+<div class="page_right page_margin_top">
+
+<a style="width:120px;float:right;" title="Read more"  href="<?php echo $this->webroot;?>users/dashboard" class=" more large dark_blue icon_small_arrow margin_right_white">Dashboard</a>
+
+<div class="clear"></div>
+<a style="width:120px;float:right;"  title="Read more"  href="<?php echo $this->webroot;?>users/settings" class="more large dark_blue icon_small_arrow margin_right_white page_margin_top ">Settings</a>
+
+<div class="clear"></div>
+<a style="width:120px;float:right;" title="Read more" href="<?php echo $this->webroot;?>review"  class="more large dark_blue icon_small_arrow margin_right_white page_margin_top active ">Add Review</a>
+
+<div class="clear"></div>
+<a style="width:120px;float:right;" title="Read more" href="<?php echo $this->webroot;?>review/all"  class="more large dark_blue icon_small_arrow margin_right_white page_margin_top ">My Reviews</a>
+
+<div class="clear"></div>
+
+
+
+</div>
 </div>
 </div>
 
@@ -303,7 +291,7 @@ $(function(){
                         if(type == 'positive' || type == 'negative')
                             type = 'effect';
                             
-						$(innerId).append('<div id="'+id+'" class="review-slider" style="'+h+'"><label>'+txt+'</label><input type="hidden" id="'+id+'i" name="'+type+'['+sel+']" value="0" /><div class="slider"  id="'+id+'s"></div><p id="'+id+'p" >0/5</p><div class="clear"> </div></div>');
+						$(innerId).append('<div id="'+id+'" class="review-slider" style="'+h+'"><h4>'+txt+'</h4><input type="hidden" id="'+id+'i" name="'+type+'['+sel+']" value="0" /><div class="slider"  id="'+id+'s"></div><p id="'+id+'p" >0/5</p><div class="clear"> </div></div>');
 						$('#'+id+'s').slider({
 							range: "min",
 							value: 0,

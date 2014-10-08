@@ -38,13 +38,15 @@
 
 
 
-<div class="columns page_margin_top full_width clearfix">
-<div class="column_left">
-<!--div class="backgroundcolor ">
-Returning user? Please sign in below.
-</div-->
-<h2 class="box_header  page_margin_top ">Login</h2>
-<br>
+
+
+
+<ul class="columns_3 page_margin_top clearfix">
+					<li class="column">
+						<div class="dropcap">
+				<h2 class="box_header  page_margin_top">Login</h2>
+
+<div class="clearfix"></div>
 <?php echo $this->Form->create('User',array('action'=>'login?url='.$url, 'class'=>'contact_form')); ?>
 
 <?php echo $this->Form->input('username',array('div'=>array('class'=>''))); ?>
@@ -54,14 +56,14 @@ Returning user? Please sign in below.
 <?php echo $this->Form->end(); ?> <div class="clearfix"></div>
 <div class="page_margin_top clearfix">
 <a href="<?php echo $this->webroot;?>users/forgot" class="forgot-password">Forgot Password?</a>
-
 </div>
-</div>
-<div class="column_right">
 
-<!--div class="backgroundcolor ">
-Looking to sign up? Please enter your information below.</div-->
-<h2 class="box_header  page_margin_top">Register</h2><br>
+						</div>
+					</li>
+					<li class="column">
+						<div class="dropcap">
+				
+<h2 class="box_header  page_margin_top">Register</h2>
 <?php echo $this->Form->create('User',array('action'=>'register', 'class'=>'contact_form')); ?>
 <fieldset>
 <?php echo $this->Form->input('email',array('div'=>array('class'=>'form-row'),'label'=>'Email Address','type'=>'text')); ?> 
@@ -81,9 +83,75 @@ Looking to sign up? Please enter your information below.</div-->
 
 
 
-</div>
+						</div>
+					</li>
+					<li class="column super_light_blue">
+	
+	
+	
+	
+	
+	
+	
+<ul>
+				<li class="home_box light_blue animated_element animation-fadeIn duration-500 fadeIn" style="z-index: 3; -webkit-animation: 500ms 0ms; transition: 0ms; -webkit-transition: 0ms;">
+					<h2>
+							Why Sign Up?
+					</h2>
+					<div class="news clearfix">
+						<p class="text">
+							If you need a doctor urgently outside of medicenter opening hours, call emergency appointment number for emergency service.
+			
+						</p>
+		
+					</div>
+				</li>
+				<li class="home_box blue animated_element animation-slideDown duration-800 delay-250 slideDown" style="z-index: 2; -webkit-animation: 800ms 250ms; transition: 250ms; -webkit-transition: 250ms;">
+					<h2>
+							Reason # 2
+					</h2>
+					<div class="news clearfix">
+						<p class="text">
+							Here at medicenter we have individual doctor's lists. Click read more below to see services and current timetable for our doctors.
+						</p>
+		
+					</div>
+				</li>
+			
+			</ul>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+					</li>
+				</ul>
 
-</div>
+
+
+
+
+
 
 
 
