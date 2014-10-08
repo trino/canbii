@@ -5,21 +5,14 @@
 <div class="page_layout page_margin_top clearfix">
 	<div class="page_header clearfix">
 		<div class="page_header_left">
-			<h1 class="page_title">					New Review for <?=$strain_name?>
-</h1>
-			<!--ul class="bread_crumb">
-				<li>
-					<a href="?page=home" title="Home">
-						Home
-					</a>
-				</li>
-				<li class="separator icon_small_arrow right_gray">
-					&nbsp;
-				</li>
-				<li>
-					New Review for <?=$strain_name?>
-				</li>
-			</ul-->
+			<h1 class="page_title">
+            <?php if($this->params['action']=='add'){?>				
+                New Review for <?=$strain_name?>
+            <?php }else{?>
+                Review Detail of <?php echo ucfirst($review['Strain']['name'])." on ". $review['Review']['on_date'];?>
+            <?php }?>
+            </h1>
+			
 		</div>
 		<div class="page_header_right">
 			<!--form class="search">
@@ -39,9 +32,9 @@
 
 
 <div class="page_left page_margin_top">
-
+<?php if($this->params['action']=='add'){?>
 <div class="backgroundcolor  "><p>Please be as precise as possible so we can further help personalize medication for other users. We thank you for your help and support.</p></div> 
-
+<?php }?>
 
 <form class="page_margin_top" action="" method="post" id="reviews1" >
 
@@ -52,7 +45,14 @@ General Rating
 </h2>
 <div class="backgroundcolor">
 <h3>Effect Scale (Active to Sedative)</h3>
-        <p id="qf_review__general__mscale__prompt">Extremely Active</p>
+        <p id="qf_review__general__mscale__prompt">
+            <?php if($this->params['action']=='add'){?>
+                Extremely Active
+            <?php }else{
+                    $typ = array('','Extremely Active','Very Active','Active','Bit Active','Balanced','Bit Sedate','Sedate','Very Sedate','Extemely Sedate');
+                    echo $typ[$review['Review']['eff_scale']];
+             } ?>
+        </p>
         <div>
             <input id="qf_review__general__mscale" class="qf-hidden-input qf-slider qf-input" type="hidden" name="eff_scale" value="1" title="Effect Scale (Active to Sedative)"/>
         </div>
@@ -60,14 +60,16 @@ General Rating
         </div>
 
 <h3>Effect Strength</h3>
-        <p id="qf_review__general__strength__prompt">1/5</p>
+        <p id="qf_review__general__strength__prompt">
+           <?php if($this->params['action']=='add')echo  '1'; else if(isset($review))echo $review['Review']['eff_strength'];?>/5
+        </p>
     <div>
         <input id="qf_review__general__strength" class="qf-hidden-input qf-slider qf-input" type="hidden" name="eff_strength" value="1" title="Effect Strength">
     </div>
     <div id="qf_review__general__strength__slider" class="qf-slider-bar ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all">
     </div>
 <h3>Effect Duration</h3>
-    <p id="qf_review__general__duration__prompt">1 hr</p>
+    <p id="qf_review__general__duration__prompt"><?php if($this->params['action']=='add')echo '1 hr'; else $review['Review']['eff_duration']." hrs";?></p>
     <div>
         <input id="qf_review__general__duration" class="qf-hidden-input qf-slider qf-input" type="hidden" name="eff_duration" value="1" title="Effect Duration">
     </div>
@@ -94,11 +96,38 @@ Medicinal Effects
 <p>How well did this strain help your medical condition(s)?</p>
 
 <span id="qf_review__effects__medical__inner">
-<?php foreach($symptoms as $effect)
+<?php 
+if($this->params['action']=='add'){
+    foreach($symptoms as $effect)
+    {
+    ?>
+    <a href="javascript:void(0);" onclick="($(this).hasClass('sel'))?$(this).removeClass('sel'):$(this).addClass('sel');" title="<?php echo $effect['Symptom']['id'];?>" class="eff3 btn qf_review__effects__medical"><?php echo ucfirst($effect['Symptom']['title']);?></a>
+    <?php
+    }
+}
+else
 {
-?>
-<a href="javascript:void(0);" onclick="($(this).hasClass('sel'))?$(this).removeClass('sel'):$(this).addClass('sel');" title="<?php echo $effect['Symptom']['id'];?>" class="eff3 btn qf_review__effects__medical"><?php echo ucfirst($effect['Symptom']['title']);?></a>
-<?php
+    foreach($review['SymptomRating'] as $effect)
+    {?> 
+     <div id="efft_<?php echo $effect['id'];?>er" class="review-slider"><label><?php echo $symptoms[$effect['symptom_id']-1]['Symptom']['title'];?></label>
+     <div  id="<?php echo $effect['id'];?>er"></div><p><?php echo $effect['rate'];?>/5</p><div class="clear"> </div></div>   
+    <script>
+    $(function(){
+        $('#<?php echo $effect['id'];?>er').slider({
+    			range: "min",
+                disabled: true,
+    			value: <?php echo $effect['rate'];?>,
+    			min: 0,
+    			max: 5,
+    			slide: function( event, ui ) {
+    				$('#'+id+'p').html(''+ui.value+'/5');
+    				$('#'+id+'i').val(ui.value);
+    			}
+    		});
+            });
+    </script>
+<?php }
+
 }
 ?>
 </span>
@@ -113,9 +142,43 @@ Positive Effects
 <p>What positive effect(s) did this strain have on you?</p>
 
 <span id="qf_review__effects__positive__inner">
-<?php foreach($effects as $effect)
-{?> <a href="javascript:void(0);" onclick="($(this).hasClass('sel'))?$(this).removeClass('sel'):$(this).addClass('sel')" title="<?php echo $effect['Effect']['id'];?>" class="eff3 btn qf_review__effects__positive"><?php echo ucfirst($effect['Effect']['title']);?></a>
-<?php }
+<?php 
+if($this->params['action']=='add')
+{
+    foreach($effects as $effect)
+    {?> <a href="javascript:void(0);" onclick="($(this).hasClass('sel'))?$(this).removeClass('sel'):$(this).addClass('sel')" title="<?php echo $effect['Effect']['id'];?>" class="eff3 btn qf_review__effects__positive"><?php echo ucfirst($effect['Effect']['title']);?></a>
+    <?php 
+    }
+}
+else
+{
+    $pos = array(); 
+foreach($effects as $e)
+{
+    array_push($pos,$e['Effect']['id']);
+}
+
+foreach($review['EffectRating'] as $effect)
+{
+    if(in_array($effect['effect_id'],$pos)){?> 
+     <div id="efft_<?php echo $effect['id'];?>pe" class="review-slider"><label><?php echo $effects[$effect['effect_id']-1]['Effect']['title'];?></label>
+     <div  id="<?php echo $effect['id'];?>pe"></div><p><?php echo $effect['rate'];?>/5</p><div class="clear"> </div></div>   
+    <script>
+        $('#<?php echo $effect['id'];?>pe').slider({
+    			range: "min",
+                disabled: true,
+    			value: <?php echo $effect['rate'];?>,
+    			min: 0,
+    			max: 5,
+    			slide: function( event, ui ) {
+    				$('#'+id+'p').html(''+ui.value+'/5');
+    				$('#'+id+'i').val(ui.value);
+    			}
+    		});
+    </script>
+    <?php }
+}
+}
 ?>
 </span>
 <div style="border-bottom: 1px solid #dadada;margin:10px 0;"></div>
@@ -128,9 +191,43 @@ Negative Effects
 
 <span id="qf_review__effects__negative__inner">
 
-<?php foreach($negative as $effect)
-{?> <a href="javascript:void(0);" onclick="($(this).hasClass('sel'))?$(this).removeClass('sel'):$(this).addClass('sel')" title="<?php echo $effect['Effect']['id'];?>" class="eff3 btn btn-info qf_review__effects__negative"><?php echo ucfirst($effect['Effect']['title']);?></a>
-<?php }
+<?php 
+if($this->params['action'] == 'add')
+{
+    foreach($negative as $effect)
+    {?> <a href="javascript:void(0);" onclick="($(this).hasClass('sel'))?$(this).removeClass('sel'):$(this).addClass('sel')" title="<?php echo $effect['Effect']['id'];?>" class="eff3 btn btn-info qf_review__effects__negative"><?php echo ucfirst($effect['Effect']['title']);?></a>
+    <?php 
+    }
+}
+else
+{
+    $pos = array(); 
+    foreach($negative as $e)
+    {
+        array_push($pos,$e['Effect']['id']);
+    }
+    
+    foreach($review['EffectRating'] as $effect)
+    {
+        if(in_array($effect['effect_id'],$pos)){?> 
+         <div id="efft_<?php echo $effect['id'];?>ne" class="review-slider"><label><?php echo $effectz[$effect['effect_id']-1]['Effect']['title'];?></label>
+         <div  id="<?php echo $effect['id'];?>ne"></div><p><?php echo $effect['rate'];?>/5</p><div class="clear"> </div></div>   
+        <script>
+            $('#<?php echo $effect['id'];?>ne').slider({
+        			range: "min",
+                    disabled: true,
+        			value: <?php echo $effect['rate'];?>,
+        			min: 0,
+        			max: 5,
+        			slide: function( event, ui ) {
+        				$('#'+id+'p').html(''+ui.value+'/5');
+        				$('#'+id+'i').val(ui.value);
+        			}
+        		});
+        </script>
+        <?php }
+    }
+}
 ?>
 
 </span>
@@ -152,9 +249,23 @@ Color
 <p>What color(s) stand out in this bud?</p>
 
 <span  id="qf_review__aesthetics__color__inner">
-<?php foreach($colours as $colour)
-{?> <a href="javascript:void(0);" onclick="($(this).hasClass('sel'))?$(this).removeClass('sel'):$(this).addClass('sel')" title="<?php echo $colour['Colour']['id'];?>" class="eff3 btn btn-info qf_review__aesthetics__color"><?php echo ucfirst($colour['Colour']['title']);?></a>
-<?php }?>
+<?php 
+if($this->params['action']=='add')
+{
+    foreach($colours as $colour)
+    {?> <a href="javascript:void(0);" onclick="($(this).hasClass('sel'))?$(this).removeClass('sel'):$(this).addClass('sel')" title="<?php echo $colour['Colour']['id'];?>" class="eff3 btn btn-info qf_review__aesthetics__color"><?php echo ucfirst($colour['Colour']['title']);?></a>
+    <?php 
+    }
+}
+else
+{
+    foreach($review['ColourRating'] as $effect)
+    {?> 
+     <span id="efft_<?php echo $effect['id'];?>" class="eff3 sel btn btn-info"><?php echo $colours[$effect['colour_id']-1]['Colour']['title'];?></span>
+    <?php
+    }
+}
+?>
 </span>
 <div class="clear"> </div>
 <div style="border-bottom: 1px solid #dadada;margin:10px 0;"></div>
@@ -166,9 +277,22 @@ Flavor & Scent
 <p>How does this strain taste & smell?</p>
 
 <span id="qf_review__aesthetics__flavor__inner">
-<?php foreach($flavors as $flavor)
-{?> <a href="javascript:void(0);" onclick="($(this).hasClass('sel'))?$(this).removeClass('sel'):$(this).addClass('sel')" title="<?php echo $flavor['Flavor']['id'];?>" class="eff3 btn btn-info qf_review__aesthetics__flavor"><?php echo ucfirst($flavor['Flavor']['title']);?></a>
-<?php }
+<?php 
+if($this->params['action']=='add')
+{
+    foreach($flavors as $flavor)
+    {?> <a href="javascript:void(0);" onclick="($(this).hasClass('sel'))?$(this).removeClass('sel'):$(this).addClass('sel')" title="<?php echo $flavor['Flavor']['id'];?>" class="eff3 btn btn-info qf_review__aesthetics__flavor"><?php echo ucfirst($flavor['Flavor']['title']);?></a>
+    <?php 
+    }
+}
+else
+{
+    foreach($review['FlavorRating'] as $effect)
+    {?> 
+     <span id="efft_<?php echo $effect['id'];?>" class="eff3 sel btn btn-info"><?php echo $flavors[$effect['flavor_id']-1]['Flavor']['title'];?></span>
+    <?php
+    }
+}
 ?>
 
 
@@ -178,7 +302,7 @@ Flavor & Scent
 </fieldset>
 
 <h2 class="slide page_margin_top">
-Rating & Comment (Required)
+Rating & Comment <?php if($this->params['action']=='add')echo '(Required)';?>
 </h2>
 <div class="backgroundcolor">
 
@@ -196,12 +320,22 @@ Rating & Comment (Required)
 <div class="qf-slider-bar" id="qf_review__other__overall__slider"> </div>
 
 <h3 class="page_margin_top">Final Thoughts</h3>
-
-<textarea title="Comments" rows="8" maxlength="4000" name="review" id="qf_review__other__comments" class="qf-maxlength-4000 qf-required qf-textarea" required="required"></textarea>
-
-<div class="submit">
+<?php if($this->params['action']=='add')
+    {?>
+    <textarea title="Comments" rows="8" maxlength="4000" name="review" id="qf_review__other__comments" class="qf-maxlength-4000 qf-required qf-textarea" required="required"></textarea>
+    <div class="submit">
 <input type="submit" name="submit" value="Save My Review" class="button more blue"/>
 </div>
+<?php 
+    }
+    else
+    {?>
+       <br />
+        <em><?php echo $review['Review']['review'];?></em>
+ <?php
+    }
+?>
+
 
 <div class="clear"></div>
 
@@ -241,6 +375,7 @@ Rating & Comment (Required)
 
 <script>
 $(function(){
+    <?php if($this->params['action']=='add'){?>
     $('#reviews1').submit(function(){
         if($('#qf_review__other__overall').val()=='0')
         {
@@ -329,6 +464,37 @@ $(function(){
                                     $('.errorz').hide();
                     }
     });
+    <?php 
+    }else
+    {?>
+            $("#qf_review__general__mscale__slider").slider({'min':1,disabled: true,'max':9,'step':1,'value':<?php echo $review['Review']['eff_scale'];?>,'slide':function(e,ui){ $('#qf_review__general__mscale').val(ui.value);var vals = ['Extremely Active','Very Active','Active','Bit Active','Balanced','Bit Sedate','Sedate','Very Sedate','Extemely Sedate'];$('#qf_review__general__mscale__prompt').html(vals[Math.ceil( ((ui.value+1-1)/(9+1-1))*vals.length )-1]); },'range':'min'});		
+			$("#qf_review__general__strength__slider").slider({'min':1,'max':5,disabled: true,'step':1,'value':<?php echo $review['Review']['eff_strength'];?>,'slide':function(e,ui){ $('#qf_review__general__strength').val(ui.value);$('#qf_review__general__strength__prompt').html(''+ui.value+'/5'); },'range':'min'});		
+			$("#qf_review__general__duration__slider").slider({'min':1,'max':5,'step':1,disabled: true,'value':<?php echo $review['Review']['eff_duration'];?>,'slide':function(e,ui){ $('#qf_review__general__duration').val(ui.value);$('#qf_review__general__duration__prompt').html(''+ui.value+' hrs'); },'range':'min'});		
+			$("#qf_review__aesthetics__hairs__slider").slider({'min':1,'max':5,'step':1,disabled: true,'value':<?php echo $review['Review']['eff_scale'];?>,'slide':function(e,ui){ $('#qf_review__aesthetics__hairs').val(ui.value);$('#qf_review__aesthetics__hairs__prompt').html(''+ui.value+'/5'); },'range':'min'});		
+			$("#qf_review__aesthetics__crystals__slider").slider({'min':1,'max':5,'step':1,disabled: true,'value':<?php echo $review['Review']['eff_scale'];?>,'slide':function(e,ui){ $('#qf_review__aesthetics__crystals').val(ui.value);$('#qf_review__aesthetics__crystals__prompt').html(''+ui.value+'/5'); },'range':'min'});		
+			//$("#qf_review__other__overall__slider").slider({'min':1,'max':5,'step':1,'value':1,'slide':function(e,ui){ $('#qf_review__other__overall').val(ui.value);$('#qf_review__other__overall__prompt').html(''+ui.value+'/5'); },'range':'min'});			
+			$('#precision').raty({
+                  cancel     : false,
+                  readOnly   : true,
+                  cancelOff  : 'cancel-off.png',
+                  cancelOn   : 'cancel-on.png',
+                  path       : '<?php echo $this->webroot;?>raty/images',
+                  starHalf   : 'star-half.png',
+                  starOff    : 'star-off.png',
+                  starOn     : 'star-on.png',
+                  target     : '#qf_review__other__overall__prompt',
+                  targetKeep : true,
+                  precision  : true,
+                  number     : 5,
+                  score      : <?php echo $review['Review']['rate'];?>,
+                  //hints      : ['1/10','2/10','3/10','4/10','5/10','6/10','7/10','8/10','9/10','10/10'],
+                  click      : function(score){
+                                    $('#qf_review__other__overall').val(score.toFixed(2));
+                                    $('.errorz').hide();
+                    }
+    });  
+    <?php
+    }?>
 
 });
 </script>

@@ -8,7 +8,7 @@
 
 
 }
-
+.error-message{color:red;}
 .hexagon:before,
 .hexagon:after {
   content: "";

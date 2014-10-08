@@ -45,6 +45,18 @@ class UsersController extends AppController {
             $user['username'] = $_POST['User']['username'];
             $user['email'] = $_POST['User']['email'];
             $user['password'] = $_POST['User']['password'];
+            if($this->User->findByEmail($user['email']))
+            {
+                $this->Session->setFlash('Email Already Taken, User could not be added', 'default', array('class' => 'bad'));
+                $this->redirect('');
+            }
+            if($this->User->findByUsername($user['username']))
+            {
+                $this->Session->setFlash('Username Already Taken, User could not be added', 'default', array('class' => 'bad'));
+                $this->redirect('');
+            }
+            
+            
             $this->User->create();
             if ($this->User->save($user)) 
             {

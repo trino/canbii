@@ -12,7 +12,7 @@
 						&nbsp;
 					</li>
 					<li>
-						Medical Care
+						Contact Us
 					</li>
 				</ul>
 			</div>
@@ -23,79 +23,52 @@
 			</div>
 		</div>
 		<div class="clearfix">
-			<h3 class="box_header page_margin_top slide">
-				There's a strain for that
-			</h3>
 			
+		<form method="post" action="" class="contact_form" validate>	
+		<div class="columns_3 clearfix">
+        <div class="column">
+        <h2  class="no-margin"><span class="box_header  page_margin_top slide">Canabii</span></h2><br/>
+        <p>Street Address,<br>
+        City Address,<br>
+        Province PC, Country</p>
+        <span class="glyphicon  glyphicon-earphone"></span> <span class="text-dark">123 123 1234</span><br>
+        <span class="glyphicon  glyphicon-envelope"></span> <a class="secondary-link" href="mailto:hello@charlieschopstics.com"><strong>info@charlieschopstics.com</strong></a>
+		
+		
+		        
 			
-			
-			
-<p>
-<?php echo $detail['Page']['description'];?>
-</p>
-		
-		
-		
-		
-		
-			<div class="columns clearfix no_width page_margin_top">
-				<ul class="column_left">
-					<li class="item_content clearfix">
-						<a class="features_image" href="#" title="">
-							<img src="<?php echo $this->webroot;?>images/features_large/people.png" alt="" class="animated_element animation-scale scale" style="-webkit-animation: 600ms 0ms; transition: 0ms; -webkit-transition: 0ms;">
-						</a>
-						<div class="text">
-							Donec ipsum diam, pretium mollis dapibus risus. Nullam dolor nibh pulvinar at interdum eget, suscipit id felis. Pellentesque est faucibus tincidunt risus.
-							<div class="item_footer clearfix">
-								<a title="Read more" href="?page=about" class="more">
-									Read more ?
-								</a>
-							</div>
-						</div>
-					</li>
-					<li class="item_content clearfix">
-						<a class="features_image" href="#" title="">
-							<img src="<?php echo $this->webroot;?>images/features_large/screen.png" alt="" class="animated_element animation-scale scale" style="-webkit-animation: 600ms 0ms; transition: 0ms; -webkit-transition: 0ms;">
-						</a>
-						<div class="text">
-							Donec ipsum diam, pretium mollis dapibus risus. Nullam dolor nibh pulvinar at interdum eget, suscipit id felis. Pellentesque est faucibus tincidunt risus.
-							<div class="item_footer clearfix">
-								<a title="Read more" href="?page=about" class="more">
-									Read more ?
-								</a>
-							</div>
-						</div>
-					</li>
-				</ul>
-				<ul class="column_right">
-					<li class="item_content clearfix">
-						<a class="features_image" href="#" title="">
-							<img src="<?php echo $this->webroot;?>images/features_large/firstaid.png" alt="" class="animated_element animation-scale scale" style="-webkit-animation: 600ms 0ms; transition: 0ms; -webkit-transition: 0ms;">
-						</a>
-						<div class="text">
-							Donec ipsum diam, pretium mollis dapibus risus. Nullam dolor nibh pulvinar at interdum eget, suscipit id felis. Pellentesque est faucibus tincidunt risus.
-							<div class="item_footer clearfix">
-								<a title="Read more" href="?page=about" class="more">
-									Read more ?
-								</a>
-							</div>
-						</div>
-					</li>
-					<li class="item_content clearfix">
-						<a class="features_image" href="#" title="">
-							<img src="<?php echo $this->webroot;?>images/features_large/leaves.png" alt="" class="animated_element animation-scale scale" style="-webkit-animation: 600ms 0ms; transition: 0ms; -webkit-transition: 0ms;">
-						</a>
-						<div class="text">
-							Donec ipsum diam, pretium mollis dapibus risus. Nullam dolor nibh pulvinar at interdum eget, suscipit id felis. Pellentesque est faucibus tincidunt risus.
-							<div class="item_footer clearfix">
-								<a title="Read more" href="?page=about" class="more">
-									Read more ?
-								</a>
-							</div>
-						</div>
-					</li>
-				</ul>
-			</div>
-
+        </div>
+        
+          
+            
+              <div class="column">
+                <div class="form-group">
+                  <label class="text-dark" for="name">Name <span class="warning">*</span></label>
+                  <input name="name" type="text" id="name" class="form-control  form-control--contact" required>
+                </div>
+                <div class="form-group">
+                  <label class="text-dark" for="email">E-mail <span class="warning">*</span></label>
+                  <input name="email" type="text" id="email" class="form-control  form-control--contact" required>
+                </div>
+                <div class="form-group">
+                  <label class="text-dark" for="subject">Subject <span class="warning">*</span></label>
+                  <input name="subject" type="text" id="subject" class="form-control  form-control--contact" required>
+                </div>
+                <span class="hidden-xs">Fields marked with <span class="warning">*</span> are required</span>
+              </div>
+              <div class="column" style="margin-left: 0;">
+                <div class="form-group">
+                  <label class="text-dark" for="message">Message <span class="warning">*</span></label>
+                  <textarea name="message" class="form-control  form-control--contact  form-control--big" id="message" rows="12"style= "height:100%; width:300px" required></textarea>
+                </div>
+                <div class="right" style="margin-left: 0; margin-top:10px;">
+                  <button type="submit" class=" eff3 btn  btn-warning">Send now</button>
+                </div>
+              </div>
+            
+          
+        
+      </div>
+        </form>
 		</div>
 	</div>

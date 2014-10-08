@@ -38,6 +38,7 @@
             $this->loadModel('Symptom');
             $this->set('symptoms',$this->Symptom->find('all'));
             $this->set('review',$this->Review->findById($id));
+            $this->render('add');
             
         }
         function index()
