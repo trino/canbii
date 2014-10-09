@@ -2,10 +2,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
-
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-<meta name="format-detection" content="telephone=no" />
 <?php
     $generic = $this->requestAction('/pages/getGeneric');
     if(ucfirst($this->params['action']) == 'Index' && ucfirst($this->params['controller'])!='Strains')
@@ -15,6 +11,13 @@
     else
     $gtitle = ucfirst($this->params['action']);
     ?>
+<meta charset="UTF-8" />
+<meta property="og:image" content="<?php echo 'http://'.$_SERVER['SERVER_NAME'].$this->webroot.'images/logo.png';?>" />
+<meta property="og:title" content="<?php if(isset($title)){echo $title.' - Canbii';}else{echo str_replace('_',' ',$gtitle).' - '.$generic['title'];}?>" />
+<meta property="og:type" content="website" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+<meta name="format-detection" content="telephone=no" />
+
     <meta name="description" content="<?php if(isset($description)){echo $description;}else{echo $generic['description'];}?>">
     
     <meta name="keywords" content="<?php if(isset($keyword)){echo $keyword;}else{echo $generic['keyword'];}?>">
@@ -69,6 +72,7 @@
 <!-- //////////////////////////////////////////////////////////////////////////////////////////// NEW SITE-->
 
 		<div class="site_container">
+        
 			<div class="header_container">
 				<div class="header clearfix">
 					<div class="header_left">

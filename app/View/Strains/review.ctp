@@ -74,7 +74,7 @@ if($review)
 
 <div class="comment_details">
 <div class="posted_by">
-Reviewed by <a class="author" href="#" title="Jonh Doe">				
+Reviewed by <a class="author" href="<?php echo $this->webroot;?>strains/review/all?user=<?php echo $r['Review']['user_id'];?>" title="Jonh Doe">				
 <?php echo $this->requestAction('/strains/getUserName/'.$r['Review']['user_id']);?>
 
 </a> on <?php echo $r['Review']['on_date'];?>
@@ -110,7 +110,7 @@ if($q5){$vote = 1;$yes = $q5['VoteIp']['vote_yes'];}else{$vote = 0;}
 ?>
 
 
-Was this review helpful? 
+Was this review helpful?<br /><br /> 
 <?php if($vote==0){?>
     <a href="javascript:void(0);" id="<?php echo $rand1.'_'.$r['Review']['id'];?>" class="btns yes" style="background-color: #40b2e2; padding-left:6px; padding-right:6px; padding-top: 5px; padding-bottom: 5px; margin-right:5px"><strong style="color: white">YES<?php if($r['Review']['helpful']){?> (<?php echo $r['Review']['helpful'];?>)<?php }?></strong></a> <a class="btns no" href="javascript:void(0);" id="<?php echo ($rand1+1).'_'.$r['Review']['id'];?>" style="background-color: #1e84c6; padding-left:10px; padding-right:10px; padding-top: 5px; padding-bottom: 5px; margin-right:5px"><strong style="color: white">NO<?php if($r['Review']['not_helpful']){?> (<?php echo $r['Review']['not_helpful'];?>)<?php }?></strong></a>
 <?php }else{

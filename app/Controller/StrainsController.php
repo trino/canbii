@@ -13,7 +13,7 @@ class StrainsController extends AppController{
         
         $this->set('title',$q['Strain']['name']);
         $this->set('description',$q['Strain']['description']);
-        $this->set('keyword',$q['Strain']['name'].',Canbii,Medical,Marijuana,Medical Marijuana');
+        $this->set('keyword',$q['Strain']['name'].' , Canbii , Medical , Marijuana , Medical Marijuana');
         
                 
         $q2 = $this->FlavorRating->find('all',array('conditions'=>array('strain_id'=>$q['Strain']['id']),'order'=>'COUNT(flavor_id) DESC','group'=>'flavor_id','limit'=>3));
@@ -350,17 +350,31 @@ HAVING COUNT( symptom_id ) ='.count($symptoms).'))';
     {
         $this->loadModel('Review');
         $q = $this->Strain->findBySlug($slug);
-        if(!$sort || $sort=='recent')
+        if(!$sort || $sort=='recent'){
+        if(!isset($_GET['user']))    
         $q2 = $this->Review->find('all',array('conditions'=>array('Review.strain_id'=>$q['Strain']['id']),'order'=>'Review.id DESC'));
         else
-        {
-            $q2 = $this->Review->find('all',array('conditions'=>array('Review.strain_id'=>$q['Strain']['id']),'order'=>'Review.helpful DESC'));
+        $q2 = $this->Review->find('all',array('conditions'=>array('Review.user_id'=>$_GET['user']),'order'=>'Review.id DESC'));
         }
-        $this->set('strain',$q);
-        $this->set('review',$q2);
+        else
+        {
+            if(!isset($_GET['user']))
+            $q2 = $this->Review->find('all',array('conditions'=>array('Review.strain_id'=>$q['Strain']['id']),'order'=>'Review.helpful DESC'));
+            else
+            $q2 = $this->Review->find('all',array('conditions'=>array('Review.user_id'=>$_GET['user']),'order'=>'Review.helpful DESC'));
+        }
+        
         
         $this->loadModel('VoteIp');
         $this->set('vip',$this->VoteIp);
+        if(isset($_GET['user'])){
+            $this->set('reviews',$q2);
+            
+        $this->render('/review/all');}
+        else{
+           $this->set('strain',$q);
+        $this->set('review',$q2); 
+        }
         
     }
     function ajax_search()

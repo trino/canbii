@@ -13,7 +13,9 @@
         
         function all()
         {
-            $reviews = $this->Review->find('all',array("conditions"=>array('user_id'=>$this->Session->read('User.id'))));
+            
+            $id =$this->Session->read('User.id');
+            $reviews = $this->Review->find('all',array("conditions"=>array('user_id'=>$id)));
             $this->set("reviews",$reviews);
             
         }
