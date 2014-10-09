@@ -54,7 +54,7 @@ $symptoms = array();
 				<input class="search_input hint" name="key" type="text" value="" placeholder="Search by strain name...">
 				
 				<input type="submit" value="Search" class="more blue medium " style="height:38px;">
-					<a href="" class="  " style="height:14px;
+					<a href="<?php echo $this->webroot;?>strains/search?key=" class="  " style="height:14px;
 					float: left;
 					padding: 12px 18px;				
 					">Reset</a>

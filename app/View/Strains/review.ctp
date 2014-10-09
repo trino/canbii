@@ -106,11 +106,31 @@ $rand1 = rand(100,999);
 $rand2 = rand(100,999);
 $q5 = $vip->find('first',array('conditions'=>array('review_id'=>$r['Review']['id'],'ip'=>$ip)));
 
-if($q5){$vote = 1;}else{$vote = 0;}
+if($q5){$vote = 1;$yes = $q5['VoteIp']['vote_yes'];}else{$vote = 0;}
 ?>
 
 
-Was this review helpful? <?php if($vote==0){?><a href="javascript:void(0);" id="<?php echo $rand1.'_'.$r['Review']['id'];?>" class="btns yes" style="background-color: #40b2e2; padding-left:6px; padding-right:6px; padding-top: 5px; padding-bottom: 5px; margin-right:5px"><strong style="color: white">YES<?php if($r['Review']['helpful']){?> (<?php echo $r['Review']['helpful'];?>)<?php }?></strong></a> <a class="btns no" href="javascript:void(0);" id="<?php echo ($rand1+1).'_'.$r['Review']['id'];?>" style="background-color: #1e84c6; padding-left:10px; padding-right:10px; padding-top: 5px; padding-bottom: 5px; margin-right:5px"><strong style="color: white">NO<?php if($r['Review']['not_helpful']){?> (<?php echo $r['Review']['not_helpful'];?>)<?php }?></strong></a><?php }else{?><a href="javascript:void(0);" id="" class="faded">YES<?php if($r['Review']['helpful']){?> (<?php echo $r['Review']['helpful'];?>)<?php }?></a> <a class="faded" href="javascript:void(0);" id="">NO<?php if($r['Review']['not_helpful']){?> (<?php echo $r['Review']['not_helpful'];?>)<?php }?></a><?php }?>
+Was this review helpful? 
+<?php if($vote==0){?>
+    <a href="javascript:void(0);" id="<?php echo $rand1.'_'.$r['Review']['id'];?>" class="btns yes" style="background-color: #40b2e2; padding-left:6px; padding-right:6px; padding-top: 5px; padding-bottom: 5px; margin-right:5px"><strong style="color: white">YES<?php if($r['Review']['helpful']){?> (<?php echo $r['Review']['helpful'];?>)<?php }?></strong></a> <a class="btns no" href="javascript:void(0);" id="<?php echo ($rand1+1).'_'.$r['Review']['id'];?>" style="background-color: #1e84c6; padding-left:10px; padding-right:10px; padding-top: 5px; padding-bottom: 5px; margin-right:5px"><strong style="color: white">NO<?php if($r['Review']['not_helpful']){?> (<?php echo $r['Review']['not_helpful'];?>)<?php }?></strong></a>
+<?php }else{
+    if($yes==1)
+    {
+        $y1 = 'padding-left:10px; padding-right:10px; padding-top: 5px; padding-bottom: 5px; margin-right:5px;background:#e5e5e5;cursor:default;';
+        $y2 = 'color:#fff'; 
+        $n1 = 'background:#FFF;color:#CCC;cursor: default;padding:4px 7px;';
+        $n2 = 'color:#CCC;';
+    }
+    else
+    {
+        $y1 = 'background:#FFF;color:#CCC;cursor: default;padding:4px 7px;';
+        $y2 = 'color:#CCC;';
+        $n1 = 'padding-left:10px; padding-right:10px; padding-top: 5px; padding-bottom: 5px; margin-right:5px;background:#e5e5e5;cursor:default;';
+        $n2 = 'color:#fff';
+    }
+    ?>
+    <a href="javascript:void(0);" id="" class="faded" style="<?php echo $y1;?>"><strong style="<?php echo $y2;?>">YES<?php if($r['Review']['helpful']){?> (<?php echo $r['Review']['helpful'];?>)<?php }?></strong></a> <a class="faded" href="javascript:void(0);" id="" style="<?php echo $n1;?>"><strong style="<?php echo $n2;?>">NO<?php if($r['Review']['not_helpful']){?> (<?php echo $r['Review']['not_helpful'];?>)<?php }?></strong></a>
+<?php }?>
 
 
 

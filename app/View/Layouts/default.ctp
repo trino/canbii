@@ -6,8 +6,19 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 <meta name="format-detection" content="telephone=no" />
-<meta name="keywords" content="Medic, Medical Center" />
-<meta name="description" content="Responsive Medical Health Template" />
+<?php
+    $generic = $this->requestAction('/pages/getGeneric');
+    if(ucfirst($this->params['action']) == 'Index' && ucfirst($this->params['controller'])!='Strains')
+    {
+        $gtitle = 'Home';
+    }
+    else
+    $gtitle = ucfirst($this->params['action']);
+    ?>
+    <meta name="description" content="<?php if(isset($description)){echo $description;}else{echo $generic['description'];}?>">
+    
+    <meta name="keywords" content="<?php if(isset($keyword)){echo $keyword;}else{echo $generic['keyword'];}?>">
+    <title><?php if(isset($title)){echo $title.' - Canbii';}else{echo str_replace('_',' ',$gtitle).' - '.$generic['title'];}?></title>
 
 <link rel="shortcut icon" href="<?php echo $this->webroot;?>favicon.ico" type="image/x-icon"/>
 <link rel="icon" href="<?php echo $this->webroot;?>favicon.ico" type="image/x-icon"/>

@@ -8,7 +8,14 @@ class StrainsController extends AppController{
         $this->loadModel('OverallFlavorRating');
         $this->loadModel('Review');
         $this->loadModel('FlavorRating');
+        
         $q = $this->Strain->find('first',array('conditions'=>array('slug'=>$slug)));
+        
+        $this->set('title',$q['Strain']['name']);
+        $this->set('description',$q['Strain']['description']);
+        $this->set('keyword',$q['Strain']['name'].',Canbii,Medical,Marijuana,Medical Marijuana');
+        
+                
         $q2 = $this->FlavorRating->find('all',array('conditions'=>array('strain_id'=>$q['Strain']['id']),'order'=>'COUNT(flavor_id) DESC','group'=>'flavor_id','limit'=>3));
         $q3 = $this->Review->find('first',array('conditions'=>array('strain_id'=>$q['Strain']['id']),'order'=>'Review.helpful DESC'));
         $q4 = $this->Review->find('first',array('conditions'=>array('strain_id'=>$q['Strain']['id']),'order'=>'Review.id DESC'));
@@ -22,13 +29,19 @@ class StrainsController extends AppController{
         
         $ip = $_SERVER['REMOTE_ADDR'];
         $this->loadModel('VoteIp');
-        $q5 = $this->VoteIp->find('all',array('conditions'=>array('review_id'=>$q3['Review']['id'],'ip'=>$ip)));
+        $q5 = $this->VoteIp->find('first',array('conditions'=>array('review_id'=>$q3['Review']['id'],'ip'=>$ip)));
         if($q5)
         {
             $this->set('vote',1);
+            $this->set('yes',$q5['VoteIp']['vote_yes']);
+            
         }
         else
         $this->set('vote',0);
+        
+                
+        
+        
         
     }
     function getFlavor($id)
@@ -87,6 +100,10 @@ class StrainsController extends AppController{
         $this->VoteIp->create();
         $arr['review_id'] = $id;
         $arr['ip'] = $ip;
+        if($yes =='yes')
+        $arr['vote_yes'] = 1;
+        else
+        $arr['vote_yes'] = 0;
         
         $this->VoteIp->save($arr);
         }
