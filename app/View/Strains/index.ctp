@@ -39,32 +39,36 @@ Home
 
 <div class="toprint">
 
-<div style="width: 60%; float: left; margin-right:2%;">
+<div style="<?php
+if($strain['StrainImage'])
+{?>width: 60%;<?php }else{?>width:98%<?php }?> float: left; margin-right:2%;">
 <h4 class="box_header  slide clearfix" style="">Strain Description</h4>
 
 <p><?php echo $strain['Strain']['description']; ?></p>
 </div>
+<?php
+if($strain['StrainImage'])
+{?>
 <div style="width: 38%; float: left;">
 <h4 class="box_header  slide clearfix" style="">Images for <?php echo ($strain['Strain']['name']);?></h4>
 
 
 <?php
-if($strain['StrainImage'])
-{
+
 	foreach($strain['StrainImage'] as $g)
 	{
 	?>
 	<a class="fancybox" rel="group" href="<?php echo $this->webroot;?>images/strains/<?php echo $g['image'];?>" style="valign:top;"><img style="valign:top;" src="<?php echo $this->webroot;?>images/strains/<?php echo $g['image'];?>" width="120px" /></a>
 	<?php
 	}
-}
 ?>
 
 
 
 
 </div>
-
+<?php }
+?>
 <div class="clearfix"></div>
 
 <ul class="page_margin_top clearfix">

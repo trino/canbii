@@ -4,7 +4,7 @@
 <div class="page_layout page_margin_top clearfix">
 <div class="page_header clearfix">
 <div class="page_header_left">
-<h1 class="page_title">My Reviews</h1>
+<h1 class="page_title"><?php if(!isset($_GET['user'])){?>My Reviews<?php }else{?>Reviewed By: <?php echo $this->requestAction('/strains/getUserName/'.$_GET['user']);?><?php  }?></h1>
 <ul class="bread_crumb">
 <li>
 <a href="?page=home" title="Home">
@@ -15,7 +15,7 @@ Home
 &nbsp;
 </li>
 <li>
-My Reviews
+User Reviews
 </li>
 </ul>
 </div>
@@ -33,7 +33,11 @@ My Reviews
 
 
 
-
+<?php
+if(!isset($_GET['user']))
+{
+    ?>
+    
 <div class="page_right page_margin_top">
 
 <a style="width:120px;float:right;" title="Read more"  href="<?php echo $this->webroot;?>users/dashboard" class=" more large dark_blue icon_small_arrow margin_right_white">Dashboard</a>
@@ -48,7 +52,9 @@ My Reviews
 <a style="width:120px;float:right;" title="Read more" href="<?php echo $this->webroot;?>review/all"  class="more large dark_blue icon_small_arrow margin_right_white page_margin_top active">My Reviews</a>
 
 </div>
-
+<?php
+}
+?>
 
 </div>
 </div>

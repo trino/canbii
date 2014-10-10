@@ -2089,7 +2089,7 @@ a.social_icon:hover
 }
 .item_content .text
 {
-	float: right;
+	float: left;
 	width: 235px;
 	line-height: 150%;
 }
@@ -3352,7 +3352,7 @@ width:30%;
 .loadmore{margin-top:10px;text-align:center;}
 .loadmore a{background:#42B3E5;color:#FFF;padding:8px 15px;display:inline-block;}
 #fancybox-wrap{z-index:9999999;}
- 
+ .eff{margin-bottom:3px;}
  
  
  
