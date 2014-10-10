@@ -129,7 +129,18 @@
 <ul class="column_right">
 
    
-   <label>Weight</label><input type="text" name="weight" value="<?php echo $weight;?>" /><br/>
+   <label>Weight</label>
+   <select name="weight">
+    <?php
+    for($i=100;$i<=300;$i=$i+10)
+    {
+        ?>
+        <option value="<?php echo $i;?>" <?php if($weight==$i){?>selected="selected"<?php }?>><?php echo $i;?></option>
+        <?php
+    }
+    ?>
+   </select>
+   <br/>
    
    
    <label>Years of Expereince</label>

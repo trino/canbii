@@ -4,15 +4,19 @@
         function beforeFilter()
         {
             $this->loadModel("Review");
+            
+        }
+        function checkSess()
+        {
             if(!$this->Session->read('User'))
             {
                 $url = Router::url($this->here, true);
                 $this->redirect('/users/register?url='.$url);
             }
         }
-        
         function all()
         {
+            $this->checkSess();
             
             $id =$this->Session->read('User.id');
             $reviews = $this->Review->find('all',array("conditions"=>array('user_id'=>$id)));
@@ -22,6 +26,7 @@
         
         function detail($id)
         {
+            
             $this->loadModel('Effect');
             $this->loadModel("Strain");
             $this->loadModel("Colour");
@@ -45,6 +50,7 @@
         }
         function index()
         {
+            $this->checkSess();
             if(isset($_POST['submit']))
             {
                 $slug = $_POST['strain'];
@@ -54,6 +60,7 @@
         }
         function add($slug)
         {
+            $this->checkSess();
             $this->loadModel('Effect');
             $this->loadModel("Strain");
             $this->loadModel("Colour");
@@ -155,6 +162,7 @@
         
         function change_overall_rating($id,$table,$rate)
         {
+            $this->checkSess();
             $this->loadModel('Strain');
             $this->loadModel('OverallEffectRating');
             $this->loadModel('OverallSymptomRating');
@@ -250,6 +258,7 @@
         
         function rating($strain_id,$eff_id,$table)
         {
+            $this->checkSess();
             $this->loadModel('EffectRating');
             $this->loadModel('SymptomRating');
             $this->layout = "modal";

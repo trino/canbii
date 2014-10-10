@@ -346,7 +346,10 @@ Rating & Comment <?php if($this->params['action']=='add')echo '(Required)';?>
 </form>
 </div>
 
-
+<?php
+if($this->Session->read('User'))
+{
+?>
 <div class="page_right page_margin_top">
 
 <a style="width:120px;float:right;" title="Read more"  href="<?php echo $this->webroot;?>users/dashboard" class=" more large dark_blue icon_small_arrow margin_right_white">Dashboard</a>
@@ -365,6 +368,7 @@ Rating & Comment <?php if($this->params['action']=='add')echo '(Required)';?>
 
 
 </div>
+<?php }?>
 </div>
 </div>
 
