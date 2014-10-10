@@ -65,7 +65,7 @@ $(function(){
     var spinnerVisible = false; 
     var sort='<?php echo(isset($this->params['pass'][1]) && $this->params['pass'][1]!="")?$this->params['pass'][1]:"recent";?>';    
     $('.loadmore a').live('click',function(){
-        more=parseFloat(more)+2;
+        more=parseFloat(more)+8;
         var val = '';
         var user = '<?php echo (isset($_GET['user']))?$_GET['user']:"";?>';
         if(user !="")

@@ -92,7 +92,7 @@ if($review)
 <div class="morelist" style="display: none;"></div>
 <?php
 
-if($reviewz && ($reviewz)>2){?>
+if($reviewz && ($reviewz)>8){?>
     <div class="loadmore"><a href="javascript:void(0);">Load More</a></div>
     <?php } ?>
 <script>

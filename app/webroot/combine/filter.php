@@ -98,7 +98,7 @@ $('.rating<?php echo $j;?>').raty({number:5,readOnly:true,score:<?php echo $s['S
 	
     <div class="clear"></div>
     <div class="morelist" style="display: none;"></div>
-    <?php if($strains && ($strains)>2){?>
+    <?php if($strains && ($strains)>8){?>
     <div class="loadmore"><a href="javascript:void(0);">Load More</a></div>
     <?php }?>
     <script>

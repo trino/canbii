@@ -115,11 +115,11 @@ class StrainsController extends AppController{
         $this->set('limit',$limit);
         if($limit){
             $offset =$limit;
-            $limit = '2';
+            $limit = '8';
          
         }
         else{
-            $limit = 2;
+            $limit = 8;
             $offset = 0;
         }
         $arr=array('indica'=>1,'sativa'=>2,'hybrid'=>3);
@@ -153,11 +153,11 @@ class StrainsController extends AppController{
         $this->set('limit',$limit);
         if($limit){
             $offset =$limit;
-        $limit = '4';
+        $limit = '8';
          
         }
         else{
-        $limit = 4;
+        $limit = 8;
         $offset = 0;
         }
         if(isset($_GET['key']))
@@ -235,11 +235,11 @@ class StrainsController extends AppController{
         $this->set('type',$type);
         if($limit){
             $offset =$limit;
-        $limit = '2';
+        $limit = '8';
          
         }
         else{
-        $limit = 2;
+        $limit = 8;
         $offset = 0;
         }
         //echo $limit;die();
@@ -374,11 +374,11 @@ class StrainsController extends AppController{
         
         if($limit){
             $offset = $limit;
-            $limit = '4';
+            $limit = '8';
          
         }
         else{
-            $limit = 4;
+            $limit = 8;
             $offset = 0;
         }
         $q = $this->Strain->findBySlug($slug);
@@ -429,11 +429,11 @@ class StrainsController extends AppController{
         $this->set('sort',$sort);
         if($limit){
             $offset =$limit;
-        $limit = '4';
+        $limit = '8';
          
         }
         else{
-        $limit = 4;
+        $limit = 8;
         $offset = 0;
         }
         //echo $limit;die();

@@ -41,7 +41,7 @@ $('.rating<?php echo $j;?>').raty({number:5,readOnly:true,score:<?php echo $revi
 <div class="morelist" style="display: none;"></div>
 <?php
 
-if($reviewz && $reviewz >4){?>
+if($reviewz && $reviewz >8){?>
     <div class="loadmore"><a href="javascript:void(0);">Load More</a></div>
     <?php } ?>
 <script>
