@@ -5,6 +5,10 @@
 		padding-left: 23px;
 		margin-bottom: 23px;
 	}
+    .div12{
+        width:50%;
+        display:inline-block;
+    }
 	/* --- headers --- */
 	h1
 	{
@@ -626,6 +630,10 @@
     .one-third .rating img{
         width:20px;
     }
+    .div12
+    {
+        width:60%!important;
+    }
 }
 @media screen and (max-width:767px)
 {
@@ -1046,6 +1054,10 @@
     
     width: 100%;
     }
+    .div12
+    {
+        width:100%!important;
+    }
     
     
     
@@ -1056,6 +1068,11 @@
    
     padding-left: 15px;
     
+    }
+    
+    .div12 #INPUT_16
+    {
+        width:50%!important;
     }
     .list-review
     {

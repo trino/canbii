@@ -3275,7 +3275,7 @@ width:100px;
 #H1_4 {
     box-sizing: border-box;
     color: rgb(255, 255, 255);
-    height: 60px;
+    /*height: 60px;*/
     text-align: center;
     transform-origin: 492px 30px;
     font: normal normal 500 36px/40px 'Helvetica Neue', Helvetica, Arial, sans-serif;
