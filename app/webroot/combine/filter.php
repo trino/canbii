@@ -98,11 +98,17 @@ $('.rating<?php echo $j;?>').raty({number:5,readOnly:true,score:<?php echo $s['S
 	
     <div class="clear"></div>
     <div class="morelist" style="display: none;"></div>
-    <?php if($strain && count($strain)>8){?>
+    <?php if($strains && ($strains)>2){?>
     <div class="loadmore"><a href="javascript:void(0);">Load More</a></div>
     <?php }?>
     <script>
     $(function(){
+        var j =0;
+        $('.item_content').each(function(){
+            j++;
+        })
+        if(j==<?php echo ($strains);?>)
+            $('.loadmore').hide();
         var m=0
        $('.loadmore').each(function(){
         m++;

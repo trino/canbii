@@ -165,7 +165,7 @@ $symptoms = array();
     $(function(){
     var sort='';    
     $('.loadmore a').live('click',function(){
-        more=parseFloat(more)+4;
+        more=parseFloat(more)+2;
         var val = '';
         var i=0;
        $('.effs').each(function(){

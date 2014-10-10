@@ -115,21 +115,27 @@ class StrainsController extends AppController{
         $this->set('limit',$limit);
         if($limit){
             $offset =$limit;
-            $limit = '8';
+            $limit = '2';
          
         }
         else{
-            $limit = 8;
+            $limit = 2;
             $offset = 0;
         }
         $arr=array('indica'=>1,'sativa'=>2,'hybrid'=>3);
         
         
         if($type=='')
+        {
+            $this->set('strains',$this->Strain->find('count'));
             $this->set('strain',$this->Strain->find('all',array('order'=>'Strain.id DESC','limit'=>$limit)));
+        }
         else
+        {
             $this->set('strain',$this->Strain->find('all',array('conditions'=>array('type_id'=>$arr[$type]),'order'=>'Strain.id DESC','limit'=>$limit,'offset'=>$offset)));
-
+            $this->set('strains',$this->Strain->find('count',array('conditions'=>array('type_id'=>$arr[$type]))));
+        }
+        
         /*      
         {
             $this->Paginator->settings = array(
@@ -140,6 +146,7 @@ class StrainsController extends AppController{
             $this->set('strain',$this->Paginator->paginate('Strain'));
         }*/
     }
+    
     function search($type='',$limit=0)
     {
         $this->set('type',$type);
@@ -174,15 +181,15 @@ class StrainsController extends AppController{
                 $i++;
                 if($i==1)
                 $condition = $condition.'Strain.id IN (SELECT strain_id FROM reviews WHERE id IN (SELECT review_id
-FROM effect_ratings
-WHERE effect_id
-IN ( '.$e;
- 
+                                        FROM effect_ratings
+                                        WHERE effect_id
+                                        IN ( '.$e;
+                                         
                 else
                 $condition = $condition.','.$e;
             }
             $condition = $condition.')GROUP BY review_id
-HAVING COUNT( effect_id ) ='.count($effects).'))';
+                                        HAVING COUNT( effect_id ) ='.count($effects).'))';
             
             
         }
@@ -197,16 +204,16 @@ HAVING COUNT( effect_id ) ='.count($effects).'))';
                     if($effects)
                 $condition = $condition.' AND ';
                 $condition = $condition.'Strain.id IN (SELECT strain_id FROM reviews WHERE id IN (SELECT review_id
-FROM symptom_ratings
-WHERE symptom_id
-IN ( '.$e;
-}
- 
+                                        FROM symptom_ratings
+                                        WHERE symptom_id
+                                        IN ( '.$e;
+                                        }
+                                         
                 else
                 $condition = $condition.','.$e;
             }
             $condition = $condition.')GROUP BY review_id
-HAVING COUNT( symptom_id ) ='.count($symptoms).'))';
+                                        HAVING COUNT( symptom_id ) ='.count($symptoms).'))';
         }
         if(!$condition)
         $this->set('strain',$this->Strain->find('all',array('conditions'=>array('name LIKE'=>'%'.$key.'%'),'order'=>'Strain.id DESC','limit'=>$limit,'offset'=>$offset)));
@@ -222,11 +229,11 @@ HAVING COUNT( symptom_id ) ='.count($symptoms).'))';
         $this->set('type',$type);
         if($limit){
             $offset =$limit;
-        $limit = '8';
+        $limit = '2';
          
         }
         else{
-        $limit = 8;
+        $limit = 2;
         $offset = 0;
         }
         //echo $limit;die();
@@ -252,15 +259,15 @@ HAVING COUNT( symptom_id ) ='.count($symptoms).'))';
                 $i++;
                 if($i==1)
                 $condition = $condition.'Strain.id IN (SELECT strain_id FROM reviews WHERE id IN (SELECT review_id
-FROM effect_ratings
-WHERE effect_id
-IN ( '.$e;
- 
+                                        FROM effect_ratings
+                                        WHERE effect_id
+                                        IN ( '.$e;
+                                         
                 else
                 $condition = $condition.','.$e;
             }
             $condition = $condition.')GROUP BY review_id
-HAVING COUNT( effect_id ) ='.count($effects).'))';
+                                    HAVING COUNT( effect_id ) ='.count($effects).'))';
             
             
         }
@@ -275,16 +282,16 @@ HAVING COUNT( effect_id ) ='.count($effects).'))';
                     if($effects)
                 $condition = $condition.' AND ';
                 $condition = $condition.'Strain.id IN (SELECT strain_id FROM reviews WHERE id IN (SELECT review_id
-FROM symptom_ratings
-WHERE symptom_id
-IN ( '.$e;
-}
+                                            FROM symptom_ratings
+                                            WHERE symptom_id
+                                            IN ( '.$e;
+                                            }
  
                 else
                 $condition = $condition.','.$e;
             }
             $condition = $condition.')GROUP BY review_id
-HAVING COUNT( symptom_id ) ='.count($symptoms).'))';
+                                    HAVING COUNT( symptom_id ) ='.count($symptoms).'))';
         }
         if(isset($_GET['sort']))
         {
@@ -320,12 +327,16 @@ HAVING COUNT( symptom_id ) ='.count($symptoms).'))';
         $this->set('strain',$this->Strain->find('all',array('conditions'=>array('name LIKE'=>'%'.$key.'%'),'order'=>'Strain.id DESC','limit'=>$limit,'offset'=>$offset)));
         else
         $this->set('strain',$this->Strain->find('all',array('conditions'=>array('name LIKE'=>'%'.$key.'%'),'order'=>$order,'limit'=>$limit,'offset'=>$offset)));
+        
+        $this->set('strains',$this->Strain->find('count',array('conditions'=>array('name LIKE'=>'%'.$key.'%'))));
         }
         else{
             if(!$order)
         $this->set('strain',$this->Strain->find('all',array('conditions'=>array('name LIKE'=>'%'.$key.'%',$condition),'order'=>'Strain.id DESC','limit'=>$limit,'offset'=>$offset)));
         else
         $this->set('strain',$this->Strain->find('all',array('conditions'=>array('name LIKE'=>'%'.$key.'%',$condition),'order'=>$order,'limit'=>$limit,'offset'=>$offset)));
+        
+        $this->set('strains',$this->Strain->find('count',array('conditions'=>array('name LIKE'=>'%'.$key.'%',$condition))));
         }
         }
         else
@@ -336,32 +347,118 @@ HAVING COUNT( symptom_id ) ='.count($symptoms).'))';
         $this->set('strain',$this->Strain->find('all',array('conditions'=>array('type_id'=>$arr[$type],'name LIKE'=>'%'.$key.'%'),'order'=>'Strain.id DESC','limit'=>$limit,'offset'=>$offset)));
         else
         $this->set('strain',$this->Strain->find('all',array('conditions'=>array('type_id'=>$arr[$type],'name LIKE'=>'%'.$key.'%'),'order'=>$order,'limit'=>$limit,'offset'=>$offset)));
+        
+        $this->set('strains',$this->Strain->find('all',array('conditions'=>array('type_id'=>$arr[$type],'name LIKE'=>'%'.$key.'%'))));
         }
         else{
             if(!$order)
         $this->set('strain',$this->Strain->find('all',array('conditions'=>array('type_id'=>$arr[$type],'name LIKE'=>'%'.$key.'%',$condition),'order'=>'Strain.id DESC','limit'=>$limit,'offset'=>$offset)));
         else
         $this->set('strain',$this->Strain->find('all',array('conditions'=>array('type_id'=>$arr[$type],'name LIKE'=>'%'.$key.'%',$condition),'order'=>$order,'limit'=>$limit,'offset'=>$offset)));
+        $this->set('strain',$this->Strain->find('all',array('conditions'=>array('type_id'=>$arr[$type],'name LIKE'=>'%'.$key.'%',$condition))));
         }    
         }
 		
     }
-    function review($slug,$sort=null)
+    function review($slug,$sort=null,$limit=0)
     {
         $this->loadModel('Review');
+        $this->set('limit',$limit);
+        $this->set('slug',$slug);
+        
+        if($limit){
+            $offset = $limit;
+            $limit = '4';
+         
+        }
+        else{
+            $limit = 4;
+            $offset = 0;
+        }
         $q = $this->Strain->findBySlug($slug);
         if(!$sort || $sort=='recent'){
-        if(!isset($_GET['user']))    
-        $q2 = $this->Review->find('all',array('conditions'=>array('Review.strain_id'=>$q['Strain']['id']),'order'=>'Review.id DESC'));
-        else
-        $q2 = $this->Review->find('all',array('conditions'=>array('Review.user_id'=>$_GET['user']),'order'=>'Review.id DESC'));
+            if(!isset($_GET['user']))
+            {    
+                $q2 = $this->Review->find('all',array('conditions'=>array('Review.strain_id'=>$q['Strain']['id']),'order'=>'Review.id DESC','limit'=>$limit,'offset'=>$offset));
+                $this->set('reviewz', $this->Review->find('count',array('conditions'=>array('Review.strain_id'=>$q['Strain']['id']))) );
+            }
+            else
+            {
+                $q2 = $this->Review->find('all',array('conditions'=>array('Review.user_id'=>$_GET['user']),'order'=>'Review.id DESC','limit'=>$limit,'offset'=>$offset));
+                $this->set('reviewz', $this->Review->find('count',array('conditions'=>array('Review.user_id'=>$_GET['user']))) );
+            }
         }
         else
         {
             if(!isset($_GET['user']))
-            $q2 = $this->Review->find('all',array('conditions'=>array('Review.strain_id'=>$q['Strain']['id']),'order'=>'Review.helpful DESC'));
+            {
+                $q2 = $this->Review->find('all',array('conditions'=>array('Review.strain_id'=>$q['Strain']['id']),'order'=>'Review.helpful DESC','limit'=>$limit,'offset'=>$offset));
+                $this->set('reviewz', $this->Review->find('count',array('conditions'=>array('Review.strain_id'=>$q['Strain']['id']))) );
+            }
             else
-            $q2 = $this->Review->find('all',array('conditions'=>array('Review.user_id'=>$_GET['user']),'order'=>'Review.helpful DESC'));
+            {
+                $q2 = $this->Review->find('all',array('conditions'=>array('Review.user_id'=>$_GET['user']),'order'=>'Review.helpful DESC','limit'=>$limit,'offset'=>$offset));
+                $this->set('reviewz', $this->Review->find('count',array('conditions'=>array('Review.user_id'=>$_GET['user']))) );
+            }
+        }
+        
+        
+        $this->loadModel('VoteIp');
+        $this->set('vip',$this->VoteIp);
+        if(isset($_GET['user'])){
+            $this->set('reviews',$q2);
+            $this->render('/review/all');
+        }
+        else
+        {
+           $this->set('strain',$q);
+            $this->set('review',$q2); 
+        }
+        
+    }
+    function review_filter($slug,$sort,$limit)
+    {
+        $this->set('limit',$limit);
+        $this->set('slug',$slug);
+        $this->set('sort',$sort);
+        if($limit){
+            $offset =$limit;
+        $limit = '4';
+         
+        }
+        else{
+        $limit = 4;
+        $offset = 0;
+        }
+        //echo $limit;die();
+        $this->layout = 'blank';
+        
+        $this->loadModel('Review');
+        $q = $this->Strain->findBySlug($slug);
+        if(!$sort || $sort=='recent'){
+            if(!isset($_GET['user']))
+            {    
+                $q2 = $this->Review->find('all',array('conditions'=>array('Review.strain_id'=>$q['Strain']['id']),'order'=>'Review.id DESC','limit'=>$limit,'offset'=>$offset));
+                $this->set('reviewz', $this->Review->find('count',array('conditions'=>array('Review.strain_id'=>$q['Strain']['id']))) );
+            }
+            else
+            {
+                $q2 = $this->Review->find('all',array('conditions'=>array('Review.user_id'=>$_GET['user']),'order'=>'Review.id DESC','limit'=>$limit,'offset'=>$offset));
+                $this->set('reviewz', $this->Review->find('count',array('conditions'=>array('Review.user_id'=>$_GET['user']))) );
+            }
+        }
+        else
+        {
+            if(!isset($_GET['user']))
+            {
+                $q2 = $this->Review->find('all',array('conditions'=>array('Review.strain_id'=>$q['Strain']['id']),'order'=>'Review.helpful DESC','limit'=>$limit,'offset'=>$offset));
+                $this->set('reviewz', $this->Review->find('count',array('conditions'=>array('Review.strain_id'=>$q['Strain']['id']))) );
+            }
+            else
+            {
+                $q2 = $this->Review->find('all',array('conditions'=>array('Review.user_id'=>$_GET['user']),'order'=>'Review.helpful DESC','limit'=>$limit,'offset'=>$offset));
+                $this->set('reviewz', $this->Review->find('count',array('conditions'=>array('Review.user_id'=>$_GET['user']))) );
+            }
         }
         
         
