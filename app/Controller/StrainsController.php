@@ -153,11 +153,11 @@ class StrainsController extends AppController{
         $this->set('limit',$limit);
         if($limit){
             $offset =$limit;
-        $limit = '8';
+        $limit = '4';
          
         }
         else{
-        $limit = 8;
+        $limit = 4;
         $offset = 0;
         }
         if(isset($_GET['key']))
@@ -216,9 +216,15 @@ class StrainsController extends AppController{
                                         HAVING COUNT( symptom_id ) ='.count($symptoms).'))';
         }
         if(!$condition)
-        $this->set('strain',$this->Strain->find('all',array('conditions'=>array('name LIKE'=>'%'.$key.'%'),'order'=>'Strain.id DESC','limit'=>$limit,'offset'=>$offset)));
+        {
+            $this->set('strain',$this->Strain->find('all',array('conditions'=>array('name LIKE'=>'%'.$key.'%'),'order'=>'Strain.id DESC','limit'=>$limit,'offset'=>$offset)));
+            $this->set('strains',$this->Strain->find('count',array('conditions'=>array('name LIKE'=>'%'.$key.'%'))));
+        }
         else
-        $this->set('strain',$this->Strain->find('all',array('conditions'=>array('name LIKE'=>'%'.$key.'%',$condition),'order'=>'Strain.id DESC','limit'=>$limit,'offset'=>$offset)));
+        {
+            $this->set('strain',$this->Strain->find('all',array('conditions'=>array('name LIKE'=>'%'.$key.'%',$condition),'order'=>'Strain.id DESC','limit'=>$limit,'offset'=>$offset)));
+            $this->set('strains',$this->Strain->find('count',array('conditions'=>array('name LIKE'=>'%'.$key.'%',$condition))));
+        }
         $this->render('all');
     }
     
