@@ -276,10 +276,10 @@ foreach($effect as $e)
     
     $(function(){
    
-   $("#more").click(function(){
+    $("#more").click(function(){
     $('.listing').infinitescroll('retrieve');
         return false;
-});
+    });
         var $container = $('.listing');
  
     $container.infinitescroll({

@@ -37,6 +37,31 @@ $('.rating<?php echo $j;?>').raty({number:5,readOnly:true,score:<?php echo $revi
 </li>
 <?php }?>
 </ul>
+<div class="clear"></div>
+<div class="morelist" style="display: none;"></div>
+<?php
+
+if($reviewz && $reviewz >8){?>
+    <div class="loadmore"><a href="javascript:void(0);">Load More</a></div>
+    <?php } ?>
+<script>
+    $(function(){
+        var j =0;
+        $('.comment').each(function(){
+            j++;
+        })
+        if(j==<?php echo ($reviewz);?>)
+            $('.loadmore').hide();
+        var m=0
+       $('.loadmore').each(function(){
+        m++;
+        if(m!=1)
+        {
+            $(this).remove();
+        }
+       }); 
+    });
+    </script>
 </div>
 </div>
 

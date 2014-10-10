@@ -1,6 +1,9 @@
+<?php if($this->params['action']=='review'){
+    //echo $this->params['action'];?>
 <script src="<?php echo $this->webroot;?>js/raty.js"></script>
 <script src="<?php echo $this->webroot;?>js/labs.js"></script>
 <link href="<?php echo $this->webroot;?>css/raty.css" rel="stylesheet" type="text/css" />
+
 <div class="page_layout page_margin_top clearfix">
 <div class="page_header clearfix">
 <div class="page_header_left">
@@ -25,7 +28,7 @@ User Reviews
 </form-->
 </div>
 </div>
-
+<?php }?>
 <div class="clearfix page_margin_top revi">
 
 <?php include_once('combine/my_reviews.php');?>
@@ -58,3 +61,48 @@ if(!isset($_GET['user']))
 
 </div>
 </div>
+<?php if($this->params['action']=='review'){
+    //echo $this->params['action'];?>
+<script>
+$(function(){
+    var more='<?php echo $limit?>';    
+    var spinnerVisible = false; 
+    var sort='<?php echo(isset($this->params['pass'][1]) && $this->params['pass'][1]!="")?$this->params['pass'][1]:"recent";?>';    
+    $('.loadmore a').live('click',function(){
+        more=parseFloat(more)+8;
+        var val = '';
+        var user = '<?php echo (isset($_GET['user']))?$_GET['user']:"";?>';
+        if(user !="")
+        {  
+            user = "?user="+user;
+        }
+        else
+            user = "";
+        var i=0;
+       $.ajax({
+           url:'<?php echo $this->webroot;?>strains/review_filter/<?php echo $slug;?>/'+sort+'/'+more+user,
+           data:val,
+           type:'get',
+           success:function(res){
+             if (spinnerVisible) {
+        var spinner = $("div#spinner");
+        spinner.stop();
+        spinner.fadeOut("fast");
+        spinnerVisible = false;
+    }
+            $('.morelist').show();
+            $('.morelist').addClass('morelist2');
+            $('.morelist2').removeClass('morelist');
+            $('.morelist2').html(res);
+            $('.morelist2').removeClass('morelist2');
+           } 
+        });
+    });
+$('.rates img').each(function(){
+    var src = $(this).attr('src');
+    src = src.replace('../','<?php echo $this->webroot;?>');
+    $(this).attr('src',src);
+});
+})
+</script>
+<?php }?>
