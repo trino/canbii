@@ -29,9 +29,38 @@
 
 <div class="page_left">
 
-<img src="<?php echo $this->webroot;?>images/IndicaIcon.png" alt="" style="margin-right: 28px">
-<img src="<?php echo $this->webroot;?>images/SativaIcon.png" alt="" style="margin-right: 28px">
+<ul class="columns_3 page_margin_top clearfix">
+<li class="column"  style="width:30%;">
+<div style="float:left;margin-right:10px;">
+<img src="<?php echo $this->webroot;?>images/IndicaIcon.png" alt="" style="">
+</div>
+<div style="float:left;">
+<h1>Indica</h1>
+Night Time Use
+</div>			
+</li>
+<li class="column" style="width:30%;">
+
+<div style="float:left;margin-right:10px;">
+<img src="<?php echo $this->webroot;?>images/SativaIcon.png" alt="" style="">
+</div>
+<div style="float:left;">
+<h1>Sativa</h1>
+Day Time Use
+</div>
+</li>
+<li class="column" style="width:30%;">
+<div style="float:left;margin-right:10px;">
 <img src="<?php echo $this->webroot;?>images/HybridIcon.png" alt="">
+</div>
+<div style="float:left;">
+<h1>Hybrid</h1>
+Best of Both Worlds
+</div>
+</li>
+</ul>
+
+
 
 
 <div class="clearfix"></div>

@@ -7,7 +7,7 @@
 <div class="page_layout page_margin_top clearfix">
 <div class="page_header clearfix">
 <div class="page_header_left">
-<h1 class="page_title"><?php if(!isset($_GET['user'])){?>My Reviews<?php }else{?>Reviewed By: <?php echo $this->requestAction('/strains/getUserName/'.$_GET['user']);?><?php  }?></h1>
+<h1 class="page_title"><?php if(!isset($_GET['user'])){?>My Reviews<?php }else{?>Reviews by <?php echo $this->requestAction('/strains/getUserName/'.$_GET['user']);?><?php  }?></h1>
 <ul class="bread_crumb">
 <li>
 <a href="?page=home" title="Home">

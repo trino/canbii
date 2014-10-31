@@ -35,7 +35,7 @@
 
 	
 <ul class="tabs_navigation2 clearfix" >
-<li style=""><p>Sort By:</p></li>
+<li style=""><p>Sort by:</p></li>
 <li>
 <a href="<?php echo $this->webroot;?>strains/review/<?php echo $strain['Strain']['slug'];?>/recent">Most Recent</a> 
 	</li><li>
@@ -48,7 +48,7 @@
 <div class="comments clearfix page_margin_top">
 <div id="comments_list">
 <?php include('combine/review_filter.php');
-echo ($reviewz);?>
+// echo ($reviewz);?>
 </div>
 </div>
 		

@@ -12,7 +12,7 @@
 					&nbsp;
 				</li>
 				<li>
-					Forgot Password?
+					Retrieve Password
 				</li>
 			</ul>
 		</div>
@@ -23,19 +23,43 @@
 		</div>
 	</div>
 <div class="dropcap">
-<h2 class="box_header page_margin_top slide">Enter your email address</h2>
+
+
+
+<div class="columns_3 clearfix">
+        <div class="column">
+<h3 class="box_header page_margin_top slide">Please enter your email address</h3>
 <form action="" method="post" class="contact_form">
 <div class="form-row">
 <label></label>
-<input id="email" type="text" required="required" name="email" style="width:300px;">
+<input id="email" type="text" required="required" name="email" style="">
 </div>
 <input type="submit" value="Submit" class="more blue" style="float: left;" />
 <div class="clearfix"></div>
-<p>
-<br />
-<i><strong>NOTE:</strong> Please provide an email address associated to MARIJUANA.COM account. An email will be sent to this email address with new login detail.</i>
-</p>
 </form>
-</div>
 
+<div class="backgroundcolor page_margin_top "><p>A password will be sent to the email address associated with your account. Also check your junk / spam folder if it doesn't arrive in 5 minutes.</p></div>
+
+			
+        </div>
+        
+          
+            
+              <div class="column">
+    
+	
+              </div>
+              <div class="column" style="">
+       
+                </div>
+              </div>
+            
+          
+        
+      </div>
+	  
+	  
+	  
+
+</div>
 </div>

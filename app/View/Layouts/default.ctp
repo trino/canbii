@@ -316,7 +316,7 @@ foreach($effect as $e)
 <?php
 }
 ?>
-or <a class="A_6" href="">view more</a>
+or <a class="A_6" href="<?php echo $this->webroot;?>strains/all">view all</a>
 </p>
 
 <p id="P_5">
@@ -330,7 +330,7 @@ foreach($effect as $e)
 <?php
 }
 ?>
-or <a class="A_6" href="">view more</a>
+or <a class="A_6" href="<?php echo $this->webroot;?>strains/all">view all</a>
 </p>
 
 <p style="display: none;" class="effe"></p>
@@ -384,17 +384,11 @@ or <a class="A_6" href="">view more</a>
 						</li>
 						<li class="footer_banner_box light_blue animated_element animation-slideRight duration-800 delay-500">
 							<h2>
-								Featured Strains
-							</h2><p>
-							<div style="float: left; width:33%; color: white">
-							Jack Herer
-							</div>
-							<div style="float: left; width:33%; color: white">
-							Sour Diesel
-							</div>
-							<div style="float: left; width:33%; color: white">
-							Blue Dream
-							</div></p>
+								Join the Movement
+							</h2>
+						<p style="color: white;margin-bottom:20px;">
+								 <a href="<?php echo $this->webroot;?>users/register" title="">Help make the world a better place &raquo;</a>
+							</p>
 						</li>
 						<li class="footer_banner_box blue animated_element animation-slideRight200 duration-800 delay-1000">
 							<h2>
@@ -418,12 +412,12 @@ or <a class="A_6" href="">view more</a>
 							</p>
 							<ul class="social_icons clearfix">
 								<li>
-									<a class="social_icon facebook" href="http://facebook.com/QuanticaLabs" title="" target="_blank">
+									<a class="social_icon facebook" href="https://www.facebook.com/pages/Canbii/1543633612534714" title="" target="_blank">
 										&nbsp;
 									</a>
 								</li>
 								<li>
-									<a class="social_icon twitter" href="https://twitter.com/QuanticaLabs" title="" target="_blank">
+									<a class="social_icon twitter" href="https://twitter.com/canbiionline" title="" target="_blank">
 										&nbsp;
 									</a>
 								</li>
@@ -507,14 +501,14 @@ foreach($strains as $s)
 							<div class="scrolling_list_wrapper">
 
 
-<a class="twitter-timeline"   data-chrome="noborders"  href="https://twitter.com/canbiionline" data-widget-id="511869655112114176">Tweets by @canbiionline</a>
+<a class="twitter-timeline" style=""  data-chrome="noborders"  href="https://twitter.com/canbiionline" data-widget-id="511869655112114176">Tweets by @canbiionline</a>
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 							</div>
 						</div>
 					</div>
 					<div class="copyright_area clearfix">
 						<div class="copyright_left">
-							© Copyright 2014 - <a href="" title="canbii" target="_blank">canbii</a> 
+							© Copyright 2014 - <a href="http://canbii.com" title="canbii" target="_blank">canbii.com</a> 
 						</div>
 						<div class="copyright_right">
 							<a class="scroll_top icon_small_arrow top_white" href="#top" title="Scroll to top">Top</a>

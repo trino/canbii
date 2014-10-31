@@ -5,15 +5,60 @@
 <div class="page_layout page_margin_top clearfix">
 	<div class="page_header clearfix">
 		<div class="page_header_left">
-			<h1 class="page_title">
-            <?php if($this->params['action']=='add'){?>				
-                New Review for <?=$strain_name?>
-            <?php }else{?>
-                Review Detail of <?php echo ucfirst($review['Strain']['name'])." on ". $review['Review']['on_date'];?>
-            <?php }?>
-            </h1>
-			
-		</div>
+		
+		
+		
+		
+		
+		
+<?php
+// unset($strain_hexagon);
+if(isset($strain)){
+$strain_hexagon = $strain;
+}else{$strain_hexagon = $review;
+}
+
+include('combine/hexagon.php');?>
+
+<?php if($this->params['action']=='add'){?>
+<div style="float:left;margin-left:10px;">
+
+<h1 class="page_title" style="">
+<?=$strain_name?> Review
+</h1>
+<p>
+<?php
+switch ($strain['Strain']['type_id']) {
+    case 1:
+        echo "Indica";
+        break;
+    case 2:
+        echo "Sativa";
+        break;
+    case 3:
+        echo "Hybrid";
+        break;
+}
+?> Cannabis
+</p>
+</div>
+
+<?php }else{?>
+
+<div style="float:left;">
+<h1 class="page_title" style="">
+<?php echo ucfirst($review['Strain']['name']);?> Review
+</h1>
+<p style="clear:both;">Reviewed on 
+<?php echo $review['Review']['on_date'];?> by <?php echo $this->requestAction('/strains/getUserName/'.$review['Review']['user_id']);?>
+</p>
+
+</div>
+
+<?php }?>
+
+
+</div>
 		<div class="page_header_right">
 			<!--form class="search">
 				<input class="search_input hint" type="text" value="To search type and hit enter..." placeholder="To search type and hit enter...">
@@ -33,7 +78,7 @@
 
 <div class="page_left page_margin_top">
 <?php if($this->params['action']=='add'){?>
-<div class="backgroundcolor  "><p>Please be as precise as possible so we can further help personalize medication for other users. We thank you for your help and support.</p></div> 
+<div class="backgroundcolor"><p>Please be as precise as possible so we can further help personalize medication for other users. We thank you for your help and support.</p></div> 
 <?php }?>
 
 <form class="page_margin_top" action="" method="post" id="reviews1" >
@@ -49,7 +94,7 @@ General Rating
             <?php if($this->params['action']=='add'){?>
                 Extremely Active
             <?php }else{
-                    $typ = array('','Extremely Active','Very Active','Active','Bit Active','Balanced','Bit Sedate','Sedate','Very Sedate','Extemely Sedate');
+                    $typ = array('','Extremely Active','Very Active','Active','Bit Active','Balanced','Bit Sedated','Sedated','Very Sedated','Extemely Sedated');
                     echo $typ[$review['Review']['eff_scale']];
              } ?>
         </p>
@@ -444,7 +489,7 @@ $(function(){
 					}
 					jQ.val("");
 				}
-                $("#qf_review__general__mscale__slider").slider({'min':1,'max':9,'step':1,'value':1,'slide':function(e,ui){ $('#qf_review__general__mscale').val(ui.value);var vals = ['Extremely Active','Very Active','Active','Bit Active','Balanced','Bit Sedate','Sedate','Very Sedate','Extemely Sedate'];$('#qf_review__general__mscale__prompt').html(vals[Math.ceil( ((ui.value+1-1)/(9+1-1))*vals.length )-1]); },'range':'min'});		
+                $("#qf_review__general__mscale__slider").slider({'min':1,'max':9,'step':1,'value':1,'slide':function(e,ui){ $('#qf_review__general__mscale').val(ui.value);var vals = ['Extremely Active','Very Active','Active','Bit Active','Balanced','Bit Sedated','Sedated','Very Sedated','Extemely Sedated'];$('#qf_review__general__mscale__prompt').html(vals[Math.ceil( ((ui.value+1-1)/(9+1-1))*vals.length )-1]); },'range':'min'});		
 				$("#qf_review__general__strength__slider").slider({'min':1,'max':5,'step':1,'value':1,'slide':function(e,ui){ $('#qf_review__general__strength').val(ui.value);$('#qf_review__general__strength__prompt').html(''+ui.value+'/5'); },'range':'min'});		
 				$("#qf_review__general__duration__slider").slider({'min':1,'max':5,'step':1,'value':1,'slide':function(e,ui){ $('#qf_review__general__duration').val(ui.value);$('#qf_review__general__duration__prompt').html(''+ui.value+' hrs'); },'range':'min'});		
 				$("#qf_review__aesthetics__hairs__slider").slider({'min':1,'max':5,'step':1,'value':5,'slide':function(e,ui){ $('#qf_review__aesthetics__hairs').val(ui.value);$('#qf_review__aesthetics__hairs__prompt').html(''+ui.value+'/5'); },'range':'min'});		
@@ -471,7 +516,7 @@ $(function(){
     <?php 
     }else
     {?>
-            $("#qf_review__general__mscale__slider").slider({'min':1,disabled: true,'max':9,'step':1,'value':<?php echo $review['Review']['eff_scale'];?>,'slide':function(e,ui){ $('#qf_review__general__mscale').val(ui.value);var vals = ['Extremely Active','Very Active','Active','Bit Active','Balanced','Bit Sedate','Sedate','Very Sedate','Extemely Sedate'];$('#qf_review__general__mscale__prompt').html(vals[Math.ceil( ((ui.value+1-1)/(9+1-1))*vals.length )-1]); },'range':'min'});		
+            $("#qf_review__general__mscale__slider").slider({'min':1,disabled: true,'max':9,'step':1,'value':<?php echo $review['Review']['eff_scale'];?>,'slide':function(e,ui){ $('#qf_review__general__mscale').val(ui.value);var vals = ['Extremely Active','Very Active','Active','Bit Active','Balanced','Bit Sedated','Sedated','Very Sedated','Extemely Sedated'];$('#qf_review__general__mscale__prompt').html(vals[Math.ceil( ((ui.value+1-1)/(9+1-1))*vals.length )-1]); },'range':'min'});		
 			$("#qf_review__general__strength__slider").slider({'min':1,'max':5,disabled: true,'step':1,'value':<?php echo $review['Review']['eff_strength'];?>,'slide':function(e,ui){ $('#qf_review__general__strength').val(ui.value);$('#qf_review__general__strength__prompt').html(''+ui.value+'/5'); },'range':'min'});		
 			$("#qf_review__general__duration__slider").slider({'min':1,'max':5,'step':1,disabled: true,'value':<?php echo $review['Review']['eff_duration'];?>,'slide':function(e,ui){ $('#qf_review__general__duration').val(ui.value);$('#qf_review__general__duration__prompt').html(''+ui.value+' hrs'); },'range':'min'});		
 			$("#qf_review__aesthetics__hairs__slider").slider({'min':1,'max':5,'step':1,disabled: true,'value':<?php echo $review['Review']['eff_scale'];?>,'slide':function(e,ui){ $('#qf_review__aesthetics__hairs').val(ui.value);$('#qf_review__aesthetics__hairs__prompt').html(''+ui.value+'/5'); },'range':'min'});		

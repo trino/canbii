@@ -188,7 +188,7 @@ font-family: 'PT Sans';
 .good { background: url('../images/notification_success.png') no-repeat 20px center #5FAA4B;
 text-align:center;
 color:white;
-font-size:20px;
+font-size:16px;
 padding: 20px 30px 20px 80px;
 
 
@@ -197,7 +197,7 @@ padding: 20px 30px 20px 80px;
  background: url('../images/notification_error.png') no-repeat 20px center #EB6D58;
 text-align:center;
 color:white;
-font-size:20px;
+font-size:16px;
 padding: 20px 30px 20px 80px;
 }
 
@@ -252,7 +252,7 @@ p
 }
 strong
 {
-	color: #000;
+	color: #333;
 }
 blockquote
 {
@@ -323,11 +323,11 @@ h1, h2, h3, h4, h5
 	margin: 0;
 padding:5px 0;
 	font-weight: normal;
-	color: #000;
+	color: #333;
 }
 h1 a, h2 a, h3 a, h4 a, h5 a
 {
-	color: #000;
+	color: #333;
 }
 h1
 {
@@ -2129,7 +2129,7 @@ a.social_icon:hover
 	width: auto;
 	display: block;
 	text-align: center;
-	color: #BBB;
+	color: #666;
 	padding: 8px 0;
 	border-bottom: 1px solid #E0E0E0;
 }
@@ -2350,6 +2350,11 @@ a.social_icon:hover
 .backgroundcolor
 {
 	background: #F0F0F0;
+		padding: 15px 20px;
+}
+.backgroundcolor2
+{
+	background: #ebebeb;
 		padding: 15px 20px;
 }
 
@@ -3106,7 +3111,7 @@ ul.gallery_item_details_list
 .controls .close:hover, .controls .prev:hover, .controls .next:hover
 {
 	border-color: #42B3E5!important;
-	color: #BBB;
+	color: #666;
 }
 .searchact{
     border-color: #1b83c6!important;
@@ -3119,7 +3124,6 @@ ul.gallery_item_details_list
 #cancel_comment
 {
 	color: #909090;
-	text-decoration: underline;
 }
 .post_footer_details li a:hover,
 #comments_list .comment_details .posted_by a:hover,
@@ -3218,7 +3222,7 @@ a.social_icon,
 .label{width:160px;}
 .half .eff{margin-bottom: 7px;}
 .half p{font-weight:bold!important;}
-.ratewrap{color:#000;}
+.ratewrap{color:#333;}
 .length{}
 .one-third .rating{padding-left:0px}
 .half .frate{padding:5px 0;border-bottom:1px solid #fFF;}
@@ -3288,11 +3292,10 @@ width:100px;
     box-sizing: border-box;
     color: rgba(255, 255, 255, 0.701961);
     text-align: center;
-    transform-origin: 492px 27.5px;
-    font: normal normal normal 20px/30px 'Helvetica Neue', Helvetica, Arial, sans-serif;
     margin: 0px;
     outline: rgba(255, 255, 255, 0.701961) none 0px;
     padding: 0px 0px 25px;
+	font-size:17px;
 }/*#P_5*/
 
 .A_6{
@@ -3302,6 +3305,7 @@ width:100px;
     text-decoration: none;
     border-bottom: 1px solid rgba(255, 255, 255, 0.701961);
     padding: 0px 0px 2px;
+	margin-right:3px;
 }/*#A_6, #A_7, #A_9, #A_11*/
 
 
@@ -3353,6 +3357,6 @@ width:30%;
 .loadmore a{background:#42B3E5;color:#FFF;padding:8px 15px;display:inline-block;}
 #fancybox-wrap{z-index:9999999;}
  .eff{margin-bottom:3px;}
- 
+ .bluecolor{color:#42B3E5;}
  
  

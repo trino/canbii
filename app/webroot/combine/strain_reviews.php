@@ -1,4 +1,3 @@
-<p>Most Helpful</p>
 <?php if($helpful || isset($show_all)){
 // debug( $helpful);
 ?>
@@ -41,20 +40,24 @@ Was this review helpful?<br /><?php if($vote==0){?>
 <?php }else{
     if($yes==1)
     {
-        $y1 = 'padding-left:10px; padding-right:10px; padding-top: 5px; padding-bottom: 5px; margin-right:5px;background:#e5e5e5;cursor:default;';
-        $y2 = 'color:#fff'; 
-        $n1 = 'background:#FFF;color:#CCC;cursor: default;display:inline-block;padding:4px 7px;';
+        $y1 = 'background:#efefef;padding: 5px 8px;';
+        $y2 = 'color:#fff;'; 
+        $n1 = 'background:#FFF;color:#CCC;padding: 5px 8px;';
         $n2 = 'color:#CCC;';
     }
     else
     {
-        $y1 = 'background:#FFF;color:#CCC;cursor: default;display:inline-block;padding:4px 7px;';
+        $y1 = 'background:#FFF;color:#CCC;padding: 5px 8px;';
         $y2 = 'color:#CCC;';
-        $n1 = 'padding-left:10px; padding-right:10px; padding-top: 5px; padding-bottom: 5px; margin-right:5px;background:#e5e5e5;cursor:default;';
+        $n1 = 'margin-right:5px;background:#efefef;padding: 5px 8px;';
         $n2 = 'color:#fff';
     }
     ?>
-<a href="javascript:void(0);" id="" class="faded" style="<?php echo $y1;?>"><strong style="<?php echo $y2;?>">YES<?php if($helpful['Review']['helpful']){?> (<?php echo $helpful['Review']['helpful'];?>)<?php }?><strong></strong></a> <a class="faded" href="javascript:void(0);" id="" style="<?php echo $n1;?>"><strong style="<?php echo $n2;?>">NO<?php if($helpful['Review']['not_helpful']){?> (<?php echo $helpful['Review']['not_helpful'];?>)<?php }?></strong></a><?php }?>
+<a href="javascript:void(0);" id="" class="faded" style="<?php echo $y1;?>"><span style="<?php echo $y2;?>">YES<?php if($helpful['Review']['helpful']){?> (<?php echo $helpful['Review']['helpful'];?>)<?php }?></span></a>
+
+<a class="faded" href="javascript:void(0);" id="" style="<?php echo $n1;?>"><span style="<?php echo $n2;?>">NO<?php if($helpful['Review']['not_helpful']){?> (<?php echo $helpful['Review']['not_helpful'];?>)<?php }?></span></a>
+
+<?php }?>
 </p>
 
 <a class="more reply_button" href="#comment_form">

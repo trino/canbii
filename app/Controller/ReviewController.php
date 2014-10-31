@@ -70,6 +70,7 @@
             $this->loadModel('ColourRating');
             $this->loadModel('FlavorRating');
             $strain = $this->Strain->findBySlug($slug);
+            $this->set("strain",$strain);
             $this->set("strain_id",$strain['Strain']['id']);
             $this->set("strain_name",$strain['Strain']['name']);
             $this->set('effects',$this->Effect->find('all',array('conditions'=>array("negative"=>'0'))));

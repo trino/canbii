@@ -1,6 +1,7 @@
 <style>
 .eff .left{position:relative;}
-.eff em{z-index: 10000;text-align: center;position: relative;top:3px;}
+.eff em{z-index: 10000;text-align: center;position: relative;top:6px;}
+em{letter-spacing:2px;font-style: normal;}
 .ratewrap{width: 63%;background:#fff;text-align: center;height:25px;}
 .length{padding-top:25px;background:#42B3E5;position:absolute;top:0;}
 </style>
@@ -12,8 +13,32 @@
 <div class="page_layout page_margin_top clearfix">
 <div class="page_header clearfix">
 <div class="page_header_left">
-<h1 class="page_title"><?php echo $strain['Strain']['name'];?> Medical Report</h1>
-<ul class="bread_crumb">
+
+
+<?php 
+$strain_hexagon = $strain;
+include('combine/hexagon.php');?>
+<div style="float:left;">
+<h1 class="page_title" ><?php echo $strain['Strain']['name'];?> Marijuana Strain Report</h1>
+<p>
+<?php
+switch ($strain['Strain']['type_id']) {
+    case 1:
+        echo "Indica";
+        break;
+    case 2:
+        echo "Sativa";
+        break;
+    case 3:
+        echo "Hybrid";
+        break;
+}
+?> Cannabis
+</p>
+</div>
+
+
+<!--ul class="bread_crumb">
 <li>
 <a href="?page=home" title="Home">
 Home
@@ -25,11 +50,11 @@ Home
 <li>
 <?php echo $strain['Strain']['name'];?> Medical Report
 </li>
-</ul>
+</ul-->
 </div>
 <div class="page_header_right">
 
-<a class="blue more" style="margin-right: 10px" href="<?php echo $this->webroot;?>review/add/<?php echo $strain['Strain']['slug'];?>">Review Strain</a><a class="blue more" href="javascript:void(0)" onclick="window.print();">Print Report</a>
+<a class="blue more" style="margin-right: 10px;margin-top:10px;" href="<?php echo $this->webroot;?>review/add/<?php echo $strain['Strain']['slug'];?>">Review Strain</a><a class="blue more" style="margin-top:10px;" href="javascript:void(0)" onclick="window.print();">Print Report</a>
 </div>
 
 </div>
@@ -37,12 +62,12 @@ Home
 
 
 
-<div class="toprint">
+<div class="toprint page_margin_top">
 
 <div style="<?php
 if($strain['StrainImage'])
 {?>width: 60%;<?php }else{?>width:98%<?php }?> float: left; margin-right:2%;">
-<h4 class="box_header  slide clearfix" style="">Strain Description</h4>
+<h4 class="box_header  slide clearfix" style="">Cannabis Description</h4>
 
 <p><?php echo $strain['Strain']['description']; ?></p>
 </div>
@@ -85,16 +110,16 @@ if($strain['StrainImage'])
 
 <center>
 <h2>Chemical Composition</h2>
-<font style="font-size:12px;" color="white">
-CBD: 
-<?php echo $strain['Strain']['cbd'];?>%
-CBN: 
-<?php echo $strain['Strain']['cbn'];?>%
-CBC: 
-<?php echo $strain['Strain']['cbc'];?>%
-THC: 
-<?php echo $strain['Strain']['thc'];?>%
-THCV: 
+<font style="font-size:14px;" color="white">
+THC:
+<?php echo $strain['Strain']['thc'];?>% &nbsp;/&nbsp; 
+CBD:
+<?php echo $strain['Strain']['cbd'];?>% &nbsp;/&nbsp;
+CBN:
+<?php echo $strain['Strain']['cbn'];?>% &nbsp;/&nbsp;
+CBC:
+<?php echo $strain['Strain']['cbc'];?>% &nbsp;/&nbsp;
+THCV:
 <?php echo $strain['Strain']['thcv'];?>%
 </font>
 </center>
@@ -103,7 +128,7 @@ THCV:
 <li class="footer_banner_box blue">
 
 <center>
-<h2>Flavors</h2>
+<h2>Dominant Flavors</h2>
 <?php
 foreach($flavor as $f)
 {
@@ -324,7 +349,7 @@ $duration = ($duration/$count)*20;
 <div class="clearfix"></div>
 
 
-<h2 class="box_header page_margin_top_section slide clearfix" style="">User Reviews</h2>
+<h2 class="box_header page_margin_top_section slide clearfix" style="">Most Helpful User Review</h2>
 
 
 <?php include_once('combine/strain_reviews.php');?>

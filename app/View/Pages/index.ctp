@@ -3,7 +3,7 @@
 <div class="announcement  clearfix">
 	<ul class="columns no_width">
 		<li class="column_left">
-			<h1>There's a strain for that</h1>
+			<h1>There's a Strain for that</h1>
 			<p>Fees are an estimate only and may be more depending on your situatio depending on your situation</p>
 		</li>
 		<li class="column_right">
@@ -22,9 +22,8 @@ Combining cutting edge research to PERSONALIZE what's right for you.
 </h2>
 <p>canbii uses customize algorithsm to see what strains help people similiar to you... IMAG HERE - asian male, reacts well to purple kush for joint pains. </p>
 </div-->
-<?php include_once('combine/strains.php');?>
-		
 
+<?php include_once('combine/strains.php');?>
 
 
 <?php
@@ -76,7 +75,7 @@ else echo strtolower($na[0]);
 
 
 
- <!--div class="icon2">
+ <div class="icon2">
  
  
  <p style="vertical-align:middle;text-align:center;color:white;font-size:18px;margin-top:-5px">
@@ -103,7 +102,7 @@ else echo strtolower($na[0]);
 
 123
 
-</div-->
+</div>
 
 
 

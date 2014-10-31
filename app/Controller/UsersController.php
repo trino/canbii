@@ -26,7 +26,10 @@ class UsersController extends AppController {
                 $this->redirect('dashboard');
             }
             else
-                $this->Session->setFlash(__('Invalid username or password, try again', 'default', array('class' => 'bad')));
+			{
+	$this->Session->setFlash('Invalid username or password, please try again', 'default', array('class' => 'bad'));
+      
+	  }
         }
         $this->render('register');
     }
@@ -47,12 +50,12 @@ class UsersController extends AppController {
             $user['password'] = $_POST['User']['password'];
             if($this->User->findByEmail($user['email']))
             {
-                $this->Session->setFlash('Email Already Taken, User could not be added', 'default', array('class' => 'bad'));
+                $this->Session->setFlash('Email already taken, please try again', 'default', array('class' => 'bad'));
                 $this->redirect('');
             }
             if($this->User->findByUsername($user['username']))
             {
-                $this->Session->setFlash('Username Already Taken, User could not be added', 'default', array('class' => 'bad'));
+                $this->Session->setFlash('Username already taken, please try again', 'default', array('class' => 'bad'));
                 $this->redirect('');
             }
             
