@@ -8,6 +8,8 @@
         $weight = $user['User']['weight'];
         $exp = $user['User']['years_of_experience'];
         $frequency = $user['User']['frequency'];
+        $body_type = $user['User']['body_type'];
+        $symptoms = $user['User']['symptoms'];
     }
     else
     {
@@ -18,6 +20,8 @@
         $weight = "";
         $exp = "";
         $frequency = "";
+        $body_type = "";
+        $symptoms = "";
     }
 ?>
 
@@ -125,6 +129,8 @@
    </select><br />
    
    
+      
+   
 </ul>
 <ul class="column_right">
 
@@ -135,7 +141,7 @@
     for($i=100;$i<=300;$i=$i+10)
     {
         ?>
-        <option value="<?php echo $i;?>" <?php if($weight==$i){?>selected="selected"<?php }?>><?php echo $i;?></option>
+        <option value="<?php if($i==100)echo $i.'-'.($i+10);else echo ($i+1).'-'.($i+10);?>" <?php if($weight==($i+1).'-'.($i+10)){?>selected="selected"<?php }?>><?php if($i==100)echo $i.'-'.($i+10);else echo ($i+1).'-'.($i+10);?></option>
         <?php
     }
     ?>
@@ -165,12 +171,53 @@
    </select>
    <br />
    
-      <input type="submit" name="submit" value="submit" class="blue more" />
+   <label>Body Type</label>
+   <select name="body_type">
+		<option value="">Select Body Type</option>
+		<option value="Muscular"<?php if($body_type=='Muscular')echo "selected='selected'";?>>Muscular</option>
+		<option value="Slim"<?php if($body_type=='Slim')echo "selected='selected'";?>>Slim</option>
+		<option value="Heavy"<?php if($body_type=='Heavy')echo "selected='selected'";?>>Heavy</option>
+        <option value="Average"<?php if($body_type=='Average')echo "selected='selected'";?>>Average</option>
+        <option value="Athletic"<?php if($body_type=='Athletic')echo "selected='selected'";?>>Athletic</option>
+   </select>
+   
+<br />
 
    
 </ul>
+<div class="clearfix"></div>
 </div>
-
+<div class="clearfix"></div>
+<div class="separator"></div>
+<label>What do you suffer from?</label>
+<div id="dashboard_symptom" style="background:#42B3E5; border-radius: 3px; margin: 0 auto; padding:30px; ">
+<p id="P_5">
+<?php $effect = $this->requestAction('/pages/getSym');
+$symp = explode(',',$symptoms);
+foreach($effect as $e)
+{
+?>
+<a class="A_6 <?php if(in_array($e['Symptom']['id'],$symp)){?>searchact<?php }?>" style="" href="javascript:void(0)" onclick="highlightsym($(this))" class=""  id="sym_<?php echo $e['Symptom']['id'];?>"><?php echo $e['Symptom']['title']?></a>
+<?php
+}
+?>
+</p>
+<p style="display: none;" class="symp">
+    <?php
+    if($symp)
+    {
+        foreach($symp as $sy)
+        {
+            ?>
+            <input class="sym_<?php echo $sy;?>" type="hidden" value="<?php echo $sy;?>" name="symptoms[]">
+            <?php
+        }
+    }
+    ?>
+</p>
+<div class="clearfix"></div>
+</div>
+<input type="submit" name="submit" value="submit" class="blue more" />
    
 </form>
 

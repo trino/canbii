@@ -70,6 +70,11 @@
             $this->loadModel('FlavorRating');
             
             
+            $this->set('title',$q['Strain']['name']);
+            $this->set('description',$q['Strain']['description']);
+            $this->set('keyword',$q['Strain']['name'].' , Canbii , Medical , Marijuana , Medical Marijuana');
+            
+            
             $this->set('effects',$this->Effect->find('all',array('conditions'=>array("negative"=>'0'))));
             $this->set('negative',$this->Effect->find('all',array('conditions'=>array("negative"=>'1'))));
             $this->set("effectz",$this->Effect->find('all'));
