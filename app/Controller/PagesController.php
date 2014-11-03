@@ -75,7 +75,33 @@ class PagesController extends AppController {
 	
 	function contact_us()
     {
-
+         if(isset($_POST['name'])&&$_POST['name'])
+        {
+            $name = $_POST['name'];
+            $email = $_POST['email'];
+            $sub = $_POST['subject'];
+            $msg = $_POST['message'];
+            $emails = new CakeEmail();
+            $emails->from(array('noreply@canabii.com'=>'Canabii'));
+            
+            $emails->emailFormat('html');
+            
+            $emails->subject('New contact Message');
+            
+            
+            $message="
+            Hello,<br/><br/>
+            You've received a new message from Canabii<br/><br/> 
+            
+            <b>From</b> : ".$name."<br/>
+            <b>Email</b> : ".$email."<br/>
+            <b>Subject</b> : ".$sub."<br/>
+            <b>Message</b> : ".$msg."<br/><br/>Thankyou,<br/>Canabii.";
+            $emails->to('admin@web-nepal.com');
+            $emails->send($message);
+            $this->Session->setFlash('Message sent successfully');
+            $this->redirect('contact_us');
+        }
     }
 	
 		function about()
