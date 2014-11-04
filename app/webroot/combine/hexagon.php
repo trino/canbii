@@ -17,7 +17,7 @@ switch ($strain_hexagon['Strain']['type_id']) {
     position: absolute;
     top: 0;
     z-index: 0;" />
-<p style="color: white;
+<p class="printer" style="color: #FFF;
     font-size: 20px;
     left: 17px;
     margin-top: 14px;

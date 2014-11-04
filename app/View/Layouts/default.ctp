@@ -469,7 +469,7 @@ or <a class="A_6" href="<?php echo $this->webroot;?>strains/all">view all</a>
                             <?php echo substr($s['Review']['review'],0,80) . '...';?>
                             
                             </a>
-                            <abbr title="" class="timeago"><?php echo ucfirst($s['User']['username'])." ".$s['Review']['on_date'];?></abbr>
+                            <abbr title="" class="timeago"><?php echo "<a href='".$this->webroot."strains/review/all/?user=".$s['Review']['user_id']."'>".ucfirst($s['User']['username'])."</a> ".$s['Review']['on_date'];?></abbr>
                         </li>
                         									
                         									
