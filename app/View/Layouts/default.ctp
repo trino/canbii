@@ -454,7 +454,7 @@ or <a class="A_6" href="<?php echo $this->webroot;?>strains/all">view all</a>
                         $strains = $this->requestAction('pages/get_strain');								
                         if($strains)
                         {
-                            var_dump($strains);
+                            //var_dump($strains);
                         ?>
                         
                         <?php
