@@ -414,18 +414,48 @@ if($this->Session->read('User') && $this->params['action']!='detail')
 
 </div>
 <?php }
-/*
+
 else
 {
     ?>
     <div class="page_right page_margin_top">
-        <div class="vote" style="position:fixed;top:300px;">
-            <strong>Was this review helpful to you?</strong>
+        <div class="vote" style="margin-top:50px;">
+        <?php
+            $ip = $_SERVER['REMOTE_ADDR'];
+                $rand1 = rand(100,999);
+                $rand2 = rand(100,999);
+            $q5 = $vip->find('first',array('conditions'=>array('review_id'=>$review['Review']['id'],'ip'=>$ip)));
+                
+                if($q5){$vote = 1;$yes = $q5['VoteIp']['vote_yes'];}else{$vote = 0;}
+                ?>
+                
+                
+                <strong>Was this review helpful?</strong><br /><br /> 
+                <?php if($vote==0){?>
+                    <a href="javascript:void(0);" id="<?php echo $rand1.'_'.$review['Review']['id'];?>" class="btns yes" style="background-color: #40b2e2; padding-left:6px; padding-right:6px; padding-top: 5px; padding-bottom: 5px; margin-right:5px"><strong style="color: white">YES<?php if($review['Review']['helpful']){?> (<?php echo $review['Review']['helpful'];?>)<?php }?></strong></a> <a class="btns no" href="javascript:void(0);" id="<?php echo ($rand1+1).'_'.$review['Review']['id'];?>" style="background-color: #1e84c6; padding-left:10px; padding-right:10px; padding-top: 5px; padding-bottom: 5px; margin-right:5px"><strong style="color: white">NO<?php if($review['Review']['not_helpful']){?> (<?php echo $review['Review']['not_helpful'];?>)<?php }?></strong></a>
+                <?php }else{
+                    if($yes==1)
+                    {
+                        $y1 = 'padding-left:10px; padding-right:10px; padding-top: 5px; padding-bottom: 5px; margin-right:5px;background:#e5e5e5;cursor:default;';
+                        $y2 = 'color:#fff'; 
+                        $n1 = 'background:#FFF;color:#CCC;cursor: default;padding:4px 7px;';
+                        $n2 = 'color:#CCC;';
+                    }
+                    else
+                    {
+                        $y1 = 'background:#FFF;color:#CCC;cursor: default;padding:4px 7px;';
+                        $y2 = 'color:#CCC;';
+                        $n1 = 'padding-left:10px; padding-right:10px; padding-top: 5px; padding-bottom: 5px; margin-right:5px;background:#e5e5e5;cursor:default;';
+                        $n2 = 'color:#fff';
+                    }
+                    ?>
+                    <a href="javascript:void(0);" id="" class="faded" style="<?php echo $y1;?>"><strong style="<?php echo $y2;?>">YES<?php if($review['Review']['helpful']){?> (<?php echo $review['Review']['helpful'];?>)<?php }?></strong></a> <a class="faded" href="javascript:void(0);" id="" style="<?php echo $n1;?>"><strong style="<?php echo $n2;?>">NO<?php if($review['Review']['not_helpful']){?> (<?php echo $review['Review']['not_helpful'];?>)<?php }?></strong></a>
+                <?php }?>
         </div>
     </div>
     <?php
 }
-*/
+
 ?>
 </div>
 </div>
@@ -557,6 +587,42 @@ $(function(){
     });  
     <?php
     }?>
+    $('.yes').click(function(){
+   var id = $(this).attr('id');
+   var arr = id.split('_');
+   var r_id = arr[1];
+   $.ajax({
+    url:'<?php echo $this->webroot;?>strains/helpful/'+r_id+'/yes',
+   });
+   $('#'+arr[0]+'_'+r_id).removeClass('yes');
+   $('#'+arr[0]+'_'+r_id).attr('style','background:#FFF;color:#CCC;cursor: default;');
+   $('#'+arr[0]+'_'+r_id).attr('onclick','return false;');
+   var o = parseFloat(arr[0])+1;
+   $('#'+o+'_'+r_id).removeClass('no');
+   $('#'+o+'_'+r_id).attr('style','background:#FFF;color:#CCC;cursor: default;display:inline-block;padding:8px 7px;');
+   $('#'+o+'_'+r_id+' strong').attr('style','color:#CCC;');
+   $('#'+o+'_'+r_id).attr('onclick','return false;'); 
+   $(this).attr('style',$(this).attr('style').replace('background:#FFF;','background:#e5e5e5;display:inline-block;padding:8px 7px;'));
+});
+$('.no').click(function(){
+   var id = $(this).attr('id');
+   
+   var arr2 = id.split('_');
+   var num = parseFloat(arr2[0]-1);
+   var r_id = arr2[1];
+   $.ajax({
+    url:'<?php echo $this->webroot;?>strains/helpful/'+r_id+'/no',
+   });
+   $('#'+num+'_'+r_id).removeClass('yes');
+   var o = parseFloat(num)+1;
+   $('#'+o+'_'+r_id).removeClass('no'); 
+   $('#'+num+'_'+r_id).attr('style','background:#FFF;color:#CCC;cursor: default;display:inline-block;padding:8px 7px;')
+   $('#'+num+'_'+r_id+' strong').attr('style','color:#CCC;');
+   //$('#'+num+'_'+r_id).attr('onclick','return false;');
+   //$('#'+o+'_'+r_id).attr('style','background:#FFF;color:#CCC;cursor: default;');
+   //$('#'+o+'_'+r_id).attr('onclick','return false;'); 
+   $(this).attr('style','background:#e5e5e5;display:inline-block;padding:8px 7px;color:#CCC;cursor: default;');
+});
 
 });
 </script>

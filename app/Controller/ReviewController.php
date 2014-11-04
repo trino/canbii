@@ -68,7 +68,8 @@
             $this->loadModel('SymptomRating');
             $this->loadModel('ColourRating');
             $this->loadModel('FlavorRating');
-            
+            $this->loadModel('VoteIp');
+            $this->set('vip',$this->VoteIp);
             
             
             
