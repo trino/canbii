@@ -434,10 +434,10 @@ or <a class="A_6" href="<?php echo $this->webroot;?>strains/all">view all</a>
 										Latest Reviews
 									</h3>
 								</div>
-								<div class="header_right">
+								<!--<div class="header_right">
 									<a href="#" id="footer_recent_posts_prev" class="scrolling_list_control_left icon_small_arrow left_white"></a>
 									<a href="#" id="footer_recent_posts_next" class="scrolling_list_control_right icon_small_arrow right_white"></a>
-								</div>
+								</div>-->
 							</div>
 							<div class="scrolling_list_wrapper">
 							
