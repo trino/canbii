@@ -463,7 +463,7 @@ or <a class="A_6" href="<?php echo $this->webroot;?>strains/all">view all</a>
                         ?>
                         
                         <li class="icon_small_arrow right_white">
-                            <a href="?page=post">
+                            <a href="<?php echo $this->webroot;?>review/detail/<?php echo $s['Review']['id'];?>">
                             <b><?php echo $s['Strain']['name'];?></b><br>
                             
                             <?php echo substr($s['Review']['review'],0,80) . '...';?>
