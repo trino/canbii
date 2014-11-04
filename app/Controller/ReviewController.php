@@ -14,13 +14,46 @@
                 $this->redirect('/users/register?url='.$url);
             }
         }
-        function all()
+        function all($limit=0)
         {
+            $this->set('limit',$limit);
             $this->checkSess();
             
+            if($limit){
+                $offset = $limit;
+                $limit = '8';
+         
+            }
+            else{
+                $limit = 8;
+                $offset = 0;
+            }
+            
             $id =$this->Session->read('User.id');
-            $reviews = $this->Review->find('all',array("conditions"=>array('user_id'=>$id)));
+            $reviews = $this->Review->find('all',array("conditions"=>array('user_id'=>$id),'limit'=>$limit,'offset'=>$offset));
             $this->set("reviews",$reviews);
+            $this->set('reviewz', $this->Review->find('count',array('conditions'=>array('user_id'=>$id))) );
+            
+        }
+        
+        function all_filter($limit)
+        {
+            $this->set('limit',$limit);
+            if($limit){
+                $offset = $limit;
+                $limit = '1';
+         
+            }
+            else{
+                $limit = 1;
+                $offset = 0;
+            }
+            $this->layout = 'blank';
+            $id =$this->Session->read('User.id');
+            $reviews = $this->Review->find('all',array("conditions"=>array('user_id'=>$id),'limit'=>$limit,'offset'=>$offset));
+            $this->set("reviews",$reviews);
+            $this->set('reviewz', $this->Review->find('count',array('conditions'=>array('user_id'=>$id))) );
+            
             
         }
         

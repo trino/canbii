@@ -1,9 +1,9 @@
-<?php if($this->params['action']=='review'){
-    //echo $this->params['action'];?>
 <script src="<?php echo $this->webroot;?>js/raty.js"></script>
 <script src="<?php echo $this->webroot;?>js/labs.js"></script>
 <link href="<?php echo $this->webroot;?>css/raty.css" rel="stylesheet" type="text/css" />
 
+<?php if($this->params['action']=='review'){
+    //echo $this->params['action'];?>
 <div class="page_layout page_margin_top clearfix">
 <div class="page_header clearfix">
 <div class="page_header_left">
@@ -105,4 +105,46 @@ $('.rates img').each(function(){
 });
 })
 </script>
-<?php }?>
+<?php }
+
+elseif($this->params['controller']=='review' && $this->params['action']=='all')
+{?>
+ <script>
+$(function(){
+    var more='<?php echo $limit?>';    
+    var spinnerVisible = false; 
+        
+    $('.loadmore a').live('click',function(){
+        more=parseFloat(more)+8;
+        var val = '';
+        var i=0;
+       $.ajax({
+           url:'<?php echo $this->webroot;?>review/all_filter/'+more,
+           data:val,
+           type:'get',
+           success:function(res){
+           if (spinnerVisible) {
+                var spinner = $("div#spinner");
+                spinner.stop();
+                spinner.fadeOut("fast");
+                spinnerVisible = false;
+            }
+            $('.morelist').show();
+            $('.morelist').addClass('morelist2');
+            $('.morelist2').removeClass('morelist');
+            $('.morelist2').html(res);
+            $('.morelist2').removeClass('morelist2');
+           } 
+        });
+    });
+$('.rates img').each(function(){
+    var src = $(this).attr('src');
+    src = src.replace('../','<?php echo $this->webroot;?>');
+    $(this).attr('src',src);
+});
+})
+</script>
+   
+<?php
+}
+?>
