@@ -88,6 +88,20 @@ class UsersController extends AppController {
         if(isset($_POST['submit']))
         {
             $this->User->id = $this->Session->read('User.id');
+            if(isset($_POST['symptoms']) && $_POST['symptoms'])
+            {
+                foreach($_POST['symptoms'] as $k=>$symp)
+                {
+                    if($k==0)
+                    {
+                        $s=$symp;
+                    }
+                    else
+                    $s = $s.','.$symp;
+                }
+                unset($_POST['symptoms']);
+                $_POST['symptoms'] = $s;
+            }
             foreach($_POST as $k=>$v)
             {
                 $this->User->saveField($k,$v);

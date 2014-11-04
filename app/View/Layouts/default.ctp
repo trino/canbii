@@ -10,7 +10,7 @@
     }
     else
     $gtitle = ucfirst($this->params['action']);
-    ?>
+    ?>  
 <meta charset="UTF-8" />
 <meta property="og:image" content="<?php echo 'http://'.$_SERVER['SERVER_NAME'].$this->webroot.'images/logo.png';?>" />
 <meta property="og:title" content="<?php if(isset($title)){echo $title.' - Canbii';}else{echo str_replace('_',' ',$gtitle).' - '.$generic['title'];}?>" />
@@ -278,8 +278,7 @@ if(thiss.attr('class').replace('searchact','')==thiss.attr('class'))
 
 
 
-<div class="page" style="border-top:0;padding-bottom:0px;
-">
+<div class="page" style="border-top:0;padding-bottom:0px;">
 <div class=" clearfix" style="
 background: #000;
 background: rgba(0,0,0,0.7);

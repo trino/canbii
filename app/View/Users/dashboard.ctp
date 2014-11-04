@@ -9,6 +9,7 @@
         $exp = $user['User']['years_of_experience'];
         $frequency = $user['User']['frequency'];
         $body_type = $user['User']['body_type'];
+        $symptoms = $user['User']['symptoms'];
     }
     else
     {
@@ -20,6 +21,7 @@
         $exp = "";
         $frequency = "";
         $body_type = "";
+        $symptoms = "";
     }
 ?>
 
@@ -127,7 +129,7 @@
    </select><br />
    
    
-      <input type="submit" name="submit" value="submit" class="blue more" />
+      
    
 </ul>
 <ul class="column_right">
@@ -180,10 +182,42 @@
    </select>
    
 <br />
+
    
 </ul>
+<div class="clearfix"></div>
 </div>
-
+<div class="clearfix"></div>
+<div class="separator"></div>
+<label>What do you suffer from?</label>
+<div id="dashboard_symptom" style="background:#42B3E5; border-radius: 3px; margin: 0 auto; padding:30px; ">
+<p id="P_5">
+<?php $effect = $this->requestAction('/pages/getSym');
+$symp = explode(',',$symptoms);
+foreach($effect as $e)
+{
+?>
+<a class="A_6 <?php if(in_array($e['Symptom']['id'],$symp)){?>searchact<?php }?>" style="" href="javascript:void(0)" onclick="highlightsym($(this))" class=""  id="sym_<?php echo $e['Symptom']['id'];?>"><?php echo $e['Symptom']['title']?></a>
+<?php
+}
+?>
+</p>
+<p style="display: none;" class="symp">
+    <?php
+    if($symp)
+    {
+        foreach($symp as $sy)
+        {
+            ?>
+            <input class="sym_<?php echo $sy;?>" type="hidden" value="<?php echo $sy;?>" name="symptoms[]">
+            <?php
+        }
+    }
+    ?>
+</p>
+<div class="clearfix"></div>
+</div>
+<input type="submit" name="submit" value="submit" class="blue more" />
    
 </form>
 
