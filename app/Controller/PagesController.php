@@ -62,8 +62,9 @@ class PagesController extends AppController {
     }
     function get_strain()
     {
-        $this->loadModel('Strain');
-        return $this->Strain->find('all',array('order'=>'Strain.id DESC','limit'=>4));
+        $this->loadModel('Review');
+
+        return $this->Review->find('all',array('order'=>'Review.id DESC','limit'=>4));
     }
     // public function view_page($slug)
     // {

@@ -32,6 +32,11 @@ class Review extends AppModel
 			'fields' => '',
 			'order' => ''
 		),
+        'User' => array(
+            'className' => 'User',
+            'foreignKey' => 'user_id',
+            'fields' => array('username'),
+        )
         
 	);           
 }

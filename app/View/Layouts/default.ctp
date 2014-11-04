@@ -451,32 +451,33 @@ or <a class="A_6" href="<?php echo $this->webroot;?>strains/all">view all</a>
 								
 								<?
 								
-$strains = $this->requestAction('pages/get_strain');								
-if($strains)
-{
-?>
-
-<?php
-foreach($strains as $s)
-{
-?>
-
-				<li class="icon_small_arrow right_white">
-										<a href="?page=post">
-										<b><?php echo $s['Strain']['name'];?></b><br>
-
-<?php echo substr($s['Strain']['description'],0,80) . '...';?>
-
-										</a>
-<abbr title="" class="timeago"><?php echo $s['Strain']['published_date'];?></abbr>
-									</li>
-									
-									
-									
-<?php
-}
-}
-?>
+                        $strains = $this->requestAction('pages/get_strain');								
+                        if($strains)
+                        {
+                            var_dump($strains);
+                        ?>
+                        
+                        <?php
+                        foreach($strains as $s)
+                        {
+                        ?>
+                        
+                        <li class="icon_small_arrow right_white">
+                            <a href="?page=post">
+                            <b><?php echo $s['Strain']['name'];?></b><br>
+                            
+                            <?php echo substr($s['Review']['review'],0,80) . '...';?>
+                            
+                            </a>
+                            <abbr title="" class="timeago"><?php echo ucfirst($s['User']['username'])." ".$s['Review']['on_date'];?></abbr>
+                        </li>
+                        									
+                        									
+                        									
+                        <?php
+                        }
+                        }
+                        ?>
 								
 								
 								
