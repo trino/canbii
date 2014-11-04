@@ -392,7 +392,7 @@ Rating & Comment <?php if($this->params['action']=='add')echo '(Required)';?>
 </div>
 
 <?php
-if($this->Session->read('User'))
+if($this->Session->read('User') && $this->params['action']!='detail')
 {
 ?>
 <div class="page_right page_margin_top">
@@ -413,7 +413,20 @@ if($this->Session->read('User'))
 
 
 </div>
-<?php }?>
+<?php }
+/*
+else
+{
+    ?>
+    <div class="page_right page_margin_top">
+        <div class="vote" style="position:fixed;top:300px;">
+            <strong>Was this review helpful to you?</strong>
+        </div>
+    </div>
+    <?php
+}
+*/
+?>
 </div>
 </div>
 
