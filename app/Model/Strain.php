@@ -17,11 +17,7 @@ class Strain extends AppModel
                                  'dependent'=>true,
                                  'exclusive'=>true
                                 ),
-                                'StrainLocation'=>array('className'=>'StrainLocation',
-                                 'foreignKey'=>'strain_id',
-                                 'dependent'=>true,
-                                 'exclusive'=>true
-                                ),
+                                
                                 'Review'=>array('className'=>'Review',
                                  'foreignKey'=>'strain_id',
                                  'dependent'=>true,
