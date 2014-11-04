@@ -37,9 +37,7 @@
             $this->loadModel('FlavorRating');
             
             
-            $this->set('title',$q['Strain']['name']);
-            $this->set('description',$q['Strain']['description']);
-            $this->set('keyword',$q['Strain']['name'].' , Canbii , Medical , Marijuana , Medical Marijuana');
+            
             
             
             $this->set('effects',$this->Effect->find('all',array('conditions'=>array("negative"=>'0'))));
@@ -50,6 +48,13 @@
             $this->loadModel('Symptom');
             $this->set('symptoms',$this->Symptom->find('all'));
             $this->set('review',$this->Review->findById($id));
+            
+            
+            $review = $this->Review->findById($id);
+            
+            $this->set('title','Review: '.$review['Strain']['name']);
+            $this->set('description','Review for '.$review['Review']['review'].'. General rating, effects rating, aesthetic rating and other reviews for '.$review['Strain']['name']);
+            $this->set('keyword',$review['Strain']['name'].' , review , effect rating, general rating , aesthetic rating , Canbii , Medical , Marijuana , Medical Marijuana');
             $this->render('add');
             
         }
