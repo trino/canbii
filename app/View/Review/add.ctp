@@ -418,8 +418,8 @@ if($this->Session->read('User') && $this->params['action']!='detail')
 else
 {
     ?>
-    <div class="page_right page_margin_top">
-        <div class="vote" style="margin-top:50px;">
+    <div class="clearfix"></div>
+    <div class="vote" style="margin-top:50px;">
         <?php
             $ip = $_SERVER['REMOTE_ADDR'];
                 $rand1 = rand(100,999);
@@ -452,7 +452,6 @@ else
                     <a href="javascript:void(0);" id="" class="faded" style="<?php echo $y1;?>"><strong style="<?php echo $y2;?>">YES<?php if($review['Review']['helpful']){?> (<?php echo $review['Review']['helpful'];?>)<?php }?></strong></a> <a class="faded" href="javascript:void(0);" id="" style="<?php echo $n1;?>"><strong style="<?php echo $n2;?>">NO<?php if($review['Review']['not_helpful']){?> (<?php echo $review['Review']['not_helpful'];?>)<?php }?></strong></a>
                 <?php }?>
         </div>
-    </div>
     <?php
 }
 
