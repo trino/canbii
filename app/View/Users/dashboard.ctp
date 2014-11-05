@@ -188,7 +188,7 @@
 <div class="clearfix"></div>
 </div>
 <div class="clearfix"></div>
-<div class="separator"></div>
+<div class="separators"></div>
 <label>What do you suffer from?</label>
 <div id="dashboard_symptom" style="background:#42B3E5; border-radius: 3px; margin: 0 auto; padding:30px; ">
 <p id="P_5">

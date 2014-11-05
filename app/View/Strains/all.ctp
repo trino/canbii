@@ -178,7 +178,7 @@ $symptoms = array();
             }
                 
        });
-       $('.symps').each(function(){
+       $('.symp .symps').each(function(){
         if($(this).val()){
         i++;
         if(i==1)
@@ -237,9 +237,11 @@ if($(this).attr('class').replace('searchact2','')==$(this).attr('class'))
 {
         
     $(this).addClass('searchact2');
-    $('.effe').append('<input type="hidden" name="symptoms[]" value="'+$(this).attr('id').replace('sym_','')+'" class="symps '+$(this).attr('id')+'"  />')}else{$(this).removeClass('searchact2')
-   
-        $('.'+$(this).attr('id')).remove();
+    $('.symp').append('<input type="hidden" name="symptoms[]" value="'+$(this).attr('id').replace('sym_','')+'" class="symps check'+$(this).attr('id')+' '+$(this).attr('id')+'"  />')
+    }
+    else{
+        $(this).removeClass('searchact2');   
+        $('.'+$(this).attr('id')).remove();        
     }
     $('.key').val('');
     /*else
@@ -261,7 +263,8 @@ if($(this).attr('class').replace('searchact2','')==$(this).attr('class'))
             
                 
        });
-       $('.symps').each(function(){
+       $('.symp .symps').each(function(){
+        
         if($(this).val()){
         i++;
         if(i==1)
@@ -308,6 +311,7 @@ if($(this).attr('class').replace('searchact2','')==$(this).attr('class'))
             $('.listing').html(res);
            } 
         });
+        val='';
         
     }); 
 
@@ -341,7 +345,7 @@ if($(this).attr('class').replace('searchact2','')==$(this).attr('class'))
             }
                 
        });
-       $('.symps').each(function(){
+       $('.symp .symps').each(function(){
         if($(this).val()){
         i++;
         if(i==1)
@@ -394,9 +398,11 @@ if($(this).attr('class').replace('searchact2','')==$(this).attr('class'))
     $('.eff1').click(function(){
         more=0;
         $('.eff1').each(function(){
-           $(this).removeClass('eff1c'); 
+           $(this).removeClass('eff1c');
+           $(this).removeClass('searchact');  
         });
         $(this).addClass('eff1c');
+        $(this).addClass('searchact');
         var id = $(this).attr('id');
         var sort = $('.'+id).val();
         if(sort == 'ASC')
@@ -431,7 +437,7 @@ if($(this).attr('class').replace('searchact2','')==$(this).attr('class'))
             }
                 
        });
-       $('.symps').each(function(){
+       $('.symp .symps').each(function(){
         if($(this).val()){
         i++;
         if(i==1)

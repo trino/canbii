@@ -98,17 +98,17 @@ if($strain['StrainImage'])
 
 <ul class="page_margin_top clearfix">
 
-<li class="footer_banner_box super_light_blue">
-
-<center>
+<li class="footer_banner_box super_light_blue" style="position: relative;padding: 0;width:330px;height:100px;">
+<img src="<?php echo $this->webroot?>images/bg1.jpg" style=" height: 100px;position: absolute;width: 330px;z-index: -1;" />
+<center style="padding:20px 30px;color:#FFF;">
 <h2>Overall Rating</h2>
 <div class="rating"></div>
 </center>
 
 </li>
-<li class="footer_banner_box light_blue">
-
-<center>
+<li class="footer_banner_box light_blue" style="position: relative;padding: 0;width:330px;height:100px;">
+<img src="<?php echo $this->webroot?>images/bg2.jpg" style=" height: 100px;position: absolute;width: 330px;z-index: -1;" />
+<center style="padding:20px 30px;color:#FFF;">
 <h2>Chemical Composition</h2>
 <font style="font-size:14px;" color="white">
 THC:
@@ -125,9 +125,9 @@ THCV:
 </center>
 
 </li>
-<li class="footer_banner_box blue">
-
-<center>
+<li class="footer_banner_box blue" style="position: relative;padding: 0;width:330px;height:100px;">
+<img src="<?php echo $this->webroot?>images/bg3.jpg" style=" height: 100px;position: absolute;width: 330px;z-index: -1;" />
+<center style="padding:20px 30px;color:#FFF;">
 <h2>Dominant Flavors</h2>
 <?php
 foreach($flavor as $f)
