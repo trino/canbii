@@ -114,7 +114,7 @@ General Rating
     <div id="qf_review__general__strength__slider" class="qf-slider-bar ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all">
     </div>
 <h3>Effect Duration</h3>
-    <p id="qf_review__general__duration__prompt"><?php if($this->params['action']=='add')echo '1 hr'; else $review['Review']['eff_duration']." hrs";?></p>
+    <p id="qf_review__general__duration__prompt"><?php if($this->params['action']=='add')echo '1 hr'; else echo $review['Review']['eff_duration']." hrs";?></p>
     <div>
         <input id="qf_review__general__duration" class="qf-hidden-input qf-slider qf-input" type="hidden" name="eff_duration" value="1" title="Effect Duration">
     </div>
@@ -152,26 +152,33 @@ if($this->params['action']=='add'){
 }
 else
 {
-    foreach($review['SymptomRating'] as $effect)
-    {?> 
-     <div id="efft_<?php echo $effect['id'];?>er" class="review-slider"><label><?php echo $symptoms[$effect['symptom_id']-1]['Symptom']['title'];?></label>
-     <div  id="<?php echo $effect['id'];?>er"></div><p><?php echo $effect['rate'];?>/5</p><div class="clear"> </div></div>   
-    <script>
-    $(function(){
-        $('#<?php echo $effect['id'];?>er').slider({
-    			range: "min",
-                disabled: true,
-    			value: <?php echo $effect['rate'];?>,
-    			min: 0,
-    			max: 5,
-    			slide: function( event, ui ) {
-    				$('#'+id+'p').html(''+ui.value+'/5');
-    				$('#'+id+'i').val(ui.value);
-    			}
-    		});
-            });
-    </script>
-<?php }
+    if(count($review['SymptomRating'])>0){
+    
+        foreach($review['SymptomRating'] as $effect)
+        {?> 
+         <div id="efft_<?php echo $effect['id'];?>er" class="review-slider"><label><?php echo $symptoms[$effect['symptom_id']-1]['Symptom']['title'];?></label>
+         <div  id="<?php echo $effect['id'];?>er"></div><p><?php echo $effect['rate'];?>/5</p><div class="clear"> </div></div>   
+        <script>
+        $(function(){
+            $('#<?php echo $effect['id'];?>er').slider({
+        			range: "min",
+                    disabled: true,
+        			value: <?php echo $effect['rate'];?>,
+        			min: 0,
+        			max: 5,
+        			slide: function( event, ui ) {
+        				$('#'+id+'p').html(''+ui.value+'/5');
+        				$('#'+id+'i').val(ui.value);
+        			}
+        		});
+                });
+        </script>
+    <?php }
+    }
+    else
+    {
+        echo "<strong>No Review For Medicinal Effects</strong>";
+    }
 
 }
 ?>
@@ -202,7 +209,13 @@ foreach($effects as $e)
 {
     array_push($pos,$e['Effect']['id']);
 }
-
+$cnt =0;
+    foreach($review['EffectRating'] as $effect)
+    {
+        if(in_array($effect['effect_id'],$pos))
+        $cnt++;
+    }
+if($cnt>0){
 foreach($review['EffectRating'] as $effect)
 {
     if(in_array($effect['effect_id'],$pos)){?> 
@@ -222,6 +235,11 @@ foreach($review['EffectRating'] as $effect)
     		});
     </script>
     <?php }
+}
+}
+else
+{
+    echo "<strong>No Review For Positive Effects</strong>";
 }
 }
 ?>
@@ -251,7 +269,13 @@ else
     {
         array_push($pos,$e['Effect']['id']);
     }
-    
+    $cnt =0;
+    foreach($review['EffectRating'] as $effect)
+    {
+        if(in_array($effect['effect_id'],$pos))
+        $cnt++;
+    }
+    if($cnt>0){
     foreach($review['EffectRating'] as $effect)
     {
         if(in_array($effect['effect_id'],$pos)){?> 
@@ -271,6 +295,11 @@ else
         		});
         </script>
         <?php }
+    }
+    }
+    else
+    {
+        echo "<strong>No Review For Negative Effects</strong>";
     }
 }
 ?>
@@ -304,10 +333,16 @@ if($this->params['action']=='add')
 }
 else
 {
+    if(count($review['ColourRating'])>0){
     foreach($review['ColourRating'] as $effect)
     {?> 
      <span id="efft_<?php echo $effect['id'];?>" class="eff3 sel btn btn-info"><?php echo $colours[$effect['colour_id']-1]['Colour']['title'];?></span>
     <?php
+    }
+    }
+    else
+    {
+        echo "<strong>No Review For Color</strong>";
     }
 }
 ?>
@@ -329,13 +364,20 @@ if($this->params['action']=='add')
     {?> <a href="javascript:void(0);" onclick="($(this).hasClass('sel'))?$(this).removeClass('sel'):$(this).addClass('sel')" title="<?php echo $flavor['Flavor']['id'];?>" class="eff3 btn btn-info qf_review__aesthetics__flavor"><?php echo ucfirst($flavor['Flavor']['title']);?></a>
     <?php 
     }
+    
 }
 else
 {
+    if(count($review['FlavorRating'])>0){
     foreach($review['FlavorRating'] as $effect)
     {?> 
      <span id="efft_<?php echo $effect['id'];?>" class="eff3 sel btn btn-info"><?php echo $flavors[$effect['flavor_id']-1]['Flavor']['title'];?></span>
     <?php
+    }
+    }
+    else
+    {
+        echo "<strong>No Review For Flavour & Scent</strong>";
     }
 }
 ?>
