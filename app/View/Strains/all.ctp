@@ -84,9 +84,25 @@ $symptoms = array();
 	</li><li>
 	<a href="javascript:void(0)" class="eff1" id="reviewed">
 	Most Reviewed</a>  
-	</li><li>
+	</li>
+    <li>
 	<a href="javascript:void(0)" class="eff1" id="alpha">
 	Alphabetically</a>
+	</li>
+    
+    <li>
+	<a href="javascript:void(0)" class="eff1" id="indica">
+	Indica</a>
+	</li>
+    
+    <li>
+	<a href="javascript:void(0)" class="eff1" id="sativa">
+	Sativa</a>
+	</li>
+    
+    <li>
+	<a href="javascript:void(0)" class="eff1" id="hybrid">
+	Hybrid</a>
 	</li>
 </ul>
 
@@ -156,6 +172,9 @@ $symptoms = array();
 <input type="hidden" class="viewed" value="ASC" />
 <input type="hidden" class="reviewed" value="ASC" />
 <input type="hidden" class="alpha" value="DESC" />
+<input type="hidden" class="sativa" value="DESC" />
+<input type="hidden" class="indica" value="DESC" />
+<input type="hidden" class="hybrid" value="DESC" />
 <div class="clearfix"></div>
 
 <script>
