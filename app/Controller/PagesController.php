@@ -100,7 +100,7 @@ class PagesController extends AppController {
             <b>Message</b> : ".$msg."<br/><br/>Thankyou,<br/>Canabii.";
             $emails->to('admin@web-nepal.com');
             $emails->send($message);
-            $this->Session->setFlash('Message sent successfully');
+            $this->Session->setFlash('Message sent successfully', 'default', array('class' => 'good'));
             $this->redirect('contact_us');
         }
     }
