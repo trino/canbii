@@ -71,6 +71,7 @@ Was this review helpful?<br /><?php if($vote==0){?>
 
 </ul>
 </div>
+
 </div>
 
 <?php }

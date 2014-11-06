@@ -378,7 +378,7 @@ $duration = ($duration/$count)*20;
 
 
 <?php include_once('combine/strain_reviews.php');?>
-
+<?php //include_once('combine/invite.php');?>
 
 
 
@@ -400,7 +400,7 @@ $(".fancybox").fancybox();
 
 
 <div class="print">
-    <center><a class="blue more" href="javascript:void(0)" onclick="window.print();">Print Report</a></center>
+    <center><a class="blue more" href="javascript:void(0)" onclick="window.print();">Print Report</a> <a href="#" class="blue more">Invite your friend</a> <a href="#" class="blue more">Share on Social Media</a></center>
 </div>
 
 
