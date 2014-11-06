@@ -2,6 +2,7 @@
 
 <div class="comments clearfix page_margin_top">
 <div id="comments_list">
+<?php if(count($reviews)>0){?>
 <ul>
 <?php 
 $j=0;
@@ -62,6 +63,11 @@ if($reviewz && $reviewz >1){?>
        }); 
     });
     </script>
+<?php }
+else
+{
+    echo "<strong>No Reviews Yet!</strong>";
+}?>
 </div>
 </div>
 

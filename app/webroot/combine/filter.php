@@ -64,7 +64,8 @@ include('combine/hexagon.php');?>
 </li>
 <li class="" style="">
 <?php if($s['Strain']['review']){
-echo $s['Strain']['review'].' Reviews';
+   
+    echo $s['Strain']['review'].' Reviews';
 }else
 {
 echo '0 Reviews';

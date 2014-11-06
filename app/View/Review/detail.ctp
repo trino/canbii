@@ -94,7 +94,10 @@
 <span class="qf-select-span" id="qf_review__effects__medical__span">
 <span class="qf-select-inner" id="qf_review__effects__medical__inner">
 <div class="qf-select review-selector" id="qf_review__effects__medical">
-<?php foreach($review['SymptomRating'] as $effect)
+<?php 
+if(count($review['SymptomRating'])>0){
+    echo count($review['SymptomRating']);
+foreach($review['SymptomRating'] as $effect)
 {?> 
  <div id="efft_<?php echo $effect['id'];?>er" class="review-slider"><label><?php echo $symptoms[$effect['symptom_id']-1]['Symptom']['title'];?></label>
  <div  id="<?php echo $effect['id'];?>er"></div><p><?php echo $effect['rate'];?>/5</p><div class="clear"> </div></div>   
@@ -114,6 +117,11 @@ $(function(){
         });
 </script>
 <?php }
+}
+else
+{
+    echo "No Review For Medicinal Effects";
+}
 ?>
 </div>
 
