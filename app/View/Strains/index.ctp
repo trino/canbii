@@ -6,6 +6,7 @@ em{letter-spacing:2px;font-style: normal;}
 .length{padding-top:25px;background:#42B3E5;position:absolute;top:0;}
 
  @media print {
+        .noprint{display:none;}
       .printer {
         color: #FFF;
         text-shadow: 0 0 0 #ccc;
@@ -66,7 +67,7 @@ Home
 </li>
 </ul-->
 </div>
-<div class="page_header_right">
+<div class="page_header_right noprint">
 
 <a class="blue more" style="margin-right: 10px;margin-top:10px;" href="<?php echo $this->webroot;?>review/add/<?php echo $strain['Strain']['slug'];?>">Review Strain</a><a class="blue more" style="margin-top:10px;" href="javascript:void(0)" onclick="window.print();">Print Report</a>
 </div>
@@ -144,6 +145,9 @@ THCV:
 <center style="padding:20px 30px;color:#FFF;">
 <h2>Dominant Flavors</h2>
 <?php
+//$flavor = null;
+if($flavor){
+    
 foreach($flavor as $f)
 {
 ?>
@@ -153,6 +157,13 @@ foreach($flavor as $f)
 <?php echo $this->requestAction('/strains/getFlavor/'.$f['FlavorRating']['flavor_id']);?>
 </a>
 <?php
+}
+}
+else
+{
+    ?>
+    No flavors yet.
+    <?php
 }
 ?>
 </center>

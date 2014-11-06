@@ -1,4 +1,6 @@
-<?php if($helpful || isset($show_all)){
+<?php
+ 
+if($helpful){
 // debug( $helpful);
 ?>
 
@@ -71,4 +73,10 @@ Was this review helpful?<br /><?php if($vote==0){?>
 </div>
 </div>
 
-<?php }?>
+<?php }
+else{
+    ?>
+    No reviews yet.
+    <?php
+}
+?>
