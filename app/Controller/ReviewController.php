@@ -41,11 +41,11 @@
             $this->set('limit',$limit);
             if($limit){
                 $offset = $limit;
-                $limit = '1';
+                $limit = '8';
          
             }
             else{
-                $limit = 1;
+                $limit = 8;
                 $offset = 0;
             }
             $this->layout = 'blank';
@@ -131,6 +131,7 @@
                 $ar['on_date'] = date("y-m-d");
                foreach($_POST as $k=>$v)
                {
+                    
                     $ar[$k]=$v;
                     
                }

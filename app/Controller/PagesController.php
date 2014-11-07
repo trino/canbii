@@ -197,7 +197,7 @@ class PagesController extends AppController {
     function send_email()
     {
         
-      
+      die();
         if(isset($_POST['send']))
         {
             $slug = $_POST['slug'];

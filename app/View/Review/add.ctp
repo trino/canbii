@@ -89,38 +89,59 @@ switch ($strain['Strain']['type_id']) {
 General Rating
 </h2>
 <div class="backgroundcolor">
+
+
 <h3>Effect Scale (Active to Sedative)</h3>
+<?php if(isset($review)&& $review['Review']['eff_scale']==0)
+        {
+            echo "<strong>&nbsp;&nbsp;&nbsp;No Review For Effect Scale</strong><br/>";
+        }
+        else
+        {?>
         <p id="qf_review__general__mscale__prompt">
-            <?php if($this->params['action']=='add'){?>
-                Extremely Active
+          <?php if($this->params['action']=='add'){?>
+                
             <?php }else{
-                    $typ = array('','Extremely Active','Very Active','Active','Bit Active','Balanced','Bit Sedated','Sedated','Very Sedated','Extemely Sedated');
+                    $typ = array('','NULL','Extremely Active','Very Active','Active','Bit Active','Balanced','Bit Sedated','Sedated','Very Sedated','Extemely Sedated');
                     echo $typ[$review['Review']['eff_scale']];
-             } ?>
+             } ?>  
         </p>
         <div>
-            <input id="qf_review__general__mscale" class="qf-hidden-input qf-slider qf-input" type="hidden" name="eff_scale" value="1" title="Effect Scale (Active to Sedative)"/>
+            <input id="qf_review__general__mscale" class="qf-hidden-input qf-slider qf-input" type="hidden" name="eff_scale" value="0" title="Effect Scale (Active to Sedative)"/>
         </div>
         <div id="qf_review__general__mscale__slider" class="qf-slider-bar ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all">
         </div>
-
+        <?php }?>
 <h3>Effect Strength</h3>
+<?php if(isset($review)&& $review['Review']['eff_strength']==0)
+        {
+            echo "<strong>&nbsp;&nbsp;&nbsp;No Review For Effect Strength</strong><br/>";
+        }
+        else
+        {?>
         <p id="qf_review__general__strength__prompt">
-           <?php if($this->params['action']=='add')echo  '1'; else if(isset($review))echo $review['Review']['eff_strength'];?>/5
+           <?php if($this->params['action']=='add')echo  '0'; else if(isset($review))echo $review['Review']['eff_strength'];?>/5
         </p>
     <div>
-        <input id="qf_review__general__strength" class="qf-hidden-input qf-slider qf-input" type="hidden" name="eff_strength" value="1" title="Effect Strength">
+        <input id="qf_review__general__strength" class="qf-hidden-input qf-slider qf-input" type="hidden" name="eff_strength" value="0" title="Effect Strength">
     </div>
     <div id="qf_review__general__strength__slider" class="qf-slider-bar ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all">
     </div>
+    <?php }?>
 <h3>Effect Duration</h3>
-    <p id="qf_review__general__duration__prompt"><?php if($this->params['action']=='add')echo '1 hr'; else echo $review['Review']['eff_duration']." hrs";?></p>
+<?php if(isset($review)&& $review['Review']['eff_duration']==0)
+        {
+            echo "<strong>&nbsp;&nbsp;&nbsp;No Review For Effect Duration</strong><br/>";
+        }
+        else
+        {?>
+    <p id="qf_review__general__duration__prompt"><?php if($this->params['action']=='add')echo ''; else echo $review['Review']['eff_duration']." hrs";?></p>
     <div>
-        <input id="qf_review__general__duration" class="qf-hidden-input qf-slider qf-input" type="hidden" name="eff_duration" value="1" title="Effect Duration">
+        <input id="qf_review__general__duration" class="qf-hidden-input qf-slider qf-input" type="hidden" name="eff_duration" value="0" title="Effect Duration">
     </div>
     <div id="qf_review__general__duration__slider" class="qf-slider-bar ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all">
     </div>
-
+    <?php }?>
 </div>
 </fieldset>
 
@@ -575,9 +596,10 @@ $(function(){
 					}
 					jQ.val("");
 				}
-                $("#qf_review__general__mscale__slider").slider({'min':1,'max':9,'step':1,'value':1,'slide':function(e,ui){ $('#qf_review__general__mscale').val(ui.value);var vals = ['Extremely Active','Very Active','Active','Bit Active','Balanced','Bit Sedated','Sedated','Very Sedated','Extemely Sedated'];$('#qf_review__general__mscale__prompt').html(vals[Math.ceil( ((ui.value+1-1)/(9+1-1))*vals.length )-1]); },'range':'min'});		
-				$("#qf_review__general__strength__slider").slider({'min':1,'max':5,'step':1,'value':1,'slide':function(e,ui){ $('#qf_review__general__strength').val(ui.value);$('#qf_review__general__strength__prompt').html(''+ui.value+'/5'); },'range':'min'});		
-				$("#qf_review__general__duration__slider").slider({'min':1,'max':5,'step':1,'value':1,'slide':function(e,ui){ $('#qf_review__general__duration').val(ui.value);$('#qf_review__general__duration__prompt').html(''+ui.value+' hrs'); },'range':'min'});		
+                $("#qf_review__general__mscale__slider").slider({'min':0,'max':9,'step':1,'value':0,'slide':function(e,ui){ $('#qf_review__general__mscale').val(ui.value);var vals = ['','Extremely Active','Very Active','Active','Bit Active','Balanced','Bit Sedated','Sedated','Very Sedated','Extemely Sedated'];
+                                                                                                                                                                                $('#qf_review__general__mscale__prompt').html(vals[Math.ceil( ((ui.value+1-1)/(9+1-1))*vals.length )-1]); },'range':'min'});		
+				$("#qf_review__general__strength__slider").slider({'min':0,'max':5,'step':1,'value':0,'slide':function(e,ui){ $('#qf_review__general__strength').val(ui.value);$('#qf_review__general__strength__prompt').html(''+ui.value+'/5'); },'range':'min'});		
+				$("#qf_review__general__duration__slider").slider({'min':0,'max':5,'step':1,'value':0,'slide':function(e,ui){ $('#qf_review__general__duration').val(ui.value);$('#qf_review__general__duration__prompt').html(''+ui.value+' hrs'); },'range':'min'});		
 				$("#qf_review__aesthetics__hairs__slider").slider({'min':1,'max':5,'step':1,'value':5,'slide':function(e,ui){ $('#qf_review__aesthetics__hairs').val(ui.value);$('#qf_review__aesthetics__hairs__prompt').html(''+ui.value+'/5'); },'range':'min'});		
 				$("#qf_review__aesthetics__crystals__slider").slider({'min':1,'max':5,'step':1,'value':5,'slide':function(e,ui){ $('#qf_review__aesthetics__crystals').val(ui.value);$('#qf_review__aesthetics__crystals__prompt').html(''+ui.value+'/5'); },'range':'min'});		
 		
@@ -602,9 +624,9 @@ $(function(){
     <?php 
     }else
     {?>
-            $("#qf_review__general__mscale__slider").slider({'min':1,disabled: true,'max':9,'step':1,'value':<?php echo $review['Review']['eff_scale'];?>,'slide':function(e,ui){ $('#qf_review__general__mscale').val(ui.value);var vals = ['Extremely Active','Very Active','Active','Bit Active','Balanced','Bit Sedated','Sedated','Very Sedated','Extemely Sedated'];$('#qf_review__general__mscale__prompt').html(vals[Math.ceil( ((ui.value+1-1)/(9+1-1))*vals.length )-1]); },'range':'min'});		
-			$("#qf_review__general__strength__slider").slider({'min':1,'max':5,disabled: true,'step':1,'value':<?php echo $review['Review']['eff_strength'];?>,'slide':function(e,ui){ $('#qf_review__general__strength').val(ui.value);$('#qf_review__general__strength__prompt').html(''+ui.value+'/5'); },'range':'min'});		
-			$("#qf_review__general__duration__slider").slider({'min':1,'max':5,'step':1,disabled: true,'value':<?php echo $review['Review']['eff_duration'];?>,'slide':function(e,ui){ $('#qf_review__general__duration').val(ui.value);$('#qf_review__general__duration__prompt').html(''+ui.value+' hrs'); },'range':'min'});		
+            $("#qf_review__general__mscale__slider").slider({'min':0,disabled: true,'max':9,'step':1,'value':<?php echo $review['Review']['eff_scale'];?>,'slide':function(e,ui){ $('#qf_review__general__mscale').val(ui.value);var vals = ['','Extremely Active','Very Active','Active','Bit Active','Balanced','Bit Sedated','Sedated','Very Sedated','Extemely Sedated'];$('#qf_review__general__mscale__prompt').html(vals[Math.ceil( ((ui.value+1-1)/(9+1-1))*vals.length )-1]); },'range':'min'});		
+			$("#qf_review__general__strength__slider").slider({'min':0,'max':5,disabled: true,'step':1,'value':<?php echo $review['Review']['eff_strength'];?>,'slide':function(e,ui){ $('#qf_review__general__strength').val(ui.value);$('#qf_review__general__strength__prompt').html(''+ui.value+'/5'); },'range':'min'});		
+			$("#qf_review__general__duration__slider").slider({'min':0,'max':5,'step':1,disabled: true,'value':<?php echo $review['Review']['eff_duration'];?>,'slide':function(e,ui){ $('#qf_review__general__duration').val(ui.value);$('#qf_review__general__duration__prompt').html(''+ui.value+' hrs'); },'range':'min'});		
 			$("#qf_review__aesthetics__hairs__slider").slider({'min':1,'max':5,'step':1,disabled: true,'value':<?php echo $review['Review']['eff_scale'];?>,'slide':function(e,ui){ $('#qf_review__aesthetics__hairs').val(ui.value);$('#qf_review__aesthetics__hairs__prompt').html(''+ui.value+'/5'); },'range':'min'});		
 			$("#qf_review__aesthetics__crystals__slider").slider({'min':1,'max':5,'step':1,disabled: true,'value':<?php echo $review['Review']['eff_scale'];?>,'slide':function(e,ui){ $('#qf_review__aesthetics__crystals').val(ui.value);$('#qf_review__aesthetics__crystals__prompt').html(''+ui.value+'/5'); },'range':'min'});		
 			//$("#qf_review__other__overall__slider").slider({'min':1,'max':5,'step':1,'value':1,'slide':function(e,ui){ $('#qf_review__other__overall').val(ui.value);$('#qf_review__other__overall__prompt').html(''+ui.value+'/5'); },'range':'min'});			
