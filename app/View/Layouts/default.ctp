@@ -86,18 +86,18 @@
 					<ul class="sf-menu header_right">
 			
 
-					<li class="current_page_item"><a href="<?php echo $this->webroot;?>" accesskey="1" title="">Home</a></li>
-					<li><a href="<?php echo $this->webroot?>strains/all" accesskey="2" title="">Strains</a></li>
-					<li><a href="<?php echo $this->webroot;?>pages/about" accesskey="3" title="">About</a></li>
-					<li><a href="<?php echo $this->webroot;?>pages/contact_us" accesskey="4" title="">Contact Us</a></li>
+					<li class="<?php if($this->params['controller']=='pages' && $this->params['action']=='index'){?>current_page_item<?php }?>"><a href="<?php echo $this->webroot;?>" accesskey="1" title="">Home</a></li>
+					<li class="<?php if($this->params['controller']=='strains' || $this->params['controller']=='review'){?>current_page_item<?php }?>"><a href="<?php echo $this->webroot?>strains/all" accesskey="2" title="">Strains</a></li>
+					<li class="<?php if($this->params['controller']=='pages' && $this->params['action']=='about'){?>current_page_item<?php }?>"><a href="<?php echo $this->webroot;?>pages/about" accesskey="3" title="">About</a></li>
+					<li class="<?php if($this->params['controller']=='pages' && $this->params['action']=='contact'){?>current_page_item<?php }?>"><a href="<?php echo $this->webroot;?>pages/contact_us" accesskey="4" title="">Contact Us</a></li>
 					<?php if(!$this->Session->read('User')){?>
-					<li><a href="<?php echo $this->webroot;?>users/register" accesskey="4" title="">Login / Register</a></li>
+					<li class="<?php if($this->params['controller']=='users'){?>current_page_item<?php }?>"><a href="<?php echo $this->webroot;?>users/register" accesskey="4" title="">Login / Register</a></li>
 					<?php }else{?>
-					<li class="submenu<?php echo (isset($_GET['page'])&& ($_GET["page"]=="" || $_GET["page"]=="home") ? " selected" : ""); ?>">
+					<li class="<?php if($this->params['controller']=='users'){?>current_page_item<?php }?> submenu<?php echo (isset($_GET['page'])&& ($_GET["page"]=="" || $_GET["page"]=="home") ? " selected" : ""); ?>">
                         <a href="<?php echo $this->webroot;?>users/dashboard" accesskey="4" title=""><?=ucfirst($this->Session->read('User.username'))?></a>
 						<ul>
                             <li<?php echo (isset($_GET['page'])&&$_GET["page"]=="home" ? " class='selected'" : ""); ?>>
-                            <a href="<?php echo $this->webroot;?>users/logout" accesskey="5" title="">Logout</a>
+                            <a style="color: #888!important;" class="darkmenu" href="<?php echo $this->webroot;?>users/logout" accesskey="5" title="">Logout</a>
 							</li>
 
 						</ul>

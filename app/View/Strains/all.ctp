@@ -207,10 +207,10 @@ $symptoms = array();
             }       
     });
     if(val){
-        val = val+'&key=';
+        val = val+'&key=<?php if(isset($_GET['key']))echo $_GET['key'];?>';
         }
         else
-        val = 'key=';
+        val = 'key=<?php if(isset($_GET['key']))echo $_GET['key'];?>';
         $('.eff1c').each(function(){
             
         //alert('test');
@@ -293,10 +293,10 @@ if($(this).attr('class').replace('searchact2','')==$(this).attr('class'))
             }       
     });
     if(val){
-        val = val+'&key=';
+        val = val+'&key=<?php if(isset($_GET['key']))echo $_GET['key'];?>';
         }
         else
-        val = 'key=';
+        val = 'key=<?php if(isset($_GET['key']))echo $_GET['key'];?>';
         
         $('.eff1c').each(function(){
             
@@ -374,10 +374,10 @@ if($(this).attr('class').replace('searchact2','')==$(this).attr('class'))
             }       
     });
     if(val){
-        val = val+'&key=';
+        val = val+'&key=<?php if(isset($_GET['key']))echo $_GET['key'];?>';
         }
         else
-        val = 'key=';
+        val = 'key=<?php if(isset($_GET['key']))echo $_GET['key'];?>';
         
          
         $('.eff1c').each(function(){
@@ -466,10 +466,10 @@ if($(this).attr('class').replace('searchact2','')==$(this).attr('class'))
             }       
     });
     if(val){
-        val = val+'&key=';
+        val = val+'&key=<?php if(isset($_GET['key']))echo $_GET['key'];?>';
         }
         else
-        val = 'key=';
+        val = 'key=<?php if(isset($_GET['key']))echo $_GET['key'];?>';
         if(sort)
         {
             val = val+'&sort='+id+'&order='+sort;

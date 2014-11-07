@@ -34,7 +34,7 @@ em{letter-spacing:2px;font-style: normal;}
 $strain_hexagon = $strain;
 include('combine/hexagon.php');?>
 <div style="float:left;width:500px;">
-<h1 class="page_title" ><?php echo $strain['Strain']['name'];?> Marijuana Strain Report</h1>
+<h1 class="" ><?php echo $strain['Strain']['name'];?> Marijuana Strain Report</h1>
 <p>
 <?php
 switch ($strain['Strain']['type_id']) {

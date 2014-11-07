@@ -49,7 +49,7 @@ Night Time Use
 Day Time Use
 </div>
 </li>
-<li class="column" style="width:30%;">
+<li class="column" style="width:31%;margin-left: 20px">
 <div style="float:left;margin-right:10px;">
 <img src="<?php echo $this->webroot;?>images/HybridIcon.png" alt="">
 </div>

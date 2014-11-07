@@ -273,15 +273,17 @@ class StrainsController extends AppController{
         $symptoms = $_GET['symptoms'];
         else
         $symptoms = array();
-        if(isset($_GET['sort']) &&($_GET['sort']=='indica' || $_GET['sort']=='sativa' || $_GET['sort']=='hybrid') )
+        $test_sort = $_GET['sort'];
+        if(isset($_GET['sort']) && ($_GET['sort']=='indica' || $_GET['sort']=='sativa' || $_GET['sort']=='hybrid') )
         {
             $s_arr = array('indica'=>1,'sativa'=>2,'hybrid'=>3);
             $condition = 'Strain.type_id = '.$s_arr[$_GET['sort']];
             $_GET['sort'] = 'alpha';
+            
         }
         if($effects)
         {
-            if(isset($_GET['sort']) &&($_GET['sort']=='indica' || $_GET['sort']=='sativa' || $_GET['sort']=='hybrid') )
+            if(isset($_GET['sort']) &&($test_sort=='indica' || $test_sort=='sativa' || $test_sort=='hybrid') )
             $condition = $condition.' AND ';
             $i=0;
             foreach($effects as $e)
@@ -311,7 +313,7 @@ class StrainsController extends AppController{
                 if($i==1){
                     if($effects)
                 $condition = $condition.' AND ';
-                if(isset($_GET['sort']) &&($_GET['sort']=='indica' || $_GET['sort']=='sativa' || $_GET['sort']=='hybrid') ){
+                if(isset($_GET['sort']) &&($test_sort=='indica' || $test_sort=='sativa' || $test_sort=='hybrid') ){
                 if(!$effects)    
                 $condition = $condition.' AND ';
                 }
@@ -327,7 +329,7 @@ class StrainsController extends AppController{
             $condition = $condition.')GROUP BY review_id
                                     HAVING COUNT( symptom_id ) ='.count($symptoms).'))';
         }
-        if(isset($_GET['sort']) && ($_GET['sort']!='indica' && $_GET['sort']!='sativa' && $_GET['sort']!='hybrid'))
+        if(isset($_GET['sort']) && ($test_sort!='indica' && $test_sort!='sativa' && $test_sort!='hybrid'))
         {
             $sort = $_GET['sort'];
             if($sort == 'recent')
