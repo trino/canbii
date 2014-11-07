@@ -237,12 +237,12 @@ $length = 20*$rate;;
 <?php
 foreach($strain['OverallSymptomRating'] as $oer)
 {
-$arrs[] = $oer['rate'].'_'.$oer['symptom_id'];
+    $arrs[] = $oer['rate'].'_'.$oer['symptom_id'];
 }
 if(isset($arrs))
-rsort($arrs);
+    rsort($arrs);
 else
-$arrs = array();
+    $arrs = array();
 $i=0;
 foreach($arrs as $e)
 {
@@ -273,96 +273,79 @@ $length = 20*$rate;;
 
 					</li>
 				</ul>
-
-
-
-
-
-
-
-
-
-
-
-
 <ul class="columns full_width page_margin_top clearfix">
-					<li class="column_left">
+    <li class="column_left">
+        <div class="">
+            <h3>Negative Effects:</h3>
+            <br>
+            <?php
+            if(isset($arr_neg))
+                rsort($arr_neg);
+            else
+                $arr_neg = array();
+            $i=0;
+            
+            foreach($arr_neg as $e)
+            {
+                $ar=explode('_',$e);
+                $i++;
+                if($i==6)
+                break;
+                $rate = $ar[0];
+                $length = 20*$rate;
+                ?>
+                <div class="eff">
+                <div class="label left"><?php echo $this->requestAction('/strains/getEffect/'.$ar[1]);?></div>
+                <div class="left ratewrap"><img src="<?php echo $this->webroot;?>Capture.PNG" style="width: <?php echo $length;?>%;height:25px;position: absolute; text-align: center;left:0;" /><em><?php echo $rate;?>/5</em></div>
+                <div class="clear"></div>
+                </div>
+                <?php
+            }
+            ?>
+        </div>
+    
+    
+    </li>
+    <li class="column_right">
 
-
-<div class="">
-<h3>Negative Effects:</h3>
-<br>
-<?php
-if(isset($arr_neg))
-rsort($arr_neg);
-else
-$arr_neg = array();
-$i=0;
-
-foreach($arr_neg as $e)
-{
-$ar=explode('_',$e);
-$i++;
-if($i==6)
-break;
-$rate = $ar[0];
-$length = 20*$rate;
-?>
-<div class="eff">
-<div class="label left"><?php echo $this->requestAction('/strains/getEffect/'.$ar[1]);?></div>
-<div class="left ratewrap"><img src="<?php echo $this->webroot;?>Capture.PNG" style="width: <?php echo $length;?>%;height:25px;position: absolute; text-align: center;left:0;" /><em><?php echo $rate;?>/5</em></div>
-<div class="clear"></div>
-</div>
-<?php
-}
-?>
-</div>
-
-
-					</li>
-					<li class="column_right">
-
-<div  class="">
-
-<h3>Effect Ratings:</h3>
-<br>
-
-
-
-<?php
-$count = count($strain['Review']);
-if($count){
-$scale = 0;
-$strength = 0;
-$duration = 0;
-foreach($strain['Review'] as $r)
-{
-$scale = $scale+$r['eff_scale'];
-$strength = $strength+$r['eff_strength'];
-$duration = $duration+$r['eff_duration'];
-}
-$scale = ($scale/$count)*20;
-$strength = ($strength/$count)*20;
-$duration = ($duration/$count)*20;
-?>
-<div class="eff">
-<div class="label left">Sedative</div><div class="left ratewrap"><img src="<?php echo $this->webroot;?>Capture.PNG" style="width: <?php echo round($scale,2);?>%;height:25px;position: absolute;left:0;" /><em><?php echo round($scale/20,2);?>/5</em></div><div class="clear"></div>
-</div>
-<div class="eff">
-<div class="label left">Strength</div><div class="left ratewrap" style="width: 63%;background:#FFF;"><img src="<?php echo $this->webroot;?>Capture.PNG" style="width: <?php echo round($strength,2);?>%;height:25px;position: absolute;left:0;" /><em><?php echo round($strength/20,2);?>/5</em></div><div class="clear"></div>
-</div>
-<div class="eff">
-<div class="label left">Duration</div><div class="left ratewrap" style="width: 63%;background:#FFF;"><img src="<?php echo $this->webroot;?>Capture.PNG" style="width: <?php echo round($duration,2);?>%;height:25px;position: absolute;left:0;" /><em><?php echo round($duration/20,2);?>/5</em></div><div class="clear"></div>
-</div>        
-
-<?php
-}
-?>
-
-</div>
-
-					</li>
-				</ul>
+        <div  class="">
+        
+        <h3>Effect Ratings:</h3>
+        <br/>
+        <?php
+        $count = count($strain['Review']);
+        if($count){
+        $scale = 0;
+        $strength = 0;
+        $duration = 0;
+        foreach($strain['Review'] as $r)
+        {
+        $scale = $scale+$r['eff_scale'];
+        $strength = $strength+$r['eff_strength'];
+        $duration = $duration+$r['eff_duration'];
+        }
+        $scale = ($scale/$count)*20;
+        $strength = ($strength/$count)*20;
+        $duration = ($duration/$count)*20;
+        ?>
+        <div class="eff">
+        <div class="label left">Sedative</div><div class="left ratewrap"><img src="<?php echo $this->webroot;?>Capture.PNG" style="width: <?php echo round($scale,2);?>%;height:25px;position: absolute;left:0;" /><em><?php echo round($scale/20,2);?>/5</em></div><div class="clear"></div>
+        </div>
+        <div class="eff">
+        <div class="label left">Strength</div><div class="left ratewrap" style="width: 63%;background:#FFF;"><img src="<?php echo $this->webroot;?>Capture.PNG" style="width: <?php echo round($strength,2);?>%;height:25px;position: absolute;left:0;" /><em><?php echo round($strength/20,2);?>/5</em></div><div class="clear"></div>
+        </div>
+        <div class="eff">
+        <div class="label left">Duration</div><div class="left ratewrap" style="width: 63%;background:#FFF;"><img src="<?php echo $this->webroot;?>Capture.PNG" style="width: <?php echo round($duration,2);?>%;height:25px;position: absolute;left:0;" /><em><?php echo round($duration/20,2);?>/5</em></div><div class="clear"></div>
+        </div>        
+        
+        <?php
+        }
+        ?>
+        
+        </div>
+        
+    </li>
+</ul>
 
 
 
@@ -399,11 +382,20 @@ $(".fancybox").fancybox();
 
 
 
-<div class="print">
-    <center><a class="blue more" href="javascript:void(0)" onclick="window.print();">Print Report</a> <a href="#" class="blue more">Invite your friend</a> <a href="#" class="blue more">Share on Social Media</a></center>
+<div class="print noprint">
+    <center><a class="blue more" href="javascript:void(0)" onclick="window.print();">Print Report</a> <a href="javascript:void(0)" class="blue more" onclick="$('.invite').toggle();">Invite your friend</a> <a href="#" class="blue more">Share on Social Media</a></center>
 </div>
 
-
+<div class="invite noprint" style="display: none; margin-top:10px">
+    <center>
+        <form action="<?php echo $this->webroot;?>pages/send_email" method="post">
+            <input type="hidden" name="slug" value="<?php echo $strain['Strain']['slug'];?>" />
+            <label for="email">Email Address (Use ',' for multiple recipents)</label><br />
+            <textarea name="email" id="email"></textarea><br />
+            <input type="submit" name="send" value="Send" />
+        </form>
+    </center>
+</div>
 
 </div>
 

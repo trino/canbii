@@ -44,6 +44,22 @@ class StrainsController extends AppController{
         
         
     }
+    function download($slug = null) {
+        // Include Component
+        App::import('Component', 'Pdf');
+        // Make instance
+        $Pdf = new PdfComponent();
+        // Invoice name (output name)
+        $Pdf->filename = 'your_invoice'; // Without .pdf
+        // You can use download or browser here
+        $Pdf->output = 'download';
+        $Pdf->init();
+        // Render the view
+        $Pdf->process(Router::url('/', true) . 'strains/index/'. $slug);
+        die();
+        $this->render(false);
+    } 
+    	
     function getFlavor($id)
     {
         $this->loadModel('Flavor');
