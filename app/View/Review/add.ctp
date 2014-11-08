@@ -461,7 +461,7 @@ else
 {
     ?>
     <div class="clearfix"></div>
-    <div class="vote" style="margin-top:50px;">
+    <div class="vote" style="position:fixed;bottom: 0;right:0;background:#e5e5e5;padding:20px;z-index:100000">
         <?php
             $ip = $_SERVER['REMOTE_ADDR'];
                 $rand1 = rand(100,999);
