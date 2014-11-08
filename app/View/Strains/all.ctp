@@ -89,7 +89,11 @@ $symptoms = array();
 	<a href="javascript:void(0)" class="eff1" id="alpha">
 	Alphabetically</a>
 	</li>
-    
+    <div class="clearfix"></div>
+  </ul>
+  <br />
+  <ul class="tabs_navigation2">  
+  <li style=""><p>Filter By:</p></li>
     <li>
 	<a href="javascript:void(0)" class="eff1" id="indica">
 	Indica</a>
@@ -104,6 +108,7 @@ $symptoms = array();
 	<a href="javascript:void(0)" class="eff1" id="hybrid">
 	Hybrid</a>
 	</li>
+    <div class="clearfix"></div>
 </ul>
 
 	<!-- page left --> 
@@ -421,7 +426,6 @@ if($(this).attr('class').replace('searchact2','')==$(this).attr('class'))
            $(this).removeClass('searchact');  
         });
         $(this).addClass('eff1c');
-        $(this).addClass('searchact');
         var id = $(this).attr('id');
         var sort = $('.'+id).val();
         if(sort == 'ASC')
@@ -434,6 +438,9 @@ if($(this).attr('class').replace('searchact2','')==$(this).attr('class'))
             sort = 'ASC';
             $('.'+id).val('ASC');
         }
+        if((id != 'indica' && id != 'sativa' && id!= 'hybrid') || sort == 'ASC')
+        $(this).addClass('searchact');
+        
         
         
 
@@ -472,6 +479,7 @@ if($(this).attr('class').replace('searchact2','')==$(this).attr('class'))
         val = 'key=<?php if(isset($_GET['key']))echo $_GET['key'];?>';
         if(sort)
         {
+            if((id != 'indica' && id != 'sativa' && id!= 'hybrid') || sort == 'ASC')
             val = val+'&sort='+id+'&order='+sort;
         }
 

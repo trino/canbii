@@ -89,7 +89,7 @@
 					<li class="<?php if($this->params['controller']=='pages' && $this->params['action']=='index'){?>current_page_item<?php }?>"><a href="<?php echo $this->webroot;?>" accesskey="1" title="">Home</a></li>
 					<li class="<?php if($this->params['controller']=='strains' || $this->params['controller']=='review'){?>current_page_item<?php }?>"><a href="<?php echo $this->webroot?>strains/all" accesskey="2" title="">Strains</a></li>
 					<li class="<?php if($this->params['controller']=='pages' && $this->params['action']=='about'){?>current_page_item<?php }?>"><a href="<?php echo $this->webroot;?>pages/about" accesskey="3" title="">About</a></li>
-					<li class="<?php if($this->params['controller']=='pages' && $this->params['action']=='contact'){?>current_page_item<?php }?>"><a href="<?php echo $this->webroot;?>pages/contact_us" accesskey="4" title="">Contact Us</a></li>
+					<li class="<?php if($this->params['controller']=='pages' && $this->params['action']=='contact_us'){?>current_page_item<?php }?>"><a href="<?php echo $this->webroot;?>pages/contact_us" accesskey="4" title="">Contact Us</a></li>
 					<?php if(!$this->Session->read('User')){?>
 					<li class="<?php if($this->params['controller']=='users'){?>current_page_item<?php }?>"><a href="<?php echo $this->webroot;?>users/register" accesskey="4" title="">Login / Register</a></li>
 					<?php }else{?>
