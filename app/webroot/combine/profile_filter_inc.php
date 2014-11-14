@@ -122,6 +122,7 @@ if(!isset($country))
    ?>
    <label>Weight</label>
    <select name="weight">
+        <option value="">Select Weight</option>
     <?php
     for($i=100;$i<=300;$i=$i+10)
     {
@@ -136,6 +137,7 @@ if(!isset($country))
    
    <label>Years of Expereince</label>
    <select  name="years_of_experience" >
+        <option value="">Select Years of Experience</option>
    <?php for($i = 1; $i<=50; $i++)
    {
 		if($i ==$exp)

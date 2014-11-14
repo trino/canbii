@@ -278,7 +278,78 @@ class StrainsController extends AppController{
         $symptoms = $_GET['symptoms'];
         else
         $symptoms = array();
+        if(isset($_GET['sort']))
         $test_sort = $_GET['sort'];
+        else
+        $test_sort = '';
+        
+        $u_cond = '';
+        if(isset($_GET['nationality']))
+        {
+            $u_cond = 'nationality = "'.$_GET['nationality'].'"';
+        }
+        if(isset($_GET['country']))
+        {
+            if(!$u_cond)
+            $u_cond = 'country = "'.$_GET['country'].'"';
+            else
+            $u_cond = $u_cond.' AND country = "'.$_GET['country'].'"';
+        }
+        if(isset($_GET['gender']))
+        {
+            if(!$u_cond)
+            $u_cond = 'gender = "'.$_GET['gender'].'"';
+            else
+            $u_cond = $u_cond.' AND gender = "'.$_GET['gender'].'"';
+        }
+        if(isset($_GET['age_group']))
+        {
+            if(!$u_cond)
+            $u_cond = 'age_group = "'.$_GET['age_group'].'"';
+            else
+            $u_cond = $u_cond.' AND age_group = "'.$_GET['age_group'].'"';
+        }
+        if(isset($_GET['health']))
+        {
+            if(!$u_cond)
+            $u_cond = 'health = "'.$_GET['health'].'"';
+            else
+            $u_cond = $u_cond.' AND health = "'.$_GET['health'].'"';
+        }
+        if(isset($_GET['weight']))
+        {
+            if(!$u_cond)
+            $u_cond = 'weight = "'.$_GET['weight'].'"';
+            else
+            $u_cond = $u_cond.' AND weight = "'.$_GET['weight'].'"';
+        }
+        if(isset($_GET['years_of_experience']))
+        {
+            if(!$u_cond)
+            $u_cond = 'years_of_experience = "'.$_GET['years_of_experience'].'"';
+            else
+            $u_cond = $u_cond.' AND years_of_experience = "'.$_GET['years_of_experience'].'"';
+        }
+        if(isset($_GET['frequency']))
+        {
+            if(!$u_cond)
+            $u_cond = 'frequency = "'.$_GET['frequency'].'"';
+            else
+            $u_cond = $u_cond.' AND frequency = "'.$_GET['frequency'].'"';
+        }
+        if(isset($_GET['body_type']))
+        {
+            if(!$u_cond)
+            $u_cond = 'body_type = "'.$_GET['body_type'].'"';
+            else
+            $u_cond = $u_cond.' AND body_type = "'.$_GET['body_type'].'"';
+        }
+        if($u_cond)
+        {
+            $profile_filter = 'SELECT id FROM users WHERE '.$u_cond;
+        }
+        else
+        $profile_filter = '';
         if(isset($_GET['sort']) && ($_GET['sort']=='indica' || $_GET['sort']=='sativa' || $_GET['sort']=='hybrid') )
         {
             $s_arr = array('indica'=>1,'sativa'=>2,'hybrid'=>3);
@@ -303,8 +374,12 @@ class StrainsController extends AppController{
                 else
                 $condition = $condition.','.$e;
             }
+            if($profile_filter)            
             $condition = $condition.')GROUP BY review_id
-                                    HAVING COUNT( effect_id ) ='.count($effects).'))';
+                                    HAVING COUNT( effect_id ) ='.count($effects).') AND user_id IN ('.$profile_filter.'))';
+            else
+            $condition = $condition.')GROUP BY review_id
+                                    HAVING COUNT( effect_id ) ='.count($effects).'))';                                                                        
             
             
         }
@@ -331,8 +406,13 @@ class StrainsController extends AppController{
                 else
                 $condition = $condition.','.$e;
             }
+            if($profile_filter)
+            $condition = $condition.')GROUP BY review_id
+                                    HAVING COUNT( symptom_id ) ='.count($symptoms).') AND user_id IN ('.$profile_filter.'))';
+            else
             $condition = $condition.')GROUP BY review_id
                                     HAVING COUNT( symptom_id ) ='.count($symptoms).'))';
+                                                
         }
         if(isset($_GET['sort']) && ($test_sort!='indica' && $test_sort!='sativa' && $test_sort!='hybrid'))
         {
@@ -368,16 +448,31 @@ class StrainsController extends AppController{
         //var_dump($order);die();
         if($type==''){
         if(!$condition){
-            if(!$order)
+            if(!$order){
+        if(!$profile_filter)                        
         $this->set('strain',$this->Strain->find('all',array('conditions'=>array('name LIKE'=>'%'.$key.'%'),'order'=>'Strain.id DESC','limit'=>$limit,'offset'=>$offset)));
         else
-        $this->set('strain',$this->Strain->find('all',array('conditions'=>array('name LIKE'=>'%'.$key.'%'),'order'=>$order,'limit'=>$limit,'offset'=>$offset)));
-        
-        $this->set('strains',$this->Strain->find('count',array('conditions'=>array('name LIKE'=>'%'.$key.'%'))));
+        $this->set('strain',$this->Strain->find('all',array('conditions'=>array('name LIKE'=>'%'.$key.'%','Strain.id IN (SELECT strain_id FROM reviews WHERE user_id IN ('.$profile_filter.'))'),'order'=>'Strain.id DESC','limit'=>$limit,'offset'=>$offset)));                
         }
         else{
-            if(!$order)
+                        
+        if(!$profile_filter)                
+        $this->set('strain',$this->Strain->find('all',array('conditions'=>array('name LIKE'=>'%'.$key.'%'),'order'=>$order,'limit'=>$limit,'offset'=>$offset)));
+        else
+        $this->set('strain',$this->Strain->find('all',array('conditions'=>array('name LIKE'=>'%'.$key.'%','Strain.id IN (SELECT strain_id FROM reviews WHERE user_id IN ('.$profile_filter.'))'),'order'=>$order,'limit'=>$limit,'offset'=>$offset)));                
+        }
+        if(!$profile_filter)
+        $this->set('strains',$this->Strain->find('count',array('conditions'=>array('name LIKE'=>'%'.$key.'%'))));
+        else
+        $this->set('strains',$this->Strain->find('count',array('conditions'=>array('name LIKE'=>'%'.$key.'%','Strain.id IN (SELECT strain_id FROM reviews WHERE user_id IN ('.$profile_filter.'))'))));
+        }
+        else{
+            if(!$order){
+        if(!$profile_filter)                
         $this->set('strain',$this->Strain->find('all',array('conditions'=>array('name LIKE'=>'%'.$key.'%',$condition),'order'=>'Strain.id DESC','limit'=>$limit,'offset'=>$offset)));
+        else
+        $this->set('strain',$this->Strain->find('all',array('conditions'=>array('name LIKE'=>'%'.$key.'%',$condition),'order'=>'Strain.id DESC','limit'=>$limit,'offset'=>$offset)));
+        }
         else
         $this->set('strain',$this->Strain->find('all',array('conditions'=>array('name LIKE'=>'%'.$key.'%',$condition),'order'=>$order,'limit'=>$limit,'offset'=>$offset)));
         
@@ -389,18 +484,18 @@ class StrainsController extends AppController{
         $arr=array('indica'=>1,'sativa'=>2,'hybrid'=>3);            
         if(!$condition){
             if(!$order)
-        $this->set('strain',$this->Strain->find('all',array('conditions'=>array('type_id'=>$arr[$type],'name LIKE'=>'%'.$key.'%'),'order'=>'Strain.id DESC','limit'=>$limit,'offset'=>$offset)));
+        $this->set('strain',$this->Strain->find('all',array('conditions'=>array('type_id'=>$arr[$type],'name LIKE'=>'%'.$key.'%','Strain.id IN (SELECT strain_id FROM reviews WHERE user_id IN ('.$profile_filter.'))'),'order'=>'Strain.id DESC','limit'=>$limit,'offset'=>$offset)));
         else
-        $this->set('strain',$this->Strain->find('all',array('conditions'=>array('type_id'=>$arr[$type],'name LIKE'=>'%'.$key.'%'),'order'=>$order,'limit'=>$limit,'offset'=>$offset)));
+        $this->set('strain',$this->Strain->find('all',array('conditions'=>array('type_id'=>$arr[$type],'name LIKE'=>'%'.$key.'%','Strain.id IN (SELECT strain_id FROM reviews WHERE user_id IN ('.$profile_filter.'))'),'order'=>$order,'limit'=>$limit,'offset'=>$offset)));
         
-        $this->set('strains',$this->Strain->find('all',array('conditions'=>array('type_id'=>$arr[$type],'name LIKE'=>'%'.$key.'%'))));
+        $this->set('strains',$this->Strain->find('count',array('conditions'=>array('type_id'=>$arr[$type],'name LIKE'=>'%'.$key.'%','Strain.id IN (SELECT strain_id FROM reviews WHERE user_id IN ('.$profile_filter.'))'))));
         }
         else{
             if(!$order)
         $this->set('strain',$this->Strain->find('all',array('conditions'=>array('type_id'=>$arr[$type],'name LIKE'=>'%'.$key.'%',$condition),'order'=>'Strain.id DESC','limit'=>$limit,'offset'=>$offset)));
         else
         $this->set('strain',$this->Strain->find('all',array('conditions'=>array('type_id'=>$arr[$type],'name LIKE'=>'%'.$key.'%',$condition),'order'=>$order,'limit'=>$limit,'offset'=>$offset)));
-        $this->set('strain',$this->Strain->find('all',array('conditions'=>array('type_id'=>$arr[$type],'name LIKE'=>'%'.$key.'%',$condition))));
+        $this->set('strains',$this->Strain->find('count',array('conditions'=>array('type_id'=>$arr[$type],'name LIKE'=>'%'.$key.'%',$condition))));
         }    
         }
 		

@@ -186,8 +186,101 @@ $symptoms = array();
 <script>
     var more='<?php echo $limit?>';    
     var spinnerVisible = false;
-    
+    var val='';
     $(function(){
+        
+    var profile='';
+    $('.hidden_filter select').change(function(){
+        profile = '';
+        $('.hidden_filter select').each(function(){
+        
+        
+        var value = $(this).val();
+        
+        if(value){
+        var field = $(this).attr('name');            
+        if(!profile)            
+        profile = field+'='+value;
+        else
+        profile = profile+'&'+field+'='+value;
+        //alert(profile);
+        
+        }
+        
+        });
+        if (!spinnerVisible) {
+        $("div#spinner").fadeIn("fast");
+        spinnerVisible = true;
+    }
+        var i=0;
+        
+       $('.effs').each(function(){
+        if($(this).val()){
+        i++;
+        if(i==1)
+            val = 'effects[]='+$(this).val();
+        else
+            val = val+'&effects[]='+$(this).val();
+            }
+            
+                
+       });
+       $('.symp .symps').each(function(){
+        
+        if($(this).val()){
+        i++;
+        if(i==1)
+            val = 'symptoms[]='+$(this).val();
+        else
+            val = val+'&symptoms[]='+$(this).val();  
+            }       
+    });
+    if(val){
+        val = val+'&key=<?php if(isset($_GET['key']))echo $_GET['key'];?>';
+        }
+        else
+        val = 'key=<?php if(isset($_GET['key']))echo $_GET['key'];?>';
+        
+        $('.eff1c').each(function(){
+            
+        //alert('test');
+        var id = $(this).attr('id');
+        var sort = $('.'+id).val();
+        if(sort == 'DESC')
+        {
+            sort = 'DESC';
+            //$('.'+id).val('DESC');
+        }
+        else
+        {
+            sort = 'ASC';
+           // $('.'+id).val('ASC');
+        }
+        val = val+'&sort='+id+'&order='+sort;
+        });
+        if(profile && val)
+        val = val+'&'+profile;
+        else
+        val = profile;
+        $.ajax({
+           url:'<?php echo $this->webroot;?>strains/filter/0<?php if($type)echo '/'.$type?>',
+           data:val,
+           type:'get',
+           success:function(res){
+             if (spinnerVisible) {
+        var spinner = $("div#spinner");
+        spinner.stop();
+        spinner.fadeOut("fast");
+        spinnerVisible = false;
+    }
+            $('.listing').html(res);
+           } 
+        });
+        val='';
+        
+    });    
+        
+        
     var sort='';    
     $('.loadmore a').live('click',function(){
         more=parseFloat(more)+8;
@@ -217,6 +310,7 @@ $symptoms = array();
         }
         else
         val = 'key=<?php if(isset($_GET['key']))echo $_GET['key'];?>';
+        
         $('.eff1c').each(function(){
             
         //alert('test');
@@ -234,7 +328,8 @@ $symptoms = array();
         }
         val = val+'&sort='+id+'&order='+sort;
         });
-        
+        if(profile)
+        val = val+'&'+profile;
         $.ajax({
            url:'<?php echo $this->webroot;?>strains/filter/'+more+'<?php if($type)echo '/'.$type?>',
            data:val,
@@ -254,7 +349,10 @@ $symptoms = array();
            } 
         });
     });
+    
+    
     $('.sym2').click(function(){
+        //alert(profile);
         
         //var sort =0;
         more=0;
@@ -321,7 +419,8 @@ if($(this).attr('class').replace('searchact2','')==$(this).attr('class'))
         }
         val = val+'&sort='+id+'&order='+sort;
         });
-        
+        if(profile)
+        val = val+'&'+profile;
         $.ajax({
            url:'<?php echo $this->webroot;?>strains/filter/0<?php if($type)echo '/'.$type?>',
            data:val,
@@ -403,6 +502,8 @@ if($(this).attr('class').replace('searchact2','')==$(this).attr('class'))
         }
         val = val+'&sort='+id+'&order='+sort;
         });
+        if(profile)
+        val = val+'&'+profile;
         $.ajax({
            url:'<?php echo $this->webroot;?>strains/filter<?php if($type)echo '/0/'.$type?>',
            data:val,
@@ -483,7 +584,8 @@ if($(this).attr('class').replace('searchact2','')==$(this).attr('class'))
             if((id != 'indica' && id != 'sativa' && id!= 'hybrid') || sort == 'ASC')
             val = val+'&sort='+id+'&order='+sort;
         }
-
+        if(profile)
+        val = val+'&'+profile;
         $.ajax({
            url:'<?php echo $this->webroot;?>strains/filter<?php if($type)echo '/0/'.$type?>',
            data:val,
