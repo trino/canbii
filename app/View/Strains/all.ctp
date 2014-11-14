@@ -110,6 +110,7 @@ $symptoms = array();
 	</li>
     <div class="clearfix"></div>
 </ul>
+<?php include('combine/profile_filter.php');?>
 
 	<!-- page left --> 
 	

@@ -1814,6 +1814,7 @@ a.social_icon:hover
 {
 	margin-left: 30px;
 }
+.hidden_filter label,
 .comment_form label,
 .contact_form label
 {
@@ -3364,3 +3365,5 @@ width:30%;
  .current_page_item a{color:#FFF!important;font-weight:bold;}
  .submenu a:hover{color: #888!important;}
  .darkmenu{color:#888!important;}
+ .profile_filter{display:block;background:#42B3E5;color:#FFF;padding:10px;margin-bottom:10px;width:290px;font-weight:bold;text-align:center;}
+ .filters{padding:10px;border:1px solid #e5e5e5;margin-bottom:10px;}

@@ -42,6 +42,7 @@
 <a href="<?php echo $this->webroot;?>strains/review/<?php echo $strain['Strain']['slug'];?>/helpful">Most Helpful</a>
 	</li>
 </ul>
+<?php include('combine/profile_filter.php');?>
 
 
 		

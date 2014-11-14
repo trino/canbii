@@ -27,6 +27,7 @@ em{letter-spacing:2px;font-style: normal;}
 
 <div class="page_layout page_margin_top clearfix">
 <div class="page_header clearfix">
+<?php include('combine/profile_filter.php');?>
 <div class="page_header_left">
 
 
@@ -52,20 +53,6 @@ switch ($strain['Strain']['type_id']) {
 </p>
 </div>
 
-
-<!--ul class="bread_crumb">
-<li>
-<a href="?page=home" title="Home">
-Home
-</a>
-</li>
-<li class="separator icon_small_arrow right_gray">
-&nbsp;
-</li>
-<li>
-<?php echo $strain['Strain']['name'];?> Medical Report
-</li>
-</ul-->
 </div>
 <div class="page_header_right noprint">
 
