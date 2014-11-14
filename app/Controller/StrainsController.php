@@ -5,6 +5,8 @@ class StrainsController extends AppController{
       public $helpers = array('Js');
     function index($slug)
     {
+        $this->loadModel('Country');
+        $this->set('countries',$this->Country->find('all'));
         $this->loadModel('OverallFlavorRating');
         $this->loadModel('Review');
         $this->loadModel('FlavorRating');
@@ -127,6 +129,8 @@ class StrainsController extends AppController{
     }
     function all($type='',$limit=0)
     {
+        $this->loadModel('Country');
+        $this->set('countries',$this->Country->find('all'));
         $this->set('type',$type);
         $this->set('limit',$limit);
         if($limit){
@@ -246,7 +250,8 @@ class StrainsController extends AppController{
     
     
     function filter($limit=0,$type=''){
-        
+        $this->loadModel('Country');
+        $this->set('countries',$this->Country->find('all'));
         $this->set('limit',$limit);
         $this->set('type',$type);
         if($limit){
@@ -403,6 +408,8 @@ class StrainsController extends AppController{
     function review($slug,$sort=null,$limit=0)
     {
         $this->loadModel('Review');
+        $this->loadModel('Country');
+        $this->set('countries',$this->Country->find('all'));
         $this->set('limit',$limit);
         $this->set('slug',$slug);
         

@@ -31,6 +31,14 @@ if(!isset($body_type))
 {
     $body_type = '';
 }
+if(!isset($card_id))
+{
+    $card_id = '';
+}
+if(!isset($country))
+{
+    $country = '';
+}
 ?>
 <div class="columns clearfix no_width page_margin_top hidden_filter" <?php if($this->params['action']!='dashboard'){?>style="display:none;width:70%;marging-bottom:15px;"<?php }?>>
 <ul class="column_left">
@@ -44,6 +52,20 @@ if(!isset($body_type))
 		<option value="black"<?php if($nationality=='black')echo "selected='selected'";?>>Black</option>
 		<option value="hispanic"<?php if($nationality=='hispanic')echo "selected='selected'";?>>Hispanic</option>
 		<option value="mid_east"<?php if($nationality=='mid_east')echo "selected='selected'";?>>Middle Eastern</option>
+   </select><br />
+   
+   <label>Country</label>
+   <select name="country"> 
+		<option style="padding-top: 20px; padding-bottom:20px" value="">Select Country</option>
+        <?php
+        foreach($countries as $cou)
+        {
+            ?>
+            <option value="<?php echo $cou['Country']['countryName'];?>" <?php if($country==$cou['Country']['countryName'])echo "selected='selected'";?>><?php echo $cou['Country']['countryName'];?></option>
+            <?php
+        }
+        ?>
+		
    </select><br />
    
    
@@ -82,7 +104,22 @@ if(!isset($body_type))
 </ul>
 <ul class="column_right">
 
-   
+   <?php
+   if($this->params['action']=='dashboard')
+   {
+    ?>
+   <label>Patient card ID</label>
+   <input type="text" name="card_id" value="<?php echo $card_id;?>" />
+   <?php
+   }
+   else
+   {
+    ?>
+    <label>Patient with card</label>
+    <input type="checkbox" class="card_id" value="1" />
+    <?php
+   }
+   ?>
    <label>Weight</label>
    <select name="weight">
     <?php

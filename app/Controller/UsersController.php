@@ -80,6 +80,8 @@ class UsersController extends AppController {
     
     public function dashboard()
     {
+        $this->loadModel('Country');
+        $this->set('countries',$this->Country->find('all'));
         $this->set('title_for_layout','User Dashboard');
         if(!$this->Session->read('User'))
             $this->redirect('register');

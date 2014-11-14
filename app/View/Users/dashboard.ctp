@@ -10,6 +10,8 @@
         $frequency = $user['User']['frequency'];
         $body_type = $user['User']['body_type'];
         $symptoms = $user['User']['symptoms'];
+        $card_id = $user['User']['card_id'];
+        $country = $user['User']['country'];
     }
     else
     {
@@ -22,6 +24,8 @@
         $frequency = "";
         $body_type = "";
         $symptoms = "";
+        $card_id = "";
+        $country = "";
     }
 ?>
 
