@@ -17,10 +17,98 @@ class StrainsController extends AppController{
         $this->set('description',$q['Strain']['description']);
         $this->set('keyword',$q['Strain']['name'].' , Canbii , Medical , Marijuana , Medical Marijuana');
         
-                
+        
+        
+        
+        
+        $u_cond = '';
+        if(isset($_GET['nationality']))
+        {
+            $u_cond = 'nationality = "'.$_GET['nationality'].'"';
+        }
+        if(isset($_GET['country']))
+        {
+            if(!$u_cond)
+            $u_cond = 'country = "'.$_GET['country'].'"';
+            else
+            $u_cond = $u_cond.' AND country = "'.$_GET['country'].'"';
+        }
+        if(isset($_GET['gender']))
+        {
+            if(!$u_cond)
+            $u_cond = 'gender = "'.$_GET['gender'].'"';
+            else
+            $u_cond = $u_cond.' AND gender = "'.$_GET['gender'].'"';
+        }
+        if(isset($_GET['age_group']))
+        {
+            if(!$u_cond)
+            $u_cond = 'age_group = "'.$_GET['age_group'].'"';
+            else
+            $u_cond = $u_cond.' AND age_group = "'.$_GET['age_group'].'"';
+        }
+        if(isset($_GET['health']))
+        {
+            if(!$u_cond)
+            $u_cond = 'health = "'.$_GET['health'].'"';
+            else
+            $u_cond = $u_cond.' AND health = "'.$_GET['health'].'"';
+        }
+        if(isset($_GET['weight']))
+        {
+            if(!$u_cond)
+            $u_cond = 'weight = "'.$_GET['weight'].'"';
+            else
+            $u_cond = $u_cond.' AND weight = "'.$_GET['weight'].'"';
+        }
+        if(isset($_GET['years_of_experience']))
+        {
+            if(!$u_cond)
+            $u_cond = 'years_of_experience = "'.$_GET['years_of_experience'].'"';
+            else
+            $u_cond = $u_cond.' AND years_of_experience = "'.$_GET['years_of_experience'].'"';
+        }
+        if(isset($_GET['frequency']))
+        {
+            if(!$u_cond)
+            $u_cond = 'frequency = "'.$_GET['frequency'].'"';
+            else
+            $u_cond = $u_cond.' AND frequency = "'.$_GET['frequency'].'"';
+        }
+        if(isset($_GET['body_type']))
+        {
+            if(!$u_cond)
+            $u_cond = 'body_type = "'.$_GET['body_type'].'"';
+            else
+            $u_cond = $u_cond.' AND body_type = "'.$_GET['body_type'].'"';
+        }
+        if($u_cond)
+        {
+            $profile_filter = 'SELECT id FROM users WHERE '.$u_cond;
+        }
+        else
+        $profile_filter = '';
+        
+        
+        
+        
+        
+        if($profile_filter)        
+        $q2 = $this->FlavorRating->find('all',array('conditions'=>array('strain_id'=>$q['Strain']['id'],'user_id IN ('.$profile_filter.')'),'order'=>'COUNT(flavor_id) DESC','group'=>'flavor_id','limit'=>3));
+        else
         $q2 = $this->FlavorRating->find('all',array('conditions'=>array('strain_id'=>$q['Strain']['id']),'order'=>'COUNT(flavor_id) DESC','group'=>'flavor_id','limit'=>3));
+        
+        
+        if($profile_filter)        
+        $q3 = $this->Review->find('first',array('conditions'=>array('strain_id'=>$q['Strain']['id'],'user_id IN ('.$profile_filter.')'),'order'=>'Review.helpful DESC'));
+        else                
         $q3 = $this->Review->find('first',array('conditions'=>array('strain_id'=>$q['Strain']['id']),'order'=>'Review.helpful DESC'));
+        
+        if($profile_filter)
+        $q4 = $this->Review->find('first',array('conditions'=>array('strain_id'=>$q['Strain']['id'],'user_id IN ('.$profile_filter.')'),'order'=>'Review.id DESC'));
+        else
         $q4 = $this->Review->find('first',array('conditions'=>array('strain_id'=>$q['Strain']['id']),'order'=>'Review.id DESC'));
+        
         $this->set('strain',$q);
         $this->set('flavor',$q2);
         $this->set('helpful',$q3);
@@ -40,6 +128,7 @@ class StrainsController extends AppController{
         }
         else
         $this->set('vote',0);
+        $this->set('profile_filter',$profile_filter);
         
                 
         
@@ -248,7 +337,29 @@ class StrainsController extends AppController{
         $this->render('all');
     }
     
-    
+    function getEffectRate($profile_filter,$strain)
+    {
+        //echo urlencode("SELECT id FROM users WHERE nationality='asian'");die();
+        //echo $profile_filter;die();
+        
+        $this->loadModel('Effect_rating');
+        $q = $this->Effect_rating->find('all',array('conditions'=>array('user_id IN ('.$profile_filter.') AND rate <> 0 AND strain_id = '.$strain),'order'=>'effect_id'));
+        return $q;
+    }
+    function getSymptomRate($profile_filter,$strain)
+    {
+        //echo urlencode("SELECT id FROM users WHERE nationality='asian'");die();
+        //echo $profile_filter;die();
+        $this->loadModel('SymptomRating');
+        $q = $this->SymptomRating->find('all',array('conditions'=>array('user_id IN ('.$profile_filter.') AND rate <> 0 AND strain_id = '.$strain),'order'=>'symptom_id'));
+        return $q;
+    }
+    function getEffectReview($profile_filter,$strain)
+    {
+        $this->loadModel('Review');
+        $q = $this->Review->find('all',array('conditions'=>array('user_id IN ('.$profile_filter.') AND strain_id = '.$strain)));
+        return $q;
+    }
     function filter($limit=0,$type=''){
         $this->loadModel('Country');
         $this->set('countries',$this->Country->find('all'));

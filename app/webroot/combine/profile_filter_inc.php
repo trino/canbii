@@ -1,4 +1,5 @@
 <?php
+$arr_filter=array('nationality','gender','age_group','weight','health','exp','frequency','body_type','card_id','country');
 if(!isset($nationality))
 {
     $nationality = '';
@@ -173,4 +174,14 @@ if(!isset($country))
    
 </ul>
 <div class="clearfix"></div>
+<?php
+if($this->params['controller']=='strains' && $this->params['action']=='index')
+{
+    ?>
+    <br />
+    <br />
+    <a class="blue more" href="javascript:void(0)" id="filternow">Filter Now</a>
+    <?php
+}
+?>
 </div>

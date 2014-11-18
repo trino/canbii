@@ -43,6 +43,9 @@
     Router::connect('/strains/review/*', array('controller' => 'strains', 'action' => 'review'));
     Router::connect('/strains/review_filter/*', array('controller' => 'strains', 'action' => 'review_filter'));
     Router::connect('/strains/filter/*', array('controller' => 'strains', 'action' => 'filter'));
+    Router::connect('/strains/getEffectRate/*', array('controller' => 'strains', 'action' => 'getEffectRate'));
+    Router::connect('/strains/getSymptomRate/*', array('controller' => 'strains', 'action' => 'getSymptomRate'));
+    Router::connect('/strains/getEffectReview/*', array('controller' => 'strains', 'action' => 'getEffectReview'));
 	Router::connect('/strains/*', array('controller' => 'strains', 'action' => 'index'));
     Router::connect('/pages/getEff',array('controller'=>'pages', 'action'=>'getEff'));
     Router::connect('/pages/getSym',array('controller'=>'pages', 'action'=>'getSym'));

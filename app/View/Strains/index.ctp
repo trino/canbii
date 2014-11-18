@@ -179,6 +179,15 @@ else
 <br>
 
 <?php
+$p_filter=0;
+foreach($arr_filter as $filterwith)
+{
+    if(isset($_GET[$filterwith]))
+    {
+        $p_filter=1;
+    }
+}
+if(!$p_filter){
 foreach($strain['OverallEffectRating'] as $oer)
 {
 if($this->requestAction('/strains/getPosEff/'.$oer['effect_id']))
@@ -186,7 +195,54 @@ $arr[] = $oer['rate'].'_'.$oer['effect_id'];
 else
 $arr_neg[] = $oer['rate'].'_'.$oer['effect_id'];
 }
-
+}
+else
+{
+    $effect_rate = $this->requestAction('/strains/getEffectRate/'.urlencode($profile_filter).'/'.$strain['Strain']['id']);
+    //var_dump($effect_rate);
+    $cnt=0;
+    $eff_id = 0;
+    $total_rate = 0;
+    foreach($effect_rate as $er)
+    {
+        
+        
+        $cnt++;
+        if($eff_id != $er['Effect_rating']['effect_id'])
+        {
+            
+            
+            if($cnt!=1){
+                $tots = $total_rate;
+            $total_rate = $er['Effect_rating']['rate']; 
+               
+            $avg_rate = $tots/($cnt-1);
+                $cnt=0;
+                if($this->requestAction('/strains/getPosEff/'.$er['Effect_rating']['effect_id']))
+                $arr[] = $avg_rate.'_'.$eff_id;
+                else
+                $arr_neg[] = $avg_rate.'_'.$eff_id;
+                $total_rate=0;
+                }
+                else
+                {
+            $total_rate = $er['Effect_rating']['rate'];
+            }
+             
+        }
+        else
+        {
+            $total_rate = $total_rate+$er['Effect_rating']['rate'];
+        }
+        $eff_id = $er['Effect_rating']['effect_id'];
+        
+        
+         
+    }
+    
+    //die('here');
+}
+//die('there');
 if(isset($arr))
 rsort($arr);
 else
@@ -204,7 +260,7 @@ $length = 20*$rate;;
 ?>
 <div class="eff">
 <div class="label left"><?php echo $this->requestAction('/strains/getEffect/'.$ar[1]);?></div>
-<div class="left ratewrap"><img src="<?php echo $this->webroot;?>Capture.PNG" style="width: <?php echo $length;?>%;height:25px;position: absolute; text-align: center;left:0;" /><em><?php echo $rate;?>/5</em></div>
+<div class="left ratewrap"><img src="<?php echo $this->webroot;?>Capture.PNG" style="width: <?php echo $length;?>%;height:25px;position: absolute; text-align: center;left:0;" /><em><?php echo number_format($rate,2);?>/5</em></div>
 <div class="clear"></div>
 </div>
 <?php
@@ -222,14 +278,62 @@ $length = 20*$rate;;
 
 
 <?php
+if(!$p_filter){
 foreach($strain['OverallSymptomRating'] as $oer)
 {
     $arrs[] = $oer['rate'].'_'.$oer['symptom_id'];
+}
+}
+else
+{
+ $symptom_rate = $this->requestAction('/strains/getSymptomRate/'.urlencode($profile_filter).'/'.$strain['Strain']['id']);
+ //var_dump($symptom_rate);
+ $cnt=0;
+    $eff_id = 0;
+    $total_rate = 0;
+    foreach($symptom_rate as $er)
+    {
+        
+        
+        $cnt++;
+        if($eff_id != $er['SymptomRating']['symptom_id'])
+        {
+            
+            
+            if($cnt!=1){
+                $tots = $total_rate;
+            $total_rate = $er['SymptomRating']['rate']; 
+               
+            $avg_rate = $tots/($cnt-1);
+                $cnt=0;
+                
+                $arrs[] = $avg_rate.'_'.$eff_id;
+                
+                $total_rate=0;
+                }
+                else
+                {
+            $total_rate = $er['SymptomRating']['rate'];
+            }
+             
+        }
+        else
+        {
+            $total_rate = $total_rate+$er['SymptomRating']['rate'];
+        }
+        $eff_id = $er['SymptomRating']['symptom_id'];
+        
+        
+         
+    }
+    
+    
 }
 if(isset($arrs))
     rsort($arrs);
 else
     $arrs = array();
+//var_dump($arr);    
 $i=0;
 foreach($arrs as $e)
 {
@@ -283,7 +387,7 @@ $length = 20*$rate;;
                 ?>
                 <div class="eff">
                 <div class="label left"><?php echo $this->requestAction('/strains/getEffect/'.$ar[1]);?></div>
-                <div class="left ratewrap"><img src="<?php echo $this->webroot;?>Capture.PNG" style="width: <?php echo $length;?>%;height:25px;position: absolute; text-align: center;left:0;" /><em><?php echo $rate;?>/5</em></div>
+                <div class="left ratewrap"><img src="<?php echo $this->webroot;?>Capture.PNG" style="width: <?php echo $length;?>%;height:25px;position: absolute; text-align: center;left:0;" /><em><?php echo number_format($rate,2);?>/5</em></div>
                 <div class="clear"></div>
                 </div>
                 <?php
@@ -300,6 +404,7 @@ $length = 20*$rate;;
         <h3>Effect Ratings:</h3>
         <br/>
         <?php
+        if(!$p_filter){
         $count = count($strain['Review']);
         if($count){
         $scale = 0;
@@ -314,6 +419,40 @@ $length = 20*$rate;;
         $scale = ($scale/$count)*20;
         $strength = ($strength/$count)*20;
         $duration = ($duration/$count)*20;
+        }
+        else
+        {
+            $scale = 0;
+        $strength = 0;
+        $duration = 0;    
+        }
+        }
+        else
+        {
+            $effect_review = $this->requestAction('/strains/getEffectReview/'.urlencode($profile_filter).'/'.$strain['Strain']['id']);
+            
+            $count = count($strain['Review']);
+            if($count){
+            $scale = 0;
+            $strength = 0;
+            $duration = 0;
+            foreach($effect_review as $r)
+            {
+            $scale = $scale+$r['Review']['eff_scale'];
+            $strength = $strength+$r['Review']['eff_strength'];
+            $duration = $duration+$r['Review']['eff_duration'];
+            }
+            $scale = ($scale/$count)*20;
+            $strength = ($strength/$count)*20;
+            $duration = ($duration/$count)*20;
+            }
+            else
+            {
+                $scale = 0;
+            $strength = 0;
+            $duration = 0;    
+            }    
+        }
         ?>
         <div class="eff">
         <div class="label left">Sedative</div><div class="left ratewrap"><img src="<?php echo $this->webroot;?>Capture.PNG" style="width: <?php echo round($scale,2);?>%;height:25px;position: absolute;left:0;" /><em><?php echo round($scale/20,2);?>/5</em></div><div class="clear"></div>
@@ -326,7 +465,7 @@ $length = 20*$rate;;
         </div>        
         
         <?php
-        }
+        
         ?>
         
         </div>
@@ -406,7 +545,82 @@ $(".fancybox").fancybox();
 </style>
 <script>
 $(function(){
-$('.rating').raty({number:5,readOnly:true,score:<?php echo $strain['Strain']['rating'];?>});
+
+var profile='';
+    $('#filternow').click(function(){
+        profile = '';
+        $('.hidden_filter select').each(function(){
+        
+        
+        var value = $(this).val();
+        
+        if(value){
+        var field = $(this).attr('name');            
+        if(!profile)            
+        profile = field+'='+value;
+        else
+        profile = profile+'&'+field+'='+value;
+        //alert(profile);
+        
+        }
+        
+        });
+        if (!spinnerVisible) {
+        $("div#spinner").fadeIn("fast");
+        spinnerVisible = true;
+    }
+        var i=0;
+        
+       
+    
+        
+        
+        window.location = '<?php echo $this->webroot?>strains/<?php echo $strain['Strain']['slug']?>/?'+profile;
+        
+        
+        
+    });  
+
+
+    
+    
+<?php    
+if(!$p_filter)
+{
+    ?>
+    $('.rating').raty({number:5,readOnly:true,score:<?php echo $strain['Strain']['rating'];?>});
+    <?php
+} 
+else
+{
+    
+    $effect_reviews = $this->requestAction('/strains/getEffectReview/'.urlencode($profile_filter).'/'.$strain['Strain']['id']);
+    $count_rate=0;
+    $rate = 0;
+    foreach($effect_reviews as $oar)
+    {
+        if($oar['Review']['rate']==0)
+        continue;
+        else
+        $count_rate++;
+        $rate = $rate+$oar['Review']['rate'];
+        
+    }
+    if($count_rate==0)
+    {
+        $rate = 0;
+    }
+    else
+    $rate = $rate/$count_rate;
+    
+    $rate = number_format($rate,2);
+    ?>
+    $('.rating').raty({number:5,readOnly:true,score:<?php echo $rate;?>});
+    <?php
+}   
+?>
+
+
 <?php if($helpful){?>
 $('.frate').raty({readOnly:true,score:<?php echo $helpful['Review']['rate'];?>});
 $('.srate').raty({readOnly:true,score:<?php echo $recent['Review']['rate'];?>});
