@@ -112,11 +112,7 @@ $(function(){
         spinner.fadeOut("fast");
         spinnerVisible = false;
     }
-            $('.morelist').show();
-            $('.morelist').addClass('morelist2');
-            $('.morelist2').removeClass('morelist');
-            $('.morelist2').html(res);
-            $('.morelist2').removeClass('morelist2');
+            $('#comments_list').html(res);
            } 
         });
         

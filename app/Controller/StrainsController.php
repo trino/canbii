@@ -844,6 +844,7 @@ class StrainsController extends AppController{
                 $this->set('reviewz', $this->Review->find('count',array('conditions'=>array('Review.strain_id'=>$q['Strain']['id']))) );
                 else
                 $this->set('reviewz', $this->Review->find('count',array('conditions'=>array('Review.strain_id'=>$q['Strain']['id'],'Review.user_id IN ('.$profile_filter.')'))) );
+                //var_dump($q2);die();
                 
             }
             else
