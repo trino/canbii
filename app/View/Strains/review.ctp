@@ -62,12 +62,87 @@
 <div class="clear"></div>
 <script>
 $(function(){
+    
+    var profile='';
+    $('.hidden_filter select').change(function(){
+        profile = '';
+        $('.hidden_filter select').each(function(){
+        
+        
+        var value = $(this).val();
+        
+        if(value){
+        var field = $(this).attr('name');            
+        if(!profile)            
+        profile = field+'='+value;
+        else
+        profile = profile+'&'+field+'='+value;
+        
+        
+        }
+        
+        });
+        
+        val = profile;
+        
+        
+        
+        
+        
+        var more='<?php echo $limit?>';    
+        var spinnerVisible = false; 
+        var sort='<?php echo(isset($this->params['pass'][1]) && $this->params['pass'][1]!="")?$this->params['pass'][1]:"recent";?>';
+        
+        var user = '<?php echo (isset($_GET['user']))?$_GET['user']:"";?>';
+        if(user !="")
+        {  
+            user = "?user="+user;
+        }
+        else
+            user = "";
+        var i=0;
+       $.ajax({
+           url:'<?php echo $this->webroot;?>strains/review_filter/<?php echo $slug;?>/'+sort+'/'+more+user,
+           data:val,
+           type:'get',
+           success:function(res){
+             if (spinnerVisible) {
+        var spinner = $("div#spinner");
+        spinner.stop();
+        spinner.fadeOut("fast");
+        spinnerVisible = false;
+    }
+            $('.morelist').show();
+            $('.morelist').addClass('morelist2');
+            $('.morelist2').removeClass('morelist');
+            $('.morelist2').html(res);
+            $('.morelist2').removeClass('morelist2');
+           } 
+        });
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    });    
+    
+    
+    
+    
     var more='<?php echo $limit?>';    
     var spinnerVisible = false; 
     var sort='<?php echo(isset($this->params['pass'][1]) && $this->params['pass'][1]!="")?$this->params['pass'][1]:"recent";?>';    
     $('.loadmore a').live('click',function(){
         more=parseFloat(more)+8;
-        var val = '';
+        var val = profile;
         var user = '<?php echo (isset($_GET['user']))?$_GET['user']:"";?>';
         if(user !="")
         {  

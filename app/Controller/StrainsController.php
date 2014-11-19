@@ -748,6 +748,77 @@ class StrainsController extends AppController{
         $this->set('limit',$limit);
         $this->set('slug',$slug);
         $this->set('sort',$sort);
+        
+        $u_cond = '';
+        if(isset($_GET['nationality']))
+        {
+            $u_cond = 'nationality = "'.$_GET['nationality'].'"';
+        }
+        if(isset($_GET['country']))
+        {
+            if(!$u_cond)
+            $u_cond = 'country = "'.$_GET['country'].'"';
+            else
+            $u_cond = $u_cond.' AND country = "'.$_GET['country'].'"';
+        }
+        if(isset($_GET['gender']))
+        {
+            if(!$u_cond)
+            $u_cond = 'gender = "'.$_GET['gender'].'"';
+            else
+            $u_cond = $u_cond.' AND gender = "'.$_GET['gender'].'"';
+        }
+        if(isset($_GET['age_group']))
+        {
+            if(!$u_cond)
+            $u_cond = 'age_group = "'.$_GET['age_group'].'"';
+            else
+            $u_cond = $u_cond.' AND age_group = "'.$_GET['age_group'].'"';
+        }
+        if(isset($_GET['health']))
+        {
+            if(!$u_cond)
+            $u_cond = 'health = "'.$_GET['health'].'"';
+            else
+            $u_cond = $u_cond.' AND health = "'.$_GET['health'].'"';
+        }
+        if(isset($_GET['weight']))
+        {
+            if(!$u_cond)
+            $u_cond = 'weight = "'.$_GET['weight'].'"';
+            else
+            $u_cond = $u_cond.' AND weight = "'.$_GET['weight'].'"';
+        }
+        if(isset($_GET['years_of_experience']))
+        {
+            if(!$u_cond)
+            $u_cond = 'years_of_experience = "'.$_GET['years_of_experience'].'"';
+            else
+            $u_cond = $u_cond.' AND years_of_experience = "'.$_GET['years_of_experience'].'"';
+        }
+        if(isset($_GET['frequency']))
+        {
+            if(!$u_cond)
+            $u_cond = 'frequency = "'.$_GET['frequency'].'"';
+            else
+            $u_cond = $u_cond.' AND frequency = "'.$_GET['frequency'].'"';
+        }
+        if(isset($_GET['body_type']))
+        {
+            if(!$u_cond)
+            $u_cond = 'body_type = "'.$_GET['body_type'].'"';
+            else
+            $u_cond = $u_cond.' AND body_type = "'.$_GET['body_type'].'"';
+        }
+        if($u_cond)
+        {
+            $profile_filter = 'SELECT id FROM users WHERE '.$u_cond;
+        }
+        else
+        $profile_filter = '';
+        
+        
+        
         if($limit){
             $offset =$limit;
         $limit = '8';
@@ -764,9 +835,16 @@ class StrainsController extends AppController{
         $q = $this->Strain->findBySlug($slug);
         if(!$sort || $sort=='recent'){
             if(!isset($_GET['user']))
-            {    
+            { 
+                if(!$profile_filter)
                 $q2 = $this->Review->find('all',array('conditions'=>array('Review.strain_id'=>$q['Strain']['id']),'order'=>'Review.id DESC','limit'=>$limit,'offset'=>$offset));
+                else
+                $q2 = $this->Review->find('all',array('conditions'=>array('Review.strain_id'=>$q['Strain']['id'],'Review.user_id IN ('.$profile_filter.')'),'order'=>'Review.id DESC','limit'=>$limit,'offset'=>$offset));
+                if(!$profile_filter)
                 $this->set('reviewz', $this->Review->find('count',array('conditions'=>array('Review.strain_id'=>$q['Strain']['id']))) );
+                else
+                $this->set('reviewz', $this->Review->find('count',array('conditions'=>array('Review.strain_id'=>$q['Strain']['id'],'Review.user_id IN ('.$profile_filter.')'))) );
+                
             }
             else
             {
@@ -778,8 +856,14 @@ class StrainsController extends AppController{
         {
             if(!isset($_GET['user']))
             {
+                if(!$profile_filter)
                 $q2 = $this->Review->find('all',array('conditions'=>array('Review.strain_id'=>$q['Strain']['id']),'order'=>'Review.helpful DESC','limit'=>$limit,'offset'=>$offset));
+                else
+                $q2 = $this->Review->find('all',array('conditions'=>array('Review.strain_id'=>$q['Strain']['id'],'Review.user_id IN ('.$profile_filter.')'),'order'=>'Review.helpful DESC','limit'=>$limit,'offset'=>$offset));
+                if(!$profile_filter)
                 $this->set('reviewz', $this->Review->find('count',array('conditions'=>array('Review.strain_id'=>$q['Strain']['id']))) );
+                else
+                $this->set('reviewz', $this->Review->find('count',array('conditions'=>array('Review.strain_id'=>$q['Strain']['id'],'Review.user_id IN ('.$profile_filter.')'))) );
             }
             else
             {
