@@ -1,12 +1,21 @@
 <?php
-$arr_filter=array('nationality','gender','age_group','weight','health','exp','frequency','body_type','card_id','country');
+$arr_filter=array('nationality','gender','age_group','age_group_from','age_group_to','weight','weight_from','weight_to','health','exp','years_of_experience_from','years_of_experience_to','frequency','body_type','card_id','country');
+foreach($arr_filter as $af)
+{
+    if(isset($_GET[$af]))
+    {
+        $show = 1;
+    }
+    else
+    $_GET[$af] = null;
+}
 if(!isset($nationality))
 {
-    $nationality = '';
+    $nationality = $_GET['nationality'];
 }
 if(!isset($gender))
 {
-    $gender = '';
+    $gender = $_GET['gender'];
 }
 if(!isset($age_group))
 {
@@ -18,7 +27,7 @@ if(!isset($weight))
 }
 if(!isset($health))
 {
-    $health = '';
+    $health = $_GET['health'];
 }
 if(!isset($exp))
 {
@@ -26,22 +35,35 @@ if(!isset($exp))
 }
 if(!isset($frequency))
 {
-    $frequency = '';
+    $frequency = $_GET['frequency'];
 }
 if(!isset($body_type))
 {
-    $body_type = '';
+    $body_type = $_GET['body_type'];
 }
 if(!isset($card_id))
 {
     $card_id = '';
+    $card_pass='';
+}
+else
+{
+    $len = strlen($card_id);
+    $card_pass = '';
+    for($i=0;$i<$len;$i++)
+    {
+        if($i<=($len-5))
+        $card_pass = $card_pass.'*';
+        else
+        $card_pass = $card_pass.$card_id[$i];
+    }
 }
 if(!isset($country))
 {
-    $country = '';
+    $country = $_GET['country'];
 }
 ?>
-<div class="columns clearfix no_width page_margin_top hidden_filter" <?php if($this->params['action']!='dashboard'){?>style="display:none;width:100%;marging-bottom:15px;"<?php }?>>
+<div class="columns clearfix no_width page_margin_top hidden_filter" <?php if($this->params['action']!='dashboard' && $show!=1){?>style="display:none;width:100%;marging-bottom:15px;"<?php }?>>
 <ul class="column_left">
    <?php if($this->params['action']!='dashboard'){?><?php if($this->params['action']!='dashboard'){?><div class="bg"><?php }?><?php }?>
    <label>Nationality</label>
@@ -82,7 +104,7 @@ if(!isset($country))
    <label>Age Group</label>
    <select name="age_group">
 		<option value="">Select Age Group</option>
-		<option value="0-21"<?php if($age_group=='0-21')echo "selected='selected'";?>>< 21</option>
+		<!--<option value="0-21"<?php if($age_group=='0-21')echo "selected='selected'";?>>< 21</option>-->
 		<option value="21-30"<?php if($age_group=='21-30')echo "selected='selected'";?>>21-30</option>
 		<option value="31-40"<?php if($age_group=='31-40')echo "selected='selected'";?>>31-40</option>
 		<option value="41-50"<?php if($age_group=='41-50')echo "selected='selected'";?>>41-50</option>
@@ -97,13 +119,13 @@ if(!isset($country))
         <?php if($this->params['action']!='dashboard'){?><div class="bg"><?php }?>
         <label style="display: block!important;">Age Group</label>
         <select name="age_group_from" style="width: 103px!important;float:left;">
-    		<option value="">From</option>
+    		<option value="" <?php ?>>From</option>
     		<?php
-            for($i=10;$i<=100;$i=$i+10)
+            for($i=20;$i<=100;$i=$i+10)
             {
                 
                 ?>
-                <option value="<?php echo $i?>"><?php echo $i;?></option>
+                <option value="<?php echo $i?>" <?php if($_GET['age_group_from']==$i){?>selected="selected"<?php }?>><?php echo $i;?></option>
                 <?php
             }
             ?>
@@ -111,11 +133,11 @@ if(!isset($country))
         <select name="age_group_to" style="width: 103px!important;margin-left:10px;">
     		<option value="">To</option>
     		<?php
-            for($i=10;$i<=100;$i=$i+10)
+            for($i=20;$i<=100;$i=$i+10)
             {
                 
                 ?>
-                <option value="<?php echo $i?>"><?php echo $i;?></option>
+                <option value="<?php echo $i?>" <?php if($_GET['age_group_to']==$i){?>selected="selected"<?php }?>><?php echo $i;?></option>
                 <?php
             }
             ?>
@@ -147,8 +169,9 @@ if(!isset($country))
    if($this->params['action']=='dashboard')
    {
     ?>
-   <label>Patient card ID</label>
-   <input type="text" name="card_id" value="<?php echo $card_id;?>" />
+   <label>Patient card ID<?php if($card_pass){?> <a href="javascript:void(0);" style="color: red;" onclick="$('#card_id').toggle();$('#card_pass').toggle();">Change</a><?php }?></label>
+   <?php if($card_pass){?><input type="text" name="" disabled="" id="card_pass" value="<?php echo $card_pass;?>"  /><?php }?>
+   <input type="text" name="card_id" id="card_id" value="<?php echo $card_id?>" <?php if($card_pass){?>style="display: none;"<?php }?> />
    <?php
    }
    /*else
@@ -187,7 +210,7 @@ if(!isset($country))
             {
                 
                 ?>
-                <option value="<?php echo $i?>"><?php echo $i;?></option>
+                <option value="<?php echo $i?>" <?php if($_GET['weight_from']==$i){?>selected="selected"<?php }?>><?php echo $i;?></option>
                 <?php
             }
             ?>
@@ -199,7 +222,7 @@ if(!isset($country))
             {
                 
                 ?>
-                <option value="<?php echo $i?>"><?php echo $i;?></option>
+                <option value="<?php echo $i?>" <?php if($_GET['weight_to']==$i){?>selected="selected"<?php }?>><?php echo $i;?></option>
                 <?php
             }
             ?>
@@ -243,7 +266,7 @@ if(!isset($country))
             {
                 
                 ?>
-                <option value="<?php echo $i?>"><?php echo $i;?></option>
+                <option <?php if($_GET['years_of_experience_from']==$i){?>selected="selected"<?php }?> value="<?php echo $i?>"><?php echo $i;?></option>
                 <?php
             }
             ?>
@@ -255,7 +278,7 @@ if(!isset($country))
             {
                 
                 ?>
-                <option value="<?php echo $i?>"><?php echo $i;?></option>
+                <option <?php if($_GET['years_of_experience_to']==$i){?>selected="selected"<?php }?> value="<?php echo $i?>"><?php echo $i;?></option>
                 <?php
             }
             ?>
@@ -299,7 +322,7 @@ if($this->params['controller']=='strains' && $this->params['action']=='index')
     ?>
     <br />
     <br />
-    <a class="blue more" href="javascript:void(0)" id="filternow">Filter Now</a>
+    <a class="blue more" href="javascript:void(0)" onclick="filternow();" style="margin-right: 15px;margin-top:20px;" id="filternow">Filter Now</a><a style="margin-top: 20px;" class="blue more" href="<?php echo $this->webroot;?>strains/<?php echo $strain['Strain']['slug'];?>" onclick="" id="">Clear Filter</a>
     <?php
 }
 ?>
@@ -318,3 +341,39 @@ if($this->params['action']!='dashboard')
 }
 ?>
 </style>
+<script>
+function filternow(){
+    
+        var profile = '';
+        $('.hidden_filter select').each(function(){
+        
+        
+        var value = $(this).val();
+        
+        if(value){
+        var field = $(this).attr('name');            
+        if(!profile)            
+        profile = field+'='+value;
+        else
+        profile = profile+'&'+field+'='+value;
+        //alert(profile);
+        
+        }
+        
+        });
+        
+        
+        
+        var i=0;
+        
+        
+       
+    
+        
+        
+        window.location = '<?php echo $this->webroot?>strains/<?php echo $strain['Strain']['slug']?>/?'+profile;
+        
+        
+        
+    } 
+</script>

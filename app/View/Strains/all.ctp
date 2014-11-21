@@ -522,10 +522,20 @@ if($(this).attr('class').replace('searchact2','')==$(this).attr('class'))
     });
     
     $('.eff1').click(function(){
+        var thisid = $(this).attr('id');
+        if(thisid == 'indica' || thisid == 'sativa' || thisid == 'hybrid')
+        var typefilter =1;
+        else
+        var typefilter =0;
+        
         more=0;
         $('.eff1').each(function(){
-           $(this).removeClass('eff1c');
-           $(this).removeClass('searchact');  
+           
+            $(this).removeClass('eff1c');
+            $(this).removeClass('searchact');  
+           
+           
+           
         });
         $(this).addClass('eff1c');
         var id = $(this).attr('id');

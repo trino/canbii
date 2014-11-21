@@ -546,40 +546,7 @@ $(".fancybox").fancybox();
 <script>
 $(function(){
 
-var profile='';
-    $('#filternow').click(function(){
-        profile = '';
-        $('.hidden_filter select').each(function(){
-        
-        
-        var value = $(this).val();
-        
-        if(value){
-        var field = $(this).attr('name');            
-        if(!profile)            
-        profile = field+'='+value;
-        else
-        profile = profile+'&'+field+'='+value;
-        //alert(profile);
-        
-        }
-        
-        });
-        if (!spinnerVisible) {
-        $("div#spinner").fadeIn("fast");
-        spinnerVisible = true;
-    }
-        var i=0;
-        
-       
-    
-        
-        
-        window.location = '<?php echo $this->webroot?>strains/<?php echo $strain['Strain']['slug']?>/?'+profile;
-        
-        
-        
-    });  
+
 
 
     
