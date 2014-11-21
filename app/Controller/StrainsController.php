@@ -40,12 +40,38 @@ class StrainsController extends AppController{
             else
             $u_cond = $u_cond.' AND gender = "'.$_GET['gender'].'"';
         }
-        if(isset($_GET['age_group']))
+        if(isset($_GET['age_group_from']))
         {
-            if(!$u_cond)
-            $u_cond = 'age_group = "'.$_GET['age_group'].'"';
+            if(isset($_GET['age_group_from']))
+            $to = $_GET['age_group_to'];
             else
-            $u_cond = $u_cond.' AND age_group = "'.$_GET['age_group'].'"';
+            $to = 100;
+            if(!$to)
+            $to=100;
+            $from = $_GET['age_group_from'];
+            if($from<20)
+            $from=20;
+            $from++;
+            $counter=0;
+            for($i=$from;$i<=$to;$i++)
+            {
+                $counter++;
+                $j=$i+9;
+                $group = $i.'-'.$j;
+                $i=$j;
+                if($counter==1){
+                if(!$u_cond)
+                $u_cond = '(age_group = "'.$group.'"';
+                else
+                $u_cond = $u_cond.' AND (age_group = "'.$group.'"';
+                }
+                else
+                {
+                    ' OR age_group = "'.$group.'"';
+                }    
+            }
+            $u_cond = $u_cond.')';
+            
         }
         if(isset($_GET['health']))
         {
@@ -54,19 +80,61 @@ class StrainsController extends AppController{
             else
             $u_cond = $u_cond.' AND health = "'.$_GET['health'].'"';
         }
-        if(isset($_GET['weight']))
-        {
-            if(!$u_cond)
-            $u_cond = 'weight = "'.$_GET['weight'].'"';
+        
+        if(isset($_GET['weight_from']))
+        {   
+            if(isset($_GET['weight_from']))
+            $to = $_GET['weight_to'];
             else
-            $u_cond = $u_cond.' AND weight = "'.$_GET['weight'].'"';
+            $to = 280;
+            if(!$to)
+            $to=280;
+            
+            $from = $_GET['weight_from'];
+            if($from>100)            
+            $from++;
+            $counter=0;
+            for($i=$from;$i<=$to;$i++)
+            {
+                $counter++;
+                if($i>100)
+                $j=$i+9;
+                else
+                $j=$i+10;
+                $group = $i.'-'.$j;
+                $i=$j;
+                if($counter==1){
+                if(!$u_cond)
+                $u_cond = '(weight = "'.$group.'"';
+                else
+                $u_cond = $u_cond.' AND (weight = "'.$group.'"';
+                }
+                else
+                {
+                    ' OR weight = "'.$group.'"';
+                }    
+            }
+            $u_cond = $u_cond.')';
+            
         }
-        if(isset($_GET['years_of_experience']))
+        
+        if(isset($_GET['years_of_experience_from']))
         {
-            if(!$u_cond)
-            $u_cond = 'years_of_experience = "'.$_GET['years_of_experience'].'"';
+            if(isset($_GET['years_of_experience_from']))
+            $to = $_GET['years_of_experience_to'];
             else
-            $u_cond = $u_cond.' AND years_of_experience = "'.$_GET['years_of_experience'].'"';
+            $to = 50;
+            if(!$to)
+            $to=50;
+            $from = $_GET['years_of_experience_from'];
+            
+            
+                if(!$u_cond)
+                $u_cond = 'years_of_experience >= '.$from.' AND years_of_experience <= '.$to;
+                else
+                $u_cond = $u_cond.' AND years_of_experience >= '.$from.' AND years_of_experience <= '.$to;
+                
+            
         }
         if(isset($_GET['frequency']))
         {
@@ -415,7 +483,7 @@ class StrainsController extends AppController{
         }
         if(isset($_GET['age_group_from']))
         {
-            if(isset($_GET['age_group_to']))
+            if(isset($_GET['age_group_from']))
             $to = $_GET['age_group_to'];
             else
             $to = 100;
@@ -457,7 +525,7 @@ class StrainsController extends AppController{
         if(isset($_GET['weight_from']))
         {   
             if(isset($_GET['weight_from']))
-            $to = $_GET['weight_from'];
+            $to = $_GET['weight_to'];
             else
             $to = 280;
             if(!$to)
@@ -494,7 +562,7 @@ class StrainsController extends AppController{
         if(isset($_GET['years_of_experience_from']))
         {
             if(isset($_GET['years_of_experience_from']))
-            $to = $_GET['years_of_experience_from'];
+            $to = $_GET['years_of_experience_to'];
             else
             $to = 50;
             if(!$to)
@@ -505,7 +573,7 @@ class StrainsController extends AppController{
                 if(!$u_cond)
                 $u_cond = 'years_of_experience >= '.$from.' AND years_of_experience <= '.$to;
                 else
-                $u_cond = $u_cond.' AND years_of_experience >= '.$group.' AND years_of_experience <= '.$to;
+                $u_cond = $u_cond.' AND years_of_experience >= '.$from.' AND years_of_experience <= '.$to;
                 
             
         }
@@ -836,12 +904,38 @@ class StrainsController extends AppController{
             else
             $u_cond = $u_cond.' AND gender = "'.$_GET['gender'].'"';
         }
-        if(isset($_GET['age_group']))
+        if(isset($_GET['age_group_from']))
         {
-            if(!$u_cond)
-            $u_cond = 'age_group = "'.$_GET['age_group'].'"';
+            if(isset($_GET['age_group_from']))
+            $to = $_GET['age_group_to'];
             else
-            $u_cond = $u_cond.' AND age_group = "'.$_GET['age_group'].'"';
+            $to = 100;
+            if(!$to)
+            $to=100;
+            $from = $_GET['age_group_from'];
+            if($from<20)
+            $from=20;
+            $from++;
+            $counter=0;
+            for($i=$from;$i<=$to;$i++)
+            {
+                $counter++;
+                $j=$i+9;
+                $group = $i.'-'.$j;
+                $i=$j;
+                if($counter==1){
+                if(!$u_cond)
+                $u_cond = '(age_group = "'.$group.'"';
+                else
+                $u_cond = $u_cond.' AND (age_group = "'.$group.'"';
+                }
+                else
+                {
+                    ' OR age_group = "'.$group.'"';
+                }    
+            }
+            $u_cond = $u_cond.')';
+            
         }
         if(isset($_GET['health']))
         {
@@ -850,19 +944,61 @@ class StrainsController extends AppController{
             else
             $u_cond = $u_cond.' AND health = "'.$_GET['health'].'"';
         }
-        if(isset($_GET['weight']))
-        {
-            if(!$u_cond)
-            $u_cond = 'weight = "'.$_GET['weight'].'"';
+        
+        if(isset($_GET['weight_from']))
+        {   
+            if(isset($_GET['weight_from']))
+            $to = $_GET['weight_to'];
             else
-            $u_cond = $u_cond.' AND weight = "'.$_GET['weight'].'"';
+            $to = 280;
+            if(!$to)
+            $to=280;
+            
+            $from = $_GET['weight_from'];
+            if($from>100)            
+            $from++;
+            $counter=0;
+            for($i=$from;$i<=$to;$i++)
+            {
+                $counter++;
+                if($i>100)
+                $j=$i+9;
+                else
+                $j=$i+10;
+                $group = $i.'-'.$j;
+                $i=$j;
+                if($counter==1){
+                if(!$u_cond)
+                $u_cond = '(weight = "'.$group.'"';
+                else
+                $u_cond = $u_cond.' AND (weight = "'.$group.'"';
+                }
+                else
+                {
+                    ' OR weight = "'.$group.'"';
+                }    
+            }
+            $u_cond = $u_cond.')';
+            
         }
-        if(isset($_GET['years_of_experience']))
+        
+        if(isset($_GET['years_of_experience_from']))
         {
-            if(!$u_cond)
-            $u_cond = 'years_of_experience = "'.$_GET['years_of_experience'].'"';
+            if(isset($_GET['years_of_experience_from']))
+            $to = $_GET['years_of_experience_to'];
             else
-            $u_cond = $u_cond.' AND years_of_experience = "'.$_GET['years_of_experience'].'"';
+            $to = 50;
+            if(!$to)
+            $to=50;
+            $from = $_GET['years_of_experience_from'];
+            
+            
+                if(!$u_cond)
+                $u_cond = 'years_of_experience >= '.$from.' AND years_of_experience <= '.$to;
+                else
+                $u_cond = $u_cond.' AND years_of_experience >= '.$from.' AND years_of_experience <= '.$to;
+                
+            
         }
         if(isset($_GET['frequency']))
         {
