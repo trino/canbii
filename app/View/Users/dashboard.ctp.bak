@@ -75,7 +75,7 @@
 
 <h4>What do you suffer from?</h4>
 
-<div id="dashboard_symptom" style="background:#42B3E5; padding:15px; ">
+<div id="dashboard_symptom" style="background:#42B3E5; padding:10px; ">
 <p id="P_5">
 <?php 
 $effect = $this->requestAction('/pages/getSym');

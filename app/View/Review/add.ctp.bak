@@ -69,10 +69,24 @@ include('combine/hexagon.php');?>
 		
 	</div>
 
-	<div class="clearfix page_margin_top ">
+	<div class="column_left ">
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="columns clearfix no_width page_margin_top">
 
 
 
@@ -464,7 +478,7 @@ Rating & Comment <?php if($this->params['action']=='add')echo '(Required)';?>
 if($this->Session->read('User') && $this->params['action']!='detail')
 {
 ?>
-<div class="page_right page_margin_top">
+<div class="column_right page_margin_top">
 
 <a style="width:120px;float:right;" title="Read more"  href="<?php echo $this->webroot;?>users/dashboard" class=" more large dark_blue icon_small_arrow margin_right_white">Dashboard</a>
 
@@ -526,6 +540,7 @@ else
 }
 
 ?>
+</div>
 </div>
 </div>
 

@@ -10,7 +10,7 @@
     }
     else
     $gtitle = ucfirst($this->params['action']);
-    ?> 
+    ?>  
 <meta charset="UTF-8" />
 <meta property="og:image" content="<?php echo 'http://'.$_SERVER['SERVER_NAME'].$this->webroot.'images/logo.png';?>" />
 <meta property="og:title" content="<?php if(isset($title)){echo $title.' - Canbii';}else{echo str_replace('_',' ',$gtitle).' - '.$generic['title'];}?>" />
