@@ -63,7 +63,15 @@ if(!isset($country))
     $country = $_GET['country'];
 }
 ?>
-<div class="columns clearfix no_width page_margin_top hidden_filter" <?php if($this->params['action']!='dashboard' && $show!=1){?>style="display:none;width:100%;marging-bottom:15px;"<?php }?>>
+<div class="columns clearfix no_width page_margin_top hidden_filter" <?php if($this->params['action']!='dashboard' && (!isset($show) || (isset($show) && $show!=1))){?>style="display:none;width:100%;marging-bottom:15px;"<?php }?>>
+<?php
+if($this->params['action']!='dashboard' && !$this->Session->read('User'))
+{
+    ?>
+    <img src="<?php echo $this->webroot;?>images/trans.png" style="position: absolute;top:0;left:0;"  />
+    <?php
+}
+?>
 <ul class="column_left">
    <?php if($this->params['action']!='dashboard'){?><?php if($this->params['action']!='dashboard'){?><div class="bg"><?php }?><?php }?>
    <label>Nationality</label>
