@@ -181,9 +181,11 @@ class StrainsController extends AppController{
         $this->set('flavor',$q2);
         $this->set('helpful',$q3);
         $this->set('recent',$q4);
+        if($q['Strain']['id']){
         $this->Strain->id = $q['Strain']['id'];
         $viewed = $q['Strain']['viewed']+1;
         $this->Strain->saveField('viewed',$viewed);
+        }
         
         $ip = $_SERVER['REMOTE_ADDR'];
         $this->loadModel('VoteIp');
@@ -429,6 +431,8 @@ class StrainsController extends AppController{
         return $q;
     }
     function filter($limit=0,$type=''){
+        
+        
         $this->loadModel('Country');
         $this->set('countries',$this->Country->find('all'));
         $this->set('limit',$limit);
@@ -730,12 +734,23 @@ class StrainsController extends AppController{
         {
         $arr=array('indica'=>1,'sativa'=>2,'hybrid'=>3);            
         if(!$condition){
-            if(!$order)
+            if(!$order){
+        if($profile_filter)        
         $this->set('strain',$this->Strain->find('all',array('conditions'=>array('type_id'=>$arr[$type],'name LIKE'=>'%'.$key.'%','Strain.id IN (SELECT strain_id FROM reviews WHERE user_id IN ('.$profile_filter.'))'),'order'=>'Strain.id DESC','limit'=>$limit,'offset'=>$offset)));
         else
-        $this->set('strain',$this->Strain->find('all',array('conditions'=>array('type_id'=>$arr[$type],'name LIKE'=>'%'.$key.'%','Strain.id IN (SELECT strain_id FROM reviews WHERE user_id IN ('.$profile_filter.'))'),'order'=>$order,'limit'=>$limit,'offset'=>$offset)));
+        $this->set('strain',$this->Strain->find('all',array('conditions'=>array('type_id'=>$arr[$type],'name LIKE'=>'%'.$key.'%'),'order'=>'Strain.id DESC','limit'=>$limit,'offset'=>$offset)));
         
+        }
+        else{
+        if($profile_filter)    
+        $this->set('strain',$this->Strain->find('all',array('conditions'=>array('type_id'=>$arr[$type],'name LIKE'=>'%'.$key.'%','Strain.id IN (SELECT strain_id FROM reviews WHERE user_id IN ('.$profile_filter.'))'),'order'=>$order,'limit'=>$limit,'offset'=>$offset)));
+        else
+        $this->set('strain',$this->Strain->find('all',array('conditions'=>array('type_id'=>$arr[$type],'name LIKE'=>'%'.$key.'%'),'order'=>$order,'limit'=>$limit,'offset'=>$offset)));
+        }
+        if($profile_filter)
         $this->set('strains',$this->Strain->find('count',array('conditions'=>array('type_id'=>$arr[$type],'name LIKE'=>'%'.$key.'%','Strain.id IN (SELECT strain_id FROM reviews WHERE user_id IN ('.$profile_filter.'))'))));
+        else
+        $this->set('strains',$this->Strain->find('count',array('conditions'=>array('type_id'=>$arr[$type],'name LIKE'=>'%'.$key.'%'))));
         }
         else{
             if(!$order)

@@ -3,7 +3,8 @@
 <link href="<?php echo $this->webroot;?>css/raty.css" rel="stylesheet" type="text/css" />
 
 <?php
-if(isset($_GET['effects'])&&$_GET['effects'])
+
+if(isset($_GET['effects']) && $_GET['effects'])
 {
     foreach($_GET['effects'] as $ef)
     {
@@ -22,6 +23,8 @@ if(isset($_GET['symptoms'])&&$_GET['symptoms'])
 }
 else
 $symptoms = array();
+
+
 ?>
 <script>
     var recent_flag = 'ASC';
@@ -95,17 +98,17 @@ $symptoms = array();
   <ul class="tabs_navigation2">  
   <li style=""><p>Filter By:</p></li>
     <li>
-	<a href="javascript:void(0)" class="eff1" id="indica">
+	<a id="indica" <?php if($type=='indica'){?>style="border-bottom:2px solid #1b83c6 !important;"<?php }?> href="<?php echo $this->webroot;?>strains/all/indica">
 	Indica</a>
 	</li>
     
     <li>
-	<a href="javascript:void(0)" class="eff1" id="sativa">
+	<a id="sativa" <?php if($type=='sativa'){?>style="border-bottom:2px solid #1b83c6 !important;"<?php }?> href="<?php echo $this->webroot;?>strains/all/sativa">
 	Sativa</a>
 	</li>
     
     <li>
-	<a href="javascript:void(0)" class="eff1" id="hybrid">
+	<a id="hybrid" <?php if($type=='hybrid'){?>style="border-bottom:2px solid #1b83c6 !important;"<?php }?> href="<?php echo $this->webroot;?>strains/all/hybrid">
 	Hybrid</a>
 	</li>
     <div class="clearfix"></div>
@@ -189,6 +192,7 @@ $symptoms = array();
     var val='';
     $(function(){
         
+    
     var profile='';
     $('.hidden_filter select').change(function(){
         profile = '';
@@ -267,6 +271,9 @@ $symptoms = array();
            data:val,
            type:'get',
            success:function(res){
+            $('#indica').attr('href','<?php echo $this->webroot;?>strains/all/indica?'+val);
+            $('#sativa').attr('href','<?php echo $this->webroot;?>strains/all/sativa?'+val);
+            $('#hybrid').attr('href','<?php echo $this->webroot;?>strains/all/hybrid?'+val);
              if (spinnerVisible) {
         var spinner = $("div#spinner");
         spinner.stop();
@@ -335,6 +342,9 @@ $symptoms = array();
            data:val,
            type:'get',
            success:function(res){
+            $('#indica').attr('href','<?php echo $this->webroot;?>strains/all/indica?'+val);
+            $('#sativa').attr('href','<?php echo $this->webroot;?>strains/all/sativa?'+val);
+            $('#hybrid').attr('href','<?php echo $this->webroot;?>strains/all/hybrid?'+val);
              if (spinnerVisible) {
         var spinner = $("div#spinner");
         spinner.stop();
@@ -426,6 +436,9 @@ if($(this).attr('class').replace('searchact2','')==$(this).attr('class'))
            data:val,
            type:'get',
            success:function(res){
+            $('#indica').attr('href','<?php echo $this->webroot;?>strains/all/indica?'+val);
+            $('#sativa').attr('href','<?php echo $this->webroot;?>strains/all/sativa?'+val);
+            $('#hybrid').attr('href','<?php echo $this->webroot;?>strains/all/hybrid?'+val);
              if (spinnerVisible) {
         var spinner = $("div#spinner");
         spinner.stop();
@@ -509,6 +522,9 @@ if($(this).attr('class').replace('searchact2','')==$(this).attr('class'))
            data:val,
            type:'get',
            success:function(res){
+            $('#indica').attr('href','<?php echo $this->webroot;?>strains/all/indica?'+val);
+            $('#sativa').attr('href','<?php echo $this->webroot;?>strains/all/sativa?'+val);
+            $('#hybrid').attr('href','<?php echo $this->webroot;?>strains/all/hybrid?'+val);
              if (spinnerVisible) {
         var spinner = $("div#spinner");
         spinner.stop();
@@ -597,10 +613,14 @@ if($(this).attr('class').replace('searchact2','')==$(this).attr('class'))
         if(profile)
         val = val+'&'+profile;
         $.ajax({
+            
            url:'<?php echo $this->webroot;?>strains/filter<?php if($type)echo '/0/'.$type?>',
            data:val,
            type:'get',
            success:function(res){
+            $('#indica').attr('href','<?php echo $this->webroot;?>strains/all/indica?'+val);
+            $('#sativa').attr('href','<?php echo $this->webroot;?>strains/all/sativa?'+val);
+            $('#hybrid').attr('href','<?php echo $this->webroot;?>strains/all/hybrid?'+val);
              if (spinnerVisible) {
         var spinner = $("div#spinner");
         spinner.stop();
@@ -631,6 +651,14 @@ if($(this).attr('class').replace('searchact2','')==$(this).attr('class'))
             $('#sym_<?php echo $eff;?>').click();
             <?php
         }
+    }
+    ?>
+    <?php
+    if(isset($_GET['sort']) && $_GET['sort'])
+    {
+        ?>
+        $('#<?php echo str_replace('reviewed','viewed',$_GET['sort'])?>').click();
+        <?php
     }
     ?>
     });

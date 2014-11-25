@@ -350,6 +350,11 @@ if($this->params['action']!='dashboard')
 ?>
 </style>
 <script>
+<?php
+if($this->params['controller']=='strains' && $this->params['action']=='index')
+{
+    ?>
+    
 function filternow(){
     
         var profile = '';
@@ -384,4 +389,7 @@ function filternow(){
         
         
     } 
+    <?php
+}
+?>
 </script>

@@ -15,7 +15,7 @@
 <p style="clear:both;">
 Sativa plants grow tall and thin. sativa plants are better suited for outdoor growing because some strains can reach over 25 ft. in height. Sativa smoking is known for its energetic and uplifting feeling. This type of strain has great medecal benefit as well as treatment to certain illness.
 </p><br>
-<a title="Browse Strains" href="<?php echo $this->webroot;?>strains/all/sativa" class="more">
+<a title="Browse Strains" href="<?php echo $this->webroot;?>strains/all/indica" class="more">
 Browse Strains →
 </a>
 
@@ -50,7 +50,7 @@ Browse Strains →
 <p style="clear:both;">
 Sativa plants grow tall and thin. sativa plants are better suited for outdoor growing because some strains can reach over 25 ft. in height. Sativa smoking is known for its energetic and uplifting feeling. This type of strain has great medecal benefit as well as treatment to certain illness.
 </p><br>
-<a title="Browse Strains" href="<?php echo $this->webroot;?>strains/all/sativa" class="more">
+<a title="Browse Strains" href="<?php echo $this->webroot;?>strains/all/hybrid" class="more">
 Browse Strains →
 </a>
 
