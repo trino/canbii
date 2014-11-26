@@ -431,11 +431,13 @@ if($(this).attr('class').replace('searchact2','')==$(this).attr('class'))
         });
         if(profile)
         val = val+'&'+profile;
+        
         $.ajax({
            url:'<?php echo $this->webroot;?>strains/filter/0<?php if($type)echo '/'.$type?>',
            data:val,
            type:'get',
            success:function(res){
+            //alert(val);
             $('#indica').attr('href','<?php echo $this->webroot;?>strains/all/indica?'+val);
             $('#sativa').attr('href','<?php echo $this->webroot;?>strains/all/sativa?'+val);
             $('#hybrid').attr('href','<?php echo $this->webroot;?>strains/all/hybrid?'+val);
@@ -448,7 +450,7 @@ if($(this).attr('class').replace('searchact2','')==$(this).attr('class'))
             $('.listing').html(res);
            } 
         });
-        val='';
+       // val='';
         
     }); 
 

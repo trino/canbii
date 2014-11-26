@@ -68,7 +68,7 @@ if(!isset($country))
 if($this->params['action']!='dashboard' && !$this->Session->read('User'))
 {
     ?>
-    <img src="<?php echo $this->webroot;?>images/trans.png" style="position: absolute;top:0;left:0;"  />
+    <a href="<?php echo $this->webroot;?>users/register" style="position: absolute;top:0;left:0;"><img src="<?php echo $this->webroot;?>images/trans.png" style=""  /></a>
     <?php
 }
 ?>

@@ -4,7 +4,7 @@
 			<h1 class="page_title">New Cannabis Review</h1>
 			<ul class="bread_crumb">
 				<li>
-					<a href="?page=home" title="Home">
+					<a href="<?php echo $this->webroot;?>" title="Home">
 						Home
 					</a>
 				</li>
@@ -17,10 +17,11 @@
 			</ul>
 		</div>
 		<div class="page_header_right">
-			<!--form class="search">
-				<input class="search_input hint" type="text" value="To search type and hit enter..." placeholder="To search type and hit enter...">
-			</form-->
-		</div>
+<a style="float:right;" title="Read more"  href="<?php  echo $this->webroot; ?>users/dashboard" class="more large dark_blue icon_small_arrow margin_right_white">Dashboard</a>
+<a style="float:right;margin-right:10px;"  title="Read more"  href="<?php  echo $this->webroot; ?>users/settings" class="more large dark_blue icon_small_arrow margin_right_white  ">Settings</a>
+<a style="float:right;margin-right:10px;" title="Read more" href="<?php  echo $this->webroot; ?>review"  class="active more large dark_blue icon_small_arrow margin_right_white  ">Add Review</a>
+<a style="float:right;margin-right:10px;" title="Read more" href="<?php  echo $this->webroot; ?>review/all"  class="more large dark_blue icon_small_arrow margin_right_white  ">My Reviews</a>
+</div>
 	</div>
 
 	<div class="clearfix page_margin_top ">
@@ -81,23 +82,7 @@ We value your opinion. Share your experience with others to help guide them towa
 
 </div>
 
-<div class="page_right page_margin_top">
 
-<a style="width:120px;float:right;" title="Read more"  href="<?php echo $this->webroot;?>users/dashboard" class=" more large dark_blue icon_small_arrow margin_right_white">Dashboard</a>
-
-
-<div class="clear"></div>
-<a style="width:120px;float:right;"  title="Read more"  href="<?php echo $this->webroot;?>users/settings" class="more large dark_blue icon_small_arrow margin_right_white page_margin_top ">Settings</a>
-
-
-<div class="clear"></div>
-<a style="width:120px;float:right;" title="Read more" href="<?php echo $this->webroot;?>review"  class="more large dark_blue icon_small_arrow margin_right_white page_margin_top active">Add Review</a>
-
-
-<div class="clear"></div>
-<a style="width:120px;float:right;" title="Read more" href="<?php echo $this->webroot;?>review/all"  class="more large dark_blue icon_small_arrow margin_right_white page_margin_top ">My Reviews</a>
-
-</div>
 
 
 
