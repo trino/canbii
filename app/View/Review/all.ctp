@@ -56,6 +56,7 @@ if(!isset($_GET['user']))
 }
 ?>
 <div class="clearfix"></div>
+</div>
 
 <div class="clearfix page_margin_top revi">
 
@@ -69,7 +70,7 @@ if(!isset($_GET['user']))
 
 </div>
 </div>
-</div>
+
 <?php if($this->params['action']=='review'){
     //echo $this->params['action'];?>
 <script>

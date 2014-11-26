@@ -55,14 +55,37 @@ include('combine/hexagon.php');?>
 
 
 </div>
-		<div class="page_header_right">
+		
+
+
+
+<?php
+if($this->Session->read('User') && $this->params['action']!='detail')
+{
+?>
+<div class="page_header_right">
+
+
+<a style="float:right;" title="Read more"  href="<?php echo $this->webroot;?>users/dashboard" class=" more large dark_blue icon_small_arrow margin_right_white">Dashboard</a>
+
+
+<a style="margin-right:10px;float:right;"  title="Read more"  href="<?php echo $this->webroot;?>users/settings" class="more large dark_blue icon_small_arrow margin_right_white">Settings</a>
+
+<a style="margin-right:10px;float:right;" title="Read more" href="<?php echo $this->webroot;?>review"  class="more large dark_blue icon_small_arrow margin_right_white  active">Add Review</a>
+
+
+<a style="margin-right:10px;float:right;" title="Read more" href="<?php echo $this->webroot;?>review/all"  class="more large dark_blue icon_small_arrow margin_right_white  ">My Reviews</a>
 
 
 
 
 
+</div>
+<?php
+}
 
-		</div>
+?>
+		
 		
 		
 		
@@ -464,24 +487,7 @@ Rating & Comment <?php if($this->params['action']=='add')echo '(Required)';?>
 if($this->Session->read('User') && $this->params['action']!='detail')
 {
 ?>
-<div class="page_right page_margin_top">
 
-<a style="width:120px;float:right;" title="Read more"  href="<?php echo $this->webroot;?>users/dashboard" class=" more large dark_blue icon_small_arrow margin_right_white">Dashboard</a>
-
-<div class="clear"></div>
-<a style="width:120px;float:right;"  title="Read more"  href="<?php echo $this->webroot;?>users/settings" class="more large dark_blue icon_small_arrow margin_right_white page_margin_top ">Settings</a>
-
-<div class="clear"></div>
-<a style="width:120px;float:right;" title="Read more" href="<?php echo $this->webroot;?>review"  class="more large dark_blue icon_small_arrow margin_right_white page_margin_top active ">Add Review</a>
-
-<div class="clear"></div>
-<a style="width:120px;float:right;" title="Read more" href="<?php echo $this->webroot;?>review/all"  class="more large dark_blue icon_small_arrow margin_right_white page_margin_top ">My Reviews</a>
-
-<div class="clear"></div>
-
-
-
-</div>
 <?php
 }
 else
