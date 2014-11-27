@@ -470,6 +470,7 @@ class StrainsController extends AppController{
         if(isset($_GET['nationality']))
         {
             $u_cond = 'nationality = "'.$_GET['nationality'].'"';
+            $this->set('nationality',$_GET['nationality']);
         }
         if(isset($_GET['country']))
         {
@@ -477,6 +478,7 @@ class StrainsController extends AppController{
             $u_cond = 'country = "'.$_GET['country'].'"';
             else
             $u_cond = $u_cond.' AND country = "'.$_GET['country'].'"';
+            $this->set('country',$_GET['country']);
         }
         if(isset($_GET['gender']))
         {
@@ -484,11 +486,16 @@ class StrainsController extends AppController{
             $u_cond = 'gender = "'.$_GET['gender'].'"';
             else
             $u_cond = $u_cond.' AND gender = "'.$_GET['gender'].'"';
+            $this->set('gender',$_GET['gender']);
         }
         if(isset($_GET['age_group_from']))
         {
-            if(isset($_GET['age_group_from']))
+            $this->set('age_group_from',$_GET['age_group_from']);
+            
+            if(isset($_GET['age_group_to'])){
             $to = $_GET['age_group_to'];
+            $this->set('age_group_to',$_GET['age_group_to']);
+            }
             else
             $to = 100;
             if(!$to)
@@ -520,6 +527,7 @@ class StrainsController extends AppController{
         }
         if(isset($_GET['health']))
         {
+            $this->set('health',$_GET['health']);
             if(!$u_cond)
             $u_cond = 'health = "'.$_GET['health'].'"';
             else
@@ -528,8 +536,11 @@ class StrainsController extends AppController{
         
         if(isset($_GET['weight_from']))
         {   
-            if(isset($_GET['weight_from']))
+            $this->set('weight_from',$_GET['weight_from']);
+            if(isset($_GET['weight_to'])){
             $to = $_GET['weight_to'];
+            $this->set('weight_to',$_GET['weight_to']);
+            }
             else
             $to = 280;
             if(!$to)
@@ -565,8 +576,11 @@ class StrainsController extends AppController{
         
         if(isset($_GET['years_of_experience_from']))
         {
-            if(isset($_GET['years_of_experience_from']))
+            $this->set('years_of_experience_from',$_GET['years_of_experience_from']);
+            if(isset($_GET['years_of_experience_to'])){
             $to = $_GET['years_of_experience_to'];
+            $this->set('years_of_experience_to',$_GET['years_of_experience_to']);
+            }
             else
             $to = 50;
             if(!$to)
@@ -583,6 +597,7 @@ class StrainsController extends AppController{
         }
         if(isset($_GET['frequency']))
         {
+            $this->set('frequency',$_GET['frequency']);
             if(!$u_cond)
             $u_cond = 'frequency = "'.$_GET['frequency'].'"';
             else
@@ -590,6 +605,7 @@ class StrainsController extends AppController{
         }
         if(isset($_GET['body_type']))
         {
+            $this->set('body_type',$_GET['body_type']);
             if(!$u_cond)
             $u_cond = 'body_type = "'.$_GET['body_type'].'"';
             else

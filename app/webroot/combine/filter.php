@@ -1,4 +1,114 @@
 <?php
+$u_cond = '';
+        if(isset($nationality))
+        {
+            $u_cond = '?nationality='.$nationality;
+            
+        }
+        if(isset($country))
+        {
+            if(!$u_cond)
+            $u_cond = '?country= '.$country;
+            else
+            $u_cond = $u_cond.'&country='.$country;
+           
+        }
+        if(isset($gender))
+        {
+            if(!$u_cond)
+            $u_cond = '?gender='.$gender;
+            else
+            $u_cond = $u_cond.'&gender='.$gender.'"';
+            
+        }
+        if(isset($age_group_from))
+        {
+            
+                if(!$u_cond)
+                $u_cond = '?age_group_from='.$age_group_from;
+                else
+                $u_cond = $u_cond.'&age_group_from='.$age_group_from.'"';
+            
+            
+        }
+        if(isset($age_group_to))
+        {
+            
+                if(!$u_cond)
+                $u_cond = '?age_group_to='.$age_group_to;
+                else
+                $u_cond = $u_cond.'&age_group_to='.$age_group_to.'"';
+            
+            
+        }
+        if(isset($health))
+        {
+            
+            if(!$u_cond)
+            $u_cond = '?health = "'.$health.'"';
+            else
+            $u_cond = $u_cond.'&health='.$health;
+        }
+        
+        if(isset($weight_from))
+        {
+            
+                if(!$u_cond)
+                $u_cond = '?weight_from='.$weight_from;
+                else
+                $u_cond = $u_cond.'&weight_from='.$weight_from.'"';
+            
+            
+        }
+        if(isset($weight_to))
+        {
+            
+                if(!$u_cond)
+                $u_cond = '?weight_to='.$weight_to;
+                else
+                $u_cond = $u_cond.'&weight_to='.$weight_to.'"';            
+            
+        }
+        
+        if(isset($years_of_experience_from))
+        {
+            
+                if(!$u_cond)
+                $u_cond = '?years_of_experience_from='.$years_of_experience_from;
+                else
+                $u_cond = $u_cond.'&years_of_experience_from='.$years_of_experience_from.'"';            
+            
+        }
+        if(isset($years_of_experience_to))
+        {
+            
+                if(!$u_cond)
+                $u_cond = '?years_of_experience_to='.$years_of_experience_to;
+                else
+                $u_cond = $u_cond.'&years_of_experience_to='.$years_of_experience_to.'"';            
+            
+        }
+        if(isset($frequency))
+        {
+            
+                if(!$u_cond)
+                $u_cond = '?frequency='.$frequency;
+                else
+                $u_cond = $u_cond.'&frequency='.$frequency.'"';            
+            
+        }
+        if(isset($body_type))
+        {
+            
+                if(!$u_cond)
+                $u_cond = '?body_type='.$body_type;
+                else
+                $u_cond = $u_cond.'&body_type='.$body_type.'"';            
+            
+        }
+        
+
+
     if($strain)
     {
 	?>
@@ -47,7 +157,7 @@ include('combine/hexagon.php');?>
 <div class="text" style="width:80%;float:left;">
 
 <h2>
-<a href="<?php echo $this->webroot?>strains/<?php echo $s['Strain']['slug'];?>">
+<a href="<?php echo $this->webroot?>strains/<?php echo $s['Strain']['slug'];?>/<?php if($u_cond)echo $u_cond;?>">
 <?php echo $s['Strain']['name'];?>
 </a>
 </h2>
