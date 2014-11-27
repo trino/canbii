@@ -98,22 +98,22 @@ $symptoms = array();
   <ul class="tabs_navigation2">  
   <li style=""><p>Filter By:</p></li>
     <li>
-	<a id="indica" <?php if($type=='indica'){?>style="border-bottom:2px solid #1b83c6 !important;"<?php }?> href="<?php echo $this->webroot;?>strains/all/indica">
+	<a id="indica" <?php if($type=='indica'){?>style="border-bottom:2px solid #1b83c6 !important;"<?php }?> href="<?php echo $this->webroot;?>strains/all/indica<?php if(isset($_GET['key']))echo "?key=".$_GET['key'];?>">
 	Indica</a>
 	</li>
     
     <li>
-	<a id="sativa" <?php if($type=='sativa'){?>style="border-bottom:2px solid #1b83c6 !important;"<?php }?> href="<?php echo $this->webroot;?>strains/all/sativa">
+	<a id="sativa" <?php if($type=='sativa'){?>style="border-bottom:2px solid #1b83c6 !important;"<?php }?> href="<?php echo $this->webroot;?>strains/all/sativa<?php if(isset($_GET['key']))echo "?key=".$_GET['key'];?>">
 	Sativa</a>
 	</li>
     
     <li>
-	<a id="hybrid" <?php if($type=='hybrid'){?>style="border-bottom:2px solid #1b83c6 !important;"<?php }?> href="<?php echo $this->webroot;?>strains/all/hybrid">
+	<a id="hybrid" <?php if($type=='hybrid'){?>style="border-bottom:2px solid #1b83c6 !important;"<?php }?> href="<?php echo $this->webroot;?>strains/all/hybrid<?php if(isset($_GET['key']))echo "?key=".$_GET['key'];?>">
 	Hybrid</a>
 	</li>
     
     <li>
-	<a id="all_breed" <?php if($type==''){?>style="border-bottom:2px solid #1b83c6 !important;"<?php }?> href="<?php echo $this->webroot;?>strains/all">
+	<a id="all_breed" <?php if($type==''){?>style="border-bottom:2px solid #1b83c6 !important;"<?php }?> href="<?php echo $this->webroot;?>strains/all<?php if(isset($_GET['key']))echo "?key=".$_GET['key'];?>">
 	All</a>
 	</li>
     <div class="clearfix"></div>
