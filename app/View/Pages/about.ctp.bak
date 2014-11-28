@@ -28,6 +28,36 @@
 			</h2>
 			
 			
+			
+			
+			
+			<style>
+.diver {
+    background: url('http://i.imgur.com/B19Zb.jpg') no-repeat;
+    text-align:center;
+    color:#fff;
+    font-size:1.1em;
+    height:140px;
+    width:140px;
+}
+
+a {
+    color:yellow;
+    text-align:center;
+    position: relative;
+    top: 35px;
+    left: -10px;
+}
+</style>
+<div class="diver">
+    <a href="#">
+        Advertise
+        <br />
+        with us
+    </a>
+</div>
+
+
 
 
 <p>
