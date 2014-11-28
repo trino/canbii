@@ -201,6 +201,7 @@ $symptoms = array();
     var profile='';
     $('.hidden_filter select').change(function(){
         profile = '';
+        val = '';
         $('.hidden_filter select').each(function(){
         
         
@@ -289,7 +290,7 @@ $symptoms = array();
             $('.listing').html(res);
            } 
         });
-        val='';
+        
         
     });    
         
