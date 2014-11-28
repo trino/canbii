@@ -26,8 +26,8 @@ em{letter-spacing:2px;font-style: normal;}
 <link href="<?php echo $this->webroot;?>css/raty.css" rel="stylesheet" type="text/css" />
 
 <div class="page_layout page_margin_top clearfix">
-<div class="page_header clearfix">
-<?php include('combine/profile_filter.php');?>
+<div class="page_header clearfix" style="border-bottom: none;">
+
 <div class="page_header_left">
 
 
@@ -53,6 +53,7 @@ switch ($strain['Strain']['type_id']) {
 </p>
 </div>
 
+
 </div>
 <div class="page_header_right noprint">
 
@@ -61,7 +62,7 @@ switch ($strain['Strain']['type_id']) {
 
 </div>
 
-
+<?php include('combine/profile_filter.php');?>
 
 
 <div class="toprint page_margin_top">
@@ -246,7 +247,7 @@ rsort($arr);
 else
 $arr = array();
 $i=0;
-
+if($arr){
 foreach($arr as $e)
 {
 $ar=explode('_',$e);
@@ -263,6 +264,11 @@ $length = 20*$rate;;
 </div>
 <?php
 }
+}
+else
+{?>
+<i>No Ratings yet</i>
+<?php }
 ?>
 </div>
 
@@ -333,6 +339,7 @@ else
     $arrs = array();
 //var_dump($arr);    
 $i=0;
+if($arrs){
 foreach($arrs as $e)
 {
 $ars=explode('_',$e);
@@ -352,7 +359,13 @@ $length = 20*$rate;;
 </div>
 <?php
 }
+}
+else
+{?>
+<i>No Ratings yet</i>
+<?php }
 ?>
+
 </div>
 
 
@@ -373,7 +386,7 @@ $length = 20*$rate;;
             else
                 $arr_neg = array();
             $i=0;
-            
+            if($arr_neg){
             foreach($arr_neg as $e)
             {
                 $ar=explode('_',$e);
@@ -390,7 +403,11 @@ $length = 20*$rate;;
                 </div>
                 <?php
             }
-            ?>
+            }else
+{?>
+<i>No Ratings yet</i>
+<?php }
+?>
         </div>
     
     
@@ -452,18 +469,41 @@ $length = 20*$rate;;
             }    
         }
         ?>
+        <?php
+        if($scale){
+            ?>
+            
         <div class="eff">
         <div class="label left">Sedative</div><div class="left ratewrap"><img src="<?php echo $this->webroot;?>Capture.PNG" style="width: <?php echo round($scale,2);?>%;height:25px;position: absolute;left:0;" /><em><?php echo round($scale/20,2);?>/5</em></div><div class="clear"></div>
         </div>
+        <?php
+        }
+        ?>
+        <?php
+        if($strength){
+            ?>
         <div class="eff">
         <div class="label left">Strength</div><div class="left ratewrap" style="width: 63%;background:#FFF;"><img src="<?php echo $this->webroot;?>Capture.PNG" style="width: <?php echo round($strength,2);?>%;height:25px;position: absolute;left:0;" /><em><?php echo round($strength/20,2);?>/5</em></div><div class="clear"></div>
         </div>
+        <?php
+        }
+        ?>
+        <?php
+        if($duration){
+            ?>
         <div class="eff">
         <div class="label left">Duration</div><div class="left ratewrap" style="width: 63%;background:#FFF;"><img src="<?php echo $this->webroot;?>Capture.PNG" style="width: <?php echo round($duration,2);?>%;height:25px;position: absolute;left:0;" /><em><?php echo round($duration/20,2);?>/5</em></div><div class="clear"></div>
         </div>        
-        
         <?php
-        
+        }
+        ?>
+        <?php
+        if(!$duration && !$strength && !$scale)
+        {
+            ?>
+            <i>No Reviews yet</i>
+            <?php
+        }
         ?>
         
         </div>
