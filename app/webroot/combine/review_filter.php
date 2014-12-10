@@ -75,7 +75,7 @@ if($review)
                 <?php }?>
                 
                 */?>
-                <a class="more blue" href="/marijuana/review/detail/<?php echo $r['Review']['id']?>">View Detail ?</a>
+                <a class="more blue" href="<?php echo $this->webroot;?>review/detail/<?php echo $r['Review']['id']?>">View Detail ?</a>
                 
                 
                 </div>
