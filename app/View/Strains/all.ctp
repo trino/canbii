@@ -54,9 +54,9 @@ $symptoms = array();
 		</div>
 		<div class="page_header_right">
 			<form class="search" method="get" action="<?php echo $this->webroot;?>strains/search">
-				<input class="search_input hint" name="key" type="text" value="" placeholder="Search by strain name...">
+				<input id="INPUT_16" class="search_input hint" name="key" type="text" value="" placeholder="Search by strain name...">
 				
-				<input type="submit" value="Search" class="more blue medium " style="height:38px;">
+				<input id="BUTTON_17" type="submit" value="Search" class="more blue medium " />
 					<a href="<?php echo $this->webroot;?>strains/search?key=" class="  " style="height:14px;
 					float: left;
 					padding: 12px 18px;				

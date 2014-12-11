@@ -117,7 +117,7 @@ General Rating
 <div class="backgroundcolor">
 
 
-<h3>Effect Scale (Active to Sedative)</h3>
+<h3>Effect Scale (Sedative to Active)</h3>
 <?php if(isset($review)&& $review['Review']['eff_scale']==0)
         {
             echo "<strong>&nbsp;&nbsp;&nbsp;No Review For Effect Scale</strong><br/>";
@@ -128,7 +128,8 @@ General Rating
           <?php if($this->params['action']=='add'){?>
                 
             <?php }else{
-                    $typ = array('','NULL','Extremely Active','Very Active','Active','Bit Active','Balanced','Bit Sedated','Sedated','Very Sedated','Extemely Sedated');
+                    $typ = array('','NULL','Extemely Sedated','Very Sedate','Sedated','Bit Sedate','Balanced','Bit Active','Active','Very Active','Extremly Active');
+                            
                     echo $typ[$review['Review']['eff_scale']];
              } ?>  
         </p>
@@ -607,7 +608,7 @@ $(function(){
 					}
 					jQ.val("");
 				}
-                $("#qf_review__general__mscale__slider").slider({'min':0,'max':9,'step':1,'value':0,'slide':function(e,ui){ $('#qf_review__general__mscale').val(ui.value);var vals = ['','Extremely Active','Very Active','Active','Bit Active','Balanced','Bit Sedated','Sedated','Very Sedated','Extemely Sedated'];
+                $("#qf_review__general__mscale__slider").slider({'min':0,'max':9,'step':1,'value':0,'slide':function(e,ui){ $('#qf_review__general__mscale').val(ui.value);var vals = ['','Extemely Sedated','Very Sedate','Sedated','Bit Sedate','Balanced','Bit Active','Active','Very Active','Extremly Active'];
                                                                                                                                                                                 $('#qf_review__general__mscale__prompt').html(vals[Math.ceil( ((ui.value+1-1)/(9+1-1))*vals.length )-1]); },'range':'min'});		
 				$("#qf_review__general__strength__slider").slider({'min':0,'max':5,'step':1,'value':0,'slide':function(e,ui){ $('#qf_review__general__strength').val(ui.value);$('#qf_review__general__strength__prompt').html(''+ui.value+'/5'); },'range':'min'});		
 				$("#qf_review__general__duration__slider").slider({'min':0,'max':5,'step':1,'value':0,'slide':function(e,ui){ $('#qf_review__general__duration').val(ui.value);$('#qf_review__general__duration__prompt').html(''+ui.value+' hrs'); },'range':'min'});		

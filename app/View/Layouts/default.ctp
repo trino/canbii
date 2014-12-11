@@ -308,11 +308,19 @@ padding:30px;
 <p id="P_5">
 filter by symptoms:
 <?php $effect = $this->requestAction('/pages/getSym');
-foreach($effect as $e)
+foreach($effect as $key=>$e)
 {
+    if($key ==10)
+{
+    echo "<a href='javascript:;' onclick=\"$('.more2').toggle();\" style='color:#fff;font-weight:bold;'>....</a></p><p class='more2' id='P_5' style='display:none;'>";
+    
+}
 ?>
 <a class="A_6" style="" href="javascript:void(0)" onclick="highlightsym($(this))" class=""  id="sym_<?php echo $e['Symptom']['id'];?>"><?php echo $e['Symptom']['title']?></a>
+
 <?php
+    if($key+1 == count($effect))
+        echo "</p>";
 }
 ?>
 or <a class="A_6" href="<?php echo $this->webroot;?>strains/all">view all</a>
@@ -321,13 +329,22 @@ or <a class="A_6" href="<?php echo $this->webroot;?>strains/all">view all</a>
 <p id="P_5">
 filter by effects:
 <?php $effect = $this->requestAction('/pages/getEff');
-foreach($effect as $e)
+foreach($effect as $key=>$e)
 {
+     if($key ==10)
+{
+    echo "<a href='javascript:;' onclick=\"$('.more1').toggle();\" style='color:#fff;font-weight:bold;'>....</a></p><p class='more1' id='P_5' style='display:none;'>";
+    
+}
 ?>
 <a  href="javascript:void(0)" class="A_6" onclick="highlighteff($(this))" id="eff_<?php echo $e['Effect']['id'];?>"><?php echo $e['Effect']['title']?></a>
 </a>
 <?php
+
+    if($key+1 == count($effect))
+        echo "</p>";
 }
+
 ?>
 or <a class="A_6" href="<?php echo $this->webroot;?>strains/all">view all</a>
 </p>

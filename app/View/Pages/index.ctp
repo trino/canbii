@@ -4,7 +4,7 @@
 	<ul class="columns no_width">
 		<li class="column_left">
 			<h1>There's a Strain for that</h1>
-			<p>Fees are an estimate only and may be more depending on your situatio depending on your situation</p>
+			<p>Fees are an estimate only and may be more depending on your situation </p>
 		</li>
 		<li class="column_right">
 			<div class="vertical_align">

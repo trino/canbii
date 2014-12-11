@@ -363,7 +363,7 @@ if ($strain['StrainImage']) {
                     <div class="left ratewrap">
                         <img src="<?php echo $this->webroot; ?>Capture.PNG"
                              style="width: <?php echo $length; ?>%;height:25px;position: absolute; text-align: center;left:0;"/>
-                        <em><?php echo $rate; ?>/5</em>
+                        <em><?php echo number_format($rate,2); ?>/5</em>
                     </div>
                     <div class="clear"></div>
                 </div>
