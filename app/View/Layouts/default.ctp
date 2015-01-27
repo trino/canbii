@@ -353,7 +353,7 @@ or <a class="A_6" href="<?php echo $this->webroot;?>strains/all">view all</a>
 <p style="display: none;" class="symp"></p>
 
 <div class="main2">
-<div class="div12"><input  id="INPUT_16"  type="text" placeholder="Search by name" name="key" class="key" style=""/>
+<div class="div12"><input  id="INPUT_16"  type="text" placeholder="" name="key" class="key" style=""/>
 <input  id="BUTTON_17" type="submit" value="Search" class="more blue medium " style="" />
 </div>
 </div>
@@ -486,7 +486,9 @@ or <a class="A_6" href="<?php echo $this->webroot;?>strains/all">view all</a>
                             <?php echo substr($s['Review']['review'],0,80) . '...';?>
                             
                             </a>
-                            <abbr title="" class="timeago"><?php echo "<a href='".$this->webroot."strains/review/all/?user=".$s['Review']['user_id']."'>".ucfirst($s['User']['username'])."</a> ".$s['Review']['on_date'];?></abbr>
+                            <abbr title="" class="timeago">
+                                <?php echo "<a href='".$this->webroot."strains/review/all/?user=".$s['Review']['user_id']."'>".ucfirst($s['User']['username'])."</a>&nbsp;".$s['Review']['on_date'];?>
+                            </abbr>
                         </li>
                         									
                         									

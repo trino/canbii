@@ -54,7 +54,7 @@ $symptoms = array();
 		</div>
 		<div class="page_header_right">
 			<form class="search" method="get" action="<?php echo $this->webroot;?>strains/search">
-				<input id="INPUT_16" class="search_input hint" name="key" type="text" value="" placeholder="Search by strain name..." style="float:left;">
+				<input id="INPUT_16" class="search_input hint" name="key" type="text" value="" placeholder="" style="float:left;">
 				
 				<input id="BUTTON_17" type="submit" value="Search" class="more blue medium " style="float:left;" />
 					
@@ -140,11 +140,9 @@ $symptoms = array();
 				foreach($effect as $e)
 				{
 				?>
-									
-								
-									
-				<a style="color:white;" href="javascript:void(0)" class="small-btn eff2" id="eff_<?php echo $e['Effect']['id'];?>"><?php echo $e['Effect']['title']?></a>
-				
+				    <a style="color:white;" href="javascript:void(0)" class="small-btn eff2" id="eff_<?php echo $e['Effect']['id'];?>">
+                        <?php echo $e['Effect']['title']?>
+                    </a>
 				<?php
 				}
 				?>

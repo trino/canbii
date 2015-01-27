@@ -605,6 +605,11 @@
 		width: 227px;
 		padding-right: 23px;
 	}
+
+	.mobile_menu select{
+		font-size:1.5em;
+		border-radius:4px;
+	}
 	.footer_box.last
 	{
 		width: 250px;
@@ -658,6 +663,10 @@
 	.mobile_menu
 	{
 		display: block;
+	}
+	.mobile_menu select{
+		font-size:1.5em;
+		border-radius:4px;
 	}
 	.tabs_box_navigation.sf-menu
 	{
@@ -1058,22 +1067,82 @@
     {
         width:100%!important;
     }
-    
-    
-    
+
 }
 @media screen and (max-width:479px)
 {
+
+	#dashboard select {
+		width: 75%;
+		height: auto;
+		padding:1.5%;
+		background: #F0F0F0;
+		border: 1px solid #e5e5e5;
+	}
+	#dashboard input[type="text"] {
+		width: 72%;
+		height: 100%;
+		padding:1.5%;
+	}
+	.more.icon_small_arrow.large {
+		padding:2%;
+	}
+	.good {
+		background: url('../images/notification_success.png') no-repeat 20px center #5FAA4B;
+		text-align: center;
+		color: white;
+		font-size: 16px;
+	}
+
+	.page_margin_top {
+		margin-top: 1%;
+	}
+	.contact_form {
+		margin-top: 1%;
+	}
+	.page_header {
+		padding-bottom: 1%;
+		height:auto !important;
+	}
+	.hidden_filter label, .comment_form label, .contact_form label {
+		display: block;
+		color: #909090;
+		margin-top: 1.5%;
+		margin-bottom: 0.5%;
+	}
+
     .one-third .rating {
    
     padding-left: 15px;
     
     }
+
+	.profile_filter {
+		display: block;
+		background: #42B3E5;
+		color: #FFF;
+		padding: 1%;
+		width: 98%;
+		ext-align: center;
+	}
     
-    .div12 #INPUT_16
+    #INPUT_16
     {
-        width:50%!important;
+        width:25%!important;
+		height:25px;
     }
+	#BUTTON_17{
+		height:100%;
+		width:25%; font-size:1em;
+		padding:0;
+		margin-top:-1px;
+
+	}
+
+	.mobile_menu select{
+		font-size:1.25em;
+		border-radius:4px;
+	}
     .list-review
     {
         width:100%;
@@ -1103,7 +1172,7 @@
 	/* --- header --- */
 	.header
 	{
-		width: 300px;
+		width: 98%;
 	}
 	/* --- menu --- */
 	.mobile_menu
@@ -1114,8 +1183,15 @@
 	}
 	.mobile_menu select
 	{
-		width: 100%;
+		width: 75%;
 	}
+
+	.header_left a img{
+		display: block;
+		margin-left: auto;
+		margin-right: auto
+	}
+
 	.sf-menu li.submenu.wide ul
 	{
 		width: 278px;

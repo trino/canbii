@@ -3423,7 +3423,6 @@ a.Blueberry:before{
     opacity:.5;
 }
 
-
 a.Orange:before{
     content:"";
     display:block;
@@ -3645,6 +3644,30 @@ a.Pine:before{
     content:"";
     display:block;
     content: url("../images/icons/pine.png");
+    height:17px;
+    width:17px;
+    position:absolute;
+    left:-20px;
+    top:0px;
+    opacity:.5;
+}
+
+a.Earthy:before{
+    content:"";
+    display:block;
+    content: url("../images/icons/earthy.png");
+    height:17px;
+    width:17px;
+    position:absolute;
+    left:-20px;
+    top:0px;
+    opacity:.5;
+}
+
+a.Honey:before{
+    content:"";
+    display:block;
+    content: url("../images/icons/honey.png");
     height:17px;
     width:17px;
     position:absolute;
