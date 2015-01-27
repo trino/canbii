@@ -97,7 +97,7 @@ class PagesController extends AppController {
             <b>From</b> : ".$name."<br/>
             <b>Email</b> : ".$email."<br/>
             <b>Subject</b> : ".$sub."<br/>
-            <b>Message</b> : ".$msg."<br/><br/>Thankyou,<br/>Canabii.";
+            <b>Message</b> : ".$msg."<br/><br/>Thank you, <br/>Canabii.";
             $emails->to('admin@web-nepal.com');
             $emails->send($message);
             $this->Session->setFlash('Message sent successfully', 'default', array('class' => 'good'));

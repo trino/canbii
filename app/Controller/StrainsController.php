@@ -15,7 +15,7 @@ class StrainsController extends AppController
         $this->loadModel('FlavorRating');
 
         $q = $this->Strain->find('first', array('conditions' => array('slug' => $slug)));
-
+        //debug($q );
         $this->set('title', $q['Strain']['name']);
         $this->set('description', $q['Strain']['description']);
         $this->set('keyword', $q['Strain']['name'] . ' , Canbii , Medical , Marijuana , Medical Marijuana');

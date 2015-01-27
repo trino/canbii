@@ -54,18 +54,15 @@ $symptoms = array();
 		</div>
 		<div class="page_header_right">
 			<form class="search" method="get" action="<?php echo $this->webroot;?>strains/search">
-				<input id="INPUT_16" class="search_input hint" name="key" type="text" value="" placeholder="Search by strain name...">
+				<input id="INPUT_16" class="search_input hint" name="key" type="text" value="" placeholder="Search by strain name..." style="float:left;">
 				
-				<input id="BUTTON_17" type="submit" value="Search" class="more blue medium " />
-					<a href="<?php echo $this->webroot;?>strains/search?key=" class="  " style="height:14px;
-					float: left;
-					padding: 12px 18px;				
-					">Reset</a>
-
+				<input id="BUTTON_17" type="submit" value="Search" class="more blue medium " style="float:left;" />
+					
+<input id="BUTTON_18" type="submit" value="Reset" class="more blue medium " style="display:none;" >
 			</form>
 		</div>
         <div class="clear"></div>
-        <?php if(isset($_GET['key'])){?><p style="padding-top: 10px;"><strong>Result for</strong> "<?php echo $_GET['key'];?>"</p><?php }?>
+        <?php if(strlen($_GET['key'])>0){?><p style="padding-top: 10px;"><strong>Result for</strong> "<?php echo $_GET['key'];?>"</p><?php }?>
         
 	</div>
     

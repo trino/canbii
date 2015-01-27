@@ -47,7 +47,7 @@ canbii.com appreciate you taking the time to send us this information.
                 </div>
                 <div class="form-group">
                   <label class="text-dark" for="email">E-mail <span class="bluecolor">*</span></label>
-                  <input name="email" type="text" id="email" class="form-control  form-control--contact" required>
+                  <input name="email" type="email" required="required" id="email" class="form-control  form-control--contact" >
                 </div>
                 <div class="form-group">
                   <label class="text-dark" for="subject">Subject <span class="bluecolor">*</span></label>

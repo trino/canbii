@@ -1,4 +1,4 @@
-<script src="<?php echo $this->webroot;?>js/raty.js"></script>
+<script src="<?php echo $this->webroot;?>js/raty.php"></script>
 <script src="<?php echo $this->webroot;?>js/labs.js"></script>
 <link href="<?php echo $this->webroot;?>css/raty.css" rel="stylesheet" type="text/css" />
 

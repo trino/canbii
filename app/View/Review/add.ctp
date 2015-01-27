@@ -430,12 +430,8 @@ else
 }
 ?>
 
-
-
 </span>
 </div>
-
-
 
 </fieldset>
 
@@ -474,12 +470,9 @@ Rating & Comment <?php if($this->params['action']=='add')echo '(Required)';?>
     }
 ?>
 
-
 <div class="clear"></div>
 
-
 </div>
-
 
 </form>
 </div>
@@ -535,11 +528,6 @@ else
 ?>
 </div>
 </div>
-
-
-
-
-
 
 <script>
 $(function(){

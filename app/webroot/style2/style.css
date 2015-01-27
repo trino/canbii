@@ -671,6 +671,7 @@ ul.sf-menu li li li:hover ul, ul.sf-menu li li li.sfHover ul
 .page_header_right
 {
 	float: right;
+    margin-bottom: 10px;
 }
 .page_header_left .page_title
 {
@@ -3330,7 +3331,7 @@ width:100px;
 }/*#INPUT_16*/
 
 #BUTTON_17 {
-width:30%;
+    width:auto;
     cursor: pointer;
     float: left;
     height: 72px;
@@ -3339,12 +3340,6 @@ width:30%;
     margin: 0px;
     padding: 5px 20px;
 }/*#BUTTON_17*/
-
-
-
- 
- 
- 
 
 
 .main2{text-align:center;}
@@ -3363,3 +3358,366 @@ width:30%;
 .profile_filter{display:block;background:#42B3E5;color:#FFF;padding:10px;width:290px;ext-align:center;}
 .filters{padding:10px;border:1px solid #e5e5e5;margin-bottom:10px;}
 .errorz{color:red; margin-left:10px;float:left;margin-top: 7px;}
+
+ul#text_and_image {
+    display: table;
+    clear:left;
+    float:left;
+    position:relative;
+    padding:0 !important;
+    margin:0 !important;
+}
+ul#text_and_image li {
+    display: table-cell;
+    padding-left:1%;
+    vertical-align : middle;
+}
+
+a.Strawberry:before {
+    content:"";
+    display:block;
+    content: url('../images/icons/strawberry.png');
+    height:15px;
+    width:15px;
+    position:absolute;
+    left:-20px;
+    top:0px;
+    opacity:.5;
+
+}
+
+a.Grape:before {
+    content:"";
+    display:block;
+    content: url('../images/icons/grape.png');
+    height:17px;
+    width:17px;
+    position:absolute;
+    left:-21px;
+    top:0px;
+    opacity:.7;
+
+}
+
+a.Sweet:before {
+    content:"";
+    display:block;
+    content: url('../images/icons/sweet.png');
+    height:17px;
+    width:17px;
+    position:absolute;
+    left:-20px;
+    top:0px;
+    opacity:.5;
+}
+
+a.Blueberry:before{
+    content:"";
+    display:block;
+    content: url("../images/icons/blueberry.png");
+    height:17px;
+    width:17px;
+    position:absolute;
+    left:-20px;
+    top:0px;
+    opacity:.5;
+}
+
+
+a.Orange:before{
+    content:"";
+    display:block;
+    content: url("../images/icons/orange.png");
+    height:17px;
+    width:17px;
+    position:absolute;
+    left:-20px;
+    top:0px;
+    opacity:.5;
+}
+
+a.Lime:before{
+    content:"";
+    display:block;
+    content: url("../images/icons/lime.png");
+    height:17px;
+    width:17px;
+    position:absolute;
+    left:-20px;
+    top:0px;
+    opacity:.5;
+}
+
+a.Grapefruit:before{
+    content:"";
+    display:block;
+    content: url("../images/icons/grapefruit.png");
+    height:17px;
+    width:17px;
+    position:absolute;
+    left:-20px;
+    top:0px;
+    opacity:.5;
+}
+
+a.Lemon:before{
+    content:"";
+    display:block;
+    content: url("../images/icons/lemon.png");
+    height:17px;
+    width:17px;
+    position:absolute;
+    left:-20px;
+    top:0px;
+    opacity:.5;
+}
+
+a.Pineapple:before{
+    content:"";
+    display:block;
+    content: url("../images/icons/pineapple.png");
+    height:17px;
+    width:17px;
+    position:absolute;
+    left:-20px;
+    top:0px;
+    opacity:.5;
+}
+
+a.Mango:before{
+    content:"";
+    display:block;
+    content: url("../images/icons/mango.png");
+    height:17px;
+    width:17px;
+    position:absolute;
+    left:-20px;
+    top:0px;
+    opacity:.5;
+}
+
+a.Apple:before{
+    content:"";
+    display:block;
+    content: url("../images/icons/apple.png");
+    height:17px;
+    width:17px;
+    position:absolute;
+    left:-20px;
+    top:0px;
+    opacity:.5;
+}
+
+a.Pear:before{
+    content:"";
+    display:block;
+    content: url("../images/icons/pear.png");
+    height:17px;
+    width:17px;
+    position:absolute;
+    left:-20px;
+    top:0px;
+    opacity:.5;
+}
+
+a.Peach:before{
+    content:"";
+    display:block;
+    content: url("../images/icons/peach.png");
+    height:17px;
+    width:17px;
+    position:absolute;
+    left:-20px;
+    top:0px;
+    opacity:.5;
+}
+
+a.Apricot:before{
+    content:"";
+    display:block;
+    content: url("../images/icons/apricot.png");
+    height:17px;
+    width:17px;
+    position:absolute;
+    left:-20px;
+    top:0px;
+    opacity:.5;
+}
+
+a.Plum:before{
+    content:"";
+    display:block;
+    content: url("../images/icons/plum.png");
+    height:17px;
+    width:17px;
+    position:absolute;
+    left:-20px;
+    top:0px;
+    opacity:.5;
+}
+
+a.Lavender:before{
+    content:"";
+    display:block;
+    content: url("../images/icons/lavender.png");
+    height:17px;
+    width:17px;
+    position:absolute;
+    left:-20px;
+    top:0px;
+    opacity:.5;
+}
+
+a.Rose:before{
+    content:"";
+    display:block;
+    content: url("../images/icons/rose.png");
+    height:17px;
+    width:17px;
+    position:absolute;
+    left:-20px;
+    top:0px;
+    opacity:.5;
+}
+
+a.Violet:before{
+    content:"";
+    display:block;
+    content: url("../images/icons/violet.png");
+    height:17px;
+    width:17px;
+    position:absolute;
+    left:-20px;
+    top:0px;
+    opacity:.5;
+}
+
+
+a.Skunk:before{
+    content:"";
+    display:block;
+    content: url("../images/icons/skunk.png");
+    height:17px;
+    width:17px;
+    position:absolute;
+    left:-20px;
+    top:0px;
+    opacity:.5;
+}
+
+a.Blue:before{
+    content:"";
+    display:block;
+    content: url("../images/icons/bluecheese.png");
+    height:17px;
+    width:17px;
+    position:absolute;
+    left:-20px;
+    top:0px;
+    opacity:.5;
+}
+
+a.Cheese:before{
+    content:"";
+    display:block;
+    content: url("../images/icons/cheese.png");
+    height:17px;
+    width:17px;
+    position:absolute;
+    left:-20px;
+    top:0px;
+    opacity:.5;
+}
+
+a.Butter:before{
+    content:"";
+    display:block;
+    content: url("../images/icons/butter.png");
+    height:17px;
+    width:17px;
+    position:absolute;
+    left:-20px;
+    top:0px;
+    opacity:.5;
+}
+
+a.Pine:before{
+    content:"";
+    display:block;
+    content: url("../images/icons/pine.png");
+    height:17px;
+    width:17px;
+    position:absolute;
+    left:-20px;
+    top:0px;
+    opacity:.5;
+}
+
+a.Strawberry:hover:before{opacity:1;transform: rotate(30deg) scale(1.1);}
+a.Sweet:hover:before{opacity:1;transform: rotate(30deg) scale(1.1);}
+a.Blueberry:hover:before{opacity:1;transform: rotate(30deg) scale(1.1);}
+a.Grape:hover:before{opacity:1;transform: rotate(30deg) scale(1.1);}
+a.Orange:hover:before{opacity:1;transform: rotate(30deg) scale(1.1);}
+a.Lime:hover:before{opacity:1;transform: rotate(30deg) scale(1.1);}
+a.Grapefruit:hover:before{opacity:1;transform: rotate(30deg) scale(1.1);}
+a.Lemon:hover:before{opacity:1;transform: rotate(30deg) scale(1.1);}
+a.Pineapple:hover:before{opacity:1;transform: rotate(30deg) scale(1.1);}
+a.Mango:hover:before{opacity:1;transform: rotate(30deg) scale(1.1);}
+a.Apple:hover:before{opacity:1;transform: rotate(30deg) scale(1.1);}
+a.Pear:hover:before{opacity:1;transform: rotate(30deg) scale(1.1);}
+
+a.Peach:hover:before{opacity:1;transform: rotate(30deg) scale(1.1);}
+a.Apricot:hover:before{opacity:1;transform: rotate(30deg) scale(1.1);}
+a.Plum:hover:before{opacity:1;transform: rotate(30deg) scale(1.1);}
+a.Lavender:hover:before{opacity:1;transform: rotate(30deg) scale(1.1);}
+a.Rose:hover:before{opacity:1;transform: rotate(30deg) scale(1.1);}
+a.Violet:hover:before{opacity:1;transform: rotate(30deg) scale(1.1);}
+a.Honey:hover:before{opacity:1;transform: rotate(30deg) scale(1.1);}
+a.Earthy:hover:before{opacity:1;transform: rotate(30deg) scale(1.1);}
+a.Skunk:hover:before{opacity:1;transform: rotate(30deg) scale(1.1);}
+a.Blue:hover:before{opacity:1;transform: rotate(30deg) scale(1.1);}
+a.Cheese:hover:before{opacity:1;transform: rotate(30deg) scale(1.1);}
+a.Pine:hover:before{opacity:1;transform: rotate(30deg) scale(1.1);}
+
+
+.footer_banner_box a:hover {
+    text-decoration: none;
+    text-shadow:2px 2px 2px #000;
+}
+
+
+a.glow, a.glow:hover, a.glow:focus
+{
+    text-decoration: none;
+
+    text-shadow: none;
+    -webkit-transition: 500ms linear 0s;
+    -moz-transition: 500ms linear 0s;
+    -o-transition: 500ms linear 0s;
+    transition: 500ms linear 0s;
+    outline: 0 none;
+}
+
+a.glow:hover, a.glow:focus
+{
+    color: #fff;
+    text-shadow: -1px 1px 8px #ffc, 1px -1px 8px #fff;
+}
+
+article.clean_html ul,
+article.clean_html ol{
+    list-style:initial !important;
+    padding: 25px !important;
+    list-style-position:inside;
+
+}
+article.clean_html ul.outer li,
+article.clean_html ol.outer li{
+    list-style-type: lower-alpha;
+}
+
+
+article.clean_html ul.inner li,
+article.clean_html ol.inner li{
+    list-style-type: lower-roman;
+}

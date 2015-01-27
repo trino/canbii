@@ -273,7 +273,7 @@ if(thiss.attr('class').replace('searchact','')==thiss.attr('class'))
 
 <?if(isset($homepage)){?>
 
-<div style="height:100%; background-image: url(http://localhost/canbii/images/bg4.jpg);text-shadow: 0px 1px 0px rgba(0,0,0,1);padding:20px 0px;">
+<div style="height:100%; background-image: url(http://localhost/marijuana/images/bg4.jpg);text-shadow: 0px 1px 0px rgba(0,0,0,1);padding:20px 0px;">
 
 
 
@@ -525,7 +525,7 @@ or <a class="A_6" href="<?php echo $this->webroot;?>strains/all">view all</a>
 					</div>
 					<div class="copyright_area clearfix">
 						<div class="copyright_left">
-							© Copyright 2014 - <a href="http://canbii.com" title="canbii" target="_blank">canbii.com</a> 
+							© Copyright <?php echo "2014-". date('Y');?> - <a href="http://canbii.com" title="canbii" target="_blank">canbii.com</a>
 						</div>
 						<div class="copyright_right">
 							<a class="scroll_top icon_small_arrow top_white" href="#top" title="Scroll to top">Top</a>

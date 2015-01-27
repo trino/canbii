@@ -62,12 +62,6 @@ if(!isset($_GET['user']))
 
 <?php include_once('combine/my_reviews.php');?>
 
-
-
-
-
-
-
 </div>
 </div>
 
