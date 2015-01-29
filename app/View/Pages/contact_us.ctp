@@ -28,26 +28,29 @@
 		<div class="columns_3 clearfix">
         <div class="column">
         <h2  class="no-margin"><span class="box_header  page_margin_top slide">canbii</span></h2><br/>
-<p>
+<p align="justify">
 Thank you for contacting canbii. Any questions or comments are greatly appreciated.</p>
-<p>
+            <p align="justify">
 We use the information to improve our services. Your comments, suggestions, and ideas for improvements are very important to us.</p>
-<p>
+            <p align="justify">
 canbii.com appreciate you taking the time to send us this information.
 </p>
 			
         </div>
-        
-          
+            <?php
+             $username = $this->Session->read('User.username');
+             $email = $this->Session->read('User.email');
+            ?>
+
             
               <div class="column">
                 <div class="form-group">
                   <label class="text-dark" for="name">Name <span class="bluecolor">*</span></label>
-                  <input name="name" type="text" id="name" class="form-control  form-control--contact" required>
+                  <input name="name" type="text" id="name" class="form-control  form-control--contact" required value="<?php echo $username; ?>">
                 </div>
                 <div class="form-group">
                   <label class="text-dark" for="email">E-mail <span class="bluecolor">*</span></label>
-                  <input name="email" type="email" required="required" id="email" class="form-control  form-control--contact" >
+                  <input name="email" type="email" required="required" id="email" class="form-control  form-control--contact" value="<?php echo $email; ?>" >
                 </div>
                 <div class="form-group">
                   <label class="text-dark" for="subject">Subject <span class="bluecolor">*</span></label>

@@ -335,7 +335,7 @@ h1
 }
 h2
 {
-	font-size: 24px;
+	font-size: 20px;
 }
 h3
 {
@@ -3197,6 +3197,7 @@ a.social_icon,
     margin:0 1px 5px 0;
 	border:1px solid #F8F8F8;
 	font-size:13px;
+
 }
 .eff3{
 	background:#42B3E5;
@@ -3277,14 +3278,14 @@ width:100px;
  
 .error{color:red!important;}
  
- 
+
 #H1_4 {
     box-sizing: border-box;
     color: rgb(255, 255, 255);
     /*height: 60px;*/
     text-align: center;
     transform-origin: 492px 30px;
-    font: normal normal 500 36px/40px 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    /* font: normal normal 500 36px/40px 'Helvetica Neue', Helvetica, Arial, sans-serif; */
     margin: 0px;
     outline: rgb(255, 255, 255) none 0px;
     padding: 0px 0px 20px;
@@ -3307,6 +3308,7 @@ width:100px;
     padding: 0px 0px 2px;
 	margin-right:3px;
 	font-size:14px;
+    white-space: nowrap;
 }/*#A_6, #A_7, #A_9, #A_11*/
 
 #FORM_13 {

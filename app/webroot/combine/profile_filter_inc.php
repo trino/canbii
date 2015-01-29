@@ -251,7 +251,7 @@ if($this->params['action']!='dashboard' && !$this->Session->read('User'))
    if($this->params['action']=='dashboard')
    {
    ?>
-   <label style="display: block!important;">Years of Expereince</label>
+   <label style="display: block!important;">Years of Experience</label>
    <select  name="years_of_experience" >
         <option value="">Select Years of Experience</option>
    <?php for($i = 1; $i<=50; $i++)

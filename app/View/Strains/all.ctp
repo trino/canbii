@@ -62,7 +62,7 @@ $symptoms = array();
 			</form>
 		</div>
         <div class="clear"></div>
-        <?php if(strlen($_GET['key'])>0){?><p style="padding-top: 10px;"><strong>Result for</strong> "<?php echo $_GET['key'];?>"</p><?php }?>
+        <?php if(isset($_GET['key'])){ if(strlen($_GET['key'])>0){?><p style="padding-top: 10px;"><strong>Result for</strong> "<?php echo $_GET['key'];?>"</p><?php }}?>
         
 	</div>
     

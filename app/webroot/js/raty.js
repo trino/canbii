@@ -679,7 +679,7 @@
       $.error('Method ' + method + ' does not exist!');
     }
   };
-
+var app_path='app/webroot/raty/images';
   $.fn.raty.defaults = {
     cancel       : false,
     cancelClass  : 'raty-cancel',
@@ -697,7 +697,7 @@
     noRatedMsg   : 'Not rated yet!',
     number       : 5,
     numberMax    : 20,
-    path         : "/raty/images",
+    path         : getRootWebSitePath(),
     precision    : false,
     readOnly     : false,
     round        : { down: 0.25, full: 0.6, up: 0.76 },
