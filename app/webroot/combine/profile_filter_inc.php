@@ -62,6 +62,7 @@ if(!isset($country))
 {
     $country = $_GET['country'];
 }
+
 ?>
 <div class="columns clearfix no_width page_margin_top hidden_filter" <?php if($this->params['action']!='dashboard' && (!isset($show) || (isset($show) && $show!=1))){?>style="display:none;width:100%;marging-bottom:15px;"<?php }?>>
 <?php
@@ -77,7 +78,7 @@ if($this->params['action']!='dashboard' && !$this->Session->read('User'))
 <ul class="column_left">
    <?php if($this->params['action']!='dashboard'){?><?php if($this->params['action']!='dashboard'){?><div class="bg"><?php }?><?php }?>
    <label>Nationality</label>
-   <select name="nationality"> 
+   <select name="nationality" style="width: 100%;">
 		<option style="padding-top: 20px; padding-bottom:20px" value="">Select Nationality</option>
 		<option value="asian" <?php if($nationality=='asian')echo "selected='selected'";?>>Asian</option>
 		<option value="indian"<?php if($nationality=='indian')echo "selected='selected'";?>>Indian</option>
@@ -89,7 +90,7 @@ if($this->params['action']!='dashboard' && !$this->Session->read('User'))
    <?php if($this->params['action']!='dashboard'){?></div><?php }?>
    <?php if($this->params['action']!='dashboard'){?><div class="bg"><?php }?>
    <label>Country</label>
-   <select name="country"> 
+   <select name="country" style="width: 100%;">
 		<option style="padding-top: 20px; padding-bottom:20px" value="">Select Country</option>
         <?php
         foreach($countries as $cou)
@@ -104,7 +105,7 @@ if($this->params['action']!='dashboard' && !$this->Session->read('User'))
    <?php if($this->params['action']!='dashboard'){?></div><?php }?>
    <?php if($this->params['action']!='dashboard'){?><div class="bg"><?php }?>
    <label>Gender</label>
-   <select name="gender">
+   <select name="gender" style="width: 100%;">
 		<option value="">Select Gender</option>
 		<option value="male"<?php if($gender=='male')echo "selected='selected'";?>>Male</option>
 		<option value="female"<?php if($gender=='female')echo "selected='selected'";?>>Female</option>
@@ -112,7 +113,7 @@ if($this->params['action']!='dashboard' && !$this->Session->read('User'))
    <?php if($this->params['action']!='dashboard'){?></div><?php }?>
    <?php if($this->params['action']=='dashboard'){?>
    <label>Age Group</label>
-   <select name="age_group">
+   <select name="age_group" style="width: 100%;">
 		<option value="">Select Age Group</option>
 		<!--<option value="0-21"<?php if($age_group=='0-21')echo "selected='selected'";?>>< 21</option>-->
 		<option value="21-30"<?php if($age_group=='21-30')echo "selected='selected'";?>>21-30</option>
@@ -161,7 +162,7 @@ if($this->params['action']!='dashboard' && !$this->Session->read('User'))
    ?>
    <?php if($this->params['action']!='dashboard'){?><div class="bg"><?php }?>
    <label>Health</label>
-   <select name="health">
+   <select name="health" style="width: 100%;">
 		<option value="">Select Health</option>
 		<option value="poor"<?php if($health=='poor')echo "selected='selected'";?>>Poor</option>
 		<option value="average"<?php if($health=='average')echo "selected='selected'";?>>Average</option>
@@ -180,8 +181,8 @@ if($this->params['action']!='dashboard' && !$this->Session->read('User'))
    {
     ?>
    <label>Patient card ID<?php if($card_pass){?> <a href="javascript:void(0);" style="color: red;" onclick="$('#card_id').toggle();$('#card_pass').toggle();">Change</a><?php }?></label>
-   <?php if($card_pass){?><input type="text" name="" disabled="" id="card_pass" value="<?php echo $card_pass;?>"  /><?php }?>
-   <input type="text" name="card_id" id="card_id" value="<?php echo $card_id?>" <?php if($card_pass){?>style="display: none;"<?php }?> />
+   <?php if($card_pass){?><input type="text" name="" style="width: 98%;" disabled="" id="card_pass" value="<?php echo $card_pass;?>"  /><?php }?>
+   <input type="text" name="card_id" id="card_id" style="width: 98%;" value="<?php echo $card_id?>" <?php if($card_pass){?>style="display: none; width: 98%;"<?php }?> />
    <?php
    }
    /*else
@@ -195,7 +196,7 @@ if($this->params['action']!='dashboard' && !$this->Session->read('User'))
    {
    ?>
    <label>Weight</label>
-   <select name="weight">
+   <select name="weight" style="width: 100%;">
         <option value="">Select Weight</option>
     <?php
     for($i=100;$i<=300;$i=$i+10)
@@ -252,7 +253,7 @@ if($this->params['action']!='dashboard' && !$this->Session->read('User'))
    {
    ?>
    <label style="display: block!important;">Years of Experience</label>
-   <select  name="years_of_experience" >
+   <select  name="years_of_experience"  style="width: 100%;">
         <option value="">Select Years of Experience</option>
    <?php for($i = 1; $i<=50; $i++)
    {
@@ -302,7 +303,7 @@ if($this->params['action']!='dashboard' && !$this->Session->read('User'))
    ?>
    <?php if($this->params['action']!='dashboard'){?><div class="bg"><?php }?>
    <label>Frequency</label>
-   <select name="frequency">
+   <select name="frequency" style="width: 100%;">
 		<option value="">Select Frequency</option>
 		<option value="rarely"<?php if($frequency=='rarely')echo "selected='selected'";?>>Rarely</option>
 		<option value="occasional"<?php if($frequency=='occasional')echo "selected='selected'";?>>Occasional</option>
@@ -312,7 +313,7 @@ if($this->params['action']!='dashboard' && !$this->Session->read('User'))
    <?php if($this->params['action']!='dashboard'){?></div><?php }?>
    <?php if($this->params['action']!='dashboard'){?><div class="bg"><?php }?>
    <label>Body Type</label>
-   <select name="body_type">
+   <select name="body_type" style="width: 100%;">
 		<option value="">Select Body Type</option>
 		<option value="Muscular"<?php if($body_type=='Muscular')echo "selected='selected'";?>>Muscular</option>
 		<option value="Slim"<?php if($body_type=='Slim')echo "selected='selected'";?>>Slim</option>

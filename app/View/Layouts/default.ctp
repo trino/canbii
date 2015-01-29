@@ -405,7 +405,7 @@ foreach($effect as $key=>$e)
 								Join the Movement
 							</h2>
 						<p style="color: white;margin-bottom:20px;">
-								 <a href="<?php echo $this->webroot;?>users/register" title="">Help make the world a better place &raquo;</a>
+								 <a href="<?php echo $this->webroot;?>pages/about" title="">Help make the world a better place &raquo;</a>
 							</p>
 						</li>
 						<li class="footer_banner_box blue animated_element animation-slideRight200 duration-800 delay-1000">

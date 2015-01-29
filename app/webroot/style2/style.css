@@ -3233,7 +3233,7 @@ a.social_icon,
 .white i{font-size:17px;padding-top:5px;}
 .chemical h2{margin:10px 0 10px 0;}
 #dashboard strong{display:block;margin:15px 0 5px 0;}
-#dashboard select{width:250px;height:40px;background:#F0F0F0;border: 1px solid #e5e5e5;}
+#dashboard select{height:40px;background:#F0F0F0;border: 1px solid #e5e5e5;} /* width:375px; */
 #dashboard input[type="text"]{width:240px;height:40px;padding:0 5px;}
 #dashboard input[type="submit"]{height:40px;float:left!important;}
 .qf-fieldset label{display:block;font-weight: bold;margin-top:35px;}

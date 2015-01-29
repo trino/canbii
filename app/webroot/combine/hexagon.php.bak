@@ -22,7 +22,7 @@ display: table-cell;
 vertical-align:middle;
 background: url('<?=$background_hex?>') no-repeat;">
 
-<p class="printer" style="color: #FFF;
+<p class="printer" alt=testing style="color: #FFF;
 font-size: 20px;
 z-index: 100;color:#FFF;">
 
