@@ -1,5 +1,4 @@
 <?php
-
 class StrainsController extends AppController
 {
 
