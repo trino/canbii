@@ -668,14 +668,15 @@
 		display: block;
 	}
 	.mobile_menu select{
-		font-size:1.5em;
-		border-radius:4px;
-	}
-	.tabs_box_navigation.sf-menu
-	{
-		display: block;
-	}
-	/* --- page --- */
+	/* ---  font-size:1.5em; --- */
+    font-size:1.25em;
+    border-radius:4px;
+}
+.tabs_box_navigation.sf-menu
+{
+    display: block;
+}
+/* --- page --- */
 	.page, .page_left, .page_right
 	{
 		width: 462px;
@@ -1116,9 +1117,7 @@
 	}
 
     .one-third .rating {
-
-    padding-left: 15px;
-
+    	padding-left: 15px;
     }
 
 	.profile_filter {
@@ -1175,12 +1174,7 @@
 	/* --- header --- */
 	.header
 	{
-		width: 98%;
-	}
-	/* --- Roys --- */
-	.dashboarditem
-	{
-	 	margin-right:10px;
+		width: 300px;
 	}
 	/* --- menu --- */
 	.mobile_menu
@@ -1191,13 +1185,13 @@
 	}
 	.mobile_menu select
 	{
-		width: 75%;
+		width: 300px;
 	}
 
 	.header_left a img{
 		display: block;
 		margin-left: auto;
-		margin-right: auto
+		margin-right: auto;
 	}
 
 	.sf-menu li.submenu.wide ul
@@ -1251,6 +1245,8 @@
 	.home_box .header_left
 	{
 		width: 192px;
+		margin-left: auto;
+		margin-right: auto;
 	}
 	/* --- scrolling list ---*/
 	.scrolling_list li,

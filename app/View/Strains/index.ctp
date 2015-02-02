@@ -551,6 +551,8 @@
     @media print {
         .header_container {
             display: none;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .footer_container {
