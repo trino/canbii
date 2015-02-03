@@ -468,7 +468,7 @@ foreach($effect as $key=>$e)
 								<ul class="scrolling_list footer_recent_posts">
 								
 								
-								<?
+								<?php
 								
                         $strains = $this->requestAction('pages/get_strain');								
                         if($strains)
