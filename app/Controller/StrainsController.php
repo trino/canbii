@@ -314,8 +314,14 @@ class StrainsController extends AppController
         }*/
     }
 
-    function search($type = '', $limit = 0)
-    {
+    function search($type = '', $limit = 0) {
+        if($this->Session->read('User')){
+            $this->loadModel('User');
+            $this->set('user',$this->User->findById($this->Session->read('User.id')));
+        }
+        $this->loadModel('Country');
+        $this->set('countries', $this->Country->find('all'));
+
         $this->set('type', $type);
         $this->set('limit', $limit);
         if ($limit) {

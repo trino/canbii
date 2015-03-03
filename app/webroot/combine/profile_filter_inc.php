@@ -1,53 +1,38 @@
 <?php
 $arr_filter=array('nationality','gender','age_group','age_group_from','age_group_to','weight','weight_from','weight_to','health','exp','years_of_experience_from','years_of_experience_to','frequency','body_type','card_id','country');
-foreach($arr_filter as $af)
-{
-    if(isset($_GET[$af]))
-    {
+foreach($arr_filter as $af){
+    if(isset($_GET[$af])){
         $show = 1;
+    } else {
+        $_GET[$af] = null;
     }
-    else
-    $_GET[$af] = null;
 }
-if(!isset($nationality))
-{
-    $nationality = $_GET['nationality'];
+if(isset($_GET['weight_from'])) { $weight_from = $_GET['weight_from']; }
+if(isset($_GET['weight_to'])) { $weight_to = $_GET['weight_to']; }
+if(isset($_GET['age_from'])) { $age_group_from = $_GET['age_from']; }
+if(isset($_GET['age_to'])) { $age_group_to = $_GET['age_to']; }
+
+if(!isset($nationality)){   $nationality = $_GET['nationality']; }
+if(!isset($gender)){        $gender = $_GET['gender'];}
+if(!isset($age_group)){     $age_group = '';  $age_from=''; $age_to='';} else {
+    if (!isset($age_group_from)){ $age_group_from = substr($age_group,0,2); }
+    if (!isset($age_group_to)){   $age_group_to =   substr($age_group,-2); }
 }
-if(!isset($gender))
-{
-    $gender = $_GET['gender'];
+if(!isset($weight)){        $weight = '';} elseif(!isset($_GET['weight_from'])) {
+    $pos = strpos($weight, "-");
+    $weight_from = substr($weight, 0, $pos);
+    $weight_to =substr($weight, $pos+1, strlen($weight)-$pos-1) ;
 }
-if(!isset($age_group))
-{
-    $age_group = '';
-}
-if(!isset($weight))
-{
-    $weight = '';
-}
-if(!isset($health))
-{
-    $health = $_GET['health'];
-}
-if(!isset($exp))
-{
-    $exp = '';
-}
-if(!isset($frequency))
-{
-    $frequency = $_GET['frequency'];
-}
-if(!isset($body_type))
-{
-    $body_type = $_GET['body_type'];
-}
-if(!isset($card_id))
-{
+if(!isset($health)){        $health = $_GET['health'];}
+if(!isset($exp)){           $exp = '';}
+if(!isset($frequency)){     $frequency = $_GET['frequency'];}
+if(!isset($body_type)){     $body_type = $_GET['body_type'];}
+if(!isset($country)){       $country = $_GET['country'];}
+
+if(!isset($card_id)){
     $card_id = '';
     $card_pass='';
-}
-else
-{
+}else {
     $len = strlen($card_id);
     $card_pass = '';
     for($i=0;$i<$len;$i++)
@@ -58,16 +43,10 @@ else
         $card_pass = $card_pass.$card_id[$i];
     }
 }
-if(!isset($country))
-{
-    $country = $_GET['country'];
-}
-
 ?>
 <div class="columns clearfix no_width page_margin_top hidden_filter" <?php if($this->params['action']!='dashboard' && (!isset($show) || (isset($show) && $show!=1))){?>style="display:none;width:100%;marging-bottom:15px;"<?php }?>>
 <?php
-if($this->params['action']!='dashboard' && !$this->Session->read('User'))
-{
+if($this->params['action']!='dashboard' && !$this->Session->read('User')){
     ?>
     <a href="<?php echo $this->webroot;?>users/register" style="position: absolute;top:0;left:0;width:100%;height:100%;background:#82BECE;opacity:0.8;">
         <img src="<?php echo $this->webroot;?>images/trans.png" style="width:100%" />
@@ -93,13 +72,10 @@ if($this->params['action']!='dashboard' && !$this->Session->read('User'))
    <select name="country" style="width: 100%;">
 		<option style="padding-top: 20px; padding-bottom:20px" value="">Select Country</option>
         <?php
-        foreach($countries as $cou)
-        {
+        foreach($countries as $cou){
             ?>
             <option value="<?php echo $cou['Country']['countryName'];?>" <?php if($country==$cou['Country']['countryName'])echo "selected='selected'";?>><?php echo $cou['Country']['countryName'];?></option>
-            <?php
-        }
-        ?>
+            <?php       }        ?>
 		
    </select><br />
    <?php if($this->params['action']!='dashboard'){?></div><?php }?>
@@ -123,35 +99,27 @@ if($this->params['action']!='dashboard' && !$this->Session->read('User'))
 		<option value="61-70"<?php if($age_group=='61-70')echo "selected='selected'";?>>61-70</option>
 		<option value="71-100"<?php if($age_group=='71-100')echo "selected='selected'";?>>71+</option>
    </select><br />
-   <?php }
-   else
-   {
-        ?>
+   <?php }   else   {        ?>
+
         <?php if($this->params['action']!='dashboard'){?><div class="bg"><?php }?>
-        <label style="display: block!important;">Age Group</label>
+        <label style="display: block!important;">Age Group <?= $age_group; ?></label>
         <select name="age_group_from" style="width: 103px!important;float:left;">
-    		<option value="" <?php ?>>From</option>
+    		<option value="">From <?= $age_group_from; ?></option>
     		<?php
-            for($i=20;$i<=100;$i=$i+10)
-            {
+            for($i=21;$i<=100;$i=$i+10)            {
                 
                 ?>
-                <option value="<?php echo $i?>" <?php if($_GET['age_group_from']==$i){?>selected="selected"<?php }?>><?php echo $i;?></option>
-                <?php
-            }
-            ?>
+                <option value="<?php echo $i?>" <?php if($age_group_from==$i){?>selected="selected"<?php }?>><?php echo $i;?></option>
+                <?php            }           ?>
         </select>
         <select name="age_group_to" style="width: 103px!important;margin-left:10px;">
     		<option value="">To</option>
     		<?php
-            for($i=20;$i<=100;$i=$i+10)
-            {
+            for($i=20;$i<=100;$i=$i+10) {
                 
                 ?>
-                <option value="<?php echo $i?>" <?php if($_GET['age_group_to']==$i){?>selected="selected"<?php }?>><?php echo $i;?></option>
-                <?php
-            }
-            ?>
+                <option value="<?php echo $i?>" <?php if($age_group_to==$i){?>selected="selected"<?php }?>><?php echo $i;?></option>
+                <?php         }           ?>
         </select>
         
         <br />
@@ -195,7 +163,7 @@ if($this->params['action']!='dashboard' && !$this->Session->read('User'))
    if($this->params['action']=='dashboard')
    {
    ?>
-   <label>Weight</label>
+   <label>Weight (lbs)</label>
    <select name="weight" style="width: 100%;">
         <option value="">Select Weight</option>
     <?php
@@ -213,15 +181,15 @@ if($this->params['action']!='dashboard' && !$this->Session->read('User'))
    {
         ?>
         <?php if($this->params['action']!='dashboard'){?><div class="bg"><?php }?>
-        <label style="display: block!important;">Weight</label>
+        <label style="display: block!important;">Weight (lbs)</label>
         <select name="weight_from" style="width: 103px!important;float:left;">
     		<option value="">From</option>
     		<?php
-            for($i=100;$i<=290;$i=$i+10)
+            for($i=101;$i<=290;$i=$i+10)
             {
                 
                 ?>
-                <option value="<?php echo $i?>" <?php if($_GET['weight_from']==$i){?>selected="selected"<?php }?>><?php echo $i;?></option>
+                <option value="<?php echo $i?>" <?php if($weight_from==$i){?>selected="selected"<?php }?>><?php echo $i;?></option>
                 <?php
             }
             ?>
@@ -233,7 +201,7 @@ if($this->params['action']!='dashboard' && !$this->Session->read('User'))
             {
                 
                 ?>
-                <option value="<?php echo $i?>" <?php if($_GET['weight_to']==$i){?>selected="selected"<?php }?>><?php echo $i;?></option>
+                <option value="<?php echo $i?>" <?php if($weight_to==$i){?>selected="selected"<?php }?>><?php echo $i;?></option>
                 <?php
             }
             ?>
@@ -277,7 +245,7 @@ if($this->params['action']!='dashboard' && !$this->Session->read('User'))
             {
                 
                 ?>
-                <option <?php if($_GET['years_of_experience_from']==$i){?>selected="selected"<?php }?> value="<?php echo $i?>"><?php echo $i;?></option>
+                <option <?php if($_GET['years_of_experience_from']==$i||$i == $exp-2||($i == 1 && $exp-2<1)){?>selected="selected"<?php }?> value="<?php echo $i?>"><?php echo $i;?></option>
                 <?php
             }
             ?>
@@ -289,7 +257,7 @@ if($this->params['action']!='dashboard' && !$this->Session->read('User'))
             {
                 
                 ?>
-                <option <?php if($_GET['years_of_experience_to']==$i){?>selected="selected"<?php }?> value="<?php echo $i?>"><?php echo $i;?></option>
+                <option <?php if($_GET['years_of_experience_to']==$i||$i == $exp+2||($i ==50 && $exp+2>50)){?>selected="selected"<?php }?> value="<?php echo $i?>"><?php echo $i;?></option>
                 <?php
             }
             ?>

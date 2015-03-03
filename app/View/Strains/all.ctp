@@ -3,8 +3,8 @@
 <link href="<?php echo $this->webroot;?>css/raty.css" rel="stylesheet" type="text/css" />
 
 <?php
-debug($user);
 if(isset($user))    {
+    //debug($user);
     $nationality = $user['User']['nationality'];
     $gender = $user['User']['gender'];
     $age_group = $user['User']['age_group'];

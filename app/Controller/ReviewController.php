@@ -87,7 +87,7 @@
             $this->set('description','Review for '.$review['Review']['review'].'. General rating, effects rating, aesthetic rating and other reviews for '.$review['Strain']['name']);
             $this->set('keyword',$review['Strain']['name'].' , review , effect rating, general rating , aesthetic rating , Canbii , Medical , Marijuana , Medical Marijuana');
             $this->render('add');
-            debug($review);
+            //debug($review);
             
         }
         function index()
