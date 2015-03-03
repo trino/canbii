@@ -5,8 +5,9 @@ class StrainsController extends AppController
     public $components = array('Paginator', 'RequestHandler');
     public $helpers = array('Js');
 
-    function index($slug)
-    {
+    function index($slug) {
+        //if($this->Session->read('User')){  $this->set('user',$this->User->findById($this->Session->read('User.id'))); }
+
         $this->loadModel('Country');
         $this->set('countries', $this->Country->find('all'));
         $this->loadModel('OverallFlavorRating');
@@ -272,6 +273,13 @@ class StrainsController extends AppController
 
     function all($type = '', $limit = 0)
     {
+        if($this->Session->read('User')){
+            $this->loadModel('User');
+            $this->set('user',$this->User->findById($this->Session->read('User.id')));
+        }
+
+
+
         $this->loadModel('Country');
         $this->set('countries', $this->Country->find('all'));
         $this->set('type', $type);
