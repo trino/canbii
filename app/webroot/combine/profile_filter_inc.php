@@ -102,9 +102,9 @@ if($this->params['action']!='dashboard' && !$this->Session->read('User')){
    <?php }   else   {        ?>
 
         <?php if($this->params['action']!='dashboard'){?><div class="bg"><?php }?>
-        <label style="display: block!important;">Age Group <?= $age_group; ?></label>
+        <label style="display: block!important;">Age Group</label>
         <select name="age_group_from" style="width: 103px!important;float:left;">
-    		<option value="">From <?= $age_group_from; ?></option>
+    		<option value="">From</option>
     		<?php
             for($i=21;$i<=100;$i=$i+10)            {
                 
