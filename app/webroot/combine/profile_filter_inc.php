@@ -44,7 +44,7 @@ if(!isset($card_id)){
     }
 }
 ?>
-<div class="columns clearfix no_width page_margin_top hidden_filter" <?php if($this->params['action']!='dashboard' && (!isset($show) || (isset($show) && $show!=1))){?>style="display:none;width:100%;marging-bottom:15px;"<?php }?>>
+<div class="columns clearfix page_margin_top hidden_filter" <?php if($this->params['action']!='dashboard' && (!isset($show) || (isset($show) && $show!=1))){?> style="display:none;width:100%;marging-bottom:15px;"<?php }?>>
 <?php
 if($this->params['action']!='dashboard' && !$this->Session->read('User')){
     ?>
@@ -102,7 +102,7 @@ if($this->params['action']!='dashboard' && !$this->Session->read('User')){
    <?php }   else   {        ?>
 
         <?php if($this->params['action']!='dashboard'){?><div class="bg"><?php }?>
-        <label style="display: block!important;">Age Group</label>
+        <label style="display: block!important;">Age Group</label><span>
         <select name="age_group_from" style="width: 103px!important;float:left;">
     		<option value="">From</option>
     		<?php
@@ -121,7 +121,7 @@ if($this->params['action']!='dashboard' && !$this->Session->read('User')){
                 <option value="<?php echo $i?>" <?php if($age_group_to==$i){?>selected="selected"<?php }?>><?php echo $i;?></option>
                 <?php         }           ?>
         </select>
-        
+        </span>
         <br />
         </div>
         <?php
@@ -181,7 +181,7 @@ if($this->params['action']!='dashboard' && !$this->Session->read('User')){
    {
         ?>
         <?php if($this->params['action']!='dashboard'){?><div class="bg"><?php }?>
-        <label style="display: block!important;">Weight (lbs)</label>
+        <label style="display: block!important;">Weight (lbs)</label><span>
         <select name="weight_from" style="width: 103px!important;float:left;">
     		<option value="">From</option>
     		<?php
@@ -205,7 +205,7 @@ if($this->params['action']!='dashboard' && !$this->Session->read('User')){
                 <?php
             }
             ?>
-        </select>
+        </select></span>
         
         <br />
         </div>

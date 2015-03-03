@@ -1,4 +1,10 @@
 <div class="page_left">
+    <?php
+    if(isset($reviewid)) {
+        echo "DELETE review ID: " . $reviewid;
+    }
+    ?>
+
 
     <div class="comments clearfix page_margin_top">
         <div id="comments_list">
@@ -38,12 +44,13 @@
                                     <?php echo $review['Review']['review']; ?>
                                 </p>
                                 <a class="more reply_button" href="#comment_form">
-                                    <a href="<?php echo $this->webroot; ?>review/detail/<?php echo $review['Review']['id']; ?>"
-                                       class="more blue">View Detail →</a>
+                                    <a href="<?php echo $this->webroot; ?>review/detail/<?php echo $review['Review']['id']; ?>" class="more blue">View Detail →</a>
+                                    <!--A href="<!= $this->webroot . "review/add/" . $review['Strain']['slug'] . "?review=" . $review['Review']['id']; ?>" class="more dark_blue" style="margin-left: 10px;">Edit</A-->
+                                    <a href="<?php echo $this->webroot;?>review/all?delete=<?php echo $review['Review']['strain_id'];?>" onclick="return confirm('Are you sure you want to delete your review for <?= $review['Strain']['name'] ?>?');" class="more red">Delete</a>
                                 </a>
                             </div>
                         </li>
-                    <?php } ?>
+                    <?php }  ?>
                 </ul>
                 <div class="clear"></div>
                 <div class="morelist" style="display: none;"></div>

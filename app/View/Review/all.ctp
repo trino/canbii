@@ -24,10 +24,9 @@ User Reviews
 </div>
 
 
-<?php }?>
-<?php
-if(!isset($_GET['user']))
-{
+<?php }
+
+if(!isset($_GET['user'])){
     ?>
 <div class="page_header_left">
 			<h1 class="page_title">My Reviews</h1>

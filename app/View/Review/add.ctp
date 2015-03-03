@@ -9,9 +9,14 @@
 <?php
 // unset($strain_hexagon);
 if(isset($strain)){
-$strain_hexagon = $strain;
+    $strain_hexagon = $strain;
 }else{
 	$strain_hexagon = $review;
+}
+
+function getdata($r, $name, $default = ""){
+    if (isset($r[$name])){        return $r['Review'][$name];    }
+    return $default;
 }
 
 include('combine/hexagon.php');?>
@@ -46,12 +51,18 @@ include('combine/hexagon.php');?>
 							<?php echo ucfirst($review['Strain']['name']);?> Review
 							</h1>
 							<p style="clear:both;">Reviewed on 
-							<?php echo $review['Review']['on_date'];?> by <?php echo $this->requestAction('/strains/getUserName/'.$review['Review']['user_id']);?>
+							<?php echo $review['Review']['on_date'];?> by <?php echo $this->requestAction('/strains/getUserName/'.$review['Review']['user_id']);
+
+                                //debug($review);
+                                ?>
+
 							</p>
 							
 							</div>
 
-<?php }?>
+<?php }
+if (!isset($_GET["review"])){ $editreview = array();}
+?>
 
 
 </div>
@@ -442,21 +453,28 @@ Rating & Comment <?php if($this->params['action']=='add')echo '(Required)';?>
 
 <h3>Overall Rating</h3>
 
-<div id="preci">
-<div id="precision" class="left" style="cursor: pointer;" ></div>
+<div id="preci" data-score="2">
+<div id="precision" data-score="1" class="left" style="cursor: pointer;"></div>
 <div class="errorz" style="display: none;" >Overall Rating Is Mandatory.</div>
 </div>
 
 <p id="qf_review__other__overall__prompt">1/5</p>
 
-<input title="Overall Rating" value="0" type="hidden" name="rate" id="qf_review__other__overall" class="qf-hidden-input qf-slider qf-input"/>
+<input title="Overall Rating" value="<?= getdata($editreview, 'rate', 0); ?>" type="hidden" name="rate" id="qf_review__other__overall" class="qf-hidden-input qf-slider qf-input"/>
 
-<div class="qf-slider-bar" id="qf_review__other__overall__slider"> </div>
+<div class="qf-slider-bar" score="4" id="qf_review__other__overall__slider"> </div>
 
 <h3 class="page_margin_top">Final Thoughts</h3>
-<?php if($this->params['action']=='add')
+<?php
+        if (isset($_GET["review"])) {
+            $score = getdata($editreview, 'rate');
+            //<script> $('qf_review__other__overall__slider').raty({ score: 3 });</script>
+        }
+
+
+if($this->params['action']=='add')
     {?>
-    <textarea title="Comments" rows="8" maxlength="4000" name="review" id="qf_review__other__comments" class="qf-maxlength-4000 qf-required qf-textarea" required="required"></textarea>
+    <textarea title="Comments" rows="8" maxlength="4000" name="review" id="qf_review__other__comments" class="qf-maxlength-4000 qf-required qf-textarea" required="required"><?= getdata($editreview, 'review'); ?></textarea>
     <div class="submit">
 <input type="submit" name="submit" value="Save My Review" class="button more blue"/>
 </div>
@@ -535,7 +553,7 @@ $(function(){
     $('#reviews1').submit(function(){
         if($('#qf_review__other__overall').val()=='0') {
             $('.errorz').show();
-            return true;//THIS NEEDS TO BE FALSE WHEN THE STAR BAR IS WORKING AGAIN!!!!!
+            return false;
         } else {
             $('.errorz').hide();
             return true;
@@ -601,6 +619,9 @@ $(function(){
 				$("#qf_review__aesthetics__crystals__slider").slider({'min':1,'max':5,'step':1,'value':5,'slide':function(e,ui){ $('#qf_review__aesthetics__crystals').val(ui.value);$('#qf_review__aesthetics__crystals__prompt').html(''+ui.value+'/5'); },'range':'min'});		
 		
 			$('#precision').raty({
+                  <?php if (isset($_GET['review'])){
+                        echo "score    :  " . $score . ",";
+                    } ?>
                   cancel     : false,
                   cancelOff  : 'cancel-off.png',
                   cancelOn   : 'cancel-on.png',

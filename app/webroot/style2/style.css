@@ -1435,6 +1435,21 @@ a.social_icon:hover
 	color: #FFF;
 	border: 1px solid #FFF;
 }
+.more.red
+{
+    padding: 5px 8px 7px;
+    margin-left: 10px;
+    background-position: right center;
+    color: white;
+    background-color: red;
+    border: 1px solid red;
+}
+.more.red:hover
+{
+    background-color: #FF6766;
+    border: 1px solid #FF6766;
+}
+
 .more.dark_blue:hover,
 .more.light:hover,
 .more.blue:hover
