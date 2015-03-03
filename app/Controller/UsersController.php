@@ -14,7 +14,7 @@ class UsersController extends AppController {
         $this->set('title_for_layout','Login/Registration');
        if ($this->request->is('post')) {
         $_POST = $_POST['data']['User'];
-            if($user = $this->User->find('first',array('conditions'=>array('username'=>$_POST['username'],'password'=>$_POST['password']))))
+            if($user = $this->User->find('first',array('conditions'=>array('username'=>$_POST['username'],'password'=>md5($_POST['password'] . "canbii" )))))
             {
                 $this->Session->write('User.username',$_POST['username']);
                 $this->Session->write('User.email',$user['User']['email']);
@@ -47,7 +47,7 @@ class UsersController extends AppController {
         $_POST = $_POST['data'];
             $user['username'] = $_POST['User']['username'];
             $user['email'] = $_POST['User']['email'];
-            $user['password'] = $_POST['User']['password'];
+            $user['password'] = md5($_POST['User']['password'] . "canbii" );
             if($this->User->findByEmail($user['email']))
             {
                 $this->Session->setFlash('Email already taken, please try again', 'default', array('class' => 'bad'));
@@ -144,13 +144,13 @@ class UsersController extends AppController {
             }
             if($_POST['old_password'])
             {
-                $ch2 = $this->User->find('first',array('conditions'=>array('username'=>$username,'password'=>$_POST['old_password'])));
+                $ch2 = $this->User->find('first',array('conditions'=>array('username'=>$username,'password'=> md5($_POST['old_password'] . "canbii" ))));
                 if($ch2)
                 {
                     $arr['username'] = $_POST['username'];
                     $arr['email'] = $_POST['email'];
                     if($_POST['password']!="")
-                    $arr['password'] = $_POST['password'];
+                    $arr['password'] = md5($_POST['password'] . "canbii" );
                     $this->User->id = $this->Session->read("User.id");
                     foreach($arr as $k=>$v)
                     {
