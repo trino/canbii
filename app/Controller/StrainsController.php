@@ -1,13 +1,13 @@
 <?php
-
 class StrainsController extends AppController
 {
 
     public $components = array('Paginator', 'RequestHandler');
     public $helpers = array('Js');
 
-    function index($slug)
-    {
+    function index($slug) {
+        //if($this->Session->read('User')){  $this->set('user',$this->User->findById($this->Session->read('User.id'))); }
+
         $this->loadModel('Country');
         $this->set('countries', $this->Country->find('all'));
         $this->loadModel('OverallFlavorRating');
@@ -15,7 +15,7 @@ class StrainsController extends AppController
         $this->loadModel('FlavorRating');
 
         $q = $this->Strain->find('first', array('conditions' => array('slug' => $slug)));
-
+        //debug($q );
         $this->set('title', $q['Strain']['name']);
         $this->set('description', $q['Strain']['description']);
         $this->set('keyword', $q['Strain']['name'] . ' , Canbii , Medical , Marijuana , Medical Marijuana');
@@ -273,6 +273,13 @@ class StrainsController extends AppController
 
     function all($type = '', $limit = 0)
     {
+        if($this->Session->read('User')){
+            $this->loadModel('User');
+            $this->set('user',$this->User->findById($this->Session->read('User.id')));
+        }
+
+
+
         $this->loadModel('Country');
         $this->set('countries', $this->Country->find('all'));
         $this->set('type', $type);
@@ -307,8 +314,14 @@ class StrainsController extends AppController
         }*/
     }
 
-    function search($type = '', $limit = 0)
-    {
+    function search($type = '', $limit = 0) {
+        if($this->Session->read('User')){
+            $this->loadModel('User');
+            $this->set('user',$this->User->findById($this->Session->read('User.id')));
+        }
+        $this->loadModel('Country');
+        $this->set('countries', $this->Country->find('all'));
+
         $this->set('type', $type);
         $this->set('limit', $limit);
         if ($limit) {

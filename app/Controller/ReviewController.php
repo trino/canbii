@@ -33,7 +33,7 @@
             $reviews = $this->Review->find('all',array("conditions"=>array('user_id'=>$id),'limit'=>$limit,'offset'=>$offset));
             $this->set("reviews",$reviews);
             $this->set('reviewz', $this->Review->find('count',array('conditions'=>array('user_id'=>$id))) );
-            
+           // debug($reviews);
         }
         
         function all_filter($limit)
@@ -53,7 +53,7 @@
             $reviews = $this->Review->find('all',array("conditions"=>array('user_id'=>$id),'limit'=>$limit,'offset'=>$offset));
             $this->set("reviews",$reviews);
             $this->set('reviewz', $this->Review->find('count',array('conditions'=>array('user_id'=>$id))) );
-            
+
             
         }
         
@@ -70,10 +70,7 @@
             $this->loadModel('FlavorRating');
             $this->loadModel('VoteIp');
             $this->set('vip',$this->VoteIp);
-            
-            
-            
-            
+
             $this->set('effects',$this->Effect->find('all',array('conditions'=>array("negative"=>'0'))));
             $this->set('negative',$this->Effect->find('all',array('conditions'=>array("negative"=>'1'))));
             $this->set("effectz",$this->Effect->find('all'));
@@ -90,6 +87,7 @@
             $this->set('description','Review for '.$review['Review']['review'].'. General rating, effects rating, aesthetic rating and other reviews for '.$review['Strain']['name']);
             $this->set('keyword',$review['Strain']['name'].' , review , effect rating, general rating , aesthetic rating , Canbii , Medical , Marijuana , Medical Marijuana');
             $this->render('add');
+            //debug($review);
             
         }
         function index()

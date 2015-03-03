@@ -30,16 +30,16 @@
 			
 
 
-<p>
+<p align="justify">
 Medical marijuana has been used as a form of treatment for thousands of years. This all natural plant contains tetrahydrocannabinol (THC) and cannabidiol (CBD) which helps treat illnesses or alleviate symptoms.
 What is THC and CBD? Tetrahydrocannabinol (THC) is the main psychoactive ingredient in the cannabis plant. It gives one the feeling of euphoria. It is also known to increase ones appetite. Cannabidiol (CBD) is a cannabinoid 
 that repress neurotransmitter release in the brain. Together THC and CBD offers natural pain relief.  
 </p>
-<p>
+			<p align="justify">
 There are over 700 hundred strains, both natural and man-made. More strains are being created as we speak. Each strain contains different properties. With the sheer number of different strains, how does one navigate 
 throught it all and find the right one for them? That's why we're here. We want to help make the search for you as painless as possible. 
 </p>
-<p>
+			<p align="justify">
 There are 3 strain categories which are Indica, Sativa, and Hybrid. 
 The effects of Indica are drowsiness and it provides a deep relaxation sensation. Sativa is known for it's energetic and uplifting properties. Mixing both Indica and Sativa strains have created Hybrid strains. 
 The beauty of Hybrid cannabis strains is that you get the best properties of both strains. Expert growers are constantly experimenting with different combinations to create super strains. Growers come up with fun names

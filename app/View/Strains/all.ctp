@@ -3,6 +3,32 @@
 <link href="<?php echo $this->webroot;?>css/raty.css" rel="stylesheet" type="text/css" />
 
 <?php
+if(isset($user))    {
+    //debug($user);
+    $nationality = $user['User']['nationality'];
+    $gender = $user['User']['gender'];
+    $age_group = $user['User']['age_group'];
+    $health = $user['User']['health'];
+    $weight = $user['User']['weight'];
+    $exp = $user['User']['years_of_experience'];
+    $frequency = $user['User']['frequency'];
+    $body_type = $user['User']['body_type'];
+    $symptoms = $user['User']['symptoms'];
+    $card_id = $user['User']['card_id'];
+    $country = $user['User']['country'];
+} else    {
+    $nationality = "";
+    $gender = '';
+    $age_group = "";
+    $health = "";
+    $weight = "";
+    $exp = "";
+    $frequency = "";
+    $body_type = "";
+    $symptoms = "";
+    $card_id = "";
+    $country = "";
+}
 
 if(isset($_GET['effects']) && $_GET['effects'])
 {
@@ -54,18 +80,15 @@ $symptoms = array();
 		</div>
 		<div class="page_header_right">
 			<form class="search" method="get" action="<?php echo $this->webroot;?>strains/search">
-				<input id="INPUT_16" class="search_input hint" name="key" type="text" value="" placeholder="Search by strain name...">
+				<input id="INPUT_16" class="search_input hint" name="key" type="text" value="" placeholder="" style="float:left;">
 				
-				<input id="BUTTON_17" type="submit" value="Search" class="more blue medium " />
-					<a href="<?php echo $this->webroot;?>strains/search?key=" class="  " style="height:14px;
-					float: left;
-					padding: 12px 18px;				
-					">Reset</a>
-
+				<input id="BUTTON_17" type="submit" value="Search" class="more blue medium " style="float:left;" />
+					
+<input id="BUTTON_18" type="submit" value="Reset" class="more blue medium " style="display:none;" >
 			</form>
 		</div>
         <div class="clear"></div>
-        <?php if(isset($_GET['key'])){?><p style="padding-top: 10px;"><strong>Result for</strong> "<?php echo $_GET['key'];?>"</p><?php }?>
+        <?php if(isset($_GET['key'])){ if(strlen($_GET['key'])>0){?><p style="padding-top: 10px;"><strong>Result for</strong> "<?php echo $_GET['key'];?>"</p><?php }}?>
         
 	</div>
     
@@ -143,11 +166,9 @@ $symptoms = array();
 				foreach($effect as $e)
 				{
 				?>
-									
-								
-									
-				<a style="color:white;" href="javascript:void(0)" class="small-btn eff2" id="eff_<?php echo $e['Effect']['id'];?>"><?php echo $e['Effect']['title']?></a>
-				
+				    <a style="color:white;" href="javascript:void(0)" class="small-btn eff2" id="eff_<?php echo $e['Effect']['id'];?>">
+                        <?php echo $e['Effect']['title']?>
+                    </a>
 				<?php
 				}
 				?>

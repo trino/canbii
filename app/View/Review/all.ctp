@@ -46,10 +46,10 @@ if(!isset($_GET['user']))
 			</ul>
 		</div>    
 <div class="page_header_right">
-<a style="float:right;" title="Read more"  href="<?php  echo $this->webroot; ?>users/dashboard" class="more large dark_blue icon_small_arrow margin_right_white">Dashboard</a>
-<a style="float:right;margin-right:10px;"  title="Read more"  href="<?php  echo $this->webroot; ?>users/settings" class="more large dark_blue icon_small_arrow margin_right_white  ">Settings</a>
-<a style="float:right;margin-right:10px;" title="Read more" href="<?php  echo $this->webroot; ?>review"  class="more large dark_blue icon_small_arrow margin_right_white  ">Add Review</a>
-<a style="float:right;margin-right:10px;" title="Read more" href="<?php  echo $this->webroot; ?>review/all"  class="active more large dark_blue icon_small_arrow margin_right_white  ">My Reviews</a>
+<a style="margin-right:10px" title="Read more"  href="<?php  echo $this->webroot; ?>users/dashboard" class="more large dark_blue icon_small_arrow margin_right_white">Dashboard</a>
+<a style="margin-right:10px" title="Read more"  href="<?php  echo $this->webroot; ?>users/settings" class="more large dark_blue icon_small_arrow margin_right_white  ">Settings</a>
+<a style="margin-right:10px" title="Read more" href="<?php  echo $this->webroot; ?>review"  class="more large dark_blue icon_small_arrow margin_right_white  ">Add Review</a>
+<a style="" title="Read more" href="<?php  echo $this->webroot; ?>review/all"  class="active more large dark_blue icon_small_arrow margin_right_white  ">My Reviews</a>
 </div>
 
 <?php
@@ -61,12 +61,6 @@ if(!isset($_GET['user']))
 <div class="clearfix page_margin_top revi">
 
 <?php include_once('combine/my_reviews.php');?>
-
-
-
-
-
-
 
 </div>
 </div>

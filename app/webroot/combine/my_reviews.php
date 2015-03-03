@@ -72,7 +72,8 @@
                 </script>
             <?php
             } else {
-                echo "No reviews yet. Feel free to" ?>  <a href="<?php echo $this->webroot; ?>review/"> add one </a>. <?
+                echo '<a href="' . $this->webroot .  'review/">';
+                echo "No reviews yet. Feel free to add one </a>";
             }?>
         </div>
     </div>

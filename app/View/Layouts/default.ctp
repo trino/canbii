@@ -94,9 +94,10 @@
 					<li class="<?php if($this->params['controller']=='users'){?>current_page_item<?php }?>"><a href="<?php echo $this->webroot;?>users/register" accesskey="4" title="">Login / Register</a></li>
 					<?php }else{?>
 					<li class="<?php if($this->params['controller']=='users'){?>current_page_item<?php }?> submenu<?php echo (isset($_GET['page'])&& ($_GET["page"]=="" || $_GET["page"]=="home") ? " selected" : ""); ?>">
-                        <a href="<?php echo $this->webroot;?>users/dashboard" accesskey="4" title=""><?=ucfirst($this->Session->read('User.username'))?></a>
+                        <a href="<?php echo $this->webroot;?>users/dashboard" accesskey="4" title=""><?=ucfirst($this->Session->read('User.username'))?>'s Dashboard</a>
 						<ul>
                             <li<?php echo (isset($_GET['page'])&&$_GET["page"]=="home" ? " class='selected'" : ""); ?>>
+                                <!--<a style="color: #888!important;" class="darkmenu" href="<?php echo $this->webroot;?>users/dashboard" accesskey="5" title="">My Dashboard</A> -->
                             <a style="color: #888!important;" class="darkmenu" href="<?php echo $this->webroot;?>users/logout" accesskey="5" title="">Logout</a>
 							</li>
 
@@ -273,7 +274,7 @@ if(thiss.attr('class').replace('searchact','')==thiss.attr('class'))
 
 <?if(isset($homepage)){?>
 
-<div style="height:100%; background-image: url(http://localhost/canbii/images/bg4.jpg);text-shadow: 0px 1px 0px rgba(0,0,0,1);padding:20px 0px;">
+<div style="height:100%; background-image: url(http://localhost/marijuana/images/bg4.jpg);text-shadow: 0px 1px 0px rgba(0,0,0,1);padding:20px 0px;">
 
 
 
@@ -308,29 +309,30 @@ padding:30px;
 <p id="P_5">
 filter by symptoms:
 <?php $effect = $this->requestAction('/pages/getSym');
-foreach($effect as $key=>$e)
-{
-    if($key ==10)
-{
-    echo "<a href='javascript:;' onclick=\"$('.more2').toggle();\" style='color:#fff;font-weight:bold;'>....</a></p><p class='more2' id='P_5' style='display:none;'>";
-    
-}
-?>
-<a class="A_6" style="" href="javascript:void(0)" onclick="highlightsym($(this))" class=""  id="sym_<?php echo $e['Symptom']['id'];?>"><?php echo $e['Symptom']['title']?></a>
+foreach($effect as $key=>$e) {
+    $islast= $key == 9;
+    if ($key == 10) {
+        echo "<a href='javascript:;' onclick=\"$('.more2').toggle();\" style='color:#fff;font-weight:bold;'>....</a></p><p class='more2' id='P_5' style='display:none;'>";
+    }
+    ?>
+    <a class="A_6" style="" href="javascript:void(0)" onclick="highlightsym($(this))" class=""
+       id="sym_<?php echo $e['Symptom']['id'];?>"><?php echo $e['Symptom']['title']?></a>
 
-<?php
-    if($key+1 == count($effect))
-        echo "</p>";
-}
+    <?php
+            if ($key + 1 == count($effect)){
+        echo "</P>";
+} elseif($islast) {
+        echo ' or <a class="A_6" href="<?php echo $this->webroot;?>strains/all">view all</a>';
+}}
 ?>
-or <a class="A_6" href="<?php echo $this->webroot;?>strains/all">view all</a>
+
 </p>
 
 <p id="P_5">
 filter by effects:
 <?php $effect = $this->requestAction('/pages/getEff');
 foreach($effect as $key=>$e)
-{
+{   $islast= $key == 9;
      if($key ==10)
 {
     echo "<a href='javascript:;' onclick=\"$('.more1').toggle();\" style='color:#fff;font-weight:bold;'>....</a></p><p class='more1' id='P_5' style='display:none;'>";
@@ -339,21 +341,21 @@ foreach($effect as $key=>$e)
 ?>
 <a  href="javascript:void(0)" class="A_6" onclick="highlighteff($(this))" id="eff_<?php echo $e['Effect']['id'];?>"><?php echo $e['Effect']['title']?></a>
 </a>
-<?php
-
-    if($key+1 == count($effect))
-        echo "</p>";
-}
-
+    <?php
+    if ($key + 1 == count($effect)){
+        echo "</P>";
+    } elseif($islast) {
+        echo ' or <a class="A_6" href="<?php echo $this->webroot;?>strains/all">view all</a>';
+    }}
 ?>
-or <a class="A_6" href="<?php echo $this->webroot;?>strains/all">view all</a>
+<!-- or <a class="A_6" href="<?php echo $this->webroot;?>strains/all">view all</a> -->
 </p>
 
 <p style="display: none;" class="effe"></p>
 <p style="display: none;" class="symp"></p>
 
 <div class="main2">
-<div class="div12"><input  id="INPUT_16"  type="text" placeholder="Search by name" name="key" class="key" style=""/>
+<div class="div12"><input  id="INPUT_16"  type="text" placeholder="" name="key" class="key" style=""/>
 <input  id="BUTTON_17" type="submit" value="Search" class="more blue medium " style="" />
 </div>
 </div>
@@ -403,7 +405,7 @@ or <a class="A_6" href="<?php echo $this->webroot;?>strains/all">view all</a>
 								Join the Movement
 							</h2>
 						<p style="color: white;margin-bottom:20px;">
-								 <a href="<?php echo $this->webroot;?>users/register" title="">Help make the world a better place &raquo;</a>
+								 <a href="<?php echo $this->webroot;?>pages/about" title="">Help make the world a better place &raquo;</a>
 							</p>
 						</li>
 						<li class="footer_banner_box blue animated_element animation-slideRight200 duration-800 delay-1000">
@@ -421,7 +423,7 @@ or <a class="A_6" href="<?php echo $this->webroot;?>strains/all">view all</a>
 							<h3 class="box_header">
 								canbii
 							</h3>
-							<p class="info">
+							<p class="info" align="justify">
 								Medicinal marijuana is a growing movement and we're doing our part to spread the word.(name of site) is an online database dedicated to educate the public on the benefits of medical marijuana. This all natural plant is used to treat illnesses and to help those who suffer from chronic pain that affects their daily lives.<br />
 								<br />
 								We need your input to enhance our information so we can help as many people as we can. <a href="<?php echo $this->webroot;?>users/register" accesskey="4" title="">Sign up</a> today!
@@ -466,7 +468,7 @@ or <a class="A_6" href="<?php echo $this->webroot;?>strains/all">view all</a>
 								<ul class="scrolling_list footer_recent_posts">
 								
 								
-								<?
+								<?php
 								
                         $strains = $this->requestAction('pages/get_strain');								
                         if($strains)
@@ -486,7 +488,9 @@ or <a class="A_6" href="<?php echo $this->webroot;?>strains/all">view all</a>
                             <?php echo substr($s['Review']['review'],0,80) . '...';?>
                             
                             </a>
-                            <abbr title="" class="timeago"><?php echo "<a href='".$this->webroot."strains/review/all/?user=".$s['Review']['user_id']."'>".ucfirst($s['User']['username'])."</a> ".$s['Review']['on_date'];?></abbr>
+                            <abbr title="" class="timeago">
+                                <?php echo "<a href='".$this->webroot."strains/review/all/?user=".$s['Review']['user_id']."'>".ucfirst($s['User']['username'])."</a>&nbsp;".$s['Review']['on_date'];?>
+                            </abbr>
                         </li>
                         									
                         									
@@ -525,7 +529,7 @@ or <a class="A_6" href="<?php echo $this->webroot;?>strains/all">view all</a>
 					</div>
 					<div class="copyright_area clearfix">
 						<div class="copyright_left">
-							© Copyright 2014 - <a href="http://canbii.com" title="canbii" target="_blank">canbii.com</a> 
+							© Copyright <?php echo "2014-". date('Y');?> - <a href="http://canbii.com" title="canbii" target="_blank">canbii.com</a>
 						</div>
 						<div class="copyright_right">
 							<a class="scroll_top icon_small_arrow top_white" href="#top" title="Scroll to top">Top</a>

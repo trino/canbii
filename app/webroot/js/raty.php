@@ -1,3 +1,5 @@
+<?php Header("content-type: application/javascript"); ?>
+<script>
 /*!
  * jQuery Raty - A Star Rating Plugin
  *
@@ -679,7 +681,7 @@
       $.error('Method ' + method + ' does not exist!');
     }
   };
-var app_path='app/webroot/raty/images';
+
   $.fn.raty.defaults = {
     cancel       : false,
     cancelClass  : 'raty-cancel',
@@ -697,11 +699,7 @@ var app_path='app/webroot/raty/images';
     noRatedMsg   : 'Not rated yet!',
     number       : 5,
     numberMax    : 20,
-
-    //path         : "http://localhost/marijuana/raty/images",
-
-    path         : getRootWebSitePath(),
-
+    path         : "<?php echo $this->webroot;?>raty/images';?> ",
     precision    : false,
     readOnly     : false,
     round        : { down: 0.25, full: 0.6, up: 0.76 },
@@ -722,3 +720,4 @@ var app_path='app/webroot/raty/images';
   };
 
 })(jQuery);
+</script>

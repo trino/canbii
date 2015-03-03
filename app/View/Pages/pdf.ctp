@@ -347,11 +347,11 @@ $duration = ($duration/$count)*20;
     <!--<img src="<?php echo $this->webroot;?>Capture.PNG" style="width: <?php echo round($scale,2);?>%;height:25px;position: absolute;left:0;" />--><em><?php echo round($scale/20,2);?>/5</em></div><div class="clear"></div>
 </div>
 <div class="eff">
-<div class="label left">Strength</div><div class="left ratewrap" style="width: 63%;background:#FFF;">
+<div class="label left">Strength</div><div class="left ratewrap" style="width: 63%;">
     <!--<img src="<?php echo $this->webroot;?>Capture.PNG" style="width: <?php echo round($strength,2);?>%;height:25px;position: absolute;left:0;" />--><em><?php echo round($strength/20,2);?>/5</em></div><div class="clear"></div>
 </div>
 <div class="eff">
-<div class="label left">Duration</div><div class="left ratewrap" style="width: 63%;background:#FFF;">
+<div class="label left">Duration</div><div class="left ratewrap" style="width: 63%;">
     <!--<img src="<?php echo $this->webroot;?>Capture.PNG" style="width: <?php echo round($duration,2);?>%;height:25px;position: absolute;left:0;" />--><em><?php echo round($duration/20,2);?>/5</em></div><div class="clear"></div>
 </div>        
 
@@ -396,7 +396,10 @@ $duration = ($duration/$count)*20;
 
 
 <div class="print">
-    <span><a class="blue more" href="javascript:void(0)" onclick="window.print();">Print Report</a> <a href="#" class="blue more">Invite your friend</a> <a href="#" class="blue more">Share on Social Media</a></span>
+    <span><a class="blue more" href="javascript:void(0)" onclick="window.print();">Print Report</a>
+        <!--<a href="#" class="blue more">Invite your friend</a>
+        <a href="#" class="blue more">Share on Social Media</a>-->
+    </span>
 </div>
 
 

@@ -1,5 +1,5 @@
 <style>
-div{border:0px solid green}
+div{border:0px solid green;}
 </style>
 <?php
 switch ($strain_hexagon['Strain']['type_id']) {
@@ -14,7 +14,7 @@ case 3:
   break;
 }
 ?>
-<div style="margin-right:12px;text-align: center; float:left;width:57px;height:66px;background-repeat: no-repeat;position:relative;">
+<div style="margin-right:12px;text-align: center; float:left;width:57px;height:66px;background-repeat: no-repeat;">
 <div style="height:66px;
 width:57px;
 text-align:center;
@@ -26,7 +26,7 @@ background: url('<?=$background_hex?>') no-repeat;">
 font-size: 20px;
 z-index: 100;color:#FFF;">
 
-<?php 
+<?php
 $name_arr = explode(' ',$strain_hexagon['Strain']['name']);
 $i=0;
 foreach($name_arr as $na)

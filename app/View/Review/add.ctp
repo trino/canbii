@@ -66,15 +66,15 @@ if($this->Session->read('User') && $this->params['action']!='detail')
 <div class="page_header_right">
 
 
-<a style="float:right;" title="Read more"  href="<?php echo $this->webroot;?>users/dashboard" class=" more large dark_blue icon_small_arrow margin_right_white">Dashboard</a>
+<a style="margin-right:10px;" title="Read more"  href="<?php echo $this->webroot;?>users/dashboard" class=" more large dark_blue icon_small_arrow margin_right_white">Dashboard</a>
 
 
-<a style="margin-right:10px;float:right;"  title="Read more"  href="<?php echo $this->webroot;?>users/settings" class="more large dark_blue icon_small_arrow margin_right_white">Settings</a>
+<a style="margin-right:10px;"  title="Read more"  href="<?php echo $this->webroot;?>users/settings" class="more large dark_blue icon_small_arrow margin_right_white">Settings</a>
 
-<a style="margin-right:10px;float:right;" title="Read more" href="<?php echo $this->webroot;?>review"  class="more large dark_blue icon_small_arrow margin_right_white  active">Add Review</a>
+<a style="margin-right:10px;" title="Read more" href="<?php echo $this->webroot;?>review"  class="more large dark_blue icon_small_arrow margin_right_white  active">Add Review</a>
 
 
-<a style="margin-right:10px;float:right;" title="Read more" href="<?php echo $this->webroot;?>review/all"  class="more large dark_blue icon_small_arrow margin_right_white  ">My Reviews</a>
+<a title="Read more" href="<?php echo $this->webroot;?>review/all"  class="more large dark_blue icon_small_arrow margin_right_white  ">My Reviews</a>
 
 
 
@@ -430,12 +430,8 @@ else
 }
 ?>
 
-
-
 </span>
 </div>
-
-
 
 </fieldset>
 
@@ -474,12 +470,9 @@ Rating & Comment <?php if($this->params['action']=='add')echo '(Required)';?>
     }
 ?>
 
-
 <div class="clear"></div>
 
-
 </div>
-
 
 </form>
 </div>
@@ -505,8 +498,8 @@ else
                 if($q5){$vote = 1;$yes = $q5['VoteIp']['vote_yes'];}else{$vote = 0;}
                 ?>
                 
-                <strong>Was this review helpful?</strong><br /><br /> 
-                <?php if($vote==0){?>
+                <strong>Was this review helpful?</strong><br /><br /> <div align="Center">
+        <?php if($vote==0){?>
                     <a href="javascript:void(0);" id="<?php echo $rand1.'_'.$review['Review']['id'];?>" class="btns yes" style="background-color: #40b2e2; padding-left:6px; padding-right:6px; padding-top: 5px; padding-bottom: 5px; margin-right:5px"><strong style="color: white">YES<?php if($review['Review']['helpful']){?> (<?php echo $review['Review']['helpful'];?>)<?php }?></strong></a> <a class="btns no" href="javascript:void(0);" id="<?php echo ($rand1+1).'_'.$review['Review']['id'];?>" style="background-color: #1e84c6; padding-left:10px; padding-right:10px; padding-top: 5px; padding-bottom: 5px; margin-right:5px"><strong style="color: white">NO<?php if($review['Review']['not_helpful']){?> (<?php echo $review['Review']['not_helpful'];?>)<?php }?></strong></a>
                 <?php }else{
                     if($yes==1)
@@ -524,7 +517,7 @@ else
                         $n2 = 'color:#fff';
                     }
                     ?>
-                    <a href="javascript:void(0);" id="" class="faded" style="<?php echo $y1;?>"><strong style="<?php echo $y2;?>">YES<?php if($review['Review']['helpful']){?> (<?php echo $review['Review']['helpful'];?>)<?php }?></strong></a> <a class="faded" href="javascript:void(0);" id="" style="<?php echo $n1;?>"><strong style="<?php echo $n2;?>">NO<?php if($review['Review']['not_helpful']){?> (<?php echo $review['Review']['not_helpful'];?>)<?php }?></strong></a>
+                    <a href="javascript:void(0);" id="" class="faded" style="<?php echo $y1;?>"><strong style="<?php echo $y2;?>">YES<?php if($review['Review']['helpful']){?> (<?php echo $review['Review']['helpful'];?>)<?php }?></strong></a> <a class="faded" href="javascript:void(0);" id="" style="<?php echo $n1;?>"><strong style="<?php echo $n2;?>">NO<?php if($review['Review']['not_helpful']){?> (<?php echo $review['Review']['not_helpful'];?>)<?php }?></strong></a></div>
                     <strong style="color: #37A319;">Thank you for voting!</strong>
                 <?php }?>
                 
@@ -536,22 +529,14 @@ else
 </div>
 </div>
 
-
-
-
-
-
 <script>
 $(function(){
     <?php if($this->params['action']=='add'){?>
     $('#reviews1').submit(function(){
-        if($('#qf_review__other__overall').val()=='0')
-        {
+        if($('#qf_review__other__overall').val()=='0') {
             $('.errorz').show();
-            return false;
-        }
-        else
-        {
+            return true;//THIS NEEDS TO BE FALSE WHEN THE STAR BAR IS WORKING AGAIN!!!!!
+        } else {
             $('.errorz').hide();
             return true;
         }

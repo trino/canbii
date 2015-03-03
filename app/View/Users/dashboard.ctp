@@ -45,12 +45,13 @@
 				</li>
 			</ul>
 		</div>
-<div class="page_header_right">
-<a style="float:right;" title="Read more"  href="<?php  echo $this->webroot; ?>users/dashboard" class="active more large dark_blue icon_small_arrow margin_right_white">Dashboard</a>
-<a style="float:right;margin-right:10px;"  title="Read more"  href="<?php  echo $this->webroot; ?>users/settings" class="more large dark_blue icon_small_arrow margin_right_white  ">Settings</a>
-<a style="float:right;margin-right:10px;" title="Read more" href="<?php  echo $this->webroot; ?>review"  class="more large dark_blue icon_small_arrow margin_right_white  ">Add Review</a>
-<a style="float:right;margin-right:10px;" title="Read more" href="<?php  echo $this->webroot; ?>review/all"  class="more large dark_blue icon_small_arrow margin_right_white  ">My Reviews</a>
-</div>
+		<div class="page_header_right"><!-- float:right;-->
+			<a style="margin-right:10px;" title="Read more"  href="<?php  echo $this->webroot; ?>users/dashboard" class="active more large dark_blue icon_small_arrow margin_right_white dashboarditem">Dashboard</a>
+			<a style="margin-right:10px;"  title="Read more"  href="<?php  echo $this->webroot; ?>users/settings" class="more large dark_blue icon_small_arrow margin_right_white  ">Settings</a>
+			<a style="margin-right:10px;" title="Read more" href="<?php  echo $this->webroot; ?>review"  class="more large dark_blue icon_small_arrow margin_right_white  ">Add Review</a>
+			<a style="" title="Read more" href="<?php  echo $this->webroot; ?>review/all"  class="more large dark_blue icon_small_arrow margin_right_white">My Reviews</a>
+		</div>
+
 <div class="clearfix">
 </div>
 <div class="notification_box nb_info page_margin_top">
@@ -58,7 +59,7 @@
 								Information
 							</h2>
 							<h5>
-								Lorem ipsum dolor sit amet.
+								Here is where you can change your settings
 							</h5>
 						</div>
 <div class="page_left page_margin_top">
@@ -67,7 +68,7 @@
 <?php  include('combine/profile_filter_inc.php'); ?>
 <div class="clearfix"></div>
 
-<input type="submit" name="submit" value="submit" class="blue more" style="" />
+<input type="submit" name="submit" value="Save" class="blue more" style="" />
 </form>
 </div>
 

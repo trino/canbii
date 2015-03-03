@@ -83,8 +83,7 @@ class UsersController extends AppController {
         $this->loadModel('Country');
         $this->set('countries',$this->Country->find('all'));
         $this->set('title_for_layout','User Dashboard');
-        if(!$this->Session->read('User'))
-            $this->redirect('register');
+        if(!$this->Session->read('User')){ $this->redirect('register');}
         
         $this->set('user',$this->User->findById($this->Session->read('User.id')));
         if(isset($_POST['submit']))

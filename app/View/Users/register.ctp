@@ -53,7 +53,7 @@ else
 							Why Sign Up?
 					</h2>
 					<div class="news clearfix">
-						<p class="text">
+						<p class="text" align="justify">
 							If you need a doctor urgently outside of medicenter opening hours, call emergency appointment number for emergency service.
 			
 						</p>
@@ -65,7 +65,7 @@ else
 							Reason # 2
 					</h2>
 					<div class="news clearfix">
-						<p class="text">
+						<p class="text" align="justify">
 							Here at medicenter we have individual doctor's lists. Click read more below to see services and current timetable for our doctors.
 						</p>
 		
@@ -78,6 +78,34 @@ else
 						
 						
 					</li>
+
+	<li class="column">
+
+
+
+
+
+
+		<div class="dropcap " style="border:1px solid #e8e8e8;padding: 15px 20px;">
+			<h2 class="box_header  page_margin_top">Login</h2>
+
+			<div class="clearfix"></div>
+			<?php echo $this->Form->create('User',array('action'=>'login?url='.$url, 'class'=>'contact_form')); ?>
+
+			<?php echo $this->Form->input('username',array('div'=>array('class'=>''))); ?>
+			<?php echo $this->Form->input('password',array('div'=>array('class'=>''))); ?>
+
+			<?php echo $this->Form->submit('Login',array('class'=>'more blue ', 'style'=>'float:left;'))?>
+			<?php echo $this->Form->end(); ?> <div class="clearfix"></div>
+			<div class="page_margin_top clearfix">
+				<a href="<?php echo $this->webroot;?>users/forgot" class="forgot-password">Forgot Password?</a>
+			</div>
+
+		</div>
+
+
+
+	</li>
 					<li class="column">
 						<div class="dropcap" style="border:1px solid #e8e8e8;padding: 15px 20px;">
 				
@@ -105,33 +133,7 @@ else
 <div class="clearfix"></div>
 						</div>
 					</li>
-					<li class="column">
-	
-	
-	
-	
-	
-					
-						<div class="dropcap " style="border:1px solid #e8e8e8;padding: 15px 20px;">
-				<h2 class="box_header  page_margin_top">Login</h2>
 
-<div class="clearfix"></div>
-<?php echo $this->Form->create('User',array('action'=>'login?url='.$url, 'class'=>'contact_form')); ?>
-
-<?php echo $this->Form->input('username',array('div'=>array('class'=>''))); ?>
-<?php echo $this->Form->input('password',array('div'=>array('class'=>''))); ?>
-
-<?php echo $this->Form->submit('Login',array('class'=>'more blue ', 'style'=>'float:left;'))?>
-<?php echo $this->Form->end(); ?> <div class="clearfix"></div>
-<div class="page_margin_top clearfix">
-<a href="<?php echo $this->webroot;?>users/forgot" class="forgot-password">Forgot Password?</a>
-</div>
-
-						</div>
-	
-
-
-					</li>
 				</ul>
 
 </div>
