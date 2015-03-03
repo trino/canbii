@@ -13,7 +13,7 @@
 			<h1 class="page_title">Review Detail of <?php echo ucfirst($review['Strain']['name'])." on ". $review['Review']['on_date'];?></h1>
 			<ul class="bread_crumb">
 				<li>
-					<a href="?page=home" title="Home">
+					<a href="<?php echo $this->webroot?>" title="Home">
 						Home
 					</a>
 				</li>

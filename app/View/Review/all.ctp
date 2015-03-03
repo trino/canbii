@@ -10,7 +10,7 @@
 <h1 class="page_title"><?php if(!isset($_GET['user'])){?>My Reviews<?php }else{?>Reviews by <?php echo $this->requestAction('/strains/getUserName/'.$_GET['user']);?><?php  }?></h1>
 <ul class="bread_crumb">
 <li>
-<a href="?page=home" title="Home">
+<a href="<?php echo $this->webroot?>" title="Home">
 Home
 </a>
 </li>

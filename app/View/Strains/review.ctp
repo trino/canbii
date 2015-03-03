@@ -11,7 +11,7 @@
 			<h1 class="page_title">Reviews for - <?php echo $strain['Strain']['name'];?></h1>
 			<ul class="bread_crumb">
 				<li>
-					<a href="?page=home" title="Home">
+					<a href="<?php echo $this->webroot?>" title="Home">
 						Home
 					</a>
 				</li>
