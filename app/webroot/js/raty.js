@@ -698,9 +698,9 @@ var app_path='app/webroot/raty/images';
     number       : 5,
     numberMax    : 20,
 
-    //path         : "http://localhost/marijuana/raty/images",
+    path         : "http://localhost/marijuana/raty/images",
 
-    path         : getRootWebSitePath(),
+    //path         : getRootWebSitePath(),
 
     precision    : false,
     readOnly     : false,
