@@ -698,7 +698,7 @@ var app_path='app/webroot/raty/images';
     number       : 5,
     numberMax    : 20,
 
-    path         : "http://localhost/marijuana/raty/images",
+    path         : webroot() + "raty/images",
 
     //path         : getRootWebSitePath(),
 
@@ -722,3 +722,13 @@ var app_path='app/webroot/raty/images';
   };
 
 })(jQuery);
+
+function webroot(){//http://localhost/canbii/review/allraty/images/star-off.png
+    // what it wants "http://localhost/canbii/"
+    //return document.URL;
+    //assumes only 1 directory deep
+    var txt =  document.URL;
+    var position = txt.indexOf("/", 8);
+    position = txt.indexOf("/", position+1);
+    return txt.substr(0,position) + "/";
+}

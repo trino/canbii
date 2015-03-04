@@ -274,7 +274,7 @@ if(thiss.attr('class').replace('searchact','')==thiss.attr('class'))
 
 <?if(isset($homepage)){?>
 
-<div style="height:100%; background-image: url(http://localhost/marijuana/images/bg4.jpg);text-shadow: 0px 1px 0px rgba(0,0,0,1);padding:20px 0px;">
+<div style="height:100%; background-image: url(<?= $this->webroot; ?>images/bg4.jpg);text-shadow: 0px 1px 0px rgba(0,0,0,1);padding:20px 0px;">
 
 
 
