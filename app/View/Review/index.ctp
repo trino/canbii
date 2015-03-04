@@ -108,18 +108,19 @@ $('.opt').live('click',function(){
 	});
 	$(this).addClass('sel');
 })
-$('#searchName').keyup(function(){
+$('#searchName').on('keydown keyup click input submit mouseenter', function(){
 	var txt = $(this).val();
-	$.ajax({
-		type:"post",
-		url:"<?php echo $this->webroot;?>strains/ajax_search",
-		data:"str="+txt,
-		success: function(msg)
-		{
-			$('.results').show();
-			$('.butt').html(msg);
-		}
-	}) 
+    if (txt.length > 2) {
+        $.ajax({
+            type: "post",
+            url: "<?php echo $this->webroot;?>strains/ajax_search",
+            data: "str=" + txt,
+            success: function (msg) {
+                $('.results').show();
+                $('.butt').html(msg);
+            }
+        })
+    }
 });
 });
 </script>
