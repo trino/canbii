@@ -12,8 +12,12 @@
                 <ul>
                     <?php
                     $j = 0;
+                    $id=-1;
+                    if (isset($_GET["delete"])) { $id =  $_GET["delete"];}
                     foreach ($reviews as $review) {
-                        $j++;?>
+                        $j++;
+                        //debug($review['Strain']);
+                        if ($review['Strain']["id"] != $id) {?>
 
                         <li class="comment clearfix">
                             <div class="comment_author_avatar">
@@ -50,7 +54,7 @@
                                 </a>
                             </div>
                         </li>
-                    <?php }  ?>
+                    <?php } } ?>
                 </ul>
                 <div class="clear"></div>
                 <div class="morelist" style="display: none;"></div>

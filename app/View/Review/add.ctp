@@ -17,7 +17,7 @@ if(isset($strain)){
 function getdata($r, $name, $default = ""){
     if (isset($r[$name])){        return $r['Review'][$name];    }
     return $default;
-}
+}////searchact2=selected link object
 
 include('combine/hexagon.php');?>
 
