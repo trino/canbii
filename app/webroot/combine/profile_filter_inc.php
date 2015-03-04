@@ -115,7 +115,7 @@ if($this->params['action']!='dashboard' && !$this->Session->read('User')){
         <select name="age_group_to" style="width: 103px!important;margin-left:10px;">
     		<option value="">To</option>
     		<?php
-            for($i=20;$i<=100;$i=$i+10) {
+            for($i=30;$i<=100;$i=$i+10) {
                 
                 ?>
                 <option value="<?php echo $i?>" <?php if($age_group_to==$i){?>selected="selected"<?php }?>><?php echo $i;?></option>
@@ -197,7 +197,7 @@ if($this->params['action']!='dashboard' && !$this->Session->read('User')){
         <select name="weight_to" style="width: 103px!important;margin-left:10px;">
     		<option value="">To</option>
     		<?php
-            for($i=100;$i<=290;$i=$i+10)
+            for($i=110;$i<=290;$i=$i+10)
             {
                 
                 ?>
@@ -237,7 +237,7 @@ if($this->params['action']!='dashboard' && !$this->Session->read('User')){
    {
         ?>
         <?php if($this->params['action']!='dashboard'){?><div class="bg"><?php }?>
-        <label style="display: block!important;">Years of Expereince</label>
+        <label style="display: block!important;">Years of Experience</label>
         <select name="years_of_experience_from" style="width: 103px!important;float:left;">
     		<option value="">From</option>
     		<?php
@@ -253,7 +253,7 @@ if($this->params['action']!='dashboard' && !$this->Session->read('User')){
         <select name="years_of_experience_to" style="width: 103px!important;margin-left:10px;">
     		<option value="">To</option>
     		<?php
-            for($i=1;$i<=50;$i++)
+            for($i=2;$i<=50;$i++)
             {
                 
                 ?>

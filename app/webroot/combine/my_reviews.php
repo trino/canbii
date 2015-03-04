@@ -15,9 +15,9 @@
                     $id=-1;
                     if (isset($_GET["delete"])) { $id =  $_GET["delete"];}
                     foreach ($reviews as $review) {
-                        $j++;
                         //debug($review['Strain']);
-                        if ($review['Strain']["id"] != $id) {?>
+                        if ($review['Strain']["id"] != $id) {
+                            $j++;?>
 
                         <li class="comment clearfix">
                             <div class="comment_author_avatar">
