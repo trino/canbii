@@ -169,7 +169,10 @@ class StrainsController extends AppController
 
         $ip = $_SERVER['REMOTE_ADDR'];
         $this->loadModel('VoteIp');
-        $q5 = $this->VoteIp->find('first', array('conditions' => array('review_id' => $q3['Review']['id'], 'ip' => $ip)));
+        $q5 = false;
+        if (isset($q3['Review'])) {
+            $q5 = $this->VoteIp->find('first', array('conditions' => array('review_id' => $q3['Review']['id'], 'ip' => $ip)));
+        }
         if ($q5) {
             $this->set('vote', 1);
             $this->set('yes', $q5['VoteIp']['vote_yes']);
