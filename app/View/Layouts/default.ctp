@@ -387,12 +387,10 @@ foreach($effect as $key=>$e)
 </div>
 
 <!-- //////////////////////////////////////////////////////////////////////////////////////////// NEW SITE-->
-
-
 <div class="footer_container">
 				<div class="footer">
 					<ul class="footer_banner_box_container clearfix">
-						<li class="footer_banner_box super_light_blue" oldclass="animated_element animation-fadeIn duration-500">
+						<li class="footer_banner_box super_light_blue animated_element animation-fadeIn duration-500">
 							<h2>
 								Why Go Natural?
 							</h2>
@@ -400,7 +398,7 @@ foreach($effect as $key=>$e)
 								 <a href="<?php echo $this->webroot;?>pages/about" title="">The guide to Medical Marijuana &raquo;</a>
 							</p>
 						</li>
-						<li class="footer_banner_box light_blue" oldclass="animated_element animation-slideRight duration-800 delay-500">
+						<li class="footer_banner_box light_blue animated_element animation-slideRight duration-800 delay-500">
 							<h2>
 								Join the Movement
 							</h2>
@@ -408,7 +406,7 @@ foreach($effect as $key=>$e)
 								 <a href="<?php echo $this->webroot;?>pages/about" title="">Help make the world a better place &raquo;</a>
 							</p>
 						</li>
-						<li class="footer_banner_box blue" oldclass="animated_element animation-slideRight200 duration-800 delay-1000">
+						<li class="footer_banner_box blue animated_element animation-slideRight200 duration-800 delay-1000">
 							<h2>
 								Questions or Concerns?
 							</h2>
