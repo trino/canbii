@@ -729,6 +729,8 @@ function webroot(){//http://localhost/canbii/review/allraty/images/star-off.png
     //assumes only 1 directory deep
     var txt =  document.URL;
     var position = txt.indexOf("/", 8);
-    position = txt.indexOf("/", position+1);
+    if( txt.indexOf("localhost")>0 ) {
+        position = txt.indexOf("/", position + 1);
+    }
     return txt.substr(0,position) + "/";
 }
