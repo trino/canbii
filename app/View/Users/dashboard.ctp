@@ -62,14 +62,15 @@
 								Here is where you can change your settings
 							</h5>
 						</div>
+      <form action="" method="post" id="dashboard" class="contact_form">
 <div class="page_left page_margin_top">
 <div class="backgroundcolor"><p>Welcome to your corner of canbii. Please enter accurate information so we can further help personalize medication for other users. We thank you for your help and support.</p></div>
-<form action="" method="post" id="dashboard" class="contact_form">
+
 <?php  include('combine/profile_filter_inc.php'); ?>
 <div class="clearfix"></div>
 
 <input type="submit" name="submit" value="Save" class="blue more" style="" />
-</form>
+
 </div>
 
 <div class="page_right page_margin_top" ">
@@ -100,7 +101,7 @@ foreach($symp as $sy)        {
 </div>
 
 
-
+</form>
 
 </div>
 </div>
