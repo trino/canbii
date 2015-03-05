@@ -153,8 +153,8 @@ $symptoms = array();
 	<!-- page right --> 
 	
 				<div class="page_right" style="">
-				<ul>hihi
-				<li class="home_box light_blue animated_element animation-fadeIn duration-500" style="z-index: 3; background-color: red;">
+				<ul>
+				<li class="home_box light_blue animated_element animation-fadeIn duration-500" style="z-index: 3;">
 					<h2>
 							Filter by Effects
 					</h2>
