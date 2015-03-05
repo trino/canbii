@@ -144,7 +144,7 @@ $symptoms = array();
 <!--php include('combine/profile_filter.php');?-->
 
 	<!-- page left --> 
-	
+
 <div class="page_left listing page_margin_top">
 <?php include_once('combine/filter.php');?>
 </div>
@@ -153,8 +153,8 @@ $symptoms = array();
 	<!-- page right --> 
 	
 				<div class="page_right" style="">
-				<ul>
-				<li class="home_box light_blue animated_element animation-fadeIn duration-500" style="z-index: 3;">
+				<ul>hihi
+				<li class="home_box light_blue animated_element animation-fadeIn duration-500" style="z-index: 3; background-color: red;">
 					<h2>
 							Filter by Effects
 					</h2>
