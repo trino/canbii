@@ -36,8 +36,8 @@
 
 <!-- //////////////////////////////////////////////////////////////////////////////////////////// NEW SITE-->
 
-<link href='http://fonts.googleapis.com/css?family=PT+Sans' rel='stylesheet' type='text/css'>
-<link href='http://fonts.googleapis.com/css?family=Volkhov:400italic' rel='stylesheet' type='text/css'>
+<!--link href='http://fonts.googleapis.com/css?family=PT+Sans' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Volkhov:400italic' rel='stylesheet' type='text/css'-->
 <link rel="stylesheet" type="text/css" href="<?php echo $this->webroot;?>style2/reset.css" />
 <link rel="stylesheet" type="text/css" href="<?php echo $this->webroot;?>style2/superfish.css" />
 <link rel="stylesheet" type="text/css" href="<?php echo $this->webroot;?>style2/fancybox/jquery.fancybox.css" />
@@ -50,9 +50,9 @@
 
 <script type="text/javascript" src="<?php echo $this->webroot;?>js2/jquery-migrate-1.2.1.min.js"></script>
 <script type="text/javascript" src="<?php echo $this->webroot;?>js2/jquery.ba-bbq.min.js"></script>
-<script type="text/javascript" src="<?php echo $this->webroot;?>js2/jquery-ui-1.9.2.custom.min.js"></script>
+<!--script type="text/javascript" src="<!php echo $this->webroot;?>js2/jquery-ui-1.9.2.custom.min.js"></script-->
 <script type="text/javascript" src="<?php echo $this->webroot;?>js2/jquery.easing.1.3.js"></script>
-<script type="text/javascript" src="<?php echo $this->webroot;?>js2/jquery.carouFredSel-5.6.4-packed.js"></script>
+<!--script type="text/javascript" src="<!php echo $this->webroot;?>js2/jquery.carouFredSel-5.6.4-packed.js"></script-->
 <script type="text/javascript" src="<?php echo $this->webroot;?>js2/jquery.sliderControl.js"></script>
 <script type="text/javascript" src="<?php echo $this->webroot;?>js2/jquery.timeago.js"></script>
 <script type="text/javascript" src="<?php echo $this->webroot;?>js2/jquery.hint.js"></script>
@@ -61,8 +61,8 @@
 <script type="text/javascript" src="<?php echo $this->webroot;?>js2/jquery.fancybox-1.3.4.pack.js"></script>
 <script type="text/javascript" src="<?php echo $this->webroot;?>js2/jquery.qtip.min.js"></script>
 <script type="text/javascript" src="<?php echo $this->webroot;?>js2/jquery.blockUI.js"></script>
-<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
-<script type="text/javascript" src="<?php echo $this->webroot;?>js2/main.js"></script>
+<!--script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script-->
+<!--script type="text/javascript" src="<!php echo $this->webroot;?>js2/main.js"></script-->
 
 <!-- //////////////////////////////////////////////////////////////////////////////////////////// NEW SITE-->
 

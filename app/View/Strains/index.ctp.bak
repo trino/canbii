@@ -27,7 +27,7 @@ em{letter-spacing:2px;font-style: normal;}
 
 <div class="page_layout page_margin_top clearfix">
 <div class="page_header clearfix">
-<?php include('combine/profile_filter.php');?>
+<!--php include('combine/profile_filter.php');?!-->
 <div class="page_header_left">
 
 

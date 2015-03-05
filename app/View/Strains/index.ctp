@@ -45,7 +45,7 @@
 
     </div>
 
-    <?php include('combine/profile_filter.php'); ?>
+    <!--php include('combine/profile_filter.php'); ?-->
 
     <div class="toprint page_margin_top">
 
