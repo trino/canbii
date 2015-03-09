@@ -420,8 +420,10 @@ else
     //var_dump($review_color);
     if(count($review_color)>0)
     {
+        echo "<span>";
         foreach($review_color as $r)
         echo "<div style='background-color:#".$r['ReviewColor']['color'].";width:20px;height:20px;float:left;margin:5px;'></div>";
+        echo "</span><div class='clear'></div>";
     }
     else
     {
