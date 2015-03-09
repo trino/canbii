@@ -74,6 +74,7 @@
             $this->loadModel('SymptomRating');
             $this->loadModel('ColourRating');
             $this->loadModel('FlavorRating');
+            $this->loadModel('ReviewColor');
             $this->loadModel('VoteIp');
             $this->set('vip',$this->VoteIp);
 
@@ -81,6 +82,8 @@
             $this->set('negative',$this->Effect->find('all',array('conditions'=>array("negative"=>'1'))));
             $this->set("effectz",$this->Effect->find('all'));
             $this->set('colours',$this->Colour->find('all'));
+            $rc = $this->ReviewColor->find('all',array('conditions'=>array('review_id'=>$id)));
+            $this->set('review_color',$rc);
             $this->set('flavors',$this->Flavor->find('all'));
             $this->loadModel('Symptom');
             $this->set('symptoms',$this->Symptom->find('all'));
@@ -117,6 +120,7 @@
             $this->loadModel('SymptomRating');
             $this->loadModel('ColourRating');
             $this->loadModel('FlavorRating');
+            $this->loadModel('ReviewColor');
             $strain = $this->Strain->findBySlug($slug);
             $this->set("strain",$strain);
             $this->set("strain_id",$strain['Strain']['id']);
@@ -168,12 +172,15 @@
                     }
                     if(isset($_POST['color'])&& count($_POST['color'])>0)                    {
                         foreach($_POST['color'] as $k=>$v )                        {
-                            $this->change_overall_rating($strain['Strain']['id']."_".$k,"colour",$v);
+                            /*$this->change_overall_rating($strain['Strain']['id']."_".$k,"colour",$v);
                             $ar['colour_id'] = $k;
                             $ar['rate'] = $v;
                             $this->ColourRating->create();
                             $this->ColourRating->save($ar);
-                            
+                            */
+                            $ar['color'] =$v;
+                            $this->ReviewColor->create();
+                            $this->ReviewColor->save($ar);
                         }
                     }
                     if(isset($_POST['flavor'])&& count($_POST['flavor'])>0)                    {

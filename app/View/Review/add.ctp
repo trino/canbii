@@ -1,7 +1,21 @@
 <script src="<?php echo $this->webroot;?>js/raty.js"></script>
 <script src="<?php echo $this->webroot;?>js/labs.js"></script>
+<script type="text/javascript" src="<?php echo $this->webroot;?>js/colorpicker.js"></script>
+<script type="text/javascript" src="<?php echo $this->webroot;?>js/eye.js"></script>
+<script type="text/javascript" src="<?php echo $this->webroot;?>js/utils.js"></script>
+<script type="text/javascript" src="<?php echo $this->webroot;?>js/layout.js?ver=1.0.2"></script>
 <link href="<?php echo $this->webroot;?>css/raty.css" rel="stylesheet" type="text/css" />
-
+<link href="<?php echo $this->webroot;?>css/colorpicker.css" rel="stylesheet" type="text/css" />
+<script>
+$(function(){
+    $('#colorpickerHolder').ColorPicker({flat: true,
+                onSubmit: function (hsb, hex, rgb) {
+                   $('.morecolours').append("<div style='background-color:#"+hex+"; width:20px;height:20px;margin:5px;float:left;'><input type='hidden' name='color[]'value='"+hex+"'/></div>")
+				//$('#colorSelector div').css('backgroundColor', '#' + hex);
+			}
+		});
+})
+</script>
 <div class="page_layout page_margin_top clearfix">
 	<div class="page_header clearfix">
 		<div class="page_header_left">
@@ -384,20 +398,30 @@ Color
 <span  id="qf_review__aesthetics__color__inner">
 <?php 
 if($this->params['action']=='add')
-{
-    foreach($colours as $colour)
+{?>
+ <p id="colorpickerHolder">
+ </p>
+ <span class="morecolours"></span>
+    <?php /*foreach($colours as $colour)
     {?> <a href="javascript:void(0);" onclick="($(this).hasClass('sel'))?$(this).removeClass('sel'):$(this).addClass('sel')" title="<?php echo $colour['Colour']['id'];?>" class="eff3 btn btn-info qf_review__aesthetics__color"><?php echo ucfirst($colour['Colour']['title']);?></a>
     <?php 
-    }
+    }*/
 }
 else
 {
+    /*
     if(count($review['ColourRating'])>0){
     foreach($review['ColourRating'] as $effect)
     {?> 
      <span id="efft_<?php echo $effect['id'];?>" class="eff3 sel btn btn-info"><?php echo $colours[$effect['colour_id']-1]['Colour']['title'];?></span>
     <?php
     }
+    }*/
+    //var_dump($review_color);
+    if(count($review_color)>0)
+    {
+        foreach($review_color as $r)
+        echo "<div style='background-color:#".$r['ReviewColor']['color'].";width:20px;height:20px;float:left;margin:5px;'></div>";
     }
     else
     {
