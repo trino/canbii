@@ -387,7 +387,9 @@ foreach($effect as $key=>$e)
 </div>
 
 <!-- //////////////////////////////////////////////////////////////////////////////////////////// NEW SITE-->
-<div class="footer_container">
+
+		</div>
+        <div class="footer_container">
 				<div class="footer">
 					<ul class="footer_banner_box_container clearfix">
 						<li class="footer_banner_box super_light_blue animated_element animation-fadeIn duration-500">
@@ -535,7 +537,6 @@ foreach($effect as $key=>$e)
 					</div>
 				</div>
 			</div>
-		</div>
 </body>
 </html>
 

@@ -10,7 +10,7 @@
 $(function(){
     $('#colorpickerHolder').ColorPicker({flat: true,
                 onSubmit: function (hsb, hex, rgb) {
-                   $('.morecolours').append("<div style='background-color:#"+hex+"; width:20px;height:20px;margin:5px;float:left;'><input type='hidden' name='color[]'value='"+hex+"'/></div>")
+                   $('.morecolours').html("<div style='background-color:#"+hex+"; width:40px;height:20px;margin:5px;float:left;'><input type='hidden' name='color[]'value='"+hex+"'/></div>")
 				//$('#colorSelector div').css('backgroundColor', '#' + hex);
 			}
 		});
