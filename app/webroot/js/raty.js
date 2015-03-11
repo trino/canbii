@@ -723,10 +723,8 @@ var app_path='app/webroot/raty/images';
 
 })(jQuery);
 
-function webroot(){//http://localhost/canbii/review/allraty/images/star-off.png
-    // what it wants "http://localhost/canbii/"
-    //return document.URL;
-    //assumes only 1 directory deep
+function webroot(){
+    //assumes only 1 directory deep for localhost, 0 for everything else
     var txt =  document.URL;
     var position = txt.indexOf("/", 8);
     if( txt.indexOf("localhost")>0 ) {

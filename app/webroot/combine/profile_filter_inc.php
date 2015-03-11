@@ -65,6 +65,7 @@ if($this->params['action']!='dashboard' && !$this->Session->read('User')){
 		<option value="black"<?php if($nationality=='black')echo "selected='selected'";?>>Black</option>
 		<option value="hispanic"<?php if($nationality=='hispanic')echo "selected='selected'";?>>Hispanic</option>
 		<option value="mid_east"<?php if($nationality=='mid_east')echo "selected='selected'";?>>Middle Eastern</option>
+        <option value="native"<?php if($nationality=='native')echo "selected='selected'";?>>Aboriginal/Native</option>
    </select><br />
    <?php if($this->params['action']!='dashboard'){?></div><?php }?>
    <?php if($this->params['action']!='dashboard'){?><div class="bg"><?php }?>
@@ -150,7 +151,7 @@ if($this->params['action']!='dashboard' && !$this->Session->read('User')){
     ?>
    <label>Patient card ID<?php if($card_pass){?> <a href="javascript:void(0);" style="color: red;" onclick="$('#card_id').toggle();$('#card_pass').toggle();">Change</a><?php }?></label>
    <?php if($card_pass){?><input type="text" name="" style="width: 98%;" disabled="" id="card_pass" value="<?php echo $card_pass;?>"  /><?php }?>
-   <input type="text" name="card_id" id="card_id" style="width: 98%;" value="<?php echo $card_id?>" <?php if($card_pass){?>style="display: none; width: 98%;"<?php }?> />
+   <input type="text" name="card_id" id="card_id" style="width: 98%;" value="<?php echo $card_id?>" <?php if($card_pass){?>style="display: none; width: 98%;"<?php }?> title="(Optional)"/>
    <?php
    }
    /*else
@@ -160,6 +161,23 @@ if($this->params['action']!='dashboard' && !$this->Session->read('User')){
     <input type="checkbox" class="card_id" value="1" />
     <?php
    }*/
+
+   function selectoption($i, $weight){
+
+       echo '<option value="';
+       if($i==100) {echo $i.'-'.($i+10);} else {echo ($i+1).'-'.($i+10);}
+       echo '" ';
+       if($weight==($i+1).'-'.($i+10)){
+           echo 'selected="selected"';
+       }
+       echo '>';
+       if($i==100){echo $i.'-'.($i+10);}
+       elseif($i==0) {echo "<100";}
+       elseif($i==301) {echo ">310";}
+       else {echo ($i+1).'-'.($i+10);}
+       echo '</option>';
+   }
+
    if($this->params['action']=='dashboard')
    {
    ?>
@@ -167,12 +185,12 @@ if($this->params['action']!='dashboard' && !$this->Session->read('User')){
    <select name="weight" style="width: 100%;">
         <option value="">Select Weight</option>
     <?php
+    selectoption(0,$weight);
     for($i=100;$i<=300;$i=$i+10)
     {
-        ?>
-        <option value="<?php if($i==100)echo $i.'-'.($i+10);else echo ($i+1).'-'.($i+10);?>" <?php if($weight==($i+1).'-'.($i+10)){?>selected="selected"<?php }?>><?php if($i==100)echo $i.'-'.($i+10);else echo ($i+1).'-'.($i+10);?></option>
-        <?php
+        selectoption($i, $weight);
     }
+    selectoption(301,$weight);
     ?>
    </select>
    <br/>
