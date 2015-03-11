@@ -470,6 +470,11 @@ foreach($effect as $key=>$e)
 								
 								<?php
 								
+								
+								
+								
+								
+								
                         $strains = $this->requestAction('pages/get_strain');								
                         if($strains)
                         {
