@@ -45,16 +45,18 @@ class PagesController extends AppController {
  * @throws NotFoundException When the view file could not be found
  *	or MissingViewException in debug mode.
  */
-	public function index()
-    {
-        //asd
+	public function index(){
         $this->loadModel('Strain');
         $this->set('strain',$this->Strain->find('all',array('order'=>'Strain.id DESC','limit'=>4)));
         $this->set('homepage','1');
         
     }
-    function getGeneric()
-    {
+
+    public function landing(){
+
+    }
+
+    function getGeneric(){
         $arr['title'] = 'Canbii';
         $arr['keyword']='Canbii , Marijuana , Medical marijuana , Strains,Strain Types , Sativa , Hybrid , Indica';
         $arr['description'] = 'Medical marijuana has been used as a form of treatment for thousands of years. This all natural plant contains tetrahydrocannabinol (THC) and cannabidiol (CBD) which helps treat illnesses or alleviate symptoms. What is THC and CBD? Tetrahydrocannabinol (THC) is the main psychoactive ingredient in the cannabis plant. It gives one the feeling of euphoria. It is also known to increase ones appetite. Cannabidiol (CBD) is a cannabinoid that repress neurotransmitter release in the brain. Together THC and CBD offers natural pain relief. ';
