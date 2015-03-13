@@ -96,7 +96,7 @@
 					<li class="<?php if($this->params['controller']=='users'){?>current_page_item<?php }?> submenu<?php echo (isset($_GET['page'])&& ($_GET["page"]=="" || $_GET["page"]=="home") ? " selected" : ""); ?>">
                         <a href="<?php echo $this->webroot;?>users/dashboard" accesskey="4" title=""><?=ucfirst($this->Session->read('User.username'))?>'s Dashboard</a>
 						<ul>
-                            <li<?php echo (isset($_GET['page'])&&$_GET["page"]=="home" ? " class='selected'" : ""); ?>>
+                            <li <?php echo (isset($_GET['page'])&&$_GET["page"]=="home" ? " class='selected'" : ""); ?>>
                                 <!--<a style="color: #888!important;" class="darkmenu" href="<?php echo $this->webroot;?>users/dashboard" accesskey="5" title="">My Dashboard</A> -->
                             <a style="color: #888!important;" class="darkmenu" href="<?php echo $this->webroot;?>users/logout" accesskey="5" title="">Logout</a>
 							</li>
@@ -107,15 +107,15 @@
 					<?php }?>
 					</ul>
                     <div class="mobile_menu">
-    	               <select> 
-                        <option value="<?php echo $this->webroot?>">Home</option>
-                        <option value="<?php echo $this->webroot?>strains/all" >Strains</option>
-    					<option value="<?php echo $this->webroot;?>pages/about" >About</option>
-    					<option value="<?php echo $this->webroot;?>pages/contact_us" >Contact Us</option>
+    	               <select class="mmenu"> 
+                        <option value="<?php echo $this->webroot?>" <?php if($this->params['controller']=='pages' && $this->params['action']=='index'){?>selected ="selected" <?php }?> >Home</option>
+                        <option value="<?php echo $this->webroot?>strains/all" <?php if($this->params['controller']=='strains' || $this->params['controller']=='review'){?>selected ="selected"<?php }?> >Strains</option>
+    					<option value="<?php echo $this->webroot;?>pages/about" <?php if($this->params['controller']=='pages' && $this->params['action']=='about'){?>selected ="selected"<?php }?> >About</option>
+    					<option value="<?php echo $this->webroot;?>pages/contact_us" <?php if($this->params['controller']=='pages' && $this->params['action']=='contact_us'){?>selected ="selected"<?php }?> >Contact Us</option>
     					<?php if(!$this->Session->read('User')){?>
-    					<option value="<?php echo $this->webroot;?>users/register" >Login / Register</option>
+    					<option value="<?php echo $this->webroot;?>users/register" <?php if($this->params['controller']=='users'){?>selected ="selected"<?php }?> >Login / Register</option>
     					<?php }else{?>
-    					<option value="<?php echo $this->webroot;?>users/dashboard" ><?=ucfirst($this->Session->read('User.username'))?> Dashboard</option>
+    					<option value="<?php echo $this->webroot;?>users/dashboard" <?php if($this->params['controller']=='users'){?>selected ="selected"<?php }?> ><?=ucfirst($this->Session->read('User.username'))?> Dashboard</option>
 						<option value="<?php echo $this->webroot;?>users/logout" >Logout</option>
 						<?php }?>	
                        </select>
@@ -132,6 +132,13 @@
 <!-- can you create a separate page for the following and include here? -->
 
 <script>
+$(function(){
+    $('.mmenu').change(function(){
+        
+        window.location =$(this).val();
+    });
+    
+});
 var spinnerVisible = false;
 function showProgress() {
     if (!spinnerVisible) {
