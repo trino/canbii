@@ -59,13 +59,13 @@ if($this->params['action']!='dashboard' && !$this->Session->read('User')){
    <label>Nationality</label>
    <select name="nationality" style="width: 100%;">
 		<option style="padding-top: 20px; padding-bottom:20px" value="">Select Nationality</option>
-		<option value="asian" <?php if($nationality=='asian')echo "selected='selected'";?>>Asian</option>
+       <option value="native"<?php if($nationality=='native')echo "selected='selected'";?>>Aboriginal</option>
+       <option value="asian" <?php if($nationality=='asian')echo "selected='selected'";?>>Asian</option>
 		<option value="indian"<?php if($nationality=='indian')echo "selected='selected'";?>>Indian</option>
 		<option value="white"<?php if($nationality=='white')echo "selected='selected'";?>>White</option>
 		<option value="black"<?php if($nationality=='black')echo "selected='selected'";?>>Black</option>
 		<option value="hispanic"<?php if($nationality=='hispanic')echo "selected='selected'";?>>Hispanic</option>
 		<option value="mid_east"<?php if($nationality=='mid_east')echo "selected='selected'";?>>Middle Eastern</option>
-        <option value="native"<?php if($nationality=='native')echo "selected='selected'";?>>Aboriginal/Native</option>
    </select><br />
    <?php if($this->params['action']!='dashboard'){?></div><?php }?>
    <?php if($this->params['action']!='dashboard'){?><div class="bg"><?php }?>

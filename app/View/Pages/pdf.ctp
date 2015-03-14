@@ -124,13 +124,13 @@ if($strain['StrainImage'])
 <h2>Chemical Composition</h2>
 <font style="font-size:14px;" color="white">
 THC:
-<?php echo $strain['Strain']['thc'];?>% &nbsp;/&nbsp; 
+<?php echo $strain['Strain']['thc'];?>% &nbsp;&nbsp;
 CBD:
-<?php echo $strain['Strain']['cbd'];?>% &nbsp;/&nbsp;
+<?php echo $strain['Strain']['cbd'];?>% &nbsp;&nbsp;
 CBN:
-<?php echo $strain['Strain']['cbn'];?>% &nbsp;/&nbsp;
+<?php echo $strain['Strain']['cbn'];?>% &nbsp;&nbsp;
 CBC:
-<?php echo $strain['Strain']['cbc'];?>% &nbsp;/&nbsp;
+<?php echo $strain['Strain']['cbc'];?>% &nbsp;&nbsp;
 THCV:
 <?php echo $strain['Strain']['thcv'];?>%
 </font>

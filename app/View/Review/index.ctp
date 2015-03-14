@@ -70,7 +70,7 @@ We value your opinion. Share your experience with others to help guide them towa
 </div>
 
 <form class="contact_form page_margin_top" action="" method="post">
-<label for="searchName">Cannabis Name</label>
+<label for="searchName">Cannabis Name (Type at least 3 characters)</label>
 <input type="text" id="searchName" value="" />
 <span class="extra">(e.g. Purple Kush, AK47, Blue Dream)</span>
 <div class="results" style="display: none;">

@@ -23,6 +23,18 @@
 			</div>
 		</div>
 		<div class="clearfix">
+            </div>
+
+        <div class="notification_box nb_info page_margin_top">
+            <h2>
+                <i class="fa fa-user-md"></i>  Information
+            </h2>
+            <h5>
+                  Here is where you can change your settings
+            </h5>
+        </div>
+
+        <div
 			<h2 class="box_header page_margin_top slide">
 				There's a strain for that
 			</h2>

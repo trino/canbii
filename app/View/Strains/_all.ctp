@@ -38,7 +38,7 @@ $symptoms = array();
 
 
 <div class="page_layout page_margin_top clearfix">
-	<div class="page_header clearfix">
+	<!-div class="page_header clearfix">
 		<div class="page_header_left">
 			<h1 class="page_title">Filter Strains</h1>
 			<ul class="bread_crumb">
@@ -68,36 +68,36 @@ $symptoms = array();
 <ul class="tabs_navigation2" >
 <li>
 
-	
+
 		<a href="#" class="eff1" id="recent">
 
-	<strong>SORT:</strong></a> 
-	
+	<strong>SORT:</strong></a>
+
 	</li><li>
 	<a href="javascript:void(0);" class="eff1" id="recent">
 
-	Most Recent</a> 
+	Most Recent</a>
 	</li>	<li>
 	<a href="javascript:void(0)" class="eff1" id="rated">
-	
-	Top Rated</a> 
+
+	Top Rated</a>
 	</li>	<li>
 	<a href="javascript:void(0)" class="eff1" id="viewed">
-	
-	Most Viewed</a>  
+
+	Most Viewed</a>
 		</li>	<li>
 	<a href="javascript:void(0)" class="eff1" id="reviewed">
-	Most Reviewed</a>  
+	Most Reviewed</a>
 		</li>	<li>
 	<a href="javascript:void(0)" class="eff1" id="alpha">
-	
+
 	Alphabetically</a>
-	
+
 		</li>
 </ul>
 
-	
-	
+
+
 	<div class="page_left">
     <div class="listing">    <?php
     if($strain)
@@ -123,10 +123,10 @@ $symptoms = array();
 <?php if($s['Strain']['review'])echo '<a href="'.$this->webroot.'strains/review/'.$s['Strain']['slug'].'">'.$s['Strain']['review'].' Reviews</a>';else echo '0 Reviews';?>
 
 <script>
-$(function(){    
+$(function(){
 $('.rating<?php echo $j;?>').raty({number:5,readOnly:true,score:<?php echo $s['Strain']['rating'];?>});
 });
-</script--> 
+</script-->
  <div class="post-item">
 <ul class="blog">
 <li class="post">
@@ -135,7 +135,7 @@ $('.rating<?php echo $j;?>').raty({number:5,readOnly:true,score:<?php echo $s['S
 		<div class="value">
 		<a style="color:white;" href="<?php echo $this->webroot?>strains/<?php echo $s['Strain']['slug'];?>">
         <?php echo $s['StrainType']['title'];?>
-        
+
         </a>
 		</div>
 	</li>
@@ -155,10 +155,10 @@ $('.rating<?php echo $j;?>').raty({number:5,readOnly:true,score:<?php echo $s['S
 
 </p>
 <script>
-$(function(){    
+$(function(){
     $('.rating<?php echo $s['Strain']['id'];?>').raty({number:5,readOnly:true,score:<?php echo $s['Strain']['rating'];?>});
 });
-</script> 
+</script>
 <div class="rating<?php echo $s['Strain']['id'];?> " style=""></div>
 
 
@@ -197,7 +197,7 @@ $(function(){
     }
     ?>
     <div class="clear"></div>
-    
+
 	</div>
     <div id="spinner">
     <button id="more">Load More</button>
@@ -247,7 +247,7 @@ foreach($effect as $e)
 ?>
 <p style="display: none;" class="symp"></p>
 </div>
-					
+
 					</div>
 				</li>
 
@@ -256,32 +256,32 @@ foreach($effect as $e)
 			</div>
 
 			</div>
-	
+
 			</div>
-	
-    
-	
+
+
+
     <input type="hidden" class="recent" value="ASC" />
     <input type="hidden" class="rated" value="ASC" />
     <input type="hidden" class="viewed" value="ASC" />
     <input type="hidden" class="reviewed" value="ASC" />
     <input type="hidden" class="alpha" value="DESC" />
-	
+
 	<div class="clearfix"></div>
-	
-	
+
+
     <script>
     var spinnerVisible = false;
-   
-    
+
+
     $(function(){
-   
+
     $("#more").click(function(){
     $('.listing').infinitescroll('retrieve');
         return false;
     });
         var $container = $('.listing');
- 
+
     $container.infinitescroll({
       behavior: 'local',
       navSelector  : '.next',    // selector for the paged navigation
@@ -295,17 +295,17 @@ foreach($effect as $e)
         }
       }
     );
-    
+
    $(window).unbind('.infscr');
     $('.sym2').click(function(){
-        
+
         var sort =0;
 if($(this).attr('class').replace('searchact2','')==$(this).attr('class'))
 {
-        
+
     $(this).addClass('searchact2');
     $('.effe').append('<input type="hidden" name="symptoms[]" value="'+$(this).attr('id').replace('sym_','')+'" class="symps '+$(this).attr('id')+'"  />')}else{$(this).removeClass('searchact2')
-   
+
         $('.'+$(this).attr('id')).remove();
     }
     $('.key').val('');
@@ -325,7 +325,7 @@ if($(this).attr('class').replace('searchact2','')==$(this).attr('class'))
         else
             val = val+'&effects[]='+$(this).val();
             }
-                
+
        });
        $('.symps').each(function(){
         if($(this).val()){
@@ -333,17 +333,17 @@ if($(this).attr('class').replace('searchact2','')==$(this).attr('class'))
         if(i==1)
             val = 'symptoms[]='+$(this).val();
         else
-            val = val+'&symptoms[]='+$(this).val();  
-            }       
+            val = val+'&symptoms[]='+$(this).val();
+            }
     });
     if(val){
         val = val+'&key=';
         }
         else
         val = 'key=';
-        
-         
-        
+
+
+
         $.ajax({
            url:'<?php echo $this->webroot;?>strains/filter',
            data:val,
@@ -356,19 +356,19 @@ if($(this).attr('class').replace('searchact2','')==$(this).attr('class'))
         spinnerVisible = false;
     }
             $('.listing').html(res);
-           } 
+           }
         });
-        
-    }); 
+
+    });
 
     $('.eff2').click(function(){
         var sort =0;
 if($(this).attr('class').replace('searchact2','')==$(this).attr('class'))
 {
-        
+
     $(this).addClass('searchact2');
     $('.effe').append('<input type="hidden" name="effects[]" value="'+$(this).attr('id').replace('eff_','')+'" class="effs '+$(this).attr('id')+'"  />')}else{$(this).removeClass('searchact2')
-   
+
         $('.'+$(this).attr('id')).remove();
     }
     $('.key').val('');
@@ -388,7 +388,7 @@ if($(this).attr('class').replace('searchact2','')==$(this).attr('class'))
         else
             val = val+'&effects[]='+$(this).val();
             }
-                
+
        });
        $('.symps').each(function(){
         if($(this).val()){
@@ -396,17 +396,17 @@ if($(this).attr('class').replace('searchact2','')==$(this).attr('class'))
         if(i==1)
             val = 'symptoms[]='+$(this).val();
         else
-            val = val+'&symptoms[]='+$(this).val();  
-            }       
+            val = val+'&symptoms[]='+$(this).val();
+            }
     });
     if(val){
         val = val+'&key=';
         }
         else
         val = 'key=';
-        
-         
-        
+
+
+
         $.ajax({
            url:'<?php echo $this->webroot;?>strains/filter',
            data:val,
@@ -419,11 +419,11 @@ if($(this).attr('class').replace('searchact2','')==$(this).attr('class'))
         spinnerVisible = false;
     }
             $('.listing').html(res);
-           } 
+           }
         });
-        
+
     });
-    
+
     $('.eff1').click(function(){
         var id = $(this).attr('id');
         var sort = $('.'+id).val();
@@ -437,12 +437,12 @@ if($(this).attr('class').replace('searchact2','')==$(this).attr('class'))
             sort = 'ASC';
             $('.'+id).val('ASC');
         }
-        
-        
 
-        
-    
-    
+
+
+
+
+
     if (!spinnerVisible) {
         $("div#spinner").fadeIn("fast");
         spinnerVisible = true;
@@ -457,7 +457,7 @@ if($(this).attr('class').replace('searchact2','')==$(this).attr('class'))
         else
             val = val+'&effects[]='+$(this).val();
             }
-                
+
        });
        $('.symps').each(function(){
         if($(this).val()){
@@ -465,8 +465,8 @@ if($(this).attr('class').replace('searchact2','')==$(this).attr('class'))
         if(i==1)
             val = 'symptoms[]='+$(this).val();
         else
-            val = val+'&symptoms[]='+$(this).val();  
-            }       
+            val = val+'&symptoms[]='+$(this).val();
+            }
     });
     if(val){
         val = val+'&key=';
@@ -477,9 +477,9 @@ if($(this).attr('class').replace('searchact2','')==$(this).attr('class'))
         {
             val = val+'&sort='+id+'&order='+sort;
         }
-        
-         
-        
+
+
+
         $.ajax({
            url:'<?php echo $this->webroot;?>strains/filter',
            data:val,
@@ -492,10 +492,10 @@ if($(this).attr('class').replace('searchact2','')==$(this).attr('class'))
         spinnerVisible = false;
     }
             $('.listing').html(res);
-           } 
+           }
         });
-        
-    });    
+
+    });
     <?php
     if($effects)
     {

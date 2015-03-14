@@ -54,14 +54,7 @@
 
 <div class="clearfix">
 </div>
-<div class="notification_box nb_info page_margin_top">
-							<h2>
-								Information
-							</h2>
-							<h5>
-								Here is where you can change your settings
-							</h5>
-						</div>
+
       <form action="" method="post" id="dashboard" class="contact_form">
 <div class="page_left page_margin_top">
 <div class="backgroundcolor"><p>Welcome to your corner of canbii. Please enter accurate information so we can further help personalize medication for other users. We thank you for your help and support.</p></div>
@@ -75,7 +68,7 @@
 
 <div class="page_right page_margin_top" ">
 
-<h4>What do you suffer from?</h4>
+<h3>What do you suffer from?</h3>
 
 <div id="dashboard_symptom" style="background:#42B3E5; padding:15px; ">
 <p id="P_5">

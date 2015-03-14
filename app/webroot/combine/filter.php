@@ -112,7 +112,7 @@ $u_cond = '';
     if($strain)
     {
 	?>
-	<ul class="page_margin_top">
+	<ul class="">
 	
 	<?
         $j=rand(1000000,9999999999);
