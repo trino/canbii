@@ -11,7 +11,7 @@
                 $strain_hexagon = $strain;
                 include('combine/hexagon.php'); ?>
             <div style="white-space: nowrap;">
-                <h1 class=""><?php echo $strain['Strain']['name']; ?> - Medical Strain Report</h1>
+                <h1 class=""><?php echo $strain['Strain']['name']; ?> - Medical Report</h1>
 
 
                 <p style="white-space: nowrap;">
@@ -46,38 +46,14 @@
     <!--php include('combine/profile_filter.php'); ?-->
 
     <div class="toprint page_margin_top">
-
-
-        <ul id="text_and_image" class="clearfix">
+        <ul id="" class="clearfix">
             <li id="text_in_li">
                 <p><?php echo strip_tags($strain['Strain']['description']); ?></p>
             </li>
 
-            <?php
-                if ($strain['StrainImage']) {
-                    ?>
 
-                    <?php
-                    foreach ($strain['StrainImage'] as $g) {
-                        ?>
-                        <li>
-                            <a class="fancybox" rel="group"
-                               href="<?php echo $this->webroot; ?>images/strains/<?php echo $g['image']; ?>"
-                               style="valign:top;">
-                                <img
-                                    style="valign:top;float:right;"
-                                    src="<?php echo $this->webroot; ?>images/strains/<?php echo $g['image']; ?>"
-                                    height="180"/>
-                            </a>
-                        </li>
-                    <?php
-                    }
-                    ?>
 
-                    <style> /* li#text_in_li, li#text_in_li *{width:30%; max-width:40%; }*/</style>
-                <?php
-                }
-            ?>
+
 
 
         </ul>
@@ -490,21 +466,129 @@
     <div class="clearfix"></div>
 
 
-    <h2 class="box_header page_margin_top_section slide clearfix" style="">Most Helpful User Review</h2>
 
 
-    <?php include_once('combine/strain_reviews.php'); ?>
-    <?php //include_once('combine/invite.php');?>
 
 
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $(".fancybox").fancybox();
-        });
-    </script>
 
 
-    <div class="clear"></div>
+
+
+    <ul class="columns full_width page_margin_top clearfix">
+        <li class="column_left">
+
+
+
+
+
+
+            <h2 class="box_header page_margin_top_section slide clearfix" style="">Most Helpful User Review</h2>
+
+
+            <?php include_once('combine/strain_reviews.php'); ?>
+            <?php //include_once('combine/invite.php');?>
+
+
+            <script type="text/javascript">
+                $(document).ready(function () {
+                    $(".fancybox").fancybox();
+                });
+            </script>
+
+
+            <div class="clear"></div>
+
+
+
+
+
+
+        </li>
+        <li class="column_right">
+
+
+
+            <h2 class="box_header page_margin_top_section slide clearfix" style=""><?php echo $strain['Strain']['name']; ?> Images</h2>
+
+
+
+
+
+
+            <a class="fancybox" rel="group"
+               href="<?php echo $this->webroot; ?>images/strains/<?php echo $strain['Strain']['id'] ?>/<?php echo $strain['Strain']['slug'] ?>_1.jpg"
+               style="valign:top;">
+                <img
+                    style="valign:top;float:right;"
+                    src="<?php echo $this->webroot; ?>images/strains/<?php echo $strain['Strain']['id'] ?>/<?php echo $strain['Strain']['slug'] ?>_1.jpg"
+                    width="180"/>
+            </a>
+
+            <a class="fancybox" rel="group"
+               href="<?php echo $this->webroot; ?>images/strains/<?php echo $strain['Strain']['id'] ?>/<?php echo $strain['Strain']['slug'] ?>_2.jpg"
+               style="valign:top;">
+                <img
+                    style="valign:top;float:right;"
+                    src="<?php echo $this->webroot; ?>images/strains/<?php echo $strain['Strain']['id'] ?>/<?php echo $strain['Strain']['slug'] ?>_2.jpg"
+                    width="180"/>
+            </a>
+
+            <a class="fancybox" rel="group"
+               href="<?php echo $this->webroot; ?>images/strains/<?php echo $strain['Strain']['id'] ?>/<?php echo $strain['Strain']['slug'] ?>_3.jpg"
+               style="valign:top;">
+                <img
+                    style="valign:top;float:right;"
+                    src="<?php echo $this->webroot; ?>images/strains/<?php echo $strain['Strain']['id'] ?>/<?php echo $strain['Strain']['slug'] ?>_3.jpg"
+                    width="180"/>
+            </a>
+
+            <a class="fancybox" rel="group"
+               href="<?php echo $this->webroot; ?>images/strains/<?php echo $strain['Strain']['id'] ?>/<?php echo $strain['Strain']['slug'] ?>_4.jpg"
+               style="valign:top;">
+                <img
+                    style="valign:top;float:right;"
+                    src="<?php echo $this->webroot; ?>images/strains/<?php echo $strain['Strain']['id'] ?>/<?php echo $strain['Strain']['slug'] ?>_4.jpg"
+                    width="180"/>
+            </a>
+
+
+
+
+
+        </li>
+    </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 </div>
 

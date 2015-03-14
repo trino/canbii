@@ -60,31 +60,6 @@
 
 
             <ul class="tabs_navigation2">
-                <li style=""><p>Sort By:</p></li>
-                <!--<li>
-                    <a href="javascript:void(0);" class="eff1" id="recent">
-                    Most Recent</a>
-                    </li>-->
-                <li>
-                    <a href="javascript:void(0)" class="eff1" id="rated">
-                        Top Rated</a>
-                </li>
-                <li>
-                    <a href="javascript:void(0)" class="eff1" id="viewed">
-                        Most Viewed</a>
-                </li>
-                <li>
-                    <a href="javascript:void(0)" class="eff1" id="reviewed">
-                        Most Reviewed</a>
-                </li>
-                <li>
-                    <a href="javascript:void(0)" class="eff1" id="alpha">
-                        Alphabetically</a>
-                </li>
-                <div class="clearfix"></div>
-            </ul>
-            <br/>
-            <ul class="tabs_navigation2">
                 <li style=""><p>Filter By:</p></li>
 
 
@@ -120,6 +95,36 @@
                 <div class="clearfix"></div>
             </ul>
 
+
+
+
+            <br/>
+
+
+            <ul class="tabs_navigation2">
+                <li style=""><p>Sort By:</p></li>
+                <!--<li>
+                    <a href="javascript:void(0);" class="eff1" id="recent">
+                    Most Recent</a>
+                    </li>-->
+                <li>
+                    <a href="javascript:void(0)" class="eff1" id="rated">
+                        Top Rated</a>
+                </li>
+                <li>
+                    <a href="javascript:void(0)" class="eff1" id="viewed">
+                        Most Viewed</a>
+                </li>
+                <li>
+                    <a href="javascript:void(0)" class="eff1" id="reviewed">
+                        Most Reviewed</a>
+                </li>
+                <li>
+                    <a href="javascript:void(0)" class="eff1" id="alpha">
+                        Alphabetically</a>
+                </li>
+                <div class="clearfix"></div>
+            </ul>
 
         </div>
         <div class="page_header_right">
@@ -160,7 +165,7 @@
                         Filter by Effects
                     </h2>
 
-                    <div class="news clearfix">
+                    <div class=" clearfix">
 
 
                         <div class="choose_eff">
@@ -185,7 +190,7 @@
                         Filter by Symptoms
                     </h2>
 
-                    <div class="news clearfix">
+                    <div class=" clearfix">
                         <div class="choose_sym">
                             <?php $effect = $this->requestAction('/pages/getSym');
                                 foreach ($effect as $e) {
