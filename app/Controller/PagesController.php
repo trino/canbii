@@ -46,8 +46,8 @@ class PagesController extends AppController {
  *	or MissingViewException in debug mode.
  */
 	public function index(){
-        $this->loadModel('Strain');
-        $this->set('strain',$this->Strain->find('all',array('order'=>'Strain.id DESC','limit'=>4)));
+     //   $this->loadModel('Strain');
+      //  $this->set('strain',$this->Strain->find('all',array('order'=>'Strain.id DESC','limit'=>1)));
         $this->set('homepage','1');
         
     }

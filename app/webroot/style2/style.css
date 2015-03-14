@@ -1340,7 +1340,6 @@ a.social_icon:hover
 /* --- scrolling list --- */
 .scrolling_list_wrapper
 {
-	margin-top: 16px;
 }
 .scrolling_list
 {
@@ -3283,18 +3282,11 @@ width:100px;
 
 
 
-
-
-
-
-
-
-
- 
 .error{color:red!important;}
  
 
 #H1_4 {
+    font-size: 34px;
     box-sizing: border-box;
     color: rgb(255, 255, 255);
     /*height: 60px;*/
@@ -3311,18 +3303,18 @@ width:100px;
     color: rgba(255, 255, 255, 0.701961);
     margin: 0px;
     outline: rgba(255, 255, 255, 0.701961) none 0px;
-	font-size:17px;
+	font-size:16px;
 }/*#P_5*/
 
 .A_6{
+    padding:1px 0px;
     box-sizing: border-box;
     color: rgb(255, 255, 255);
     text-align: center;
     text-decoration: none;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.701961);
-    padding: 0px 0px 2px;
-	margin-right:3px;
-	font-size:14px;
+    margin-right: 5px;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+	font-size:16px;
     white-space: nowrap;
 }/*#A_6, #A_7, #A_9, #A_11*/
 
@@ -3386,7 +3378,6 @@ ul#text_and_image {
 }
 ul#text_and_image li {
     display: table-cell;
-    padding-left:1%;
     vertical-align : middle;
 }
 
@@ -3419,7 +3410,7 @@ a.Grape:before {
 a.Sweet:before {
     content:"";
     display:block;
-    content: url('../images/icons/sweet.png');
+    content: url('../../images/icons/sweet.png');
     height:17px;
     width:17px;
     position:absolute;

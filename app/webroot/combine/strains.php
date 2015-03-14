@@ -1,6 +1,18 @@
-<h2 class="box_header page_margin_top clearfix" style="">What Strain is Right for You?</h2>
-<p>Cannabis is broken down into 3 mian strains. Each with different effects and medical properties. See below for the strain that's right for you.
-		
+
+<div class="  page_margin_top" style="text-align: center;  padding: 20px 30px 20px 80px;
+  line-height: 150%;background: #42B3E5;">
+    <h1 style="color: white;">
+        What Strain is Right for You?         <i style="color: white;" class="fa fa-user-md"></i>
+
+    </h1>
+    <h3 style="color: white;">
+        Cannabis is broken down into 3 main strains. Each with different effects and medical properties.
+    </h3>
+
+</div>
+
+
+
 <ul class="columns_3 page_margin_top clearfix">
 <li class="column"  style="">
 <div style="float:left;margin-right:10px;">

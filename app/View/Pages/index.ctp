@@ -1,32 +1,31 @@
 <div class="page_layout page_margin_top clearfix">
 
-<div class="announcement  clearfix">
-	<ul class="columns no_width">
-		<li class="column_left">
-			<h1>There's a Strain for that</h1>
-			<p>Fees are an estimate only and may be more depending on your situation </p>
-		</li>
-		<li class="column_right">
-			<div class="vertical_align">
-				<div class="vertical_align_cell">
-					<a title="Make an Appointment" href="?page=contact" class="more blue medium animated_element animation-slideLeft slideLeft" style="-webkit-animation: 600ms 0ms; transition: 0ms; -webkit-transition: 0ms;">View the Strains</a>
-				</div>
-			</div>
-		</li>
-	</ul>
-</div>
-<!--div class="backgroundcolor">
-
-<h2 class="box_header page_margin_top slide">
-Combining cutting edge research to PERSONALIZE what's right for you.
-</h2>
-<p>canbii uses customize algorithsm to see what strains help people similiar to you... IMAG HERE - asian male, reacts well to purple kush for joint pains. </p>
-</div-->
-
 <?php include_once('combine/strains.php');?>
 
+<div class="clearfix" style="margin-top: 20px;"></div>
 
-<?php
+    <div class="announcement page_margin_top clearfix">
+        <ul class="columns no_width">
+            <li class="column_left">
+                <h1>There's a Strain for that</h1>
+                <p>Fees are an estimate only and may be more depending on your situation </p>
+            </li>
+            <li class="column_right">
+                <div class="vertical_align">
+                    <div class="vertical_align_cell">
+                        <a title="Make an Appointment" href="?page=contact" class="more blue large animated_element animation-slideLeft slideLeft" style="-webkit-animation: 600ms 0ms; transition: 0ms; -webkit-transition: 0ms;">View the Strains</a>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+
+
+
+
+
+    <?php
 if(false){
 ?>
 <h2 class="box_header page_margin_top_section slide">
@@ -58,7 +57,7 @@ $j++;
 
 <div style="float:left;background-image: url('images/features_small/icon.png');width:57px;height:66px;margin-right:10px;">
 <p style="vertical-align:middle;text-align:center;color:white;font-size:18px;margin-top:-5px">
-<?php 
+<?php
 $name_arr = explode(' ',$s['Strain']['name']);
 $i=0;
 foreach($name_arr as $na)
@@ -76,10 +75,10 @@ else echo strtolower($na[0]);
 
 
  <div class="icon2">
- 
- 
+
+
  <p style="vertical-align:middle;text-align:center;color:white;font-size:18px;margin-top:-5px">
-<?php 
+<?php
 $name_arr = explode(' ',$s['Strain']['name']);
 $i=0;
 foreach($name_arr as $na)
@@ -92,8 +91,8 @@ else echo strtolower($na[0]);
 }
 ?>
 </p>
- 
- 
+
+
  </div>
 
 
@@ -192,10 +191,10 @@ if(false){
 
 
 <script>
-$(function(){    
+$(function(){
 $('.rating<?php echo $j;?>').raty({number:10,readOnly:true,score:<?php echo $s['Strain']['rating'];?>});
 });
-</script> 
+</script>
 
 <div class="post_footer">
 <ul class="post_footer_details">
@@ -233,7 +232,6 @@ John Doe
 }
 ?>
 </div>
-</div>
 
 
 <script>
@@ -242,7 +240,7 @@ if(thiss.attr('class').replace('searchact','')==thiss.attr('class'))
 {
     thiss.addClass('searchact');
     $('.effe').append('<input type="hidden" name="effects[]" value="'+thiss.attr('id').replace('eff_','')+'" class="'+thiss.attr('id')+'"  />')}else{thiss.removeClass('searchact')
-   
+
         $('.'+thiss.attr('id')).remove();
     }
     $('.key').val('');
@@ -252,7 +250,7 @@ if(thiss.attr('class').replace('searchact','')==thiss.attr('class'))
 {
     thiss.addClass('searchact');
     $('.symp').append('<input type="hidden" name="symptoms[]" value="'+thiss.attr('id').replace('sym_','')+'" class="'+thiss.attr('id')+'"  />')}else{thiss.removeClass('searchact')
-    
+
         $('.'+thiss.attr('id')).remove();
     }
     $('.key').val('');
