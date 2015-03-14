@@ -252,7 +252,6 @@ p
 }
 strong
 {
-	color: #333;
 }
 blockquote
 {
@@ -3207,8 +3206,8 @@ a.social_icon,
 #qf_review__aesthetics__flavor label,#qf_review__aesthetics__color label,.eff2,.eff3,.sym2{
     color: white;
     display: inline-block!important;
-    padding: 2px 4px;
-    margin:0 1px 5px 0;
+    padding: 0px 3px;
+    margin:0 0px 2px 0;
 	border:1px solid #F8F8F8;
 	font-size:13px;
 
@@ -3222,7 +3221,7 @@ a.social_icon,
 
 
 #qf_review__aesthetics__flavor label,#qf_review__aesthetics__color label,.eff3{padding:9px!important;}
-.searchact2,.eff3.sel{background: #42B3E5!important;}
+.searchact2,.eff3.sel{background: #3156A3 !important;}
 .one-third{width:33.33%;float:left;text-align:center;}
 .clearfix{clear:both;}
 .dark{background:#0384CE;height:80px;margin:10px 0;}
