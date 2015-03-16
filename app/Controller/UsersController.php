@@ -65,11 +65,9 @@ class UsersController extends AppController {
           $emails->from(array('noreply@canbii.com'=>'canbii.com'));
           $emails->subject("Canbii: User Registration");
           $emails->emailFormat('html');
-          $msg = "Hello,<br/><br/>We received a request to create an account. <br/>Here is your login credentials:<br/>
+          $msg = "Hello,<br/><br/>We received a request to create an account. <br/>Here are your login credentials:<br/>
                 Username : " . $user['username'] . "<br/>
-                Password : " . $_POST['User']['password'] . "<br/>
-                <br/><br/>";
-          $msg .= "Regards,<br/>canbii.com";
+                Password : " . $_POST['User']['password'];
           $emails->send($msg);
 
             $this->User->create();
@@ -207,8 +205,7 @@ class UsersController extends AppController {
         if(isset($_POST['email']))
         {
             $q = $this->User->find('first',array('conditions'=>array('email'=>$_POST['email'],'fbid'=>'')));
-            if($q)
-            {
+            if($q) {
                 //$r = rand(100000,999999);
                 $emails = new CakeEmail();
                 $emails->template('default');
@@ -217,20 +214,28 @@ class UsersController extends AppController {
                 $emails->from(array('noreply@canbii.com'=>'canbii.com'));
                 $emails->subject("Canbii: Password Recovery");
                 $emails->emailFormat('html');//$q['User']['password']
-                $msg = "Hello,<br/><br/>We received a request to reset your password. <br/>Here is your new login credentials:<br/>
+                $msg = "Hello,<br/><br/>We received a request to reset your password. <br/>Here are your new login credentials:<br/>
                 Username : " . $q['User']['username'] . "<br/>
-                Password : " . $this->changeuserpasssword($_POST['email']) . "<br/>
-                <br/><br/>";
-                $msg .= "Regards,<br/>canbii.com";
+                Password : " . $this->changeuserpasssword($_POST['email']);
                 $emails->send($msg);
                 
                 $this->Session->setFlash('A new password has been sent to '.$_POST['email'], 'default', array('class' => 'good'));
-            }
-            else
-            {
+            }  else  {
                 $this->Session->setFlash('We could not find an account associated with your email address', 'default', array('class' => 'bad'));
             }
             $this->redirect('forgot');
+        } elseif (isset($_GET["test"])){
+            if ($_GET["test"] == "8437") {
+                $emails = new CakeEmail();
+                $emails->template('default');
+                $emails->to("roy@trinoweb.com");
+                $emails->from(array('noreply@canbii.com'=>'canbii.com'));
+                $emails->subject("Canbii: Test Email");
+                $emails->emailFormat('html');//$q['User']['password']
+                $emails->send("This is a test email");
+                $this->Session->setFlash('A test email has been sent', 'default', array('class' => 'good'));
+                $this->redirect('forgot');
+            }
         }
     }
     
