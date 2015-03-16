@@ -123,13 +123,12 @@ class PagesController extends AppController {
     function getEff()
     {
         $this->loadModel('Effect');
-        return $this->Effect->find('all',array('order'=>'Effect.title ASC'));
-        
+        return $this->Effect->find('all',array('conditions'=>array('Effect.negative'=>0), 'order'=>'Effect.title ASC'));
     }
     function getSym()
     {
         $this->loadModel('Symptom');
-        return $this->Symptom->find('all',array('order'=>'Symptom.title ASC'));
+        return $this->Symptom->find('all',array( 'order'=>'Symptom.title ASC'));
     }
     public function pdf($slug = null) {
         $this->autoRender = false;

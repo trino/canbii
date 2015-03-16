@@ -163,9 +163,11 @@
 
                 <?php
                     $p_filter = 0;
-                    foreach ($arr_filter as $filterwith) {
-                        if (isset($_GET[$filterwith])) {
-                            $p_filter = 1;
+                    if(isset($arr_filter)) {
+                        foreach ($arr_filter as $filterwith) {
+                            if (isset($_GET[$filterwith])) {
+                                $p_filter = 1;
+                            }
                         }
                     }
                     if (!$p_filter) {
@@ -230,7 +232,7 @@
                                     class="label left"><?php echo $this->requestAction('/strains/getEffect/' . $ar[1]); ?></div>
                                 <div class="left ratewrap"><img
                                         src="<?php echo $this->webroot; ?>images/bar_chart/light-blue.png"
-                                        style="width: <?php echo $length > 100 ? 100 : $length; ?>%;height:25px;position: absolute; text-align: center;left:0;"/><em><?php echo number_format($rate, 2); ?>/5</em></div>
+                                        style="width: <?php echo $length > 100 ? 100 : $length; ?>%;height:25px;position: absolute; text-align: center;left:0;"/><em><?php echo round($rate,2); ?>/5</em></div>
                                 <div class="clear"></div>
                             </div>
                         <?php
@@ -311,7 +313,7 @@
                                 <div class="left ratewrap">
                                     <img src="<?php echo $this->webroot; ?>images/bar_chart/light-green.png"
                                          style="width: <?php echo $length > 100 ? 100 : $length; ?>%;height:25px;position: absolute; text-align: center;left:0;"/>
-                                    <em><?php echo number_format($rate, 2); ?>/5</em>
+                                    <em><?php echo round($rate, 2); ?>/5</em>
                                 </div>
                                 <div class="clear"></div>
                             </div>
@@ -357,7 +359,7 @@
                                     class="label left"><?php echo $this->requestAction('/strains/getEffect/' . $ar[1]); ?></div>
                                 <div class="left ratewrap"><img
                                         src="<?php echo $this->webroot; ?>images/bar_chart/light-red.png"
-                                        style="width: <?php echo ($length > 100) ? 100 : $length; ?>%;height:25px;position: absolute; text-align: center;left:0;"/><em><?php echo number_format($rate, 2); ?>/5</em></div>
+                                        style="width: <?php echo ($length > 100) ? 100 : $length; ?>%;height:25px;position: absolute; text-align: center;left:0;"/><em><?php echo round($rate, 2); ?>/5</em></div>
                                 <div class="clear"></div>
                             </div>
                         <?php

@@ -19,7 +19,7 @@ if($review)
                 Reviewed by <a class="author" href="<?php echo $this->webroot;?>strains/review/all?user=<?php echo $r['Review']['user_id'];?>" title="Jonh Doe">				
                 <?php echo $this->requestAction('/strains/getUserName/'.$r['Review']['user_id']);?>
                 
-                </a> on <?php echo $r['Review']['on_date'];?>
+                </a> <?php if($r['Review']['on_date']!= "0000-00-00") { " on " . echo $r['Review']['on_date'];}?>
                 
                 
                 </div>

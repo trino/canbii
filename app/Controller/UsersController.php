@@ -173,8 +173,23 @@ class UsersController extends AppController {
         }
     
     }
-    function forgot()
-    {
+
+    function randompassword($digits=8){
+        return substr(md5(rand()), 0, $digits);
+    }
+    function changeuserpasssword($emailaddress, $digits=8){
+        $pass=$this->randompassword($digits);
+        $newpass=md5($pass . "canbii");
+        $ch = $this->User->find('first',array('conditions'=>array('email'=>$emailaddress)));
+        if($ch){
+            $this->User->id = $ch['User']['id'];
+            $this->User->saveField("password",$newpass);
+            return $pass;
+        }
+        return false;
+    }
+
+    function forgot() {
         
         $this->set('title_for_layout','Forgot Password');
         if(isset($_POST['email']))
@@ -184,13 +199,13 @@ class UsersController extends AppController {
             {
                 //$r = rand(100000,999999);
                 $emails = new CakeEmail();
-                $emails->to($_POST['email']);
+                $emails->to("neotechni@gmail.com");//$_POST['email']);
                 $emails->from(array('noreply@canbii.com'=>'canbii.com'));
                 $emails->subject("Recover Password");
-                $emails->emailFormat('html');
+                $emails->emailFormat('html');//$q['User']['password']
                 $msg = "Hello,<br/><br/>We received a request to reset your password. <br/>Here is your new login credentials:<br/>
                 Username : ".$q['User']['username']."<br/>
-                Password : ".$q['User']['password']."<br/>
+                Password : " . $this->changeuserpasssword($_POST['email']) . "<br/>
                 <br/><br/>";
                 $msg .= "Regards,<br/>canbii.com";
                 $emails->send($msg);
@@ -199,7 +214,7 @@ class UsersController extends AppController {
             }
             else
             {
-                $this->Session->setFlash('We could not find the email address associated with your account', 'default', array('class' => 'bad'));
+                $this->Session->setFlash('We could not find an account associated with your email address', 'default', array('class' => 'bad'));
             }
             $this->redirect('forgot');
         }

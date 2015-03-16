@@ -48,7 +48,7 @@
                                 Reviewed by <a class="author"
                                                href="<?php echo $this->webroot;?>strains/review/all?user=<?php echo $helpful['Review']['user_id'];?>"
                                                title="<?php echo $this->requestAction('/strains/getUserName/' . $helpful['Review']['user_id']);?>"><?php echo $this->requestAction('/strains/getUserName/' . $helpful['Review']['user_id']);?></a>
-                                on <?php echo $helpful['Review']['on_date'];?>
+                                <?php if($helpful['Review']['on_date']!= "0000-00-00") {echo " on " . $helpful['Review']['on_date'];}?>
                             </div>
 
                             <?php

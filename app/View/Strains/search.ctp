@@ -2,19 +2,17 @@
     <h1 class="title" style="margin-bottom: 30px;">Strains</h1>
     <p style="margin-bottom: 30px;">&nbsp;</p>
     <?php
-    if($strain)
-    {
-        $j=0;
-        foreach($strain as $s)
-        {
+    $j=0;
+    if($strain) {
+        foreach($strain as $s) {
             $j++;
             ?>
             <div class="column<?php echo $j;?>">
-			<div class="box"> 
+			<div class="box">
             <a href="<?php echo $this->webroot?>strains/<?php echo $s['Strain']['slug'];?>"><div class="iconstrain">
                 <h2><?php echo $s['StrainType']['title'];?></h2>
                 <strong>
-                <?php 
+                <?php
                 $name_arr = explode(' ',$s['Strain']['name']);
                 $i=0;
                 foreach($name_arr as $na)
@@ -36,8 +34,9 @@
             <?php
         }
     }
+    if ($j==0){
+        echo "No results found";
+    }
     ?>
     <div class="clear"></div>
-		
-		
 	</div>

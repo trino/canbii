@@ -1,4 +1,10 @@
 <?php
+function pluralize($text, $quantity){
+    if (substr(strtolower($text),-1)=="s"){$text = substr($text, 0, strlen($text)-1); }
+    if ($quantity<>1){return $text . "s";}
+    return $text;
+}
+
 $u_cond = '';
         if(isset($nationality))
         {
@@ -108,17 +114,13 @@ $u_cond = '';
         }
 
 
-
-    if($strain)
-    {
-	?>
-	<ul class="">
-
-	<?
+$count=0;
+    if($strain){
+        echo '<ul class="">';
         $j=rand(1000000,9999999999);
-        foreach($strain as $s)
-        {
+        foreach($strain as $s){
             $j++;
+            $count++;
             ?>
 
 
@@ -174,12 +176,13 @@ include('combine/hexagon.php');?>
 </li>
 <li class="" style="">
 <?php if($s['Strain']['review']){
-
-    echo $s['Strain']['review'].' Reviews';
-}else
-{
-echo '0 Reviews';
+    //if ($s['Strain']['review'] == 1) {$Reviews = " Review";} else {$Reviews = " Reviews";}
+    echo $s['Strain']['review'] . pluralize(" Review", $s['Strain']['review']) ;
+}else{
+    echo '0 Reviews';
 }
+// [rating] => 3.27 [review] => 18 [viewed] => 33 [published_date] => 0000-00-00 [slug] => cadillac-purple [cbd] => 0 [cbn] => 0 [cbc] => 0 [thc] => 0 [thcv] => 0 )
+    if($s['Strain']['viewed']){ echo ", " . $s['Strain']['viewed'] . pluralize(" View", $s['Strain']['viewed']);}
 ?>
 </li>
 </ul>
@@ -202,9 +205,10 @@ $('.rating<?php echo $j;?>').raty({number:5,readOnly:true,score:<?php echo $s['S
 
 <?php
 }
-?>
-</ul>
-<?
+echo '</ul>';
+}
+if($count==0){
+    echo "No results found for '" . $_GET["key"] . "'";
 }
 ?>
 
