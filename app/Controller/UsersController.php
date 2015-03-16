@@ -199,6 +199,8 @@ class UsersController extends AppController {
             {
                 //$r = rand(100000,999999);
                 $emails = new CakeEmail();
+                $emails->template('default');
+                //$emails->to("roy@trinoweb.com");
                 $emails->to($_POST['email']);
                 $emails->from(array('noreply@canbii.com'=>'canbii.com'));
                 $emails->subject("Canbii: Password Recovery");
