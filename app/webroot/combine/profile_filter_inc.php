@@ -150,8 +150,8 @@ if($this->params['action']!='dashboard' && !$this->Session->read('User')){
    {
     ?>
    <label>Patient card ID<?php if($card_pass){?> <a href="javascript:void(0);" style="color: red;" onclick="$('#card_id').toggle();$('#card_pass').toggle();">Change</a><?php }?></label>
-   <?php if($card_pass){?><input type="hidden" name="" style="width: 98%;" disabled id="card_pass" value="<?php echo $card_pass;?>"  /><?php }?>
-   <input type="text" name="card_id" id="card_id" style="width: 98%;" value="<?php echo $card_id?>" <?php if($card_pass){?>style="display: none; width: 98%;"<?php }?> title="(Optional)"/>
+   <?php if($card_pass){?><input type="text" name="" style="width: 98%;" disabled id="card_pass" value="<?php echo $card_pass;?>"  /><?php }?>
+   <input type="hidden" name="card_id" id="card_id" style="width: 98%;" value="<?php echo $card_id?>" <?php if($card_pass){?>style="display: none; width: 98%;"<?php }?> title="(Optional)"/>
    <?php
    }
    /*else

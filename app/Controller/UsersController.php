@@ -44,7 +44,7 @@ class UsersController extends AppController {
             $this->redirect('dashboard');
       $this->set('title_for_layout','Login/Registration');
       if ($this->request->is('post')) {
-        $_POST = $_POST['data'];
+            $_POST = $_POST['data'];
             $user['username'] = $_POST['User']['username'];
             $user['email'] = $_POST['User']['email'];
             $user['password'] = md5($_POST['User']['password'] . "canbii" );
@@ -58,8 +58,20 @@ class UsersController extends AppController {
                 $this->Session->setFlash('Username already taken, please try again', 'default', array('class' => 'bad'));
                 $this->redirect('');
             }
-            
-            
+
+          $emails = new CakeEmail();
+          $emails->template('default');
+          $emails->to($user['email']);
+          $emails->from(array('noreply@canbii.com'=>'canbii.com'));
+          $emails->subject("Canbii: User Registration");
+          $emails->emailFormat('html');
+          $msg = "Hello,<br/><br/>We received a request to create an account. <br/>Here is your login credentials:<br/>
+                Username : " . $user['username'] . "<br/>
+                Password : " . $_POST['User']['password'] . "<br/>
+                <br/><br/>";
+          $msg .= "Regards,<br/>canbii.com";
+          $emails->send($msg);
+
             $this->User->create();
             if ($this->User->save($user)) 
             {

@@ -85,11 +85,9 @@ class PagesController extends AppController {
             $sub = $_POST['subject'];
             $msg = $_POST['message'];
             $emails = new CakeEmail();
-            $emails->template('default');
             $emails->from(array('noreply@canabii.com'=>'Canabii'));
-            
             $emails->emailFormat('html');
-            
+            $emails->template('default');
             $emails->subject('New contact Message');
             
             
@@ -246,8 +244,8 @@ class PagesController extends AppController {
             {
                 $email = trim($email);
                 $emails = new CakeEmail();
-                $emails->template('default');
                 $emails->reset();
+                $emails->template('default');
                 $emails->from(array('noreply@canabii.com'=>'Canabii'));
             
                 $emails->emailFormat('html');
