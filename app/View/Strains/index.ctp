@@ -558,9 +558,14 @@ function perc($scale){
                     <?
                         $breaker = 0;
                         for ($i = 1; $i < 5; $i++) {
-                             $image = "http://localhost/canbii/images/strains/" . $strain['Strain']['id'] . "/" . $strain['Strain']['slug'] . "_" . $i . ".jpg";
-
-                            if (!file_exists($image)) {
+                             $image = "images/strains/" . $strain['Strain']['id'] . "/" . $strain['Strain']['slug'] . "_" . $i . ".jpg";
+                             $filename = getcwd() . "/" . $image; //C:\wamp\www\marijuana\app\webroot
+                             $image = $this->webroot . $image;
+                            if (!file_exists($filename) && file_exists(str_replace(".jpg", ".jpeg", $filename))) {
+                                $image=str_replace(".jpg", ".jpeg", $image);
+                                $filename=str_replace(".jpg", ".jpeg", $filename);
+                            }
+                            if (file_exists($filename)) {
                                 $breaker++;
 
                                 ?>
