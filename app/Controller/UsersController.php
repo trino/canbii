@@ -199,7 +199,7 @@ class UsersController extends AppController {
             {
                 //$r = rand(100000,999999);
                 $emails = new CakeEmail();
-                $emails->to("neotechni@gmail.com");//$_POST['email']);
+                $emails->to($_POST['email']);
                 $emails->from(array('noreply@canbii.com'=>'canbii.com'));
                 $emails->subject("Recover Password");
                 $emails->emailFormat('html');//$q['User']['password']
