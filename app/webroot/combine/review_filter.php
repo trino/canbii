@@ -3,7 +3,7 @@
 if($review)
 {
     $i = 0;
-    foreach($review as $r)
+    foreach($review as $k=>$r)
     {
         $i++;
         ?>
@@ -31,10 +31,10 @@ if($review)
                 <?
                 $j=0;
                 ?>
-                <div class="rates frate<?php echo $j;?>" style=""></div>
+                <div class="rates frate<?php echo $k;?>" style=""></div>
                 <script>
                 $(function(){
-                $('.frate<?php echo $j;?>').raty({readOnly:true,score:<?php echo $r['Review']['rate']/2;?>}); 
+                $('.frate<?php echo $k;?>').raty({readOnly:true,score:<?php echo $r['Review']['rate'];?>}); 
                 });
                 </script>
                 

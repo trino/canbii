@@ -38,7 +38,7 @@
                 }////searchact2=selected link object
 
                 ?>
-            <a href="<?php echo $this->webroot?>strains/<?php echo $s['Strain']['slug'];?>">
+            <a href="<?php echo $this->webroot?>strains/<?php echo $strain['Strain']['slug'];?>">
 
 <?
             include('combine/hexagon.php'); echo "</a>"; ?>
@@ -704,9 +704,9 @@
         $('.qf_review__effects__medical').click(function () {
             addSlider($(this), 'medical');
         });
-        $('.qf_review__aesthetics__color').click(function () {
+        /*$('.qf_review__aesthetics__color').click(function () {
             addSlider($(this), 'color');
-        });
+        });*/
         $('.qf_review__aesthetics__flavor').click(function () {
             addSlider($(this), 'flavor');
         });

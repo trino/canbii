@@ -138,94 +138,6 @@
                 <?php } ?>
             </ul>
             <div class="mobile_menu">
-                <select>
-                    <option value="<?php echo $this->webroot ?>">Home</option>
-                    <option value="<?php echo $this->webroot ?>strains/all">Strains</option>
-                    <option value="<?php echo $this->webroot; ?>pages/about">About</option>
-                    <option value="<?php echo $this->webroot; ?>pages/contact_us">Contact Us</option>
-                    <?php if (!$this->Session->read('User')) { ?>
-                        <option value="<?php echo $this->webroot; ?>users/register">Login / Register</option>
-                    <?php } else { ?>
-                        <option
-                            value="<?php echo $this->webroot; ?>users/dashboard"><?= ucfirst($this->Session->read('User.username')) ?>
-                            Dashboard
-                        </option>
-                        <option value="<?php echo $this->webroot; ?>users/logout">Logout</option>
-                    <?php } ?>
-                </select>
-            </div>
-
-        </div>
-    </div>
-
-    <!-- //////////////////////////////////////////////////////////////////////////////////////////// NEW SITE-->
-
-
-    <!-- can you create a separate page for the following and include here? -->
-
-    <script>
-        var spinnerVisible = false;
-        function showProgress() {
-            if (!spinnerVisible) {
-                $("div#spinner").fadeIn("fast");
-                spinnerVisible = true;
-            }
-        }
-        ;
-        function hideProgress() {
-            if (spinnerVisible) {
-                var spinner = $("div#spinner");
-                spinner.stop();
-                spinner.fadeOut("fast");
-                spinnerVisible = false;
-            }
-        }
-        ;
-        function highlighteff(thiss) {
-            if (thiss.attr('class').replace('searchact', '') == thiss.attr('class')) {
-                thiss.addClass('searchact');
-                $('.effe').append('<input type="hidden" name="effects[]" value="' + thiss.attr('id').replace('eff_', '') + '" class="' + thiss.attr('id') + '"  />')
-            } else {
-                thiss.removeClass('searchact')
-
-                $('.' + thiss.attr('id')).remove();
-
-            <div class="site_container">
-
-                <div class="header_container">
-                <div class="header clearfix">
-                <div class="header_left">
-                <a href="<?php echo $this->webroot;?>" title="MEDICALMARIJUANA">
-                <img src="<?php echo $this->webroot;?>images/logo.png" height=100 alt="logo" />
-
-
-                </a>
-                </div>
-
-                <ul class="sf-menu header_right">
-
-
-                <li class="<?php if($this->params['controller']=='pages' && $this->params['action']=='index'){?>current_page_item<?php }?>"><a href="<?php echo $this->webroot;?>" accesskey="1" title="">Home</a></li>
-                <li class="<?php if($this->params['controller']=='strains' || $this->params['controller']=='review'){?>current_page_item<?php }?>"><a href="<?php echo $this->webroot?>strains/all" accesskey="2" title="">Strains</a></li>
-                <li class="<?php if($this->params['controller']=='pages' && $this->params['action']=='about'){?>current_page_item<?php }?>"><a href="<?php echo $this->webroot;?>pages/about" accesskey="3" title="">About</a></li>
-                <li class="<?php if($this->params['controller']=='pages' && $this->params['action']=='contact_us'){?>current_page_item<?php }?>"><a href="<?php echo $this->webroot;?>pages/contact_us" accesskey="4" title="">Contact Us</a></li>
-                <?php if(!$this->Session->read('User')){?>
-                <li class="<?php if($this->params['controller']=='users'){?>current_page_item<?php }?>"><a href="<?php echo $this->webroot;?>users/register" accesskey="4" title="">Login / Register</a></li>
-                <?php }else{?>
-                <li class="<?php if($this->params['controller']=='users'){?>current_page_item<?php }?> submenu<?php echo (isset($_GET['page'])&& ($_GET["page"]=="" || $_GET["page"]=="home") ? " selected" : ""); ?>">
-                <a href="<?php echo $this->webroot;?>users/dashboard" accesskey="4" title=""><?=ucfirst($this->Session->read('User.username'))?>'s Dashboard</a>
-                <ul>
-                <li <?php echo (isset($_GET['page'])&&$_GET["page"]=="home" ? " class='selected'" : ""); ?>>
-                <!--<a style="color: #888!important;" class="darkmenu" href="<?php echo $this->webroot;?>users/dashboard" accesskey="5" title="">My Dashboard</A> -->
-                <a style="color: #888!important;" class="darkmenu" href="<?php echo $this->webroot;?>users/logout" accesskey="5" title="">Logout</a>
-                </li>
-
-                </ul>
-                </li>
-
-                <?php }?>
-                </ul>
-                <div class="mobile_menu">
                 <select class="mmenu">
                 <option value="<?php echo $this->webroot?>" <?php if($this->params['controller']=='pages' && $this->params['action']=='index'){?>selected ="selected" <?php }?> >Home</option>
                 <option value="<?php echo $this->webroot?>strains/all" <?php if($this->params['controller']=='strains' || $this->params['controller']=='review'){?>selected ="selected"<?php }?> >Strains</option>
@@ -238,17 +150,16 @@
                 <option value="<?php echo $this->webroot;?>users/logout" >Logout</option>
                 <?php }?>
                 </select>
-                </div>
+            </div>
 
-                </div>
-                </div>
+        </div>
+    </div>
 
-                <!-- //////////////////////////////////////////////////////////////////////////////////////////// NEW SITE-->
-
-
+    <!-- //////////////////////////////////////////////////////////////////////////////////////////// NEW SITE-->
 
 
-                    <!-- can you create a separate page for the following and include here? -->
+    <!-- can you create a separate page for the following and include here? -->
+
 
                 <script>
                 $(function(){
@@ -293,46 +204,8 @@
                     }
                     $('.key').val('');
                 }
-                function highlighteff2(thiss,order=null){
-
-                    if(thiss!='recent' && thiss!='rated' && thiss!='alpha' && thiss!='viewed' && thiss!='reviewed'){
-                        var sort =0;
-                        if(thiss.attr('class').replace('searchact','')==thiss.attr('class'))
-                        {
-
-                            thiss.addClass('searchact');
-                            $('.effe').append('<input type="hidden" name="effects[]" value="'+thiss.attr('id').replace('eff_','')+'" class="effs '+thiss.attr('id')+'"  />')}else{thiss.removeClass('searchact')
-
-                            $('.'+thiss.attr('id')).remove();
-                        }
-                        $('.key').val('');}
-                    else
-                        var sort = 1;
-                    showProgress();
-                    var i=0;
-                    var val = '';
-                    $('.effs').each(function(){
-                        if($(this).val()){
-                            i++;
-                            if(i==1)
-                                val = 'effects[]='+$(this).val();
-                            else
-                                val = val+'&effects[]='+$(this).val();
-                        >>>>>>> 794296ae3072949bcd6ec134c0b9d2495b94f46d
-                        }
-                        $('.key').val('');
-                    }
-                    function highlightsym(thiss) {
-                        if (thiss.attr('class').replace('searchact', '') == thiss.attr('class')) {
-                            thiss.addClass('searchact');
-                            $('.symp').append('<input type="hidden" name="symptoms[]" value="' + thiss.attr('id').replace('sym_', '') + '" class="' + thiss.attr('id') + '"  />')
-                        } else {
-                            thiss.removeClass('searchact')
-
-                            $('.' + thiss.attr('id')).remove();
-                        }
-                        $('.key').val('');
-                    }
+                
+                   
                     function highlighteff2(thiss, order=null) {
 
                         if (thiss != 'recent' && thiss != 'rated' && thiss != 'alpha' && thiss != 'viewed' && thiss != 'reviewed') {
