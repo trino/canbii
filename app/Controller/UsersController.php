@@ -201,16 +201,16 @@ class UsersController extends AppController {
                 $emails = new CakeEmail();
                 $emails->to($_POST['email']);
                 $emails->from(array('noreply@canbii.com'=>'canbii.com'));
-                $emails->subject("Recover Password");
+                $emails->subject("Canbii: Password Recovery");
                 $emails->emailFormat('html');//$q['User']['password']
                 $msg = "Hello,<br/><br/>We received a request to reset your password. <br/>Here is your new login credentials:<br/>
-                Username : ".$q['User']['username']."<br/>
+                Username : " . $q['User']['username'] . "<br/>
                 Password : " . $this->changeuserpasssword($_POST['email']) . "<br/>
                 <br/><br/>";
                 $msg .= "Regards,<br/>canbii.com";
                 $emails->send($msg);
                 
-                $this->Session->setFlash('Password has been sent to '.$_POST['email'], 'default', array('class' => 'good'));
+                $this->Session->setFlash('A new password has been sent to '.$_POST['email'], 'default', array('class' => 'good'));
             }
             else
             {
