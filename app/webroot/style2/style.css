@@ -1720,9 +1720,8 @@ a.social_icon:hover
 }
 #comments_list li.comment
 {
-	width: 520px;
+	width: 500px;
 	margin-top: 30px;
-	border-bottom: 1px solid #E0E0E0;
 	padding-bottom: 30px;
 }
 #comments_list li.comment:first-child
@@ -1742,7 +1741,7 @@ a.social_icon:hover
 #comments_list .comment_details
 {
 	float: left;
-	width: 415px;
+	width: 375px;
 }
 #comments_list .comment_details .posted_by
 {
@@ -2217,7 +2216,7 @@ a.social_icon:hover
 .columns p
 {
 	clear: both;
-	padding: 25px 0;
+	padding: 5px 0;
 }
 .columns.full_width .column_left,
 .columns.full_width .column_right
@@ -3350,7 +3349,7 @@ width:100px;
 
 .main2{text-align:center;}
 .main2 .div12,
-.main2 .div22  {display:inline-block;width:50%;}
+.main2 .div22  {display:inline-block;}
 .loadmore{margin-top:10px;text-align:center;}
 .loadmore a{background:#42B3E5;color:#FFF;padding:8px 15px;display:inline-block;}
 #fancybox-wrap{z-index:9999999;}
@@ -3365,6 +3364,16 @@ width:100px;
 .filters{padding:10px;border:1px solid #e5e5e5;margin-bottom:10px;}
 .errorz{color:red; margin-left:10px;float:left;margin-top: 7px;}
 
+
+
+.reportimage{
+
+    max-height:160px;max-width:160px;  padding: 9px; margin:2px; border: 1px solid #dadada;
+    -webkit-box-shadow: 0 6px 4px -4px #666;
+    -moz-box-shadow: 0 6px 4px -4px #666;
+    box-shadow: 0 6px 4px -4px #666;
+
+}
 ul#text_and_image {
     display: table;
     clear:left;

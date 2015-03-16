@@ -31,7 +31,7 @@
                 </div>
                 </a>
 				<p><?php echo substr($s['Strain']['description'],0,130).'...';?></p>
-				<a href="<?php echo $this->webroot?>strains/<?php echo $s['Strain']['slug'];?>" class="button button-small">View Detail</a> </div>
+				<a href="<?php echo $this->webroot?>strains/<?php echo $s['Strain']['slug'];?>" class="button button-small">View Details →</a> </div>
 		  </div>
             <?php
         }

@@ -514,11 +514,10 @@ padding:30px;
                         </p>
 
                         <p style="display: none;" class="effe"></p>
-
                         <p style="display: none;" class="symp"></p>
 
                         <div class="main2" style="margin-top: 10px;">
-                            <div class="div12"><input id="INPUT_16" type="text" placeholder="Search by strain name..."
+                            <div class="div12"><input id="INPUT_16" type="text" placeholder="Search by name..."
                                                       name="key" class="key"
                                                       style=""/>
                                 <input id="BUTTON_17" type="submit" value="Search" class="more blue medium " style=""/>
@@ -587,7 +586,7 @@ padding:30px;
         <div class="footer_box_container clearfix">
             <div class="footer_box">
                 <h3 class="box_header">
-                    canbii - <span style="font-size: 14px;"> Personalized Medical Marijuana</span>
+                    Canbii - <span style="font-size: 14px;"> Personalized Medical Marijuana</span>
                 </h3>
 
                 <p class="" style="color: #D5D5D5;" align="justify">
@@ -707,9 +706,16 @@ padding:30px;
             </div>
         </div>
         <div class="copyright_area clearfix">
-            <div class="copyright_left">
-                © Copyright <?php echo "2014-" . date('Y'); ?> - <a href="http://canbii.com" title="canbii"
-                                                                    target="_blank">canbii.com</a>
+            <div class="copyright_left"> <a href="http://canbii.com" title="canbii"
+                                            target="_blank">Canbii.com</a> © Copyright <?php echo "2014-" . date('Y'); ?> /
+
+
+                <a href="<?php echo $this->webroot.'pages/privacy';?>" target="_blank">Privacy Policy</a> /
+                <a href="<?php echo $this->webroot.'pages/terms';?>" target="_blank">Terms & Conditions</a>
+
+
+
+
             </div>
             <div class="copyright_right">
                 <a class="scroll_top icon_small_arrow top_white" href="#top" title="Scroll to top">Top</a>

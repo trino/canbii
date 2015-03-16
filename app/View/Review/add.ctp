@@ -37,7 +37,11 @@
                     return $default;
                 }////searchact2=selected link object
 
-                include('combine/hexagon.php'); ?>
+                ?>
+            <a href="<?php echo $this->webroot?>strains/<?php echo $s['Strain']['slug'];?>">
+
+<?
+            include('combine/hexagon.php'); echo "</a>"; ?>
 
             <?php if ($this->params['action'] == 'add') { ?>
 
@@ -119,16 +123,16 @@
 
     </div>
 
-    <div class="clearfix page_margin_top ">
+    <div class="clearfix  ">
 
 
         <div class="page_left page_margin_top">
             <?php if ($this->params['action'] == 'add') { ?>
                 <div class="backgroundcolor"><p>Please be as precise as possible so we can further help personalize
-                        medication for other users. We thank you for your help and support.</p></div>
+                        medication for other patients. We thank you for your help and support.</p></div>
             <?php } ?>
 
-            <form class="page_margin_top" action="" method="post" id="reviews1">
+            <form class="" action="" method="post" id="reviews1">
 
                 <fieldset id="qf_review__general" class="qf-fieldset">
 
@@ -541,6 +545,71 @@
 
             </form>
         </div>
+
+
+
+
+
+
+
+
+
+
+
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $(".fancybox").fancybox();
+            });
+        </script>
+
+        <div class="page_right page_margin_top" style="">
+
+
+                    <?
+                        $breaker = 0;
+                        for ($i = 1; $i < 5; $i++) {
+                            $image = "http://localhost/canbii/images/strains/" . $strain['Strain']['id'] . "/" . $strain['Strain']['slug'] . "_" . $i . ".jpg";
+
+                            if (!file_exists($image)) {
+                                $breaker++;
+
+                                ?>
+                                    <center>
+                                        <a class="fancybox" rel="group"
+                                           href="<?=$image?>"
+                                            >
+                                            <img style="max-width: 270px;max-height: 400px;"
+                                                class="reportimage"
+                                                src="<?php echo $image;?>"
+                                                />
+                                        </a>
+                                    </center>
+
+
+                                <?
+                                if ($breaker == 2) {
+                                }
+                            }
+                        } ?>
+
+
+
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         <?php
             if ($this->Session->read('User') && $this->params['action'] != 'detail') {

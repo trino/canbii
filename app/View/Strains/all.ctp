@@ -129,7 +129,27 @@
         </div>
         <div class="page_header_right">
             <form class="search" method="get" action="<?php echo $this->webroot; ?>strains/search">
-                <input id="INPUT_16" class="search_input hint" name="key" type="text" value="" placeholder=""
+
+
+
+
+
+
+
+
+                <input id="INPUT_16" class="search_input hint" name="key" type="text"
+
+                    <?php if (isset($_GET['key'])) {
+                        if (strlen($_GET['key']) > 0) {
+
+                            echo 'value="'.$_GET['key'].'""';
+
+                        }
+                    } ?>
+
+
+
+                       placeholder=""
                        style="float:left;">
                 <input id="BUTTON_17" type="submit" value="Search" class="more blue medium " style="float:left;"/>
                 <input id="BUTTON_18" type="submit" value="Reset" class="more blue medium " style="display:none;">
@@ -140,11 +160,6 @@
     </div>
 
     <div class="clearfix page_margin_top ">
-
-        <?php if (isset($_GET['key'])) {
-            if (strlen($_GET['key']) > 0) { ?><p style="padding-top: 10px;"><strong>Result for</strong>
-                "<?php echo $_GET['key']; ?>"</p><?php }
-        } ?>
 
 
         <!--php include('combine/profile_filter.php');?-->

@@ -8,7 +8,7 @@
         <ul class="columns no_width">
             <li class="column_left">
                 <h1>There's a Strain for that</h1>
-                <p>Fees are an estimate only and may be more depending on your situation </p>
+                <p>The more you vote the more acuate the data becomes.... our goal is to provide most accuatrte ... forfront of mediation </p>
             </li>
             <li class="column_right">
                 <div class="vertical_align">

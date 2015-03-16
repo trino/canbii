@@ -31,7 +31,7 @@ $('.rating<?php echo $j;?>').raty({number:5,readOnly:true,score:<?php echo $revi
 <?php echo $review['Review']['review'];?>
 </p>
 <a class="more reply_button" href="#comment_form">
-<a href="<?php echo $this->webroot;?>review/detail/<?php echo $review['Review']['id'];?>" class="more blue">View Detail →</a>
+<a href="<?php echo $this->webroot;?>review/detail/<?php echo $review['Review']['id'];?>" class="more blue">View Details →</a>
 </a>
 </div>
 </li>

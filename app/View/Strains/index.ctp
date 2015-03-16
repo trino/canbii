@@ -9,7 +9,11 @@
 
             <?php
                 $strain_hexagon = $strain;
-                include('combine/hexagon.php'); ?>
+                ?>
+            <a href="<?php echo $this->webroot?>strains/<?php echo $s['Strain']['slug'];?>">
+
+<?
+            include('combine/hexagon.php'); ?></a>
             <div style="white-space: nowrap;">
                 <h1 class=""><?php echo $strain['Strain']['name']; ?> - Medical Report</h1>
 
@@ -35,25 +39,32 @@
         </div>
         <div class="page_header_right noprint">
 
+
+
+
             <a class="dark_blue more" style="margin-right: 10px;margin-top:10px;"
-               href="<?php echo $this->webroot; ?>review/add/<?php echo $strain['Strain']['slug']; ?>">Review Strain</a><a
-                class="blue more" style="margin-top:10px;" href="javascript:void(0)" onclick="window.print();">Print
-                Report</a>
+               href="<?php echo $this->webroot; ?>review/add/<?php echo $strain['Strain']['slug']; ?>">Review Strain</a>
+            <a class="blue more" style="margin-top:10px;" href="javascript:void(0)" onclick="window.print();">Print Report</a>
+
+
+
+
         </div>
 
     </div>
 
     <!--php include('combine/profile_filter.php'); ?-->
+    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-53333c8154cd758d"
+            async="async"></script>
 
-    <div class="toprint page_margin_top">
+    <div class="toprint ">
         <ul id="" class="clearfix">
             <li id="text_in_li">
                 <p><?php echo strip_tags($strain['Strain']['description']); ?></p>
+
+
+
             </li>
-
-
-
-
 
 
         </ul>
@@ -132,10 +143,16 @@
 
     <div class="clearfix"></div>
 
-    <h2 class="box_header page_margin_top slide clearfix" style="">Strain Attributes</h2>
+    <h2 class="box_header page_margin_top slide clearfix" style="">Strain Attributes
+
+        <!--div style="float:right;"class="addthis_sharing_toolbox"></div>
+        <div style="float:right;">
+            Share
+        </div-->
+    </h2>
 
 
-    <ul class="columns full_width  clearfix">
+    <ul class="columns full_width clearfix">
         <li class="column_left">
 
 
@@ -213,8 +230,7 @@
                                     class="label left"><?php echo $this->requestAction('/strains/getEffect/' . $ar[1]); ?></div>
                                 <div class="left ratewrap"><img
                                         src="<?php echo $this->webroot; ?>images/bar_chart/light-blue.png"
-                                        style="width: <?php echo $length > 100 ? 100 : $length; ?>%;height:25px;position: absolute; text-align: center;left:0;"/><em><?php echo number_format($rate, 2); ?>
-                                        /5</em></div>
+                                        style="width: <?php echo $length > 100 ? 100 : $length; ?>%;height:25px;position: absolute; text-align: center;left:0;"/><em><?php echo number_format($rate, 2); ?>/5</em></div>
                                 <div class="clear"></div>
                             </div>
                         <?php
@@ -341,8 +357,7 @@
                                     class="label left"><?php echo $this->requestAction('/strains/getEffect/' . $ar[1]); ?></div>
                                 <div class="left ratewrap"><img
                                         src="<?php echo $this->webroot; ?>images/bar_chart/light-red.png"
-                                        style="width: <?php echo ($length > 100) ? 100 : $length; ?>%;height:25px;position: absolute; text-align: center;left:0;"/><em><?php echo number_format($rate, 2); ?>
-                                        /5</em></div>
+                                        style="width: <?php echo ($length > 100) ? 100 : $length; ?>%;height:25px;position: absolute; text-align: center;left:0;"/><em><?php echo number_format($rate, 2); ?>/5</em></div>
                                 <div class="clear"></div>
                             </div>
                         <?php
@@ -427,7 +442,7 @@
                         <div class="eff aaloo">
                             <div class="label left">Strength</div>
                             <div class="left ratewrap" style="width: 63%;"><img
-                                    src="<?php echo $this->webroot; ?>images/bar_chart/light-green.png"
+                                    src="<?php echo $this->webroot; ?>images/bar_chart/light-purple.png"
                                     style="width: <?php echo (round($strength, 2) > 100) ? 100 : round($strength, 2); ?>%;height:25px;position: absolute;left:0;"/><em><?php echo round($strength / 20, 2); ?>
                                     /5</em></div>
                             <div class="clear"></div>
@@ -441,7 +456,7 @@
                         <div class="eff">
                             <div class="label left">Duration</div>
                             <div class="left ratewrap" style="width: 63%;"><img
-                                    src="<?php echo $this->webroot; ?>images/bar_chart/light-blue.png"
+                                    src="<?php echo $this->webroot; ?>images/bar_chart/light-purple.png"
                                     style="width:  <?php echo (round($duration, 2) > 100) ? 100 : round($duration, 2); ?>%;height:25px;position: absolute;left:0;"/><em><?php echo round($duration / 20, 2); ?>
                                     /5</em></div>
                             <div class="clear"></div>
@@ -452,7 +467,7 @@
                 <?php
                     if (!$duration && !$strength && !$scale) {
                         ?>
-                        <i>No Reviews yet</i>
+                        <i>No ratings yet</i>
                     <?php
                     }
                 ?>
@@ -463,31 +478,20 @@
     </ul>
 
 
-    <div class="clearfix"></div>
+    <div class="clearfix page_margin_top" style="border-bottom: 1px solid #dadada;"></div>
+
+
+    <ul class="columns full_width page_margin_top clearfix " >
 
 
 
-
-
-
-
-
-
-
-    <ul class="columns full_width page_margin_top clearfix">
         <li class="column_left">
 
 
-
-
-
-
-            <h2 class="box_header page_margin_top_section slide clearfix" style="">Most Helpful User Review</h2>
+            <h2 class="box_header slide clearfix" style="">Most Helpful User Review</h2>
 
 
             <?php include_once('combine/strain_reviews.php'); ?>
-            <?php //include_once('combine/invite.php');?>
-
 
             <script type="text/javascript">
                 $(document).ready(function () {
@@ -495,99 +499,74 @@
                 });
             </script>
 
-
             <div class="clear"></div>
 
 
 
+            <?php
+
+                if ($helpful) {
+
+                    ?>
+                    <a href="<?php echo $this->webroot; ?>strains/review/<?php echo $strain['Strain']['slug']; ?>"
+                       class="viewall more large blue" style="">View All Reviews</a>
+
+                <?php
+
+                }
 
 
+            ?>
 
         </li>
+
+
+
+
+
         <li class="column_right">
 
 
-
-            <h2 class="box_header page_margin_top_section slide clearfix" style=""><?php echo $strain['Strain']['name']; ?> Images</h2>
-
-
+            <h2 class="box_header  slide clearfix"
+                style=""><?php echo $strain['Strain']['name']; ?> Images</h2>
 
 
+            <table>
+                <tr>
+                    <?
+                        $breaker = 0;
+                        for ($i = 1; $i < 5; $i++) {
+                             $image = "http://localhost/canbii/images/strains/" . $strain['Strain']['id'] . "/" . $strain['Strain']['slug'] . "_" . $i . ".jpg";
 
+                            if (!file_exists($image)) {
+                                $breaker++;
 
-            <a class="fancybox" rel="group"
-               href="<?php echo $this->webroot; ?>images/strains/<?php echo $strain['Strain']['id'] ?>/<?php echo $strain['Strain']['slug'] ?>_1.jpg"
-               style="valign:top;">
-                <img
-                    style="valign:top;float:right;"
-                    src="<?php echo $this->webroot; ?>images/strains/<?php echo $strain['Strain']['id'] ?>/<?php echo $strain['Strain']['slug'] ?>_1.jpg"
-                    width="180"/>
-            </a>
+                                ?>
+                                <td align="">
+<center>
+                                    <a class="fancybox" rel="group"
+                                       href="<?=$image?>"
+                                        >
+                                        <img
+                                            class="reportimage"
+                                            src="<?php echo $image;?>"
+                                            />
+                                    </a>
+</center>
+                                </td>
 
-            <a class="fancybox" rel="group"
-               href="<?php echo $this->webroot; ?>images/strains/<?php echo $strain['Strain']['id'] ?>/<?php echo $strain['Strain']['slug'] ?>_2.jpg"
-               style="valign:top;">
-                <img
-                    style="valign:top;float:right;"
-                    src="<?php echo $this->webroot; ?>images/strains/<?php echo $strain['Strain']['id'] ?>/<?php echo $strain['Strain']['slug'] ?>_2.jpg"
-                    width="180"/>
-            </a>
-
-            <a class="fancybox" rel="group"
-               href="<?php echo $this->webroot; ?>images/strains/<?php echo $strain['Strain']['id'] ?>/<?php echo $strain['Strain']['slug'] ?>_3.jpg"
-               style="valign:top;">
-                <img
-                    style="valign:top;float:right;"
-                    src="<?php echo $this->webroot; ?>images/strains/<?php echo $strain['Strain']['id'] ?>/<?php echo $strain['Strain']['slug'] ?>_3.jpg"
-                    width="180"/>
-            </a>
-
-            <a class="fancybox" rel="group"
-               href="<?php echo $this->webroot; ?>images/strains/<?php echo $strain['Strain']['id'] ?>/<?php echo $strain['Strain']['slug'] ?>_4.jpg"
-               style="valign:top;">
-                <img
-                    style="valign:top;float:right;"
-                    src="<?php echo $this->webroot; ?>images/strains/<?php echo $strain['Strain']['id'] ?>/<?php echo $strain['Strain']['slug'] ?>_4.jpg"
-                    width="180"/>
-            </a>
-
-
-
+                                <?
+                                if ($breaker == 2) {
+                                    echo "</tr><tr>";
+                                }
+                            }
+                        } ?>
+                </tr>
+            </table>
 
 
         </li>
     </ul>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 </div>
@@ -597,22 +576,15 @@
 
 
     <div align="center">
-        <a class="blue more" href="javascript:void(0)" onclick="window.print();">Print Report</a>
-        <!--
-        <a href="javascript:void(0)" class="blue more" onclick="$('.invite').toggle();">Invite your friend</a>
+        <div style="margin-bottom: 10px;"  class="addthis_sharing_toolbox"></div>
 
-        <a href="#" class="blue more">Share on Social Media</a>
-        <br>-->
+        <a style="" class="dark_blue more" href="<?php echo $this->webroot; ?>review/add/<?php echo $strain['Strain']['slug']; ?>">Review Strain</a>
+
+        <a style=""  class="blue more" href="javascript:void(0)" onclick="window.print();">Print Report</a>
 
     </div>
 
-    <div align="center" style="margin-top:15px;">
-        <!-- Go to www.addthis.com/dashboard to customize your tools -->
-        <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-53333c8154cd758d"
-                async="async"></script>
-        <!-- Go to www.addthis.com/dashboard to customize your tools -->
-        <div class="addthis_sharing_toolbox"></div>
-    </div>
+
 </div>
 
 <div class="invite noprint" style="display: none; margin-top:10px">
