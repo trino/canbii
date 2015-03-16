@@ -21,18 +21,29 @@ function iif($value, $true, $false=""){
 //Acceptable colors:
 // Metronic: success (green), info (blue), warning (yellow), danger (red). Active does not work
 // Old: light-purple, light-red, light-blue, light-green
-function progressbar($value, $textL="", $textR="", $color = "success", $striped=false, $active=false, $min = 0, $max=100){
-    if (strpos($textR,"/")){//webroot was passed as color to avoid making a new parameter
-        echo '<div class="left ratewrap"><img src="' . $textR . 'images/bar_chart/' . $color . '.png" style="width: ';
+function progressbar($webroot, $value, $textL="", $textR="", $color = "success", $color2="", $striped=false, $active=false, $min = 0, $max=100){
+    if (false){
+        echo '<div class="left ratewrap"><img src="' . $webroot . 'images/bar_chart/' . $color2 . '.png" style="width: ';
         echo (round($value, 2) > 100) ? 100 : round($value, 2);
         echo '%;height:25px;position: absolute;left:0;"/><em>' . round($value / 20, 2);
         echo '/5</em></div><div class="clear"></div>';
     } else {
-        if ($textL) {echo '<div style="float: right; padding-right: 4px; 	position: relative; top: 50%; transform: 			translateY(20%);">' . $textL . '</div>';}
-        echo '</div><div class="progress' . iif($striped, " progress-striped") . iif($active, " active") . '"><div class="progress-bar progress-bar-';
-        echo $color . '" role="progressbar" aria-valuenow="' . $value . '" aria-valuemin="' . $min . '" aria-valuemax="' . $max . '" style="width: ' . round($value / ($max - $min) * 100) . '%">';
-        echo '<span>' . $textR . '</span></div></div>';
+        if ($textL) {echo '<div style="float: right; padding-right: 4px;">' . $textL . '</div>';}
+        echo '</div><div style="margin-bottom: 5px;" class="progress' . iif($striped, " progress-striped") . iif($active, " active") . '">';
+
+            echo '<img src="' . $webroot . 'images/bar_chart/' . $color2 . '.png" style="width: ';
+        echo (round($value, 2) > 100) ? 100 : round($value, 2);
+        echo '%;height:20px;"/>';
+
+        echo "</div>";
+        return;
+        echo '<div class="progress-bar progress-bar-';
+        echo $color . '" role="progressbar" aria-valuenow="' . $value . '" aria-valuemin="' . $min . '" aria-valuemax="' . $max . '" style="';
+        echo 'width: ' . round($value / ($max - $min) * 100) . '%"><span>' . $textR . '</span></div></div>';
     }
+
+
+
 }
 function perc($scale){
     return round($scale/20,2) . "/5";
@@ -269,8 +280,8 @@ function perc($scale){
                             $length = 20 * $rate;;
                             ?>
                             <div class="eff">
-                                <div class="label left"><?php echo $this->requestAction('/strains/getEffect/' . $ar[1]); ?>
-                                <?php progressbar($length, perc($length), "", "info");//was light-blue?>
+                                <div class="label left" style="position: relative; top: 50%; transform: translateY(20%);"><?php echo $this->requestAction('/strains/getEffect/' . $ar[1]); ?>
+                                <?php progressbar($this->webroot, $length, perc($length), "", "info", "light-blue");?>
 
 
                             </div>
@@ -348,8 +359,8 @@ function perc($scale){
                             ?>
                             <div class="eff">
                                 <div
-                                    class="label left"><?php echo $this->requestAction('/strains/getSymptom/' . $ars[1]); ?>
-                                    <?php progressbar($length, perc($length), "", "success");//was light-green?>
+                                    class="label left" style="position: relative; top: 50%; transform: translateY(20%);"><?php echo $this->requestAction('/strains/getSymptom/' . $ars[1]); ?>
+                                    <?php progressbar($this->webroot, $length, perc($length), "", "success", "light-green");?>
                                 <div class="clear"></div>
                             </div>
                         <?php
@@ -391,8 +402,8 @@ function perc($scale){
                             ?>
                             <div class="eff">
                                 <div
-                                    class="label left"><?php echo $this->requestAction('/strains/getEffect/' . $ar[1]); ?>
-                                    <?php progressbar($length, perc($length), "", "danger");//was light-red ?>
+                                    class="label left" style="position: relative; top: 50%; transform: translateY(20%);"><?php echo $this->requestAction('/strains/getEffect/' . $ar[1]); ?>
+                                    <?php progressbar($this->webroot, $length, perc($length), "", "danger", "light-red"); ?>
                             </div>
                         <?php
                         }
@@ -460,8 +471,8 @@ function perc($scale){
                         ?>
 
                         <div class="eff">
-                            <div class="label left">Sedative
-                            <?php progressbar($scale, perc($scale), "", "warning");//was light-purple ?>
+                            <div class="label left" style="position: relative; top: 50%; transform: translateY(20%);">Sedative
+                            <?php progressbar($this->webroot, $scale, perc($scale), "", "warning", "light-purple"); ?>
                         </div>
                     <?php
                     }
@@ -470,8 +481,8 @@ function perc($scale){
                     if ($strength) {
                         ?>
                         <div class="eff aaloo">
-                            <div class="label left">Strength
-                            <?php progressbar($strength, perc($strength), "", "warning");?>
+                            <div class="label left" style="position: relative; top: 50%; transform: translateY(20%);">Strength
+                            <?php progressbar($this->webroot, $strength, perc($strength), "", "warning", "light-purple");?>
                         </div>
                     <?php
                     }
@@ -480,8 +491,8 @@ function perc($scale){
                     if ($duration) {
                         ?>
                         <div class="eff">
-                            <div class="label left">Duration
-                            <?php progressbar($duration, perc($duration), "", "warning");?>
+                            <div class="label left" style="position: relative; top: 50%; transform: translateY(20%);">Duration
+                            <?php progressbar($this->webroot, $duration, perc($duration), "", "warning", "light-purple");?>
                         </div>
                     <?php
                     }
