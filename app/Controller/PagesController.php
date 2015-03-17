@@ -86,9 +86,8 @@ class PagesController extends AppController {
             $msg = $_POST['message'];
             $emails = new CakeEmail();
             $emails->from(array('noreply@canabii.com'=>'Canabii'));
-            
             $emails->emailFormat('html');
-            
+            $emails->template('default');
             $emails->subject('New contact Message');
             
             
@@ -123,13 +122,12 @@ class PagesController extends AppController {
     function getEff()
     {
         $this->loadModel('Effect');
-        return $this->Effect->find('all',array('order'=>'Effect.title ASC'));
-        
+        return $this->Effect->find('all',array('conditions'=>array('Effect.negative'=>0), 'order'=>'Effect.title ASC'));
     }
     function getSym()
     {
         $this->loadModel('Symptom');
-        return $this->Symptom->find('all',array('order'=>'Symptom.title ASC'));
+        return $this->Symptom->find('all',array( 'order'=>'Symptom.title ASC'));
     }
     public function pdf($slug = null) {
         $this->autoRender = false;
@@ -247,6 +245,7 @@ class PagesController extends AppController {
                 $email = trim($email);
                 $emails = new CakeEmail();
                 $emails->reset();
+                $emails->template('default');
                 $emails->from(array('noreply@canabii.com'=>'Canabii'));
             
                 $emails->emailFormat('html');

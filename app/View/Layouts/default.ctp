@@ -509,19 +509,12 @@ padding:30px;
 
 
                         <?php
-
-
-
-
-
-
                             $strains = $this->requestAction('pages/get_strain');
+                            $count=0;
                             if ($strains) {
                                 //var_dump($strains);
-                                ?>
-
-                                <?php
                                 foreach ($strains as $s) {
+                                    $count+=1;
                                     ?>
 
                                     <li class="icon_small_arrow right_white">
@@ -542,6 +535,9 @@ padding:30px;
 
                                 <?php
                                 }
+                            }
+                        if ($count==0){
+                                echo "trdhfklhbf";
                             }
                         ?>
 

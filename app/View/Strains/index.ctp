@@ -1,6 +1,57 @@
 <script src="<?php echo $this->webroot; ?>js/raty.js"></script>
 <script src="<?php echo $this->webroot; ?>js/labs.js"></script>
 <link href="<?php echo $this->webroot; ?>css/raty.css" rel="stylesheet" type="text/css"/>
+<link href="<?php echo $this->webroot; ?>css/layout.css" rel="stylesheet" type="text/css" title="progress bar"/>
+<script src="<?php echo $this->webroot; ?>js/bootstrap.min.js"></script>
+
+<style>
+    .nowrap {
+        overflow: auto;
+        white-space: nowrap;
+    }
+</style>
+
+<?php
+function iif($value, $true, $false=""){
+    if ($value) { return $true; }
+    return $false;
+}
+
+//http://localhost/metronic/templates/admin/ui_general.html
+//Acceptable colors:
+// Metronic: success (green), info (blue), warning (yellow), danger (red). Active does not work
+// Old: light-purple, light-red, light-blue, light-green
+function progressbar($webroot, $value, $textL="", $textR="", $color = "success", $color2="", $striped=false, $active=false, $min = 0, $max=100){
+    if (false){
+        echo '<div class="left ratewrap"><img src="' . $webroot . 'images/bar_chart/' . $color2 . '.png" style="width: ';
+        echo (round($value, 2) > 100) ? 100 : round($value, 2);
+        echo '%;height:25px;position: absolute;left:0;"/><em>' . round($value / 20, 2);
+        echo '/5</em></div><div class="clear"></div>';
+    } else {
+        if ($textL) {echo '<div style="float: right; padding-right: 4px;">' . $textL . '</div>';}
+        echo '</div><div style="margin-bottom: 5px;" class="progress' . iif($striped, " progress-striped") . iif($active, " active") . '">';
+
+            echo '<img src="' . $webroot . 'images/bar_chart/' . $color2 . '.png" style="width: ';
+        echo (round($value, 2) > 100) ? 100 : round($value, 2);
+        echo '%;height:20px;"/>';
+
+        echo "</div>";
+        return;
+        echo '<div class="progress-bar progress-bar-';
+        echo $color . '" role="progressbar" aria-valuenow="' . $value . '" aria-valuemin="' . $min . '" aria-valuemax="' . $max . '" style="';
+        echo 'width: ' . round($value / ($max - $min) * 100) . '%"><span>' . $textR . '</span></div></div>';
+    }
+
+
+
+}
+function perc($scale){
+    return round($scale/20,2) . "/5";
+}
+?>
+
+
+
 
 <div class="page_layout page_margin_top clearfix">
     <div class="page_header clearfix" style="border-bottom: none;white-space: nowrap;">
@@ -9,10 +60,11 @@
 
             <?php
                 $strain_hexagon = $strain;
+            if (isset($s)){
                 ?>
             <a href="<?php echo $this->webroot?>strains/<?php echo $s['Strain']['slug'];?>">
 
-<?
+<? }
             include('combine/hexagon.php'); ?></a>
             <div style="white-space: nowrap;">
                 <h1 class=""><?php echo $strain['Strain']['name']; ?> - Medical Report</h1>
@@ -143,7 +195,7 @@
 
     <div class="clearfix"></div>
 
-    <h2 class="box_header page_margin_top slide clearfix" style="">Strain Attributes
+    <h2 class="box_header page_margin_top slide clearfix" style="">Strain Attributes:
 
         <!--div style="float:right;"class="addthis_sharing_toolbox"></div>
         <div style="float:right;">
@@ -153,7 +205,7 @@
 
 
     <ul class="columns full_width clearfix">
-        <li class="column_left">
+        <li class="column_right">
 
 
             <div class="">
@@ -163,9 +215,11 @@
 
                 <?php
                     $p_filter = 0;
-                    foreach ($arr_filter as $filterwith) {
-                        if (isset($_GET[$filterwith])) {
-                            $p_filter = 1;
+                    if(isset($arr_filter)) {
+                        foreach ($arr_filter as $filterwith) {
+                            if (isset($_GET[$filterwith])) {
+                                $p_filter = 1;
+                            }
                         }
                     }
                     if (!$p_filter) {
@@ -226,12 +280,10 @@
                             $length = 20 * $rate;;
                             ?>
                             <div class="eff">
-                                <div
-                                    class="label left"><?php echo $this->requestAction('/strains/getEffect/' . $ar[1]); ?></div>
-                                <div class="left ratewrap"><img
-                                        src="<?php echo $this->webroot; ?>images/bar_chart/light-blue.png"
-                                        style="width: <?php echo $length > 100 ? 100 : $length; ?>%;height:25px;position: absolute; text-align: center;left:0;"/><em><?php echo number_format($rate, 2); ?>/5</em></div>
-                                <div class="clear"></div>
+                                <div class="label left" style="position: relative; top: 50%; transform: translateY(20%);"><?php echo $this->requestAction('/strains/getEffect/' . $ar[1]); ?>
+                                <?php progressbar($this->webroot, $length, perc($length), "", "info", "light-blue");?>
+
+
                             </div>
                         <?php
                         }
@@ -244,7 +296,7 @@
             </div>
 
         </li>
-        <li class="column_right">
+        <li class="column_left">
 
             <div class="">
 
@@ -307,12 +359,8 @@
                             ?>
                             <div class="eff">
                                 <div
-                                    class="label left"><?php echo $this->requestAction('/strains/getSymptom/' . $ars[1]); ?></div>
-                                <div class="left ratewrap">
-                                    <img src="<?php echo $this->webroot; ?>images/bar_chart/light-green.png"
-                                         style="width: <?php echo $length > 100 ? 100 : $length; ?>%;height:25px;position: absolute; text-align: center;left:0;"/>
-                                    <em><?php echo number_format($rate, 2); ?>/5</em>
-                                </div>
+                                    class="label left" style="position: relative; top: 50%; transform: translateY(20%);"><?php echo $this->requestAction('/strains/getSymptom/' . $ars[1]); ?>
+                                    <?php progressbar($this->webroot, $length, perc($length), "", "success", "light-green");?>
                                 <div class="clear"></div>
                             </div>
                         <?php
@@ -354,11 +402,8 @@
                             ?>
                             <div class="eff">
                                 <div
-                                    class="label left"><?php echo $this->requestAction('/strains/getEffect/' . $ar[1]); ?></div>
-                                <div class="left ratewrap"><img
-                                        src="<?php echo $this->webroot; ?>images/bar_chart/light-red.png"
-                                        style="width: <?php echo ($length > 100) ? 100 : $length; ?>%;height:25px;position: absolute; text-align: center;left:0;"/><em><?php echo number_format($rate, 2); ?>/5</em></div>
-                                <div class="clear"></div>
+                                    class="label left" style="position: relative; top: 50%; transform: translateY(20%);"><?php echo $this->requestAction('/strains/getEffect/' . $ar[1]); ?>
+                                    <?php progressbar($this->webroot, $length, perc($length), "", "danger", "light-red"); ?>
                             </div>
                         <?php
                         }
@@ -426,12 +471,8 @@
                         ?>
 
                         <div class="eff">
-                            <div class="label left">Sedative</div>
-                            <div class="left ratewrap"><img
-                                    src="<?php echo $this->webroot; ?>images/bar_chart/light-purple.png"
-                                    style="width:  <?php echo (round($scale, 2) > 100) ? 100 : round($scale, 2); ?>%;height:25px;position: absolute;left:0;"/><em><?php echo round($scale / 20, 2); ?>
-                                    /5</em></div>
-                            <div class="clear"></div>
+                            <div class="label left" style="position: relative; top: 50%; transform: translateY(20%);">Sedative
+                            <?php progressbar($this->webroot, $scale, perc($scale), "", "warning", "light-purple"); ?>
                         </div>
                     <?php
                     }
@@ -440,12 +481,8 @@
                     if ($strength) {
                         ?>
                         <div class="eff aaloo">
-                            <div class="label left">Strength</div>
-                            <div class="left ratewrap" style="width: 63%;"><img
-                                    src="<?php echo $this->webroot; ?>images/bar_chart/light-purple.png"
-                                    style="width: <?php echo (round($strength, 2) > 100) ? 100 : round($strength, 2); ?>%;height:25px;position: absolute;left:0;"/><em><?php echo round($strength / 20, 2); ?>
-                                    /5</em></div>
-                            <div class="clear"></div>
+                            <div class="label left" style="position: relative; top: 50%; transform: translateY(20%);">Strength
+                            <?php progressbar($this->webroot, $strength, perc($strength), "", "warning", "light-purple");?>
                         </div>
                     <?php
                     }
@@ -454,12 +491,8 @@
                     if ($duration) {
                         ?>
                         <div class="eff">
-                            <div class="label left">Duration</div>
-                            <div class="left ratewrap" style="width: 63%;"><img
-                                    src="<?php echo $this->webroot; ?>images/bar_chart/light-purple.png"
-                                    style="width:  <?php echo (round($duration, 2) > 100) ? 100 : round($duration, 2); ?>%;height:25px;position: absolute;left:0;"/><em><?php echo round($duration / 20, 2); ?>
-                                    /5</em></div>
-                            <div class="clear"></div>
+                            <div class="label left" style="position: relative; top: 50%; transform: translateY(20%);">Duration
+                            <?php progressbar($this->webroot, $duration, perc($duration), "", "warning", "light-purple");?>
                         </div>
                     <?php
                     }
@@ -536,9 +569,14 @@
                     <?
                         $breaker = 0;
                         for ($i = 1; $i < 5; $i++) {
-                             $image = "http://localhost/canbii/images/strains/" . $strain['Strain']['id'] . "/" . $strain['Strain']['slug'] . "_" . $i . ".jpg";
-
-                            if (!file_exists($image)) {
+                             $image = "images/strains/" . $strain['Strain']['id'] . "/" . $strain['Strain']['slug'] . "_" . $i . ".jpg";
+                             $filename = getcwd() . "/" . $image; //C:\wamp\www\marijuana\app\webroot
+                             $image = $this->webroot . $image;
+                            if (!file_exists($filename) && file_exists(str_replace(".jpg", ".jpeg", $filename))) {
+                                $image=str_replace(".jpg", ".jpeg", $image);
+                                $filename=str_replace(".jpg", ".jpeg", $filename);
+                            }
+                            if (file_exists($filename)) {
                                 $breaker++;
 
                                 ?>

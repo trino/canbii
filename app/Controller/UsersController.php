@@ -44,7 +44,7 @@ class UsersController extends AppController {
             $this->redirect('dashboard');
       $this->set('title_for_layout','Login/Registration');
       if ($this->request->is('post')) {
-        $_POST = $_POST['data'];
+            $_POST = $_POST['data'];
             $user['username'] = $_POST['User']['username'];
             $user['email'] = $_POST['User']['email'];
             $user['password'] = md5($_POST['User']['password'] . "canbii" );
@@ -58,8 +58,20 @@ class UsersController extends AppController {
                 $this->Session->setFlash('Username already taken, please try again', 'default', array('class' => 'bad'));
                 $this->redirect('');
             }
-            
-            
+
+          $emails = new CakeEmail();
+          $emails->template('default');
+          $emails->to($user['email']);
+          $emails->from(array('noreply@canbii.com'=>'canbii.com'));
+          $emails->subject("Canbii: User Registration");
+          $emails->emailFormat('html');
+          $msg = "Hello,<br/><br/>We received a request to create an account. <br/>Here is your login credentials:<br/>
+                Username : " . $user['username'] . "<br/>
+                Password : " . $_POST['User']['password'] . "<br/>
+                <br/><br/>";
+          $msg .= "Regards,<br/>canbii.com";
+          $emails->send($msg);
+
             $this->User->create();
             if ($this->User->save($user)) 
             {
@@ -173,8 +185,23 @@ class UsersController extends AppController {
         }
     
     }
-    function forgot()
-    {
+
+    function randompassword($digits=8){
+        return substr(md5(rand()), 0, $digits);
+    }
+    function changeuserpasssword($emailaddress, $digits=8){
+        $pass=$this->randompassword($digits);
+        $newpass=md5($pass . "canbii");
+        $ch = $this->User->find('first',array('conditions'=>array('email'=>$emailaddress)));
+        if($ch){
+            $this->User->id = $ch['User']['id'];
+            $this->User->saveField("password",$newpass);
+            return $pass;
+        }
+        return false;
+    }
+
+    function forgot() {
         
         $this->set('title_for_layout','Forgot Password');
         if(isset($_POST['email']))
@@ -184,22 +211,24 @@ class UsersController extends AppController {
             {
                 //$r = rand(100000,999999);
                 $emails = new CakeEmail();
+                $emails->template('default');
+                //$emails->to("roy@trinoweb.com");
                 $emails->to($_POST['email']);
                 $emails->from(array('noreply@canbii.com'=>'canbii.com'));
-                $emails->subject("Recover Password");
-                $emails->emailFormat('html');
+                $emails->subject("Canbii: Password Recovery");
+                $emails->emailFormat('html');//$q['User']['password']
                 $msg = "Hello,<br/><br/>We received a request to reset your password. <br/>Here is your new login credentials:<br/>
-                Username : ".$q['User']['username']."<br/>
-                Password : ".$q['User']['password']."<br/>
+                Username : " . $q['User']['username'] . "<br/>
+                Password : " . $this->changeuserpasssword($_POST['email']) . "<br/>
                 <br/><br/>";
                 $msg .= "Regards,<br/>canbii.com";
                 $emails->send($msg);
                 
-                $this->Session->setFlash('Password has been sent to '.$_POST['email'], 'default', array('class' => 'good'));
+                $this->Session->setFlash('A new password has been sent to '.$_POST['email'], 'default', array('class' => 'good'));
             }
             else
             {
-                $this->Session->setFlash('We could not find the email address associated with your account', 'default', array('class' => 'bad'));
+                $this->Session->setFlash('We could not find an account associated with your email address', 'default', array('class' => 'bad'));
             }
             $this->redirect('forgot');
         }
