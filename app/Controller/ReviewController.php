@@ -13,6 +13,7 @@
             if(!$this->Session->read('User'))
             {
                 $url = $this->here;
+                $this->Session->setFlash('Please log in to add a review','default',array('class'=>'bad'));
                 $this->redirect('/users/register?url='.$url);
             }
         }

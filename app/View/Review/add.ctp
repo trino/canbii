@@ -569,35 +569,36 @@
 
                     <?
                         $breaker = 0;
-                        for ($i = 1; $i < 5; $i++) {
-                            $image = "images/strains/" . $strain['Strain']['id'] . "/" . $strain['Strain']['slug'] . "_" . $i . ".jpg";
-                            $filename = getcwd() . "/" . $image; //C:\wamp\www\marijuana\app\webroot
-                            $image = $this->webroot . $image;
+                        if (isset($strain)) {
+                            for ($i = 1; $i < 5; $i++) {
+                                $image = "images/strains/" . $strain['Strain']['id'] . "/" . $strain['Strain']['slug'] . "_" . $i . ".jpg";
+                                $filename = getcwd() . "/" . $image; //C:\wamp\www\marijuana\app\webroot
+                                $image = $this->webroot . $image;
 
-                           // $image = $This->webroot . "images/strains/" . $strain['Strain']['id'] . "/" . $strain['Strain']['slug'] . "_" . $i . ".jpg";
+                                // $image = $This->webroot . "images/strains/" . $strain['Strain']['id'] . "/" . $strain['Strain']['slug'] . "_" . $i . ".jpg";
 
-                            if (file_exists($filename)) {
-                                $breaker++;
+                                if (file_exists($filename)) {
+                                    $breaker++;
 
-                                ?>
+                                    ?>
                                     <center>
                                         <a class="fancybox" rel="group"
-                                           href="<?=$image?>"
+                                           href="<?= $image ?>"
                                             >
                                             <img style="max-width: 270px;max-height: 400px;"
-                                                class="reportimage"
-                                                src="<?php echo $image;?>"
+                                                 class="reportimage"
+                                                 src="<?php echo $image; ?>"
                                                 />
                                         </a>
                                     </center>
 
 
-                                <?
-                                if ($breaker == 2) {
+                                    <?
+                                    if ($breaker == 2) {
+                                    }
                                 }
                             }
-                        } ?>
-
+                        }?>
 
 
         </div>
