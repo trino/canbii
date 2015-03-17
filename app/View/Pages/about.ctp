@@ -65,3 +65,59 @@ for their hybrids like Pineapple Express, Bubba Kush, and Blue Dream to name a f
 		</div>
 		</div>
 	</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    Why Cannabis?
+<br>
+    Cannabis has been recognized for its medicinal value, dating back to 2737 B.C. It's commonly used for managing chronic pain, reducing inflammation, and relieving nausea and vomiting, among others. Today, through modern research, our understanding of the potential benefits of cannabis is growing exponentially. Researchers from worldwide are reporting that cannabis may be beneficial for alleviating the symptoms of illnesses and conditions such as: epilepsy, HIV/AIDS, arthritis, Crohn’s Disease, dementia and many others.
+    <br><br>
+    Tetrahydrocannabinol (THC) and cannabidiol (CBD) are the main chemical compounds which helps treat illnesses or alleviate symptoms.
+    <br><br>
+    THC is the main psychoactive ingredient in the cannabis plant. It gives one the feeling of euphoria. It is also known to increase ones appetite. THC or delta 9-tetrahydrocannibinol is one of the principle constituents in cannabis. THC induces a psychoactive effect (the high) and is reported to have analgesic properties.
+    <br><br>
+    CBD is a cannabinoid that repress neurotransmitter release in the brain. CBD or C is a non psychoactive compound that is reported to have strong anti-inflammatory properties and potentially other health benefits. Together THC and CBD offers natural pain relief.
+    <br><br>
+
+    ---
+    <br><br>
+
+    There are 3 strain categories which are Indica, Sativa, and Hybrid. Each with different effects and medical properties.
+    <br>
+    Indica
+    The smoking of Indica bud will make you sleepy and provides a deep relaxation feeling It's best suited for night time use. This type of strain has great medecal benefit as well as treatment to certain illness. The effects of Indica are drowsiness and it provides a deep relaxation sensation. Indica plants typically grow short and wide. Indica plants are better suited for indoor growing because of their short growth.
+    <br>
+    Sativa
+    Sativa smoking is known for its energetic and uplifting feeling. it's best suited for day time use. This type of strain has great medecal benefit as well as treatment to certain illness. Sativa is known for it's energetic and uplifting properties. Sativa plants grow tall and thin. sativa plants are better suited for outdoor growing because some strains can reach over 25 ft. in height.
+    <br>
+    Hybrid
+    Sativa and Indica are the two major types of cannabis plants which can mix together to create hybrid strains. Marijuana strains range from pure sativas to pure indicas and hybrid strains consisting of both indica and sativa. Mixing both Indica and Sativa strains have created Hybrid strains. The beauty of Hybrid cannabis strains is that you get the best properties of both strains.
+    <br>
+
+    -----
+    <br>
+    How do I choose which variety is right for me?
+    <br>
+    There is more to choosing the right cannabis medicine than you might think. The level of THC, CBD and other cannabinoids are important pieces of the puzzle. However, our many varieties each have their own unique mixture of terpenoids. This terpenoid profile is what determines the scents and flavours of the different varieties but it also plays an important role in how each variety of cannabis impacts each patient. There are over 900 strains, both natural and man-made. Each strain contains different properties. With the sheer number of different strains, how does one navigate through it all and find the right one for them? That's why we're here. We want to help make the search for you as painless as possible. We've developed an easy to use filter system that narrows down your needs and matches it to the best strains ranked by thousands of users.
+    <br><br>
+    THC and CBD are just two of the many cannabinoids we focus on (and research) in a quest for the most beneficial varieties. Expert growers are constantly experimenting with different combinations to create super strains. Growers come up with fun names for their hybrids like Pineapple Express, Bubba Kush, and Blue Dream to name a few. Come and explore all the different strains here.
+    <br><br>
+    Did you know that our body produces something similar to THC on its own?
+    <br><br>
+    Scientists discovered that besides THC, there was a whole host of chemical compounds created inside the human body, which are almost identical to those produced by the cannabis plant. They were aptly named the human ‘endocannabinoid system’ (ECS) because of this similarity. We now understand that cannabinoids from the cannabis plant can offer a perfect replacement mechanism when there is a weakening of our own endocannabinoid system.
+    <br><br>
