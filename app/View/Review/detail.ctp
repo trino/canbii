@@ -38,7 +38,7 @@
         <a title="Read more" href="<?php echo $this->webroot;?>review/all"  class="more large dark_blue icon_small_arrow margin_right_white margin_left_10">My Review</a>
         <div class="clearfix"></div>
 <?php //var_dump($review);
-    $typ = array('','Extremely Active','Very Active','Active','Bit Active','Balanced','Bit Sedate','Sedate','Very Sedate','Extemely Sedate');
+    $typ = array('','Extremely Active','Very Active','Active','Bit Active','Balanced','Bit Sedated','Sedated','Very Sedated','Extremely Sedated');
 ?>
 
 <fieldset id="qf_review__general" class="qf-fieldset">
@@ -329,7 +329,7 @@ foreach($review['EffectRating'] as $effect)
 <script>
 $(function(){
 
-                $("#qf_review__general__mscale__slider").slider({'min':1,disabled: true,'max':9,'step':1,'value':<?php echo $review['Review']['eff_scale'];?>,'slide':function(e,ui){ $('#qf_review__general__mscale').val(ui.value);var vals = ['Extremely Active','Very Active','Active','Bit Active','Balanced','Bit Sedate','Sedate','Very Sedate','Extemely Sedate'];$('#qf_review__general__mscale__prompt').html(vals[Math.ceil( ((ui.value+1-1)/(9+1-1))*vals.length )-1]); },'range':'min'});
+                $("#qf_review__general__mscale__slider").slider({'min':1,disabled: true,'max':9,'step':1,'value':<?php echo $review['Review']['eff_scale'];?>,'slide':function(e,ui){ $('#qf_review__general__mscale').val(ui.value);var vals = ['Extremely Active','Very Active','Active','Bit Active','Balanced','Bit Sedated','Sedated','Very Sedated','Extremely Sedated'];$('#qf_review__general__mscale__prompt').html(vals[Math.ceil( ((ui.value+1-1)/(9+1-1))*vals.length )-1]); },'range':'min'});
 				$("#qf_review__general__strength__slider").slider({'min':1,'max':5,disabled: true,'step':1,'value':<?php echo $review['Review']['eff_strength'];?>,'slide':function(e,ui){ $('#qf_review__general__strength').val(ui.value);$('#qf_review__general__strength__prompt').html(''+ui.value+'/5'); },'range':'min'});
 				$("#qf_review__general__duration__slider").slider({'min':1,'max':5,'step':1,disabled: true,'value':<?php echo $review['Review']['eff_duration'];?>,'slide':function(e,ui){ $('#qf_review__general__duration').val(ui.value);$('#qf_review__general__duration__prompt').html(''+ui.value+' hrs'); },'range':'min'});
 				$("#qf_review__aesthetics__hairs__slider").slider({'min':1,'max':5,'step':1,disabled: true,'value':<?php echo $review['Review']['eff_scale'];?>,'slide':function(e,ui){ $('#qf_review__aesthetics__hairs').val(ui.value);$('#qf_review__aesthetics__hairs__prompt').html(''+ui.value+'/5'); },'range':'min'});

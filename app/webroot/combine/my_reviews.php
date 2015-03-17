@@ -17,40 +17,19 @@
                 }
                 foreach ($reviews as $review) {
                     if ($review['Strain']["id"] != $id) {
-
+                        $strain_hexagon = $review;
                         //if ($j % 2 == 0) {echo "<div style='clear:both;border-bottom:1px solid #E8E8E8;padding:5px 0px;'> </div>"; }
                         $j++;
 
                         ?>
 
                         <div class="" style="float:left;width:50%;">
-
-
-                            <div class="comment_author_avatar">
-                                &nbsp;
-                            </div>
-
+                            <div class="comment_author_avatar">&nbsp;</div>
                             <div class="comment_details">
-
-
-                                <?php
-                                    $strain_hexagon = $review;
-                                ?>
-
                                 <a href="<?php echo $this->webroot ?>strains/<?php echo $strain_hexagon['Strain']['slug']; ?>">
                                     <? include('combine/hexagon.php'); ?>
-
-
-
-
-
-
-
-
                                     <h2><?php echo $review['Strain']['name']; ?> <span style="font-size: 12px;"> View Report &raquo;</span>
                                     </h2>
-
-
                                 </a>
 
 
@@ -65,18 +44,12 @@
                                     });
                                 </script>
 
-
                                 <p style="clear:both;padding-right:10px;">
-
-
                                     <?php echo substr($review['Review']['review'], 0, 70) . '...'; ?>
-
                                 </p>
 
 
-                                <div class="posted_by" style="  font-size: 11px;
-  color: #909090;
-  line-height: 140%;">
+                                <div class="posted_by" style="font-size: 11px; color: #909090; line-height: 140%;">
                                     reviewed by <a class="author"
                                                    href="<?php echo $this->webroot; ?>strains/review/all?user=<?php echo $review['Review']['user_id']; ?>"
                                                    title="<?php echo $this->requestAction('/strains/getUserName/' . $review['Review']['user_id']); ?>"><?php echo $this->requestAction('/strains/getUserName/' . $review['Review']['user_id']); ?></a>                                    <?php if ($review['Review']['on_date'] != "0000-00-00") {
@@ -112,9 +85,8 @@
             <?php
 
                 if ($reviewz && $reviewz > 1) {
-                    ?>
-                    <div class="loadmore"><a href="javascript:void(0);">Load More</a></div>
-                <?php } ?>
+                    echo '<div class="loadmore"><a href="javascript:void(0);">Load More</a></div>';
+                } ?>
             <script>
                 $(function () {
                     var j = 0;

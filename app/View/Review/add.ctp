@@ -6,6 +6,42 @@
 <script type="text/javascript" src="<?php echo $this->webroot; ?>js/layout.js?ver=1.0.2"></script>
 <link href="<?php echo $this->webroot; ?>css/raty.css" rel="stylesheet" type="text/css"/>
 <link href="<?php echo $this->webroot; ?>css/colorpicker.css" rel="stylesheet" type="text/css"/>
+
+<link href="<?php echo $this->webroot; ?>css/layout.css" rel="stylesheet" type="text/css" title="progress bar"/>
+<script src="<?php echo $this->webroot; ?>js/bootstrap.min.js"></script>
+
+<style>
+    .nowrap {
+        overflow: auto;
+        white-space: nowrap;
+    }
+    #qf_review__aesthetics__color .review-slider{display:inline-block;}
+    #qf_review__aesthetics__flavor .review-slider{display:inline-block;}
+</style>
+
+<?php
+function iif($value, $true, $false=""){
+    if ($value) { return $true; }
+    return $false;
+}
+
+//http://localhost/metronic/templates/admin/ui_general.html
+//Acceptable colors:
+// Metronic: success (green), info (blue), warning (yellow), danger (red). Active does not work
+// Old: light-purple, light-red, light-blue, light-green
+function progressbar($webroot, $value, $textL="", $textR="", $color = "success", $color2="light-purple", $striped=false, $active=false, $min = 0, $max=5){
+        if ($textL) {echo '<label style="margin-top: 0px;">' . $textL . '<Div style="float:right;">' . $value . "/" . $max . "</div></label>";}
+        echo '<div class="progress' . iif($striped, " progress-striped") . iif($active, " active") . '" style="margin-bottom: 8px;">';
+        echo '<img src="' . $webroot . 'images/bar_chart/' . $color2 . '.png" style="width: ';
+        echo (round($value, 2) > $max) ? $max : round($value/($max-$min)*100, 2);
+        echo '%;height:20px;"/></div>';
+}
+function perc($scale){
+    return round($scale/20,2) . "/5";
+}
+?>
+
+
 <script>
     $(function () {
         $('#colorpickerHolder').ColorPicker({
@@ -45,7 +81,7 @@
             include('combine/hexagon.php');
 ?>
 
-            
+
 
             <?php if ($this->params['action'] == 'add') { ?>
 
@@ -146,31 +182,33 @@
 
 
                         <h3>Effect Scale (Sedative to Active)</h3>
-                        <?php if (isset($review) && $review['Review']['eff_scale'] == 0) {
+                        <?php if (isset($review) && $review['Review']['eff_scale'] <2) {
                             echo "<strong>No Review</strong><br/>";
                         } else {
                             ?>
                             <p id="qf_review__general__mscale__prompt">
                                 <?php if ($this->params['action'] == 'add') { ?>
-
+                                    </p>
+                                    <div>
+                                        <input id="qf_review__general__mscale" class="qf-hidden-input qf-slider qf-input"
+                                               type="hidden" name="eff_scale" value="0"
+                                               title="Effect Scale (Active to Sedative)"/>
+                                    </div>
+                                    <div id="qf_review__general__mscale__slider"
+                                         class="qf-slider-bar ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all">
+                                    </div>
                                 <?php } else {
-                                    $typ = array('', 'NULL', 'Extemely Sedated', 'Very Sedate', 'Sedated', 'Bit Sedate', 'Balanced', 'Bit Active', 'Active', 'Very Active', 'Extremly Active');
-
-                                    echo $typ[$review['Review']['eff_scale']];
-                                } ?>
-                            </p>
-                            <div>
-                                <input id="qf_review__general__mscale" class="qf-hidden-input qf-slider qf-input"
-                                       type="hidden" name="eff_scale" value="0"
-                                       title="Effect Scale (Active to Sedative)"/>
-                            </div>
-                            <div id="qf_review__general__mscale__slider"
-                                 class="qf-slider-bar ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all">
-                            </div>
-                        <?php } ?>
+                                    $typ = array('', 'NULL', 'Extremely Sedated', 'Very Sedated', 'Sedated', 'Bit Sedated', 'Balanced', 'Bit Active', 'Active', 'Very Active', 'Extremely Active');
+                                    progressbar($this->webroot, $review['Review']['eff_scale'], $typ[$review['Review']['eff_scale']], "", "success", "light-blue", false, false,0, 9);
+                                   //echo $typ[$review['Review']['eff_scale']];
+                                }
+                        } ?>
                         <h3>Effect Strength</h3>
                         <?php if (isset($review) && $review['Review']['eff_strength'] == 0) {
                             echo "<strong>No Review</strong><br/>";
+                        } elseif (isset($review)) {
+                            $strengths = array("Very weak", "Weak", "Average", "Strong", "Very Strong");
+                            progressbar($this->webroot, $review['Review']['eff_strength'], $strengths[$review['Review']['eff_strength']]);
                         } else {
                             ?>
                             <p id="qf_review__general__strength__prompt">
@@ -188,6 +226,8 @@
                         <h3>Effect Duration</h3>
                         <?php if (isset($review) && $review['Review']['eff_duration'] == 0) {
                             echo "<strong>No Review</strong><br/>";
+                        } elseif (isset($review)) {
+                            progressbar($this->webroot, $review['Review']['eff_duration'], $review['Review']['eff_duration'] . " hours");
                         } else {
                             ?>
                             <p id="qf_review__general__duration__prompt"><?php if ($this->params['action'] == 'add') echo ''; else echo $review['Review']['eff_duration'] . " hrs";?></p>
@@ -234,18 +274,19 @@
         {
         if (count($review['SymptomRating']) > 0){
 
-        foreach ($review['SymptomRating'] as $effect)
-        {
+        foreach ($review['SymptomRating'] as $effect){
+            progressbar($this->webroot, $effect['rate'], $symptoms[$effect['symptom_id'] - 1]['Symptom']['title']);
     ?>
 
-        <div id="efft_<?php echo $effect['id'];?>er" class="review-slider">
+        <!--div id="efft_<?php echo $effect['id'];?>er" class="review-slider">
             <label><?php echo $symptoms[$effect['symptom_id'] - 1]['Symptom']['title'];?></label>
 
             <div id="<?php echo $effect['id'];?>er"></div>
             <p><?php echo $effect['rate'];?>/5</p>
 
             <div class="clear"></div>
-        </div>
+        </div-->
+
         <script>
             $(function () {
                 $('#<?php echo $effect['id'];?>er').slider({
@@ -303,19 +344,20 @@
                 $cnt++;
         }
         if ($cnt > 0){
-        foreach ($review['EffectRating'] as $effect)
-        {
+        foreach ($review['EffectRating'] as $effect){
         if (in_array($effect['effect_id'], $pos)){
+
+            progressbar($this->webroot, $effect['rate'],  $effects[$effect['effect_id'] - 1]['Effect']['title']);
     ?>
 
-        <div id="efft_<?php echo $effect['id'];?>pe" class="review-slider">
+        <!--div id="efft_<?php echo $effect['id'];?>pe" class="review-slider">
             <label><?php echo $effects[$effect['effect_id'] - 1]['Effect']['title'];?></label>
 
             <div id="<?php echo $effect['id'];?>pe"></div>
             <p><?php echo $effect['rate'];?>/5</p>
 
             <div class="clear"></div>
-        </div>
+        </div-->
         <script>
             $('#<?php echo $effect['id'];?>pe').slider({
                 range: "min",
@@ -371,19 +413,20 @@
                 $cnt++;
         }
         if ($cnt > 0){
-        foreach ($review['EffectRating'] as $effect)
-        {
+        foreach ($review['EffectRating'] as $effect){
         if (in_array($effect['effect_id'], $pos)){
+            progressbar($this->webroot, $effect['rate'],  $effectz[$effect['effect_id'] - 1]['Effect']['title']);
+
     ?>
 
-        <div id="efft_<?php echo $effect['id'];?>ne" class="review-slider">
+        <!--div id="efft_<?php echo $effect['id'];?>ne" class="review-slider">
             <label><?php echo $effectz[$effect['effect_id'] - 1]['Effect']['title'];?></label>
 
             <div id="<?php echo $effect['id'];?>ne"></div>
             <p><?php echo $effect['rate'];?>/5</p>
 
             <div class="clear"></div>
-        </div>
+        </div-->
         <script>
             $('#<?php echo $effect['id'];?>ne').slider({
                 range: "min",
@@ -762,7 +805,7 @@
         $("#qf_review__general__mscale__slider").slider({
             'min': 0, 'max': 9, 'step': 1, 'value': 0, 'slide': function (e, ui) {
                 $('#qf_review__general__mscale').val(ui.value);
-                var vals = ['', 'Extemely Sedated', 'Very Sedate', 'Sedated', 'Bit Sedate', 'Balanced', 'Bit Active', 'Active', 'Very Active', 'Extremly Active'];
+                var vals = ['', 'Extremely Sedated', 'Very Sedated', 'Sedated', 'Bit Sedated', 'Balanced', 'Bit Active', 'Active', 'Very Active', 'Extremely Active'];
                 $('#qf_review__general__mscale__prompt').html(vals[Math.ceil(((ui.value + 1 - 1) / (9 + 1 - 1)) * vals.length) - 1]);
             }, 'range': 'min'
         });
@@ -843,7 +886,7 @@
             'value':<?php echo $review['Review']['eff_scale'];?>,
             'slide': function (e, ui) {
                 $('#qf_review__general__mscale').val(ui.value);
-                var vals = ['', 'Extremely Active', 'Very Active', 'Active', 'Bit Active', 'Balanced', 'Bit Sedated', 'Sedated', 'Very Sedated', 'Extemely Sedated'];
+                var vals = ['', 'Extremely Active', 'Very Active', 'Active', 'Bit Active', 'Balanced', 'Bit Sedated', 'Sedated', 'Very Sedated', 'Extremely Sedated'];
                 $('#qf_review__general__mscale__prompt').html(vals[Math.ceil(((ui.value + 1 - 1) / (9 + 1 - 1)) * vals.length) - 1]);
             },
             'range': 'min'
