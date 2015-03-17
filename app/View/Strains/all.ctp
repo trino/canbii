@@ -152,7 +152,7 @@
                        placeholder=""
                        style="float:left;">
                 <input id="BUTTON_17" type="submit" value="Search" class="more blue medium " style="float:left;"/>
-                <input id="BUTTON_18" type="submit" value="Reset" class="more blue medium " style="display:none;">
+                <input id="BUTTON_18" type="submit" value="Reset" class="more blue medium " style="">
             </form>
         </div>
         <div class="clear"></div>
