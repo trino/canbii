@@ -124,7 +124,7 @@
                 <?php } else { ?>
                     <li class="<?php if ($this->params['controller'] == 'users') { ?>current_page_item<?php } ?> submenu<?php echo(isset($_GET['page']) && ($_GET["page"] == "" || $_GET["page"] == "home") ? " selected" : ""); ?>">
                         <a href="<?php echo $this->webroot; ?>users/dashboard" accesskey="4"
-                           title=""><?= ucfirst($this->Session->read('User.username')) ?>'s Dashboard</a>
+                           title=""><?= ucfirst($this->Session->read('User.username')) ?>'s Account</a>
                         <ul>
                             <li<?php echo(isset($_GET['page']) && $_GET["page"] == "home" ? " class='selected'" : ""); ?>>
                                 <!--<a style="color: #888!important;" class="darkmenu" href="<?php echo $this->webroot; ?>users/dashboard" accesskey="5" title="">My Dashboard</A> -->
@@ -190,75 +190,157 @@
 
                 $('.' + thiss.attr('id')).remove();
 
-            <div class="site_container">
+            <
+                div
+            class
+                = "site_container" >
 
-                <div class="header_container">
-                <div class="header clearfix">
-                <div class="header_left">
-                <a href="<?php echo $this->webroot;?>" title="MEDICALMARIJUANA">
-                <img src="<?php echo $this->webroot;?>images/logo.png" height=100 alt="logo" />
+                < div
+            class
+                = "header_container" >
+                < div
+            class
+                = "header clearfix" >
+                < div
+            class
+                = "header_left" >
+                < a
+                href = "<?php echo $this->webroot;?>"
+                title = "MEDICALMARIJUANA" >
+                < img
+                src = "<?php echo $this->webroot;?>images/logo.png"
+                height = 100
+                alt = "logo" / >
 
 
-                </a>
-                </div>
+                < / a >
+                < / div >
 
-                <ul class="sf-menu header_right">
+                < ul
+            class
+                = "sf-menu header_right" >
 
 
-                <li class="<?php if($this->params['controller']=='pages' && $this->params['action']=='index'){?>current_page_item<?php }?>"><a href="<?php echo $this->webroot;?>" accesskey="1" title="">Home</a></li>
-                <li class="<?php if($this->params['controller']=='strains' || $this->params['controller']=='review'){?>current_page_item<?php }?>"><a href="<?php echo $this->webroot?>strains/all" accesskey="2" title="">Strains</a></li>
-                <li class="<?php if($this->params['controller']=='pages' && $this->params['action']=='about'){?>current_page_item<?php }?>"><a href="<?php echo $this->webroot;?>pages/about" accesskey="3" title="">About</a></li>
-                <li class="<?php if($this->params['controller']=='pages' && $this->params['action']=='contact_us'){?>current_page_item<?php }?>"><a href="<?php echo $this->webroot;?>pages/contact_us" accesskey="4" title="">Contact Us</a></li>
+                < li
+            class
+                = "<?php if($this->params['controller']=='pages' && $this->params['action']=='index'){?>current_page_item<?php }?>" > < a
+                href = "<?php echo $this->webroot;?>"
+                accesskey = "1"
+                title = "" > Home < /a></
+                li >
+                < li
+            class
+                = "<?php if($this->params['controller']=='strains' || $this->params['controller']=='review'){?>current_page_item<?php }?>" > < a
+                href = "<?php echo $this->webroot?>strains/all"
+                accesskey = "2"
+                title = "" > Strains < /a></
+                li >
+                < li
+            class
+                = "<?php if($this->params['controller']=='pages' && $this->params['action']=='about'){?>current_page_item<?php }?>" > < a
+                href = "<?php echo $this->webroot;?>pages/about"
+                accesskey = "3"
+                title = "" > About < /a></
+                li >
+                < li
+            class
+                = "<?php if($this->params['controller']=='pages' && $this->params['action']=='contact_us'){?>current_page_item<?php }?>" > < a
+                href = "<?php echo $this->webroot;?>pages/contact_us"
+                accesskey = "4"
+                title = "" > Contact
+                Us < /a></
+                li >
                 <?php if(!$this->Session->read('User')){?>
-                <li class="<?php if($this->params['controller']=='users'){?>current_page_item<?php }?>"><a href="<?php echo $this->webroot;?>users/register" accesskey="4" title="">Login / Register</a></li>
+                < li
+            class
+                = "<?php if($this->params['controller']=='users'){?>current_page_item<?php }?>" > < a
+                href = "<?php echo $this->webroot;?>users/register"
+                accesskey = "4"
+                title = "" > Login / Register < /a></
+                li >
                 <?php }else{?>
-                <li class="<?php if($this->params['controller']=='users'){?>current_page_item<?php }?> submenu<?php echo (isset($_GET['page'])&& ($_GET["page"]=="" || $_GET["page"]=="home") ? " selected" : ""); ?>">
-                <a href="<?php echo $this->webroot;?>users/dashboard" accesskey="4" title=""><?=ucfirst($this->Session->read('User.username'))?>'s Dashboard</a>
-                <ul>
-                <li <?php echo (isset($_GET['page'])&&$_GET["page"]=="home" ? " class='selected'" : ""); ?>>
-                <!--<a style="color: #888!important;" class="darkmenu" href="<?php echo $this->webroot;?>users/dashboard" accesskey="5" title="">My Dashboard</A> -->
-                <a style="color: #888!important;" class="darkmenu" href="<?php echo $this->webroot;?>users/logout" accesskey="5" title="">Logout</a>
-                </li>
+                < li
+            class
+                = "<?php if($this->params['controller']=='users'){?>current_page_item<?php }?> submenu<?php echo (isset($_GET['page'])&& ($_GET["page"]=="" || $_GET["page"]=="home") ? " selected" : ""); ?>" >
+                < a
+                href = "<?php echo $this->webroot;?>users/dashboard"
+                accesskey = "4"
+                title = "" > <?=ucfirst($this->Session->read('User.username'))?>'s Dashboard</a>
+                < ul >
+                < li <?php echo (isset($_GET['page'])&&$_GET["page"]=="home" ? " class='selected'" : ""); ?> >
+                < !-- < a
+                style = "color: #888!important;"
+            class
+                = "darkmenu"
+                href = "<?php echo $this->webroot;?>users/dashboard"
+                accesskey = "5"
+                title = "" > My
+                Dashboard < / A > -- >
+                < a
+                style = "color: #888!important;"
+            class
+                = "darkmenu"
+                href = "<?php echo $this->webroot;?>users/logout"
+                accesskey = "5"
+                title = "" > Logout < / a >
+                < / li >
 
-                </ul>
-                </li>
+                < / ul >
+                < / li >
 
                 <?php }?>
-                </ul>
-                <div class="mobile_menu">
-                <select class="mmenu">
-                <option value="<?php echo $this->webroot?>" <?php if($this->params['controller']=='pages' && $this->params['action']=='index'){?>selected ="selected" <?php }?> >Home</option>
-                <option value="<?php echo $this->webroot?>strains/all" <?php if($this->params['controller']=='strains' || $this->params['controller']=='review'){?>selected ="selected"<?php }?> >Strains</option>
-                <option value="<?php echo $this->webroot;?>pages/about" <?php if($this->params['controller']=='pages' && $this->params['action']=='about'){?>selected ="selected"<?php }?> >About</option>
-                <option value="<?php echo $this->webroot;?>pages/contact_us" <?php if($this->params['controller']=='pages' && $this->params['action']=='contact_us'){?>selected ="selected"<?php }?> >Contact Us</option>
+                < / ul >
+                < div
+            class
+                = "mobile_menu" >
+                < select
+            class
+                = "mmenu" >
+                < option
+                value = "<?php echo $this->webroot?>"
+                <?php if($this->params['controller']=='pages' && $this->params['action']=='index'){?>selected = "selected" <?php }?> > Home < / option >
+                < option
+                value = "<?php echo $this->webroot?>strains/all"
+                <?php if($this->params['controller']=='strains' || $this->params['controller']=='review'){?>selected = "selected"<?php }?> > Strains < / option >
+                < option
+                value = "<?php echo $this->webroot;?>pages/about"
+                <?php if($this->params['controller']=='pages' && $this->params['action']=='about'){?>selected = "selected"<?php }?> > About < / option >
+                < option
+                value = "<?php echo $this->webroot;?>pages/contact_us"
+                <?php if($this->params['controller']=='pages' && $this->params['action']=='contact_us'){?>selected = "selected"<?php }?> > Contact
+                Us < / option >
                 <?php if(!$this->Session->read('User')){?>
-                <option value="<?php echo $this->webroot;?>users/register" <?php if($this->params['controller']=='users'){?>selected ="selected"<?php }?> >Login / Register</option>
+                < option
+                value = "<?php echo $this->webroot;?>users/register"
+                <?php if($this->params['controller']=='users'){?>selected = "selected"<?php }?> > Login / Register < / option >
                 <?php }else{?>
-                <option value="<?php echo $this->webroot;?>users/dashboard" <?php if($this->params['controller']=='users'){?>selected ="selected"<?php }?> ><?=ucfirst($this->Session->read('User.username'))?> Dashboard</option>
-                <option value="<?php echo $this->webroot;?>users/logout" >Logout</option>
+                < option
+                value = "<?php echo $this->webroot;?>users/dashboard"
+                <?php if($this->params['controller']=='users'){?>selected = "selected"<?php }?> > <?=ucfirst($this->Session->read('User.username'))?> Dashboard < / option >
+                < option
+                value = "<?php echo $this->webroot;?>users/logout" > Logout < / option >
                 <?php }?>
-                </select>
-                </div>
+                < / select >
+                < / div >
 
-                </div>
-                </div>
+                < / div >
+                < / div >
 
-                <!-- //////////////////////////////////////////////////////////////////////////////////////////// NEW SITE-->
-
-
+                < !-- //////////////////////////////////////////////////////////////////////////////////////////// NEW SITE-->
 
 
                     <!-- can you create a separate page for the following and include here? -->
 
-                <script>
-                $(function(){
-                    $('.mmenu').change(function(){
+                < script >
+                $(function () {
+                    $('.mmenu').change(function () {
 
-                        window.location =$(this).val();
+                        window.location = $(this).val();
                     });
 
                 });
                 var spinnerVisible = false;
+
                 function showProgress() {
                     if (!spinnerVisible) {
                         $("div#spinner").fadeIn("fast");
@@ -273,52 +355,60 @@
                         spinnerVisible = false;
                     }
                 };
-                function highlighteff(thiss){
-                    if(thiss.attr('class').replace('searchact','')==thiss.attr('class'))
-                    {
+                function highlighteff(thiss) {
+                    if (thiss.attr('class').replace('searchact', '') == thiss.attr('class')) {
                         thiss.addClass('searchact');
-                        $('.effe').append('<input type="hidden" name="effects[]" value="'+thiss.attr('id').replace('eff_','')+'" class="'+thiss.attr('id')+'"  />')}else{thiss.removeClass('searchact')
+                        $('.effe').append('<input type="hidden" name="effects[]" value="' + thiss.attr('id').replace('eff_', '') + '" class="' + thiss.attr('id') + '"  />')
+                    } else {
+                        thiss.removeClass('searchact')
 
-                        $('.'+thiss.attr('id')).remove();
+                        $('.' + thiss.attr('id')).remove();
                     }
                     $('.key').val('');
                 }
-                function highlightsym(thiss){
-                    if(thiss.attr('class').replace('searchact','')==thiss.attr('class'))
-                    {
-                        thiss.addClass('searchact');
-                        $('.symp').append('<input type="hidden" name="symptoms[]" value="'+thiss.attr('id').replace('sym_','')+'" class="'+thiss.attr('id')+'"  />')}else{thiss.removeClass('searchact')
 
-                        $('.'+thiss.attr('id')).remove();
+                function highlightsym(thiss) {
+                    if (thiss.attr('class').replace('searchact', '') == thiss.attr('class')) {
+                        thiss.addClass('searchact');
+                        $('.symp').append('<input type="hidden" name="symptoms[]" value="' + thiss.attr('id').replace('sym_', '') + '" class="' + thiss.attr('id') + '"  />')
+                    } else {
+                        thiss.removeClass('searchact')
+
+                        $('.' + thiss.attr('id')).remove();
                     }
                     $('.key').val('');
                 }
-                function highlighteff2(thiss,order=null){
 
-                    if(thiss!='recent' && thiss!='rated' && thiss!='alpha' && thiss!='viewed' && thiss!='reviewed'){
-                        var sort =0;
-                        if(thiss.attr('class').replace('searchact','')==thiss.attr('class'))
-                        {
+                function highlighteff2(thiss, order=null) {
+
+                    if (thiss != 'recent' && thiss != 'rated' && thiss != 'alpha' && thiss != 'viewed' && thiss != 'reviewed') {
+                        var sort = 0;
+                        if (thiss.attr('class').replace('searchact', '') == thiss.attr('class')) {
 
                             thiss.addClass('searchact');
-                            $('.effe').append('<input type="hidden" name="effects[]" value="'+thiss.attr('id').replace('eff_','')+'" class="effs '+thiss.attr('id')+'"  />')}else{thiss.removeClass('searchact')
+                            $('.effe').append('<input type="hidden" name="effects[]" value="' + thiss.attr('id').replace('eff_', '') + '" class="effs ' + thiss.attr('id') + '"  />')
+                        } else {
+                            thiss.removeClass('searchact')
 
-                            $('.'+thiss.attr('id')).remove();
+                            $('.' + thiss.attr('id')).remove();
                         }
-                        $('.key').val('');}
+                        $('.key').val('');
+                    }
                     else
                         var sort = 1;
                     showProgress();
-                    var i=0;
+                    var i = 0;
                     var val = '';
-                    $('.effs').each(function(){
-                        if($(this).val()){
+                    $('.effs').each(function () {
+                        if ($(this).val()) {
                             i++;
-                            if(i==1)
-                                val = 'effects[]='+$(this).val();
+                            if (i == 1)
+                                val = 'effects[]=' + $(this).val();
                             else
-                                val = val+'&effects[]='+$(this).val();
-                        >>>>>>> 794296ae3072949bcd6ec134c0b9d2495b94f46d
+                                val = val + '&effects[]=' + $(this).val();
+                        >>>>>>>
+                            794296
+                            ae3072949bcd6ec134c0b9d2495b94f46d
                         }
                         $('.key').val('');
                     }
@@ -333,6 +423,7 @@
                         }
                         $('.key').val('');
                     }
+
                     function highlighteff2(thiss, order=null) {
 
                         if (thiss != 'recent' && thiss != 'rated' && thiss != 'alpha' && thiss != 'viewed' && thiss != 'reviewed') {
@@ -392,6 +483,7 @@
                             }
                         });
                     }
+
                     function highlightsym2(thiss) {
                         if (thiss.attr('class').replace('searchact', '') == thiss.attr('class')) {
                             thiss.addClass('searchact');
@@ -514,6 +606,7 @@ padding:30px;
                         </p>
 
                         <p style="display: none;" class="effe"></p>
+
                         <p style="display: none;" class="symp"></p>
 
                         <div class="main2" style="margin-top: 10px;">
@@ -589,7 +682,7 @@ padding:30px;
                     Canbii - <span style="font-size: 14px;"> Personalized Medical Marijuana</span>
                 </h3>
 
-                <p class="" style="color: #D5D5D5;" align="justify">
+                <p class="" style="color: #D5D5D5;" align="">
                     Medicinal marijuana is a growing movement and we're doing our part to spread the word.(name of site)
                     is an online database dedicated to educate the public on the benefits of medical marijuana. This all
                     natural plant is used to treat illnesses and to help those who suffer from chronic pain that affects
@@ -637,11 +730,11 @@ padding:30px;
 
                         <?php
                             $strains = $this->requestAction('pages/get_strain');
-                            $count=0;
+                            $count = 0;
                             if ($strains) {
                                 //var_dump($strains);
                                 foreach ($strains as $s) {
-                                    $count+=1;
+                                    $count += 1;
                                     ?>
 
                                     <li class="icon_small_arrow right_white">
@@ -663,7 +756,7 @@ padding:30px;
                                 <?php
                                 }
                             }
-                        if ($count==0){
+                            if ($count == 0) {
                                 echo "trdhfklhbf";
                             }
                         ?>
@@ -702,14 +795,13 @@ padding:30px;
             </div>
         </div>
         <div class="copyright_area clearfix">
-            <div class="copyright_left"> <a href="http://canbii.com" title="canbii"
-                                            target="_blank">Canbii.com</a> © Copyright <?php echo "2014-" . date('Y'); ?> /
+            <div class="copyright_left"><a href="http://canbii.com" title="canbii"
+                                           target="_blank">Canbii.com</a> © Copyright <?php echo "2014-" . date('Y'); ?>
+                /
 
 
-                <a href="<?php echo $this->webroot.'pages/privacy';?>" target="_blank">Privacy Policy</a> /
-                <a href="<?php echo $this->webroot.'pages/terms';?>" target="_blank">Terms & Conditions</a>
-
-
+                <a href="<?php echo $this->webroot . 'pages/privacy'; ?>" target="_blank">Privacy Policy</a> /
+                <a href="<?php echo $this->webroot . 'pages/terms'; ?>" target="_blank">Terms & Conditions</a>
 
 
             </div>

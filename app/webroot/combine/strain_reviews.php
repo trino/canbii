@@ -11,16 +11,19 @@
                 <ul>
 
                     <li class="comment clearfix">
-                        <div class="comment_author_avatar">&nbsp;</div>
+                        <div class="comment_author_avatar printer">&nbsp;</div>
 
                         <div class="comment_details">
 
-<?
+                            <a href="<?php echo $this->webroot; ?>review/detail/<?php echo $helpful['Review']['id']; ?>">
+
+                            <?
                             $strain_hexagon = $strain;
                             include('combine/hexagon.php');
 ?>
 
-                            <h3><?php echo $helpful['Strain']['name'];?></h3>
+                            <h2><?php echo $helpful['Strain']['name'];?> <span style="font-size: 13px"> See Review &raquo;</span></span></h2>
+                                </a>
                             <?
                                 $j = 0;
                             ?>

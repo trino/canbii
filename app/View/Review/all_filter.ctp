@@ -3,7 +3,7 @@
 <div class="comments clearfix page_margin_top">
 <div id="comments_list">
 <ul>
-<?php 
+<?php
 $j=0;
 foreach($reviews as $review)
 {
@@ -23,7 +23,7 @@ Reviewed by <a class="author" href="<?php echo $this->webroot;?>strains/review/a
 
 <div class="rating<?php echo $j;?> rat" style=""></div>
 <script>
-$(function(){    
+$(function(){
 $('.rating<?php echo $j;?>').raty({number:5,readOnly:true,score:<?php echo $review['Review']['rate'];?>});
 });
 </script>
@@ -59,7 +59,7 @@ if($reviewz && $reviewz >1){?>
         {
             $(this).remove();
         }
-       }); 
+       });
     });
     </script>
 </div>

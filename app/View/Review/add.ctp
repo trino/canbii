@@ -37,11 +37,13 @@
                     return $default;
                 }////searchact2=selected link object
 
-               if (isset($s)) {
-                   echo '<a href="' . $this->webroot . 'strains/' . $s['Strain']['slug'] . '">';
-               }
+                if ($this->params['action'] != 'add') {
+                    echo '<a href="' . $this->webroot . 'strains/' . $review['Strain']['slug'] . '">';
 
-            include('combine/hexagon.php'); echo "</a>"; ?>
+                }
+            include('combine/hexagon.php');
+?>
+
 
             <?php if ($this->params['action'] == 'add') { ?>
 
@@ -72,10 +74,8 @@
                     <h1 class="page_title" style="">
                         <?php echo ucfirst($review['Strain']['name']); ?> Review
                     </h1>
-
-                    <p style="clear:both;">Reviewed
-                        by <?php echo $this->requestAction('/strains/getUserName/' . $review['Review']['user_id']); ?>on
-                        <?php echo $review['Review']['on_date']; ?> ;
+                    </a>
+                    <p style="clear:both;">Reviewed by <?php echo $this->requestAction('/strains/getUserName/' . $review['Review']['user_id']); ?> on <?php echo $review['Review']['on_date']; ?>
 
                     </p>
 
@@ -136,7 +136,7 @@
 
                 <fieldset id="qf_review__general" class="qf-fieldset">
 
-                    <h2 class="slide">
+                    <h2 class="slide page_margin_top">
                         General Rating
                     </h2>
 
@@ -431,7 +431,7 @@
         <span class="morecolours"></span>
         <?php /*foreach($colours as $colour)
     {?> <a href="javascript:void(0);" onclick="($(this).hasClass('sel'))?$(this).removeClass('sel'):$(this).addClass('sel')" title="<?php echo $colour['Colour']['id'];?>" class="eff3 btn btn-info qf_review__aesthetics__color"><?php echo ucfirst($colour['Colour']['title']);?></a>
-    <?php 
+    <?php
     }*/
     } else {
         /*

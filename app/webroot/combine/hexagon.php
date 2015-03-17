@@ -27,13 +27,22 @@ font-size: 18px;
 z-index: 100;color:#FFF;">
 
             <?php
-                $name_arr = explode(' ', $strain_hexagon['Strain']['name']);
+
+                $get_text = str_replace("-"," ",$strain_hexagon['Strain']['name']);
+                $name_arr = explode(' ', $get_text);
+
+               // $name_arr = preg_split( "/ (-| ) /", $strain_hexagon['Strain']['name'] );
+
+
                 $i = 0;
                 foreach ($name_arr as $na) {
                     $i++;
                     if ($i == 1 && $na) {
                         echo ucfirst($na[0]);
-                    } elseif ($na) echo ucfirst($na[0]);
+                    }
+                    elseif ($na){
+                        echo ucfirst($na[0]);
+                    }
                 }
             ?>
         </p>

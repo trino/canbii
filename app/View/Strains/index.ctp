@@ -541,9 +541,10 @@ function perc($scale){
                 if ($helpful) {
 
                     ?>
-                    <a href="<?php echo $this->webroot; ?>strains/review/<?php echo $strain['Strain']['slug']; ?>"
-                       class="viewall more large blue" style="">View All Reviews</a>
-
+                    <div style="border-top: 1px solid #dadada;padding: 5px 0px;"></div>
+                <center>    <a href="<?php echo $this->webroot; ?>strains/review/<?php echo $strain['Strain']['slug']; ?>"
+                       class="viewall more large blue noprint" style="">See All Reviews for <?php echo $strain['Strain']['name']; ?> &raquo;</a>
+</center>
                 <?php
 
                 }
