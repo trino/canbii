@@ -34,6 +34,8 @@
     Router::connect('/strains/ajax_search/*', array('controller' => 'strains', 'action' => 'ajax_search'));
     Router::connect('/strains/getEffect/*', array('controller' => 'strains', 'action' => 'getEffect'));
     Router::connect('/strains/getFlavor/*', array('controller' => 'strains', 'action' => 'getFlavor'));
+    Router::connect('/strains/getcolors/*', array('controller' => 'strains', 'action' => 'getcolors'));
+    
     Router::connect('/strains/getSymptom/*', array('controller' => 'strains', 'action' => 'getSymptom'));
     Router::connect('/strains/getPosEff/*', array('controller' => 'strains', 'action' => 'getPosEff'));
     Router::connect('/strains/getUserName/*', array('controller' => 'strains', 'action' => 'getUserName'));

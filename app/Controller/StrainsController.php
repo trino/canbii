@@ -419,6 +419,13 @@ class StrainsController extends AppController
         $q = $this->Review->find('all', array('conditions' => array('user_id IN (' . $profile_filter . ') AND strain_id = ' . $strain)));
         return $q;
     }
+    function getcolors($strain)
+    {
+        
+        $this->loadModel('Review');
+        $q = $this->Review->find('all', array('conditions' => array('strain_id'=>$strain)));
+        return $q;
+    }
 
     function filter($limit = 0, $type = '')
     {

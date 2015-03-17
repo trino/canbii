@@ -509,7 +509,25 @@ function perc($scale){
 
         </li>
     </ul>
-
+    <ul class="columns full_width page_margin_top clearfix">
+        <li class="column_left">
+            <div class="">
+                <h2>Colour</h2>
+                <?php 
+                    $c = $this->requestAction('/strains/getcolors/'.$strain['Strain']['id']);
+                    foreach($c as $col)
+                    {
+                        if($col['ReviewColor']['color']!=""){
+                        ?>
+                         <p style="width: 5px; height: 10px;float:left;clear:none;background:#<?php echo $col['ReviewColor']['color'];?>;">&nbsp;</p>  
+                    <?php
+                        }
+                    }            
+                ?>
+                <div class="clearfix"></div>
+            </div>
+        </li>
+    </ul>
 
     <div class="clearfix page_margin_top" style="border-bottom: 1px solid #dadada;"></div>
 

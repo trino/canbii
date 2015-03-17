@@ -17,13 +17,17 @@ class Review extends AppModel
                                  'dependent'=>true,
                                  'exclusive'=>true
                                 ),
-                                'ColourRating'=>array('className'=>'ColourRating',
+                                
+                                
+                                      
+                );
+                
+    public $hasOne= array('ReviewColor'=>array('className'=>'ReviewColor',
                                  'foreignKey'=>'review_id',
                                  'dependent'=>true,
                                  'exclusive'=>true
-                                ),
-                                      
-                );
+                                )
+                    );
      public $belongsTo = array(
 		'Strain' => array(
 			'className' => 'Strain',
