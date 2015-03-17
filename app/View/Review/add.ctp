@@ -30,7 +30,11 @@ function iif($value, $true, $false=""){
 // Metronic: success (green), info (blue), warning (yellow), danger (red). Active does not work
 // Old: light-purple, light-red, light-blue, light-green
 function progressbar($webroot, $value, $textL="", $textR="", $color = "success", $color2="light-purple", $striped=false, $active=false, $min = 0, $max=5){
-        if ($textL) {echo '<label style="margin-top: 0px;">' . $textL . '<Div style="float:right;">' . $value . "/" . $max . "</div></label>";}
+        if ($textL) {
+            echo '<label style="margin-top: 0px;">' . $textL;
+            if ($textR != "noshow") {echo '<Div style="float:right;">' . $value . "/" . $max . "</div>"; }
+            echo "</label>";
+        }
         echo '<div class="progress' . iif($striped, " progress-striped") . iif($active, " active") . '" style="margin-bottom: 8px;">';
         echo '<img src="' . $webroot . 'images/bar_chart/' . $color2 . '.png" style="width: ';
         echo (round($value, 2) > $max) ? $max : round($value/($max-$min)*100, 2);
@@ -199,7 +203,7 @@ function perc($scale){
                                     </div>
                                 <?php } else {
                                     $typ = array('', 'NULL', 'Extremely Sedated', 'Very Sedated', 'Sedated', 'Bit Sedated', 'Balanced', 'Bit Active', 'Active', 'Very Active', 'Extremely Active');
-                                    progressbar($this->webroot, $review['Review']['eff_scale'], $typ[$review['Review']['eff_scale']], "", "success", "light-blue", false, false,0, 9);
+                                    progressbar($this->webroot, $review['Review']['eff_scale'], $typ[$review['Review']['eff_scale']], "noshow", "success", "light-blue", false, false,0, 9);
                                    //echo $typ[$review['Review']['eff_scale']];
                                 }
                         } ?>
@@ -585,7 +589,6 @@ function perc($scale){
                     ?>
 
                     <div class="clear"></div>
-
                 </div>
 
             </form>
@@ -613,6 +616,8 @@ function perc($scale){
                     <?
                         $breaker = 0;
                         if (isset($strain)) {
+                            include('combine/images.php');
+                            /*
                             for ($i = 1; $i < 5; $i++) {
                                 $image = "images/strains/" . $strain['Strain']['id'] . "/" . $strain['Strain']['slug'] . "_" . $i . ".jpg";
                                 $filename = getcwd() . "/" . $image; //C:\wamp\www\marijuana\app\webroot
@@ -641,6 +646,7 @@ function perc($scale){
                                     }
                                 }
                             }
+                            */
                         }?>
 
 
