@@ -37,6 +37,7 @@
                     return $default;
                 }////searchact2=selected link object
 
+
                 if ($this->params['action'] != 'add') {
                     echo '<a href="' . $this->webroot . 'strains/' . $review['Strain']['slug'] . '">';
 
@@ -44,6 +45,7 @@
             include('combine/hexagon.php');
 ?>
 
+            
 
             <?php if ($this->params['action'] == 'add') { ?>
 
@@ -708,9 +710,9 @@
         $('.qf_review__effects__medical').click(function () {
             addSlider($(this), 'medical');
         });
-        $('.qf_review__aesthetics__color').click(function () {
+        /*$('.qf_review__aesthetics__color').click(function () {
             addSlider($(this), 'color');
-        });
+        });*/
         $('.qf_review__aesthetics__flavor').click(function () {
             addSlider($(this), 'flavor');
         });

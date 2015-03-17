@@ -9,9 +9,10 @@
         }
         function checkSess()
         {
+            
             if(!$this->Session->read('User'))
             {
-                $url = Router::url($this->here, true);
+                $url = $this->here;
                 $this->redirect('/users/register?url='.$url);
             }
         }

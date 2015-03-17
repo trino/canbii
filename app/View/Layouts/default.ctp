@@ -138,6 +138,7 @@
                 <?php } ?>
             </ul>
             <div class="mobile_menu">
+
                 <select>
                     <option value="<?php echo $this->webroot ?>">Home</option>
                     <option value="<?php echo $this->webroot ?>strains/all">Strains</option>
@@ -309,6 +310,13 @@
                 value = "<?php echo $this->webroot;?>pages/contact_us"
                 <?php if($this->params['controller']=='pages' && $this->params['action']=='contact_us'){?>selected = "selected"<?php }?> > Contact
                 Us < / option >
+
+                <select class="mmenu">
+                <option value="<?php echo $this->webroot?>" <?php if($this->params['controller']=='pages' && $this->params['action']=='index'){?>selected ="selected" <?php }?> >Home</option>
+                <option value="<?php echo $this->webroot?>strains/all" <?php if($this->params['controller']=='strains' || $this->params['controller']=='review'){?>selected ="selected"<?php }?> >Strains</option>
+                <option value="<?php echo $this->webroot;?>pages/about" <?php if($this->params['controller']=='pages' && $this->params['action']=='about'){?>selected ="selected"<?php }?> >About</option>
+                <option value="<?php echo $this->webroot;?>pages/contact_us" <?php if($this->params['controller']=='pages' && $this->params['action']=='contact_us'){?>selected ="selected"<?php }?> >Contact
+
                 <?php if(!$this->Session->read('User')){?>
                 < option
                 value = "<?php echo $this->webroot;?>users/register"
@@ -320,16 +328,21 @@
                 < option
                 value = "<?php echo $this->webroot;?>users/logout" > Logout < / option >
                 <?php }?>
-                < / select >
-                < / div >
 
-                < / div >
-                < / div >
+
+                </select>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- //////////////////////////////////////////////////////////////////////////////////////////// NEW SITE-->
+>>>>>>> origin/master
 
                 < !-- //////////////////////////////////////////////////////////////////////////////////////////// NEW SITE-->
 
+    <!-- can you create a separate page for the following and include here? -->
 
-                    <!-- can you create a separate page for the following and include here? -->
 
                 < script >
                 $(function () {
@@ -379,6 +392,7 @@
                     $('.key').val('');
                 }
 
+
                 function highlighteff2(thiss, order=null) {
 
                     if (thiss != 'recent' && thiss != 'rated' && thiss != 'alpha' && thiss != 'viewed' && thiss != 'reviewed') {
@@ -412,6 +426,7 @@
                         }
                         $('.key').val('');
                     }
+                        /*
                     function highlightsym(thiss) {
                         if (thiss.attr('class').replace('searchact', '') == thiss.attr('class')) {
                             thiss.addClass('searchact');
@@ -423,6 +438,7 @@
                         }
                         $('.key').val('');
                     }
+*/
 
                     function highlighteff2(thiss, order=null) {
 
