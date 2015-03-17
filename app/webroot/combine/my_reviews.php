@@ -19,8 +19,8 @@
                     if ($review['Strain']["id"] != $id) {
                         $strain_hexagon = $review;
                         //if ($j % 2 == 0) {echo "<div style='clear:both;border-bottom:1px solid #E8E8E8;padding:5px 0px;'> </div>"; }
-                        $j++;
-
+                        //$j++;
+                        $j=$review['Review']['id'];
                         ?>
 
                         <div class="" style="float:left;width:50%;">

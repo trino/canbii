@@ -4,10 +4,12 @@
 <div id="comments_list">
 <ul>
 <?php
-$j=0;
+//$j=0;
 foreach($reviews as $review)
 {
-$j++;?>
+//$j++;
+    $j=$review['Review']['id'];
+    ?>
 
 <li class="comment clearfix">
 <div class="comment_author_avatar">

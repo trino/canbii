@@ -127,35 +127,37 @@ class UsersController extends AppController {
         
         
     }
-    public function settings()
-    {
+
+    public function get($name, $default=""){
+        if (isset($_GET[$name])){ return $_GET[$name];}
+        if (isset($_POST[$name])){ return $_POST[$name];}
+        return $default;
+    }
+    public function settings(){
         if(!$this->Session->read('User'))
             $this->redirect('register');
         $user =$this->User->findById($this->Session->read("User.id"));
         $this->set('user',$user);
         $username = $user['User']['username'];
-        if(isset($_POST['submit']))
-        {
-            if($_POST['username'])
-            {
-                $ch = $this->User->find('first',array('conditions'=>array('username'=>$_POST['username'],'id<>'.$user['User']['id'])));
-                if($ch)
-                {
+        if(isset($_POST['submit'])) {
+            $newusername = trim($this->get('username'));
+            if($newusername && strcasecmp($newusername, $username)<>0){
+                $ch = $this->User->find('first',array('conditions'=>array('username'=>$newusername,'id<>'.$user['User']['id'])));
+                if($ch){
                     $this->Session->setFlash('Username already taken', 'default', array('class' => 'bad'));
                     $this->redirect('settings');
                 }
             }
-            if($_POST['email'])
-            {
-                $ch = $this->User->find('first',array('conditions'=>array('email'=>$_POST['email'],'id<>'.$user['User']['id'])));
-                if($ch)
-                {
+            $newemail=trim($this->get('email'));
+            if($newemail) {
+                $ch = $this->User->find('first',array('conditions'=>array('email'=>$newemail,'id<>'.$user['User']['id'])));
+                if($ch) {
                     $this->Session->setFlash('Email already taken', 'default', array('class' => 'bad'));
                     $this->redirect('settings');
                 }
             }
-            if($_POST['old_password'])
-            {
+
+            if($_POST['old_password'] && $_POST['password']) {
                 $ch2 = $this->User->find('first',array('conditions'=>array('username'=>$username,'password'=> md5($_POST['old_password'] . "canbii" ))));
                 if($ch2)
                 {

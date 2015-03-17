@@ -19,6 +19,7 @@
 }
 #search .right{line-height:29px;padding-left:10px;border-left:1px solid #CCC;margin-left:10px}
 #search input[type="submit"]{border:none;}
+
 select.second {
     margin-left: 15px !important;
 }   

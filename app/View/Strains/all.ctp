@@ -136,7 +136,7 @@
 
 
 
-
+                <input id="BUTTON_17" type="submit" value="Search" class="more blue medium " style="float:right;"/>
                 <input id="INPUT_16" class="search_input hint" name="key" type="text"
 
                     <?php if (isset($_GET['key'])) {
@@ -150,9 +150,8 @@
 
 
                        placeholder=""
-                       style="float:left;">
-                <input id="BUTTON_17" type="submit" value="Search" class="more blue medium " style="float:left;"/>
-                <input id="BUTTON_18" type="submit" value="Reset" class="more blue medium " style="">
+                       style="float:right;">
+
             </form>
         </div>
         <div class="clear"></div>
@@ -175,6 +174,11 @@
 
         <div class="page_right" style="">
             <ul>
+                <LI>
+                    <div class=" clearfix">
+                    <input id="BUTTON_18" type="submit" value="Reset" class="more blue medium" style="float: right; width: 100%;">
+                    <div class=" clearfix">
+                        <P></P></LI>
                 <li class="home_box light_blue animated_element animation-fadeIn duration-500" style="z-index: 3;">
                     <h2>
                         Filter by Effects
