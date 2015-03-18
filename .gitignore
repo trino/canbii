@@ -9,7 +9,7 @@
 /dist
 /tags
 *.mo
-
+/app/webroot/images/strains/*
 # IDE and editor specific files #
 #################################
 .idea
