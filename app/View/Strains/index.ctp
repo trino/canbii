@@ -169,17 +169,15 @@ function perc($scale){
             <img src="<?php echo $this->webroot ?>images/bg3.jpg"
                  style=" height: 100px;position: absolute;width: 330px;z-index: -1;"/>
 
-            <div style="padding:20px 30px;color:#FFF;text-align:center;">
-                <h2>Dominant Flavors</h2>
+            <div style="padding:20px 30px;color:#FFF;text-align:center;padding-top:80px;position: relative;width: 100%;">
+                <!--h2>Dominant Flavors</h-->
                 <?php
                     //$flavor = null;
                     if ($flavor) {
 
                         foreach ($flavor as $f) {
                             ?>
-
-
-                            <a class="glow <?php echo $this->requestAction('/strains/getFlavor/' . $f['FlavorRating']['flavor_id']); ?>"
+                            <a class="glow Flavor <?php echo $this->requestAction('/strains/getFlavor/' . $f['FlavorRating']['flavor_id']); ?>"
                                href="javascrip:void(0)" style="position:relative;margin-right:5px;">
                                 <?php echo $this->requestAction('/strains/getFlavor/' . $f['FlavorRating']['flavor_id']); ?>
                             </a>
