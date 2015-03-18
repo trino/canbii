@@ -76,7 +76,7 @@ class UsersController extends AppController {
                 $this->Session->write('User.username',$user['username']);
                 $this->Session->write('User.email',$user['email']);
                 $this->Session->write('User.id',$this->User->id);
-                $this->Session->setFlash('You have been registered successfully<BR><A href="' .  $this->webroot . 'strains/all">Feel free to review a strain</A>', 'default', array('class' => 'good'));
+                $this->Session->setFlash('You have been registered successfully. <a style="color:white;" href="' .  $this->webroot . 'review">Review a strain here &raquo;</a>', 'default', array('class' => 'good'));
                 $this->redirect('dashboard');
             }
            $this->Session->setFlash('User could not be added', 'default', array('class' => 'bad'));
