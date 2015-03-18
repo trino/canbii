@@ -56,7 +56,7 @@
 
     <link rel="stylesheet" type="text/css" href="<?php echo $this->webroot; ?>style2/reset.css"/>
     <link rel="stylesheet" type="text/css" href="<?php echo $this->webroot; ?>style2/superfish.css"/>
-    <link rel="stylesheet" type="text/css" href="<?php echo $this->webroot; ?>style2/fancybox/jquery.fancybox.css"/>
+
     <link rel="stylesheet" type="text/css" href="<?php echo $this->webroot; ?>style2/jquery.qtip.css"/>
     <link rel="stylesheet" type="text/css" href="<?php echo $this->webroot; ?>style2/jquery-ui-1.9.2.custom.css"/>
     <link rel="stylesheet" type="text/css" href="<?php echo $this->webroot; ?>style2/style.css"/>
@@ -76,7 +76,7 @@
     <script type="text/javascript" src="<?php echo $this->webroot; ?>js2/jquery.timeago.js"></script>
     <script type="text/javascript" src="<?php echo $this->webroot; ?>js2/jquery.isotope.min.js"></script>
     <script type="text/javascript" src="<?php echo $this->webroot; ?>js2/jquery.isotope.masonry.js"></script>
-    <script type="text/javascript" src="<?php echo $this->webroot; ?>js2/jquery.fancybox-1.3.4.pack.js"></script>
+
     <script type="text/javascript" src="<?php echo $this->webroot; ?>js2/jquery.qtip.min.js"></script>
     <script type="text/javascript" src="<?php echo $this->webroot; ?>js2/jquery.blockUI.js"></script>
     <!--script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script-->
