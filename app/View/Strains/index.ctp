@@ -4,6 +4,10 @@
 <link href="<?php echo $this->webroot; ?>css/layout.css" rel="stylesheet" type="text/css" title="progress bar"/>
 <script src="<?php echo $this->webroot; ?>js/bootstrap.min.js"></script>
 
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="<?php echo $this->webroot; ?>js/html2canvas.js"></script>
+<script type="text/javascript" src="<?php echo $this->webroot; ?>js/jquery.plugin.html2canvas.js"></script>
+
 <style>
     .nowrap {
         overflow: auto;
@@ -97,7 +101,7 @@ function perc($scale){
             <a class="dark_blue more" style="margin-right: 10px;margin-top:10px;"
                href="<?php echo $this->webroot; ?>review/add/<?php echo $strain['Strain']['slug']; ?>">Review Strain</a>
             <a class="blue more" style="margin-top:10px;" href="javascript:void(0)" onclick="window.print();">Print Report</a>
-
+            <!--a style="margin-left: 10px;margin-top:10px;"  class="dark_blue more" href="javascript:void(0)" onclick="save();">Save Report</a-->
 
 
 
@@ -599,9 +603,9 @@ function perc($scale){
         <div style="margin-bottom: 10px;"  class="addthis_sharing_toolbox"></div>
 
         <a style="" class="dark_blue more" href="<?php echo $this->webroot; ?>review/add/<?php echo $strain['Strain']['slug']; ?>">Review Strain</a>
-
         <a style=""  class="blue more" href="javascript:void(0)" onclick="window.print();">Print Report</a>
-
+        <!--a style="" name="test" class="dark_blue more" href="javascript:void(0)" onclick="save();"  id="target">Save Report</a-->
+        <!--input type="text" name="img_val" id="img_val"><br/-->
     </div>
 
 
@@ -648,6 +652,50 @@ function perc($scale){
     }
 
 </style>
+<script>
+    function takeScreenShot(){
+        html2canvas(window.parent.document.body, {
+            onrendered: function(canvas) {
+                var cand = document.getElementsByTagName('canvas');
+                if(cand[0] === undefined || cand[0] === null){
+
+                }else{
+                    //cand[0].remove();
+                    document.body.removeChild(cand[0]);
+                }
+                document.body.appendChild(canvas);
+            }
+        });
+    }
+
+    function postImage(){
+        var cand = document.getElementsByTagName('canvas');
+        var canvasData = cand[0].toDataURL("image/png");
+        var ajax = new XMLHttpRequest();
+        ajax.open("POST",'/pr/custom/testSave.php',false);
+        ajax.setRequestHeader('Content-Type', 'application/upload');
+        ajax.send(canvasData );
+        alert('done');
+    }
+
+
+
+    function save() {
+        Rectangle screenRect = new Rectangle(Toolkit.getDefaultToolkit().getScreenSize());
+        BufferedImage capture = new Robot().createScreenCapture(screenRect);
+        ImageIO.write(capture, "bmp", new File(args[0]));
+
+        //$('#target').html2canvas({
+        //    onrendered: function (canvas) {
+
+                //Set hidden field's value to image data (base-64 string)
+                //$('#img_val').val(canvas.toDataURL("image/png"));
+                //Submit the form manually
+                //document.getElementById("myForm").submit();
+         //   }
+        //});
+    //}
+</script>
 <script>
     $(function () {
 

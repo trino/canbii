@@ -57,7 +57,7 @@
 
       <form action="" method="post" id="dashboard" class="contact_form">
 <div class="page_left page_margin_top">
-<div class="backgroundcolor"><p>Welcome to your corner of canbii. Please enter accurate information so we can further help personalize medication for other users. We thank you for your help and support.</p></div>
+<div class="backgroundcolor"><p>Welcome to your corner of Canbii. Please enter accurate information so we can further help personalize medication for other users. We thank you for your help and support.</p></div>
 
 <?php  include('combine/profile_filter_inc.php'); ?>
 <div class="clearfix"></div>

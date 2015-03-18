@@ -150,6 +150,7 @@ elseif($na) echo strtolower($na[0]);
 </a-->
 
 <div  style="width:13%; min-width:60px;float:left;">
+    <a href="<?php echo $this->webroot?>strains/<?php echo $s['Strain']['slug'];?>/<?php if($u_cond)echo $u_cond;?>">
 <?php
 // unset($strain_hexagon);
 $strain_hexagon = $s;
@@ -159,7 +160,7 @@ include('combine/hexagon.php');?>
 <div class="text" style="width:80%;float:left;">
 
 <h2>
-<a href="<?php echo $this->webroot?>strains/<?php echo $s['Strain']['slug'];?>/<?php if($u_cond)echo $u_cond;?>">
+
 <?php echo $s['Strain']['name'];?>
 </a>
 </h2>

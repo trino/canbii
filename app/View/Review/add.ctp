@@ -8,7 +8,7 @@
 <link href="<?php echo $this->webroot; ?>css/colorpicker.css" rel="stylesheet" type="text/css"/>
 
 <link href="<?php echo $this->webroot; ?>css/layout.css" rel="stylesheet" type="text/css" title="progress bar"/>
-<script src="<?php echo $this->webroot; ?>js/bootstrap.min.js"></script>
+<!-- script src="<?php echo $this->webroot; ?>js/bootstrap.min.js"></script-->
 
 <style>
     .nowrap {
@@ -203,7 +203,7 @@ function perc($scale){
                                     </div>
                                 <?php } else {
                                     $typ = array('', 'NULL', 'Extremely Sedated', 'Very Sedated', 'Sedated', 'Bit Sedated', 'Balanced', 'Bit Active', 'Active', 'Very Active', 'Extremely Active');
-                                    progressbar($this->webroot, $review['Review']['eff_scale'], $typ[$review['Review']['eff_scale']], "noshow", "success", "light-blue", false, false,0, 9);
+                                    progressbar($this->webroot, $review['Review']['eff_scale'], $typ[$review['Review']['eff_scale']], "noshow", "warning", "light-purple", false, false,0, 9);
                                    //echo $typ[$review['Review']['eff_scale']];
                                 }
                         } ?>
@@ -279,7 +279,8 @@ function perc($scale){
         if (count($review['SymptomRating']) > 0){
 
         foreach ($review['SymptomRating'] as $effect){
-            progressbar($this->webroot, $effect['rate'], $symptoms[$effect['symptom_id'] - 1]['Symptom']['title']);
+            if (count($symptoms) > $effect['symptom_id'] - 1) {
+            progressbar($this->webroot, $effect['rate'], $symptoms[$effect['symptom_id'] - 1]['Symptom']['title'], "", "success", "light-green");
     ?>
 
         <!--div id="efft_<?php echo $effect['id'];?>er" class="review-slider">
@@ -306,7 +307,7 @@ function perc($scale){
                 });
             });
         </script>
-    <?php }
+    <?php }}
     }
     else {
         echo "<strong>No Review For Medicinal Effects</strong>";
@@ -349,9 +350,9 @@ function perc($scale){
         }
         if ($cnt > 0){
         foreach ($review['EffectRating'] as $effect){
-        if (in_array($effect['effect_id'], $pos)){
+        if (in_array($effect['effect_id'], $pos) and count($effects) > $effect['effect_id'] - 1){
 
-            progressbar($this->webroot, $effect['rate'],  $effects[$effect['effect_id'] - 1]['Effect']['title']);
+            progressbar($this->webroot, $effect['rate'],  $effects[$effect['effect_id'] - 1]['Effect']['title'], "", "info", "light-blue");
     ?>
 
         <!--div id="efft_<?php echo $effect['id'];?>pe" class="review-slider">
@@ -419,7 +420,7 @@ function perc($scale){
         if ($cnt > 0){
         foreach ($review['EffectRating'] as $effect){
         if (in_array($effect['effect_id'], $pos)){
-            progressbar($this->webroot, $effect['rate'],  $effectz[$effect['effect_id'] - 1]['Effect']['title']);
+            progressbar($this->webroot, $effect['rate'],  $effectz[$effect['effect_id'] - 1]['Effect']['title'], "", "danger", "light-red");
 
     ?>
 

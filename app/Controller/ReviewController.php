@@ -13,7 +13,7 @@
             if(!$this->Session->read('User'))
             {
                 $url = $this->here;
-                $this->Session->setFlash('Please log in to add a review','default',array('class'=>'bad'));
+                $this->Session->setFlash('Please log in or register to add a review','default',array('class'=>'bad'));
                 $this->redirect('/users/register?url='.$url);
             }
         }
@@ -93,11 +93,15 @@
             
             
             $review = $this->Review->findById($id);
-            
-            $this->set('title','Review: '.$review['Strain']['name']);
-            $this->set('description','Review for '.$review['Review']['review'].'. General rating, effects rating, aesthetic rating and other reviews for '.$review['Strain']['name']);
-            $this->set('keyword',$review['Strain']['name'].' , review , effect rating, general rating , aesthetic rating , Canbii , Medical , Marijuana , Medical Marijuana');
-            $this->render('add');
+
+            if (isset($review['Strain'])) {
+                $this->set('title','Review: '. $review['Strain']['name']);
+                $this->set('description','Review for '.$review['Review']['review'].'. General rating, effects rating, aesthetic rating and other reviews for '.$review['Strain']['name']);
+                $this->set('keyword',$review['Strain']['name'].' , review , effect rating, general rating , aesthetic rating , Canbii , Medical , Marijuana , Medical Marijuana');
+                $this->render('add');
+            } else {
+                $this->Session->setFlash('This review does not exist','default',array('class'=>'bad'));
+            }
             //debug($review);
 
         }

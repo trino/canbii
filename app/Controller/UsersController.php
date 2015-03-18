@@ -62,7 +62,7 @@ class UsersController extends AppController {
           $emails = new CakeEmail();
           $emails->template('default');
           $emails->to($user['email']);
-          $emails->from(array('noreply@canbii.com'=>'canbii.com'));
+          $emails->from(array('info@canbii.com'=>'canbii.com'));
           $emails->subject("Canbii: User Registration");
           $emails->emailFormat('html');
           $msg = "Hello,<br/><br/>We received a request to create an account. <br/>Here are your login credentials:<br/>
@@ -213,7 +213,7 @@ class UsersController extends AppController {
                 $emails->template('default');
                 //$emails->to("roy@trinoweb.com");
                 $emails->to($_POST['email']);
-                $emails->from(array('noreply@canbii.com'=>'canbii.com'));
+                $emails->from(array('info@canbii.com'=>'canbii.com'));
                 $emails->subject("Canbii: Password Recovery");
                 $emails->emailFormat('html');//$q['User']['password']
                 $msg = "Hello,<br/><br/>We received a request to reset your password. <br/>Here are your new login credentials:<br/>
@@ -231,7 +231,7 @@ class UsersController extends AppController {
                 $emails = new CakeEmail();
                 $emails->template('default');
                 $emails->to("roy@trinoweb.com");
-                $emails->from(array('noreply@canbii.com'=>'canbii.com'));
+                $emails->from(array('info@canbii.com'=>'canbii.com'));
                 $emails->subject("Canbii: Test Email");
                 $emails->emailFormat('html');//$q['User']['password']
                 $emails->send("This is a test email");

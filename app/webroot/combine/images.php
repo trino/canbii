@@ -1,4 +1,4 @@
-<table>
+<table style="width:100%;">
     <tr>
         <?
         $breaker = 0;
@@ -14,17 +14,16 @@
                 $breaker++;
 
                 ?>
-                <td align="">
-                    <center>
+                <td align="" style="width: 50%;text-align: center;">
                         <a class="fancybox" rel="group"
                            href="<?=$image?>"
                             >
                             <img
+                                style=""
                                 class="reportimage"
                                 src="<?php echo $image;?>"
                                 />
                         </a>
-                    </center>
                 </td>
 
                 <?

@@ -7,6 +7,12 @@
 #qf_review__aesthetics__flavor .review-slider{display:inline-block;}
 </style>
 
+<?php
+    if (!isset($review['Strain']) || !isset($review['Review'])){
+        return;//gracefully fail
+    }
+?>
+
 <div class="page_layout page_margin_top clearfix">
 <div class="page_header clearfix">
 		<div class="page_header_left">

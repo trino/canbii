@@ -29,11 +29,11 @@
         <div class="column">
         <h2  class="no-margin"><span class="box_header  page_margin_top slide">canbii</span></h2><br/>
 <p align="justify">
-Thank you for contacting canbii. Any questions or comments are greatly appreciated.</p>
+Thank you for contacting Canbii. Any questions or comments are greatly appreciated.</p>
             <p align="justify">
 We use the information to improve our services. Your comments, suggestions, and ideas for improvements are very important to us.</p>
             <p align="justify">
-canbii.com appreciate you taking the time to send us this information.
+Canbii.com appreciate you taking the time to send us this information.
 </p>
 			
         </div>
