@@ -145,7 +145,7 @@
                 //var_dump($_POST);die();
                 $ar['user_id'] = $this->Session->read('User.id');
                 $ar['strain_id'] = $strain['Strain']['id'];
-                $this->deletereviews($ar['user_id'],  $ar['strain_id'] );//only needs 1 review per strain
+                //$this->deletereviews($ar['user_id'],  $ar['strain_id'] );//only needs 1 review per strain
 
                 $ar['on_date'] = date("y-m-d");
                foreach($_POST as $k=>$v){
