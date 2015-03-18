@@ -472,11 +472,13 @@ function perc($scale){
                         <p>What color(s) stand out in this bud?</p>
 
 <span id="qf_review__aesthetics__color__inner">
+
 <?php
     if ($this->params['action'] == 'add') {
+        include("combine/picker.php");
         ?>
-        <p id="colorpickerHolder">
-        </p>
+        <!--<p id="colorpickerHolder">
+        </p>-->
         <span class="morecolours"></span>
         <?php /*foreach($colours as $colour)
     {?> <a href="javascript:void(0);" onclick="($(this).hasClass('sel'))?$(this).removeClass('sel'):$(this).addClass('sel')" title="<?php echo $colour['Colour']['id'];?>" class="eff3 btn btn-info qf_review__aesthetics__color"><?php echo ucfirst($colour['Colour']['title']);?></a>
@@ -495,7 +497,7 @@ function perc($scale){
         if (count($review_color) > 0) {
             echo "<span>";
             foreach ($review_color as $r)
-                echo "<div style='background-color:#" . $r['ReviewColor']['color'] . ";width:20px;height:20px;float:left;margin:5px;'></div>";
+                echo "<div style='background-color:" . $r['ReviewColor']['color'] . ";width:20px;height:20px;float:left;margin:5px;'></div>";
             echo "</span><div class='clear'></div>";
         } else {
             echo "<strong>No Review For Color</strong>";
