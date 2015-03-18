@@ -169,18 +169,17 @@ function perc($scale){
             <img src="<?php echo $this->webroot ?>images/bg3.jpg"
                  style=" height: 100px;position: absolute;width: 330px;z-index: -1;"/>
 
-            <div style="padding:20px 30px;color:#FFF;text-align:center;padding-top:80px;position: relative;width: 100%;">
-                <!--h2>Dominant Flavors</h-->
+            <div style="color:#FFF;text-align:center;position: relative;width: 100%;">
+                <!--h2>Dominant Flavors</h--><table width="100%" align="center" height="100"><TR>
                 <?php
                     //$flavor = null;
                     if ($flavor) {
 
                         foreach ($flavor as $f) {
+                            $name=$this->requestAction('/strains/getFlavor/' . $f['FlavorRating']['flavor_id']); //class used to have this in it
                             ?>
-                            <a class="glow Flavor <?php echo $this->requestAction('/strains/getFlavor/' . $f['FlavorRating']['flavor_id']); ?>"
-                               href="javascrip:void(0)" style="position:relative;margin-right:5px;">
-                                <?php echo $this->requestAction('/strains/getFlavor/' . $f['FlavorRating']['flavor_id']); ?>
-                            </a>
+                           <TD style="padding-top: 0px;"> <a class="glow Flavor"
+                               href="javascrip:void(0)" style="position:relative;margin-right:5px;margin-top:0px;"><CENTER> <img width="55" src="<?= $this->webroot . "/images/icons/" . strtolower($name); ?>.png"></CENTER><CENTER><?= $name; ?></CENTER></a></TD>
                         <?php
                         }
                     } else {
@@ -188,7 +187,7 @@ function perc($scale){
                         No flavors yet.
                     <?php
                     }
-                ?>
+                ?></TR></table>
             </div>
 
         </li>

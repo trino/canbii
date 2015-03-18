@@ -3389,14 +3389,10 @@ ul#text_and_image li {
 
 a.Flavor:before {
     content:"";
-    display:block;
-    height:66px;
-    width:66px;
-    position:absolute;
-    left:0px;
-    top:-66px;
+    /*position:absolute;
+    left:-33px;
+    top:-66px;*/
     opacity:.5;
-
 }
 
 a.Strawberry:before {
@@ -3442,7 +3438,7 @@ a.Vanilla:before {
 }
 
 a.Sweet:before {
-    content: url('../../images/icons/sweet.png');
+    content: url('../images/icons/sweet.png');
 }
 
 a.Blueberry:before{
@@ -3515,7 +3511,7 @@ a.Skunk:before{
 }
 
 a.Blue:before{
-    content: url("../images/icons/bluecheese.png");
+    content: url("../images/icons/blue.png");
 }
 
 a.Cheese:before{
