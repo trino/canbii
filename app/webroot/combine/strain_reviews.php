@@ -48,8 +48,7 @@
 
                             </p>
                             <div class="posted_by">
-                                Reviewed by <a class="author"
-                                               href="<?php echo $this->webroot;?>strains/review/all?user=<?php echo $helpful['Review']['user_id'];?>"
+                                Reviewed by <a class="author" href="<?php echo $this->webroot;?>strains/review/all?user=<?php echo $helpful['Review']['user_id'];?>"
                                                title="<?php echo $this->requestAction('/strains/getUserName/' . $helpful['Review']['user_id']);?>"><?php echo $this->requestAction('/strains/getUserName/' . $helpful['Review']['user_id']);?></a>
                                 <?php if($helpful['Review']['on_date']!= "0000-00-00") {echo " on " . $helpful['Review']['on_date'];}?>
                             </div>

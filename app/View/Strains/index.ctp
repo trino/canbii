@@ -523,7 +523,7 @@ function perc($scale){
                     {
                         if($col['ReviewColor']['color']!=""){
                         ?>
-                         <p style="width: 5px; height: 10px;float:left;clear:none;background:#<?php echo $col['ReviewColor']['color'];?>;">&nbsp;</p>  
+                         <p style="width: 5px; height: 10px;float:left;clear:none;background:<?php echo $col['ReviewColor']['color'];?>;">&nbsp;</p>  
                     <?php
                         }
                     }            
