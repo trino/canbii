@@ -675,7 +675,7 @@ function perc($scale){
                 ?>
 
             <?php
-            } else {
+            } elseif($this->Session->read('User')['id'] <> $review['Review']['user_id']) {
                 ?>
                 <div class="clearfix"></div>
                 <div class="vote"
