@@ -173,11 +173,11 @@
         <!-- page right -->
 
         <div class="page_right" style="">
+            <input id="BUTTON_18" type="submit" value="Reset" class="more blue medium" style="float: right; width: 100%;">
+
+
             <ul>
-                <LI>
-                    <div class=" clearfix">
-                    <input id="BUTTON_18" type="submit" value="Reset" class="more blue medium" style="float: right; width: 100%;">
-                        <P></P></LI>
+
                 <li class="home_box light_blue animated_element animation-fadeIn duration-500" style="z-index: 3;">
                     <h2>
                         Filter by Effects
