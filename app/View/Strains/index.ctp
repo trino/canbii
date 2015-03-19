@@ -184,7 +184,7 @@ function perc($scale){
                         }
                     } else {
                         ?>
-                        No flavors yet.
+                        <TD><CENTER>No flavors yet.</CENTER></TD>
                     <?php
                     }
                 ?></TR></table>

@@ -1,6 +1,6 @@
 <link rel="stylesheet" type="text/css" href="<?php echo $this->webroot; ?>style2/fancybox/jquery.fancybox.css"/>
 <script type="text/javascript" src="<?php echo $this->webroot; ?>js2/jquery.fancybox-1.3.4.pack.js"></script>
-
+<h1><a id="v" class= "letter fancybox" data-fancybox-group="group" href="http://static.adzerk.net/Advertisers/831a088cf67e42c580e407e2d91c8ce6.jpg">V</a></h1>
 <table style="width:100%;">
     <tr>
 
@@ -35,6 +35,10 @@
                     echo "</tr><tr>";
                 }
             }
-        } ?>
+        }
+        if ($breaker==0){
+            echo "<P>No images</P>";
+        }
+        ?>
     </tr>
 </table>
