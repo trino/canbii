@@ -3387,499 +3387,170 @@ ul#text_and_image li {
     vertical-align : middle;
 }
 
-a.Strawberry:before {
+a.Flavor:before {
     content:"";
-    display:block;
-    content: url('../images/icons/strawberry.png');
-    height:15px;
-    width:15px;
-    position:absolute;
-    left:-20px;
-    top:0px;
+    /*position:absolute;
+    left:-33px;
+    top:-66px;*/
     opacity:.5;
+}
 
+a.Strawberry:before {
+    content: url('../images/icons/strawberry.png');
 }
 
 a.Grape:before {
-    content:"";
-    display:block;
     content: url('../images/icons/grape.png');
-    height:17px;
-    width:17px;
-    position:absolute;
-    left:-21px;
-    top:0px;
-    opacity:.7;
 }
 
 a.Coffee:before {
-    content:"";
-    display:block;
     content: url('../images/icons/coffee.png');
-    height:17px;
-    width:17px;
-    position:absolute;
-    left:-21px;
-    top:0px;
-    opacity:.7;
 }
 
 a.Diesel:before {
-    content:"";
-    display:block;
     content: url('../images/icons/diesel.png');
-    height:17px;
-    width:17px;
-    position:absolute;
-    left:-21px;
-    top:0px;
-    opacity:.7;
 }
 
 a.Citrus:before {
-    content:"";
-    display:block;
     content: url('../images/icons/citrus.png');
-    height:17px;
-    width:17px;
-    position:absolute;
-    left:-21px;
-    top:0px;
-    opacity:.7;
 }
 
 a.Flowery:before {
-    content:"";
-    display:block;
     content: url('../images/icons/flowery.png');
-    height:17px;
-    width:17px;
-    position:absolute;
-    left:-21px;
-    top:0px;
-    opacity:.7;
 }
 
 a.Pungent:before {
-    content:"";
-    display:block;
     content: url('../images/icons/pungent.png');
-    height:17px;
-    width:17px;
-    position:absolute;
-    left:-21px;
-    top:0px;
-    opacity:.7;
 }
 
 a.Tea:before {
-    content:"";
-    display:block;
     content: url('../images/icons/tea.png');
-    height:17px;
-    width:17px;
-    position:absolute;
-    left:-21px;
-    top:0px;
-    opacity:.7;
 }
-
+a.Herbal:before {
+    content: url('../images/icons/herbal.png');
+}
 a.Tobacco:before {
-    content:"";
-    display:block;
     content: url('../images/icons/tobacco.png');
-    height:17px;
-    width:17px;
-    position:absolute;
-    left:-21px;
-    top:0px;
-    opacity:.7;
 }
 
 a.Vanilla:before {
-    content:"";
-    display:block;
     content: url('../images/icons/vanilla.png');
-    height:17px;
-    width:17px;
-    position:absolute;
-    left:-21px;
-    top:0px;
-    opacity:.7;
 }
 
 a.Sweet:before {
-    content:"";
-    display:block;
-    content: url('../../images/icons/sweet.png');
-    height:17px;
-    width:17px;
-    position:absolute;
-    left:-20px;
-    top:0px;
-    opacity:.5;
+    content: url('../images/icons/sweet.png');
 }
 
 a.Blueberry:before{
-    content:"";
-    display:block;
     content: url("../images/icons/blueberry.png");
-    height:17px;
-    width:17px;
-    position:absolute;
-    left:-20px;
-    top:0px;
-    opacity:.5;
 }
 
 a.Orange:before{
-    content:"";
-    display:block;
     content: url("../images/icons/orange.png");
-    height:17px;
-    width:17px;
-    position:absolute;
-    left:-20px;
-    top:0px;
-    opacity:.5;
 }
 
 a.Lime:before{
-    content:"";
-    display:block;
     content: url("../images/icons/lime.png");
-    height:17px;
-    width:17px;
-    position:absolute;
-    left:-20px;
-    top:0px;
-    opacity:.5;
 }
 
 a.Grapefruit:before{
-    content:"";
-    display:block;
     content: url("../images/icons/grapefruit.png");
-    height:17px;
-    width:17px;
-    position:absolute;
-    left:-20px;
-    top:0px;
-    opacity:.5;
 }
 
 a.Lemon:before{
-    content:"";
-    display:block;
     content: url("../images/icons/lemon.png");
-    height:17px;
-    width:17px;
-    position:absolute;
-    left:-20px;
-    top:0px;
-    opacity:.5;
 }
 
 a.Pepper:before{
-    content:"";
-    display:block;
     content: url("../images/icons/pepper.png");
-    height:17px;
-    width:17px;
-    position:absolute;
-    left:-20px;
-    top:0px;
-    opacity:.5;
 }
 
 a.Pineapple:before{
-    content:"";
-    display:block;
     content: url("../images/icons/pineapple.png");
-    height:17px;
-    width:17px;
-    position:absolute;
-    left:-20px;
-    top:0px;
-    opacity:.5;
 }
 
 a.Mango:before{
-    content:"";
-    display:block;
     content: url("../images/icons/mango.png");
-    height:17px;
-    width:17px;
-    position:absolute;
-    left:-20px;
-    top:0px;
-    opacity:.5;
 }
 
 a.Apple:before{
-    content:"";
-    display:block;
     content: url("../images/icons/apple.png");
-    height:17px;
-    width:17px;
-    position:absolute;
-    left:-20px;
-    top:0px;
-    opacity:.5;
 }
 
 a.Pear:before{
-    content:"";
-    display:block;
     content: url("../images/icons/pear.png");
-    height:17px;
-    width:17px;
-    position:absolute;
-    left:-20px;
-    top:0px;
-    opacity:.5;
 }
 
 a.Peach:before{
-    content:"";
-    display:block;
     content: url("../images/icons/peach.png");
-    height:17px;
-    width:17px;
-    position:absolute;
-    left:-20px;
-    top:0px;
-    opacity:.5;
 }
 
 a.Apricot:before{
-    content:"";
-    display:block;
     content: url("../images/icons/apricot.png");
-    height:17px;
-    width:17px;
-    position:absolute;
-    left:-20px;
-    top:0px;
-    opacity:.5;
 }
 
 a.Plum:before{
-    content:"";
-    display:block;
     content: url("../images/icons/plum.png");
-    height:17px;
-    width:17px;
-    position:absolute;
-    left:-20px;
-    top:0px;
-    opacity:.5;
 }
 
 a.Lavender:before{
-    content:"";
-    display:block;
     content: url("../images/icons/lavender.png");
-    height:17px;
-    width:17px;
-    position:absolute;
-    left:-20px;
-    top:0px;
-    opacity:.5;
 }
 
 a.Rose:before{
-    content:"";
-    display:block;
     content: url("../images/icons/rose.png");
-    height:17px;
-    width:17px;
-    position:absolute;
-    left:-20px;
-    top:0px;
-    opacity:.5;
 }
 
 a.Violet:before{
-    content:"";
-    display:block;
     content: url("../images/icons/violet.png");
-    height:17px;
-    width:17px;
-    position:absolute;
-    left:-20px;
-    top:0px;
-    opacity:.5;
 }
 
 
 a.Skunk:before{
-    content:"";
-    display:block;
     content: url("../images/icons/skunk.png");
-    height:17px;
-    width:17px;
-    position:absolute;
-    left:-20px;
-    top:0px;
-    opacity:.5;
 }
 
 a.Blue:before{
-    content:"";
-    display:block;
-    content: url("../images/icons/bluecheese.png");
-    height:17px;
-    width:17px;
-    position:absolute;
-    left:-20px;
-    top:0px;
-    opacity:.5;
+    content: url("../images/icons/blue.png");
 }
 
 a.Cheese:before{
-    content:"";
-    display:block;
     content: url("../images/icons/cheese.png");
-    height:17px;
-    width:17px;
-    position:absolute;
-    left:-20px;
-    top:0px;
-    opacity:.5;
 }
 
 a.Butter:before{
-    content:"";
-    display:block;
     content: url("../images/icons/butter.png");
-    height:17px;
-    width:17px;
-    position:absolute;
-    left:-20px;
-    top:0px;
-    opacity:.5;
 }
 
 a.Pine:before{
-    content:"";
-    display:block;
     content: url("../images/icons/pine.png");
-    height:17px;
-    width:17px;
-    position:absolute;
-    left:-20px;
-    top:0px;
-    opacity:.5;
 }
 
 a.Earthy:before{
-    content:"";
-    display:block;
     content: url("../images/icons/earthy.png");
-    height:17px;
-    width:17px;
-    position:absolute;
-    left:-20px;
-    top:0px;
-    opacity:.5;
 }
 
 a.Honey:before{
-    content:"";
-    display:block;
     content: url("../images/icons/honey.png");
-    height:17px;
-    width:17px;
-    position:absolute;
-    left:-20px;
-    top:0px;
-    opacity:.5;
 }
 
 a.Chestnut:before{
-    content:"";
-    display:block;
     content: url("../images/icons/chestnut.png");
-    height:17px;
-    width:17px;
-    position:absolute;
-    left:-20px;
-    top:0px;
-    opacity:.5;
 }
+
 a.Chemical:before{
-    content:"";
-    display:block;
     content: url("../images/icons/chemical.png");
-    height:17px;
-    width:17px;
-    position:absolute;
-    left:-20px;
-    top:0px;
-    opacity:.5;
 }
+
 a.Ammonia:before{
-    content:"";
-    display:block;
     content: url("../images/icons/ammonia.png");
-    height:17px;
-    width:17px;
-    position:absolute;
-    left:-20px;
-    top:0px;
-    opacity:.5;
 }
+
 a.Menthol:before{
-    content:"";
-    display:block;
     content: url("../images/icons/menthol.png");
-    height:17px;
-    width:17px;
-    position:absolute;
-    left:-20px;
-    top:0px;
-    opacity:.5;
 }
-a.Strawberry:hover:before{opacity:1;transform: rotate(30deg) scale(1.1);}
-a.Sweet:hover:before{opacity:1;transform: rotate(30deg) scale(1.1);}
-a.Blueberry:hover:before{opacity:1;transform: rotate(30deg) scale(1.1);}
-a.Grape:hover:before{opacity:1;transform: rotate(30deg) scale(1.1);}
-a.Orange:hover:before{opacity:1;transform: rotate(30deg) scale(1.1);}
-a.Lime:hover:before{opacity:1;transform: rotate(30deg) scale(1.1);}
-a.Grapefruit:hover:before{opacity:1;transform: rotate(30deg) scale(1.1);}
-a.Lemon:hover:before{opacity:1;transform: rotate(30deg) scale(1.1);}
-a.Pineapple:hover:before{opacity:1;transform: rotate(30deg) scale(1.1);}
-a.Mango:hover:before{opacity:1;transform: rotate(30deg) scale(1.1);}
-a.Apple:hover:before{opacity:1;transform: rotate(30deg) scale(1.1);}
-a.Pear:hover:before{opacity:1;transform: rotate(30deg) scale(1.1);}
-a.Pepper:hover:before{opacity:1;transform: rotate(30deg) scale(1.1);}
-a.Peach:hover:before{opacity:1;transform: rotate(30deg) scale(1.1);}
-a.Apricot:hover:before{opacity:1;transform: rotate(30deg) scale(1.1);}
-a.Plum:hover:before{opacity:1;transform: rotate(30deg) scale(1.1);}
-a.Lavender:hover:before{opacity:1;transform: rotate(30deg) scale(1.1);}
-a.Rose:hover:before{opacity:1;transform: rotate(30deg) scale(1.1);}
-a.Violet:hover:before{opacity:1;transform: rotate(30deg) scale(1.1);}
-a.Honey:hover:before{opacity:1;transform: rotate(30deg) scale(1.1);}
-a.Earthy:hover:before{opacity:1;transform: rotate(30deg) scale(1.1);}
-a.Skunk:hover:before{opacity:1;transform: rotate(30deg) scale(1.1);}
-a.Blue:hover:before{opacity:1;transform: rotate(30deg) scale(1.1);}
-a.Cheese:hover:before{opacity:1;transform: rotate(30deg) scale(1.1);}
-a.Pine:hover:before{opacity:1;transform: rotate(30deg) scale(1.1);}
 
-a.Coffee:hover:before{opacity:1;transform: rotate(30deg) scale(1.1);}
-a.Diesel:hover:before{opacity:1;transform: rotate(30deg) scale(1.1);}
-a.Citrus:hover:before{opacity:1;transform: rotate(30deg) scale(1.1);}
-a.Flowery:hover:before{opacity:1;transform: rotate(30deg) scale(1.1);}
-a.Pungent:hover:before{opacity:1;transform: rotate(30deg) scale(1.1);}
-a.Tea:hover:before{opacity:1;transform: rotate(30deg) scale(1.1);}
-a.Tobacco:hover:before{opacity:1;transform: rotate(30deg) scale(1.1);}
-a.Vanilla:hover:before{opacity:1;transform: rotate(30deg) scale(1.1);}
-
-a.Chestnut:hover:before{opacity:1;transform: rotate(30deg) scale(1.1);}
-a.Chemical:hover:before{opacity:1;transform: rotate(30deg) scale(1.1);}
-a.Ammonia:hover:before{opacity:1;transform: rotate(30deg) scale(1.1);}
-a.Menthol:hover:before{opacity:1;transform: rotate(30deg) scale(1.1);}
+a.Flavor:hover:before{opacity:1;}/*transform: rotate(30deg) scale(1.1); */
 
 .footer_banner_box a:hover {
     text-decoration: none;

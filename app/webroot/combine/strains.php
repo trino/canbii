@@ -24,14 +24,14 @@
 
 </div>
 
-<p style="clear:both;" align="justify">
-Sativa plants grow tall and thin. sativa plants are better suited for outdoor growing because some strains can reach over 25 ft. in height. Sativa smoking is known for its energetic and uplifting feeling. This type of strain has great medecal benefit as well as treatment to certain illness.
+<p style="clear:both;" align="">
+    Indica dominant strains tend to have a sweet or sour odor to the buds (ex. Purple Kush, OG Kush) providing a very relaxing and strong body high that is helpful in treating general anxiety, body pain, and sleeping disorders. Because of these properties indica is best suited for night time use.
 </p><br>
 <a title="Browse Strains" href="<?php echo $this->webroot;?>strains/all/indica" class="more">
 Browse Strains →
 </a>
 
-			
+
 </li>
 <li class="column" style="">
 
@@ -42,8 +42,8 @@ Browse Strains →
 <h1>Sativa</h1>
 <p>Day Time Use</p>
 </div>
-<p style="clear:both;" align="justify">
-Sativa plants grow tall and thin. sativa plants are better suited for outdoor growing because some strains can reach over 25 ft. in height. Sativa smoking is known for its energetic and uplifting feeling. This type of strain has great medecal benefit as well as treatment to certain illness.
+<p style="clear:both;" align="">
+    Sativa dominant strains tend to have a  more grassy type odor providing an uplifting, energetic and 'cerebral' high that is best suited for daytime smoking. A sativa high is one filled with creativity and energy as being high on sativa can spark new ideas and creations.
 </p><br>
 <a title="Browse Strains" href="<?php echo $this->webroot;?>strains/all/sativa" class="more">
 Browse Strains →
@@ -59,8 +59,8 @@ Browse Strains →
 <h1>Hybrid</h1>
 <p>Best of Both Worlds</p>
 </div>
-<p style="clear:both;" align="justify">
-Sativa plants grow tall and thin. sativa plants are better suited for outdoor growing because some strains can reach over 25 ft. in height. Sativa smoking is known for its energetic and uplifting feeling. This type of strain has great medecal benefit as well as treatment to certain illness.
+<p style="clear:both;" align="">
+    Sativa and Indica are the two major types of cannabis plants which can mix together to create hybrid strains. Marijuana strains range from pure sativas to pure indicas and hybrid strains consisting of a mixture of both. The beauty of Hybrid cannabis strains is that you get the best properties of both strains.
 </p><br>
 <a title="Browse Strains" href="<?php echo $this->webroot;?>strains/all/hybrid" class="more">
 Browse Strains →

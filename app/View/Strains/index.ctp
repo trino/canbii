@@ -169,20 +169,17 @@ function perc($scale){
             <img src="<?php echo $this->webroot ?>images/bg3.jpg"
                  style=" height: 100px;position: absolute;width: 330px;z-index: -1;"/>
 
-            <div style="padding:20px 30px;color:#FFF;text-align:center;">
-                <h2>Dominant Flavors</h2>
+            <div style="color:#FFF;text-align:center;position: relative;width: 100%;">
+                <!--h2>Dominant Flavors</h--><table width="100%" align="center" height="100"><TR>
                 <?php
                     //$flavor = null;
                     if ($flavor) {
 
                         foreach ($flavor as $f) {
+                            $name=$this->requestAction('/strains/getFlavor/' . $f['FlavorRating']['flavor_id']); //class used to have this in it
                             ?>
-
-
-                            <a class="glow <?php echo $this->requestAction('/strains/getFlavor/' . $f['FlavorRating']['flavor_id']); ?>"
-                               href="javascrip:void(0)" style="position:relative;margin-right:5px;">
-                                <?php echo $this->requestAction('/strains/getFlavor/' . $f['FlavorRating']['flavor_id']); ?>
-                            </a>
+                           <TD style="padding-top: 0px;"> <a class="glow Flavor"
+                               href="javascrip:void(0)" style="position:relative;margin-right:5px;margin-top:0px;"><CENTER> <img width="55" src="<?= $this->webroot . "/images/icons/" . strtolower($name); ?>.png"></CENTER><CENTER><?= $name; ?></CENTER></a></TD>
                         <?php
                         }
                     } else {
@@ -190,7 +187,7 @@ function perc($scale){
                         No flavors yet.
                     <?php
                     }
-                ?>
+                ?></TR></table>
             </div>
 
         </li>
@@ -513,37 +510,42 @@ function perc($scale){
 
         </li>
     </ul>
-    <ul class="columns full_width page_margin_top clearfix">
-        <li class="column_left">
-            <div class="">
-                <h2>Colour</h2>
-                <?php 
-                    $c = $this->requestAction('/strains/getcolors/'.$strain['Strain']['id']);
-                    foreach($c as $col)
-                    {
-                        if($col['ReviewColor']['color']!=""){
-                        ?>
-                         <p style="width: 5px; height: 10px;float:left;clear:none;background:<?php echo $col['ReviewColor']['color'];?>;">&nbsp;</p>  
-                    <?php
-                        }
-                    }            
-                ?>
-                <div class="clearfix"></div>
-            </div>
-        </li>
-    </ul>
+
 
     <div class="clearfix page_margin_top" style="border-bottom: 1px solid #dadada;"></div>
+
+
+
+
 
 
     <ul class="columns full_width page_margin_top clearfix " >
 
 
-
         <li class="column_left">
 
 
-            <h2 class="box_header slide clearfix" style="">Most Helpful User Review</h2>
+            <h2 class="box_header slide clearfix" style="">Dominant Color(s)</h2>
+<div style="width:50%;margin:0 auto;" class="print printer">
+                <?php
+                    $c = $this->requestAction('/strains/getcolors/'.$strain['Strain']['id']);
+                    foreach($c as $col)
+                    {
+                        if($col['ReviewColor']['color']!=""){
+                           // echo $col['ReviewColor']['color'];
+                            ?>
+                            <div class="print printer" style="  display: inline-block;
+                                float:left;width: 25px; height: 25px;padding:0;margin:0;clear:none;background:<?php echo $col['ReviewColor']['color'];?>;">&nbsp;</div>
+                        <?php
+                        }
+                    }
+                ?>
+</div>
+                <div class="clearfix"></div>
+
+
+
+            <h2 class="box_header slide clearfix page_margin_top_section" style="">Most Helpful User Review</h2>
 
 
             <?php include_once('combine/strain_reviews.php'); ?>
