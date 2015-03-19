@@ -38,7 +38,7 @@ if($review)
                 <script>
                 $(function(){
 
-                $('.frate<?php echo $j;?>').raty({readOnly:true,score:<?php echo $r['Review']['rate']/2;?>});
+                $('.frate<?php echo $k;?>').raty({readOnly:true,score:<?php echo $r['Review']['rate'];?>});
 
                 });
                 </script>

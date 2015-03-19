@@ -42,7 +42,11 @@
     <link rel="icon" href="<?php echo $this->webroot; ?>favicon.ico" type="image/x-icon"/>
 
     <link rel="stylesheet" href="<?php echo $this->webroot; ?>css/ui.css"/>
+    <link rel="stylesheet" type="text/css" href="<?php echo $this->webroot; ?>style2/fancybox/jquery.fancybox.css"/>
     <script type="text/javascript" src="<?php echo $this->webroot; ?>js2/jquery-1.11.0.min.js"></script>
+    
+
+    
 
 
     <script src="<?php echo $this->webroot; ?>js/validate.js"></script>
@@ -79,6 +83,7 @@
 
     <script type="text/javascript" src="<?php echo $this->webroot; ?>js2/jquery.qtip.min.js"></script>
     <script type="text/javascript" src="<?php echo $this->webroot; ?>js2/jquery.blockUI.js"></script>
+    <script type="text/javascript" src="<?php echo $this->webroot; ?>js2/jquery.fancybox-1.3.4.pack.js"></script>
     <!--script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script-->
     <!--script type="text/javascript" src="<!php echo $this->webroot;?>js2/main.js"></script-->
 
@@ -233,7 +238,7 @@
                     }
 */
 
-                    function highlighteff2(thiss, order=null) {
+                    function highlighteff2(thiss, order) {
 
                         if (thiss != 'recent' && thiss != 'rated' && thiss != 'alpha' && thiss != 'viewed' && thiss != 'reviewed') {
                             var sort = 0;

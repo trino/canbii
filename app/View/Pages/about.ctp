@@ -95,13 +95,14 @@ for their hybrids like Pineapple Express, Bubba Kush, and Blue Dream to name a f
     There are 3 strain categories which are Indica, Sativa, and Hybrid. Each with different effects and medical properties.
     <br><br>
     Indica:
-    The smoking of Indica bud will make you sleepy and provides a deep relaxation feeling It's best suited for night time use. This type of strain has great medecal benefit as well as treatment to certain illness. The effects of Indica are drowsiness and it provides a deep relaxation sensation. Indica plants typically grow short and wide. Indica plants are better suited for indoor growing because of their short growth.
+
+   Indica dominant strains tend to have a sweet or sour odor to the buds (ex. Purple Kush, OG Kush) providing a very relaxing and strong body high that is helpful in treating general anxiety, body pain, and sleeping disorders. Because of these properties indica is best suited for night time use.
     <br><br>
     Sativa:
-    Sativa smoking is known for its energetic and uplifting feeling. it's best suited for day time use. This type of strain has great medecal benefit as well as treatment to certain illness. Sativa is known for it's energetic and uplifting properties. Sativa plants grow tall and thin. sativa plants are better suited for outdoor growing because some strains can reach over 25 ft. in height.
+   Sativa dominant strains tend to have a  more grassy type odor providing an uplifting, energetic and 'cerebral' high that is best suited for daytime smoking. A sativa high is one filled with creativity and energy as being high on sativa can spark new ideas and creations.
     <br><br>
     Hybrid:
-    Sativa and Indica are the two major types of cannabis plants which can mix together to create hybrid strains. Marijuana strains range from pure sativas to pure indicas and hybrid strains consisting of both indica and sativa. Mixing both Indica and Sativa strains have created Hybrid strains. The beauty of Hybrid cannabis strains is that you get the best properties of both strains.
+    Sativa and Indica are the two major types of cannabis plants which can mix together to create hybrid strains. Marijuana strains range from pure sativas to pure indicas and hybrid strains consisting of a mixture of both. The beauty of Hybrid cannabis strains is that you get the best properties of both strains.
     <br><br><HR><br>
     How do I choose which variety is right for me?
     <br><br>

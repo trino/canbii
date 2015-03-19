@@ -4,7 +4,7 @@
 <link href="<?php echo $this->webroot; ?>css/layout.css" rel="stylesheet" type="text/css" title="progress bar"/>
 <script src="<?php echo $this->webroot; ?>js/bootstrap.min.js"></script>
 
-<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+
 <script src="<?php echo $this->webroot; ?>js/html2canvas.js"></script>
 <script type="text/javascript" src="<?php echo $this->webroot; ?>js/jquery.plugin.html2canvas.js"></script>
 
@@ -510,37 +510,42 @@ function perc($scale){
 
         </li>
     </ul>
-    <ul class="columns full_width page_margin_top clearfix">
-        <li class="column_left">
-            <div class="">
-                <h2>Colour</h2>
-                <?php 
-                    $c = $this->requestAction('/strains/getcolors/'.$strain['Strain']['id']);
-                    foreach($c as $col)
-                    {
-                        if($col['ReviewColor']['color']!=""){
-                        ?>
-                         <p style="width: 5px; height: 10px;float:left;clear:none;background:<?php echo $col['ReviewColor']['color'];?>;">&nbsp;</p>  
-                    <?php
-                        }
-                    }            
-                ?>
-                <div class="clearfix"></div>
-            </div>
-        </li>
-    </ul>
+
 
     <div class="clearfix page_margin_top" style="border-bottom: 1px solid #dadada;"></div>
+
+
+
+
 
 
     <ul class="columns full_width page_margin_top clearfix " >
 
 
-
         <li class="column_left">
 
 
-            <h2 class="box_header slide clearfix" style="">Most Helpful User Review</h2>
+            <h2 class="box_header slide clearfix" style="">Dominant Color(s)</h2>
+<div style="width:50%;margin:0 auto;" class="print printer">
+                <?php
+                    $c = $this->requestAction('/strains/getcolors/'.$strain['Strain']['id']);
+                    foreach($c as $col)
+                    {
+                        if($col['ReviewColor']['color']!=""){
+                           // echo $col['ReviewColor']['color'];
+                            ?>
+                            <div class="print printer" style="  display: inline-block;
+                                float:left;width: 25px; height: 25px;padding:0;margin:0;clear:none;background:<?php echo $col['ReviewColor']['color'];?>;">&nbsp;</div>
+                        <?php
+                        }
+                    }
+                ?>
+</div>
+                <div class="clearfix"></div>
+
+
+
+            <h2 class="box_header slide clearfix page_margin_top_section" style="">Most Helpful User Review</h2>
 
 
             <?php include_once('combine/strain_reviews.php'); ?>
