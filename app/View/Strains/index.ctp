@@ -4,7 +4,7 @@
 <link href="<?php echo $this->webroot; ?>css/layout.css" rel="stylesheet" type="text/css" title="progress bar"/>
 <script src="<?php echo $this->webroot; ?>js/bootstrap.min.js"></script>
 
-<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+
 <script src="<?php echo $this->webroot; ?>js/html2canvas.js"></script>
 <script type="text/javascript" src="<?php echo $this->webroot; ?>js/jquery.plugin.html2canvas.js"></script>
 

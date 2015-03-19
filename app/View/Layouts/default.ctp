@@ -233,7 +233,7 @@
                     }
 */
 
-                    function highlighteff2(thiss, order=null) {
+                    function highlighteff2(thiss, order) {
 
                         if (thiss != 'recent' && thiss != 'rated' && thiss != 'alpha' && thiss != 'viewed' && thiss != 'reviewed') {
                             var sort = 0;
