@@ -105,7 +105,8 @@
 
 
 <div class="site_container">
-
+	
+			<input type="hidden" id="canbii_userID" value="<?php echo $this->Session->read("User.id"); ?>" />
     <div class="header_container">
         <div class="header clearfix">
             <div class="header_left">
