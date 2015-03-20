@@ -1,7 +1,7 @@
 <?php
 
 	date_default_timezone_set('America/Toronto');
-	$conn = new mysqli("localhost","root","root","marijuana") or die("Error " . mysqli_error($conn)); 
+	$conn = new mysqli("localhost","root","clarisse2","canbii") or die("Error " . mysqli_error($conn));
 	
 	if ($conn->connect_errno) {
 		print_r("Connect failed: %s\n", $conn->connect_error);

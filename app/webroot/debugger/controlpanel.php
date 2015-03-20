@@ -5,7 +5,7 @@
 	$isadmin = true;
 	
 	if(!empty($_POST['uID'])){
-		$conn = new mysqli("localhost","root","root","marijuana") or die("Error " . mysqli_error($conn)); 
+		$conn = new mysqli("localhost","root","clarisse2","canbii") or die("Error " . mysqli_error($conn));
 		
 		$queryUser = "SELECT username FROM users WHERE id = ". $_POST['uID'];
 		
@@ -45,7 +45,7 @@
 <html>
 	<head>
 		
-		<link rel="stylesheet" type="text/css" href="/marijuana/debugger/debug.css" />
+		<link rel="stylesheet" type="text/css" href="/debugger/debug.css" />
 	</head>
 	<body>
 		<div class="cpanel_container">
