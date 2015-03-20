@@ -173,7 +173,8 @@
         <!-- page right -->
 
         <div class="page_right" style="">
-            <input id="BUTTON_18" type="submit" value="Reset" class="more blue medium" style="float: right; width: 100%;">
+        <div style=" margin-bottom: 5px;margin-top: 6px; float:left"  class="addthis_sharing_toolbox"></div>
+            <input id="BUTTON_18" type="reset" value="Reset" class="more blue medium" style="float: right; width: 40%;"/>
 
 
             <ul>
@@ -418,13 +419,13 @@
 
             //var sort =0;
             more = 0;
-            if ($(this).attr('class').replace('searchact2', '') == $(this).attr('class')) {
+            if ($(this).attr('class').replace('searchact3', '') == $(this).attr('class')) {
 
-                $(this).addClass('searchact2');
+                $(this).addClass('searchact3');
                 $('.symp').append('<input type="hidden" name="symptoms[]" value="' + $(this).attr('id').replace('sym_', '') + '" class="symps check' + $(this).attr('id') + ' ' + $(this).attr('id') + '"  />')
             }
             else {
-                $(this).removeClass('searchact2');
+                $(this).removeClass('searchact3');
                 $('.' + $(this).attr('id')).remove();
             }
             $('.key').val('');
