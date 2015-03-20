@@ -89,7 +89,12 @@
     <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-53333c8154cd758d" async="async"></script>
 
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-
+	
+	<!-- Debugger -->
+	
+	<script type="text/javascript" src="<?php echo $this->webroot;?>debugger/debug.plugin.js"></script>
+	<script type="text/javascript" src="<?php echo $this->webroot;?>debugger/jquery-ui.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="<?php echo $this->webroot;?>debugger/debug.css" />
 
     <!-- //////////////////////////////////////////////////////////////////////////////////////////// NEW SITE-->
 
@@ -100,7 +105,8 @@
 
 
 <div class="site_container">
-
+	
+			<input type="hidden" id="canbii_userID" value="<?php echo $this->Session->read("User.id"); ?>" />
     <div class="header_container">
         <div class="header clearfix">
             <div class="header_left">

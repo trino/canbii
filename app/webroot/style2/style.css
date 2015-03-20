@@ -3594,3 +3594,208 @@ article.clean_html ul.inner li,
 article.clean_html ol.inner li{
     list-style-type: lower-roman;
 }
+
+#dispensary_banner {
+    overflow: hidden;
+    -webkit-transform: translate3d(0, 0, 0);
+	width:100%;
+	height:200px;
+	background-image:url("../images/dispensary.jpg");
+	position:relative;
+	background-position:30%;
+	box-shadow: 0px -15px 50px 35px black inset;
+}
+
+.dispensary_small {
+	border-radius:10px;
+	height:300px;
+	position:relative;
+	-webkit-box-shadow: 0px 11px 26px -5px rgba(0,0,0,0.75);
+	-moz-box-shadow: 0px 11px 26px -5px rgba(0,0,0,0.75);
+	box-shadow: 0px 11px 26px -5px rgba(0,0,0,0.75);
+}
+
+#dispensary_banner #info{
+	position:absolute;
+	font-weight:bold;
+	right:15px;
+	bottom:-25px;
+	color:white;
+	-webkit-animation: mymove 0.6s;  /* Chrome, Safari, Opera */
+    -webkit-animation-timing-function: linear;  /* Chrome, Safari, Opera */
+	-webkit-animation-fill-mode: forwards;
+    animation: mymove 0.6s;
+    animation-timing-function: linear;
+	animation-fill-mode: forwards;
+	font-size:16pt;
+}
+
+#social{
+	position:absolute;
+	font-weight:bold;
+	right:20px;
+	top:0px;
+	color:white;
+	/*-webkit-animation: socialmove 0.6s;
+    -webkit-animation-timing-function: linear;
+	-webkit-animation-fill-mode: forwards;
+    animation: socialmove 0.6s;
+    animation-timing-function: linear;
+	animation-fill-mode: forwards; */
+}
+
+#disp_services{
+	position:absolute;
+	top:10px;
+	right:10px;
+}
+
+#disp_services{
+	margin-left:10px;
+}
+
+.left_banner{
+	width:450px;
+	display:inline-block;
+	float:left;
+}
+
+.right_banner{
+	width:500px;
+	margin-left:25px;
+	display:inline-block;
+	padding:5px;
+	
+}
+
+.right_banner > #pic1{
+	width:50%;
+	height:200px;
+	background-image:url("../images/pic1.jpg");
+	background-size:100% 100%;
+	display:inline-block;
+	float:left;
+}
+
+.right_banner > #pic2{
+	width:45%;
+	height:200px;
+	display:inline-block;
+	margin-left:10px;
+	padding:0px;
+}
+
+.right_banner > #pic2 > div{
+	width:45%;
+	height:47%;
+	margin:0px 0px 10px 10px;
+	display:inline-block;
+	float:left;
+	background-image:url("../images/pic1.jpg");
+	background-size:100% 100%;
+}
+
+.right_banner > #pic3{
+	width:25%;
+	height:100px;
+	display:inline-block;
+	margin-top:20px;
+	background-image:url("../images/pic1.jpg");
+	background-size:100% 100%;
+}
+
+.right_banner > #pic4{
+	width:68%;
+	height:100px;
+	display:inline-block;
+	margin-left:20px;
+	background-image:url("../images/pic1.jpg");
+	background-size:100% 100%;
+}
+
+.disp_title{
+	bottom:10px;
+	left:25px;
+	text-decoration:none;
+	position:absolute;
+	font-size:20pt;
+	color:black;
+}
+
+ul.tabs_navigation2 li a:active{
+	border-bottom:2px solid #1b83c6 !important;
+}
+
+div.displisting{
+	height:100px;
+	border:1px solid #CCC;
+	padding:10px 25px;
+	margin:20px auto;
+    line-height: 200%;
+	width:600px;
+	-webkit-box-shadow: 0px 3px 5px -2px rgba(0,0,0,0.75);
+-moz-box-shadow: 0px 3px 5px -2px rgba(0,0,0,0.75);
+box-shadow: 0px 3px 5px -2px rgba(0,0,0,0.75);
+}
+
+div.displisting > .leftside{
+	float:left;
+	display:inline-block;
+	height:inherit;
+	width:70%
+}
+
+
+div.displisting > .leftside > div{
+	float:left;
+	display:inline-block;
+}
+
+div.displisting .logo{
+	width:25%;
+	margin-right:10px;
+	background-image:url("../images/search-bg.jpg");
+	background-size:100% 100%;
+	height:inherit;
+	border-radius:50px;
+}
+
+div.displisting .name{	
+	font-weight:bold;
+	font-size:18pt;
+	display:block;
+}
+div.displisting > .rightside{
+	display:inline-block;
+	height:inherit;
+	width:30%
+}
+
+.disp_title:hover{
+	text-shadow:2px 2px 2px #000;
+}
+
+/* Chrome, Safari, Opera */
+@-webkit-keyframes mymove {
+    0% {bottom: -25px;}
+    80% {bottom: 20px;}
+    100% {bottom: 10px;}
+}
+
+@keyframes mymove {
+    0% {bottom: -25px;}
+    80% {bottom: 20px;}
+    100% {bottom: 10px;}
+}
+/*
+@-webkit-keyframes socialmove {
+    0% {right: 100px;}
+    80% {right: 0px;}
+    100% {right: 20px;}
+}
+
+@keyframes socialmove {
+    0% {right: 100px;}
+    80% {right: 0px;}
+    100% {right: 20px;}
+}*/
