@@ -5,7 +5,7 @@
 	$isadmin = true;
 	
 	if(!empty($_POST['uID'])){
-		$conn = new mysqli("localhost","root","clarisse2","canbii") or die("Error " . mysqli_error($conn));
+		$conn = new mysqli("localhost","root","","canbii") or die("Error " . mysqli_error($conn));
 		
 		$queryUser = "SELECT username FROM users WHERE id = ". $_POST['uID'];
 		
@@ -33,9 +33,9 @@
 			
 			while($bug = $rsBugs->fetch_array()){
 				$bug_date = date("Y-m-d",strtotime($bug['dateModified']));
-				
+
 				$bugs[$bug_date][$bug['id']] = $bug;
-				$bugs[$bug_date][$bug['id']]['bugDate'] = $bug['dateModified'];	
+				$bugs[$bug_date][$bug['id']]['bugDate'] = $bug['dateModified'];
 			}
 			//die(var_dump($bugs));
 		}
