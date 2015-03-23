@@ -16,6 +16,9 @@
 	z-index:9999;
 }
 
+#c_panelbutton:hover{
+	cursor:pointer;
+}
 .cpanel_container{
 	width:1000px;
 	margin:15px auto;

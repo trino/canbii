@@ -5,11 +5,12 @@
 	$isadmin = true;
 	
 	if(!empty($_POST['uID'])){
-		$conn = new mysqli("localhost","root","root","marijuana") or die("Error " . mysqli_error($conn)); 
+		// Change this connection with your credentials (server,db,user,password)
+		$conn = new mysqli("localhost","root","root","canbii") or die("Error " . mysqli_error($conn)); 
 		
 		$queryUser = "SELECT username FROM users WHERE id = ". $_POST['uID'];
 		
-		$queryDateGrp = "SELECT COUNT(*) as cnt, DATE(dateModified) as dateMod FROM bug_list WHERE userID = '". $_POST['uID'] ."' GROUP BY DATE(dateModified) DESC";
+		$queryDateGrp = "SELECT COUNT(*) as cnt, DATE(dateModified) as dateMod FROM bug_list";
 		
 		$rsDateGrp = $conn->query($queryDateGrp);
 		
@@ -21,12 +22,13 @@
 			$item = $rsCheck->fetch_array();
 			
 			
-			
-			if($item['username'] !== "admin"){
+			// Check if admin (Change username to admin user name or use user type column)
+			if($item['username'] !== "admin@trinoweb.com"){
 				$querySel .= " WHERE userID = ". $_POST['uID'];
+				$queryDateGrp =" WHERE userID = '". $_POST['uID'] ."'";
 				$isadmin = false;
 			}
-			
+			$queryDateGrp .=  " GROUP BY DATE(dateModified) DESC";
 			$querySel .= " ORDER BY dateCreated DESC";
 			
 			$rsBugs = $conn->query($querySel);
@@ -45,7 +47,7 @@
 <html>
 	<head>
 		
-		<link rel="stylesheet" type="text/css" href="/marijuana/debugger/debug.css" />
+		<link rel="stylesheet" type="text/css" href="/canbii/debugger/debug.css" />
 	</head>
 	<body>
 		<div class="cpanel_container">

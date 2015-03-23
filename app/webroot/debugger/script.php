@@ -1,7 +1,8 @@
 <?php
 
 	date_default_timezone_set('America/Toronto');
-	$conn = new mysqli("localhost","root","root","marijuana") or die("Error " . mysqli_error($conn)); 
+		// Change this connection with your credentials (server,db,user,password)
+	$conn = new mysqli("localhost","root","root","canbii") or die("Error " . mysqli_error($conn)); 
 	
 	if ($conn->connect_errno) {
 		print_r("Connect failed: %s\n", $conn->connect_error);
@@ -62,7 +63,7 @@ PRIMARY KEY (id)
 			
 		break;
 		case "getBugsByURL":
-			$queryUser = "SELECT username FROM users WHERE userID = '". $_POST['userID'] ."'";
+			$queryUser = "SELECT username FROM users WHERE id = '". $_POST['userID'] ."'";
 			
 			$querySel = "SELECT * FROM bug_list WHERE userID = '". $_POST['userID'] ."' AND url = '".trim($_POST['url'],"#")."'";
 			
@@ -73,12 +74,12 @@ PRIMARY KEY (id)
 			if($rsUser !== false){
 				$user = $rsUser->fetch_array();
 				
-				if($user['username'] == "admin"){
+			// Check if admin (Change username to admin user name or use user type column)
+				if($user['username'] == "admin@trinoweb.com"){
 					
 					$querySel = "SELECT * FROM bug_list WHERE url = '".trim($_POST['url'],"#")."'";
 				}
 			}
-			
 			$rs = $conn->query($querySel);
 			
 			if($rs !== false){
