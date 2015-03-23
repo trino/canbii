@@ -110,8 +110,7 @@ function perc($scale){
     </div>
 
     <!--php include('combine/profile_filter.php'); ?-->
-    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-53333c8154cd758d"
-            async="async"></script>
+  
 
     <div class="toprint ">
         <ul id="" class="clearfix">
@@ -732,7 +731,7 @@ function perc($scale){
                 //document.getElementById("myForm").submit();
          //   }
         //});
-    //}
+    }
 </script>
 <script>
     $(function () {

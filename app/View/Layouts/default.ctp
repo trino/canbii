@@ -86,7 +86,7 @@
     <script type="text/javascript" src="<?php echo $this->webroot; ?>js2/jquery.fancybox-1.3.4.pack.js"></script>
     <!--script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script-->
     <!--script type="text/javascript" src="<!php echo $this->webroot;?>js2/main.js"></script-->
-
+    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-53333c8154cd758d" async="async"></script>
 
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 	
