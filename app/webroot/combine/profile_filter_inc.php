@@ -242,7 +242,7 @@ if($this->params['action']!='dashboard' && !$this->Session->read('User')){
    <label style="display: block!important;">Years of Experience</label>
    <select  name="years_of_experience"  style="width: 100%;">
         <option value="">Select Years of Experience</option>
-   <?php for($i = 1; $i<=50; $i++)
+   <?php for($i = 0; $i<=50; $i++)
    {
 		if($i ==$exp)
 		$sel = "selected='selected'";

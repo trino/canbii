@@ -56,7 +56,7 @@
 }
 
 .commentbox  > .close{
-	background-image:url("close_button.jpg");
+	background-image:url("close_button.png");
 	top:5px;
 	right:5px;
 	position:absolute; 
@@ -78,7 +78,7 @@
 }
 
 #prompt_msg  > .close{
-	background-image:url("close_button.jpg");
+	background-image:url("close_button.png");
 	top:5px;
 	right:5px;
 	position:absolute; 
@@ -99,7 +99,9 @@
   background-image: linear-gradient(to bottom, #215d85, #2980b9);
   border-radius: 5px;
   position:absolute;
-  left:10px;
+  left:150px;
+    width: 40px;
+    height: 25px;
   bottom:10px;
   color: #000000;
   font-size: 12px;
@@ -178,7 +180,9 @@
 	top:25px;
 	left:10px;
 	position:absolute;
-	width:180px !important;
+	width:177px !important;
 	height:80px;
 	resize:none;
+    padding:0;
+    margin:0;
 }
