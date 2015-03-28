@@ -2,7 +2,7 @@
 
 	date_default_timezone_set('America/Toronto');
 		// Change this connection with your credentials (server,db,user,password)
-	$conn = new mysqli("localhost","root","root","canbii") or die("Error " . mysqli_error($conn)); 
+	$conn = new mysqli("localhost","root","","canbii") or die("Error " . mysqli_error($conn)); 
 	
 	if ($conn->connect_errno) {
 		print_r("Connect failed: %s\n", $conn->connect_error);

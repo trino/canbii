@@ -6,7 +6,7 @@
 	
 	if(!empty($_POST['uID'])){
 		// Change this connection with your credentials (server,db,user,password)
-		$conn = new mysqli("localhost","root","root","canbii") or die("Error " . mysqli_error($conn)); 
+		$conn = new mysqli("localhost","root","","canbii") or die("Error " . mysqli_error($conn)); 
 		
 		$queryUser = "SELECT username FROM users WHERE id = ". $_POST['uID'];
 		
