@@ -7,8 +7,8 @@
     <div class="announcement page_margin_top clearfix">
         <ul class="columns no_width">
             <li class="column_left">
-                <h1>There's a Strain for that</h1>
-                <p>The more you vote the more acuate the data becomes.... our goal is to provide most accuatrte ... forfront of mediation </p>
+                <h1>For the people, by the people</h1>
+                <p>Canbii's goal is to raise the profile of cannabis as medicine, by providing the most accurate data possible. </p>
             </li>
             <li class="column_right">
                 <div class="vertical_align">

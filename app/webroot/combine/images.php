@@ -1,10 +1,8 @@
 <link rel="stylesheet" type="text/css" href="<?php echo $this->webroot; ?>style2/fancybox/jquery.fancybox.css"/>
 <script type="text/javascript" src="<?php echo $this->webroot; ?>js2/jquery.fancybox-1.3.4.pack.js"></script>
 
-
-<table style="width:100%;">
+<table style="width:100%;height:400px;">
     <tr>
-
         <?
         $breaker = 0;
         for ($i = 1; $i < 5; $i++) {
@@ -19,7 +17,7 @@
                 $breaker++;
 
                 ?>
-                <td align="" style="width: 50%;text-align: center;">
+                <td align="" style="width: 50%;text-align: center;border:1px solid #efefef;">
                         <a class="fancybox" rel="group"
                            href="<?=$image?>"
                             >

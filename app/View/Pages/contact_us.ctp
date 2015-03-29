@@ -27,15 +27,13 @@
 		<form method="post" action="" class="contact_form" validate>	
 		<div class="columns_3 clearfix">
         <div class="column">
-        <h2  class="no-margin"><span class="box_header  page_margin_top slide">canbii</span></h2><br/>
-<p align="justify">
-Thank you for contacting Canbii. Any questions or comments are greatly appreciated.</p>
-            <p align="justify">
+        <h2  class="no-margin"><span class="box_header  page_margin_top slide">Canbii</span></h2><br/>
+<p align="">
+Thank you for reaching out to Canbii. Any questions or comments are greatly appreciated.</p>
+            <p align="">
 We use the information to improve our services. Your comments, suggestions, and ideas for improvements are very important to us.</p>
-            <p align="justify">
-Canbii.com appreciate you taking the time to send us this information.
-</p>
-			
+            <p>Fields marked with <span class="bluecolor">*</span> are required</p>
+
         </div>
             <?php
              $username = $this->Session->read('User.username');
@@ -56,7 +54,6 @@ Canbii.com appreciate you taking the time to send us this information.
                   <label class="text-dark" for="subject">Subject <span class="bluecolor">*</span></label>
                   <input name="subject" type="text" id="subject" class="form-control  form-control--contact" required>
                 </div>
-                <p>Fields marked with <span class="bluecolor">*</span> are required</p>
               </div>
               <div class="column" style="margin-left: 0;">
                 <div class="form-group">

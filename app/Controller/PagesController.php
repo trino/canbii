@@ -85,23 +85,23 @@ class PagesController extends AppController {
             $sub = $_POST['subject'];
             $msg = $_POST['message'];
             $emails = new CakeEmail();
-            $emails->from(array('noreply@canabii.com'=>'Canabii'));
+            $emails->from(array('info@canbii.com'=>'Canbii'));
             $emails->emailFormat('html');
             $emails->template('default');
-            $emails->subject('New contact Message');
+            $emails->subject('New Contact Message');
             
             
             $message="
-            Hello,<br/><br/>
-            You've received a new message from Canabii<br/><br/> 
+
+            You've received a new message from Canbii<br/><br/>
             
             <b>From</b> : ".$name."<br/>
             <b>Email</b> : ".$email."<br/>
             <b>Subject</b> : ".$sub."<br/>
-            <b>Message</b> : ".$msg."<br/><br/>Thank you, <br/>Canabii.";
-            $emails->to('admin@web-nepal.com');
+            <b>Message</b> : ".$msg."<br/><br/>Thank you, <br/>The Canbii Team";
+            $emails->to('info@canbii.com');
             $emails->send($message);
-            $this->Session->setFlash('Message sent successfully', 'default', array('class' => 'good'));
+            $this->Session->setFlash('Message Sent Successfully!', 'default', array('class' => 'good'));
             $this->redirect('contact_us');
         }
     }
@@ -196,8 +196,7 @@ class PagesController extends AppController {
     
     function send_email()
     {
-        
-      die();
+
         if(isset($_POST['send']))
         {
             $slug = $_POST['slug'];
@@ -246,7 +245,7 @@ class PagesController extends AppController {
                 $emails = new CakeEmail();
                 $emails->reset();
                 $emails->template('default');
-                $emails->from(array('noreply@canabii.com'=>'Canabii'));
+                $emails->from(array('info@canbii.com'=>'Canbii'));
             
                 $emails->emailFormat('html');
                 

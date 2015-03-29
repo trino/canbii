@@ -16,42 +16,49 @@
 </style>
 
 <?php
-function iif($value, $true, $false=""){
-    if ($value) { return $true; }
-    return $false;
-}
-
-//http://localhost/metronic/templates/admin/ui_general.html
-//Acceptable colors:
-// Metronic: success (green), info (blue), warning (yellow), danger (red). Active does not work
-// Old: light-purple, light-red, light-blue, light-green
-function progressbar($webroot, $value, $textL="", $textR="", $color = "success", $color2="", $striped=false, $active=false, $min = 0, $max=100){
-    if (false){
-        echo '<div class="left ratewrap"><img src="' . $webroot . 'images/bar_chart/' . $color2 . '.png" style="width: ';
-        echo (round($value, 2) > 100) ? 100 : round($value, 2);
-        echo '%;height:25px;position: absolute;left:0;"/><em>' . round($value / 20, 2);
-        echo '/5</em></div><div class="clear"></div>';
-    } else {
-        if ($textL) {echo '<div style="float: right; padding-right: 4px;">' . $textL . '</div>';}
-        echo '</div><div style="margin-bottom: 5px;" class="progress' . iif($striped, " progress-striped") . iif($active, " active") . '">';
-
-            echo '<img src="' . $webroot . 'images/bar_chart/' . $color2 . '.png" style="width: ';
-        echo (round($value, 2) > 100) ? 100 : round($value, 2);
-        echo '%;height:20px;"/>';
-
-        echo "</div>";
-        return;
-        echo '<div class="progress-bar progress-bar-';
-        echo $color . '" role="progressbar" aria-valuenow="' . $value . '" aria-valuemin="' . $min . '" aria-valuemax="' . $max . '" style="';
-        echo 'width: ' . round($value / ($max - $min) * 100) . '%"><span>' . $textR . '</span></div></div>';
+    function iif($value, $true, $false = "")
+    {
+        if ($value) {
+            return $true;
+        }
+        return $false;
     }
 
+    //http://localhost/metronic/templates/admin/ui_general.html
+    //Acceptable colors:
+    // Metronic: success (green), info (blue), warning (yellow), danger (red). Active does not work
+    // Old: light-purple, light-red, light-blue, light-green
+    function progressbar($webroot, $value, $textL = "", $textR = "", $color = "success", $color2 = "", $striped = false, $active = false, $min = 0, $max = 100)
+    {
+        if (false) {
+            echo '<div class="left ratewrap"><img src="' . $webroot . 'images/bar_chart/' . $color2 . '.png" style="width: ';
+            echo (round($value, 2) > 100) ? 100 : round($value, 2);
+            echo '%;height:25px;position: absolute;left:0;"/><em>' . round($value / 20, 2);
+            echo '/5</em></div><div class="clear"></div>';
+        } else {
+            if ($textL) {
+                echo '<div style="float: right; padding-right: 4px;">' . $textL . '</div>';
+            }
+            echo '</div><div style="margin-bottom: 5px;" class="progress' . iif($striped, " progress-striped") . iif($active, " active") . '">';
 
+            echo '<img src="' . $webroot . 'images/bar_chart/' . $color2 . '.png" style="width: ';
+            echo (round($value, 2) > 100) ? 100 : round($value, 2);
+            echo '%;height:20px;"/>';
 
-}
-function perc($scale){
-    return round($scale/20,2) . "/5";
-}
+            echo "</div>";
+            return;
+            echo '<div class="progress-bar progress-bar-';
+            echo $color . '" role="progressbar" aria-valuenow="' . $value . '" aria-valuemin="' . $min . '" aria-valuemax="' . $max . '" style="';
+            echo 'width: ' . round($value / ($max - $min) * 100) . '%"><span>' . $textR . '</span></div></div>';
+        }
+
+    }
+
+    function perc($scale)
+    {
+        return round($scale / 20, 2) . "/5";
+    }
+
 ?>
 
 
@@ -64,12 +71,13 @@ function perc($scale){
 
             <?php
                 $strain_hexagon = $strain;
-            if (isset($s)){
-                ?>
+                if (isset($s)){
+            ?>
             <a href="<?php echo $this->webroot?>strains/<?php echo $s['Strain']['slug'];?>">
 
-<? }
-            include('combine/hexagon.php'); ?></a>
+                <? }
+                    include('combine/hexagon.php'); ?></a>
+
             <div style="white-space: nowrap;">
                 <h1 class=""><?php echo $strain['Strain']['name']; ?> - Medical Report</h1>
 
@@ -96,13 +104,11 @@ function perc($scale){
         <div class="page_header_right noprint">
 
 
-
-
             <a class="dark_blue more" style="margin-right: 10px;margin-top:10px;"
                href="<?php echo $this->webroot; ?>review/add/<?php echo $strain['Strain']['slug']; ?>">Review Strain</a>
-            <a class="blue more" style="margin-top:10px;" href="javascript:void(0)" onclick="window.print();">Print Report</a>
+            <a class="blue more" style="margin-top:10px;" href="javascript:void(0)" onclick="window.print();">Print
+                Report</a>
             <!--a style="margin-left: 10px;margin-top:10px;"  class="dark_blue more" href="javascript:void(0)" onclick="save();">Save Report</a-->
-
 
 
         </div>
@@ -110,13 +116,12 @@ function perc($scale){
     </div>
 
     <!--php include('combine/profile_filter.php'); ?-->
-  
+
 
     <div class="toprint ">
         <ul id="" class="clearfix">
             <li id="text_in_li">
                 <p><?php echo strip_tags($strain['Strain']['description']); ?></p>
-
 
 
             </li>
@@ -133,7 +138,7 @@ function perc($scale){
 
 
         <li class="footer_banner_box super_light_blue printer"
-            style="position: relative;padding: 0;width:330px;height:100px;">
+            style="position: relative;padding: 0;width:330px;height:120px;">
             <img src="<?php echo $this->webroot ?>images/bg1.jpg"
                  style=" height: 100px;position: absolute;width: 330px;z-index: -1;"/>
             <center style="padding:20px 30px;color:#FFF;">
@@ -144,49 +149,114 @@ function perc($scale){
 
         </li>
         <li class="footer_banner_box light_blue printer"
-            style="position: relative;padding: 0;width:330px;height:100px;">
+            style="position: relative;padding: 0;width:330px;height:120px;">
             <img src="<?php echo $this->webroot ?>images/bg2.jpg"
                  style=" height: 100px;position: absolute;width: 330px;z-index: -1;"/>
             <center style="padding:20px 30px;color:#FFF;">
                 <h2>Chemical Composition</h2>
-                <font style="font-size:14px;" color="white">
-                    THC:
-                    <?php echo $strain['Strain']['thc']; ?>% &nbsp;&nbsp;
-                    CBD:
-                    <?php echo $strain['Strain']['cbd']; ?>% &nbsp;&nbsp;
-                    CBN:
-                    <?php echo $strain['Strain']['cbn']; ?>% &nbsp;&nbsp;
-                    CBC:
-                    <?php echo $strain['Strain']['cbc']; ?>% &nbsp;&nbsp;
-                    THCV:
-                    <?php echo $strain['Strain']['thcv']; ?>%
-                </font>
+
+
+
+                <?php
+                    $chemical = 0;
+
+                    if ($strain['Strain']['thc'] != "0") {
+                        $chemical++;
+                        echo "<span class='btn eff2' style=''>THC: " . $strain['Strain']['thc'] . "%</span>";
+                    } else {
+                    };
+                ?>
+
+
+                <?php if ($strain['Strain']['cbd'] != "0") {
+                    $chemical++;
+                    echo "<span class='btn eff2' style=''>CBD: " . $strain['Strain']['cbd'] . "%</span>";
+                } else {
+                };
+                ?>
+
+
+                <?php if ($strain['Strain']['cbn'] != "0") {
+                    $chemical++;
+                    echo "<span class='btn eff2' style=''>CBN: " . $strain['Strain']['cbn'] . "%</span>";
+                } else {
+                };
+                ?>
+
+
+                <?php if ($strain['Strain']['cbc'] != "0") {
+                    $chemical++;
+                    echo "<span class='btn eff2' style=''>CBC: " . $strain['Strain']['cbc'] . "%</span>";
+                } else {
+                };
+                ?>
+
+
+                <?php if ($strain['Strain']['thcv'] != "0") {
+                    $chemical++;
+                    echo "<span class='btn eff2' style=''>THCV: " . $strain['Strain']['thcv'] . "%</span>";
+                } else {
+                };
+
+
+                    if ($chemical == 0) {
+
+                        echo "<span class=' eff2' style=''>Not enough data, please check back soon.</span>";
+
+                    }
+
+                ?>
+
+
             </center>
 
         </li>
-        <li class="footer_banner_box blue printer" style="position: relative;padding: 0;width:330px;height:100px;">
+        <li class="footer_banner_box blue printer" style="position: relative;padding: 0;width:330px;height:120px;">
             <img src="<?php echo $this->webroot ?>images/bg3.jpg"
                  style=" height: 100px;position: absolute;width: 330px;z-index: -1;"/>
 
             <div style="color:#FFF;text-align:center;position: relative;width: 100%;">
-                <!--h2>Dominant Flavors</h--><table width="100%" align="center" height="100"><TR>
-                <?php
-                    //$flavor = null;
-                    if ($flavor) {
+                <!--h2>Dominant Flavors</h-->
 
-                        foreach ($flavor as $f) {
-                            $name=$this->requestAction('/strains/getFlavor/' . $f['FlavorRating']['flavor_id']); //class used to have this in it
-                            ?>
-                           <TD style="padding-top: 0px;"> <a class="glow Flavor"
-                               href="javascrip:void(0)" style="position:relative;margin-right:5px;margin-top:0px;"><CENTER> <img width="55" src="<?= $this->webroot . "/images/icons/" . strtolower($name); ?>.png"></CENTER><CENTER><?= $name; ?></CENTER></a></TD>
+
+                <table width="100%" align="center" height="100">
+                    <TR>
+                        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
                         <?php
-                        }
-                    } else {
+                            //$flavor = null;
+                            if ($flavor) {
+                                foreach ($flavor as $f) {
+                                    $name = $this->requestAction('/strains/getFlavor/' . $f['FlavorRating']['flavor_id']); //class used to have this in it
+                                    ?>
+                                    <TD style="padding-top: 0px;"><a class="glow Flavor"
+                                                                     href="javascrip:void(0)"
+                                                                     style="position:relative;margin-top:0px;">
+                                            <CENTER><img width="55"
+                                                         src="<?= $this->webroot . "/images/icons/" . strtolower($name); ?>.png">
+                                            </CENTER>
+                                            <CENTER><?= $name; ?></CENTER>
+                                        </a></TD>
+                                <?php
+                                }
+                            } else {
+                                ?>
+
+
+                                <TD style="text-align:center">
+                                    <a href="<?php echo $this->webroot; ?>review/add/<?php echo $strain['Strain']['slug']; ?>"><i>No flavors yet. Review this
+                                        strain </i><span style="font-size: 26px;padding-left:10px;"
+                                                  class="fa fa-star-half-full"></span></a>
+                                </TD>
+                            <?php
+                            }
                         ?>
-                        <TD><CENTER>No flavors yet.</CENTER></TD>
-                    <?php
-                    }
-                ?></TR></table>
+                        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+
+                    </TR>
+
+                </table>
+                <p style="color: #999;margin-top: -10px;padding-top: 0;">Reported Flavours</p>
+
             </div>
 
         </li>
@@ -215,7 +285,7 @@ function perc($scale){
 
                 <?php
                     $p_filter = 0;
-                    if(isset($arr_filter)) {
+                    if (isset($arr_filter)) {
                         foreach ($arr_filter as $filterwith) {
                             if (isset($_GET[$filterwith])) {
                                 $p_filter = 1;
@@ -271,29 +341,35 @@ function perc($scale){
                         $arr = array();
                     $i = 0;
                     if ($arr) {
-                        foreach ($arr as $e) {
-                            $ar = explode('_', $e);
-                            $i++;
-                            if ($i == 6)
-                                break;
-                            $rate = $ar[0];
-                            $length = 20 * $rate;;
-                            ?>
-                            <div class="eff">
-                                <div class="label left" style="position: relative; top: 50%; transform: translateY(20%);"><?php echo $this->requestAction('/strains/getEffect/' . $ar[1]); ?>
-                                <?php progressbar($this->webroot, $length, perc($length), "", "info", "light-blue");?>
+                    foreach ($arr as $e) {
+                    $ar = explode('_', $e);
+                    $i++;
+                    if ($i == 6)
+                        break;
+                    $rate = $ar[0];
+                    $length = 20 * $rate;;
+                ?>
+                <div class="eff">
+                    <div class="label left"
+                         style="position: relative; top: 50%; transform: translateY(20%);"><?php echo $this->requestAction('/strains/getEffect/' . $ar[1]); ?>
+                        <?php progressbar($this->webroot, $length, perc($length), "", "info", "light-blue"); ?>
 
 
-                            </div>
-                        <?php
+                    </div>
+                    <?php
                         }
-                    } else {
+                        } else {
                         ?>
-                        <i>No ratings yet</i>
+
+
+                      <i>  <a href="<?php echo $this->webroot; ?>review/add/<?php echo $strain['Strain']['slug']; ?>"> No ratings yet. Review this
+                            strain <i style="font-size: 16px;padding-left:6px;"
+                                      class="fa fa-star-half-full"></i></a></i>
+
                     <?php
                     }
-                ?>
-            </div>
+                    ?>
+                </div>
 
         </li>
         <li class="column_left">
@@ -349,33 +425,36 @@ function perc($scale){
                     //var_dump($arr);
                     $i = 0;
                     if ($arrs) {
-                        foreach ($arrs as $e) {
-                            $ars = explode('_', $e);
-                            $i++;
-                            if ($i == 6)
-                                break;
-                            $rate = $ars[0];
-                            $length = 20 * $rate;;
-                            ?>
-                            <div class="eff">
-                                <div
-                                    class="label left" style="position: relative; top: 50%; transform: translateY(20%);"><?php echo $this->requestAction('/strains/getSymptom/' . $ars[1]); ?>
-                                    <?php progressbar($this->webroot, $length, perc($length), "", "success", "light-green");?>
-                                <div class="clear"></div>
-                            </div>
-                        <?php
+                    foreach ($arrs as $e) {
+                    $ars = explode('_', $e);
+                    $i++;
+                    if ($i == 6)
+                        break;
+                    $rate = $ars[0];
+                    $length = 20 * $rate;;
+                ?>
+                <div class="eff">
+                    <div
+                        class="label left"
+                        style="position: relative; top: 50%; transform: translateY(20%);"><?php echo $this->requestAction('/strains/getSymptom/' . $ars[1]); ?>
+                        <?php progressbar($this->webroot, $length, perc($length), "", "success", "light-green"); ?>
+                        <div class="clear"></div>
+                    </div>
+                    <?php
                         }
-                    } else {
+                        } else {
                         ?>
-                        <i>No ratings yet</i>
+                        <i>  <a href="<?php echo $this->webroot; ?>review/add/<?php echo $strain['Strain']['slug']; ?>"> No ratings yet. Review this
+                                strain <i style="font-size: 16px;padding-left:6px;"
+                                          class="fa fa-star-half-full"></i></a></i>
                     <?php
                     }
-                ?>
+                    ?>
 
-            </div>
+                </div>
 
 
-            <div class="clearfix"></div>
+                <div class="clearfix"></div>
 
 
         </li>
@@ -392,28 +471,31 @@ function perc($scale){
                         $arr_neg = array();
                     $i = 0;
                     if ($arr_neg) {
-                        foreach ($arr_neg as $e) {
-                            $ar = explode('_', $e);
-                            $i++;
-                            if ($i == 6)
-                                break;
-                            $rate = $ar[0];
-                            $length = 20 * $rate;
-                            ?>
-                            <div class="eff">
-                                <div
-                                    class="label left" style="position: relative; top: 50%; transform: translateY(20%);"><?php echo $this->requestAction('/strains/getEffect/' . $ar[1]); ?>
-                                    <?php progressbar($this->webroot, $length, perc($length), "", "danger", "light-red"); ?>
-                            </div>
-                        <?php
+                    foreach ($arr_neg as $e) {
+                    $ar = explode('_', $e);
+                    $i++;
+                    if ($i == 6)
+                        break;
+                    $rate = $ar[0];
+                    $length = 20 * $rate;
+                ?>
+                <div class="eff">
+                    <div
+                        class="label left"
+                        style="position: relative; top: 50%; transform: translateY(20%);"><?php echo $this->requestAction('/strains/getEffect/' . $ar[1]); ?>
+                        <?php progressbar($this->webroot, $length, perc($length), "", "danger", "light-red"); ?>
+                    </div>
+                    <?php
                         }
-                    } else {
+                        } else {
                         ?>
-                        <i>No ratings yet</i>
+                        <i>  <a href="<?php echo $this->webroot; ?>review/add/<?php echo $strain['Strain']['slug']; ?>"> No ratings yet. Review this
+                                strain <i style="font-size: 16px;padding-left:6px;"
+                                          class="fa fa-star-half-full"></i></a></i>
                     <?php
                     }
-                ?>
-            </div>
+                    ?>
+                </div>
 
 
         </li>
@@ -468,44 +550,48 @@ function perc($scale){
                 ?>
                 <?php
                     if ($scale) {
-                        ?>
-
-                        <div class="eff">
-                            <div class="label left" style="position: relative; top: 50%; transform: translateY(20%);">Sedative
-                            <?php progressbar($this->webroot, $scale, perc($scale), "", "warning", "light-purple"); ?>
-                        </div>
-                    <?php
-                    }
-                ?>
-                <?php
-                    if ($strength) {
-                        ?>
-                        <div class="eff aaloo">
-                            <div class="label left" style="position: relative; top: 50%; transform: translateY(20%);">Strength
-                            <?php progressbar($this->webroot, $strength, perc($strength), "", "warning", "light-purple");?>
-                        </div>
-                    <?php
-                    }
-                ?>
-                <?php
-                    if ($duration) {
-                        ?>
-                        <div class="eff">
-                            <div class="label left" style="position: relative; top: 50%; transform: translateY(20%);">Duration
-                            <?php progressbar($this->webroot, $duration, perc($duration), "", "warning", "light-purple");?>
-                        </div>
-                    <?php
-                    }
-                ?>
-                <?php
-                    if (!$duration && !$strength && !$scale) {
-                        ?>
-                        <i>No ratings yet</i>
-                    <?php
-                    }
                 ?>
 
-            </div>
+                <div class="eff">
+                    <div class="label left" style="position: relative; top: 50%; transform: translateY(20%);">Sedative
+                        <?php progressbar($this->webroot, $scale, perc($scale), "", "warning", "light-purple"); ?>
+                    </div>
+                    <?php
+                        }
+                    ?>
+                    <?php
+                        if ($strength) {
+                    ?>
+                    <div class="eff aaloo">
+                        <div class="label left" style="position: relative; top: 50%; transform: translateY(20%);">
+                            Strength
+                            <?php progressbar($this->webroot, $strength, perc($strength), "", "warning", "light-purple"); ?>
+                        </div>
+                        <?php
+                            }
+                        ?>
+                        <?php
+                            if ($duration) {
+                        ?>
+                        <div class="eff">
+                            <div class="label left" style="position: relative; top: 50%; transform: translateY(20%);">
+                                Duration
+                                <?php progressbar($this->webroot, $duration, perc($duration), "", "warning", "light-purple"); ?>
+                            </div>
+                            <?php
+                                }
+                            ?>
+                            <?php
+                                if (!$duration && !$strength && !$scale) {
+                                    ?>
+                                    <i>  <a href="<?php echo $this->webroot; ?>review/add/<?php echo $strain['Strain']['slug']; ?>"> No ratings yet. Review this
+                                            strain <i style="font-size: 16px;padding-left:6px;"
+                                                      class="fa fa-star-half-full"></i></a></i>
+                                <?php
+                                }
+                            ?>
+
+                        </div>
 
         </li>
     </ul>
@@ -514,38 +600,35 @@ function perc($scale){
     <div class="clearfix page_margin_top" style="border-bottom: 1px solid #dadada;"></div>
 
 
-
-
-
-
-    <ul class="columns full_width page_margin_top clearfix " >
+    <ul class="columns full_width page_margin_top clearfix ">
 
 
         <li class="column_left">
 
 
-            <h2 class="box_header slide clearfix" style="">Dominant Color(s)</h2>
-<div style="width:50%;margin:0 auto;" class="print printer">
+            <!--h2 class="box_header slide clearfix" style="">Dominant Color(s)</h2>
+
+            <div style="width:50%;margin:0 auto;" class="print printer">
                 <?php
-                    $c = $this->requestAction('/strains/getcolors/'.$strain['Strain']['id']);
-                    foreach($c as $col)
-                    {
-                        if($col['ReviewColor']['color']!=""){
-                           // echo $col['ReviewColor']['color'];
+                    $c = $this->requestAction('/strains/getcolors/' . $strain['Strain']['id']);
+                    foreach ($c as $col) {
+                        if ($col['ReviewColor']['color'] != "") {
                             ?>
                             <div class="print printer" style="  display: inline-block;
-                                float:left;width: 25px; height: 25px;padding:0;margin:0;clear:none;background:<?php echo $col['ReviewColor']['color'];?>;">&nbsp;</div>
+                                float:left;width: 25px; height: 25px;padding:0;margin:0;clear:none;background:<?php echo $col['ReviewColor']['color']; ?>;">
+                                &nbsp;</div>
                         <?php
                         }
                     }
                 ?>
-</div>
-                <div class="clearfix"></div>
+            </div-->
 
+            <h2 class="box_header slide clearfix" style="float:left:width:40%;">              <a
+                    href="<?php echo $this->webroot; ?>strains/review/<?php echo $strain['Strain']['slug']; ?>"
+                    class="viewall more blue noprint" style="float:right;font-size:12px;">See All Reviews
+                    for <?php echo $strain['Strain']['name']; ?> &raquo;</a> Most Helpful User Review
 
-
-            <h2 class="box_header slide clearfix page_margin_top_section" style="">Most Helpful User Review</h2>
-
+            </h2>
 
             <?php include_once('combine/strain_reviews.php'); ?>
 
@@ -564,10 +647,7 @@ function perc($scale){
                 if ($helpful) {
 
                     ?>
-                    <div style="border-top: 1px solid #dadada;padding: 5px 0px;"></div>
-                <center>    <a href="<?php echo $this->webroot; ?>strains/review/<?php echo $strain['Strain']['slug']; ?>"
-                       class="viewall more large blue noprint" style="">See All Reviews for <?php echo $strain['Strain']['name']; ?> &raquo;</a>
-</center>
+
                 <?php
 
                 }
@@ -575,77 +655,85 @@ function perc($scale){
 
             ?>
 
+
+            <div style="border-top: 1px solid #dadada;padding: 5px 0px;"></div>
+
+
+
+
+
+            <div class="print noprint" style="margin-top: 20px;">
+
+<div style="float: left;width:30%;">
+
+    <a style="" class="" href="javascript:void(0)" onclick="window.print();">
+    <img class="noprint" src="<?php echo $this->webroot ?>images/print_report_small.jpg"
+         style="width:100px;border:1px solid #efefef"/>
+
+</a>
+
+</div>
+                <div style="float: left;width:60%;padding-top: 6px;">
+
+
+                    <a style="" class="blue more" href="javascript:void(0)" onclick="window.print();">Print Report</a>
+                    <a style="margin-top: 4px;" class="dark_blue more"
+                       href="<?php echo $this->webroot; ?>review/add/<?php echo $strain['Strain']['slug']; ?>">Review Strain</a>
+
+                    <div style="clear:both;"></div>
+<h3 class="page_margin_top">Share with love</h3>
+
+                    <div style="" class="addthis_sharing_toolbox"></div>
+
+
+
+                </div>
+
+
+                <div style="clear:both;"></div>
+
+            </div>
+
+
         </li>
-
-
-
 
 
         <li class="column_right">
 
 
-            <h2 class="box_header  slide clearfix"
+            <h2 class="box_header slide clearfix"
                 style=""><?php echo $strain['Strain']['name']; ?> Images</h2>
             <!--table>
                 <tr>
                     <?
-                    $breaker = 0;
-                    for ($i = 1; $i < 5; $i++) {
-                        $image = "images/strains/" . $strain['Strain']['id'] . "/" . $strain['Strain']['slug'] . "_" . $i . ".jpg";
-                        $filename = getcwd() . "/" . $image; //C:\wamp\www\marijuana\app\webroot
-                        $image = $this->webroot . $image;
-                        if (!file_exists($filename) && file_exists(str_replace(".jpg", ".jpeg", $filename))) {
-                            $image=str_replace(".jpg", ".jpeg", $image);
-                            $filename=str_replace(".jpg", ".jpeg", $filename);
-                        }
-                        if (file_exists($filename)) {
-                            $breaker++;
+                $breaker = 0;
+                for ($i = 1; $i < 5; $i++) {
+                    $image = "images/strains/" . $strain['Strain']['id'] . "/" . $strain['Strain']['slug'] . "_" . $i . ".jpg";
+                    $filename = getcwd() . "/" . $image; //C:\wamp\www\marijuana\app\webroot
+                    $image = $this->webroot . $image;
+                    if (!file_exists($filename) && file_exists(str_replace(".jpg", ".jpeg", $filename))) {
+                        $image = str_replace(".jpg", ".jpeg", $image);
+                        $filename = str_replace(".jpg", ".jpeg", $filename);
+                    }
+                    if (file_exists($filename)) {
+                        $breaker++;
 
-                            ?>
-                            <td align="">
-                                <center>
-                                    <a class="fancybox" rel="group"
-                                       href="<?=$image?>"
-                                        >
-                                        <img
-                                            class="reportimage"
-                                            src="<?php echo $image;?>"
-                                            />
-                                    </a>
-                                </center>
-                            </td>
+                        ?>
+
 
                             <?
-                            if ($breaker == 2) {
-                                echo "</tr><tr>";
-                            }
+                        if ($breaker == 2) {
+                            echo "</tr><tr>";
                         }
-                    } ?>
+                    }
+                } ?>
                 </tr>
             </table-->
-            <?php include('combine/images.php');?>
+            <?php include('combine/images.php'); ?>
 
 
         </li>
     </ul>
-
-
-</div>
-
-
-<div class="print noprint">
-
-
-    <div align="center">
-        <div style="margin-bottom: 10px;"  class="addthis_sharing_toolbox"></div>
-
-        <a style="" class="dark_blue more" href="<?php echo $this->webroot; ?>review/add/<?php echo $strain['Strain']['slug']; ?>">Review Strain</a>
-        <a style=""  class="blue more" href="javascript:void(0)" onclick="window.print();">Print Report</a>
-        <!--a style="" name="test" class="dark_blue more" href="javascript:void(0)" onclick="save();"  id="target">Save Report</a-->
-        <!--input type="text" name="img_val" id="img_val"><br/-->
-    </div>
-
-
 </div>
 
 <div class="invite noprint" style="display: none; margin-top:10px">
@@ -690,13 +778,13 @@ function perc($scale){
 
 </style>
 <script>
-    function takeScreenShot(){
+    function takeScreenShot() {
         html2canvas(window.parent.document.body, {
-            onrendered: function(canvas) {
+            onrendered: function (canvas) {
                 var cand = document.getElementsByTagName('canvas');
-                if(cand[0] === undefined || cand[0] === null){
+                if (cand[0] === undefined || cand[0] === null) {
 
-                }else{
+                } else {
                     //cand[0].remove();
                     document.body.removeChild(cand[0]);
                 }
@@ -705,31 +793,32 @@ function perc($scale){
         });
     }
 
-    function postImage(){
+    function postImage() {
         var cand = document.getElementsByTagName('canvas');
         var canvasData = cand[0].toDataURL("image/png");
         var ajax = new XMLHttpRequest();
-        ajax.open("POST",'/pr/custom/testSave.php',false);
+        ajax.open("POST", '/pr/custom/testSave.php', false);
         ajax.setRequestHeader('Content-Type', 'application/upload');
-        ajax.send(canvasData );
+        ajax.send(canvasData);
         alert('done');
     }
 
 
-
     function save() {
-        Rectangle screenRect = new Rectangle(Toolkit.getDefaultToolkit().getScreenSize());
-        BufferedImage capture = new Robot().createScreenCapture(screenRect);
+        Rectangle
+        screenRect = new Rectangle(Toolkit.getDefaultToolkit().getScreenSize());
+        BufferedImage
+        capture = new Robot().createScreenCapture(screenRect);
         ImageIO.write(capture, "bmp", new File(args[0]));
 
         //$('#target').html2canvas({
         //    onrendered: function (canvas) {
 
-                //Set hidden field's value to image data (base-64 string)
-                //$('#img_val').val(canvas.toDataURL("image/png"));
-                //Submit the form manually
-                //document.getElementById("myForm").submit();
-         //   }
+        //Set hidden field's value to image data (base-64 string)
+        //$('#img_val').val(canvas.toDataURL("image/png"));
+        //Submit the form manually
+        //document.getElementById("myForm").submit();
+        //   }
         //});
     }
 </script>

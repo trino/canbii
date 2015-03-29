@@ -27,7 +27,7 @@ em{letter-spacing:2px;font-style: normal;}
 <div class="page_header_left">
 
 
-<?php 
+<?php
 $strain_hexagon = $strain;
 include('combine/hexagon.php');?>
 <div style="float:left;width:500px;">
@@ -144,7 +144,7 @@ THCV:
 <?php
 //$flavor = null;
 if($flavor){
-    
+
 foreach($flavor as $f)
 {
 ?>
@@ -180,9 +180,9 @@ else
 
 <ul class="columns full_width  clearfix">
 <li class="column_left">
-					
-					
-					
+
+
+
 <div class="">
 
 <h3>Effects:</h3>
@@ -353,7 +353,7 @@ $duration = ($duration/$count)*20;
 <div class="eff">
 <div class="label left">Duration</div><div class="left ratewrap" style="width: 63%;">
     <!--<img src="<?php echo $this->webroot;?>Capture.PNG" style="width: <?php echo round($duration,2);?>%;height:25px;position: absolute;left:0;" />--><em><?php echo round($duration/20,2);?>/5</em></div><div class="clear"></div>
-</div>        
+</div>
 
 <?php
 }
