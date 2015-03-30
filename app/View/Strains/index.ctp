@@ -159,7 +159,7 @@ function perc($scale)
                 function printchemical($chemical, $strain, $acronym, $wikipedia){
                     if ($strain['Strain'][strtolower($acronym)] != "0") {
                         $chemical++;
-                        echo "<span class='btn eff2' style='margin-right: 2px;'><A href='" . $wikipedia . "'>" . strtoupper($acronym) . ":</A> " . $strain['Strain'][strtolower($acronym)] . "%</span>";
+                        echo "<span class='btn eff2' style='margin-right: 2px;'><A target='new' href='" . $wikipedia . "'>" . strtoupper($acronym) . ":</A> " . $strain['Strain'][strtolower($acronym)] . "%</span>";
                     };
                     return $chemical;
                 }
