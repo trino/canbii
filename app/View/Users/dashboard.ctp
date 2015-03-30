@@ -91,7 +91,7 @@
                         } ?>
                 </p>
 
-                <!--p style="display: none;" class="symp">
+                <p style="display: none;" class="symp">
                     <?php
                         if ($symp) {
                             foreach ($symp as $sy) {
@@ -101,7 +101,7 @@
                             <?php
                             }
                         } ?>
-                </p-->
+                </p>
 
                 <div class="clearfix"></div>
             </div>
