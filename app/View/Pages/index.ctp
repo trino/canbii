@@ -8,7 +8,7 @@
         <ul class="columns no_width">
             <li class="column_left">
                 <h1>For the people, by the people</h1>
-                <p>Canbii's goal is to raise the profile of cannabis as medicine, by providing the most accurate data possible. </p>
+                <p>Canbii's goal is to raise the profile of cannabis as medicine, by providing the most complete and accurate data possible. </p>
             </li>
             <li class="column_right">
                 <div class="vertical_align">

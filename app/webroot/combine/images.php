@@ -60,7 +60,7 @@
                     if (file_exists($filename)) {
                         $breaker++;
                         ?>
-                        <div class="item" align="center">
+                        <div class="item" align="center" style="padding: 10px 0;">
                         <a class="fancybox" rel="group" href="<?= $image ?>">
                             <img style="" class="reportimage"  src="<?= $image; ?>"/>
                         </a></div>

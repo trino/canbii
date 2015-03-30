@@ -35,7 +35,7 @@
     <title><?php if (isset($title)) {
             echo $title . ' - Canbii - Personalized Medical Marijuana';
         } else {
-            echo str_replace('_', ' ', $gtitle) . ' - ' . $generic['title'];
+            echo str_replace('_', ' ', $gtitle) . ' - ' . $generic['title'] . ' - Personalized Medical Marijuana';
         } ?></title>
 
     <link rel="shortcut icon" href="<?php echo $this->webroot; ?>favicon.ico" type="image/x-icon"/>
