@@ -150,15 +150,15 @@ function perc($scale){
             <center style="padding:20px 30px;color:#FFF;">
                 <h2>Chemical Composition</h2>
                 <font style="font-size:14px;" color="white">
-                    THC:
+                    <A href="http://en.wikipedia.org/wiki/Tetrahydrocannabinol">THC:</A>
                     <?php echo $strain['Strain']['thc']; ?>% &nbsp;&nbsp;
-                    CBD:
+                    <A href="http://en.wikipedia.org/wiki/Cannabidiol">CBD:</A>
                     <?php echo $strain['Strain']['cbd']; ?>% &nbsp;&nbsp;
-                    CBN:
+                    <a href="http://en.wikipedia.org/wiki/Cannabinol">CBN:</A>
                     <?php echo $strain['Strain']['cbn']; ?>% &nbsp;&nbsp;
-                    CBC:
+                    <a href="http://en.wikipedia.org/wiki/Cannabichromene">CBC:</A>
                     <?php echo $strain['Strain']['cbc']; ?>% &nbsp;&nbsp;
-                    THCV:
+                    <A href="http://en.wikipedia.org/wiki/Tetrahydrocannabivarin">THCV:</A>
                     <?php echo $strain['Strain']['thcv']; ?>%
                 </font>
             </center>
