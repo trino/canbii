@@ -35,9 +35,10 @@
 			
 			while($bug = $rsBugs->fetch_array()){
 				$bug_date = date("Y-m-d",strtotime($bug['dateModified']));
-				
 				$bugs[$bug_date][$bug['id']] = $bug;
-				$bugs[$bug_date][$bug['id']]['bugDate'] = $bug['dateModified'];	
+				$bugs[$bug_date][$bug['id']]['bugDate'] = $bug['dateModified'];
+
+
 			}
 			//die(var_dump($bugs));
 		}
@@ -61,12 +62,13 @@
 						<?php
 						}
 						else{
-							while($dt = $rsDateGrp->fetch_array()){?>
+							while($dt = $rsDateGrp->fetch_array()){
+                                ?>
 							<div class='datebuggroup'>
 								<h2><?php echo $dt['dateMod']?>:</h2> <h3><?php echo $dt['cnt']; ?> bugs</h3><br />
 								<?php foreach($bugs[$dt['dateMod']] as $b): ?>
 								<div class='commentbox' style='position:relative;display:inline-block;height:100px'>
-									<div class='commenttext'><?php echo substr($b['comment'], 0, 20).'...'; ?></div>
+									<div class='commenttext'><?php echo substr($b['COMMENT'], 0, 20).'...'; ?></div>
 									<?php if($isadmin): ?>
 									<div class='buguserlbl'>
 										<?php echo $b['username']; ?>
