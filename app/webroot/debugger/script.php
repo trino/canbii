@@ -32,7 +32,10 @@ PRIMARY KEY (id)
 
     $url="";
     if (isset($_POST['url'])){
-        $url=trim(trim($_POST['url'],"#"), "?debug");
+        $url=trim($_POST['url'],"#");
+        if (substr($url,-6)== "?debug"){
+            $url=substr($url, 0, strlen($url)-6); //trim didn't work, cut off 1 too many digits
+        }
     }
 
 	switch($_REQUEST['funct']){
