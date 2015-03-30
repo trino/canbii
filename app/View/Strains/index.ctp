@@ -186,7 +186,9 @@ function perc($scale)
             <div style="color:#FFF;text-align:center;position: relative;width: 100%;">
                 <!--h2>Dominant Flavors</h-->
 
+                <style>
 
+                </style>
                 <table width="100%" align="center" height="100">
                     <TR>
                         <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
@@ -199,7 +201,7 @@ function perc($scale)
                                 <TD style="padding-top: 0px;"><a class="glow Flavor"
                                                                  href="javascrip:void(0)"
                                                                  style="position:relative;margin-top:0px;">
-                                        <CENTER><img width="55"
+                                        <CENTER><img width="55" class="glow"
                                                      src="<?= $this->webroot . "/images/icons/" . strtolower($name); ?>.png">
                                         </CENTER>
                                         <CENTER><?= $name; ?></CENTER>
