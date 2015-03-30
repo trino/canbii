@@ -3370,12 +3370,13 @@ width:100px;
 
 
 .reportimage{
-
-max-width:170px;  padding: 9px; margin:2px; border: 1px solid #dadada;
+    background-position: center center;
+    background-size: cover;
+    width:100px; height:100px;  padding: 9px; margin:2px; border: 1px solid #dadada;;
     -webkit-box-shadow: 0 6px 4px -4px #666;
     -moz-box-shadow: 0 6px 4px -4px #666;
     box-shadow: 0 6px 4px -4px #666;
-
+    -ms-interpolation-mode: bicubic; /* Scaled images look a bit better in IE now */
 }
 ul#text_and_image {
     display: table;
