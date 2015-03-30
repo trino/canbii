@@ -297,7 +297,7 @@
 
         foreach ($review['SymptomRating'] as $effect){
         if (count($symptoms) > $effect['symptom_id'] - 1) {
-        progressbar($this->webroot, $effect['rate'], $symptoms[$effect['symptom_id'] - 1]['Symptom']['title'], "", "success", "light-green");
+        progressbar($this->webroot, $effect['rate'], $symptoms[$effect['symptom_id'] - 1]['Symptom']['title'], "", "info", "light-blue");
     ?>
 
         <!--div id="efft_<?php echo $effect['id']; ?>er" class="review-slider">
@@ -371,7 +371,7 @@
         foreach ($review['EffectRating'] as $effect){
         if (in_array($effect['effect_id'], $pos) and count($effects) > $effect['effect_id'] - 1){
 
-        progressbar($this->webroot, $effect['rate'], $effects[$effect['effect_id'] - 1]['Effect']['title'], "", "info", "light-blue");
+        progressbar($this->webroot, $effect['rate'], $effects[$effect['effect_id'] - 1]['Effect']['title'], "", "success", "light-green");
     ?>
 
         <!--div id="efft_<?php echo $effect['id'];?>pe" class="review-slider">
