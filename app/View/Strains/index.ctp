@@ -16,11 +16,10 @@
 </style>
 
 <?php
-function iif($value, $true, $false = "")
-{
-    if ($value) {
-        return $true;
-    }
+
+echo "<Strain id='" . $strain['Strain']['id'] . "' />";
+function iif($value, $true, $false = ""){
+    if ($value) { return $true; }
     return $false;
 }
 
