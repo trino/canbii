@@ -3311,7 +3311,7 @@ width:100px;
     color: rgb(255, 255, 255);
     text-align: center;
     text-decoration: none;
-    margin-right: 5px;
+
 
     border-bottom: 2px solid rgba(255, 255, 255, 0.3);
 	font-size:16px;
@@ -3371,7 +3371,7 @@ width:100px;
 
 .reportimage{
 
-max-width:170px;  padding: 9px; margin:2px; border: 1px solid #dadada;
+max-height:150px;  padding: 9px; margin:2px; border: 1px solid #dadada;
     -webkit-box-shadow: 0 6px 4px -4px #666;
     -moz-box-shadow: 0 6px 4px -4px #666;
     box-shadow: 0 6px 4px -4px #666;

@@ -1,6 +1,7 @@
 <link rel="stylesheet" type="text/css" href="<?php echo $this->webroot; ?>style2/fancybox/jquery.fancybox.css"/>
 <script type="text/javascript" src="<?php echo $this->webroot; ?>js2/jquery.fancybox-1.3.4.pack.js"></script>
 <style type="text/css">
+    td{border:1px solid green;max-height:200px;}
     /* just format */
     #Border {border: 1px solid #efefef;margin: 0 auto; text-align:center;width:100%;  }
 </style>

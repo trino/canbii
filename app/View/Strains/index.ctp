@@ -17,46 +17,46 @@
 
 <?php
 
-echo "<Strain id='" . $strain['Strain']['id'] . "' />";
-function iif($value, $true, $false = ""){
-    if ($value) { return $true; }
-    return $false;
-}
-
-//http://localhost/metronic/templates/admin/ui_general.html
-//Acceptable colors:
-// Metronic: success (green), info (blue), warning (yellow), danger (red). Active does not work
-// Old: light-purple, light-red, light-blue, light-green
-function progressbar($webroot, $value, $textL = "", $textR = "", $color = "success", $color2 = "", $striped = false, $active = false, $min = 0, $max = 100)
-{
-    if (false) {
-        echo '<div class="left ratewrap"><img src="' . $webroot . 'images/bar_chart/' . $color2 . '.png" style="width: ';
-        echo (round($value, 2) > 100) ? 100 : round($value, 2);
-        echo '%;height:25px;position: absolute;left:0;"/><em>' . round($value / 20, 2);
-        echo '/5</em></div><div class="clear"></div>';
-    } else {
-        if ($textL) {
-            echo '<div style="float: right; padding-right: 4px;">' . $textL . '</div>';
-        }
-        echo '</div><div style="margin-bottom: 5px;" class="progress' . iif($striped, " progress-striped") . iif($active, " active") . '">';
-
-        echo '<img src="' . $webroot . 'images/bar_chart/' . $color2 . '.png" style="width: ';
-        echo (round($value, 2) > 100) ? 100 : round($value, 2);
-        echo '%;height:20px;"/>';
-
-        echo "</div>";
-        return;
-        echo '<div class="progress-bar progress-bar-';
-        echo $color . '" role="progressbar" aria-valuenow="' . $value . '" aria-valuemin="' . $min . '" aria-valuemax="' . $max . '" style="';
-        echo 'width: ' . round($value / ($max - $min) * 100) . '%"><span>' . $textR . '</span></div></div>';
+    echo "<Strain id='" . $strain['Strain']['id'] . "' />";
+    function iif($value, $true, $false = ""){
+        if ($value) { return $true; }
+        return $false;
     }
 
-}
+    //http://localhost/metronic/templates/admin/ui_general.html
+    //Acceptable colors:
+    // Metronic: success (green), info (blue), warning (yellow), danger (red). Active does not work
+    // Old: light-purple, light-red, light-blue, light-green
+    function progressbar($webroot, $value, $textL = "", $textR = "", $color = "success", $color2 = "", $striped = false, $active = false, $min = 0, $max = 100)
+    {
+        if (false) {
+            echo '<div class="left ratewrap"><img src="' . $webroot . 'images/bar_chart/' . $color2 . '.png" style="width: ';
+            echo (round($value, 2) > 100) ? 100 : round($value, 2);
+            echo '%;height:25px;position: absolute;left:0;"/><em>' . round($value / 20, 2);
+            echo '/5</em></div><div class="clear"></div>';
+        } else {
+            if ($textL) {
+                echo '<div style="float: right; padding-right: 4px;">' . $textL . '</div>';
+            }
+            echo '</div><div style="margin-bottom: 5px;" class="progress' . iif($striped, " progress-striped") . iif($active, " active") . '">';
 
-function perc($scale)
-{
-    return round($scale / 20, 2) . "/5";
-}
+            echo '<img src="' . $webroot . 'images/bar_chart/' . $color2 . '.png" style="width: ';
+            echo (round($value, 2) > 100) ? 100 : round($value, 2);
+            echo '%;height:20px;"/>';
+
+            echo "</div>";
+            return;
+            echo '<div class="progress-bar progress-bar-';
+            echo $color . '" role="progressbar" aria-valuenow="' . $value . '" aria-valuemin="' . $min . '" aria-valuemax="' . $max . '" style="';
+            echo 'width: ' . round($value / ($max - $min) * 100) . '%"><span>' . $textR . '</span></div></div>';
+        }
+
+    }
+
+    function perc($scale)
+    {
+        return round($scale / 20, 2) . "/5";
+    }
 
 ?>
 
@@ -69,13 +69,13 @@ function perc($scale)
         <div class="page_header_left" style="white-space: nowrap;">
 
             <?php
-            $strain_hexagon = $strain;
-            if (isset($s)){
+                $strain_hexagon = $strain;
+                if (isset($s)){
             ?>
             <a href="<?php echo $this->webroot?>strains/<?php echo $s['Strain']['slug'];?>">
 
                 <? }
-                include('combine/hexagon.php'); ?></a>
+                    include('combine/hexagon.php'); ?></a>
 
             <div style="white-space: nowrap;">
                 <h1 class=""><?php echo $strain['Strain']['name']; ?> - Medical Report</h1>
@@ -83,17 +83,17 @@ function perc($scale)
 
                 <p style="white-space: nowrap;">
                     <?php
-                    switch ($strain['Strain']['type_id']) {
-                        case 1:
-                            echo "Indica";
-                            break;
-                        case 2:
-                            echo "Sativa";
-                            break;
-                        case 3:
-                            echo "Hybrid";
-                            break;
-                    }
+                        switch ($strain['Strain']['type_id']) {
+                            case 1:
+                                echo "Indica";
+                                break;
+                            case 2:
+                                echo "Sativa";
+                                break;
+                            case 3:
+                                echo "Hybrid";
+                                break;
+                        }
                     ?> Cannabis
                 </p>
             </div>
@@ -134,58 +134,45 @@ function perc($scale)
     <div class="clearfix"></div>
 
     <ul class="page_margin_top clearfix">
+
+
         <li class="footer_banner_box super_light_blue printer"
             style="position: relative;padding: 0;width:330px;height:120px;">
-            <!--img src="<?php echo $this->webroot ?>images/bg1.jpg"
-                 style=" height: 100px;position: absolute;width: 330px;z-index: -1;"/-->
+            <img src="<?php echo $this->webroot ?>images/bg1.jpg"
+                 style=" height: 100px;position: absolute;width: 330px;z-index: -1;"/>
             <center style="padding:20px 30px;color:#FFF;">
                 <h2>Overall Rating</h2>
-<? if( $strain['Strain']['rating']== 0){ ?>
 
-
-    <i> <a href="<?php echo $this->webroot; ?>review/add/<?php echo $strain['Strain']['slug']; ?>">
-            No ratings yet. Review this
-            strain <i style="font-size: 16px;padding-left:6px;"
-                      class="fa fa-star-half-full"></i></a></i>
-
-
-
-<? }else{ ?>
                 <div class="rating"></div>
-<? } ?>
-
             </center>
+
         </li>
-
-
-
-
         <li class="footer_banner_box light_blue printer"
             style="position: relative;padding: 0;width:330px;height:120px;">
-            <!--img src="<?php echo $this->webroot ?>images/bg2.jpg"
-                 style=" height: 100px;position: absolute;width: 330px;z-index: -1;"/-->
+            <img src="<?php echo $this->webroot ?>images/bg2.jpg"
+                 style=" height: 100px;position: absolute;width: 330px;z-index: -1;"/>
             <center style="padding:20px 30px;color:#FFF;">
                 <h2>Chemical Composition</h2>
                 <?php
-                $chemical = 0;
+                    $chemical = 0;
 
-                function printchemical($chemical, $strain, $acronym, $wikipedia){
-                    if ($strain['Strain'][strtolower($acronym)] != "0") {
-                        $chemical++;
-                        echo "<span class='btn eff2' style='margin-right: 2px;'><A target='new' href='" . $wikipedia . "'>" . strtoupper($acronym) . ":</A> " . $strain['Strain'][strtolower($acronym)] . "%</span>";
-                    };
-                    return $chemical;
-                }
+                    function printchemical($chemical, $strain, $acronym, $wikipedia){
+                        if ($strain['Strain'][strtolower($acronym)] != "0") {
+                            $chemical++;
+                            echo "<span class='btn eff2' style='margin-right: 2px;'><A target='new' href='" . $wikipedia . "'>" . strtoupper($acronym) . ":</A> " . $strain['Strain'][strtolower($acronym)] . "%</span>";
+                        };
+                        return $chemical;
+                    }
 
-                $chemical = printchemical($chemical, $strain, "thc", "http://en.wikipedia.org/wiki/Tetrahydrocannabinol");
-                $chemical = printchemical($chemical, $strain, "cbd", "http://en.wikipedia.org/wiki/Cannabidiol");
-                $chemical = printchemical($chemical, $strain, "cbn", "http://en.wikipedia.org/wiki/Cannabinol");
-                $chemical = printchemical($chemical, $strain, "cbc", "http://en.wikipedia.org/wiki/Cannabichromene");
-                $chemical = printchemical($chemical, $strain, "thcv", "http://en.wikipedia.org/wiki/Tetrahydrocannabivarin");
+                    $chemical = printchemical($chemical, $strain, "thc", "http://en.wikipedia.org/wiki/Tetrahydrocannabinol");
+                    $chemical = printchemical($chemical, $strain, "cbd", "http://en.wikipedia.org/wiki/Cannabidiol");
+                    $chemical = printchemical($chemical, $strain, "cbn", "http://en.wikipedia.org/wiki/Cannabinol");
+                    $chemical = printchemical($chemical, $strain, "cbc", "http://en.wikipedia.org/wiki/Cannabichromene");
+                    $chemical = printchemical($chemical, $strain, "thcv", "http://en.wikipedia.org/wiki/Tetrahydrocannabivarin");
 
-                if ($chemical == 0) {
-                    echo "<span class=' eff2' style=''>Not enough data, please check back soon.</span>";
-                }
+                    if ($chemical == 0) {
+                        echo "<span class=' eff2' style=''>Not enough data, please check back soon.</span>";
+                    }
                 ?>
 
 
@@ -193,8 +180,8 @@ function perc($scale)
 
         </li>
         <li class="footer_banner_box blue printer" style="position: relative;padding: 0;width:330px;height:120px;">
-            <!--img src="<?php echo $this->webroot ?>images/bg3.jpg"
-                 style=" height: 100px;position: absolute;width: 330px;z-index: -1;"/-->
+            <img src="<?php echo $this->webroot ?>images/bg3.jpg"
+                 style=" height: 100px;position: absolute;width: 330px;z-index: -1;"/>
 
             <div style="color:#FFF;text-align:center;position: relative;width: 100%;">
                 <!--h2>Dominant Flavors</h-->
@@ -206,43 +193,32 @@ function perc($scale)
                     <TR>
                         <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
                         <?php
-                        //$flavor = null;
-                        if ($flavor) {
-                            foreach ($flavor as $f) {
-                                $name = $this->requestAction('/strains/getFlavor/' . $f['FlavorRating']['flavor_id']); //class used to have this in it
+                            //$flavor = null;
+                            if ($flavor) {
+                                foreach ($flavor as $f) {
+                                    $name = $this->requestAction('/strains/getFlavor/' . $f['FlavorRating']['flavor_id']); //class used to have this in it
+                                    ?>
+                                    <TD style="padding-top: 0px;"><a class="glow Flavor"
+                                                                     href="javascrip:void(0)"
+                                                                     style="position:relative;margin-top:0px;">
+                                            <CENTER><img width="55" class="glow"
+                                                         src="<?= $this->webroot . "/images/icons/" . strtolower($name); ?>.png">
+                                            </CENTER>
+                                            <CENTER><?= $name; ?></CENTER>
+                                        </a></TD>
+                                <?php
+                                }
+                            } else {
                                 ?>
-                                <TD style="padding-top: 0px;"><a class="glow Flavor"
-                                                                 href="javascrip:void(0)"
-                                                                 style="position:relative;margin-top:0px;">
-                                        <CENTER><img width="55" class="glow"
-                                                     src="<?= $this->webroot . "/images/icons/" . strtolower($name); ?>.png">
-                                        </CENTER>
-                                        <CENTER><?= $name; ?></CENTER>
-                                    </a></TD>
-                            <?php
-                            }
-                        } else {
-                            ?>
 
-<<<<<<< HEAD
-                                <TD style="text-align:center;padding-top:25px;">
-                                    <a href="<?php echo $this->webroot; ?>review/add/<?php echo $strain['Strain']['slug']; ?>"><i>No
-                                            flavors yet. Review this
-                                            strain </i><span style=""
+
+                                <TD style="text-align:center">
+                                    <a href="<?php echo $this->webroot; ?>review/add/<?php echo $strain['Strain']['slug']; ?>"><i>No flavors yet. Review this
+                                            strain </i><span style="font-size: 26px;padding-left:10px;"
                                                              class="fa fa-star-half-full"></span></a>
                                 </TD>
                             <?php
                             }
-=======
-
-                            <TD style="text-align:center">
-                                <a href="<?php echo $this->webroot; ?>review/add/<?php echo $strain['Strain']['slug']; ?>"><i>No flavors yet. Review this
-                                        strain </i><span style="font-size: 26px;padding-left:10px;"
-                                                         class="fa fa-star-half-full"></span></a>
-                            </TD>
-                        <?php
-                        }
->>>>>>> origin/master
                         ?>
                         <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
 
@@ -278,70 +254,70 @@ function perc($scale)
                 <br>
 
                 <?php
-                $p_filter = 0;
-                if (isset($arr_filter)) {
-                    foreach ($arr_filter as $filterwith) {
-                        if (isset($_GET[$filterwith])) {
-                            $p_filter = 1;
-                        }
-                    }
-                }
-                if (!$p_filter) {
-                    foreach ($strain['OverallEffectRating'] as $oer) {
-                        if ($this->requestAction('/strains/getPosEff/' . $oer['effect_id']))
-                            $arr[] = $oer['rate'] . '_' . $oer['effect_id'];
-                        else
-                            $arr_neg[] = $oer['rate'] . '_' . $oer['effect_id'];
-                    }
-                } else {
-                    $effect_rate = $this->requestAction('/strains/getEffectRate/' . urlencode($profile_filter) . '/' . $strain['Strain']['id']);
-                    //var_dump($effect_rate);
-                    $cnt = 0;
-                    $eff_id = 0;
-                    $total_rate = 0;
-                    foreach ($effect_rate as $er) {
-
-                        $cnt++;
-                        if ($eff_id != $er['Effect_rating']['effect_id']) {
-
-                            if ($cnt != 1) {
-                                $tots = $total_rate;
-                                $total_rate = $er['Effect_rating']['rate'];
-
-                                $avg_rate = $tots / ($cnt - 1);
-                                $cnt = 0;
-                                if ($this->requestAction('/strains/getPosEff/' . $er['Effect_rating']['effect_id']))
-                                    $arr[] = $avg_rate . '_' . $eff_id;
-                                else
-                                    $arr_neg[] = $avg_rate . '_' . $eff_id;
-                                $total_rate = 0;
-                            } else {
-                                $total_rate = $er['Effect_rating']['rate'];
+                    $p_filter = 0;
+                    if (isset($arr_filter)) {
+                        foreach ($arr_filter as $filterwith) {
+                            if (isset($_GET[$filterwith])) {
+                                $p_filter = 1;
                             }
-
-                        } else {
-                            $total_rate = $total_rate + $er['Effect_rating']['rate'];
                         }
-                        $eff_id = $er['Effect_rating']['effect_id'];
-
                     }
+                    if (!$p_filter) {
+                        foreach ($strain['OverallEffectRating'] as $oer) {
+                            if ($this->requestAction('/strains/getPosEff/' . $oer['effect_id']))
+                                $arr[] = $oer['rate'] . '_' . $oer['effect_id'];
+                            else
+                                $arr_neg[] = $oer['rate'] . '_' . $oer['effect_id'];
+                        }
+                    } else {
+                        $effect_rate = $this->requestAction('/strains/getEffectRate/' . urlencode($profile_filter) . '/' . $strain['Strain']['id']);
+                        //var_dump($effect_rate);
+                        $cnt = 0;
+                        $eff_id = 0;
+                        $total_rate = 0;
+                        foreach ($effect_rate as $er) {
 
-                    //die('here');
-                }
-                //die('there');
-                if (isset($arr))
-                    rsort($arr);
-                else
-                    $arr = array();
-                $i = 0;
-                if ($arr) {
-                foreach ($arr as $e) {
-                $ar = explode('_', $e);
-                $i++;
-                if ($i == 6)
-                    break;
-                $rate = $ar[0];
-                $length = 20 * $rate;;
+                            $cnt++;
+                            if ($eff_id != $er['Effect_rating']['effect_id']) {
+
+                                if ($cnt != 1) {
+                                    $tots = $total_rate;
+                                    $total_rate = $er['Effect_rating']['rate'];
+
+                                    $avg_rate = $tots / ($cnt - 1);
+                                    $cnt = 0;
+                                    if ($this->requestAction('/strains/getPosEff/' . $er['Effect_rating']['effect_id']))
+                                        $arr[] = $avg_rate . '_' . $eff_id;
+                                    else
+                                        $arr_neg[] = $avg_rate . '_' . $eff_id;
+                                    $total_rate = 0;
+                                } else {
+                                    $total_rate = $er['Effect_rating']['rate'];
+                                }
+
+                            } else {
+                                $total_rate = $total_rate + $er['Effect_rating']['rate'];
+                            }
+                            $eff_id = $er['Effect_rating']['effect_id'];
+
+                        }
+
+                        //die('here');
+                    }
+                    //die('there');
+                    if (isset($arr))
+                        rsort($arr);
+                    else
+                        $arr = array();
+                    $i = 0;
+                    if ($arr) {
+                    foreach ($arr as $e) {
+                    $ar = explode('_', $e);
+                    $i++;
+                    if ($i == 6)
+                        break;
+                    $rate = $ar[0];
+                    $length = 20 * $rate;;
                 ?>
                 <div class="eff">
                     <div class="label left"
@@ -351,17 +327,12 @@ function perc($scale)
 
                     </div>
                     <?php
-                    }
-                    } else {
+                        }
+                        } else {
                         ?>
 
 
-<<<<<<< HEAD
-                        <i> <a href="<?php echo $this->webroot; ?>review/add/<?php echo $strain['Strain']['slug']; ?>">
-                                No ratings yet. Review this
-=======
                         <i>  <a href="<?php echo $this->webroot; ?>review/add/<?php echo $strain['Strain']['slug']; ?>"> No ratings yet. Review this
->>>>>>> origin/master
                                 strain <i style="font-size: 16px;padding-left:6px;"
                                           class="fa fa-star-half-full"></i></a></i>
 
@@ -380,57 +351,57 @@ function perc($scale)
 
 
                 <?php
-                if (!$p_filter) {
-                    foreach ($strain['OverallSymptomRating'] as $oer) {
-                        $arrs[] = $oer['rate'] . '_' . $oer['symptom_id'];
-                    }
-                } else {
-                    $symptom_rate = $this->requestAction('/strains/getSymptomRate/' . urlencode($profile_filter) . '/' . $strain['Strain']['id']);
-                    //var_dump($symptom_rate);
-                    $cnt = 0;
-                    $eff_id = 0;
-                    $total_rate = 0;
-                    foreach ($symptom_rate as $er) {
-
-                        $cnt++;
-                        if ($eff_id != $er['SymptomRating']['symptom_id']) {
-
-                            if ($cnt != 1) {
-                                $tots = $total_rate;
-                                $total_rate = $er['SymptomRating']['rate'];
-
-                                $avg_rate = $tots / ($cnt - 1);
-                                $cnt = 0;
-
-                                $arrs[] = $avg_rate . '_' . $eff_id;
-
-                                $total_rate = 0;
-                            } else {
-                                $total_rate = $er['SymptomRating']['rate'];
-                            }
-
-                        } else {
-                            $total_rate = $total_rate + $er['SymptomRating']['rate'];
+                    if (!$p_filter) {
+                        foreach ($strain['OverallSymptomRating'] as $oer) {
+                            $arrs[] = $oer['rate'] . '_' . $oer['symptom_id'];
                         }
-                        $eff_id = $er['SymptomRating']['symptom_id'];
+                    } else {
+                        $symptom_rate = $this->requestAction('/strains/getSymptomRate/' . urlencode($profile_filter) . '/' . $strain['Strain']['id']);
+                        //var_dump($symptom_rate);
+                        $cnt = 0;
+                        $eff_id = 0;
+                        $total_rate = 0;
+                        foreach ($symptom_rate as $er) {
+
+                            $cnt++;
+                            if ($eff_id != $er['SymptomRating']['symptom_id']) {
+
+                                if ($cnt != 1) {
+                                    $tots = $total_rate;
+                                    $total_rate = $er['SymptomRating']['rate'];
+
+                                    $avg_rate = $tots / ($cnt - 1);
+                                    $cnt = 0;
+
+                                    $arrs[] = $avg_rate . '_' . $eff_id;
+
+                                    $total_rate = 0;
+                                } else {
+                                    $total_rate = $er['SymptomRating']['rate'];
+                                }
+
+                            } else {
+                                $total_rate = $total_rate + $er['SymptomRating']['rate'];
+                            }
+                            $eff_id = $er['SymptomRating']['symptom_id'];
+
+                        }
 
                     }
-
-                }
-                if (isset($arrs))
-                    rsort($arrs);
-                else
-                    $arrs = array();
-                //var_dump($arr);
-                $i = 0;
-                if ($arrs) {
-                foreach ($arrs as $e) {
-                $ars = explode('_', $e);
-                $i++;
-                if ($i == 6)
-                    break;
-                $rate = $ars[0];
-                $length = 20 * $rate;;
+                    if (isset($arrs))
+                        rsort($arrs);
+                    else
+                        $arrs = array();
+                    //var_dump($arr);
+                    $i = 0;
+                    if ($arrs) {
+                    foreach ($arrs as $e) {
+                    $ars = explode('_', $e);
+                    $i++;
+                    if ($i == 6)
+                        break;
+                    $rate = $ars[0];
+                    $length = 20 * $rate;;
                 ?>
                 <div class="eff">
                     <div
@@ -440,11 +411,10 @@ function perc($scale)
                         <div class="clear"></div>
                     </div>
                     <?php
-                    }
-                    } else {
+                        }
+                        } else {
                         ?>
-                        <i> <a href="<?php echo $this->webroot; ?>review/add/<?php echo $strain['Strain']['slug']; ?>">
-                                No ratings yet. Review this
+                        <i>  <a href="<?php echo $this->webroot; ?>review/add/<?php echo $strain['Strain']['slug']; ?>"> No ratings yet. Review this
                                 strain <i style="font-size: 16px;padding-left:6px;"
                                           class="fa fa-star-half-full"></i></a></i>
                     <?php
@@ -465,19 +435,19 @@ function perc($scale)
                 <h3>Negative Effects:</h3>
                 <br>
                 <?php
-                if (isset($arr_neg))
-                    rsort($arr_neg);
-                else
-                    $arr_neg = array();
-                $i = 0;
-                if ($arr_neg) {
-                foreach ($arr_neg as $e) {
-                $ar = explode('_', $e);
-                $i++;
-                if ($i == 6)
-                    break;
-                $rate = $ar[0];
-                $length = 20 * $rate;
+                    if (isset($arr_neg))
+                        rsort($arr_neg);
+                    else
+                        $arr_neg = array();
+                    $i = 0;
+                    if ($arr_neg) {
+                    foreach ($arr_neg as $e) {
+                    $ar = explode('_', $e);
+                    $i++;
+                    if ($i == 6)
+                        break;
+                    $rate = $ar[0];
+                    $length = 20 * $rate;
                 ?>
                 <div class="eff">
                     <div
@@ -486,11 +456,10 @@ function perc($scale)
                         <?php progressbar($this->webroot, $length, perc($length), "", "danger", "light-red"); ?>
                     </div>
                     <?php
-                    }
-                    } else {
+                        }
+                        } else {
                         ?>
-                        <i> <a href="<?php echo $this->webroot; ?>review/add/<?php echo $strain['Strain']['slug']; ?>">
-                                No ratings yet. Review this
+                        <i>  <a href="<?php echo $this->webroot; ?>review/add/<?php echo $strain['Strain']['slug']; ?>"> No ratings yet. Review this
                                 strain <i style="font-size: 16px;padding-left:6px;"
                                           class="fa fa-star-half-full"></i></a></i>
                     <?php
@@ -507,50 +476,50 @@ function perc($scale)
                 <h3>General Ratings:</h3>
                 <br/>
                 <?php
-                if (!$p_filter) {
-                    $count = count($strain['Review']);
-                    if ($count) {
-                        $scale = 0;
-                        $strength = 0;
-                        $duration = 0;
-                        foreach ($strain['Review'] as $r) {
-                            $scale = $scale + $r['eff_scale'];
-                            $strength = $strength + $r['eff_strength'];
-                            $duration = $duration + $r['eff_duration'];
+                    if (!$p_filter) {
+                        $count = count($strain['Review']);
+                        if ($count) {
+                            $scale = 0;
+                            $strength = 0;
+                            $duration = 0;
+                            foreach ($strain['Review'] as $r) {
+                                $scale = $scale + $r['eff_scale'];
+                                $strength = $strength + $r['eff_strength'];
+                                $duration = $duration + $r['eff_duration'];
+                            }
+                            $scale = ($scale / $count) * 20;
+                            $strength = ($strength / $count) * 20;
+                            $duration = ($duration / $count) * 20;
+                        } else {
+                            $scale = 0;
+                            $strength = 0;
+                            $duration = 0;
                         }
-                        $scale = ($scale / $count) * 20;
-                        $strength = ($strength / $count) * 20;
-                        $duration = ($duration / $count) * 20;
                     } else {
-                        $scale = 0;
-                        $strength = 0;
-                        $duration = 0;
-                    }
-                } else {
-                    $effect_review = $this->requestAction('/strains/getEffectReview/' . urlencode($profile_filter) . '/' . $strain['Strain']['id']);
+                        $effect_review = $this->requestAction('/strains/getEffectReview/' . urlencode($profile_filter) . '/' . $strain['Strain']['id']);
 
-                    $count = count($strain['Review']);
-                    if ($count) {
-                        $scale = 0;
-                        $strength = 0;
-                        $duration = 0;
-                        foreach ($effect_review as $r) {
-                            $scale = $scale + $r['Review']['eff_scale'];
-                            $strength = $strength + $r['Review']['eff_strength'];
-                            $duration = $duration + $r['Review']['eff_duration'];
+                        $count = count($strain['Review']);
+                        if ($count) {
+                            $scale = 0;
+                            $strength = 0;
+                            $duration = 0;
+                            foreach ($effect_review as $r) {
+                                $scale = $scale + $r['Review']['eff_scale'];
+                                $strength = $strength + $r['Review']['eff_strength'];
+                                $duration = $duration + $r['Review']['eff_duration'];
+                            }
+                            $scale = ($scale / $count) * 20;
+                            $strength = ($strength / $count) * 20;
+                            $duration = ($duration / $count) * 20;
+                        } else {
+                            $scale = 0;
+                            $strength = 0;
+                            $duration = 0;
                         }
-                        $scale = ($scale / $count) * 20;
-                        $strength = ($strength / $count) * 20;
-                        $duration = ($duration / $count) * 20;
-                    } else {
-                        $scale = 0;
-                        $strength = 0;
-                        $duration = 0;
                     }
-                }
                 ?>
                 <?php
-                if ($scale) {
+                    if ($scale) {
                 ?>
 
                 <div class="eff">
@@ -558,10 +527,10 @@ function perc($scale)
                         <?php progressbar($this->webroot, $scale, perc($scale), "", "warning", "light-purple"); ?>
                     </div>
                     <?php
-                    }
+                        }
                     ?>
                     <?php
-                    if ($strength) {
+                        if ($strength) {
                     ?>
                     <div class="eff aaloo">
                         <div class="label left" style="position: relative; top: 50%; transform: translateY(20%);">
@@ -569,10 +538,10 @@ function perc($scale)
                             <?php progressbar($this->webroot, $strength, perc($strength), "", "warning", "light-purple"); ?>
                         </div>
                         <?php
-                        }
+                            }
                         ?>
                         <?php
-                        if ($duration) {
+                            if ($duration) {
                         ?>
                         <div class="eff">
                             <div class="label left" style="position: relative; top: 50%; transform: translateY(20%);">
@@ -580,28 +549,16 @@ function perc($scale)
                                 <?php progressbar($this->webroot, $duration, perc($duration), "", "warning", "light-purple"); ?>
                             </div>
                             <?php
-                            }
+                                }
                             ?>
                             <?php
-<<<<<<< HEAD
                                 if (!$duration && !$strength && !$scale) {
                                     ?>
-                                    <i>
-                                        <a href="<?php echo $this->webroot; ?>review/add/<?php echo $strain['Strain']['slug']; ?>">
-                                            No ratings yet. Review this
+                                    <i>  <a href="<?php echo $this->webroot; ?>review/add/<?php echo $strain['Strain']['slug']; ?>"> No ratings yet. Review this
                                             strain <i style="font-size: 16px;padding-left:6px;"
                                                       class="fa fa-star-half-full"></i></a></i>
                                 <?php
                                 }
-=======
-                            if (!$duration && !$strength && !$scale) {
-                                ?>
-                                <i>  <a href="<?php echo $this->webroot; ?>review/add/<?php echo $strain['Strain']['slug']; ?>"> No ratings yet. Review this
-                                        strain <i style="font-size: 16px;padding-left:6px;"
-                                                  class="fa fa-star-half-full"></i></a></i>
-                            <?php
-                            }
->>>>>>> origin/master
                             ?>
 
                         </div>
@@ -623,32 +580,20 @@ function perc($scale)
 
             <div style="width:50%;margin:0 auto;" class="print printer">
                 <?php
-<<<<<<< HEAD
                 $c = $this->requestAction('/strains/getcolors/' . $strain['Strain']['id']);
                 foreach ($c as $col) {
                     if ($col['ReviewColor']['color'] != "") {
                         ?>
-=======
-            $c = $this->requestAction('/strains/getcolors/' . $strain['Strain']['id']);
-            foreach ($c as $col) {
-                if ($col['ReviewColor']['color'] != "") {
-                    ?>
->>>>>>> origin/master
                             <div class="print printer" style="  display: inline-block;
                                 float:left;width: 25px; height: 25px;padding:0;margin:0;clear:none;background:<?php echo $col['ReviewColor']['color']; ?>;">
                                 &nbsp;</div>
                         <?php
-<<<<<<< HEAD
                     }
                 }
-=======
-                }
-            }
->>>>>>> origin/master
             ?>
             </div-->
 
-            <h2 class="box_header slide clearfix" style="float:left:width:40%;"><a
+            <h2 class="box_header slide clearfix" style="float:left:width:40%;">              <a
                     href="<?php echo $this->webroot; ?>strains/review/<?php echo $strain['Strain']['slug']; ?>"
                     class="viewall more blue noprint" style="float:right;font-size:12px;">See All Reviews
                     for <?php echo $strain['Strain']['name']; ?> &raquo;</a> Most Helpful User Review
@@ -669,19 +614,22 @@ function perc($scale)
 
             <?php
 
-            if ($helpful) {
+                if ($helpful) {
 
-                ?>
+                    ?>
 
-            <?php
+                <?php
 
-            }
+                }
 
 
             ?>
 
 
             <div style="border-top: 1px solid #dadada;padding: 5px 0px;"></div>
+
+
+
 
 
             <div class="print noprint" style="margin-top: 20px;">
@@ -700,13 +648,13 @@ function perc($scale)
 
                     <a style="" class="blue more" href="javascript:void(0)" onclick="window.print();">Print Report</a>
                     <a style="margin-top: 4px;" class="dark_blue more"
-                       href="<?php echo $this->webroot; ?>review/add/<?php echo $strain['Strain']['slug']; ?>">Review
-                        Strain</a>
+                       href="<?php echo $this->webroot; ?>review/add/<?php echo $strain['Strain']['slug']; ?>">Review Strain</a>
 
                     <div style="clear:both;"></div>
                     <h3 class="page_margin_top">Share with love</h3>
 
                     <div style="" class="addthis_sharing_toolbox"></div>
+
 
 
                 </div>
@@ -725,32 +673,37 @@ function perc($scale)
 
             <h2 class="box_header slide clearfix"
                 style=""><?php echo $strain['Strain']['name']; ?> Images</h2>
+
+
+
+
             <!--table>
                 <tr>
                     <?
-            $breaker = 0;
-            for ($i = 1; $i < 5; $i++) {
-                $image = "images/strains/" . $strain['Strain']['id'] . "/" . $strain['Strain']['slug'] . "_" . $i . ".jpg";
-                $filename = getcwd() . "/" . $image; //C:\wamp\www\marijuana\app\webroot
-                $image = $this->webroot . $image;
-                if (!file_exists($filename) && file_exists(str_replace(".jpg", ".jpeg", $filename))) {
-                    $image = str_replace(".jpg", ".jpeg", $image);
-                    $filename = str_replace(".jpg", ".jpeg", $filename);
-                }
-                if (file_exists($filename)) {
-                    $breaker++;
+                $breaker = 0;
+                for ($i = 1; $i < 5; $i++) {
+                    $image = "images/strains/" . $strain['Strain']['id'] . "/" . $strain['Strain']['slug'] . "_" . $i . ".jpg";
+                    $filename = getcwd() . "/" . $image; //C:\wamp\www\marijuana\app\webroot
+                    $image = $this->webroot . $image;
+                    if (!file_exists($filename) && file_exists(str_replace(".jpg", ".jpeg", $filename))) {
+                        $image = str_replace(".jpg", ".jpeg", $image);
+                        $filename = str_replace(".jpg", ".jpeg", $filename);
+                    }
+                    if (file_exists($filename)) {
+                        $breaker++;
 
-                    ?>
+                        ?>
 
 
                             <?
-                    if ($breaker == 2) {
-                        echo "</tr><tr>";
+                        if ($breaker == 2) {
+                            echo "</tr><tr>";
+                        }
                     }
-                }
-            } ?>
+                } ?>
                 </tr>
             </table-->
+
             <?php include('combine/images.php'); ?>
 
 
