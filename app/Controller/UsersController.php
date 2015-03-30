@@ -21,7 +21,7 @@ class UsersController extends AppController {
                 $this->Session->write('User.id',$user['User']['id']);
                 
                 if(isset($_GET['url']))
-                    $this->redirect(str_replace('/canabii','',$_GET['url']));
+                    $this->redirect(str_replace('/canbii','',$_GET['url']));
                 else
                 $this->redirect('dashboard');
             }

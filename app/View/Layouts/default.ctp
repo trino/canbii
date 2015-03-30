@@ -13,9 +13,9 @@
     <meta property="og:image"
           content="<?php echo 'http://' . $_SERVER['SERVER_NAME'] . $this->webroot . 'images/logo.png'; ?>"/>
     <meta property="og:title" content="<?php if (isset($title)) {
-        echo $title . ' - Canbii';
+        echo $title . ' - Canbii - Personalized Medical Marijuana';
     } else {
-        echo str_replace('_', ' ', $gtitle) . ' - ' . $generic['title'];
+        echo str_replace('_', ' ', $gtitle) . ' - ' . $generic['title'] . ' - Personalized Medical Marijuana';
     } ?>"/>
     <meta property="og:type" content="website"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
@@ -33,7 +33,7 @@
         echo $generic['keyword'];
     } ?>">
     <title><?php if (isset($title)) {
-            echo $title . ' - Canbii';
+            echo $title . ' - Canbii - Personalized Medical Marijuana';
         } else {
             echo str_replace('_', ' ', $gtitle) . ' - ' . $generic['title'];
         } ?></title>
@@ -44,9 +44,9 @@
     <link rel="stylesheet" href="<?php echo $this->webroot; ?>css/ui.css"/>
     <link rel="stylesheet" type="text/css" href="<?php echo $this->webroot; ?>style2/fancybox/jquery.fancybox.css"/>
     <script type="text/javascript" src="<?php echo $this->webroot; ?>js2/jquery-1.11.0.min.js"></script>
-    
 
-    
+
+
 
 
     <script src="<?php echo $this->webroot; ?>js/validate.js"></script>
@@ -89,12 +89,12 @@
     <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-53333c8154cd758d" async="async"></script>
 
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-	
+
 	<!-- Debugger -->
-	
-	<script type="text/javascript" src="<?php echo $this->webroot;?>debugger/debug.plugin.js"></script>
+
+	<!--script type="text/javascript" src="<?php echo $this->webroot;?>debugger/debug.plugin.js"></script>
 	<script type="text/javascript" src="<?php echo $this->webroot;?>debugger/jquery-ui.min.js"></script>
-	<link rel="stylesheet" type="text/css" href="<?php echo $this->webroot;?>debugger/debug.css" />
+	<link rel="stylesheet" type="text/css" href="<?php echo $this->webroot;?>debugger/debug.css" /-->
 
     <!-- //////////////////////////////////////////////////////////////////////////////////////////// NEW SITE-->
 
@@ -105,7 +105,7 @@
 
 
 <div class="site_container">
-	
+
 			<input type="hidden" id="canbii_userID" value="<?php echo $this->Session->read("User.id"); ?>" />
     <div class="header_container">
         <div class="header clearfix">
@@ -156,7 +156,7 @@
                 <option value = "<?php echo $this->webroot;?>pages/about" <?php if($this->params['controller']=='pages' && $this->params['action']=='about'){?>selected = "selected"<?php }?> > About </option>
                 <option value = "<?php echo $this->webroot;?>pages/contact_us" <?php if($this->params['controller']=='pages' && $this->params['action']=='contact_us'){?>selected = "selected"<?php }?> > Contact Us </option>
 
-                
+
                 <?php if(!$this->Session->read('User')){?>
                 <option value = "<?php echo $this->webroot;?>users/register"
                 <?php if($this->params['controller']=='users'){?>selected = "selected"<?php }?> > Login / Register </option>
@@ -229,7 +229,7 @@
                 }
 
 
-                
+
                         /*
                     function highlightsym(thiss) {
                         if (thiss.attr('class').replace('searchact', '') == thiss.attr('class')) {
@@ -480,8 +480,7 @@ padding:30px;
                 </h2>
 
                 <p style="color: white;margin-bottom:20px;">
-                    <a href="<?php echo $this->webroot; ?>pages/about" title="">Help make the world a better
-                        place &raquo;</a>
+                    <a href="<?php echo $this->webroot; ?>users/register" title="">More we know, more we can help &raquo;</a>
                 </p>
             </li>
             <li class="footer_banner_box blue animated_element animation-slideRight200 duration-800 delay-1000">
@@ -632,7 +631,7 @@ padding:30px;
     </div>
 </div>
 
-<?php 
+<?php
 if($this->webroot == "canbii.com"){
 ?>
 <script>

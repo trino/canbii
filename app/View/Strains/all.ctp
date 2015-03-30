@@ -96,8 +96,6 @@
             </ul>
 
 
-
-
             <br/>
 
 
@@ -131,18 +129,13 @@
             <form class="search" method="get" action="<?php echo $this->webroot; ?>strains/search">
 
 
-
-
-
-
-
                 <input id="BUTTON_17" type="submit" value="Search" class="more blue medium " style="float:right;"/>
-                <input id="INPUT_16" class="search_input hint" name="key" type="text"
+                <input id="f" class="search_input hint" name="key" type="text"
 
                     <?php if (isset($_GET['key'])) {
                         if (strlen($_GET['key']) > 0) {
 
-                            echo 'value="'.$_GET['key'].'""';
+                            echo 'value="' . $_GET['key'] . '""';
 
                         }
                     } ?>
@@ -173,10 +166,9 @@
         <!-- page right -->
 
         <div class="page_right" style="">
-        <div style=" margin-bottom: 5px;margin-top: 6px; float:left"  class="addthis_sharing_toolbox"></div>
-            <input id="BUTTON_18" type="reset" value="Reset" class="more blue medium" style="float: right; width: 40%;"/>
-
-
+            <div style="float:left;margin-left:-2px;" class="addthis_sharing_toolbox"></div>
+            <input id="BUTTON_18" type="reset" value="Reset Filter" class="more blue medium"
+                   style="float: right; width: 40%;"/>
             <ul>
 
                 <li class="home_box light_blue animated_element animation-fadeIn duration-500" style="z-index: 3;">
