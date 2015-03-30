@@ -11,6 +11,7 @@
         $needsTRend=false;
 
         $breaker = 0;
+        if (is_dir("images/strains/" . $strain['Strain']['id'])) {
         $images = scandir("images/strains/" . $strain['Strain']['id'], SCANDIR_SORT_ASCENDING);
 
         $imagecount=0;
@@ -20,41 +21,50 @@
                 $imagecount+=1;
             }
         }
-        $rows = ceil($imagecount/2);
-        $rowheight= round(100/$rows);
+        if($imagecount>0) {
+            $rows = ceil($imagecount / 2);
+            $rowheight = round(100 / $rows);
 
-        foreach($images as $file) {//for ($i = 1; $i < 5; $i++) {
-            $ext = getextension($file);
-            if ($ext == "jpg" || $ext == "jpeg" || $ext == "gif" || $ext == "png") {
-                if ($needsTRstart) { echo "<tr>"; $needsTRstart = false; $needsTRend=true;}
+            foreach ($images as $file) {//for ($i = 1; $i < 5; $i++) {
+                $ext = getextension($file);
+                if ($ext == "jpg" || $ext == "jpeg" || $ext == "gif" || $ext == "png") {
+                    if ($needsTRstart) {
+                        echo "<tr>";
+                        $needsTRstart = false;
+                        $needsTRend = true;
+                    }
 
-                $image = "images/strains/" . $strain['Strain']['id'] . "/" . $file;
-                //$image = "images/strains/" . $strain['Strain']['id'] . "/" . $strain['Strain']['slug'] . "_" . $i . ".jpg";
-                $filename = getcwd() . "/" . $image; //C:\wamp\www\marijuana\app\webroot
-                $image = $this->webroot . $image;
-                if (!file_exists($filename) && file_exists(str_replace(".jpg", ".jpeg", $filename))) {
-                    $image = str_replace(".jpg", ".jpeg", $image);
-                    $filename = str_replace(".jpg", ".jpeg", $filename);
-                }
-                if (file_exists($filename)) {
-                    $breaker++;
+                    $image = "images/strains/" . $strain['Strain']['id'] . "/" . $file;
+                    //$image = "images/strains/" . $strain['Strain']['id'] . "/" . $strain['Strain']['slug'] . "_" . $i . ".jpg";
+                    $filename = getcwd() . "/" . $image; //C:\wamp\www\marijuana\app\webroot
+                    $image = $this->webroot . $image;
+                    if (!file_exists($filename) && file_exists(str_replace(".jpg", ".jpeg", $filename))) {
+                        $image = str_replace(".jpg", ".jpeg", $image);
+                        $filename = str_replace(".jpg", ".jpeg", $filename);
+                    }
+                    if (file_exists($filename)) {
+                        $breaker++;
 
-                    ?>
-                    <td valign="center" style="width: 50%;height: <?= $rowheight ?>%;text-align: center;border:1px solid #efefef; vertical-align: middle;">
-                        <a class="fancybox" rel="group" href="<?= $image ?>">
-                            <img style="" class="reportimage" src="<?= $image; ?>"/>
-                        </a>
-                    </td>
-                    <?
-                    if ($breaker % 2  ==0 && $breaker>0) {
-                        echo "</tr>";
-                        $needsTRend=false;
-                        $needsTRstart=true;
+                        ?>
+                        <td valign="center"
+                            style="width: 50%;height: <?= $rowheight ?>%;text-align: center;border:1px solid #efefef; vertical-align: middle;">
+                            <a class="fancybox" rel="group" href="<?= $image ?>">
+                                <img style="" class="reportimage" src="<?= $image; ?>"/>
+                            </a>
+                        </td>
+                        <?
+                        if ($breaker % 2 == 0 && $breaker > 0) {
+                            echo "</tr>";
+                            $needsTRend = false;
+                            $needsTRstart = true;
+                        }
                     }
                 }
             }
-        }
-        if ($needsTRend) {echo "</TR>";}
+            if ($needsTRend) {
+                echo "</TR>";
+            }
+        }}
         if ($breaker==0){
             echo "<P>No images</P>";
         }
