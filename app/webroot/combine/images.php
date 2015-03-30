@@ -11,11 +11,12 @@
     }
 
     .item {
-        width: 50%;
+        border: 1px solid #efefef;
+        width: 49%; /*otherwise the border causes it to wrap */
     }
 </style>
 <div class="container">
-        <?
+        <? //https://css-tricks.com/snippets/css/a-guide-to-flexbox/
         //other values PATHINFO_DIRNAME (/mnt/files) | PATHINFO_BASENAME (??????.mp3) | PATHINFO_FILENAME (??????)
         function getextension($path, $value=PATHINFO_EXTENSION){
             return strtolower(pathinfo($path, $value));
@@ -75,7 +76,7 @@
                 }
             }
             if ($needsTRend) {
-               // echo "</div>";
+               echo '<div class="item" style="border: none" align="center"></div>';
             }
         }}
         if ($breaker==0){
