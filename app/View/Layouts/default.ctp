@@ -502,13 +502,18 @@ padding:30px;
                 </h3>
 
                 <p class="" style="color: #D5D5D5;" align="">
-                    Medicinal marijuana is a growing movement and we're doing our part to spread the word.(name of site)
-                    is an online database dedicated to educate the public on the benefits of medical marijuana. This all
-                    natural plant is used to treat illnesses and to help those who suffer from chronic pain that affects
-                    their daily lives.<br/>
+
+                    Canbii is an online database dedicated to educating the public on the effects of medical marijuana.
+
                     <br/>
-                    We need your input to enhance our information so we can help as many people as we can. <a
-                        href="<?php echo $this->webroot; ?>users/register" accesskey="4" title="">Sign up</a> today!
+                    <br/>
+                    The medical marijuana movement is asking the scientific community to make examining the therapeutic potential of cannabis a priority. But the drug's controlled status is continuing to slow efforts to investigate the myriad compounds in the plant.
+
+
+                    <br/>
+                    <br/>
+                    Please do your part in helping the world's largest clinical trial so that we can better understand the use and effects of the cannabis plant. <a
+                        href="<?php echo $this->webroot; ?>users/register" accesskey="4" title="">Sign up today!</a>
                 </p>
                 <ul class="social_icons clearfix">
                     <li>
