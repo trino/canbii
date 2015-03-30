@@ -3302,11 +3302,11 @@ width:100px;
     color: rgba(255, 255, 255, 0.701961);
     margin: 0px;
     outline: rgba(255, 255, 255, 0.701961) none 0px;
-	font-size:12px;
+	font-size:16px;
 }/*#P_5*/
 
 .A_6{
-    padding:1px 0px;
+    padding:2px 0px;
     box-sizing: border-box;
     color: rgb(255, 255, 255);
     text-align: center;
@@ -3372,7 +3372,7 @@ width:100px;
 .reportimage{
     background-position: center center;
     background-size: cover;
-    width:100px; height:100px;  padding: 9px; margin:2px; border: 1px solid #dadada;;
+    width:130px; height:130px;  padding: 9px; margin:2px; border: 1px solid #dadada;;
     -webkit-box-shadow: 0 6px 4px -4px #666;
     -moz-box-shadow: 0 6px 4px -4px #666;
     box-shadow: 0 6px 4px -4px #666;

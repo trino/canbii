@@ -85,7 +85,7 @@
                         foreach ($effect as $e) {
                             ?>
                             <a class="A_6 <?php if (in_array($e['Symptom']['id'], $symp)) { ?>searchact<?php } ?>"
-                               style="font-size: 13px;" href="javascript:void(0)" onclick="highlightsym($(this))" class=""
+                               style="font-size: 15px;" href="javascript:void(0)" onclick="highlightsym($(this))" class=""
                                id="sym_<?php echo $e['Symptom']['id']; ?>"><?php echo $e['Symptom']['title'] ?></a>
                         <?php
                         } ?>

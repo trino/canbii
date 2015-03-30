@@ -2,7 +2,6 @@
 <script type="text/javascript" src="<?php echo $this->webroot; ?>js2/jquery.fancybox-1.3.4.pack.js"></script>
 <style type="text/css">
     .container {
-        border: 1px solid #efefef;
         display: flex; /* or inline-flex */
         align-items: center;
         flex-wrap: wrap;;
@@ -60,7 +59,7 @@
                     if (file_exists($filename)) {
                         $breaker++;
                         ?>
-                        <div class="item" align="center" style="padding: 10px 0;">
+                        <div class="item" align="center" style="padding: 10px 0;margin-bottom: 2px;">
                         <a class="fancybox" rel="group" href="<?= $image ?>">
                             <img style="" class="reportimage"  src="<?= $image; ?>"/>
                         </a></div>
