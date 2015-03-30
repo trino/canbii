@@ -46,22 +46,25 @@
 
                 <ul>
                     <li class="home_box light_blue animated_element animation-fadeIn duration-500 fadeIn"
-                        style="z-index: 3; -webkit-animation: 500ms 0ms; transition: 0ms; -webkit-transition: 0ms;">
+                        style="height:100%;">
                         <h2>
                             For the people, by the people.
                         </h2>
 
                         <div class="news clearfix"><p></p>
 
-                            <p class="text" align="">
-                                If you need a doctor urgently outside of medicenter opening hours, call emergency
-                                appointment number for emergency service.
-
+                               <p class="text" align="">
+                                Our goal is to raise the profile of cannabis as medicine, by providing the most complete and accurate data possible.
                             </p>
+<p></p>
+                            <p class="text" align="">
+                                Contributions in ways of strain review will be tallied up into 1 single report, prodiving a univiersal standard for cannabis effects and medical properties.
+                            </p>
+
 
                         </div>
                     </li>
-                    <li class="home_box blue animated_element animation-slideDown duration-800 delay-250 slideDown"
+                    <!--li class="home_box blue animated_element animation-slideDown duration-800 delay-250 slideDown"
                         style="z-index: 2; -webkit-animation: 800ms 250ms; transition: 250ms; -webkit-transition: 250ms;">
                         <h2>
                             Why Sign Up?
@@ -75,7 +78,7 @@
                             </p>
 
                         </div>
-                    </li>
+                    </li-->
 
                 </ul>
 

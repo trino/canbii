@@ -26,11 +26,10 @@
     </div>
 
 
-    <div>
+    <div class="page_margin_top">
 
-
-        <h1> Our goal is to raise the profile of cannabis as medicine, by providing the most accurate data possible.
-        </h1>
+        <h3 class="sentence announcement" style="margin-top:0px;float: right;width: 30%;margin-left: 3%;">Our goal is to raise the profile of cannabis as medicine, by providing the most complete and accurate data possible.
+        </h3>
 
         <p align="">
             Medical marijuana has been used as a form of treatment for thousands of years. This all natural plant
@@ -48,27 +47,16 @@
             you as easy possible - matching you with the most accurate <strong>medicine</strong>.
         </p>
 
-        <p align="">
-            There are 3 strain categories which are Indica, Sativa, and Hybrid.
-            The effects of Indica are drowsiness and it provides a deep relaxation sensation. Sativa is known for it's
-            energetic and uplifting properties. Mixing both Indica and Sativa strains have created Hybrid strains.
-            The beauty of Hybrid cannabis strains is that you get the best properties of both strains. Expert growers
-            are constantly experimenting with different combinations to create super strains. Growers come up with fun
-            names for their hybrids like Pineapple Express, Bubba Kush, and Blue Dream to name a few. Come and explore
-            all the
-            different strains <a href="<?php echo $this->webroot; ?>strains/all">here</a>.
-        </p>
-
         <?php include_once('combine/strains.php'); ?>
 
     </div>
 </div>
 
 
-<p align="">
 
-Why Cannabis?
-    </p>        <p align="">
+<h2 class="box_header page_margin_top slide">
+    Why Cannabis?
+</h2>       <p align="">
 
 Cannabis has been recognized for its medicinal value, dating back to 2737 B.C. It's commonly used for managing chronic pain, reducing inflammation, and relieving nausea and vomiting, among others. Today, through modern research, our understanding of the potential benefits of cannabis is growing exponentially. Researchers from worldwide are reporting that cannabis may be beneficial for alleviating the symptoms of illnesses and conditions such as: epilepsy, HIV/AIDS, arthritis, Crohn’s Disease, dementia and many others.
 </p>        <p align="">
@@ -86,7 +74,7 @@ CBD is a cannabinoid that repress neurotransmitter release in the brain. CBD or 
 
 
 <h2 class="box_header page_margin_top slide">
-    Fun Facts
+    Known Facts
 </h2>
 
 <div class="backgroundcolor">

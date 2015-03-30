@@ -691,6 +691,7 @@ ul.sf-menu li li li:hover ul, ul.sf-menu li li li.sfHover ul
 }
 .search .search_input
 {
+    height: 50px;
 	width: 192px;
 	background: #F0F0F0;
 	border-top: 1px solid #E0E0E0;

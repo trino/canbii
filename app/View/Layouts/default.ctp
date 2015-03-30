@@ -480,7 +480,7 @@ padding:30px;
                 </h2>
 
                 <p style="color: white;margin-bottom:20px;">
-                    <a href="<?php echo $this->webroot; ?>pages/about" title="">The more we know, the more we can help &raquo;</a>
+                    <a href="<?php echo $this->webroot; ?>users/register" title="">More we know, more we can help &raquo;</a>
                 </p>
             </li>
             <li class="footer_banner_box blue animated_element animation-slideRight200 duration-800 delay-1000">
