@@ -44,11 +44,17 @@
 		}
 	}
 
+$webroot = "";
+if ($_SERVER["SERVER_NAME"] == "localhost") {
+    $webroot = $_SERVER["PHP_SELF"];
+    $webroot = substr($webroot, 1, strpos($webroot, "/", 1));
+}
+
 ?>
 <html>
 	<head>
 		
-		<link rel="stylesheet" type="text/css" href="/canbii/debugger/debug.css" />
+		<link rel="stylesheet" type="text/css" href="/<?= $webroot; ?>debugger/debug.css" />
 	</head>
 	<body>
 		<div class="cpanel_container">
@@ -65,17 +71,17 @@
 							while($dt = $rsDateGrp->fetch_array()){
                                 ?>
 							<div class='datebuggroup'>
-								<h2><?php echo $dt['dateMod']?>:</h2> <h3><?php echo $dt['cnt']; ?> bugs</h3><br />
+								<h2><?php echo $dt['dateMod']?>:</h2> <h3><?php echo $dt['cnt']; ?> bug<?php if($dt['cnt'] != 1) {echo "s";} ?></h3><br />
 								<?php foreach($bugs[$dt['dateMod']] as $b): ?>
 								<div class='commentbox' style='position:relative;display:inline-block;height:100px'>
-									<div class='commenttext'><?php echo substr($b['COMMENT'], 0, 20).'...'; ?></div>
+									<div class='commenttext'><?php echo substr($b['comment'], 0, 20).'...'; ?></div>
 									<?php if($isadmin): ?>
 									<div class='buguserlbl'>
 										<?php echo $b['username']; ?>
 									</div>
 									<?php endif; ?>
 									<span class='bugtime'><?php echo date("m-d-Y g:i a",strtotime($b['bugDate'])); ?></span>
-									<a class='seebug' target='_blank' href='<?php echo $b['url'] ?>'>(See Bug)</a>
+									<a class='seebug' target='_blank' href='<?php echo $b['url'] ?>?debug'>(See Bug)</a>
 								</div>
 								<?php endforeach; ?>
 							</div>
