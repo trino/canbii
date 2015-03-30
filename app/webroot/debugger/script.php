@@ -30,12 +30,17 @@ PRIMARY KEY (id)
 		//print_r("Table successfully created.\n");
 	}
 
+    $url="";
+    if (isset($_POST['url'])){
+        $url=trim(trim($_POST['url'],"#"), "?debug");
+    }
+
 	switch($_REQUEST['funct']){
 		case "addBug":
 			$dateNow = date('Y-m-d H:i:s');
 		
 			$queryIn = "INSERT INTO bug_list(comment,userID,url,positionX,positionY,windowX,windowY,ipAddress,dateCreated,dateModified) VALUES('".
-			$_POST['comment']."','".$_POST['userID']."','".trim($_POST['url'],"#")."','".$_POST['positionX']."','".$_POST['positionY'].
+			$_POST['comment']."','".$_POST['userID']."','". $url ."','".$_POST['positionX']."','".$_POST['positionY'].
 			"','". $_POST['winWidth'] ."','". $_POST['winHeight'] ."','". $_SERVER['REMOTE_ADDR'] ."','". $dateNow ."','". $dateNow ."');";
 			
 			if($result = $conn->query($queryIn)){
@@ -50,7 +55,7 @@ PRIMARY KEY (id)
 		break;
 		case "updateBug":
 			$dateNow = date('Y-m-d H:i:s');
-			$queryUp = "UPDATE bug_list SET comment='".$_POST['comment']."', url ='".trim($_POST['url'],"#").
+			$queryUp = "UPDATE bug_list SET comment='".$_POST['comment']."', url ='" . $url .
 			"',windowX=". $_POST['winWidth'] .",windowY=". $_POST['winHeight'] .", positionX = '".$_POST['positionX']
 			."', positionY ='".$_POST['positionY']. "', ipAddress = '".$_SERVER['REMOTE_ADDR']."',dateModified='". $dateNow ."' WHERE id=".$_POST['bugID'];
 			
@@ -65,7 +70,7 @@ PRIMARY KEY (id)
 		case "getBugsByURL":
 			$queryUser = "SELECT username FROM users WHERE id = '". $_POST['userID'] ."'";
 			
-			$querySel = "SELECT * FROM bug_list WHERE userID = '". $_POST['userID'] ."' AND url = '".trim($_POST['url'],"#")."'";
+			$querySel = "SELECT * FROM bug_list WHERE userID = '". $_POST['userID'] ."' AND url = '". $url ."'";
 			
 			$bugs = array();
 			
@@ -77,7 +82,7 @@ PRIMARY KEY (id)
 			// Check if admin (Change username to admin user name or use user type column)
 				if($user['username'] == "admin@trinoweb.com"){
 					
-					$querySel = "SELECT * FROM bug_list WHERE url = '".trim($_POST['url'],"#")."'";
+					$querySel = "SELECT * FROM bug_list WHERE url = '". $url . "'";
 				}
 			}
 			$rs = $conn->query($querySel);

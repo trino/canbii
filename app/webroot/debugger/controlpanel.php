@@ -81,7 +81,8 @@ if ($_SERVER["SERVER_NAME"] == "localhost") {
 									</div>
 									<?php endif; ?>
 									<span class='bugtime'><?php echo date("m-d-Y g:i a",strtotime($b['bugDate'])); ?></span>
-									<a class='seebug' target='_blank' href='<?php echo $b['url'] ?>?debug'>(See Bug)</a>
+									<a class='seebug' target='_blank' href='<?php echo $b['url'];
+                                    if(!strpos($b['url'], "?debug")) { echo "?debug"; } ?>'>(See Bug)</a>
 								</div>
 								<?php endforeach; ?>
 							</div>
