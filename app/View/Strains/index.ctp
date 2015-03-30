@@ -135,23 +135,36 @@
     <div class="clearfix"></div>
 
     <ul class="page_margin_top clearfix">
-
-
         <li class="footer_banner_box super_light_blue printer"
             style="position: relative;padding: 0;width:330px;height:120px;">
-            <img src="<?php echo $this->webroot ?>images/bg1.jpg"
-                 style=" height: 100px;position: absolute;width: 330px;z-index: -1;"/>
+            <!--img src="<?php echo $this->webroot ?>images/bg1.jpg"
+                 style=" height: 100px;position: absolute;width: 330px;z-index: -1;"/-->
             <center style="padding:20px 30px;color:#FFF;">
                 <h2>Overall Rating</h2>
+<? if( $strain['Strain']['rating']== 0){ ?>
 
+
+    <i> <a href="<?php echo $this->webroot; ?>review/add/<?php echo $strain['Strain']['slug']; ?>">
+            No ratings yet. Review this
+            strain <i style="font-size: 16px;padding-left:6px;"
+                      class="fa fa-star-half-full"></i></a></i>
+
+
+
+<? }else{ ?>
                 <div class="rating"></div>
-            </center>
+<? } ?>
 
+            </center>
         </li>
+
+
+
+
         <li class="footer_banner_box light_blue printer"
             style="position: relative;padding: 0;width:330px;height:120px;">
-            <img src="<?php echo $this->webroot ?>images/bg2.jpg"
-                 style=" height: 100px;position: absolute;width: 330px;z-index: -1;"/>
+            <!--img src="<?php echo $this->webroot ?>images/bg2.jpg"
+                 style=" height: 100px;position: absolute;width: 330px;z-index: -1;"/-->
             <center style="padding:20px 30px;color:#FFF;">
                 <h2>Chemical Composition</h2>
 
@@ -212,8 +225,8 @@
 
         </li>
         <li class="footer_banner_box blue printer" style="position: relative;padding: 0;width:330px;height:120px;">
-            <img src="<?php echo $this->webroot ?>images/bg3.jpg"
-                 style=" height: 100px;position: absolute;width: 330px;z-index: -1;"/>
+            <!--img src="<?php echo $this->webroot ?>images/bg3.jpg"
+                 style=" height: 100px;position: absolute;width: 330px;z-index: -1;"/-->
 
             <div style="color:#FFF;text-align:center;position: relative;width: 100%;">
                 <!--h2>Dominant Flavors</h-->
@@ -241,11 +254,11 @@
                             } else {
                                 ?>
 
-
-                                <TD style="text-align:center">
-                                    <a href="<?php echo $this->webroot; ?>review/add/<?php echo $strain['Strain']['slug']; ?>"><i>No flavors yet. Review this
-                                        strain </i><span style="font-size: 26px;padding-left:10px;"
-                                                  class="fa fa-star-half-full"></span></a>
+                                <TD style="text-align:center;padding-top:25px;">
+                                    <a href="<?php echo $this->webroot; ?>review/add/<?php echo $strain['Strain']['slug']; ?>"><i>No
+                                            flavors yet. Review this
+                                            strain </i><span style=""
+                                                             class="fa fa-star-half-full"></span></a>
                                 </TD>
                             <?php
                             }
@@ -362,9 +375,10 @@
                         ?>
 
 
-                      <i>  <a href="<?php echo $this->webroot; ?>review/add/<?php echo $strain['Strain']['slug']; ?>"> No ratings yet. Review this
-                            strain <i style="font-size: 16px;padding-left:6px;"
-                                      class="fa fa-star-half-full"></i></a></i>
+                        <i> <a href="<?php echo $this->webroot; ?>review/add/<?php echo $strain['Strain']['slug']; ?>">
+                                No ratings yet. Review this
+                                strain <i style="font-size: 16px;padding-left:6px;"
+                                          class="fa fa-star-half-full"></i></a></i>
 
                     <?php
                     }
@@ -444,7 +458,8 @@
                         }
                         } else {
                         ?>
-                        <i>  <a href="<?php echo $this->webroot; ?>review/add/<?php echo $strain['Strain']['slug']; ?>"> No ratings yet. Review this
+                        <i> <a href="<?php echo $this->webroot; ?>review/add/<?php echo $strain['Strain']['slug']; ?>">
+                                No ratings yet. Review this
                                 strain <i style="font-size: 16px;padding-left:6px;"
                                           class="fa fa-star-half-full"></i></a></i>
                     <?php
@@ -489,7 +504,8 @@
                         }
                         } else {
                         ?>
-                        <i>  <a href="<?php echo $this->webroot; ?>review/add/<?php echo $strain['Strain']['slug']; ?>"> No ratings yet. Review this
+                        <i> <a href="<?php echo $this->webroot; ?>review/add/<?php echo $strain['Strain']['slug']; ?>">
+                                No ratings yet. Review this
                                 strain <i style="font-size: 16px;padding-left:6px;"
                                           class="fa fa-star-half-full"></i></a></i>
                     <?php
@@ -584,7 +600,9 @@
                             <?php
                                 if (!$duration && !$strength && !$scale) {
                                     ?>
-                                    <i>  <a href="<?php echo $this->webroot; ?>review/add/<?php echo $strain['Strain']['slug']; ?>"> No ratings yet. Review this
+                                    <i>
+                                        <a href="<?php echo $this->webroot; ?>review/add/<?php echo $strain['Strain']['slug']; ?>">
+                                            No ratings yet. Review this
                                             strain <i style="font-size: 16px;padding-left:6px;"
                                                       class="fa fa-star-half-full"></i></a></i>
                                 <?php
@@ -610,20 +628,20 @@
 
             <div style="width:50%;margin:0 auto;" class="print printer">
                 <?php
-                    $c = $this->requestAction('/strains/getcolors/' . $strain['Strain']['id']);
-                    foreach ($c as $col) {
-                        if ($col['ReviewColor']['color'] != "") {
-                            ?>
+                $c = $this->requestAction('/strains/getcolors/' . $strain['Strain']['id']);
+                foreach ($c as $col) {
+                    if ($col['ReviewColor']['color'] != "") {
+                        ?>
                             <div class="print printer" style="  display: inline-block;
                                 float:left;width: 25px; height: 25px;padding:0;margin:0;clear:none;background:<?php echo $col['ReviewColor']['color']; ?>;">
                                 &nbsp;</div>
                         <?php
-                        }
                     }
-                ?>
+                }
+            ?>
             </div-->
 
-            <h2 class="box_header slide clearfix" style="float:left:width:40%;">              <a
+            <h2 class="box_header slide clearfix" style="float:left:width:40%;"><a
                     href="<?php echo $this->webroot; ?>strains/review/<?php echo $strain['Strain']['slug']; ?>"
                     class="viewall more blue noprint" style="float:right;font-size:12px;">See All Reviews
                     for <?php echo $strain['Strain']['name']; ?> &raquo;</a> Most Helpful User Review
@@ -659,32 +677,29 @@
             <div style="border-top: 1px solid #dadada;padding: 5px 0px;"></div>
 
 
-
-
-
             <div class="print noprint" style="margin-top: 20px;">
 
-<div style="float: left;width:30%;">
+                <div style="float: left;width:30%;">
 
-    <a style="" class="" href="javascript:void(0)" onclick="window.print();">
-    <img class="noprint" src="<?php echo $this->webroot ?>images/print_report_small.jpg"
-         style="width:100px;border:1px solid #efefef"/>
+                    <a style="" class="" href="javascript:void(0)" onclick="window.print();">
+                        <img class="noprint" src="<?php echo $this->webroot ?>images/print_report_small.jpg"
+                             style="width:100px;border:1px solid #efefef"/>
 
-</a>
+                    </a>
 
-</div>
+                </div>
                 <div style="float: left;width:60%;padding-top: 6px;">
 
 
                     <a style="" class="blue more" href="javascript:void(0)" onclick="window.print();">Print Report</a>
                     <a style="margin-top: 4px;" class="dark_blue more"
-                       href="<?php echo $this->webroot; ?>review/add/<?php echo $strain['Strain']['slug']; ?>">Review Strain</a>
+                       href="<?php echo $this->webroot; ?>review/add/<?php echo $strain['Strain']['slug']; ?>">Review
+                        Strain</a>
 
                     <div style="clear:both;"></div>
-<h3 class="page_margin_top">Share with love</h3>
+                    <h3 class="page_margin_top">Share with love</h3>
 
                     <div style="" class="addthis_sharing_toolbox"></div>
-
 
 
                 </div>

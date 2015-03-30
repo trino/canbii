@@ -42,7 +42,7 @@ throught it all and find the right one for them? That's why we're here. We want 
 <p>
 There are 3 strain categories which are Indica, Sativa, and Hybrid. 
 The effects of Indica are drowsiness and it provides a deep relaxation sensation. Sativa is known for it's energetic and uplifting properties. Mixing both Indica and Sativa strains have created Hybrid strains. 
-The beauty of Hybrid cannabis strains is that you get the best properties of both strains. Expert growers are constantly experimenting with different combinations to create super strains. Growers come up with fun names
+The beauty of hybrid cannabis strains is that you get the best properties of both strains. Expert growers are constantly experimenting with different combinations to create super strains. Growers come up with fun names
 for their hybrids like Pineapple Express, Bubba Kush, and Blue Dream to name a few. Come and explore all the different strains <a href="<?php echo $this->webroot;?>strains/all">here</a>.    
 </p>
 		

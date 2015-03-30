@@ -1,7 +1,7 @@
 <div class="page_layout page_margin_top clearfix">
     <div class="page_header clearfix">
         <div class="page_header_left">
-            <h1 class="page_title">About Medical Cannabis/Marijuana</h1>
+            <h1 class="page_title">About Medical Marijuana</h1>
             <ul class="bread_crumb">
                 <li>
                     <a href="<?php echo $this->webroot ?>" title="Home">
@@ -28,8 +28,8 @@
 
     <div class="page_margin_top">
 
-        <h3 class="sentence announcement" style="margin-top:0px;float: right;width: 30%;margin-left: 3%;">Our goal is to raise the profile of cannabis as medicine, by providing the most complete and accurate data possible.
-        </h3>
+        <h4 class="sentence announcement" style="margin-top:0px;float: right;width: 33%;margin-left: 3%;margin-bottom: 3%;">Our goal is to raise the profile of cannabis as medicine, by providing the most complete and accurate data possible.
+        </h4>
 
         <p align="">
             Medical marijuana has been used as a form of treatment for thousands of years. This all natural plant
@@ -54,9 +54,17 @@
 
 
 
-<h2 class="box_header page_margin_top slide">
+<h2 class="box_header page_margin_top_section slide">
     Why Cannabis?
-</h2>       <p align="">
+</h2>
+
+
+<img class="noprint" src="<?php echo $this->webroot ?>images/mj_pic.png"
+     style="margin-top:7px;float: right;width: 37%;margin-left: 3%;margin-bottom: 3%;border:1px solid #efefef"/>
+
+
+
+<p align="">
 
 Cannabis has been recognized for its medicinal value, dating back to 2737 B.C. It's commonly used for managing chronic pain, reducing inflammation, and relieving nausea and vomiting, among others. Today, through modern research, our understanding of the potential benefits of cannabis is growing exponentially. Researchers from worldwide are reporting that cannabis may be beneficial for alleviating the symptoms of illnesses and conditions such as: epilepsy, HIV/AIDS, arthritis, Crohn’s Disease, dementia and many others.
 </p>        <p align="">
@@ -73,8 +81,8 @@ CBD is a cannabinoid that repress neurotransmitter release in the brain. CBD or 
 
 
 
-<h2 class="box_header page_margin_top slide">
-    Known Facts
+<h2 class="box_header page_margin_top_section slide">
+    Cannabis Facts
 </h2>
 
 <div class="backgroundcolor">
