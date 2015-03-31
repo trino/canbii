@@ -168,7 +168,7 @@
         <div class="page_right" style="">
             <div style="float:left;margin-left:-2px;" class="addthis_sharing_toolbox"></div>
             <input id="BUTTON_18" type="reset" value="Reset Filter" class="more blue medium"
-                   style="float: right; width: 40%;"/>
+                   style="float: right; width: 40%;" onclick="location.reload();"/>
             <ul>
 
                 <li class="home_box light_blue animated_element animation-fadeIn duration-500" style="z-index: 3;">
