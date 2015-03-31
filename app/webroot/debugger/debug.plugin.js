@@ -21,9 +21,14 @@ function webfolder(){
 }
 
 function hide(){
+    debug_mode = false;
+    $('#debugbox').prop('checked', false); 
+
     $("#debug").hide();
     $("#debugbox").hide();
     $("#prompt_msg").hide();
+    $("#control_panel").hide();
+    $(".commentbox").hide();
 }
 
 $(window).on('resize', function(){
@@ -103,6 +108,7 @@ $(document).ready(function(){
 			$("#control_panel").hide();
 			$(".commentbox").hide();
             $("#prompt_msg").hide();
+            hide();
 		}
 	});
 	
