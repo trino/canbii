@@ -1109,6 +1109,18 @@
 		padding-bottom: 1%;
 		height:auto !important;
 	}
+    .page_header_right
+	{
+		float: left;
+		clear: both;
+		margin-top: 25px;
+        width:75%
+	}
+    .page_header_right .search_input
+	{
+		height:8px!important;
+        width:165px;
+	}
 	.hidden_filter label, .comment_form label, .contact_form label {
 		display: block;
 		color: #909090;
