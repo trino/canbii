@@ -2,7 +2,7 @@
 	width:200px;
 	height:30px;
 	position:fixed;
-	left:100px;
+	left:200px;
 	font-size:12pt;
 	z-index:9999;
 }
@@ -13,7 +13,7 @@
 	left:250px;
 	top:10px;
 	display:none;
-	z-index:9999;
+	z-index:9998;
 }
 
 #c_panelbutton:hover{

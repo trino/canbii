@@ -33,7 +33,6 @@ $(window).on('resize', function(){
     } else {
         $("#debug").show();
         $("#debugbox").show();
-        $("#prompt_msg").show();
     }
 });
 
@@ -46,7 +45,8 @@ $(document).ready(function(){
 	//else{
 		//$("body").prepend("<div id='prompt_msg'>Window width is too small to debug.<a class='close' href='#' onclick='javascript:closeMsg(this)'></a></div>");
 	//}
-	$("#prompt_msg").hide().slideDown("slow");
+    $("#prompt_msg").hide();
+	//$("#prompt_msg").hide().slideDown("slow");
 	
 	if($("uID").val() !== ""){		
 		getBugsByURL();
@@ -96,11 +96,13 @@ $(document).ready(function(){
 			debug_mode = true;
 			$("#control_panel").show();
 			$(".commentbox").slideDown();
+            $("#prompt_msg").show();
 		}
 		else{
 			debug_mode = false;
 			$("#control_panel").hide();
 			$(".commentbox").hide();
+            $("#prompt_msg").hide();
 		}
 	});
 	
@@ -119,7 +121,7 @@ $(document).ready(function(){
 		if($(e.target).is('#debugbox')){
 			debug_mode = true;
 			count ++;
-			$("#prompt_msg").slideUp("slow");
+			//$("#prompt_msg").slideUp("slow");
 			return;
 		}
 		if($(e.target).is('.commentbox > textarea, .commentbox > .close, .commentbox > .savebtn, #prompt_msg > .close')){
