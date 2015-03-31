@@ -20,15 +20,32 @@ function webfolder(){
     return "";
 }
 
+function hide(){
+    $("#debug").hide();
+    $("#debugbox").hide();
+    $("#prompt_msg").hide();
+}
+
+$(window).on('resize', function(){
+    var win = $(this); //this = window
+    if (win.width() < 1000) {
+        hide();
+    } else {
+        $("#debug").show();
+        $("#debugbox").show();
+        $("#prompt_msg").show();
+    }
+});
+
 $(document).ready(function(){
 	// 1000px is the cut off for the responsive layout
-	if($(window).width() >= 1000){
+	//if($(window).width() >= 1000){
         debug_mode = (document.URL.indexOf("?debug")>0 );
 		$("body").prepend("<div id='debug'>Debug Mode: <input type='checkbox' id='debugbox'/></div><div id='prompt_msg'>Click the checkbox to activate the debug mode. Double-click on any area of the webpage to report a bug!<a class='close' href='#' onclick='javascript:closeMsg(this)'></a><input type='hidden' class='bugid' value='' /></div><div id='control_panel'><form id='formCP' method='post' target='_blank' action='" + webfolder() + "/debugger/controlpanel.php'><input id='uID' name='uID' type='hidden' value='' /><button id='c_panelbutton'>Control Panel</button></form></div>");
-	}
-	else{
+	//}
+	//else{
 		//$("body").prepend("<div id='prompt_msg'>Window width is too small to debug.<a class='close' href='#' onclick='javascript:closeMsg(this)'></a></div>");
-	}
+	//}
 	$("#prompt_msg").hide().slideDown("slow");
 	
 	if($("uID").val() !== ""){		
@@ -121,6 +138,8 @@ $(document).ready(function(){
         $("#control_panel").show();
         $(".commentbox").slideDown();
     }
+
+    if($(window).width() < 1000) {hide(); }
 });
 
 function createMsg(element){
