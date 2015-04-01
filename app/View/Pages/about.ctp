@@ -52,9 +52,10 @@
     </div>
 </div>
 
+<div style="border-bottom: 1px solid #efefef;" class="page_margin_top_section"></div>
 
 
-<h2 class="box_header page_margin_top_section slide">
+<h2 class="box_header page_margin_top slide">
     Why Cannabis?
 </h2>
 
@@ -78,10 +79,8 @@ CBD is a cannabinoid that repress neurotransmitter release in the brain. CBD or 
 
 
 
-
-
-
-<h2 class="box_header page_margin_top_section slide">
+<div style="border-bottom: 1px solid #efefef;" class="page_margin_top"></div>
+<h2 class="box_header page_margin_top slide">
     Cannabis Facts
 </h2>
 

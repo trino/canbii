@@ -109,11 +109,11 @@
 			<input type="hidden" id="canbii_userID" value="<?php echo $this->Session->read("User.id"); ?>" />
     <div class="header_container">
         <div class="header clearfix">
-            <div class="header_left">
+            <div class="header_left" style="vertical-align: middle;">
                 <a href="<?php echo $this->webroot; ?>" title="MEDICALMARIJUANA">
                     <img src="<?php echo $this->webroot; ?>images/logo.png" height=100 alt="logo"/>
 
-
+<span style="padding: 5px 10px;background: #777;color:white;float:left;font-size: 12px;">Beta</span>
                 </a>
             </div>
 
