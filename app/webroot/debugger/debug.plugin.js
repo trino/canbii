@@ -22,7 +22,7 @@ function webfolder(){
 
 function hide(){
     debug_mode = false;
-    $('#debugbox').prop('checked', false); 
+    $('#debugbox').prop('checked', false);
 
     $("#debug").hide();
     $("#debugbox").hide();
@@ -108,7 +108,6 @@ $(document).ready(function(){
 			$("#control_panel").hide();
 			$(".commentbox").hide();
             $("#prompt_msg").hide();
-            hide();
 		}
 	});
 	
