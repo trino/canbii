@@ -92,9 +92,9 @@
 
 	<!-- Debugger -->
 
-	<script type="text/javascript" src="<?php echo $this->webroot;?>debugger/debug.plugin.js"></script>
+	<!--script type="text/javascript" src="<?php echo $this->webroot;?>debugger/debug.plugin.js"></script>
 	<script type="text/javascript" src="<?php echo $this->webroot;?>debugger/jquery-ui.min.js"></script>
-	<link rel="stylesheet" type="text/css" href="<?php echo $this->webroot;?>debugger/debug.css" />
+	<link rel="stylesheet" type="text/css" href="<?php echo $this->webroot;?>debugger/debug.css" /-->
 
     <!-- //////////////////////////////////////////////////////////////////////////////////////////// NEW SITE-->
 
