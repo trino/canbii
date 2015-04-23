@@ -101,13 +101,17 @@ $(document).ready(function(){
 			debug_mode = true;
 			$("#control_panel").show();
 			$(".commentbox").slideDown();
-            $("#prompt_msg").show();
+            if ($("#prompt_msg").length) {
+                $("#prompt_msg").show();
+            }
 		}
 		else{
 			debug_mode = false;
 			$("#control_panel").hide();
 			$(".commentbox").hide();
-            $("#prompt_msg").hide();
+            if ($("#prompt_msg").length) {
+                $("#prompt_msg").hide();
+            }
 		}
 	});
 	
@@ -170,8 +174,8 @@ function getBugsByURL(){
 			userID:$("#canbii_userID").val()
 		},
 		success: function(bugs){
-			console.log(bugs);
 			if(bugs !== false){
+                $("#prompt_msg").remove();
 				$.each(bugs,function(i,e){
 					var bugDate = e['dateMod'];
 					

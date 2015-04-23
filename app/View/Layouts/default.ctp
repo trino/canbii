@@ -92,9 +92,9 @@
 
 	<!-- Debugger -->
 
-	<!--script type="text/javascript" src="<?php echo $this->webroot;?>debugger/debug.plugin.js"></script>
+	<script type="text/javascript" src="<?php echo $this->webroot;?>debugger/debug.plugin.js"></script>
 	<script type="text/javascript" src="<?php echo $this->webroot;?>debugger/jquery-ui.min.js"></script>
-	<link rel="stylesheet" type="text/css" href="<?php echo $this->webroot;?>debugger/debug.css" /-->
+	<link rel="stylesheet" type="text/css" href="<?php echo $this->webroot;?>debugger/debug.css" />
 
     <!-- //////////////////////////////////////////////////////////////////////////////////////////// NEW SITE-->
 
@@ -105,15 +105,14 @@
 
 
 <div class="site_container">
-
 			<input type="hidden" id="canbii_userID" value="<?php echo $this->Session->read("User.id"); ?>" />
     <div class="header_container">
         <div class="header clearfix">
-            <div class="header_left" style="vertical-align: middle;">
+            <div class="header_left" style="vertical-align: middle;position:relative">
                 <a href="<?php echo $this->webroot; ?>" title="MEDICALMARIJUANA">
                     <img src="<?php echo $this->webroot; ?>images/logo.png" height=100 alt="logo"/>
 
-<span style="padding: 5px 10px;background: #777;color:white;float:left;font-size: 12px;">Beta</span>
+					<span id="beta">Beta</span>
                 </a>
             </div>
 

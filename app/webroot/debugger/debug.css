@@ -2,7 +2,8 @@
 	width:200px;
 	height:30px;
 	position:fixed;
-	left:50%;
+	left:10px;
+	top:10px;
 	font-size:12pt;
 	z-index:9999;
 }
@@ -11,7 +12,8 @@
 	position:fixed;
 	width:200px;
 	left:250px;
-	top:10px;
+	top:50px;
+	left:10px;
 	display:none;
 	z-index:9998;
 }
@@ -67,8 +69,8 @@
 
 #prompt_msg{
 	position: fixed;
-	top: 30px;
-	left: 100px;
+	top: 80px;
+	left: 30px;
 	width: 200px;
 	height: 100px;
 	background-image: url(http://localhost/debugger/msgbox.png);
@@ -141,7 +143,12 @@
 
 .bug_dateMod{
 	font-size:8pt;
-	color:grey;
+	color:#fff;
+	text-shadow:
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;
 	bottom:15px;
 	left:10px;
 	width:200px;
