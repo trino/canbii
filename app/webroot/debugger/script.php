@@ -2,7 +2,7 @@
 
 	date_default_timezone_set('America/Toronto');
 		// Change this connection with your credentials (server,db,user,password)
-	$conn = new mysqli("localhost","root","","canbii") or die("Error " . mysqli_error($conn)); 
+	$conn = new mysqli("localhost","root","root","canbii") or die("Error " . mysqli_error($conn)); 
 	
 	if ($conn->connect_errno) {
 		print_r("Connect failed: %s\n", $conn->connect_error);
@@ -37,6 +37,7 @@ PRIMARY KEY (id)
             $url=substr($url, 0, strlen($url)-6); //trim didn't work, cut off 1 too many digits
         }
     }
+	
 
 	switch($_REQUEST['funct']){
 		case "addBug":
@@ -74,10 +75,12 @@ PRIMARY KEY (id)
 			$queryUser = "SELECT username FROM users WHERE id = '". $_POST['userID'] ."'";
 			
 			$querySel = "SELECT * FROM bug_list WHERE userID = '". $_POST['userID'] ."' AND url = '". $url ."'";
+			$queryPrompt = "SELECT COUNT(*) as cnt FROM bug_list WHERE userID = '". $_POST['userID'] ."'";
 			
 			$bugs = array();
 			
 			$rsUser = $conn->query($queryUser);
+			$rsPrompt = $conn->query($queryPrompt);
 			
 			if($rsUser !== false){
 				$user = $rsUser->fetch_array();
@@ -88,10 +91,21 @@ PRIMARY KEY (id)
 					$querySel = "SELECT * FROM bug_list WHERE url = '". $url . "'";
 				}
 			}
+			
 			$rs = $conn->query($querySel);
 			
 			if($rs !== false){
 				$row_cnt = $rs->num_rows;
+				$remove_prompt = 0;
+				if($rsPrompt !== false){
+					$has_bug = $rsPrompt->fetch_array();
+					if($has_bug['cnt'] >0){
+						$remove_prompt = 1;
+					}
+				}
+				
+				$bugs = array();
+				
 				if($row_cnt > 0){
 					while($row = $rs->fetch_array()){
 						$bugs[$row['id']] = $row;
@@ -103,11 +117,11 @@ PRIMARY KEY (id)
 						// ."px'><a class='close' href='#' onclick='javascript:closeMsg(this)'></a><textare class='commenttext'>"
 						// .$row['comment'] ."</textarea><button class='savebtn'>Save</button><input type='hidden' class='bugid' value='".$row['id'] ."' /></div>";  
 					}
-					echo json_encode($bugs);
 				}
-				else{
-					echo "false";				
-				}
+				
+				
+				$output = array("bugs"=>$bugs,"remove_prompt"=>$remove_prompt);
+				echo json_encode($output);
 			}
 			else{
 				echo "false";

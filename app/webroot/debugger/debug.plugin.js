@@ -173,10 +173,12 @@ function getBugsByURL(){
 			url:window.location.href,
 			userID:$("#canbii_userID").val()
 		},
-		success: function(bugs){
-			if(bugs !== false){
+		success: function(output){
+            if (output.remove_prompt == 1) {
                 $("#prompt_msg").remove();
-				$.each(bugs,function(i,e){
+            }
+			if(output.bugs !== false){
+				$.each(output['bugs'],function(i,e){
 					var bugDate = e['dateMod'];
 					
 					$("body").append($("<div data-winWidth='"+ e['windowX'] +"' class='commentbox draggable' style='top:"+ e['positionY'] +"px;left:"+ e['positionX']  +"px'><a class='close' href='#' onclick='javascript:closeMsg(this)'></a><textarea class='commenttext'>"+e['comment'] +"</textarea><span class='bug_dateMod'>"+ bugDate +"</span><button class='savebtn'>Save</button><input type='hidden' class='bugid' value='"+ e['id'] +"' /></div>"));  

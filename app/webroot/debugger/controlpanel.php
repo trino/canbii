@@ -6,9 +6,8 @@
 	
 	if(!empty($_POST['uID'])){
 		// Change this connection with your credentials (server,db,user,password)
-		$conn = new mysqli("localhost","root","","canbii") or die("Error " . mysqli_error($conn)); 
+		$conn = new mysqli("localhost","root","root","canbii") or die("Error " . mysqli_error($conn)); 
 		
-		$queryUser = "SELECT username FROM users WHERE id = ". $_POST['uID'];
 		
 		$queryDateGrp = "SELECT COUNT(*) as cnt, DATE(dateModified) as dateMod FROM bug_list";
 		
@@ -19,11 +18,10 @@
 		$rsCheck = $conn->query($queryUser);
 		
 		if($rsCheck != false){
-			$item = $rsCheck->fetch_array();
 			
 			
 			// Check if admin (Change username to admin user name or use user type column)
-			if($item['username'] !== "admin@trinoweb.com"){
+			if($_POST['uID'] == 1){
 				$querySel .= " WHERE userID = ". $_POST['uID'];
 				$queryDateGrp =" WHERE userID = '". $_POST['uID'] ."'";
 				$isadmin = false;
