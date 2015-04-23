@@ -8,38 +8,35 @@
 		// Change this connection with your credentials (server,db,user,password)
 		$conn = new mysqli("localhost","root","root","canbii") or die("Error " . mysqli_error($conn)); 
 		
-		
 		$queryDateGrp = "SELECT COUNT(*) as cnt, DATE(dateModified) as dateMod FROM bug_list";
 		
 		$rsDateGrp = $conn->query($queryDateGrp);
 		
 		$querySel = "SELECT bl.*, u.username FROM bug_list bl JOIN users u ON bl.userID = u.ID";
 		
-		$rsCheck = $conn->query($queryUser);
 		
-		if($rsCheck != false){
 			
 			
-			// Check if admin (Change username to admin user name or use user type column)
-			if($_POST['uID'] == 1){
-				$querySel .= " WHERE userID = ". $_POST['uID'];
-				$queryDateGrp =" WHERE userID = '". $_POST['uID'] ."'";
-				$isadmin = false;
-			}
-			$queryDateGrp .=  " GROUP BY DATE(dateModified) DESC";
-			$querySel .= " ORDER BY dateCreated DESC";
-			
-			$rsBugs = $conn->query($querySel);
-			
-			while($bug = $rsBugs->fetch_array()){
-				$bug_date = date("Y-m-d",strtotime($bug['dateModified']));
-				$bugs[$bug_date][$bug['id']] = $bug;
-				$bugs[$bug_date][$bug['id']]['bugDate'] = $bug['dateModified'];
-
-
-			}
-			//die(var_dump($bugs));
+		// Check if admin (Change username to admin user name or use user type column)
+		if($_POST['uID'] != 1){
+			$querySel .= " WHERE userID = ". $_POST['uID'];
+			$queryDateGrp =" WHERE userID = '". $_POST['uID'] ."'";
+			$isadmin = false;
 		}
+		$queryDateGrp .=  " GROUP BY DATE(dateModified) DESC";
+		$querySel .= " ORDER BY dateCreated DESC";
+		
+		$rsBugs = $conn->query($querySel);
+		
+		while($bug = $rsBugs->fetch_array()){
+			$bug_date = date("Y-m-d",strtotime($bug['dateModified']));
+			$bugs[$bug_date][$bug['id']] = $bug;
+			$bugs[$bug_date][$bug['id']]['bugDate'] = $bug['dateModified'];
+
+
+		}
+		//die(var_dump($bugs));
+	
 	}
 
 $webroot = "";

@@ -91,10 +91,11 @@
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 
 	<!-- Debugger -->
-
+	<?php if($this->Session->check("User.id")): ?>
 	<script type="text/javascript" src="<?php echo $this->webroot;?>debugger/debug.plugin.js"></script>
 	<script type="text/javascript" src="<?php echo $this->webroot;?>debugger/jquery-ui.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="<?php echo $this->webroot;?>debugger/debug.css" />
+	<?php endif; ?>
 
     <!-- //////////////////////////////////////////////////////////////////////////////////////////// NEW SITE-->
 
