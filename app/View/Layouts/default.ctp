@@ -403,7 +403,7 @@ padding:30px;
 
                         </p>
 
-                        <p id="P_5">
+                        <!--<p id="P_5">
                             Filter by Effects:
                             <?php $effect = $this->requestAction('/pages/getEff');
                                 foreach ($effect as $key => $e) {
@@ -423,7 +423,7 @@ padding:30px;
                                     }
                                 }
                             ?>
-                        </p>
+                        </p>-->
 
                         <p style="display: none;" class="effe"></p>
 

@@ -243,7 +243,7 @@
 
 
     <ul class="columns full_width clearfix">
-        <li class="column_right">
+        <!--<li class="column_right">
 
 
             <div class="">
@@ -339,7 +339,7 @@
                     ?>
                 </div>
 
-        </li>
+        </li>-->
         <li class="column_left">
 
             <div class="">
@@ -422,7 +422,7 @@
         </li>
     </ul>
     <ul class="columns full_width page_margin_top clearfix">
-        <li class="column_left">
+        <!--<li class="column_left">
             <div class="">
                 <h3>Negative Effects:</h3>
                 <br>
@@ -460,8 +460,8 @@
                 </div>
 
 
-        </li>
-        <li class="column_right">
+        </li>-->
+        <li class="column_left">
 
             <div class="">
 

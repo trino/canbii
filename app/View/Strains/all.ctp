@@ -171,7 +171,7 @@
                    style="float: right; width: 40%;" onclick="location.reload();"/>
             <ul>
 
-                <li class="home_box light_blue animated_element animation-fadeIn duration-500" style="z-index: 3;">
+                <!--<li class="home_box light_blue animated_element animation-fadeIn duration-500" style="z-index: 3;">
                     <h2>
                         Filter by Effects
                     </h2>
@@ -194,7 +194,7 @@
                         </div>
 
                     </div>
-                </li>
+                </li>-->
                 <li class="home_box blue animated_element animation-slideDown duration-800 delay-250"
                     style="z-index: 2;">
                     <h2>
