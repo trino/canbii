@@ -6,9 +6,7 @@
 	
 	if(!empty($_POST['uID'])){
 		// Change this connection with your credentials (server,db,user,password)
-		$conn = new mysqli("localhost","root","","canbii") or die("Error " . mysqli_error($conn)); 
-		
-		$queryUser = "SELECT username FROM users WHERE id = ". $_POST['uID'];
+		$conn = new mysqli("localhost","root","root","canbii") or die("Error " . mysqli_error($conn)); 
 		
 		$queryDateGrp = "SELECT COUNT(*) as cnt, DATE(dateModified) as dateMod FROM bug_list";
 		
@@ -16,38 +14,42 @@
 		
 		$querySel = "SELECT bl.*, u.username FROM bug_list bl JOIN users u ON bl.userID = u.ID";
 		
-		$rsCheck = $conn->query($queryUser);
 		
-		if($rsCheck != false){
-			$item = $rsCheck->fetch_array();
 			
 			
-			// Check if admin (Change username to admin user name or use user type column)
-			if($item['username'] !== "admin@trinoweb.com"){
-				$querySel .= " WHERE userID = ". $_POST['uID'];
-				$queryDateGrp =" WHERE userID = '". $_POST['uID'] ."'";
-				$isadmin = false;
-			}
-			$queryDateGrp .=  " GROUP BY DATE(dateModified) DESC";
-			$querySel .= " ORDER BY dateCreated DESC";
-			
-			$rsBugs = $conn->query($querySel);
-			
-			while($bug = $rsBugs->fetch_array()){
-				$bug_date = date("Y-m-d",strtotime($bug['dateModified']));
-				
-				$bugs[$bug_date][$bug['id']] = $bug;
-				$bugs[$bug_date][$bug['id']]['bugDate'] = $bug['dateModified'];	
-			}
-			//die(var_dump($bugs));
+		// Check if admin (Change username to admin user name or use user type column)
+		if($_POST['uID'] != 1){
+			$querySel .= " WHERE userID = ". $_POST['uID'];
+			$queryDateGrp =" WHERE userID = '". $_POST['uID'] ."'";
+			$isadmin = false;
 		}
+		$queryDateGrp .=  " GROUP BY DATE(dateModified) DESC";
+		$querySel .= " ORDER BY dateCreated DESC";
+		
+		$rsBugs = $conn->query($querySel);
+		
+		while($bug = $rsBugs->fetch_array()){
+			$bug_date = date("Y-m-d",strtotime($bug['dateModified']));
+			$bugs[$bug_date][$bug['id']] = $bug;
+			$bugs[$bug_date][$bug['id']]['bugDate'] = $bug['dateModified'];
+
+
+		}
+		//die(var_dump($bugs));
+	
 	}
+
+$webroot = "";
+if ($_SERVER["SERVER_NAME"] == "localhost") {
+    $webroot = $_SERVER["PHP_SELF"];
+    $webroot = substr($webroot, 1, strpos($webroot, "/", 1));
+}
 
 ?>
 <html>
 	<head>
 		
-		<link rel="stylesheet" type="text/css" href="/canbii/debugger/debug.css" />
+		<link rel="stylesheet" type="text/css" href="/<?= $webroot; ?>debugger/debug.css" />
 	</head>
 	<body>
 		<div class="cpanel_container">
@@ -61,9 +63,10 @@
 						<?php
 						}
 						else{
-							while($dt = $rsDateGrp->fetch_array()){?>
+							while($dt = $rsDateGrp->fetch_array()){
+                                ?>
 							<div class='datebuggroup'>
-								<h2><?php echo $dt['dateMod']?>:</h2> <h3><?php echo $dt['cnt']; ?> bugs</h3><br />
+								<h2><?php echo $dt['dateMod']?>:</h2> <h3><?php echo $dt['cnt']; ?> bug<?php if($dt['cnt'] != 1) {echo "s";} ?></h3><br />
 								<?php foreach($bugs[$dt['dateMod']] as $b): ?>
 								<div class='commentbox' style='position:relative;display:inline-block;height:100px'>
 									<div class='commenttext'><?php echo substr($b['comment'], 0, 20).'...'; ?></div>
@@ -73,7 +76,8 @@
 									</div>
 									<?php endif; ?>
 									<span class='bugtime'><?php echo date("m-d-Y g:i a",strtotime($b['bugDate'])); ?></span>
-									<a class='seebug' target='_blank' href='<?php echo $b['url'] ?>'>(See Bug)</a>
+									<a class='seebug' target='_blank' href='<?php echo $b['url'];
+                                    if(!strpos($b['url'], "?debug")) { echo "?debug"; } ?>'>(See Bug)</a>
 								</div>
 								<?php endforeach; ?>
 							</div>

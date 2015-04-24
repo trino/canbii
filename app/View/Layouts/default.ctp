@@ -35,7 +35,7 @@
     <title><?php if (isset($title)) {
             echo $title . ' - Canbii - Personalized Medical Marijuana';
         } else {
-            echo str_replace('_', ' ', $gtitle) . ' - ' . $generic['title'];
+            echo str_replace('_', ' ', $gtitle) . ' - ' . $generic['title'] . ' - Personalized Medical Marijuana';
         } ?></title>
 
     <link rel="shortcut icon" href="<?php echo $this->webroot; ?>favicon.ico" type="image/x-icon"/>
@@ -91,10 +91,11 @@
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 
 	<!-- Debugger -->
-
-	<!--script type="text/javascript" src="<?php echo $this->webroot;?>debugger/debug.plugin.js"></script>
+	<?php if($this->Session->check("User.id")): ?>
+	<script type="text/javascript" src="<?php echo $this->webroot;?>debugger/debug.plugin.js"></script>
 	<script type="text/javascript" src="<?php echo $this->webroot;?>debugger/jquery-ui.min.js"></script>
-	<link rel="stylesheet" type="text/css" href="<?php echo $this->webroot;?>debugger/debug.css" /-->
+	<link rel="stylesheet" type="text/css" href="<?php echo $this->webroot;?>debugger/debug.css" />
+	<?php endif; ?>
 
     <!-- //////////////////////////////////////////////////////////////////////////////////////////// NEW SITE-->
 
@@ -105,15 +106,14 @@
 
 
 <div class="site_container">
-
 			<input type="hidden" id="canbii_userID" value="<?php echo $this->Session->read("User.id"); ?>" />
     <div class="header_container">
         <div class="header clearfix">
-            <div class="header_left">
+            <div class="header_left" style="vertical-align: middle;position:relative">
                 <a href="<?php echo $this->webroot; ?>" title="MEDICALMARIJUANA">
                     <img src="<?php echo $this->webroot; ?>images/logo.png" height=100 alt="logo"/>
 
-
+					<span id="beta">Beta</span>
                 </a>
             </div>
 
@@ -502,13 +502,18 @@ padding:30px;
                 </h3>
 
                 <p class="" style="color: #D5D5D5;" align="">
-                    Medicinal marijuana is a growing movement and we're doing our part to spread the word.(name of site)
-                    is an online database dedicated to educate the public on the benefits of medical marijuana. This all
-                    natural plant is used to treat illnesses and to help those who suffer from chronic pain that affects
-                    their daily lives.<br/>
+
+                    Canbii is an online database dedicated to educating the public on the effects of medical marijuana.
+
                     <br/>
-                    We need your input to enhance our information so we can help as many people as we can. <a
-                        href="<?php echo $this->webroot; ?>users/register" accesskey="4" title="">Sign up</a> today!
+                    <br/>
+                    The medical marijuana movement is asking the scientific community to make examining the therapeutic potential of cannabis a priority. But the drug's controlled status is continuing to slow efforts to investigate the myriad compounds in the plant.
+
+
+                    <br/>
+                    <br/>
+                    Please do your part in helping the world's largest clinical trial so that we can better understand the use and effects of the cannabis plant. <a
+                        href="<?php echo $this->webroot; ?>users/register" accesskey="4" title="">Sign up today!</a>
                 </p>
                 <ul class="social_icons clearfix">
                     <li>

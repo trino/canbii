@@ -5,7 +5,7 @@
     </h1>
 
     <h3 style="color: white;">
-        Cannabis is broken down into <strong>three</strong> categories, each with different <strong>effects</strong> and <strong>medical</strong> properties.
+        Cannabis is broken down into <strong>three</strong> main categories, each with different <strong>effects</strong> and <strong>medical</strong> properties.
     </h3>
 
 </div>

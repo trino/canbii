@@ -1,15 +1,57 @@
 var debug_mode = false;
 var count = 0;
 
+function webroot(){
+    //assumes only 1 directory deep for localhost, 0 for everything else
+    var txt =  document.URL;
+    var position = txt.indexOf("/", 8);
+    if( txt.indexOf("localhost")>0 ) {
+        position = txt.indexOf("/", position + 1);
+    }
+    return txt.substr(0,position) + "/";
+}
+
+function webfolder(){
+    var txt = webroot();
+    if( txt.indexOf("localhost")>0 ) {
+        var position = txt.indexOf("/", 8);
+        return "/" + txt.substring(position + 1, txt.length - 1);
+    }
+    return "";
+}
+
+function hide(){
+    debug_mode = false;
+    $('#debugbox').prop('checked', false);
+
+    $("#debug").hide();
+    $("#debugbox").hide();
+    $("#prompt_msg").hide();
+    $("#control_panel").hide();
+    $(".commentbox").hide();
+}
+
+$(window).on('resize', function(){
+    var win = $(this); //this = window
+    if (win.width() < 1000) {
+        hide();
+    } else {
+        $("#debug").show();
+        $("#debugbox").show();
+    }
+});
+
 $(document).ready(function(){
 	// 1000px is the cut off for the responsive layout
-	if($(window).width() >= 1000){
-		$("body").prepend("<div id='debug'>Debug Mode: <input type='checkbox' id='debugbox' /></div><div id='prompt_msg'>Click the checkbox to activate the debug mode. Double-click on any area of the webpage to add a bug!<a class='close' href='#' onclick='javascript:closeMsg(this)'></a><input type='hidden' class='bugid' value='' /></div><div id='control_panel'><form id='formCP' method='post' target='_blank' action='/canbii/debugger/controlpanel.php'><input id='uID' name='uID' type='hidden' value='' /><button id='c_panelbutton'>Control Panel</button></form></div>");
-	}
-	else{
-		$("body").prepend("<div id='prompt_msg'>Window width is too small to debug.<a class='close' href='#' onclick='javascript:closeMsg(this)'></a></div>");
-	}
-	$("#prompt_msg").hide().slideDown("slow");
+	//if($(window).width() >= 1000){
+        debug_mode = (document.URL.indexOf("?debug")>0 );
+		$("body").prepend("<div id='debug'><input type='checkbox' id='debugbox'/><label for='debugbox'>Debug Mode</label></div><div id='prompt_msg'>Click the checkbox to activate the debug mode. Double-click on any area of the webpage to report a bug!<a class='close' href='#' onclick='javascript:closeMsg(this)'></a><input type='hidden' class='bugid' value='' /></div><div id='control_panel'><form id='formCP' method='post' target='_blank' action='" + webfolder() + "/debugger/controlpanel.php'><input id='uID' name='uID' type='hidden' value='' /><button id='c_panelbutton'>Control Panel</button></form></div>");
+	//}
+	//else{
+		//$("body").prepend("<div id='prompt_msg'>Window width is too small to debug.<a class='close' href='#' onclick='javascript:closeMsg(this)'></a></div>");
+	//}
+    $("#prompt_msg").hide();
+	//$("#prompt_msg").hide().slideDown("slow");
 	
 	if($("uID").val() !== ""){		
 		getBugsByURL();
@@ -59,11 +101,17 @@ $(document).ready(function(){
 			debug_mode = true;
 			$("#control_panel").show();
 			$(".commentbox").slideDown();
+            if ($("#prompt_msg").length) {
+                $("#prompt_msg").show();
+            }
 		}
 		else{
 			debug_mode = false;
 			$("#control_panel").hide();
 			$(".commentbox").hide();
+            if ($("#prompt_msg").length) {
+                $("#prompt_msg").hide();
+            }
 		}
 	});
 	
@@ -82,7 +130,7 @@ $(document).ready(function(){
 		if($(e.target).is('#debugbox')){
 			debug_mode = true;
 			count ++;
-			$("#prompt_msg").slideUp("slow");
+			//$("#prompt_msg").slideUp("slow");
 			return;
 		}
 		if($(e.target).is('.commentbox > textarea, .commentbox > .close, .commentbox > .savebtn, #prompt_msg > .close')){
@@ -95,6 +143,14 @@ $(document).ready(function(){
 			createMsg(e);
 		}
 	});
+
+    if(debug_mode){
+        $("#debugbox").click();
+        $("#control_panel").show();
+        $(".commentbox").slideDown();
+    }
+
+    if($(window).width() < 1000) {hide(); }
 });
 
 function createMsg(element){
@@ -111,16 +167,18 @@ function getBugsByURL(){
 	$.ajax({
 	async:false,
 		type: "POST",
-		url: "/canbii/debugger/script.php",
+		url: webfolder() + "/debugger/script.php",
 		data: {			
 			funct:"getBugsByURL",
 			url:window.location.href,
 			userID:$("#canbii_userID").val()
 		},
-		success: function(bugs){
-			console.log(bugs);
-			if(bugs !== false){
-				$.each(bugs,function(i,e){
+		success: function(output){
+            if (output.remove_prompt == 1) {
+                $("#prompt_msg").remove();
+            }
+			if(output.bugs !== false){
+				$.each(output['bugs'],function(i,e){
 					var bugDate = e['dateMod'];
 					
 					$("body").append($("<div data-winWidth='"+ e['windowX'] +"' class='commentbox draggable' style='top:"+ e['positionY'] +"px;left:"+ e['positionX']  +"px'><a class='close' href='#' onclick='javascript:closeMsg(this)'></a><textarea class='commenttext'>"+e['comment'] +"</textarea><span class='bug_dateMod'>"+ bugDate +"</span><button class='savebtn'>Save</button><input type='hidden' class='bugid' value='"+ e['id'] +"' /></div>"));  
@@ -159,7 +217,7 @@ function saveBug(e){
 	}
 	$.ajax({
 		type: "POST",
-		url: "/canbii/debugger/script.php",
+		url: webfolder() + "/debugger/script.php",
 		data: {
 			comment:$(e).parent('.commentbox').find('.commenttext').val(),
 			positionY:$(e).parent(".commentbox").offset().top,

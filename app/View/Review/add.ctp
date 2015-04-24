@@ -15,34 +15,49 @@
         overflow: auto;
         white-space: nowrap;
     }
-    #qf_review__aesthetics__color .review-slider{display:inline-block;}
-    #qf_review__aesthetics__flavor .review-slider{display:inline-block;}
+
+    #qf_review__aesthetics__color .review-slider {
+        display: inline-block;
+    }
+
+    #qf_review__aesthetics__flavor .review-slider {
+        display: inline-block;
+    }
 </style>
 
 <?php
-function iif($value, $true, $false=""){
-    if ($value) { return $true; }
-    return $false;
-}
+    function iif($value, $true, $false = "")
+    {
+        if ($value) {
+            return $true;
+        }
+        return $false;
+    }
 
-//http://localhost/metronic/templates/admin/ui_general.html
-//Acceptable colors:
-// Metronic: success (green), info (blue), warning (yellow), danger (red). Active does not work
-// Old: light-purple, light-red, light-blue, light-green
-function progressbar($webroot, $value, $textL="", $textR="", $color = "success", $color2="light-purple", $striped=false, $active=false, $min = 0, $max=5){
+    //http://localhost/metronic/templates/admin/ui_general.html
+    //Acceptable colors:
+    // Metronic: success (green), info (blue), warning (yellow), danger (red). Active does not work
+    // Old: light-purple, light-red, light-blue, light-green
+    function progressbar($webroot, $value, $textL = "", $textR = "", $color = "success", $color2 = "light-purple", $striped = false, $active = false, $min = 0, $max = 5)
+    {
         if ($textL) {
             echo '<label style="margin-top: 0px;">' . $textL;
-            if ($textR != "noshow") {echo '<Div style="float:right;">' . $value . "/" . $max . "</div>"; }
+            if ($textR != "noshow") {
+                echo '<Div style="float:right;">' . $value . "/" . $max . "</div>";
+            }
             echo "</label>";
         }
         echo '<div class="progress' . iif($striped, " progress-striped") . iif($active, " active") . '" style="margin-bottom: 8px;">';
         echo '<img src="' . $webroot . 'images/bar_chart/' . $color2 . '.png" style="width: ';
-        echo (round($value, 2) > $max) ? $max : round($value/($max-$min)*100, 2);
+        echo (round($value, 2) > $max) ? $max : round($value / ($max - $min) * 100, 2);
         echo '%;height:20px;"/></div>';
-}
-function perc($scale){
-    return round($scale/20,2) . "/5";
-}
+    }
+
+    function perc($scale)
+    {
+        return round($scale / 20, 2) . "/5";
+    }
+
 ?>
 
 
@@ -82,8 +97,8 @@ function perc($scale){
                     echo '<a href="' . $this->webroot . 'strains/' . $review['Strain']['slug'] . '">';
 
                 }
-            include('combine/hexagon.php');
-?>
+                include('combine/hexagon.php');
+            ?>
 
 
 
@@ -117,7 +132,9 @@ function perc($scale){
                         <?php echo ucfirst($review['Strain']['name']); ?> Review
                     </h1>
                     </a>
-                    <p style="clear:both;">Reviewed by <?php echo $this->requestAction('/strains/getUserName/' . $review['Review']['user_id']); ?> on <?php echo $review['Review']['on_date']; ?>
+                    <p style="clear:both;">Reviewed
+                        by <?php echo $this->requestAction('/strains/getUserName/' . $review['Review']['user_id']); ?>
+                        on <?php echo $review['Review']['on_date']; ?>
 
                     </p>
 
@@ -141,18 +158,18 @@ function perc($scale){
                 <div class="page_header_right">
 
 
-                    <a style="margin-right:10px;" title="Read more" href="<?php echo $this->webroot;?>users/dashboard"
+                    <a style="margin-right:10px;" title="Read more" href="<?php echo $this->webroot; ?>users/dashboard"
                        class=" more large dark_blue icon_small_arrow margin_right_white">Dashboard</a>
 
 
-                    <a style="margin-right:10px;" title="Read more" href="<?php echo $this->webroot;?>users/settings"
+                    <a style="margin-right:10px;" title="Read more" href="<?php echo $this->webroot; ?>users/settings"
                        class="more large dark_blue icon_small_arrow margin_right_white">Settings</a>
 
-                    <a style="margin-right:10px;" title="Read more" href="<?php echo $this->webroot;?>review"
+                    <a style="margin-right:10px;" title="Read more" href="<?php echo $this->webroot; ?>review"
                        class="more large dark_blue icon_small_arrow margin_right_white  active">Add Review</a>
 
 
-                    <a title="Read more" href="<?php echo $this->webroot;?>review/all"
+                    <a title="Read more" href="<?php echo $this->webroot; ?>review/all"
                        class="more large dark_blue icon_small_arrow margin_right_white  ">My Reviews</a>
 
 
@@ -186,26 +203,26 @@ function perc($scale){
 
 
                         <h3>Effect Scale (Sedative to Active)</h3>
-                        <?php if (isset($review) && $review['Review']['eff_scale'] <2) {
+                        <?php if (isset($review) && $review['Review']['eff_scale'] < 2) {
                             echo "<strong>No Review</strong><br/>";
                         } else {
                             ?>
                             <p id="qf_review__general__mscale__prompt">
-                                <?php if ($this->params['action'] == 'add') { ?>
-                                    </p>
-                                    <div>
-                                        <input id="qf_review__general__mscale" class="qf-hidden-input qf-slider qf-input"
-                                               type="hidden" name="eff_scale" value="0"
-                                               title="Effect Scale (Active to Sedative)"/>
-                                    </div>
-                                    <div id="qf_review__general__mscale__slider"
-                                         class="qf-slider-bar ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all">
-                                    </div>
-                                <?php } else {
-                                    $typ = array('', 'NULL', 'Extremely Sedated', 'Very Sedated', 'Sedated', 'Bit Sedated', 'Balanced', 'Bit Active', 'Active', 'Very Active', 'Extremely Active');
-                                    progressbar($this->webroot, $review['Review']['eff_scale'], $typ[$review['Review']['eff_scale']], "noshow", "warning", "light-purple", false, false,0, 9);
-                                   //echo $typ[$review['Review']['eff_scale']];
-                                }
+                            <?php if ($this->params['action'] == 'add') { ?>
+                                </p>
+                                <div>
+                                    <input id="qf_review__general__mscale" class="qf-hidden-input qf-slider qf-input"
+                                           type="hidden" name="eff_scale" value="0"
+                                           title="Effect Scale (Active to Sedative)"/>
+                                </div>
+                                <div id="qf_review__general__mscale__slider"
+                                     class="qf-slider-bar ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all">
+                                </div>
+                            <?php } else {
+                                $typ = array('', 'NULL', 'Extremely Sedated', 'Very Sedated', 'Sedated', 'Bit Sedated', 'Balanced', 'Bit Active', 'Active', 'Very Active', 'Extremely Active');
+                                progressbar($this->webroot, $review['Review']['eff_scale'], $typ[$review['Review']['eff_scale']], "noshow", "warning", "light-purple", false, false, 0, 9);
+                                //echo $typ[$review['Review']['eff_scale']];
+                            }
                         } ?>
                         <h3>Effect Strength</h3>
                         <?php if (isset($review) && $review['Review']['eff_strength'] == 0) {
@@ -216,7 +233,7 @@ function perc($scale){
                         } else {
                             ?>
                             <p id="qf_review__general__strength__prompt">
-                                <?php if ($this->params['action'] == 'add') echo '0'; else if (isset($review)) echo $review['Review']['eff_strength'];?>
+                                <?php if ($this->params['action'] == 'add') echo '0'; else if (isset($review)) echo $review['Review']['eff_strength']; ?>
                                 /5
                             </p>
                             <div>
@@ -234,7 +251,7 @@ function perc($scale){
                             progressbar($this->webroot, $review['Review']['eff_duration'], $review['Review']['eff_duration'] . " hours");
                         } else {
                             ?>
-                            <p id="qf_review__general__duration__prompt"><?php if ($this->params['action'] == 'add') echo ''; else echo $review['Review']['eff_duration'] . " hrs";?></p>
+                            <p id="qf_review__general__duration__prompt"><?php if ($this->params['action'] == 'add') echo ''; else echo $review['Review']['eff_duration'] . " hrs"; ?></p>
                             <div>
                                 <input id="qf_review__general__duration" class="qf-hidden-input qf-slider qf-input"
                                        type="hidden" name="eff_duration" value="0" title="Effect Duration">
@@ -269,8 +286,8 @@ function perc($scale){
         ?>
         <a href="javascript:void(0);"
            onclick="($(this).hasClass('sel'))?$(this).removeClass('sel'):$(this).addClass('sel');"
-           title="<?php echo $effect['Symptom']['id'];?>"
-           class="eff3 btn qf_review__effects__medical"><?php echo ucfirst($effect['Symptom']['title']);?></a>
+           title="<?php echo $effect['Symptom']['id']; ?>"
+           class="eff3 btn qf_review__effects__medical"><?php echo ucfirst($effect['Symptom']['title']); ?></a>
     <?php
         }
         }
@@ -279,18 +296,19 @@ function perc($scale){
         if (count($review['SymptomRating']) > 0){
 
         foreach ($review['SymptomRating'] as $effect){
-            if (count($symptoms) > $effect['symptom_id'] - 1) {
-            progressbar($this->webroot, $effect['rate'], $symptoms[$effect['symptom_id'] - 1]['Symptom']['title'], "", "success", "light-green");
+        if (count($symptoms) > $effect['symptom_id'] - 1) {
+        progressbar($this->webroot, $effect['rate'], $symptoms[$effect['symptom_id'] - 1]['Symptom']['title'], "", "info", "light-blue");
     ?>
 
-        <!--div id="efft_<?php echo $effect['id'];?>er" class="review-slider">
-            <label><?php echo $symptoms[$effect['symptom_id'] - 1]['Symptom']['title'];?></label>
+        <!--div id="efft_<?php echo $effect['id']; ?>er" class="review-slider">
+            <label><?php echo $symptoms[$effect['symptom_id'] - 1]['Symptom']['title']; ?></label>
 
-            <div id="<?php echo $effect['id'];?>er"></div>
-            <p><?php echo $effect['rate'];?>/5</p>
+            <div id="<?php echo $effect['id']; ?>er"></div>
+            <p><?php echo $effect['rate']; ?>/5</p>
 
             <div class="clear"></div>
         </div-->
+
 
         <script>
             $(function () {
@@ -307,7 +325,8 @@ function perc($scale){
                 });
             });
         </script>
-    <?php }}
+    <?php }
+    }
     }
     else {
         echo "<strong>No Review For Medicinal Effects</strong>";
@@ -332,8 +351,8 @@ function perc($scale){
     foreach ($effects as $effect) {
         ?> <a href="javascript:void(0);"
               onclick="($(this).hasClass('sel'))?$(this).removeClass('sel'):$(this).addClass('sel')"
-              title="<?php echo $effect['Effect']['id'];?>"
-              class="eff3 btn qf_review__effects__positive"><?php echo ucfirst($effect['Effect']['title']);?></a>
+              title="<?php echo $effect['Effect']['id']; ?>"
+              class="eff3 btn qf_review__effects__positive"><?php echo ucfirst($effect['Effect']['title']); ?></a>
     <?php
         }
         }
@@ -352,7 +371,7 @@ function perc($scale){
         foreach ($review['EffectRating'] as $effect){
         if (in_array($effect['effect_id'], $pos) and count($effects) > $effect['effect_id'] - 1){
 
-            progressbar($this->webroot, $effect['rate'],  $effects[$effect['effect_id'] - 1]['Effect']['title'], "", "info", "light-blue");
+        progressbar($this->webroot, $effect['rate'], $effects[$effect['effect_id'] - 1]['Effect']['title'], "", "success", "light-green");
     ?>
 
         <!--div id="efft_<?php echo $effect['id'];?>pe" class="review-slider">
@@ -363,6 +382,7 @@ function perc($scale){
 
             <div class="clear"></div>
         </div-->
+
         <script>
             $('#<?php echo $effect['id'];?>pe').slider({
                 range: "min",
@@ -401,8 +421,8 @@ function perc($scale){
     foreach ($negative as $effect) {
         ?> <a href="javascript:void(0);"
               onclick="($(this).hasClass('sel'))?$(this).removeClass('sel'):$(this).addClass('sel')"
-              title="<?php echo $effect['Effect']['id'];?>"
-              class="eff3 btn btn-info qf_review__effects__negative"><?php echo ucfirst($effect['Effect']['title']);?></a>
+              title="<?php echo $effect['Effect']['id']; ?>"
+              class="eff3 btn btn-info qf_review__effects__negative"><?php echo ucfirst($effect['Effect']['title']); ?></a>
     <?php
         }
         }
@@ -420,7 +440,7 @@ function perc($scale){
         if ($cnt > 0){
         foreach ($review['EffectRating'] as $effect){
         if (in_array($effect['effect_id'], $pos)){
-            progressbar($this->webroot, $effect['rate'],  $effectz[$effect['effect_id'] - 1]['Effect']['title'], "", "danger", "light-red");
+        progressbar($this->webroot, $effect['rate'], $effectz[$effect['effect_id'] - 1]['Effect']['title'], "", "danger", "light-red");
 
     ?>
 
@@ -432,6 +452,7 @@ function perc($scale){
 
             <div class="clear"></div>
         </div-->
+
         <script>
             $('#<?php echo $effect['id'];?>ne').slider({
                 range: "min",
@@ -458,6 +479,7 @@ function perc($scale){
                     </div>
                 </fieldset>
 
+                <? if(false){?>
                 <fieldset id="qf_review__aesthetics" class="qf-fieldset">
 
                     <h2 class="slide page_margin_top">
@@ -522,8 +544,8 @@ function perc($scale){
         foreach ($flavors as $flavor) {
             ?> <a href="javascript:void(0);"
                   onclick="($(this).hasClass('sel'))?$(this).removeClass('sel'):$(this).addClass('sel')"
-                  title="<?php echo $flavor['Flavor']['id'];?>"
-                  class="eff3 btn btn-info qf_review__aesthetics__flavor"><?php echo ucfirst($flavor['Flavor']['title']);?></a>
+                  title="<?php echo $flavor['Flavor']['id']; ?>"
+                  class="eff3 btn btn-info qf_review__aesthetics__flavor"><?php echo ucfirst($flavor['Flavor']['title']); ?></a>
         <?php
         }
 
@@ -531,8 +553,8 @@ function perc($scale){
         if (count($review['FlavorRating']) > 0) {
             foreach ($review['FlavorRating'] as $effect) {
                 ?>
-                <span id="efft_<?php echo $effect['id'];?>"
-                      class="eff3 sel btn btn-info"><?php echo $flavors[$effect['flavor_id'] - 1]['Flavor']['title'];?></span>
+                <span id="efft_<?php echo $effect['id']; ?>"
+                      class="eff3 sel btn btn-info"><?php echo $flavors[$effect['flavor_id'] - 1]['Flavor']['title']; ?></span>
             <?php
             }
         } else {
@@ -546,6 +568,7 @@ function perc($scale){
 
                 </fieldset>
 
+                <? } ?>
                 <h2 class="slide page_margin_top">
                     Rating & Comment <?php if ($this->params['action'] == 'add') echo '(Required)'; ?>
                 </h2>
@@ -586,7 +609,7 @@ function perc($scale){
                         } else {
                             ?>
                             <br/>
-                            <em><?php echo $review['Review']['review'];?></em>
+                            <em><?php echo $review['Review']['review']; ?></em>
                         <?php
                         }
                     ?>
@@ -598,15 +621,6 @@ function perc($scale){
         </div>
 
 
-
-
-
-
-
-
-
-
-
         <script type="text/javascript">
             $(document).ready(function () {
                 $(".fancybox").fancybox();
@@ -616,41 +630,41 @@ function perc($scale){
         <div class="page_right page_margin_top" style="">
 
 
-                    <?
-                        $breaker = 0;
-                        if (isset($strain)) {
-                            include('combine/images.php');
-                            /*
-                            for ($i = 1; $i < 5; $i++) {
-                                $image = "images/strains/" . $strain['Strain']['id'] . "/" . $strain['Strain']['slug'] . "_" . $i . ".jpg";
-                                $filename = getcwd() . "/" . $image; //C:\wamp\www\marijuana\app\webroot
-                                $image = $this->webroot . $image;
+            <?
+                $breaker = 0;
+                if (isset($strain)) {
+                    include('combine/images.php');
+                    /*
+                    for ($i = 1; $i < 5; $i++) {
+                        $image = "images/strains/" . $strain['Strain']['id'] . "/" . $strain['Strain']['slug'] . "_" . $i . ".jpg";
+                        $filename = getcwd() . "/" . $image; //C:\wamp\www\marijuana\app\webroot
+                        $image = $this->webroot . $image;
 
-                                // $image = $This->webroot . "images/strains/" . $strain['Strain']['id'] . "/" . $strain['Strain']['slug'] . "_" . $i . ".jpg";
+                        // $image = $This->webroot . "images/strains/" . $strain['Strain']['id'] . "/" . $strain['Strain']['slug'] . "_" . $i . ".jpg";
 
-                                if (file_exists($filename)) {
-                                    $breaker++;
+                        if (file_exists($filename)) {
+                            $breaker++;
 
-                                    ?>
-                                    <center>
-                                        <a class="fancybox" rel="group"
-                                           href="<?= $image ?>"
-                                            >
-                                            <img style="max-width: 270px;max-height: 400px;"
-                                                 class="reportimage"
-                                                 src="<?php echo $image; ?>"
-                                                />
-                                        </a>
-                                    </center>
+                            ?>
+                            <center>
+                                <a class="fancybox" rel="group"
+                                   href="<?= $image ?>"
+                                    >
+                                    <img style="max-width: 270px;max-height: 400px;"
+                                         class="reportimage"
+                                         src="<?php echo $image; ?>"
+                                        />
+                                </a>
+                            </center>
 
 
-                                    <?
-                                    if ($breaker == 2) {
-                                    }
-                                }
+                            <?
+                            if ($breaker == 2) {
                             }
-                            */
-                        }?>
+                        }
+                    }
+                    */
+                } ?>
 
 
         </div>
@@ -675,7 +689,7 @@ function perc($scale){
                 ?>
 
             <?php
-            } elseif($this->Session->read('User')['id'] <> $review['Review']['user_id']) {
+            } elseif ($this->Session->read('User')['id'] <> $review['Review']['user_id']) {
                 ?>
                 <div class="clearfix"></div>
                 <div class="vote"
@@ -721,7 +735,8 @@ function perc($scale){
                         ?>
                         <a href="javascript:void(0);" id="" class="faded" style="<?php echo $y1; ?>">
 
-                            <span style="<?php echo $y2; ?>">YES<?php if ($review['Review']['helpful']) { ?> (<?php echo $review['Review']['helpful']; ?>)<?php } ?></span>
+                            <span
+                                style="<?php echo $y2; ?>">YES<?php if ($review['Review']['helpful']) { ?> (<?php echo $review['Review']['helpful']; ?>)<?php } ?></span>
 
 
                         </a>
@@ -729,14 +744,15 @@ function perc($scale){
 
                         <a class="faded" href="javascript:void(0);" id="" style="<?php echo $n1; ?>">
 
-                            <span style="<?php echo $n2; ?>">NO<?php if ($review['Review']['not_helpful']) { ?> (<?php echo $review['Review']['not_helpful']; ?>)<?php } ?></span>
+                            <span
+                                style="<?php echo $n2; ?>">NO<?php if ($review['Review']['not_helpful']) { ?> (<?php echo $review['Review']['not_helpful']; ?>)<?php } ?></span>
 
                         </a>
 
                         <div style="color: #37A319;margin-top:15px;clear:both;">Thanks for voting!</div>
 
                     </div>
-                <?php }?>
+                <?php } ?>
 
                 </div>
             <?php
@@ -764,8 +780,8 @@ function perc($scale){
             addSlider($(this), 'medical');
         });
         /*$('.qf_review__aesthetics__color').click(function () {
-            addSlider($(this), 'color');
-        });*/
+         addSlider($(this), 'color');
+         });*/
         $('.qf_review__aesthetics__flavor').click(function () {
             addSlider($(this), 'flavor');
         });

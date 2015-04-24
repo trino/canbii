@@ -3302,11 +3302,11 @@ width:100px;
     color: rgba(255, 255, 255, 0.701961);
     margin: 0px;
     outline: rgba(255, 255, 255, 0.701961) none 0px;
-	font-size:12px;
+	font-size:16px;
 }/*#P_5*/
 
 .A_6{
-    padding:1px 0px;
+    padding:2px 0px;
     box-sizing: border-box;
     color: rgb(255, 255, 255);
     text-align: center;
@@ -3370,12 +3370,13 @@ width:100px;
 
 
 .reportimage{
-
-max-width:170px;  padding: 9px; margin:2px; border: 1px solid #dadada;
+    background-position: center center;
+    background-size: cover;
+    width:130px; height:130px;  padding: 9px; margin:2px; border: 1px solid #dadada;;
     -webkit-box-shadow: 0 6px 4px -4px #666;
     -moz-box-shadow: 0 6px 4px -4px #666;
     box-shadow: 0 6px 4px -4px #666;
-
+    -ms-interpolation-mode: bicubic; /* Scaled images look a bit better in IE now */
 }
 ul#text_and_image {
     display: table;
@@ -3560,6 +3561,18 @@ a.Flavor:hover:before{opacity:1;}/*transform: rotate(30deg) scale(1.1); */
     text-shadow:2px 2px 2px #000;
 }
 
+
+img.glow{
+    border-radius: 27px;
+    -webkit-transition: 500ms linear 0s;
+    -moz-transition: 500ms linear 0s;
+    -o-transition: 500ms linear 0s;
+    transition: 500ms linear 0s;
+}
+img.glow:hover{
+    border-color: white; border-radius: 27px;
+    box-shadow: 0 0 10px rgba(255,255,255, 0.6);
+}
 
 a.glow, a.glow:hover, a.glow:focus
 {
@@ -3788,6 +3801,18 @@ div.displisting > .rightside{
     0% {bottom: -25px;}
     80% {bottom: 20px;}
     100% {bottom: 10px;}
+}
+
+
+#beta{
+    padding: 5px 10px;
+    background: #777;
+    color:white;
+    float:left;
+    font-size: 12px;
+    position: absolute;
+    top:45px;
+    right:23px;
 }
 /*
 @-webkit-keyframes socialmove {
