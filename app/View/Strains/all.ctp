@@ -204,13 +204,22 @@
                     <div class=" clearfix">
                         <div class="choose_sym">
                             <?php $effect = $this->requestAction('/pages/getSym');
+                                $counter = 0;
                                 foreach ($effect as $e) {
+                                    $counter ++;
+                                    if($counter ==1){
+                                        echo "<div style='width: 50%;float:left;'>";
+                                    }
                                     ?>
-                                    <div style="width: 50%;float:left;">
+                                    <div>
                                     <a style="color:white;padding:2px;" href="javascript:void(0)" class="sym2 small-btn"
                                        id="sym_<?php echo $e['Symptom']['id']; ?>"><?php echo $e['Symptom']['title'] ?></a>
                                     </div>
                                 <?php
+                                    if($counter == ceil(count($effect)/2)){
+                                        echo "</div>";
+                                        $counter = 0;
+                                    }
                                 }
                             ?>
                             <p style="display: none;" class="symp"></p>

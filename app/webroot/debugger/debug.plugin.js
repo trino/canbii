@@ -129,7 +129,6 @@ $(document).ready(function(){
 	// });
 	
 	$("body").dblclick(function(e){
-		console.log($(e.target));
 			
 		if($(e.target).is('#debugbox')){
 			debug_mode = true;
@@ -234,7 +233,6 @@ function saveBug(e){
 			funct:type
 		},
 		success: function(prompt){
-			console.dir(prompt);
 			if(prompt !== "false"){
 				var newHeight = $(e).parent(".commentbox").height() - 30;
 				var newHeight2 = $(e).parent(".commentbox").find('.commenttext').height() - 30;

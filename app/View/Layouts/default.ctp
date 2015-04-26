@@ -383,20 +383,32 @@ padding:20px;
                                 $effect = $this->requestAction('/pages/getSym');
 
                                 //  debug($effect);
-
+								$counter = 0;
 
                                 foreach ($effect as $key => $e) {
+									$counter ++;
+								if($counter == 1):
 ?>
-                                   <div style="width: 20%; float: left;text-align: left;">
+								<div style='width: 20%; text-align: left;float:left'>
+									
+								<?php endif; ?>
+								<div>
                                     <a class="A_6" style="" href="javascript:void(0)" onclick="highlightsym($(this))"
                                        class=""
                                        id="sym_<?php echo $e['Symptom']['id']; ?>"><?php echo $e['Symptom']['title'] ?></a>
-</div>
-
-                            <?
-
+								</div>
+								<?php
+								if($counter == 10):
+									$counter = 0;
+									?>
+								</div>
+								<?php
+								endif;
+								
                                 }
-
+								if($counter != 0){
+									echo "</div>";
+								}
 
 /*
 
