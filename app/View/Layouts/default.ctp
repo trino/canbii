@@ -13,9 +13,9 @@
     <meta property="og:image"
           content="<?php echo 'http://' . $_SERVER['SERVER_NAME'] . $this->webroot . 'images/logo.png'; ?>"/>
     <meta property="og:title" content="<?php if (isset($title)) {
-        echo $title . ' - Canbii - Personalized Medical Marijuana';
+        echo $title . ' - Canbii - Personalized Medical Cannabis';
     } else {
-        echo str_replace('_', ' ', $gtitle) . ' - ' . $generic['title'] . ' - Personalized Medical Marijuana';
+        echo str_replace('_', ' ', $gtitle) . ' - ' . $generic['title'] . ' - Personalized Medical Cannabis';
     } ?>"/>
     <meta property="og:type" content="website"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
@@ -33,9 +33,9 @@
         echo $generic['keyword'];
     } ?>">
     <title><?php if (isset($title)) {
-            echo $title . ' - Canbii - Personalized Medical Marijuana';
+            echo $title . ' - Canbii - Personalized Medical Cannabis';
         } else {
-            echo str_replace('_', ' ', $gtitle) . ' - ' . $generic['title'] . ' - Personalized Medical Marijuana';
+            echo str_replace('_', ' ', $gtitle) . ' - ' . $generic['title'] . ' - Personalized Medical Cannabis';
         } ?></title>
 
     <link rel="shortcut icon" href="<?php echo $this->webroot; ?>favicon.ico" type="image/x-icon"/>
@@ -111,9 +111,12 @@
         <div class="header clearfix">
             <div class="header_left" style="vertical-align: middle;position:relative">
                 <a href="<?php echo $this->webroot; ?>" title="MEDICALMARIJUANA">
+                    <div style="float:left;width:80%;">
                     <img src="<?php echo $this->webroot; ?>images/logo.png" height=100 alt="logo"/>
-
+                        </div>
+                    <div style="float:left;width:10%;">
 					<span id="beta">Beta</span>
+                        </div>
                 </a>
             </div>
 
@@ -124,8 +127,7 @@
                     <a href="<?php echo $this->webroot; ?>" accesskey="1" title="">Home</a></li>
                 <li class="<?php if ($this->params['controller'] == 'strains' || $this->params['controller'] == 'review') { ?>current_page_item<?php } ?>">
                     <a href="<?php echo $this->webroot ?>strains/all" accesskey="2" title="">Strains</a></li>
-                <li class="<?php if ($this->params['controller'] == 'pages' && $this->params['action'] == 'about') { ?>current_page_item<?php } ?>">
-                    <a href="<?php echo $this->webroot; ?>pages/about" accesskey="3" title="">About</a></li>
+
                 <li class="<?php if ($this->params['controller'] == 'pages' && $this->params['action'] == 'contact_us') { ?>current_page_item<?php } ?>">
                     <a href="<?php echo $this->webroot; ?>pages/contact_us" accesskey="4" title="">Contact Us</a></li>
                 <?php if (!$this->Session->read('User')) { ?>
@@ -364,17 +366,18 @@ background: #000;
 background: rgba(0,0,0,0.7);
 border-radius: 3px;
 margin: 0 auto;
-padding:30px;
+padding:20px;
 ">
 
 
-                    <h1 id="H1_4">Your Personalized Medical Marijuana Database</h1>
+                    <h1 id="H1_4">Your Personalized Medical Cannabis Database</h1>
 
                     <form id="FORM_13" class="contact_form" action="<?php echo $this->webroot; ?>strains/search"
                           method="get" id="search" style="">
 
                         <p id="P_5">
                             Filter by Symptoms:
+
                             <?php
 
                                 $effect = $this->requestAction('/pages/getSym');
@@ -383,9 +386,23 @@ padding:30px;
 
 
                                 foreach ($effect as $key => $e) {
+?>
+                                   <div style="width: 20%; float: left;text-align: left;">
+                                    <a class="A_6" style="" href="javascript:void(0)" onclick="highlightsym($(this))"
+                                       class=""
+                                       id="sym_<?php echo $e['Symptom']['id']; ?>"><?php echo $e['Symptom']['title'] ?></a>
+</div>
+
+                            <?
+
+                                }
+
+
+/*
+
+                                foreach ($effect as $key => $e) {
                                     $islast = $key == 18;
                                     if ($key == 19) {
-                                        echo "<a href='javascript:;' onclick=\"$('.more2').toggle();\" style='color:#fff;font-weight:bold;'> </a></p><p class='more2' id='P_5' style='display:none;'>";
                                     }
                                     ?>
                                     <a class="A_6" style="" href="javascript:void(0)" onclick="highlightsym($(this))"
@@ -399,11 +416,12 @@ padding:30px;
                                         echo ' or <a class="A_6" href="' . $this->webroot . 'strains/all">View all</a>';
                                     }
                                 }
+*/
                             ?>
 
                         </p>
 
-                        <p id="P_5">
+                        <!--p id="P_5">
                             Filter by Effects:
                             <?php $effect = $this->requestAction('/pages/getEff');
                                 foreach ($effect as $key => $e) {
@@ -423,14 +441,14 @@ padding:30px;
                                     }
                                 }
                             ?>
-                        </p>
+                        </p-->
 
                         <p style="display: none;" class="effe"></p>
 
                         <p style="display: none;" class="symp"></p>
 
-                        <div class="main2" style="margin-top: 10px;">
-                            <div class="div12"><input id="INPUT_16" type="text" placeholder="Search by name..."
+                        <div class="main2" style="padding-top: 40px;clear:both;">
+                            <div class="div12"><input id="INPUT_16" type="text" placeholder="Or search by name..."
                                                       name="key" class="key"
                                                       style=""/>
                                 <input id="BUTTON_17" type="submit" value="Search" class="more blue medium " style=""/>
@@ -498,12 +516,12 @@ padding:30px;
         <div class="footer_box_container clearfix">
             <div class="footer_box">
                 <h3 class="box_header">
-                    Canbii - <span style="font-size: 14px;"> Personalized Medical Marijuana</span>
+                    Canbii - <span style="font-size: 14px;"> Personalized Medical Cannabis</span>
                 </h3>
 
                 <p class="" style="color: #D5D5D5;" align="">
 
-                    Canbii is an online database dedicated to educating the public on the effects of medical marijuana.
+                    For the people, by the people. The more we know, the more we can help.
 
                     <br/>
                     <br/>
@@ -512,27 +530,14 @@ padding:30px;
 
                     <br/>
                     <br/>
-                    Please do your part in helping the world's largest clinical trial so that we can better understand the use and effects of the cannabis plant. <a
-                        href="<?php echo $this->webroot; ?>users/register" accesskey="4" title="">Sign up today!</a>
+                    Please do your part in helping the world's largest clinical trial so that we can better understand the use and effects of the cannabis plant.
+
+
                 </p>
-                <ul class="social_icons clearfix">
-                    <li>
-                        <a class="social_icon facebook" href="https://www.facebook.com/pages/Canbii/1543633612534714"
-                           title="" target="_blank">
-                            &nbsp;
-                        </a>
-                    </li>
-                    <li>
-                        <a class="social_icon twitter" href="https://twitter.com/canbiionline" title="" target="_blank">
-                            &nbsp;
-                        </a>
-                    </li>
-                    <li>
-                        <a class="social_icon mail" href="mailto:info@canbii.com" title="">
-                            &nbsp;
-                        </a>
-                    </li>
-                </ul>
+
+                <a href="<?php echo $this->webroot; ?>pages/about" accesskey="3" title="" class="more blue" style="float:left;">Read More</a>
+
+
             </div>
             <div class="footer_box">
                 <div class="clearfix">
@@ -616,6 +621,35 @@ padding:30px;
                             }
                         }(document, "script", "twitter-wjs");</script>
                 </div>
+
+
+
+                <h3 class="box_header">
+                    Keep In Touch
+                </h3>
+
+
+                <ul class="social_icons " style="float:left;margin-top:0px;">
+                    <li>
+                        <a class="social_icon facebook" href="https://www.facebook.com/pages/Canbii/1543633612534714"
+                           title="" target="_blank">
+                            &nbsp;
+                        </a>
+                    </li>
+                    <li>
+                        <a class="social_icon twitter" href="https://twitter.com/canbiionline" title="" target="_blank">
+                            &nbsp;
+                        </a>
+                    </li>
+                    <li>
+                        <a class="social_icon mail" href="mailto:info@canbii.com" title="">
+                            &nbsp;
+                        </a>
+                    </li>
+                </ul>
+
+
+
             </div>
         </div>
         <div class="copyright_area clearfix">

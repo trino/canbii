@@ -337,7 +337,7 @@
 </span>
 
                         <div class="clear"></div>
-                        <div style="border-bottom: 1px solid #dadada;margin:10px 0;"></div>
+                        <!--div style="border-bottom: 1px solid #dadada;margin:10px 0;"></div>
 
                         <h3>
                             Positive Effects
@@ -404,7 +404,7 @@
     }
     }
 ?>
-</span>
+</span-->
 
                         <div style="border-bottom: 1px solid #dadada;margin:10px 0;"></div>
 
@@ -589,7 +589,7 @@
 
                     <div class="qf-slider-bar" score="4" id="qf_review__other__overall__slider"></div>
 
-                    <h3 class="page_margin_top">Final Thoughts</h3>
+                    <h3 class="page_margin_top">Comments</h3>
                     <?php
                         if (isset($_GET["review"])) {
                             $score = getdata($editreview, 'rate');
@@ -633,6 +633,8 @@
             <?
                 $breaker = 0;
                 if (isset($strain)) {
+
+                    ECHO "<h2>Strain Images</h2>";
                     include('combine/images.php');
                     /*
                     for ($i = 1; $i < 5; $i++) {

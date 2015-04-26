@@ -35,12 +35,9 @@
 
 
 <div class="clearfix"></div>
-<div class="backgroundcolor page_margin_top"><p>
-We value your opinion. Share your experience with others to help guide them towards the strain that will benefit them the most. Thank you!</p>
-</div>
 
 <form class="contact_form page_margin_top" action="" method="post">
-<h1>Cannabis Name:</h1>
+<h2>Cannabis Name:</h2>
 <input type="text" id="searchName" value="" placeholder="Type at least 3 characters" />
 <span class="extra">(e.g. Purple Kush, AK47, Blue Dream)</span>
 <div class="results" style="display: none;">
@@ -58,6 +55,10 @@ We value your opinion. Share your experience with others to help guide them towa
 
 
 
+            <div class="backgroundcolor page_margin_top">
+                <h2>
+                    Did you know?</h2>
+            </div>
 
 
 
@@ -68,7 +69,7 @@ We value your opinion. Share your experience with others to help guide them towa
                 </div>
                 <div style="float:left;margin-left: 15px;">
                     <h1>Indica</h1>
-                    Night Time Use
+                    Best for Night Time Use
                 </div>
             </li>
             <li class="column" style="clear:both;">
@@ -78,7 +79,7 @@ We value your opinion. Share your experience with others to help guide them towa
                 </div>
                 <div style="float:left;margin-left: 15px;">
                     <h1>Sativa</h1>
-                    Day Time Use
+                    Best for Day Time Use
                 </div>
             </li>
             <li class="column" style="clear:both;">

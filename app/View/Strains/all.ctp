@@ -55,7 +55,7 @@
 </script>
 
 <div class="page_layout page_margin_top clearfix">
-    <div style="padding-bottom: 10px;" class="page_header clearfix">
+    <div style="padding-bottom: 10px;border-bottom:0;" class="page_header clearfix">
         <div class="page_header_left">
 
 
@@ -166,12 +166,12 @@
         <!-- page right -->
 
         <div class="page_right" style="">
-            <div style="float:left;margin-left:-2px;" class="addthis_sharing_toolbox"></div>
+            <!--div style="float:left;margin-left:-2px;" class="addthis_sharing_toolbox"></div-->
             <input id="BUTTON_18" type="reset" value="Reset Filter" class="more blue medium"
                    style="float: right; width: 40%;" onclick="location.reload();"/>
             <ul>
 
-                <li class="home_box light_blue animated_element animation-fadeIn duration-500" style="z-index: 3;">
+                <!--li class="home_box light_blue animated_element animation-fadeIn duration-500" style="z-index: 3;">
                     <h2>
                         Filter by Effects
                     </h2>
@@ -194,20 +194,22 @@
                         </div>
 
                     </div>
-                </li>
-                <li class="home_box blue animated_element animation-slideDown duration-800 delay-250"
+                </li-->
+                <li class="home_box blue "
                     style="z-index: 2;">
                     <h2>
-                        Filter by Symptoms
+                        FILTER BY SYMPTOMS
                     </h2>
-
+                    <br>
                     <div class=" clearfix">
                         <div class="choose_sym">
                             <?php $effect = $this->requestAction('/pages/getSym');
                                 foreach ($effect as $e) {
                                     ?>
-                                    <a style="color:white;" href="javascript:void(0)" class="sym2 small-btn"
+                                    <div style="width: 50%;float:left;">
+                                    <a style="color:white;padding:2px;" href="javascript:void(0)" class="sym2 small-btn"
                                        id="sym_<?php echo $e['Symptom']['id']; ?>"><?php echo $e['Symptom']['title'] ?></a>
+                                    </div>
                                 <?php
                                 }
                             ?>

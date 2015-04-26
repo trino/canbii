@@ -692,7 +692,7 @@ ul.sf-menu li li li:hover ul, ul.sf-menu li li li.sfHover ul
 .search .search_input
 {
     height: 50px;
-	width: 192px;
+	width: 195px;
 	background: #F0F0F0;
 	border-top: 1px solid #E0E0E0;
 	transition: width 0.5s;
@@ -3205,10 +3205,10 @@ a.social_icon,
 #qf_review__aesthetics__flavor label,#qf_review__aesthetics__color label,.eff2,.eff3,.sym2{
     color: white;
     display: inline-block!important;
-    padding: 2px 3px;
+    padding: 0px;
     margin:0 0px 3px 0;
-	border:1px solid #F8F8F8;
-	font-size:13px;
+	border:0px solid #F8F8F8;
+	font-size:15px;
 
 }
 .eff3{
@@ -3221,7 +3221,7 @@ a.social_icon,
 
 #qf_review__aesthetics__flavor label,#qf_review__aesthetics__color label,.eff3{padding:9px!important;}
 .searchact2,.eff3.sel{background: #0384CE !important;}
-.searchact3{background: #42b3e5 !important;}
+.searchact3{background: #ff4d4d !important;}
 .one-third{width:33.33%;float:left;text-align:center;}
 .clearfix{clear:both;}
 .dark{background:#0384CE;height:80px;margin:10px 0;}
@@ -3302,10 +3302,10 @@ width:100px;
     color: rgba(255, 255, 255, 0.701961);
     margin: 0px;
     outline: rgba(255, 255, 255, 0.701961) none 0px;
-	font-size:16px;
+	font-size:24px;
 }/*#P_5*/
 
-.A_6{
+.A_6{line-height: 24px;
     padding:2px 0px;
     box-sizing: border-box;
     color: rgb(255, 255, 255);
@@ -3810,7 +3810,6 @@ div.displisting > .rightside{
     color:white;
     float:left;
     font-size: 12px;
-    position: absolute;
     top:45px;
     right:23px;
 }

@@ -43,7 +43,7 @@ margin: 0 auto;
 padding:30px;
 ">
 
-            <h1 id="H1_4">The Personalized Medical Marijuana Database</h1>
+            <h1 id="H1_4">The Personalized Medical Cannabis Database</h1>
 Hihi
         </div>
 

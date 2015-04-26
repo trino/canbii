@@ -61,9 +61,8 @@
 
         <form action="" method="post" id="dashboard" class="contact_form">
             <div class="page_left page_margin_top">
-                <div class="backgroundcolor"><p>Welcome to your dashboard. Please enter ensure accuracy in your information so
-                        we can further help personalize medication for other users. We thank you for your help and
-                        support.</p></div>
+                <div class="backgroundcolor"><p>Please ensure accuracy in your findings so
+                        we can further help personalize medication for other users.</p></div>
 
                 <?php include('combine/profile_filter_inc.php'); ?>
                 <div class="clearfix"></div>
@@ -75,9 +74,15 @@
             <div class="page_right page_margin_top"
             ">
 
-            <h3>What do you suffer from?</h3>
 
-            <div id="dashboard_symptom" style="background:#42B3E5; padding:15px;">
+<h3>The more we know, the more we can help.</h3>
+            <a style="width:100%;padding:0px;" title="Read more" href="<?php echo $this->webroot; ?>review"
+               class="more dark_blue icon_small_arrow margin_right_white  "><h1 style="padding:20px;color:white;">Add Review</h1></a>
+
+
+
+
+            <!--div id="dashboard_symptom" style="background:#42B3E5; padding:15px;">
                 <p id="P_5">
                     <?php
                         $effect = $this->requestAction('/pages/getSym');
@@ -104,7 +109,7 @@
                 </p>
 
                 <div class="clearfix"></div>
-            </div>
+            </div-->
 
 
         </form>
