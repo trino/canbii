@@ -636,7 +636,7 @@
         <li class="column_right">
 
             <h3 class="noprint box_header slide clearfix">Print Report</h3>
-            Need to share this report with a professional?
+            Spread the word!
 
 
             <div class="print noprint" style="margin-top: 13px;">

@@ -159,7 +159,7 @@
 
 
                     <a style="margin-right:10px;" title="Read more" href="<?php echo $this->webroot; ?>users/dashboard"
-                       class=" more large dark_blue icon_small_arrow margin_right_white">Dashboard</a>
+                       class=" more large dark_blue icon_small_arrow margin_right_white">My Account</a>
 
 
                     <a style="margin-right:10px;" title="Read more" href="<?php echo $this->webroot; ?>users/settings"

@@ -30,7 +30,7 @@
 <div class="page_layout page_margin_top clearfix">
     <div class="page_header clearfix">
         <div class="page_header_left">
-            <h1 class="page_title">My Dashboard</h1>
+            <h1 class="page_title">My Account</h1>
             <ul class="bread_crumb">
                 <li>
                     <a href="<?php echo $this->webroot ?>" title="Home">
@@ -41,13 +41,13 @@
                     &nbsp;
                 </li>
                 <li>
-                    My Dashboard
+                    My Account
                 </li>
             </ul>
         </div>
         <div class="page_header_right"><!-- float:right;-->
             <a style="margin-right:10px;" title="Read more" href="<?php echo $this->webroot; ?>users/dashboard"
-               class="active more large dark_blue icon_small_arrow margin_right_white dashboarditem">Dashboard</a>
+               class="active more large dark_blue icon_small_arrow margin_right_white dashboarditem">My Account</a>
             <a style="margin-right:10px;" title="Read more" href="<?php echo $this->webroot; ?>users/settings"
                class="more large dark_blue icon_small_arrow margin_right_white  ">Settings</a>
             <a style="margin-right:10px;" title="Read more" href="<?php echo $this->webroot; ?>review"

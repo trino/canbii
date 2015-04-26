@@ -115,7 +115,7 @@
                     <img src="<?php echo $this->webroot; ?>images/logo.png" height=100 alt="logo"/>
                         </div>
                     <div style="float:left;width:10%;">
-					<span id="beta">Beta</span>
+					<!--span id="beta" style="margin-top: 48px;">Beta</span-->
                         </div>
                 </a>
             </div>
@@ -127,7 +127,8 @@
                     <a href="<?php echo $this->webroot; ?>" accesskey="1" title="">Home</a></li>
                 <li class="<?php if ($this->params['controller'] == 'strains' || $this->params['controller'] == 'review') { ?>current_page_item<?php } ?>">
                     <a href="<?php echo $this->webroot ?>strains/all" accesskey="2" title="">Strains</a></li>
-
+                <li class="<?php if ($this->params['controller'] == 'pages' && $this->params['action'] == 'about') { ?>current_page_item<?php } ?>">
+                    <a href="<?php echo $this->webroot; ?>pages/about" accesskey="4" title="">About</a></li>
                 <li class="<?php if ($this->params['controller'] == 'pages' && $this->params['action'] == 'contact_us') { ?>current_page_item<?php } ?>">
                     <a href="<?php echo $this->webroot; ?>pages/contact_us" accesskey="4" title="">Contact Us</a></li>
                 <?php if (!$this->Session->read('User')) { ?>
@@ -164,7 +165,7 @@
                 <?php if($this->params['controller']=='users'){?>selected = "selected"<?php }?> > Login / Register </option>
                 <?php }else{?>
                 <option value = "<?php echo $this->webroot;?>users/dashboard"
-                <?php if($this->params['controller']=='users'){?>selected = "selected"<?php }?> > <?=ucfirst($this->Session->read('User.username'))?> Dashboard </option>
+                <?php if($this->params['controller']=='users'){?>selected = "selected"<?php }?> > <?=ucfirst($this->Session->read('User.username'))?> My Account </option>
                 <option value = "<?php echo $this->webroot;?>users/logout" > Logout </option>
                 <?php }?>
 
