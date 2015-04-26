@@ -221,6 +221,9 @@
                                         $counter = 0;
                                     }
                                 }
+                                if($counter != 0){
+                                    echo "</div>";
+                                }
                             ?>
                             <p style="display: none;" class="symp"></p>
                         </div>
