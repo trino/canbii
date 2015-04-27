@@ -555,7 +555,7 @@ padding:25px 20px;
 
                 </p>
 
-                <a href="<?php echo $this->webroot; ?>pages/about" accesskey="3" title="" class="more blue" style="float:left;">Read More</a>
+                <a href="<?php echo $this->webroot; ?>pages/about" accesskey="3" title="" class="more blue" style="float:left;margin-top:10px;">Read More</a>
 
 
             </div>

@@ -164,7 +164,7 @@
                     {
                         if ($strain['Strain'][strtolower($acronym)] != "0") {
                             $chemical++;
-                            echo "<span class='btn eff2' style='margin-right: 2px;'><A target='new' href='" . $wikipedia . "'>" . strtoupper($acronym) . ":</A> " . $strain['Strain'][strtolower($acronym)] . "%</span>";
+                            echo "<span class=' eff2' style='margin-right: 2px;border:1px solid white;padding:3px 5px;'><A target='new' href='" . $wikipedia . "'>" . strtoupper($acronym) . ":</A> " . $strain['Strain'][strtolower($acronym)] . "%</span>";
                         };
                         return $chemical;
                     }
@@ -176,7 +176,7 @@
                     $chemical = printchemical($chemical, $strain, "thcv", "http://en.wikipedia.org/wiki/Tetrahydrocannabivarin");
 
                     if ($chemical == 0) {
-                        echo "<span class=' eff2' style=''>Not enough data, please check back soon.</span>";
+                        echo "<span class=' eff2' style=''>Not enough data, check back soon</span>";
                     }
                 ?>
 

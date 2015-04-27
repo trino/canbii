@@ -58,7 +58,7 @@
                             </p>
 <p></p>
                             <p class="text" align="">
-                                Contributions in ways of strain reviews will be tallied up into one single report, providing a universal standard for cannabis effects and properties.
+                                Contributions in ways of strain reviews will be tallied up into a single report; providing an industry standard for cannabis effects and properties.
                             </p>
 
 

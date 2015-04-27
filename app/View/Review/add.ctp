@@ -609,7 +609,7 @@
                         } else {
                             ?>
                             <br/>
-                            <em><?php echo $review['Review']['review']; ?></em>
+                            <?php echo $review['Review']['review']; ?>
                         <?php
                         }
                     ?>
