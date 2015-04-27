@@ -6,7 +6,7 @@ class StrainsController extends AppController
     public $helpers = array('Js');
 
     function call($name){
-        echo "<BR>Calling: " . $name . " at " . time();
+        echo "<BR>Calling: " . $name . " at " . time() . "<BR>";
     }
 
     function index($slug) {
@@ -324,6 +324,10 @@ class StrainsController extends AppController
 
     function search($type = '', $limit = 0)
     {$this->call(__METHOD__);
+        $this->filter($limit, $type);
+        return;
+
+        die("TESTING!@@#@@##");
         if ($this->Session->read('User')) {
             $this->loadModel('User');
             $this->set('user', $this->User->findById($this->Session->read('User.id')));
@@ -333,33 +337,32 @@ class StrainsController extends AppController
 
         $this->set('type', $type);
         $this->set('limit', $limit);
-        if ($limit) {
-            $offset = $limit;
-            $limit = '8';
+        $offset = 0;
+        if ($limit) {$offset = $limit;}
+        $limit = 8;
 
-        } else {
-            $limit = 8;
-            $offset = 0;
-        }
-        if (isset($_GET['key']))
+        if (isset($_GET['key'])) {
             $key = $_GET['key'];
-        else
+        }else {
             $key = '';
+        }
         $condition = '';
-        if (isset($_GET['effects']))
+        if (isset($_GET['effects'])) {
             $effects = $_GET['effects'];
-        else
+        }else {
             $effects = array();
+        }
+
         if (isset($_GET['symptoms'])) {
             $symptoms = $_GET['symptoms'];
-            if (!is_array($symptoms)) {
-                $symptoms = explode(",", $symptoms);
-            }
+            if (!is_array($symptoms)) {$symptoms = explode(",", $symptoms);}
         } else {
             $symptoms = array();
         }
+
         if ($effects) {
             $i = 0;
+            /*
             foreach ($effects as $e) {
                 $i++;
                 if ($i == 1)
@@ -374,7 +377,7 @@ class StrainsController extends AppController
             $condition = $condition . ')GROUP BY review_id
                                         HAVING COUNT( effect_id ) =' . count($effects) . '))';
 
-
+*/
         }
         if ($symptoms) {
             $i = 0;
@@ -448,7 +451,6 @@ class StrainsController extends AppController
     function filter($limit = 0, $type = '')
     {
         $this->call(__METHOD__);
-
         $this->loadModel('Country');
         $this->set('countries', $this->Country->find('all'));
         $this->set('limit', $limit);
@@ -480,6 +482,7 @@ class StrainsController extends AppController
         }else {
             $symptoms = array();
         }
+
         if (isset($_GET['sort']))
             $test_sort = $_GET['sort'];
         else
@@ -646,6 +649,10 @@ class StrainsController extends AppController
 
 
         }
+
+
+
+
         if ($symptoms) {
             $i = 0;
             foreach ($symptoms as $e) {
@@ -661,18 +668,26 @@ class StrainsController extends AppController
                     $condition = $condition . 'Strain.id IN (SELECT strain_id FROM reviews WHERE id IN (SELECT review_id
                                             FROM symptom_ratings
                                             WHERE symptom_id
-                                            IN ( ' . $e;
+                                            IN (' . $e;
                 } else
                     $condition = $condition . ',' . $e;
             }
-            if ($profile_filter)
-                $condition = $condition . ')GROUP BY review_id
+            /*if ($profile_filter)
+                $condition = $condition . ') GROUP BY review_id
                                     HAVING COUNT( symptom_id ) =' . count($symptoms) . ') AND user_id IN (' . $profile_filter . '))';
             else
-                $condition = $condition . ')GROUP BY review_id
+                $condition = $condition . ') GROUP BY review_id
                                     HAVING COUNT( symptom_id ) =' . count($symptoms) . '))';
 
+            die($condition);
+            */
+            $condition.=")))";
         }
+
+
+
+
+
         if (isset($_GET['sort']) && ($test_sort != 'indica' && $test_sort != 'sativa' && $test_sort != 'hybrid')) {
             $sort = $_GET['sort'];
             if ($sort == 'recent') {
@@ -739,9 +754,9 @@ class StrainsController extends AppController
                         $this->set('strain', $this->Strain->find('all', array('conditions' => array('type_id' => $arr[$type], 'name LIKE' => '%' . $key . '%'), 'order' => $order, 'limit' => $limit, 'offset' => $offset)));
                 }
                 if ($profile_filter)
-                    $this->set('strains', $this->Strain->find('count', array('conditions' => array('type_id' => $arr[$type], 'name LIKE' => '%' . $key . '%', 'Strain.id IN (SELECT strain_id FROM reviews WHERE user_id IN (' . $profile_filter . '))'))));
+                    $this->set('strains', $this->Strain->find('count', array('conditions' => array('limit' => $limit, 'type_id' => $arr[$type], 'name LIKE' => '%' . $key . '%', 'Strain.id IN (SELECT strain_id FROM reviews WHERE user_id IN (' . $profile_filter . '))'))));
                 else
-                    $this->set('strains', $this->Strain->find('count', array('conditions' => array('type_id' => $arr[$type], 'name LIKE' => '%' . $key . '%'))));
+                    $this->set('strains', $this->Strain->find('count', array('conditions' => array( 'limit' => $limit, 'type_id' => $arr[$type], 'name LIKE' => '%' . $key . '%'))));
             } else {
                 if (!$order)
                     $this->set('strain', $this->Strain->find('all', array('conditions' => array('type_id' => $arr[$type], 'name LIKE' => '%' . $key . '%', $condition), 'order' => 'Strain.viewed DESC ,Strain.id DESC', 'limit' => $limit, 'offset' => $offset)));
