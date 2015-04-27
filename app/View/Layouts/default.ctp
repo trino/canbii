@@ -92,9 +92,9 @@
 
 	<!-- Debugger -->
 	<?php if($this->Session->check("User.id")): ?>
-	<script type="text/javascript" src="<?php echo $this->webroot;?>debugger/debug.plugin.js"></script>
+	<!--script type="text/javascript" src="<?php echo $this->webroot;?>debugger/debug.plugin.js"></script>
 	<script type="text/javascript" src="<?php echo $this->webroot;?>debugger/jquery-ui.min.js"></script>
-	<link rel="stylesheet" type="text/css" href="<?php echo $this->webroot;?>debugger/debug.css" />
+	<link rel="stylesheet" type="text/css" href="<?php echo $this->webroot;?>debugger/debug.css" /-->
 	<?php endif; ?>
 
     <!-- //////////////////////////////////////////////////////////////////////////////////////////// NEW SITE-->
@@ -364,7 +364,7 @@
             <div class="page" style="border-top:0;padding-bottom:0px;">
                 <div class=" clearfix" style="
 background: #000;
-background: rgba(0,0,0,0.7);
+background: rgba(0,0,0,0.65);
 border-radius: 3px;
 margin: 0 auto;
 padding:25px 20px;
@@ -377,7 +377,7 @@ padding:25px 20px;
                           method="get" id="search" style="">
 
                         <p id="P_5">
-                            Filter by Symptoms
+                            What Do You Suffer From?
 
                             <?php
 
@@ -390,7 +390,7 @@ padding:25px 20px;
 									$counter ++;
 								if($counter == 1):
 ?>
-								<div style='width: 20%; text-align: left;float:left'>
+								<div style='width: 20%; text-align: left;float:left' class="hide767">
 
 								<?php endif;
 
@@ -468,14 +468,12 @@ padding:25px 20px;
                         <p style="display: none;" class="symp"></p>
 
                         <div class="main2" style="padding-top: 40px;clear:both;">
-                            <div class="div12"><input id="INPUT_16" type="text" placeholder="Or search by name..."
+                            <div class="div12"><input id="INPUT_16" type="text" placeholder="Search by name..."
                                                       name="key" class="key"
                                                       style=""/>
                                 <input id="BUTTON_17" type="submit" value="Search" class="more blue medium " style=""/>
                             </div>
                         </div>
-
-
                         <!-- dont know why but this div needs to be here -->
                         <div style="float:left;"></div>
 
@@ -508,26 +506,26 @@ padding:25px 20px;
                 </h2>
 
                 <p style="color: white;margin-bottom:20px;">
-                    <a href="<?php echo $this->webroot; ?>pages/about" title="">The guide to Medical
-                        Marijuana &raquo;</a>
+                    <a  style="font-size:13px;" href="<?php echo $this->webroot; ?>pages/about" title="">The guide to Medical
+                        Cannabis &raquo;</a>
                 </p>
             </li>
             <li class="footer_banner_box light_blue animated_element animation-slideRight duration-800 delay-500">
                 <h2>
-                    Join the Movement
+                    Join The Movement
                 </h2>
 
                 <p style="color: white;margin-bottom:20px;">
-                    <a href="<?php echo $this->webroot; ?>users/register" title="">More we know, more we can help &raquo;</a>
+                    <a style="font-size:13px;" href="<?php echo $this->webroot; ?>users/register" title="">The more we know, the more we can help &raquo;</a>
                 </p>
             </li>
             <li class="footer_banner_box blue animated_element animation-slideRight200 duration-800 delay-1000">
                 <h2>
-                    Questions or Concerns?
+                    Questions Or Concerns?
                 </h2>
 
                 <p>
-                    <a href="<?php echo $this->webroot; ?>pages/contact_us" title="">Feel free to contact us by clicking
+                    <a  style="font-size:13px;" href="<?php echo $this->webroot; ?>pages/contact_us" title="">Feel free to contact us by clicking
                         here &raquo;</a>
                 </p>
             </li>
@@ -545,7 +543,7 @@ padding:25px 20px;
 
                     <br/>
                     <br/>
-                    The medical marijuana movement is asking the scientific community to make examining the therapeutic potential of cannabis a priority. But the drug's controlled status is continuing to slow efforts to investigate the myriad compounds in the plant.
+                    The medical cannabis movement is asking the scientific community to make examining the therapeutic potential of cannabis a priority. But the drug's controlled status is continuing to slow efforts to investigate the myriad compounds in the plant.
 
 
                     <br/>

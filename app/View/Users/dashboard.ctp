@@ -77,7 +77,7 @@
 
 <h3>The more we know, the more we can help.</h3>
             <a style="width:100%;padding:0px;" title="Read more" href="<?php echo $this->webroot; ?>review"
-               class="more dark_blue icon_small_arrow margin_right_white  "><h1 style="padding:20px;color:white;">Add Review</h1></a>
+               class="more dark_blue icon_small_arrow margin_right_white  "><h1 style="padding:20px;color:white;">Add A Review</h1></a>
 
 
 

@@ -645,6 +645,7 @@
 }
 @media screen and (max-width:767px)
 {
+    .hide767{display: none;}
     .one-third .rating img{
         width:25px;
     }

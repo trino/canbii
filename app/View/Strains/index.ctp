@@ -465,8 +465,6 @@
 
                         </div>
 
-
-
             <!--div class="">
 
                 <h3>Effects:</h3>
@@ -635,16 +633,16 @@
         </li>
         <li class="column_right">
 
-            <h3 class="noprint box_header slide clearfix">Print Report</h3>
-            Spread the word!
+            <h3 class=" box_header slide clearfix">Print Report</h3>
+           <p class="">Spread the word! The more we know, the more we can help.</p>
 
 
-            <div class="print noprint" style="margin-top: 13px;">
+            <div class="print " style="margin-top: 13px;">
 
                 <div style="float: left;width:35%;">
 
                     <a style="" class="" href="javascript:void(0)" onclick="window.print();">
-                        <img class="noprint" src="<?php echo $this->webroot ?>images/print_report_small.jpg"
+                        <img class="" src="<?php echo $this->webroot ?>images/print_report_small.jpg"
                              style="width:100px;border:1px solid #efefef"/>
 
                     </a>
@@ -756,10 +754,10 @@
 
             <!--div style="border-top: 1px solid #dadada;padding: 5px 0px;"></div-->
 
-            <a
+            <!--a
                 href="<?php echo $this->webroot; ?>strains/review/<?php echo $strain['Strain']['slug']; ?>"
                 class="viewall more blue noprint" style="float:right;font-size:12px;">See All Reviews
-                for <?php echo $strain['Strain']['name']; ?> &raquo;</a>
+                for <?php echo $strain['Strain']['name']; ?> &raquo;</a-->
         </li>
 
 

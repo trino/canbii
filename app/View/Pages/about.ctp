@@ -1,7 +1,7 @@
 <div class="page_layout page_margin_top clearfix">
     <div class="page_header clearfix">
         <div class="page_header_left">
-            <h1 class="page_title">About Medical Marijuana</h1>
+            <h1 class="page_title">About Cannabis</h1>
             <ul class="bread_crumb">
                 <li>
                     <a href="<?php echo $this->webroot ?>" title="Home">
@@ -32,19 +32,17 @@
         </h4>
 
         <p align="">
-            Medical marijuana has been used as a form of treatment for thousands of years. This all natural plant
+            Medical cannabis has been used as a form of treatment for thousands of years. This all natural plant
             contains tetrahydrocannabinol (THC) and cannabidiol (CBD) which helps treat illnesses or alleviate symptoms.
             What is THC and CBD? Tetrahydrocannabinol (THC) is the main psychoactive ingredient in the plant.
-            It gives one the feeling of euphoria. It is also known to increase ones appetite. Cannabidiol (CBD) is a
-            cannabinoid that repress neurotransmitter release in the brain. Together THC and CBD offers
-            <strong>natural</strong> pain relief.
+            Cannabidiol (CBD) is the main compound that represses neurotransmitter release in the brain. Together THC and CBD offers natural andeffective pain relief.
         </p>
 
         <p align="">
             There are over 1000 strains, both natural and man-made. More strains are being created to target specific
             symptoms. Each strain contains different properties. With the sheer number of strains, how do you find that best match
             for the symptom? That's why we're here. We want to help make the search for
-            you as easy possible - matching you with the most accurate <strong>medicine</strong>.
+            you as easy possible - matching you with the most accurate medicine.
         </p>
 
         <?php include_once('combine/strains.php'); ?>
@@ -85,11 +83,11 @@ CBD is a cannabinoid that repress neurotransmitter release in the brain. CBD or 
 </h2>
 
 <div class="backgroundcolor">
-    <p>The earliest documented use of medical marijuana is in 2737 BC in ancient China. </p>
+    <p>The earliest documented use of medical cannabis is in 2737 BC in ancient China. </p>
 
     <p>Even within the same strain, the concentration of THC will vary from different growers. </p>
 
-    <p>Medical marijuana found its way into Western medicine in the mid-1800s.</p>
+    <p>Medical cannabis found its way into Western medicine in the mid-1800s.</p>
 
-    <p>In 2003, Canada became the first country to offer medical marijuana to pain suffering patients.</p>
+    <p>In 2003, Canada became the first country to offer medical cannabis to pain suffering patients.</p>
 </div>

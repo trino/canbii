@@ -31,7 +31,7 @@
 			
 			
 <p>
-Medical marijuana has been used as a form of treatment for thousands of years. This all natural plant contains tetrahydrocannabinol (THC) and cannabidiol (CBD) which helps treat illnesses or alleviate symptoms.
+Medical cannabis has been used as a form of treatment for thousands of years. This all natural plant contains tetrahydrocannabinol (THC) and cannabidiol (CBD) which helps treat illnesses or alleviate symptoms.
 What is THC and CBD? Tetrahydrocannabinol (THC) is the main psychoactive ingredient in the cannabis plant. It gives one the feeling of euphoria. It is also known to increase ones appetite. Cannabidiol (CBD) is a cannabinoid 
 that repress neurotransmitter release in the brain. Together THC and CBD offers natural pain relief.  
 </p>
@@ -57,7 +57,7 @@ for their hybrids like Pineapple Express, Bubba Kush, and Blue Dream to name a f
 							<img src="<?php echo $this->webroot;?>images/FactIcon1.png" alt="" class="animated_element animation-scale scale" style="-webkit-animation: 600ms 0ms; transition: 0ms; -webkit-transition: 0ms;">
 						</a>
 						<div class="text" style="margin-top: 23px">
-							The earliest documented use of medical marijuana is in 2737 BC in ancient China. 
+							The earliest documented use of medical cannabis is in 2737 BC in ancient China.
 							<div class="item_footer clearfix">
 								
 							</div>
@@ -81,7 +81,7 @@ for their hybrids like Pineapple Express, Bubba Kush, and Blue Dream to name a f
 							<img src="<?php echo $this->webroot;?>images/FactIcon3.png" alt="" class="animated_element animation-scale scale" style="-webkit-animation: 600ms 0ms; transition: 0ms; -webkit-transition: 0ms;">
 						</a>
 						<div class="text" style="margin-top: 23px">
-							Medical marijuana found its way into Western medicine in the mid-1800s.
+							Medical cannabis found its way into Western medicine in the mid-1800s.
 							<div class="item_footer clearfix">
 								
 							</div>
@@ -92,7 +92,7 @@ for their hybrids like Pineapple Express, Bubba Kush, and Blue Dream to name a f
 							<img src="<?php echo $this->webroot;?>images/FactIcon4.png" alt="" class="animated_element animation-scale scale" style="-webkit-animation: 600ms 0ms; transition: 0ms; -webkit-transition: 0ms;">
 						</a>
 						<div class="text" style="margin-top: 23px">
-							In 2003, Canada became the first country to offer medical marijuana to pain suffering patients.
+							In 2003, Canada became the first country to offer medical cannabis to pain suffering patients.
 							<div class="item_footer clearfix">
 								
 							</div>
