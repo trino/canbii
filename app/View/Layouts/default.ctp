@@ -367,7 +367,7 @@ background: #000;
 background: rgba(0,0,0,0.7);
 border-radius: 3px;
 margin: 0 auto;
-padding:20px;
+padding:25px 20px;
 ">
 
 
@@ -377,7 +377,7 @@ padding:20px;
                           method="get" id="search" style="">
 
                         <p id="P_5">
-                            Filter by Symptoms:
+                            Filter by Symptoms
 
                             <?php
 
@@ -391,12 +391,19 @@ padding:20px;
 								if($counter == 1):
 ?>
 								<div style='width: 20%; text-align: left;float:left'>
-									
-								<?php endif; ?>
+
+								<?php endif;
+
+                                ?>
 								<div>
-                                    <a class="A_6" style="" href="javascript:void(0)" onclick="highlightsym($(this))"
+                                    <!--a class="A_6" style="" href="javascript:void(0)" onclick="highlightsym($(this))"
+                                       class=""
+                                       id="sym_<?php echo $e['Symptom']['id']; ?>"><?php echo $e['Symptom']['title'] ?></a-->
+
+                                    <a class="A_6" style="" href="strains/search?symptoms%5B%5D=<?=$e['Symptom']['id']?>" onclick="highlightsym($(this))"
                                        class=""
                                        id="sym_<?php echo $e['Symptom']['id']; ?>"><?php echo $e['Symptom']['title'] ?></a>
+
 								</div>
 								<?php
 								if($counter == 10):
