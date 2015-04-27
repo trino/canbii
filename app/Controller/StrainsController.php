@@ -5,7 +5,12 @@ class StrainsController extends AppController
     public $components = array('Paginator', 'RequestHandler');
     public $helpers = array('Js');
 
+    function call($name){
+        echo "<BR>Calling: " . $name . " at " . time();
+    }
+
     function index($slug) {
+        $this->call(__METHOD__);
         //if($this->Session->read('User')){  $this->set('user',$this->User->findById($this->Session->read('User.id'))); }
 
         $this->loadModel('Country');
@@ -185,7 +190,7 @@ class StrainsController extends AppController
     }
 
     function download($slug = null)
-    {
+    {$this->call(__METHOD__);
         // Include Component
         App::import('Component', 'Pdf');
         // Make instance
@@ -202,7 +207,7 @@ class StrainsController extends AppController
     }
 
     function getFlavor($id)
-    {
+    {$this->call(__METHOD__);
         $this->loadModel('Flavor');
         $q = $this->Flavor->findById($id);
         return $q['Flavor']['title'];
@@ -210,7 +215,7 @@ class StrainsController extends AppController
     }
 
     function getEffect($id)
-    {
+    {$this->call(__METHOD__);
         $this->loadModel('Effect');
         $q = $this->Effect->findById($id);
         return $q['Effect']['title'];
@@ -218,7 +223,7 @@ class StrainsController extends AppController
     }
 
     function getSymptom($id)
-    {
+    {$this->call(__METHOD__);
         $this->loadModel('Symptom');
         $q = $this->Symptom->findById($id);
         return $q['Symptom']['title'];
@@ -226,7 +231,7 @@ class StrainsController extends AppController
     }
 
     function getPosEff($id)
-    {
+    {$this->call(__METHOD__);
         $this->loadModel('Effect');
         $q = $this->Effect->findById($id);
         if ($q['Effect']['negative'] == 0)
@@ -236,14 +241,14 @@ class StrainsController extends AppController
     }
 
     function getUserName($id)
-    {
+    {$this->call(__METHOD__);
         $this->loadModel('User');
         $q = $this->User->findById($id);
         return $q['User']['username'];
     }
 
     function helpful($id, $yes)
-    {
+    {$this->call(__METHOD__);
         $this->loadModel('Review');
         $q = $this->Review->findById($id);
         if ($yes == 'yes') {
@@ -275,7 +280,7 @@ class StrainsController extends AppController
     }
 
     function all($type = '', $limit = 0)
-    {
+    {$this->call(__METHOD__);
         if($this->Session->read('User')){
             $this->loadModel('User');
             $this->set('user',$this->User->findById($this->Session->read('User.id')));
@@ -318,7 +323,7 @@ class StrainsController extends AppController
     }
 
     function search($type = '', $limit = 0)
-    {
+    {$this->call(__METHOD__);
         if ($this->Session->read('User')) {
             $this->loadModel('User');
             $this->set('user', $this->User->findById($this->Session->read('User.id')));
@@ -400,7 +405,7 @@ class StrainsController extends AppController
     }
 
     function getEffectRate($profile_filter, $strain)
-    {
+    {$this->call(__METHOD__);
         //echo urlencode("SELECT id FROM users WHERE nationality='asian'");die();
         //echo $profile_filter;die();
 
@@ -410,7 +415,7 @@ class StrainsController extends AppController
     }
 
     function getSymptomRate($profile_filter, $strain)
-    {
+    {$this->call(__METHOD__);
         //echo urlencode("SELECT id FROM users WHERE nationality='asian'");die();
         //echo $profile_filter;die();
         $this->loadModel('SymptomRating');
@@ -419,13 +424,13 @@ class StrainsController extends AppController
     }
 
     function getEffectReview($profile_filter, $strain)
-    {
+    {$this->call(__METHOD__);
         $this->loadModel('Review');
         $q = $this->Review->find('all', array('conditions' => array('user_id IN (' . $profile_filter . ') AND strain_id = ' . $strain)));
         return $q;
     }
     function getcolors($strain)
-    {
+    {$this->call(__METHOD__);
         
         $this->loadModel('Review');
         $q = $this->Review->find('all', array('conditions' => array('strain_id'=>$strain)));
@@ -433,13 +438,17 @@ class StrainsController extends AppController
     }
 
     function rectime($lasttime, $text = ""){
+        $this->call(__METHOD__);
         $method = "console.log";//"alert";
         $now = time();
         $diff = $now - $lasttime;
         echo "<SCRIPT>" . $method . "('" . $now . " " . $diff . " " . $text . "');</SCRIPT>";
         return $now;
     }
-    function filter($limit = 0, $type = ''){
+    function filter($limit = 0, $type = '')
+    {
+        $this->call(__METHOD__);
+
         $this->loadModel('Country');
         $this->set('countries', $this->Country->find('all'));
         $this->set('limit', $limit);
@@ -454,28 +463,28 @@ class StrainsController extends AppController
         }
         //echo $limit;die();
         $this->layout = 'blank';
-        if (isset($_GET['key'])) {
+        if (isset($_GET['key']))
             $key = $_GET['key'];
-        }else {
+        else
             $key = '';
-        }
         $condition = '';
-        if (isset($_GET['effects'])) {
+        if (isset($_GET['effects']))
             $effects = $_GET['effects'];
-        }else {
+        else
             $effects = array();
-        }
         if (isset($_GET['symptoms'])) {
             $symptoms = $_GET['symptoms'];
-            if(!is_array($symptoms)){ $symptoms = explode(",", $symptoms);}
+            if (!is_array($symptoms)) {
+                $symptoms = explode(",", $symptoms);
+            }
         }else {
             $symptoms = array();
         }
-        if (isset($_GET['sort'])) {
+        if (isset($_GET['sort']))
             $test_sort = $_GET['sort'];
-        }else {
+        else
             $test_sort = '';
-        }
+
         $u_cond = '';
         if (isset($_GET['nationality'])) {
             $u_cond = 'nationality = "' . $_GET['nationality'] . '"';
@@ -637,20 +646,17 @@ class StrainsController extends AppController
 
 
         }
-
         if ($symptoms) {
             $i = 0;
             foreach ($symptoms as $e) {
 
                 $i++;
                 if ($i == 1) {
-                    if ($effects) {
+                    if ($effects)
                         $condition = $condition . ' AND ';
-                    }
                     if (isset($_GET['sort']) && ($test_sort == 'indica' || $test_sort == 'sativa' || $test_sort == 'hybrid')) {
-                        if (!$effects) {
+                        if (!$effects)
                             $condition = $condition . ' AND ';
-                        }
                     }
                     $condition = $condition . 'Strain.id IN (SELECT strain_id FROM reviews WHERE id IN (SELECT review_id
                                             FROM symptom_ratings
@@ -659,14 +665,13 @@ class StrainsController extends AppController
                 } else
                     $condition = $condition . ',' . $e;
             }
-
-            if ($profile_filter) {
+            if ($profile_filter)
                 $condition = $condition . ')GROUP BY review_id
                                     HAVING COUNT( symptom_id ) =' . count($symptoms) . ') AND user_id IN (' . $profile_filter . '))';
-            }else {
+            else
                 $condition = $condition . ')GROUP BY review_id
                                     HAVING COUNT( symptom_id ) =' . count($symptoms) . '))';
-            }
+
         }
         if (isset($_GET['sort']) && ($test_sort != 'indica' && $test_sort != 'sativa' && $test_sort != 'hybrid')) {
             $sort = $_GET['sort'];
@@ -749,7 +754,7 @@ class StrainsController extends AppController
     }
 
     function review($slug, $sort = null, $limit = 0)
-    {
+    {$this->call(__METHOD__);
         $this->loadModel('Review');
         $this->loadModel('Country');
         $this->set('countries', $this->Country->find('all'));
@@ -859,7 +864,7 @@ class StrainsController extends AppController
     }
 
     function review_filter($slug, $sort, $limit)
-    {
+    {$this->call(__METHOD__);
         $this->set('limit', $limit);
         $this->set('slug', $slug);
         $this->set('sort', $sort);
@@ -1044,9 +1049,12 @@ class StrainsController extends AppController
     }
 
     function ajax_search()
-    {
+    {$this->call(__METHOD__);
         $str = $_POST['str'];
         $search = $this->Strain->find("all", array('conditions' => array('name LIKE' => "%" . $str . "%")));
+        if( count($search) == 0){
+            echo "No results found for '" . $str . "'";
+        }
         foreach ($search as $s) {
             echo "<a href='" . $this->webroot . "review/add/" . $s['Strain']['slug'] . "' class='more blue icon_small_arrow margin_right_white page_margin_top' style='margin-right:10px;' title='" . $s['Strain']['slug'] . "'>" . $s['Strain']['name'] . "</a>";
         }
