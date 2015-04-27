@@ -422,7 +422,7 @@
 
         $('.sym2').click(function () {
             //alert(profile);
-
+            val = "";
             //var sort =0;
             more = 0;
             if ($(this).attr('class').replace('searchact3', '') == $(this).attr('class')) {
@@ -455,7 +455,6 @@
 
             });
             $('.symp .symps').each(function () {
-
                 if ($(this).val()) {
                     i++;
                     if (i == 1)
@@ -507,7 +506,6 @@
                     $('.listing').html(res);
                 }
             });
-            // val='';
 
         });
 
