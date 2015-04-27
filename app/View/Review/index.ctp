@@ -116,7 +116,7 @@ $('.opt').live('click',function(){
 })
 $('#searchName').on('keydown keyup click input submit mouseenter', function(){
 	var txt = $(this).val();
-    if (txt.length > 2) {
+    if (txt.length > 0) {
         $.ajax({
             type: "post",
             url: "<?php echo $this->webroot;?>strains/ajax_search",
@@ -128,5 +128,14 @@ $('#searchName').on('keydown keyup click input submit mouseenter', function(){
         })
     }
 });
+});
+
+$(document).ready(function() {
+    $(window).keydown(function(event){
+        if(event.keyCode == 13) {
+            event.preventDefault();
+            return false;
+        }
+    });
 });
 </script>
