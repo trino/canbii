@@ -400,7 +400,7 @@ padding:25px 20px;
                                        class=""
                                        id="sym_<?php echo $e['Symptom']['id']; ?>"><?php echo $e['Symptom']['title'] ?></a-->
 
-                                    <a class="A_6" style="" href="strains/search?symptoms%5B%5D=<?=$e['Symptom']['id']?>" onclick="highlightsym($(this))"
+                                    <a class="A_6" style="" href="strains/search?symptoms=<?=$e['Symptom']['id']?>" onclick="highlightsym($(this))"
                                        class=""
                                        id="sym_<?php echo $e['Symptom']['id']; ?>"><?php echo $e['Symptom']['title'] ?></a>
 

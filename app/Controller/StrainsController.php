@@ -317,10 +317,11 @@ class StrainsController extends AppController
         }*/
     }
 
-    function search($type = '', $limit = 0) {
-        if($this->Session->read('User')){
+    function search($type = '', $limit = 0)
+    {
+        if ($this->Session->read('User')) {
             $this->loadModel('User');
-            $this->set('user',$this->User->findById($this->Session->read('User.id')));
+            $this->set('user', $this->User->findById($this->Session->read('User.id')));
         }
         $this->loadModel('Country');
         $this->set('countries', $this->Country->find('all'));
@@ -344,10 +345,14 @@ class StrainsController extends AppController
             $effects = $_GET['effects'];
         else
             $effects = array();
-        if (isset($_GET['symptoms']))
+        if (isset($_GET['symptoms'])) {
             $symptoms = $_GET['symptoms'];
-        else
+            if (!is_array($symptoms)) {
+                $symptoms = explode(",", $symptoms);
+            }
+        } else {
             $symptoms = array();
+        }
         if ($effects) {
             $i = 0;
             foreach ($effects as $e) {
@@ -427,10 +432,14 @@ class StrainsController extends AppController
         return $q;
     }
 
-    function filter($limit = 0, $type = '')
-    {
-
-
+    function rectime($lasttime, $text = ""){
+        $method = "console.log";//"alert";
+        $now = time();
+        $diff = $now - $lasttime;
+        echo "<SCRIPT>" . $method . "('" . $now . " " . $diff . " " . $text . "');</SCRIPT>";
+        return $now;
+    }
+    function filter($limit = 0, $type = ''){
         $this->loadModel('Country');
         $this->set('countries', $this->Country->find('all'));
         $this->set('limit', $limit);
@@ -445,24 +454,28 @@ class StrainsController extends AppController
         }
         //echo $limit;die();
         $this->layout = 'blank';
-        if (isset($_GET['key']))
+        if (isset($_GET['key'])) {
             $key = $_GET['key'];
-        else
+        }else {
             $key = '';
+        }
         $condition = '';
-        if (isset($_GET['effects']))
+        if (isset($_GET['effects'])) {
             $effects = $_GET['effects'];
-        else
+        }else {
             $effects = array();
-        if (isset($_GET['symptoms']))
+        }
+        if (isset($_GET['symptoms'])) {
             $symptoms = $_GET['symptoms'];
-        else
+            if(!is_array($symptoms)){ $symptoms = explode(",", $symptoms);}
+        }else {
             $symptoms = array();
-        if (isset($_GET['sort']))
+        }
+        if (isset($_GET['sort'])) {
             $test_sort = $_GET['sort'];
-        else
+        }else {
             $test_sort = '';
-
+        }
         $u_cond = '';
         if (isset($_GET['nationality'])) {
             $u_cond = 'nationality = "' . $_GET['nationality'] . '"';
@@ -624,17 +637,20 @@ class StrainsController extends AppController
 
 
         }
+
         if ($symptoms) {
             $i = 0;
             foreach ($symptoms as $e) {
 
                 $i++;
                 if ($i == 1) {
-                    if ($effects)
+                    if ($effects) {
                         $condition = $condition . ' AND ';
+                    }
                     if (isset($_GET['sort']) && ($test_sort == 'indica' || $test_sort == 'sativa' || $test_sort == 'hybrid')) {
-                        if (!$effects)
+                        if (!$effects) {
                             $condition = $condition . ' AND ';
+                        }
                     }
                     $condition = $condition . 'Strain.id IN (SELECT strain_id FROM reviews WHERE id IN (SELECT review_id
                                             FROM symptom_ratings
@@ -643,13 +659,14 @@ class StrainsController extends AppController
                 } else
                     $condition = $condition . ',' . $e;
             }
-            if ($profile_filter)
+
+            if ($profile_filter) {
                 $condition = $condition . ')GROUP BY review_id
                                     HAVING COUNT( symptom_id ) =' . count($symptoms) . ') AND user_id IN (' . $profile_filter . '))';
-            else
+            }else {
                 $condition = $condition . ')GROUP BY review_id
                                     HAVING COUNT( symptom_id ) =' . count($symptoms) . '))';
-
+            }
         }
         if (isset($_GET['sort']) && ($test_sort != 'indica' && $test_sort != 'sativa' && $test_sort != 'hybrid')) {
             $sort = $_GET['sort'];

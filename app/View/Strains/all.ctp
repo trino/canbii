@@ -38,9 +38,11 @@
         $effects = array();
 
     if (isset($_GET['symptoms']) && $_GET['symptoms']) {
-        foreach ($_GET['symptoms'] as $ef) {
-            $symptoms[] = $ef;
-        }
+        $symptoms = $_GET['symptoms'] ;
+        if (!is_array($symptoms)){$symptoms = explode(",", $symptoms);}
+        //foreach ($_GET['symptoms'] as $ef) {
+         //   $symptoms[] = $ef;
+        //}
     } else
         $symptoms = array();
 
@@ -321,12 +323,13 @@
                 }
                 val = val + '&sort=' + id + '&order=' + sort;
             });
-            if (profile && val)
+            if (profile && val) {
                 val = val + '&' + profile;
-            else
+            }else {
                 val = profile;
+            }
             $.ajax({
-                url: '<?php echo $this->webroot;?>strains/filter/0<?php if($type)echo '/'.$type?>',
+                url: '<?php echo $this->webroot . "strains/filter/0"; if($type){echo '/'.$type;} ?>',
                 data: val,
                 type: 'get',
                 success: function (res) {
@@ -394,7 +397,8 @@
                 val = val + '&sort=' + id + '&order=' + sort;
             });
             if (profile)
-                val = val + '&' + profile;
+                val = val + '&' + profile
+
             $.ajax({
                 url: '<?php echo $this->webroot;?>strains/filter/' + more + '<?php if($type)echo '/'.$type?>',
                 data: val,
@@ -458,9 +462,9 @@
                 if ($(this).val()) {
                     i++;
                     if (i == 1)
-                        val = 'symptoms[]=' + $(this).val();
+                        val = 'symptoms=' + $(this).val();
                     else
-                        val = val + '&symptoms[]=' + $(this).val();
+                        val = val + ',' + $(this).val();
                 }
             });
             if (val) {
@@ -486,7 +490,6 @@
             });
             if (profile)
                 val = val + '&' + profile;
-
             $.ajax({
                 url: '<?php echo $this->webroot;?>strains/filter/0<?php if($type)echo '/'.$type?>',
                 data: val,
@@ -573,6 +576,7 @@
             });
             if (profile)
                 val = val + '&' + profile;
+
             $.ajax({
                 url: '<?php echo $this->webroot;?>strains/filter<?php if($type)echo '/0/'.$type?>',
                 data: val,
@@ -660,6 +664,7 @@
             }
             if (profile)
                 val = val + '&' + profile;
+
             $.ajax({
 
                 url: '<?php echo $this->webroot;?>strains/filter<?php if($type)echo '/0/'.$type?>',
