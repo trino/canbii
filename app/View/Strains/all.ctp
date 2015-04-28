@@ -249,9 +249,24 @@
 <div class="clearfix"></div>
 
 <script>
+    var loading = '<DIV ALIGN="CENTER">Now Loading...<P><IMG SRC="<?php echo $this->webroot;?>img/spinner.gif"></DIV>';
     var more = '<?php echo $limit?>';
     var spinnerVisible = false;
     var val = '';
+    function showspinner(){
+        $('.listing').html(loading);
+        //$("div#spinner").fadeIn("fast");
+        //spinnerVisible = true;
+    }
+    function hidespinner(){
+        /*
+        var spinner = $("div#spinner");
+        spinner.stop();
+        spinner.fadeOut("fast");
+        spinnerVisible = false;
+        */
+    }
+
     $(function () {
 
 
@@ -276,8 +291,7 @@
 
             });
             if (!spinnerVisible) {
-                $("div#spinner").fadeIn("fast");
-                spinnerVisible = true;
+               showspinner();
             }
             var i = 0;
 
@@ -328,6 +342,7 @@
             }else {
                 val = profile;
             }
+            showspinner();//$('.listing').html(loading);
             $.ajax({
                 url: '<?php echo $this->webroot . "strains/filter/0"; if($type){echo '/'.$type;} ?>',
                 data: val,
@@ -398,7 +413,7 @@
             });
             if (profile)
                 val = val + '&' + profile
-
+            showspinner();//$('.listing').html(loading);
             $.ajax({
                 url: '<?php echo $this->webroot;?>strains/filter/' + more + '<?php if($type)echo '/'.$type?>',
                 data: val,
@@ -490,6 +505,8 @@
             });
             if (profile)
                 val = val + '&' + profile;
+
+            showspinner();//$('.listing').html(loading);
             $.ajax({
                 url: '<?php echo $this->webroot;?>strains/filter/0<?php if($type)echo '/'.$type?>',
                 data: val,
@@ -576,7 +593,7 @@
             });
             if (profile)
                 val = val + '&' + profile;
-
+            showspinner();//$('.listing').html(loading);
             $.ajax({
                 url: '<?php echo $this->webroot;?>strains/filter<?php if($type)echo '/0/'.$type?>',
                 data: val,
@@ -587,10 +604,7 @@
                     $('#hybrid').attr('href', '<?php echo $this->webroot;?>strains/all/hybrid?' + val);
                     $('#all_breed').attr('href', '<?php echo $this->webroot;?>strains/all?' + val);
                     if (spinnerVisible) {
-                        var spinner = $("div#spinner");
-                        spinner.stop();
-                        spinner.fadeOut("fast");
-                        spinnerVisible = false;
+                        hidespinner();
                     }
                     $('.listing').html(res);
                 }
@@ -629,8 +643,7 @@
 
 
             if (!spinnerVisible) {
-                $("div#spinner").fadeIn("fast");
-                spinnerVisible = true;
+                showspinner();
             }
             var i = 0;
             var val = '';
@@ -664,7 +677,7 @@
             }
             if (profile)
                 val = val + '&' + profile;
-
+            showspinner();//$('.listing').html(loading);
             $.ajax({
 
                 url: '<?php echo $this->webroot;?>strains/filter<?php if($type)echo '/0/'.$type?>',

@@ -672,7 +672,14 @@ class StrainsController extends AppController
                                         WHERE symptom_id
                                         IN ( ' . $symptoms . ')
                                         GROUP BY review_id
-                                        HAVING COUNT( symptom_id ) =' . count($symptoms) . '))';
+                                        HAVING COUNT( symptom_id ) =' . $symptomscount . '))';
+*/
+            $condition .= 'Strain.id IN (SELECT strain_id
+                                        FROM symptom_ratings
+                                        WHERE symptom_id
+                                        IN ( ' . $symptoms . ')
+                                        )';
+
 
             /*
             $condition.= 'Strain.id IN (SELECT strain_id

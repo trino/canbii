@@ -120,6 +120,7 @@ $('#searchName').on('keydown keyup click input submit mouseenter', function(){
 	var txt = $(this).val();
     if (txt.length > 0 && txt !=lastsearch) {
         lastsearch=txt;
+        $('.butt').html("Now loading...");
         $.ajax({
             type: "post",
             url: "<?php echo $this->webroot;?>strains/ajax_search",
