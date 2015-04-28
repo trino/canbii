@@ -214,7 +214,7 @@
                                     }
                                     ?>
                                     <div>
-                                    <a style="color:white;padding:2px;" href="javascript:void(0)" class="sym2 small-btn"
+                                    <a style="color:white;padding:2px;" href="javascript:void(<?php echo $e['Symptom']['id']; ?>)" class="sym2 small-btn"
                                        id="sym_<?php echo $e['Symptom']['id']; ?>"><?php echo $e['Symptom']['title'] ?></a>
                                     </div>
                                 <?php

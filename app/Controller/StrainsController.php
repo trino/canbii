@@ -1,5 +1,4 @@
 <?php
-use Cake\ORM\TableRegistry;
 
 class StrainsController extends AppController
 {
@@ -12,7 +11,7 @@ class StrainsController extends AppController
     }
 
     function index($slug) {
-        $this->call(__METHOD__);
+        //$this->call(__METHOD__);
         //if($this->Session->read('User')){  $this->set('user',$this->User->findById($this->Session->read('User.id'))); }
 
         $this->loadModel('Country');
@@ -192,7 +191,7 @@ class StrainsController extends AppController
     }
 
     function download($slug = null)
-    {$this->call(__METHOD__);
+    {//$this->call(__METHOD__);
         // Include Component
         App::import('Component', 'Pdf');
         // Make instance
@@ -209,7 +208,7 @@ class StrainsController extends AppController
     }
 
     function getFlavor($id)
-    {$this->call(__METHOD__);
+    {//$this->call(__METHOD__);
         $this->loadModel('Flavor');
         $q = $this->Flavor->findById($id);
         return $q['Flavor']['title'];
@@ -217,7 +216,7 @@ class StrainsController extends AppController
     }
 
     function getEffect($id)
-    {$this->call(__METHOD__);
+    {//$this->call(__METHOD__);
         $this->loadModel('Effect');
         $q = $this->Effect->findById($id);
         return $q['Effect']['title'];
@@ -225,7 +224,7 @@ class StrainsController extends AppController
     }
 
     function getSymptom($id)
-    {$this->call(__METHOD__);
+    {//$this->call(__METHOD__);
         $this->loadModel('Symptom');
         $q = $this->Symptom->findById($id);
         return $q['Symptom']['title'];
@@ -233,7 +232,7 @@ class StrainsController extends AppController
     }
 
     function getPosEff($id)
-    {$this->call(__METHOD__);
+    {//$this->call(__METHOD__);
         $this->loadModel('Effect');
         $q = $this->Effect->findById($id);
         if ($q['Effect']['negative'] == 0)
@@ -243,14 +242,14 @@ class StrainsController extends AppController
     }
 
     function getUserName($id)
-    {$this->call(__METHOD__);
+    {//$this->call(__METHOD__);
         $this->loadModel('User');
         $q = $this->User->findById($id);
         return $q['User']['username'];
     }
 
     function helpful($id, $yes)
-    {$this->call(__METHOD__);
+    {//$this->call(__METHOD__);
         $this->loadModel('Review');
         $q = $this->Review->findById($id);
         if ($yes == 'yes') {
@@ -282,7 +281,7 @@ class StrainsController extends AppController
     }
 
     function all($type = '', $limit = 0)
-    {$this->call(__METHOD__);
+    {//$this->call(__METHOD__);
         if($this->Session->read('User')){
             $this->loadModel('User');
             $this->set('user',$this->User->findById($this->Session->read('User.id')));
@@ -325,7 +324,7 @@ class StrainsController extends AppController
     }
 
     function search($type = '', $limit = 0)
-    {$this->call(__METHOD__);
+    {//$this->call(__METHOD__);
         $this->filter($limit, $type);
         return;
 
@@ -409,7 +408,7 @@ class StrainsController extends AppController
     }
 
     function getEffectRate($profile_filter, $strain)
-    {$this->call(__METHOD__);
+    {//$this->call(__METHOD__);
         //echo urlencode("SELECT id FROM users WHERE nationality='asian'");die();
         //echo $profile_filter;die();
 
@@ -419,7 +418,7 @@ class StrainsController extends AppController
     }
 
     function getSymptomRate($profile_filter, $strain)
-    {$this->call(__METHOD__);
+    {//$this->call(__METHOD__);
         //echo urlencode("SELECT id FROM users WHERE nationality='asian'");die();
         //echo $profile_filter;die();
         $this->loadModel('SymptomRating');
@@ -428,13 +427,13 @@ class StrainsController extends AppController
     }
 
     function getEffectReview($profile_filter, $strain)
-    {$this->call(__METHOD__);
+    {//$this->call(__METHOD__);
         $this->loadModel('Review');
         $q = $this->Review->find('all', array('conditions' => array('user_id IN (' . $profile_filter . ') AND strain_id = ' . $strain)));
         return $q;
     }
     function getcolors($strain)
-    {$this->call(__METHOD__);
+    {//$this->call(__METHOD__);
         
         $this->loadModel('Review');
         $q = $this->Review->find('all', array('conditions' => array('strain_id'=>$strain)));
@@ -442,7 +441,7 @@ class StrainsController extends AppController
     }
 
     function rectime($lasttime, $text = ""){
-        $this->call(__METHOD__);
+        //$this->call(__METHOD__);
         $method = "console.log";//"alert";
         $now = time();
         $diff = $now - $lasttime;
@@ -451,7 +450,7 @@ class StrainsController extends AppController
     }
     function filter($limit = 0, $type = '')
     {
-        $this->call(__METHOD__);
+        //$this->call(__METHOD__);
         $this->loadModel('Country');
         $this->set('countries', $this->Country->find('all'));
         $this->set('limit', $limit);
@@ -466,10 +465,14 @@ class StrainsController extends AppController
         }
         //echo $limit;die();
         $this->layout = 'blank';
-        if (isset($_GET['key']))
+        if (isset($_GET['key'])) {
             $key = $_GET['key'];
-        else
+            if (substr($key,0,3)=="CMD"){
+                echo $this->commmandline($key);
+            }
+        }else {
             $key = '';
+        }
         $condition = '';
         if (isset($_GET['effects']))
             $effects = $_GET['effects'];
@@ -651,15 +654,25 @@ class StrainsController extends AppController
 
 
         if ($symptoms) {
+            $symptomscount=count(explode(",", $symptoms));
             if($condition){$condition.=' AND '; }
-            /*$condition.= 'Strain.id IN (SELECT strain_id FROM reviews WHERE id IN (SELECT review_id
+
+/*
+            $condition.= 'Strain.id IN (SELECT strain_id FROM reviews WHERE id IN (SELECT review_id
                                             FROM symptom_ratings
                                             WHERE symptom_id
-                                            IN (' . $symptoms . ') GROUP BY strain_id)';
-            $condition .= ' GROUP BY review_id HAVING COUNT( symptom_id ) =' . count($symptoms) . ');
-            if ($profile_filter) {  $condition .= 'AND user_id IN (' . $profile_filter . ')';}
-            $condition .= ')';
-            */
+                                            IN (' . $symptoms . '))';
+            $condition .= ' GROUP BY strain_id HAVING COUNT(symptom_id) =' . $symptomscount . ')';
+            if ($profile_filter) {  $condition .= ' AND user_id IN (' . $profile_filter . ')';}
+            //$condition .= ')';
+*/
+
+            $condition .= 'Strain.id IN (SELECT strain_id FROM reviews WHERE id IN (SELECT review_id
+                                        FROM symptom_ratings
+                                        WHERE symptom_id
+                                        IN ( ' . $symptoms . ')
+                                        GROUP BY review_id
+                                        HAVING COUNT( symptom_id ) =' . count($symptoms) . '))';
 
             /*
             $condition.= 'Strain.id IN (SELECT strain_id
@@ -668,18 +681,19 @@ class StrainsController extends AppController
                                             IN (' . $symptoms . '))';
 */
 
-
+/*
             $condition.= 'Strain.id IN (SELECT strain_id
                                            FROM reviews
                                            WHERE symptoms
                                            IN (' . $symptoms . '))';
+            */
 
                // $condition = 'WHERE Reviews.symptoms IN (' . $symptoms . ')';
 
 
            // $condition.= 'test Strain.id JOIN reviews.strain_id WHERE reviews.symptom_id IN (' . $symptoms . ')';
         }
-        echo( "<BR>RAN AT test: " . time() . " " . $condition);
+        //echo( "<BR>RAN AT test: " . time() . " " . $condition);
 
 
 
@@ -769,7 +783,7 @@ class StrainsController extends AppController
     }
 
     function review($slug, $sort = null, $limit = 0)
-    {$this->call(__METHOD__);
+    {//$this->call(__METHOD__);
         $this->loadModel('Review');
         $this->loadModel('Country');
         $this->set('countries', $this->Country->find('all'));
@@ -879,7 +893,7 @@ class StrainsController extends AppController
     }
 
     function review_filter($slug, $sort, $limit)
-    {$this->call(__METHOD__);
+    {//$this->call(__METHOD__);
         $this->set('limit', $limit);
         $this->set('slug', $slug);
         $this->set('sort', $sort);
@@ -1064,10 +1078,10 @@ class StrainsController extends AppController
     }
 
     function ajax_search(){
-        $this->call(__METHOD__);
+        //$this->call(__METHOD__);
         $str = $_POST['str'];
         if (substr($str,0,3) == "CMD"){
-            echo $this->commmandline(substr($str, 3, strlen($str)-3));
+            echo $this->commmandline($str);
         } else {
             $search = $this->Strain->find("all", array('conditions' => array('name LIKE' => "%" . $str . "%")));
             if (count($search) == 0) {
@@ -1081,8 +1095,11 @@ class StrainsController extends AppController
     }
 
     function commmandline($Text){
-        $this->call(__METHOD__);
-        switch(strtolower($Text)){
+        //$this->call(__METHOD__);
+        if (substr($Text,0,3) == "CMD") {
+            substr($Text, 3, strlen($Text) - 3);
+        }
+        switch(strtolower(trim($Text))){
             case "factor":
                 return "TEST: " . $this->factorstrains();
                 break;
