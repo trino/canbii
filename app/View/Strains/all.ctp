@@ -215,14 +215,14 @@
                                     ?>
                                     <div>
                                     <a style="color:white;padding:2px;" href="<?php
-                                        //if ($_SERVER["SERVER_NAME"] == "localhost") {
+                                        if ($_SERVER["SERVER_NAME"] == "localhost") {//LOOK FOR ME!!!!
                                             echo "javascript:void(";
                                             echo $e['Symptom']['id'];
                                             echo ");";
-                                       // }else {
-                                        //    echo "?symptoms=";
-                                        //    echo $e['Symptom']['id'];
-                                       // }
+                                        }else {
+                                            echo "?symptoms=";
+                                            echo $e['Symptom']['id'];
+                                        }
                                     ?>" class="sym2 small-btn"
                                        id="sym_<?php echo $e['Symptom']['id']; ?>"><?php echo $e['Symptom']['title'] ?></a>
                                     </div>
