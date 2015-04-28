@@ -400,11 +400,11 @@ class StrainsController extends AppController
                     $condition = $condition . 'Strain.id IN (SELECT strain_id FROM reviews WHERE id IN (SELECT review_id
                                         FROM symptom_ratings
                                         WHERE symptom_id
-                                        IN ( ' . $e;
+                                        IN (' . $e;
                 } else
                     $condition = $condition . ',' . $e;
             }
-            $condition = $condition . ')GROUP BY review_id
+            $condition = $condition . ') GROUP BY review_id
                                         HAVING COUNT( symptom_id ) =' . count($symptoms) . '))';
         }
         if (!$condition) {
@@ -466,14 +466,10 @@ class StrainsController extends AppController
         $this->set('countries', $this->Country->find('all'));
         $this->set('limit', $limit);
         $this->set('type', $type);
-        if ($limit) {
-            $offset = $limit;
-            $limit = '8';
 
-        } else {
-            $limit = 8;
-            $offset = 0;
-        }
+        $offset = 0;
+        if ($limit) {  $offset = $limit;}
+
         //echo $limit;die();
         $this->layout = 'blank';
         if (isset($_GET['key'])) {
@@ -637,17 +633,18 @@ class StrainsController extends AppController
             $_GET['sort'] = 'alpha';
 
         }
+
         if ($effects && is_array($effects)) {
             if (isset($_GET['sort']) && ($test_sort == 'indica' || $test_sort == 'sativa' || $test_sort == 'hybrid'))
                 $condition = $condition . ' AND ';
             $i = 0;
-            foreach ($effects as $e) {
+            foreach ($effects as $e) {//this loop will no longer function, as it's no longer an array
                 $i++;
                 if ($i == 1)
                     $condition = $condition . 'Strain.id IN (SELECT strain_id FROM reviews WHERE id IN (SELECT review_id
                                         FROM effect_ratings
                                         WHERE effect_id
-                                        IN ( ' . $e;
+                                        IN (' . $e;
 
                 else
                     $condition = $condition . ',' . $e;
@@ -702,8 +699,7 @@ class StrainsController extends AppController
             $condition .= 'Strain.id IN (SELECT strain_id
                                         FROM symptom_ratings
                                         WHERE symptom_id
-                                        IN ( ' . $symptoms . ')
-                                        )';
+                                        IN (' . $symptoms . '))';
 
 
             /*
@@ -744,75 +740,32 @@ class StrainsController extends AppController
                 $order = 'Strain.name ' . $_GET['order'];
             }
         } else {
-            $order = array();
+            $order = "";
         }
 
         $model=$this->Strainslim;
-        //var_dump($order);die();
-        if ($type == '') {
-            if (!$condition) {
-                if (!$order) {
-                    if (!$profile_filter) {
-                        $this->set('strain', $model->find('all', array('conditions' => array('name LIKE' => '%' . $key . '%'), 'order' => 'Strain.viewed DESC ,Strain.id DESC', 'limit' => $limit, 'offset' => $offset)));
-                    }else {
-                        $this->set('strain', $model->find('all', array('conditions' => array('name LIKE' => '%' . $key . '%', 'Strain.id IN (SELECT strain_id FROM reviews WHERE user_id IN (' . $profile_filter . '))'), 'order' => 'Strain.viewed DESC ,Strain.id DESC', 'limit' => $limit, 'offset' => $offset)));
-                    }
-                } else {
-
-                    if (!$profile_filter) {
-                        $this->set('strain', $model->find('all', array('conditions' => array('name LIKE' => '%' . $key . '%'), 'order' => $order, 'limit' => $limit, 'offset' => $offset)));
-                    }else {
-                        $this->set('strain', $model->find('all', array('conditions' => array('name LIKE' => '%' . $key . '%', 'Strain.id IN (SELECT strain_id FROM reviews WHERE user_id IN (' . $profile_filter . '))'), 'order' => $order, 'limit' => $limit, 'offset' => $offset)));
-                    }
-                }
-                if (!$profile_filter) {
-                    $this->set('strains', $model->find('count', array('conditions' => array('name LIKE' => '%' . $key . '%'))));
-                }else {
-                    $this->set('strains', $model->find('count', array('conditions' => array('name LIKE' => '%' . $key . '%', 'Strain.id IN (SELECT strain_id FROM reviews WHERE user_id IN (' . $profile_filter . '))'))));
-                }
-            } else {
-                if (!$order) {
-                    if (!$profile_filter) {
-                        $this->set('strain', $model->find('all', array('conditions' => array('name LIKE' => '%' . $key . '%', $condition), 'order' => 'Strain.viewed DESC ,Strain.id DESC', 'limit' => $limit, 'offset' => $offset)));
-                    } else {
-                        $this->set('strain', $model->find('all', array('conditions' => array('name LIKE' => '%' . $key . '%', $condition), 'order' => 'Strain.viewed DESC ,Strain.id DESC', 'limit' => $limit, 'offset' => $offset)));
-                    }
-                } else{
-                    $this->set('strain', $model->find('all', array('conditions' => array('name LIKE' => '%' . $key . '%', $condition), 'order' => $order, 'limit' => $limit, 'offset' => $offset)));
-                }
-                $this->set('strains', $model->find('count', array('conditions' => array('name LIKE' => '%' . $key . '%', $condition))));
-            }
-        } else {
+        $parameters = array();
+        $conditions = array();
+        if($key){$conditions['name LIKE'] = '%' . $key . '%';}
+        if($profile_filter){$conditions[] = 'Strain.id IN (SELECT strain_id FROM reviews WHERE user_id IN (' . $profile_filter . '))';}
+        if($condition){$conditions[] = $condition;}
+        if ($type) {
             $arr = array('indica' => 1, 'sativa' => 2, 'hybrid' => 3);
-            if (!$condition) {
-                if (!$order) {
-                    if ($profile_filter) {
-                        $this->set('strain', $model->find('all', array('conditions' => array('type_id' => $arr[$type], 'name LIKE' => '%' . $key . '%', 'Strain.id IN (SELECT strain_id FROM reviews WHERE user_id IN (' . $profile_filter . '))'), 'order' => 'Strain.viewed DESC ,Strain.id DESC', 'limit' => $limit, 'offset' => $offset)));
-                    }else {
-                        $this->set('strain', $model->find('all', array('conditions' => array('type_id' => $arr[$type], 'name LIKE' => '%' . $key . '%'), 'order' => 'Strain.viewed DESC ,Strain.id DESC', 'limit' => $limit, 'offset' => $offset)));
-                    }
-                } else {
-                    if ($profile_filter) {
-                        $this->set('strain', $model->find('all', array('conditions' => array('type_id' => $arr[$type], 'name LIKE' => '%' . $key . '%', 'Strain.id IN (SELECT strain_id FROM reviews WHERE user_id IN (' . $profile_filter . '))'), 'order' => $order, 'limit' => $limit, 'offset' => $offset)));
-                    }else {
-                        $this->set('strain', $model->find('all', array('conditions' => array('type_id' => $arr[$type], 'name LIKE' => '%' . $key . '%'), 'order' => $order, 'limit' => $limit, 'offset' => $offset)));
-                    }
-                }
-                if ($profile_filter) {
-                    $this->set('strains', $model->find('count', array('conditions' => array('limit' => $limit, 'type_id' => $arr[$type], 'name LIKE' => '%' . $key . '%', 'Strain.id IN (SELECT strain_id FROM reviews WHERE user_id IN (' . $profile_filter . '))'))));
-                }else {
-                    $this->set('strains', $model->find('count', array('conditions' => array('limit' => $limit, 'type_id' => $arr[$type], 'name LIKE' => '%' . $key . '%'))));
-                }
-            } else {
-                if (!$order) {
-                    $this->set('strain', $model->find('all', array('conditions' => array('type_id' => $arr[$type], 'name LIKE' => '%' . $key . '%', $condition), 'order' => 'Strain.viewed DESC ,Strain.id DESC', 'limit' => $limit, 'offset' => $offset)));
-                }else {
-                    $this->set('strain', $model->find('all', array('conditions' => array('type_id' => $arr[$type], 'name LIKE' => '%' . $key . '%', $condition), 'order' => $order, 'limit' => $limit, 'offset' => $offset)));
-                }
-                $this->set('strains', $model->find('count', array('conditions' => array('type_id' => $arr[$type], 'name LIKE' => '%' . $key . '%', $condition))));
-            }
+            $conditions['type_id'] = $arr[$type];
+        }
+        $parameters['conditions'] = $conditions;
+        if ($order) {
+            $parameters['order'] = $order;
+        } else {
+            $parameters['order'] = 'Strain.viewed DESC, Strain.id DESC';
         }
 
+        //echo "Parameters:";debug($parameters);
+
+        $this->set('strains', $model->find('count', $parameters));
+        $parameters['limit'] = $limit;
+        $parameters['offset'] = $offset;
+        $this->set('strain', $model->find('all', $parameters));
     }
 
     function review($slug, $sort = null, $limit = 0)
@@ -891,7 +844,7 @@ class StrainsController extends AppController
             $offset = 0;
         }
         $q = $this->Strain->findBySlug($slug);
-        if (!$sort || $sort == 'recent') {
+        if (!$sort || $sort == 'recent') {//do not use nested redundant if statements, generate the array cell by cell
             if (!isset($_GET['user'])) {
                 if (!$profile_filter)
                     $q2 = $this->Review->find('all', array('conditions' => array('Review.strain_id' => $q['Strain']['id']), 'order' => 'Review.id DESC', 'limit' => $limit, 'offset' => $offset));
@@ -1064,7 +1017,7 @@ class StrainsController extends AppController
 
         $this->loadModel('Review');
         $q = $this->Strain->findBySlug($slug);
-        if (!$sort || $sort == 'recent') {
+        if (!$sort || $sort == 'recent') {//do not use nested redundant if statements, generate the array cell by cell
             if (!isset($_GET['user'])) {
                 if (!$profile_filter)
                     $q2 = $this->Review->find('all', array('conditions' => array('Review.strain_id' => $q['Strain']['id']), 'order' => 'Review.id DESC', 'limit' => $limit, 'offset' => $offset));
