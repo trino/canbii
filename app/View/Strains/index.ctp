@@ -207,7 +207,7 @@
                                                                      href="javascrip:void(0)"
                                                                      style="position:relative;margin-top:0px;">
                                             <CENTER><img width="55" class="glow"
-                                                         src="<?= $this->webroot . "/images/icons/" . strtolower($name); ?>.png">
+                                                         src="<?= $this->webroot . "images/icons/" . strtolower($name); ?>.png">
                                             </CENTER>
                                             <CENTER><?= $name; ?></CENTER>
                                         </a></TD>
@@ -274,6 +274,9 @@
 
 
                 <?php
+                    if(!isset($p_filter)){
+                        $p_filter=false;
+                    }
                     if (!$p_filter) {
                         foreach ($strain['OverallSymptomRating'] as $oer) {
                             $arrs[] = $oer['rate'] . '_' . $oer['symptom_id'];

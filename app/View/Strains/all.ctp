@@ -128,7 +128,7 @@
 
         </div>
         <div class="page_header_right">
-            <form class="search" method="get" action="<?php echo $this->webroot; ?>strains/search">
+            <form class="search" method="get" action="<?php echo $this->webroot; ?>strains/all">
 
 
                 <input id="BUTTON_17" type="submit" value="Search" class="more blue medium " style="float:right;"/>
@@ -170,7 +170,7 @@
         <div class="page_right" style="">
             <!--div style="float:left;margin-left:-2px;" class="addthis_sharing_toolbox"></div-->
             <input id="BUTTON_18" type="reset" value="Reset Filter" class="more blue medium"
-                   style="float: right; width: 40%;" onclick="location.reload();"/>
+                   style="float: right; width: 40%;" onclick="window.location='all';"/>
             <ul>
 
                 <!--li class="home_box light_blue animated_element animation-fadeIn duration-500" style="z-index: 3;">
@@ -214,7 +214,16 @@
                                     }
                                     ?>
                                     <div>
-                                    <a style="color:white;padding:2px;" href="javascript:void(<?php echo $e['Symptom']['id']; ?>)" class="sym2 small-btn"
+                                    <a style="color:white;padding:2px;" href="<?php
+                                        //if ($_SERVER["SERVER_NAME"] == "localhost") {
+                                            echo "javascript:void(";
+                                            echo $e['Symptom']['id'];
+                                            echo ");";
+                                       // }else {
+                                        //    echo "?symptoms=";
+                                        //    echo $e['Symptom']['id'];
+                                       // }
+                                    ?>" class="sym2 small-btn"
                                        id="sym_<?php echo $e['Symptom']['id']; ?>"><?php echo $e['Symptom']['title'] ?></a>
                                     </div>
                                 <?php
@@ -454,6 +463,7 @@
                 $('.' + $(this).attr('id')).remove();
             }
             $('.key').val('');
+
             /*else
              var sort = 1;*/
             if (!spinnerVisible) {
@@ -465,10 +475,11 @@
             $('.effs').each(function () {
                 if ($(this).val()) {
                     i++;
-                    if (i == 1)
-                        val = 'effects[]=' + $(this).val();
-                    else
-                        val = val + '&effects[]=' + $(this).val();
+                    if (i == 1) {
+                        val = 'effects=' + $(this).val();
+                    }else {
+                        val = val + ',' + $(this).val();
+                    }
                 }
 
 
@@ -476,10 +487,11 @@
             $('.symp .symps').each(function () {
                 if ($(this).val()) {
                     i++;
-                    if (i == 1)
+                    if (i == 1) {
                         val = 'symptoms=' + $(this).val();
-                    else
+                    }else {
                         val = val + ',' + $(this).val();
+                    }
                 }
             });
             if (val) {
