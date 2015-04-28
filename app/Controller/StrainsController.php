@@ -666,7 +666,7 @@ class StrainsController extends AppController
             if ($profile_filter) {  $condition .= ' AND user_id IN (' . $profile_filter . ')';}
             //$condition .= ')';
 */
-
+/*
             $condition .= 'Strain.id IN (SELECT strain_id FROM reviews WHERE id IN (SELECT review_id
                                         FROM symptom_ratings
                                         WHERE symptom_id
