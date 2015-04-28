@@ -2,14 +2,10 @@
     class ReviewController extends AppController
     {
 
-        function beforeFilter()
-        {
+        function beforeFilter(){
             $this->loadModel("Review");
-            
         }
-        function checkSess()
-        {
-            
+        function checkSess(){
             if(!$this->Session->read('User'))
             {
                 $url = $this->here;
@@ -17,17 +13,15 @@
                 $this->redirect('/users/register?url='.$url);
             }
         }
-        function all($limit=0)
-        {
+
+        function all($limit=0){
             $this->set('limit',$limit);
             $this->checkSess();
             
             if($limit){
                 $offset = $limit;
                 $limit = '8';
-         
-            }
-            else{
+            } else{
                 $limit = 8;
                 $offset = 0;
             }
@@ -47,14 +41,12 @@
             }
         }
         
-        function all_filter($limit)
-        {
+        function all_filter($limit){
             $this->set('limit',$limit);
             if($limit){
                 $offset = $limit;
                 $limit = '8';
-            }
-            else{
+            } else{
                 $limit = 8;
                 $offset = 0;
             }
@@ -65,9 +57,7 @@
             $this->set('reviewz', $this->Review->find('count',array('conditions'=>array('user_id'=>$id))) );
         }
         
-        function detail($id)
-        {
-            
+        function detail($id){
             $this->loadModel('Effect');
             $this->loadModel("Strain");
             $this->loadModel("Colour");
@@ -105,18 +95,18 @@
             //debug($review);
 
         }
-        function index()
-        {
+
+        function index(){
             $this->checkSess();
-            if(isset($_POST['submit']))
-            {
+            if(isset($_POST['submit'])) {
                 $slug = $_POST['strain'];
-                if($slug!="")
-                    $this->redirect("index/".$slug);
+                if($slug!="") {
+                    $this->redirect("index/" . $slug);
+                }
             }
         }
-        function add($slug)
-        {
+
+        function add($slug){
             $this->checkSess();
             $this->loadModel('Effect');
             $this->loadModel("Strain");
@@ -196,19 +186,19 @@
                             $ar['rate'] = $v;
                             $this->FlavorRating->create();
                             $this->FlavorRating->save($ar);
-                            
                         }
                     }
                     
                     $this->Strain->id = $strain['Strain']['id'];
                     if($strain['Strain']['review'])                    {
                         $review = $strain['Strain']['review'] + 1;
+                    } else {
+                        $review = 1;
                     }
-                    else
-                    $review = 1;
 
+                    $this->factorreview($r_id);
                     $this->Strain->saveField('review',$review);
-                    $this->Session->setFlash('Review Saved','default',array('class'=>'good'));
+                    $this->Session->setFlash('Review Saved as ' . $r_id,'default',array('class'=>'good'));
                     $this->redirect('all');
                }
             }
@@ -224,8 +214,8 @@
             $this->ColourRating->deleteAll(array('user_id'=>$userid, 'strain_id'=>$strainid), false);
             $this->FlavorRating->deleteAll(array('user_id'=>$userid, 'strain_id'=>$strainid), false);
             $this->Review->deleteAll(array('user_id'=>$userid, 'strain_id'=>$strainid), false);
-
         }
+
         function findreview($userid, $strainid){
             if($review = $this->Review->find('first',array("conditions"=>array('user_id'=>$userid, 'strain_id'=>$strainid)))){
                 $id = $review['Review']['id'];
@@ -235,7 +225,7 @@
             return -1;
         }
 
-        function change_overall_rating($id,$table,$rate)        {
+        function change_overall_rating($id,$table,$rate)        {//id=strain id
             $this->checkSess();
             $this->loadModel('Strain');
             $this->loadModel('OverallEffectRating');
@@ -344,11 +334,28 @@
                         }                        else                        {
                             echo "Rating Could not be saved. Please try Again.";die();
                         }
+
                     
                   }
                 //var_dump($arr);    
             }
             
+        }
+
+
+        function factorreview($ReviewID){
+            $this->loadModel('SymptomRating');
+            $Symptoms = $this->SymptomRating->find('all',array('conditions'=>array("review_id"=>$ReviewID)));
+            $SymptomList = array();
+            foreach($Symptoms as $Symptom){
+                $SymptomList[$Symptom["SymptomRating"]["symptom_id"]]=true;
+            }
+            $factor = implode(",", array_keys($SymptomList));
+
+            $this->loadModel("Review");
+            $this->Review->id = $ReviewID;
+            $this->Review->saveField('symptoms', $factor);
+            $this->Review->saveField('symptomscount', count($SymptomList));
         }
     }
 ?>

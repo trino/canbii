@@ -1,15 +1,25 @@
 <?php
 
 class UsersController extends AppController {
-    
+    function getURL(){
+        $URL="";
+        if(isset($_GET['url'])) {
+            $URL=$_GET['url'];
+            if ($_SERVER["SERVER_NAME"] == "localhost"){
+                $URL = substr($URL, 1, strlen($URL)-1);
+                $strpos = strpos($URL, "/");
+                $URL = substr($URL, $strpos, strlen($URL)-$strpos);
+            }
+        }
+        return $URL;
+    }
           
     public function login() {
-        if(isset($_GET['url']))
-            $this->set('url',$_GET['url']);
-        else
-            $this->set('url',"");
-        if(!$this->request->is('post'))
+        $this->set('url', $this->getURL());
+
+        if(!$this->request->is('post')) {
             $this->redirect('register');
+        }
 		
         $this->set('title_for_layout','Login/Registration');
        if ($this->request->is('post')) {
@@ -19,11 +29,12 @@ class UsersController extends AppController {
                 $this->Session->write('User.username',$_POST['username']);
                 $this->Session->write('User.email',$user['User']['email']);
                 $this->Session->write('User.id',$user['User']['id']);
-                
-                if(isset($_GET['url']))
-                    $this->redirect(str_replace('/canbii','',$_GET['url']));
-                else
-                $this->redirect('dashboard');
+
+                if(isset($_GET['url'])) {
+                    $this->redirect($this->getURL());
+                }else {
+                    $this->redirect('dashboard');
+                }
             }
             else
 			{
@@ -36,12 +47,11 @@ class UsersController extends AppController {
         
     
     public function register(){
-         if(isset($_GET['url']))
-            $this->set('url',$_GET['url']);
-        else
-            $this->set('url',"");
-        if($this->Session->read('User'))
+        $this->set('url', $this->getURL());
+        if($this->Session->read('User')) {
             $this->redirect('dashboard');
+        }
+
       $this->set('title_for_layout','Login/Registration');
       if ($this->request->is('post')) {
             $_POST = $_POST['data'];

@@ -1,4 +1,6 @@
 <?php
+use Cake\ORM\TableRegistry;
+
 class StrainsController extends AppController
 {
 
@@ -327,7 +329,6 @@ class StrainsController extends AppController
         $this->filter($limit, $type);
         return;
 
-        die("TESTING!@@#@@##");
         if ($this->Session->read('User')) {
             $this->loadModel('User');
             $this->set('user', $this->User->findById($this->Session->read('User.id')));
@@ -649,7 +650,6 @@ class StrainsController extends AppController
 
 
 
-        echo( "<BR>RAN AT test: " . time() . " " . $condition);
         if ($symptoms) {
             if($condition){$condition.=' AND '; }
             /*$condition.= 'Strain.id IN (SELECT strain_id FROM reviews WHERE id IN (SELECT review_id
@@ -660,12 +660,26 @@ class StrainsController extends AppController
             if ($profile_filter) {  $condition .= 'AND user_id IN (' . $profile_filter . ')';}
             $condition .= ')';
             */
+
+            /*
             $condition.= 'Strain.id IN (SELECT strain_id
                                             FROM symptom_ratings
                                             WHERE symptom_id
                                             IN (' . $symptoms . '))';
+*/
+
+
+            $condition.= 'Strain.id IN (SELECT strain_id
+                                           FROM reviews
+                                           WHERE symptoms
+                                           IN (' . $symptoms . '))';
+
+               // $condition = 'WHERE Reviews.symptoms IN (' . $symptoms . ')';
+
+
+           // $condition.= 'test Strain.id JOIN reviews.strain_id WHERE reviews.symptom_id IN (' . $symptoms . ')';
         }
-        echo( "<BR>RAN AT test 2: " . time() . " " . $condition);
+        echo( "<BR>RAN AT test: " . time() . " " . $condition);
 
 
 
@@ -1049,17 +1063,61 @@ class StrainsController extends AppController
 
     }
 
-    function ajax_search()
-    {$this->call(__METHOD__);
+    function ajax_search(){
+        $this->call(__METHOD__);
         $str = $_POST['str'];
-        $search = $this->Strain->find("all", array('conditions' => array('name LIKE' => "%" . $str . "%")));
-        if( count($search) == 0){
-            echo "No results found for '" . $str . "'";
-        }
-        foreach ($search as $s) {
-            echo "<a href='" . $this->webroot . "review/add/" . $s['Strain']['slug'] . "' class='more blue icon_small_arrow margin_right_white page_margin_top' style='margin-right:10px;' title='" . $s['Strain']['slug'] . "'>" . $s['Strain']['name'] . "</a>";
+        if (substr($str,0,3) == "CMD"){
+            echo $this->commmandline(substr($str, 3, strlen($str)-3));
+        } else {
+            $search = $this->Strain->find("all", array('conditions' => array('name LIKE' => "%" . $str . "%")));
+            if (count($search) == 0) {
+                echo "No results found for '" . $str . "'";
+            }
+            foreach ($search as $s) {
+                echo "<a href='" . $this->webroot . "review/add/" . $s['Strain']['slug'] . "' class='more blue icon_small_arrow margin_right_white page_margin_top' style='margin-right:10px;' title='" . $s['Strain']['slug'] . "'>" . $s['Strain']['name'] . "</a>";
+            }
         }
         die();
+    }
+
+    function commmandline($Text){
+        $this->call(__METHOD__);
+        switch(strtolower($Text)){
+            case "factor":
+                return "TEST: " . $this->factorstrains();
+                break;
+        }
+        return "No command run (" . $Text . ")";
+    }
+
+    function factorstrains($ForceRefresh=false){
+        //ALTER TABLE `reviews` ADD `symptomscount` INT NOT NULL ;
+
+        $this->loadModel("Review");
+        $Reviews = $this->Review->find('all');
+        $Index=0;
+        foreach($Reviews as $Review){
+            if(!$Review['Review']['symptoms'] || $ForceRefresh) {
+                $id = $Review['Review']['id'];
+                $factor=$this->factorreview($id);
+                if($factor) {
+                    $Index++;
+                    $this->Review->id = $id;
+                    $this->Review->saveField('symptoms', $factor);
+                    $this->Review->saveField('symptomscount', count(explode(",", $factor)));
+                }
+            }
+        }
+        return $Index . " reviews factored";
+    }
+    function factorreview($ReviewID){
+        $this->loadModel('SymptomRating');
+        $Symptoms = $this->SymptomRating->find('all',array('conditions'=>array("review_id"=>$ReviewID)));
+        $SymptomList = array();
+        foreach($Symptoms as $Symptom){
+            $SymptomList[$Symptom["SymptomRating"]["symptom_id"]]=true;
+        }
+        return implode(",", array_keys($SymptomList));
     }
 }
 
