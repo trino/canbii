@@ -373,7 +373,7 @@ padding:25px 20px;
 
                     <h1 id="H1_4">Your Personalized Medical Cannabis Database</h1>
 
-                    <form id="FORM_13" class="contact_form" action="<?php echo $this->webroot; ?>strains/search"
+                    <form id="FORM_13" class="contact_form" action="<?php echo $this->webroot; ?>strains/all"
                           method="get" id="search" style="">
 
                         <p id="P_5">

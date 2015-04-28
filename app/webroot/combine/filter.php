@@ -173,7 +173,7 @@ include('combine/hexagon.php');?>
 
 <ul class="post_footer_details">
 <li class="">
-<?php echo $s['StrainType']['title'];?>
+<?php if(isset( $s['StrainType'])){echo  $s['StrainType']['title'];}?>
 </li>
 <li class="" style="">
 <?php if($s['Strain']['review']){

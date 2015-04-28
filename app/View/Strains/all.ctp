@@ -170,7 +170,7 @@
         <div class="page_right" style="">
             <!--div style="float:left;margin-left:-2px;" class="addthis_sharing_toolbox"></div-->
             <input id="BUTTON_18" type="reset" value="Reset Filter" class="more blue medium"
-                   style="float: right; width: 40%;" onclick="window.location='all';"/>
+                   style="float: right; width: 40%;" onclick="window.location='<?php echo $this->webroot;?>strains/all';"/>
             <ul>
 
                 <!--li class="home_box light_blue animated_element animation-fadeIn duration-500" style="z-index: 3;">
@@ -422,7 +422,7 @@
             });
             if (profile)
                 val = val + '&' + profile
-            showspinner();//$('.listing').html(loading);
+            //showspinner();//$('.listing').html(loading);
             $.ajax({
                 url: '<?php echo $this->webroot;?>strains/filter/' + more + '<?php if($type)echo '/'.$type?>',
                 data: val,
