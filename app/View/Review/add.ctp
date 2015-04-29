@@ -310,6 +310,7 @@
         </div-->
 
 
+
         <script>
             $(function () {
                 $('#<?php echo $effect['id'];?>er').slider({
@@ -347,32 +348,32 @@
 
 <span id="qf_review__effects__positive__inner">
 <?php
-    if ($this->params['action'] == 'add') {
-    foreach ($effects as $effect) {
-        ?> <a href="javascript:void(0);"
+                            if ($this->params['action'] == 'add') {
+                                foreach ($effects as $effect) {
+                                    ?> <a href="javascript:void(0);"
               onclick="($(this).hasClass('sel'))?$(this).removeClass('sel'):$(this).addClass('sel')"
               title="<?php echo $effect['Effect']['id']; ?>"
               class="eff3 btn qf_review__effects__positive"><?php echo ucfirst($effect['Effect']['title']); ?></a>
     <?php
-        }
-        }
-        else
-        {
-        $pos = array();
-        foreach ($effects as $e) {
-            array_push($pos, $e['Effect']['id']);
-        }
-        $cnt = 0;
-        foreach ($review['EffectRating'] as $effect) {
-            if (in_array($effect['effect_id'], $pos))
-                $cnt++;
-        }
-        if ($cnt > 0){
-        foreach ($review['EffectRating'] as $effect){
-        if (in_array($effect['effect_id'], $pos) and count($effects) > $effect['effect_id'] - 1){
+                                }
+                            }
+                            else
+                            {
+                            $pos = array();
+                            foreach ($effects as $e) {
+                                array_push($pos, $e['Effect']['id']);
+                            }
+                            $cnt = 0;
+                            foreach ($review['EffectRating'] as $effect) {
+                                if (in_array($effect['effect_id'], $pos))
+                                    $cnt++;
+                            }
+                            if ($cnt > 0){
+                            foreach ($review['EffectRating'] as $effect){
+                            if (in_array($effect['effect_id'], $pos) and count($effects) > $effect['effect_id'] - 1){
 
-        progressbar($this->webroot, $effect['rate'], $effects[$effect['effect_id'] - 1]['Effect']['title'], "", "success", "light-green");
-    ?>
+                            progressbar($this->webroot, $effect['rate'], $effects[$effect['effect_id'] - 1]['Effect']['title'], "", "success", "light-green");
+                        ?>
 
         <!--div id="efft_<?php echo $effect['id'];?>pe" class="review-slider">
             <label><?php echo $effects[$effect['effect_id'] - 1]['Effect']['title'];?></label>
@@ -383,28 +384,28 @@
             <div class="clear"></div>
         </div-->
 
-        <script>
-            $('#<?php echo $effect['id'];?>pe').slider({
-                range: "min",
-                disabled: true,
-                value: <?php echo $effect['rate'];?>,
-                min: 0,
-                max: 5,
-                slide: function (event, ui) {
-                    $('#' + id + 'p').html('' + ui.value + '/5');
-                    $('#' + id + 'i').val(ui.value);
-                }
-            });
-        </script>
-    <?php }
-    }
-    }
-    else {
-        echo "<strong>No Review For Positive Effects</strong>";
-    }
-    }
-?>
-</span-->
+                        <script>
+                            $('#<?php echo $effect['id'];?>pe').slider({
+                                range: "min",
+                                disabled: true,
+                                value: <?php echo $effect['rate'];?>,
+                                min: 0,
+                                max: 5,
+                                slide: function (event, ui) {
+                                    $('#' + id + 'p').html('' + ui.value + '/5');
+                                    $('#' + id + 'i').val(ui.value);
+                                }
+                            });
+                        </script>
+                        <?php }
+                            }
+                            }
+                            else {
+                                echo "<strong>No Review For Positive Effects</strong>";
+                            }
+                            }
+                        ?>
+                        </span-->
 
                         <div style="border-bottom: 1px solid #dadada;margin:10px 0;"></div>
 
@@ -453,6 +454,7 @@
             <div class="clear"></div>
         </div-->
 
+
         <script>
             $('#<?php echo $effect['id'];?>ne').slider({
                 range: "min",
@@ -479,20 +481,20 @@
                     </div>
                 </fieldset>
 
-                <? if(false){?>
-                <fieldset id="qf_review__aesthetics" class="qf-fieldset">
+                <? if (false) { ?>
+                    <fieldset id="qf_review__aesthetics" class="qf-fieldset">
 
-                    <h2 class="slide page_margin_top">
-                        Aesthetic Rating
-                    </h2>
+                        <h2 class="slide page_margin_top">
+                            Aesthetic Rating
+                        </h2>
 
-                    <div class="backgroundcolor">
+                        <div class="backgroundcolor">
 
-                        <h3>
-                            Color
-                        </h3>
+                            <h3>
+                                Color
+                            </h3>
 
-                        <p>What color(s) stand out in this bud?</p>
+                            <p>What color(s) stand out in this bud?</p>
 
 <span id="qf_review__aesthetics__color__inner">
 
@@ -529,14 +531,14 @@
 ?>
 </span>
 
-                        <div class="clear"></div>
-                        <div style="border-bottom: 1px solid #dadada;margin:10px 0;"></div>
+                            <div class="clear"></div>
+                            <div style="border-bottom: 1px solid #dadada;margin:10px 0;"></div>
 
-                        <h3>
-                            Flavor & Scent
-                        </h3>
+                            <h3>
+                                Flavor & Scent
+                            </h3>
 
-                        <p>How does this strain taste & smell?</p>
+                            <p>How does this strain taste & smell?</p>
 
 <span id="qf_review__aesthetics__flavor__inner">
 <?php
@@ -564,9 +566,9 @@
 ?>
 
 </span>
-                    </div>
+                        </div>
 
-                </fieldset>
+                    </fieldset>
 
                 <? } ?>
                 <h2 class="slide page_margin_top">

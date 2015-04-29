@@ -143,7 +143,7 @@
                 <option value = "<?php echo $this->webroot?>" <?php if($this->params['controller']=='pages' && $this->params['action']=='index'){?>selected = "selected" <?php }?> > Home </option>
                 <option value = "<?php echo $this->webroot?>strains/all" <?php if($this->params['controller']=='strains' || $this->params['controller']=='review'){?>selected = "selected"<?php }?> > Strains </option>
                 <option value = "<?php echo $this->webroot;?>pages/about" <?php if($this->params['controller']=='pages' && $this->params['action']=='about'){?>selected = "selected"<?php }?> > About </option>
-                <option value = "<?php echo $this->webroot;?>pages/contact_us" <?php if($this->params['controller']=='pages' && $this->params['action']=='contact_us'){?>selected = "selected"<?php }?> > Contact Us </option>
+                <option value = "<?php echo $this->webroot;?>pages/contact_us" <?php if($this->params['controller']=='pages' && $this->params['action']=='contact_us'){?>selected = "selected"<?php }?> > Contact </option>
 
                 
                 <?php if(!$this->Session->read('User')){?>

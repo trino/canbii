@@ -32,17 +32,17 @@
         </h4>
 
         <p align="">
-            Medical cannabis has been used as a form of treatment for thousands of years. This all natural plant
-            contains tetrahydrocannabinol (THC) and cannabidiol (CBD) which helps treat illnesses or alleviate symptoms.
+            Cannabis has been used as a form of treatment for thousands of years. The active chemical compounds, referred to as cannabinoids is the main source of its medical properties. There are 85 known cannabinoids in the plant, and probably many more. (The number keeps growing every year as new research discovers more of them.).
+            This all natural plant contains tetrahydrocannabinol cannabinoids (THC) and cannabidiol cannabinoids (CBD) which helps treat illnesses or alleviate symptoms.
             What is THC and CBD? Tetrahydrocannabinol (THC) is the main psychoactive ingredient in the plant.
-            Cannabidiol (CBD) is the main compound that represses neurotransmitter release in the brain. Together THC and CBD offers natural andeffective pain relief.
+            Cannabidiol (CBD) is the main ingredient that represses neurotransmitter release in the brain. Together THC and CBD offers natural and effective treatments from countless medical conditions.
         </p>
 
         <p align="">
             There are over 1000 strains, both natural and man-made. More strains are being created to target specific
-            symptoms. Each strain contains different properties. With the sheer number of strains, how do you find that best match
+            symptoms with strain containing different medical properties. With the sheer number of strains, how do you find that best match
             for the symptom? That's why we're here. We want to help make the search for
-            you as easy possible - matching you with the most accurate medicine.
+            you as easy possible - matching you with the most accurate medication.
         </p>
 
         <?php include_once('combine/strains.php'); ?>
@@ -73,8 +73,6 @@ THC is the main psychoactive ingredient in the cannabis plant. It gives one the 
 </p>        <p align="">
 CBD is a cannabinoid that repress neurotransmitter release in the brain. CBD or C is a non psychoactive compound that is reported to have strong anti-inflammatory properties and potentially other health benefits. Together THC and CBD offers natural pain relief.
 </p>
-
-
 
 
 <div style="border-bottom: 1px solid #efefef;" class="page_margin_top"></div>

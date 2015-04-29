@@ -204,7 +204,7 @@
                                     $name = $this->requestAction('/strains/getFlavor/' . $f['FlavorRating']['flavor_id']); //class used to have this in it
                                     ?>
                                     <TD style="padding-top: 0px;"><a class="glow Flavor"
-                                                                     href="javascrip:void(0)"
+                                                                     href="#"
                                                                      style="position:relative;margin-top:0px;">
                                             <CENTER><img width="55" class="glow"
                                                          src="<?= $this->webroot . "images/icons/" . strtolower($name); ?>.png">
