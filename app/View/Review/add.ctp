@@ -723,16 +723,18 @@
                                style="background-color: #1e84c6; padding-left:10px; padding-right:10px; padding-top: 5px; padding-bottom: 5px; margin-right:5px"><strong
                                     style="color: white">NO<?php if ($review['Review']['not_helpful']) { ?> (<?php echo $review['Review']['not_helpful']; ?>)<?php } ?></strong></a>
                         <?php }else{
+                            $lightcolor = ':#CCC;';
+                            $darkcolor = ':#aaa;';
                             if ($yes == 1) {
                                 $y1 = 'padding-left:10px; padding-right:10px; padding-top: 5px; padding-bottom: 5px; margin-right:5px;background:#e5e5e5;cursor:default;';
-                                $y2 = 'color:#fff';
-                                $n1 = 'background:#FFF;color:#CCC;cursor: default;padding:4px 7px;';
-                                $n2 = 'color:#CCC;';
+                                $y2 = 'color' . $darkcolor;//'color:#fff';
+                                $n1 = 'background' . $darkcolor . 'color' . $lightcolor . 'cursor: default;padding:4px 7px;';
+                                $n2 = 'color' . $lightcolor;//:#CCC;';
                             } else {
-                                $y1 = 'background:#FFF;color:#CCC;cursor: default;padding:4px 7px;';
-                                $y2 = 'color:#CCC;';
+                                $y1 = 'background' . $darkcolor . 'color' . $lightcolor . 'cursor: default;padding:4px 7px;';
+                                $y2 = 'color' . $lightcolor;//:#CCC;';
                                 $n1 = 'padding-left:10px; padding-right:10px; padding-top: 5px; padding-bottom: 5px; margin-right:5px;background:#e5e5e5;cursor:default;';
-                                $n2 = 'color:#fff';
+                                $n2 = 'color' . $darkcolor;//'color:#fff';
                             }
                         ?>
                         <a href="javascript:void(0);" id="" class="faded" style="<?php echo $y1; ?>">

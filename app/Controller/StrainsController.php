@@ -713,6 +713,8 @@ class StrainsController extends AppController
                                         GROUP BY strain_id
                                         HAVING matched_symptoms = ' . $symptomscount . ') as IDs)';
 
+
+
                 /*
                 $condition.= 'Strain.id IN (SELECT strain_id
                                                 FROM symptom_ratings
@@ -731,6 +733,17 @@ class StrainsController extends AppController
 
 
                // $condition.= 'test Strain.id JOIN reviews.strain_id WHERE reviews.symptom_id IN (' . $symptoms . ')';
+            $symptomlist = $this->listsymptoms($symptoms);
+            $delimeter="";
+            $index =0;
+            echo "These strains should help with the following symptoms: ";
+            foreach ($symptomlist as $symptom){
+                echo $delimeter . $symptom['Symptom']['title'];
+                $index++;
+                if (!$delimeter) {$delimeter= ", ";}
+                if ($index==$symptomscount-1){$delimeter=  " and " ;}
+            }
+            echo "<BR>";
         }
         //echo( "<BR>RAN AT test: " . time() . " " . $condition);
 
@@ -776,6 +789,12 @@ class StrainsController extends AppController
         $parameters['offset'] = $offset;
         //var_dump($parameters);
         $this->set('strain', $model->find('all', $parameters));
+    }
+
+    function listsymptoms($symptoms){
+        if (is_array($symptoms)){ $symptoms = implode(",", $symptoms);}
+        $this->loadModel('Symptom');
+        return $this->Symptom->find('all',array('conditions' => array('id IN (' . $symptoms . ')')));
     }
 
     function review($slug, $sort = null, $limit = 0)
