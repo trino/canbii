@@ -228,7 +228,7 @@
                         <?php if (isset($review) && $review['Review']['eff_strength'] == 0) {
                             echo "<strong>No Review</strong><br/>";
                         } elseif (isset($review)) {
-                            $strengths = array("Very weak", "Weak", "Average", "Strong", "Very Strong");
+                            $strengths = array("", "Very weak", "Weak", "Average", "Strong", "Very Strong");
                             progressbar($this->webroot, $review['Review']['eff_strength'], $strengths[$review['Review']['eff_strength']]);
                         } else {
                             ?>
