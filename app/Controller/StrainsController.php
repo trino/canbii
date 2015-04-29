@@ -733,17 +733,7 @@ class StrainsController extends AppController
 
 
                // $condition.= 'test Strain.id JOIN reviews.strain_id WHERE reviews.symptom_id IN (' . $symptoms . ')';
-            $symptomlist = $this->listsymptoms($symptoms);
-            $delimeter="";
-            $index =0;
-            echo "These strains should help with the following symptoms: ";
-            foreach ($symptomlist as $symptom){
-                echo $delimeter . $symptom['Symptom']['title'];
-                $index++;
-                if (!$delimeter) {$delimeter= ", ";}
-                if ($index==$symptomscount-1){$delimeter=  " and " ;}
-            }
-            echo "<BR>";
+
         }
         //echo( "<BR>RAN AT test: " . time() . " " . $condition);
 
@@ -784,13 +774,30 @@ class StrainsController extends AppController
             $parameters['order'] = 'Strain.viewed DESC, Strain.id DESC';
         }
 
-        $this->set('strains', $model->find('count', $parameters));
+        $count = $model->find('count', $parameters);
+        if($count>0){$this->makesymptomslist($symptoms, $symptomscount);}
+        $this->set('strains', $count);
         $parameters['limit'] = $limit;
         $parameters['offset'] = $offset;
         //var_dump($parameters);
         $this->set('strain', $model->find('all', $parameters));
     }
 
+    function makesymptomslist($symptoms, $symptomscount){
+        if($symptoms) {
+            $symptomlist = $this->listsymptoms($symptoms);
+            $delimeter = "";
+            $index = 0;
+            echo "These strains should help with the following symptoms: ";
+            foreach ($symptomlist as $symptom) {
+                echo $delimeter . $symptom['Symptom']['title'];
+                $index++;
+                if (!$delimeter) {$delimeter = ", ";}
+                if ($index == $symptomscount - 1) {$delimeter = " and ";}
+            }
+            echo "<BR>";
+        }
+    }
     function listsymptoms($symptoms){
         if (is_array($symptoms)){ $symptoms = implode(",", $symptoms);}
         $this->loadModel('Symptom');

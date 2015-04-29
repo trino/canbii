@@ -27,18 +27,19 @@
             }
             
             $id =$this->Session->read('User.id');
+            if (isset($_GET["delete"])){
+                $reviewid= $_GET["delete"];
+                $this->deletereviews($id,"",$reviewid);
+                $this->Session->setFlash('Review Deleted','default',array('class'=>'good'));
+            }
+            if (isset($_GET["update"])){
+                $this->updatereviews($_GET["update"]);
+            }
+
             $reviews = $this->Review->find('all',array("conditions"=>array('user_id'=>$id),'limit'=>$limit,'offset'=>$offset));
             $this->set("reviews",$reviews);
             $this->set('reviewz', $this->Review->find('count',array('conditions'=>array('user_id'=>$id))) );
            // debug($reviews);
-
-            if (isset($_GET["delete"])){
-                $userid= $this->Session->read('User.id');
-                $strainid= $_GET["delete"];
-                //$this->set("reviewid", $strainid );
-                $this->deletereviews($userid,$strainid);
-                $this->Session->setFlash('Review Deleted','default',array('class'=>'good'));
-            }
         }
         
         function all_filter($limit){
@@ -204,16 +205,55 @@
             }
         }
 
-        function deletereviews($userid, $strainid){
+        function updatereviews($UpdateAverages = false){
+            $this->loadModel("Strains");
+            $strains= $this->Strains->find('all');
+            foreach($strains as $strain){
+                $id= $strain['Strains']['id'];
+                $this->Strains->id =$id;
+                $count = $this->Review->find('count',array("conditions"=>array('strain_id'=>$id)));
+                $this->Strains->saveField("review",$count);
+            }
+            echo "Updated review counts";
+        }
+        //if $reviewid is specified, $userid must match the user_id of the review, $strainid is ignored
+        function deletereviews($userid, $strainid, $reviewid=""){
+            $this->loadModel("Strains");
+            $delete=true;//disable for testing
             $this->loadModel('EffectRating');
             $this->loadModel('SymptomRating');
             $this->loadModel('ColourRating');
             $this->loadModel('FlavorRating');
-            $this->EffectRating->deleteAll(array('user_id'=>$userid, 'strain_id'=>$strainid), false);
-            $this->SymptomRating->deleteAll(array('user_id'=>$userid, 'strain_id'=>$strainid), false);
-            $this->ColourRating->deleteAll(array('user_id'=>$userid, 'strain_id'=>$strainid), false);
-            $this->FlavorRating->deleteAll(array('user_id'=>$userid, 'strain_id'=>$strainid), false);
-            $this->Review->deleteAll(array('user_id'=>$userid, 'strain_id'=>$strainid), false);
+            if ($reviewid){
+                $review = $this->Review->find('first',array("conditions"=>array('Review.id'=>$reviewid)));
+                $rate = $review['Review']['rate'];
+                $strainid = $review['Review']['strain_id'];
+                $reviewuserid = $review['Review']['user_id'];
+                if ($reviewuserid != $userid) { return false;}
+                $conditions = array('review_id' => $reviewid);
+                if($delete){$this->Review->deleteAll(array('Review.id' => $reviewid), false);}
+            } else {
+                $conditions = array('user_id'=>$userid, 'strain_id'=>$strainid);
+                if($delete){$this->Review->deleteAll($conditions, false);}
+            }
+            if($delete) {
+                $this->EffectRating->deleteAll($conditions, false);
+                $this->SymptomRating->deleteAll($conditions, false);
+                $this->ColourRating->deleteAll($conditions, false);
+                $this->FlavorRating->deleteAll($conditions, false);
+            }
+
+            //update review count/average
+            $strain= $this->Strains->find('first',array("conditions"=>array('id'=>$strainid)));
+            if($strain){
+                $this->Strains->id = $strain['Strains']['id'];
+                $reviews =$strain['Strains']['review'];//review count
+                $this->Strains->saveField("review",$reviews-1);
+                if($rate) {
+                    $rate = ($strain['Strains']['rating'] * $reviews - $rate) / ($reviews - 1);//*****
+                    $this->Strains->saveField("rating",$rate);
+                }
+            }
         }
 
         function findreview($userid, $strainid){

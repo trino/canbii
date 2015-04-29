@@ -31,8 +31,7 @@
     //Acceptable colors:
     // Metronic: success (green), info (blue), warning (yellow), danger (red). Active does not work
     // Old: light-purple, light-red, light-blue, light-green
-    function progressbar($webroot, $value, $textL = "", $textR = "", $color = "success", $color2 = "", $striped = false, $active = false, $min = 0, $max = 100)
-    {
+    function progressbar($webroot, $value, $textL = "", $textR = "", $color = "success", $color2 = "", $striped = false, $active = false, $min = 0, $max = 100){
         if (false) {
             echo '<div class="left ratewrap"><img src="' . $webroot . 'images/bar_chart/' . $color2 . '.png" style="width: ';
             echo (round($value, 2) > 100) ? 100 : round($value, 2);
@@ -57,8 +56,7 @@
 
     }
 
-    function perc($scale)
-    {
+    function perc($scale){
         return round($scale / 20, 2) . "/5";
     }
 
@@ -380,46 +378,36 @@
                 What are the general ratings?
                 <br>  <br>
                 <?php
+                    $scale = 0;
+                    $strength = 0;
+                    $duration = 0;
+                    $count="";
                     if (!$p_filter) {
                         $count = count($strain['Review']);
                         if ($count) {
-                            $scale = 0;
-                            $strength = 0;
-                            $duration = 0;
                             foreach ($strain['Review'] as $r) {
                                 $scale = $scale + $r['eff_scale'];
                                 $strength = $strength + $r['eff_strength'];
                                 $duration = $duration + $r['eff_duration'];
                             }
-                            $scale = ($scale / $count) * 20;
-                            $strength = ($strength / $count) * 20;
-                            $duration = ($duration / $count) * 20;
-                        } else {
-                            $scale = 0;
-                            $strength = 0;
-                            $duration = 0;
+
                         }
                     } else {
                         $effect_review = $this->requestAction('/strains/getEffectReview/' . urlencode($profile_filter) . '/' . $strain['Strain']['id']);
-
                         $count = count($strain['Review']);
                         if ($count) {
-                            $scale = 0;
-                            $strength = 0;
-                            $duration = 0;
                             foreach ($effect_review as $r) {
                                 $scale = $scale + $r['Review']['eff_scale'];
                                 $strength = $strength + $r['Review']['eff_strength'];
                                 $duration = $duration + $r['Review']['eff_duration'];
                             }
-                            $scale = ($scale / $count) * 20;
-                            $strength = ($strength / $count) * 20;
-                            $duration = ($duration / $count) * 20;
-                        } else {
-                            $scale = 0;
-                            $strength = 0;
-                            $duration = 0;
                         }
+                    }
+                    if ($count) {
+                        $Factor = 10;//20;
+                        $scale = ($scale / $count) * $Factor;
+                        $strength = ($strength / $count) * $Factor;
+                        $duration = ($duration / $count) * $Factor;
                     }
                 ?>
                 <?php

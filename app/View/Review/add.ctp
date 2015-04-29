@@ -698,15 +698,27 @@
                 ?>
 
             <?php
-            } elseif ($this->Session->read('User')['id'] <> $review['Review']['user_id']) {
+            } elseif ($this->Session->read('User')['id'] == $review['Review']['user_id']) {//http://localhost/marijuana/
+                ?>
+
+            <div class="clearfix"></div>
+            <div class="vote" style="position:fixed;bottom: 0;right:0;background:#e5e5e5;padding:20px;z-index:100000;" align="center">
+            <strong>Would you like to delete this review?</strong><br/><br/>
+                <a href="<?php echo $this->webroot;?>review/all?delete=<?= $review['Review']['id']; ?>"
+                   class="btns yes"
+                   onclick="return confirm('Are you sure you want to delete your review?');"
+                   style="background-color: #40b2e2; padding-left:6px; padding-right:6px; padding-top: 5px; padding-bottom: 5px; margin-right:5px"><strong
+                        style="color: white">YES</strong></a>
+
+                <?php
+            } else {
                 ?>
                 <div class="clearfix"></div>
-                <div class="vote"
-                     style="position:fixed;bottom: 0;right:0;background:#e5e5e5;padding:20px;z-index:100000;">
+                <div class="vote" style="position:fixed;bottom: 0;right:0;background:#e5e5e5;padding:20px;z-index:100000;">
                     <?php
                         $ip = $_SERVER['REMOTE_ADDR'];
                         $rand1 = rand(100, 999);
-                        $rand2 = rand(100, 999);
+                        //$rand2 = rand(100, 999);
                         $q5 = $vip->find('first', array('conditions' => array('review_id' => $review['Review']['id'], 'ip' => $ip)));
 
                         if ($q5) {
