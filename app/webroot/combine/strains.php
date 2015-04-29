@@ -5,7 +5,7 @@
     </h1>
 
     <h3 style="color: white;">
-        Cannabis is broken down into <strong>three</strong> main categories, each with different <strong>medical</strong> properties.
+        We've broken down Cannabis into three main categories, each with a different purpose of use.
     </h3>
 
 </div>
@@ -26,7 +26,7 @@
         <p style="clear:both;" align="">
             Indica dominant strains tend to have a sweet or sour odor to the buds providing a
             very relaxing and strong body high that is helpful in treating general anxiety, body pain, and sleeping
-            disorders. Because of these properties indica is best suited for night time use.
+            disorders. Due to these properties; indica is best suited for night time use.
         </p><br>
         <a title="Browse Strains" href="<?php echo $this->webroot; ?>strains/all/indica" class="more blue">
             Indica Strains →

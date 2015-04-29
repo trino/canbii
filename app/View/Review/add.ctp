@@ -317,6 +317,7 @@
         </div-->
 
 
+
         <script>
             $(function () {
                 $('#<?php echo $effect['id'];?>er').slider({
@@ -380,6 +381,7 @@
             progressbar($this->webroot, $effect['rate'], $theeffect['title'], "", "success", "light-green");
     ?>
 
+
         <!--div id="efft_<?php echo $effect['id'];?>pe" class="review-slider">
             <label><?php echo $effects[$effect['effect_id'] - 1]['Effect']['title'];?></label>
 
@@ -389,28 +391,28 @@
             <div class="clear"></div>
         </div-->
 
-        <script>
-            $('#<?php echo $effect['id'];?>pe').slider({
-                range: "min",
-                disabled: true,
-                value: <?php echo $effect['rate'];?>,
-                min: 0,
-                max: 5,
-                slide: function (event, ui) {
-                    $('#' + id + 'p').html('' + ui.value + '/5');
-                    $('#' + id + 'i').val(ui.value);
-                }
-            });
-        </script>
-    <?php }
-    }
-    }
-    else {
-        echo "<strong>No Review For Positive Effects</strong>";
-    }
-    }
-?>
-</span-->
+                        <script>
+                            $('#<?php echo $effect['id'];?>pe').slider({
+                                range: "min",
+                                disabled: true,
+                                value: <?php echo $effect['rate'];?>,
+                                min: 0,
+                                max: 5,
+                                slide: function (event, ui) {
+                                    $('#' + id + 'p').html('' + ui.value + '/5');
+                                    $('#' + id + 'i').val(ui.value);
+                                }
+                            });
+                        </script>
+                        <?php }
+                            }
+                            }
+                            else {
+                                echo "<strong>No Review For Positive Effects</strong>";
+                            }
+                            }
+                        ?>
+                        </span-->
 
                         <div style="border-bottom: 1px solid #dadada;margin:10px 0;"></div>
 
@@ -457,6 +459,7 @@
             <div class="clear"></div>
         </div-->
 
+
         <script>
             $('#<?php echo $effect['id'];?>ne').slider({
                 range: "min",
@@ -483,20 +486,20 @@
                     </div>
                 </fieldset>
 
-                <? if(false){?>
-                <fieldset id="qf_review__aesthetics" class="qf-fieldset">
+                <? if (false) { ?>
+                    <fieldset id="qf_review__aesthetics" class="qf-fieldset">
 
-                    <h2 class="slide page_margin_top">
-                        Aesthetic Rating
-                    </h2>
+                        <h2 class="slide page_margin_top">
+                            Aesthetic Rating
+                        </h2>
 
-                    <div class="backgroundcolor">
+                        <div class="backgroundcolor">
 
-                        <h3>
-                            Color
-                        </h3>
+                            <h3>
+                                Color
+                            </h3>
 
-                        <p>What color(s) stand out in this bud?</p>
+                            <p>What color(s) stand out in this bud?</p>
 
 <span id="qf_review__aesthetics__color__inner">
 
@@ -533,14 +536,14 @@
 ?>
 </span>
 
-                        <div class="clear"></div>
-                        <div style="border-bottom: 1px solid #dadada;margin:10px 0;"></div>
+                            <div class="clear"></div>
+                            <div style="border-bottom: 1px solid #dadada;margin:10px 0;"></div>
 
-                        <h3>
-                            Flavor & Scent
-                        </h3>
+                            <h3>
+                                Flavor & Scent
+                            </h3>
 
-                        <p>How does this strain taste & smell?</p>
+                            <p>How does this strain taste & smell?</p>
 
 <span id="qf_review__aesthetics__flavor__inner">
 <?php
@@ -568,9 +571,9 @@
 ?>
 
 </span>
-                    </div>
+                        </div>
 
-                </fieldset>
+                    </fieldset>
 
                 <? } ?>
                 <h2 class="slide page_margin_top">

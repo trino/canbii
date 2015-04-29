@@ -126,11 +126,11 @@
                 <li class="<?php if ($this->params['controller'] == 'pages' && $this->params['action'] == 'index') { ?>current_page_item<?php } ?>">
                     <a href="<?php echo $this->webroot; ?>" accesskey="1" title="">Home</a></li>
                 <li class="<?php if ($this->params['controller'] == 'strains' || $this->params['controller'] == 'review') { ?>current_page_item<?php } ?>">
-                    <a href="<?php echo $this->webroot ?>strains/all" accesskey="2" title="">Strains</a></li>
-                <li class="<?php if ($this->params['controller'] == 'pages' && $this->params['action'] == 'about') { ?>current_page_item<?php } ?>">
-                    <a href="<?php echo $this->webroot; ?>pages/about" accesskey="4" title="">About</a></li>
+                    <a href="<?php echo $this->webroot ?>strains/all" accesskey="2" title="">Cannabis Strains</a></li>
+                <!--li class="<?php if ($this->params['controller'] == 'pages' && $this->params['action'] == 'about') { ?>current_page_item<?php } ?>">
+                    <a href="<?php echo $this->webroot; ?>pages/about" accesskey="4" title="">About</a></li-->
                 <li class="<?php if ($this->params['controller'] == 'pages' && $this->params['action'] == 'contact_us') { ?>current_page_item<?php } ?>">
-                    <a href="<?php echo $this->webroot; ?>pages/contact_us" accesskey="4" title="">Contact Us</a></li>
+                    <a href="<?php echo $this->webroot; ?>pages/contact_us" accesskey="4" title="">Contact</a></li>
                 <?php if (!$this->Session->read('User')) { ?>
                     <li class="<?php if ($this->params['controller'] == 'users') { ?>current_page_item<?php } ?>"><a
                             href="<?php echo $this->webroot; ?>users/register" accesskey="4" title="">Login /
@@ -155,9 +155,10 @@
 
                      <select class="mmenu" >
                 <option value = "<?php echo $this->webroot?>" <?php if($this->params['controller']=='pages' && $this->params['action']=='index'){?>selected = "selected" <?php }?> > Home </option>
-                <option value = "<?php echo $this->webroot?>strains/all" <?php if($this->params['controller']=='strains' || $this->params['controller']=='review'){?>selected = "selected"<?php }?> > Strains </option>
-                <option value = "<?php echo $this->webroot;?>pages/about" <?php if($this->params['controller']=='pages' && $this->params['action']=='about'){?>selected = "selected"<?php }?> > About </option>
-                <option value = "<?php echo $this->webroot;?>pages/contact_us" <?php if($this->params['controller']=='pages' && $this->params['action']=='contact_us'){?>selected = "selected"<?php }?> > Contact Us </option>
+                <option value = "<?php echo $this->webroot?>strains/all" <?php if($this->params['controller']=='strains' || $this->params['controller']=='review'){?>selected = "selected"<?php }?> >
+Cannabis Strains </option>
+                <!--option value = "<?php echo $this->webroot;?>pages/about" <?php if($this->params['controller']=='pages' && $this->params['action']=='about'){?>selected = "selected"<?php }?> > About </option-->
+                <option value = "<?php echo $this->webroot;?>pages/contact_us" <?php if($this->params['controller']=='pages' && $this->params['action']=='contact_us'){?>selected = "selected"<?php }?> > Contact </option>
 
 
                 <?php if(!$this->Session->read('User')){?>
@@ -468,7 +469,7 @@ padding:25px 20px;
                         <p style="display: none;" class="symp"></p>
 
                         <div class="main2" style="padding-top: 40px;clear:both;">
-                            <div class="div12"><input id="INPUT_16" type="text" placeholder="Search by name..."
+                            <div class="div12"><input id="INPUT_16" type="text" placeholder="or search by strain..."
                                                       name="key" class="key"
                                                       style=""/>
                                 <input id="BUTTON_17" type="submit" value="Search" class="more blue medium " style=""/>
@@ -604,7 +605,7 @@ padding:25px 20px;
                                 }
                             }
                             if ($count == 0) {
-                                echo "trdhfklhbf";
+                                echo "No Results";
                             }
                         ?>
 
@@ -640,8 +641,6 @@ padding:25px 20px;
                         }(document, "script", "twitter-wjs");</script>
                 </div>
 
-
-
                 <h3 class="box_header">
                     Keep In Touch
                 </h3>
@@ -666,20 +665,14 @@ padding:25px 20px;
                     </li>
                 </ul>
 
-
-
             </div>
         </div>
         <div class="copyright_area clearfix">
             <div class="copyright_left"><a href="http://canbii.com" title="canbii"
                                            target="_blank">Canbii.com</a> © Copyright <?php echo "2014-" . date('Y'); ?>
                 /
-
-
                 <a href="<?php echo $this->webroot . 'pages/privacy'; ?>" target="_blank">Privacy Policy</a> /
                 <a href="<?php echo $this->webroot . 'pages/terms'; ?>" target="_blank">Terms & Conditions</a>
-
-
             </div>
             <div class="copyright_right">
                 <a class="scroll_top icon_small_arrow top_white" href="#top" title="Scroll to top">Top</a>
