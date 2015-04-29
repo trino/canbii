@@ -281,30 +281,31 @@
 
 <span id="qf_review__effects__medical__inner">
 <?php
-    function findsymptom($symptoms, $ID, $Field = 'Symptom'){
-        foreach( $symptoms as $symptom){
-            if ($symptom[$Field]['id'] == $ID){
+    function findsymptom($symptoms, $ID, $Field = 'Symptom')
+    {
+        foreach ($symptoms as $symptom) {
+            if ($symptom[$Field]['id'] == $ID) {
                 return $symptom[$Field];
             }
         }
     }
 
     if ($this->params['action'] == 'add') {
-        foreach ($symptoms as $effect) {
-            ?>
-            <a href="javascript:void(0);"
-               onclick="($(this).hasClass('sel'))?$(this).removeClass('sel'):$(this).addClass('sel');"
-               title="<?php echo $effect['Symptom']['id']; ?>"
-               class="eff3 btn qf_review__effects__medical"><?php echo ucfirst($effect['Symptom']['title']); ?></a>
+    foreach ($symptoms as $effect) {
+        ?>
+        <a href="javascript:void(0);"
+           onclick="($(this).hasClass('sel'))?$(this).removeClass('sel'):$(this).addClass('sel');"
+           title="<?php echo $effect['Symptom']['id']; ?>"
+           class="eff3 btn qf_review__effects__medical"><?php echo ucfirst($effect['Symptom']['title']); ?></a>
         <?php
-            }
-    }else {
+        }
+        }else {
         if (count($review['SymptomRating']) > 0){
 
         foreach ($review['SymptomRating'] as $effect){
-            if (count($symptoms) > $effect['symptom_id'] - 1) {
-                $symptom = findsymptom($symptoms, $effect['symptom_id'] );
-                progressbar($this->webroot, $effect['rate'], $symptom['title'], "", "info", "light-blue");
+        if (count($symptoms) > $effect['symptom_id'] - 1) {
+        $symptom = findsymptom($symptoms, $effect['symptom_id']);
+        progressbar($this->webroot, $effect['rate'], $symptom['title'], "", "info", "light-blue");
     ?>
 
         <!--div id="efft_<?php echo $effect['id']; ?>er" class="review-slider">
@@ -315,6 +316,7 @@
 
             <div class="clear"></div>
         </div-->
+
 
 
 
@@ -355,31 +357,32 @@
 
 <span id="qf_review__effects__positive__inner">
 <?php
-    if ($this->params['action'] == 'add') {
-        foreach ($effects as $effect) {
-            ?> <a href="javascript:void(0);"
+                            if ($this->params['action'] == 'add') {
+                                foreach ($effects as $effect) {
+                                    ?> <a href="javascript:void(0);"
                   onclick="($(this).hasClass('sel'))?$(this).removeClass('sel'):$(this).addClass('sel')"
                   title="<?php echo $effect['Effect']['id']; ?>"
                   class="eff3 btn qf_review__effects__positive"><?php echo ucfirst($effect['Effect']['title']); ?></a>
         <?php
-        }
-    }else{
-        $pos = array();
-        foreach ($effects as $e) {
-            array_push($pos, $e['Effect']['id']);
-        }
-        $cnt = 0;
-        foreach ($review['EffectRating'] as $effect) {
-            if (in_array($effect['effect_id'], $pos)) {
-                $cnt++;
-            }
-        }
-        if ($cnt > 0){
-        foreach ($review['EffectRating'] as $effect){
-        if (in_array($effect['effect_id'], $pos) and count($effects) > $effect['effect_id'] - 1){
-            $theeffect=findsymptom($effects,$effect['effect_id'] , 'Effect');
-            progressbar($this->webroot, $effect['rate'], $theeffect['title'], "", "success", "light-green");
-    ?>
+                                }
+                            }else{
+
+                            $pos = array();
+                            foreach ($effects as $e) {
+                                array_push($pos, $e['Effect']['id']);
+                            }
+                            $cnt = 0;
+                            foreach ($review['EffectRating'] as $effect) {
+                                if (in_array($effect['effect_id'], $pos)) {
+                                    $cnt++;
+                                }
+                            }
+                            if ($cnt > 0){
+                            foreach ($review['EffectRating'] as $effect){
+                            if (in_array($effect['effect_id'], $pos) and count($effects) > $effect['effect_id'] - 1){
+                            $theeffect = findsymptom($effects, $effect['effect_id'], 'Effect');
+                           // progressbar($this->webroot, $effect['rate'], $theeffect['title'], "", "success", "light-green");
+                        ?>
 
 
         <!--div id="efft_<?php echo $effect['id'];?>pe" class="review-slider">
@@ -426,14 +429,14 @@
 
 <?php
     if ($this->params['action'] == 'add') {
-        foreach ($negative as $effect) {
-            ?> <a href="javascript:void(0);"
-                  onclick="($(this).hasClass('sel'))?$(this).removeClass('sel'):$(this).addClass('sel')"
-                  title="<?php echo $effect['Effect']['id']; ?>"
-                  class="eff3 btn btn-info qf_review__effects__negative"><?php echo ucfirst($effect['Effect']['title']); ?></a>
+    foreach ($negative as $effect) {
+        ?> <a href="javascript:void(0);"
+              onclick="($(this).hasClass('sel'))?$(this).removeClass('sel'):$(this).addClass('sel')"
+              title="<?php echo $effect['Effect']['id']; ?>"
+              class="eff3 btn btn-info qf_review__effects__negative"><?php echo ucfirst($effect['Effect']['title']); ?></a>
         <?php
         }
-    }else{
+        }else{
         $pos = array();
         foreach ($negative as $e) {
             array_push($pos, $e['Effect']['id']);
@@ -446,8 +449,8 @@
         if ($cnt > 0){
         foreach ($review['EffectRating'] as $effect){
         if (in_array($effect['effect_id'], $pos)){
-            $theeffect=findsymptom($effectz,$effect['effect_id'] , 'Effect');
-            progressbar($this->webroot, $effect['rate'], $theeffect['title'], "", "danger", "light-red");
+        $theeffect = findsymptom($effectz, $effect['effect_id'], 'Effect');
+        progressbar($this->webroot, $effect['rate'], $theeffect['title'], "", "danger", "light-red");
     ?>
 
         <!--div id="efft_<?php echo $effect['id'];?>ne" class="review-slider">
@@ -458,6 +461,7 @@
 
             <div class="clear"></div>
         </div-->
+
 
 
         <script>
@@ -486,22 +490,22 @@
                     </div>
                 </fieldset>
 
-                <? if (false) { ?>
-                    <fieldset id="qf_review__aesthetics" class="qf-fieldset">
 
-                        <h2 class="slide page_margin_top">
-                            Aesthetic Rating
-                        </h2>
+                <fieldset id="qf_review__aesthetics" class="qf-fieldset">
 
-                        <div class="backgroundcolor">
+                    <h2 class="slide page_margin_top">
+                        Aesthetic Rating
+                    </h2>
 
+                    <div class="backgroundcolor">
+                        <? if (false) { ?>
                             <h3>
                                 Color
                             </h3>
 
                             <p>What color(s) stand out in this bud?</p>
 
-<span id="qf_review__aesthetics__color__inner">
+                            <span id="qf_review__aesthetics__color__inner">
 
 <?php
     if ($this->params['action'] == 'add') {
@@ -535,15 +539,17 @@
     }
 ?>
 </span>
-
                             <div class="clear"></div>
                             <div style="border-bottom: 1px solid #dadada;margin:10px 0;"></div>
 
-                            <h3>
-                                Flavor & Scent
-                            </h3>
 
-                            <p>How does this strain taste & smell?</p>
+                        <? } ?>
+
+                        <h3>
+                            Flavor & Scent
+                        </h3>
+
+                        <p>How does this strain taste & smell?</p>
 
 <span id="qf_review__aesthetics__flavor__inner">
 <?php
@@ -571,11 +577,10 @@
 ?>
 
 </span>
-                        </div>
+                    </div>
 
-                    </fieldset>
+                </fieldset>
 
-                <? } ?>
                 <h2 class="slide page_margin_top">
                     Rating & Comment <?php if ($this->params['action'] == 'add') echo '(Required)'; ?>
                 </h2>

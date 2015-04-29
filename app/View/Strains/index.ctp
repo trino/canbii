@@ -121,7 +121,7 @@
 
     <div class="toprint ">
 
-                <p style="float:left;width: 72%;"><?php echo strip_tags($strain['Strain']['description']); ?>
+                <p style="float:left;width: 72%;"><?php echo strip_tags(html_entity_decode($strain['Strain']['description'])); ?>
 
 
         </p>
@@ -203,7 +203,7 @@
             <div style="color:#FFF;text-align:center;position: relative;width: 100%;">
                 <!--h2>Dominant Flavors</h-->
 
-                <table width="100%" align="center" height="100" style="margin-top: 7px;">
+                <table width="100%" align="center" height="100" style="margin-top: 6px;">
                     <TR>
                         <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
                         <?php
@@ -238,7 +238,7 @@
                     </TR>
 
                 </table>
-                <p style="color: #999;margin-top: -15px;padding-top: 0;">Reported Flavours</p>
+                <p style="color: #999;margin-top: -13px;padding-top: 0;">Reported Flavours</p>
 
             </div>
 
@@ -902,7 +902,6 @@
     }
     else
     {
-
         $effect_reviews = $this->requestAction('/strains/getEffectReview/'.urlencode($profile_filter).'/'.$strain['Strain']['id']);
         $count_rate=0;
         $rate = 0;

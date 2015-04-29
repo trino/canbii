@@ -2057,7 +2057,7 @@ a.social_icon:hover
 /* --- item content --- */
 .item_content
 {
-	margin-top: 10px;
+	margin-bottom: 10px;
 	list-style: none;
 }
 .page_margin_top.item_content:first-child

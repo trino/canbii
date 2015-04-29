@@ -75,8 +75,8 @@
 
     <?php } else {
         ?>
-        <div style="padding-top: 10px;">
-        <i style="">No reviews yet</i>
+        <div style="padding-top: 10px;padding-bottom:10px;">
+        <i style="">No reviews yet<br></i>
         </div>
     <?php
     }

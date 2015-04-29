@@ -47,7 +47,7 @@
         <p style="clear:both;" align="">
             Sativa dominant strains tend to have a more grassy type odor providing an uplifting, energetic and
             'cerebral' high that is best suited for daytime use. A sativa high is filled with creativity and
-            energy best suited for people suffering depression.
+            energy best suited for people suffering from depression.
         </p><br>
         <a title="Browse Strains" href="<?php echo $this->webroot; ?>strains/all/sativa" class="more blue">
             Sativa Strains →
