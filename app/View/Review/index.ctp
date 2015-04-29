@@ -38,7 +38,7 @@
 
 <form class="contact_form page_margin_top" action="" method="post">
 <h2>Cannabis Name:</h2>
-<input type="text" id="searchName" value="" placeholder="Type at least 3 characters" />
+<input type="text" id="searchName" value="" placeholder="Type a name of a strain" />
 <span class="extra">(e.g. Purple Kush, AK47, Blue Dream)</span>
 <div class="results" style="display: none;">
 <label>Select Item to Review:</label><br />
