@@ -198,7 +198,7 @@
 
                     $this->factorreview($r_id);
                     $this->Strain->saveField('review',$review);
-                    $this->Session->setFlash('Review Saved as ' . $r_id,'default',array('class'=>'good'));
+                    $this->Session->setFlash('Review Saved, thank you for your support','default',array('class'=>'good'));
                     $this->redirect('all');
                }
             }

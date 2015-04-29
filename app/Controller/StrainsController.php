@@ -736,14 +736,14 @@ class StrainsController extends AppController
             $symptomlist = $this->listsymptoms($symptoms);
             $delimeter="";
             $index =0;
-            echo "These strains should help with the following symptoms: ";
+            echo "These strains have been shown to help with: ";
             foreach ($symptomlist as $symptom){
                 echo $delimeter . $symptom['Symptom']['title'];
                 $index++;
                 if (!$delimeter) {$delimeter= ", ";}
                 if ($index==$symptomscount-1){$delimeter=  " and " ;}
             }
-            echo "<BR>";
+            echo "<BR><BR>";
         }
         //echo( "<BR>RAN AT test: " . time() . " " . $condition);
 

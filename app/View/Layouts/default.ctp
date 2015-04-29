@@ -112,11 +112,9 @@
             <div class="header_left" style="vertical-align: middle;position:relative">
                 <a href="<?php echo $this->webroot; ?>" title="MEDICALMARIJUANA">
                     <div style="float:left;width:80%;">
-                    <img src="<?php echo $this->webroot; ?>images/logo.png" height=100 alt="logo"/>
+                    <img src="<?php echo $this->webroot; ?>images/logo.png" style="margin-top:10px;" height=80 alt="logo"/>
                         </div>
-                    <div style="float:left;width:10%;">
-					<!--span id="beta" style="margin-top: 48px;">Beta</span-->
-                        </div>
+
                 </a>
             </div>
 

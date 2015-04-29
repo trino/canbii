@@ -108,7 +108,7 @@
 
 
             <a class="dark_blue more" style="margin-right: 10px;margin-top:10px;"
-               href="<?php echo $this->webroot; ?>review/add/<?php echo $strain['Strain']['slug']; ?>">Review Strain</a>
+               href="<?php echo $this->webroot; ?>review/add/<?php echo $strain['Strain']['slug']; ?>">Review this Strain</a>
             <a class="blue more" style="margin-top:10px;" href="javascript:void(0)" onclick="window.print();">Print
                 Report</a>
             <!--a style="margin-left: 10px;margin-top:10px;"  class="dark_blue more" href="javascript:void(0)" onclick="save();">Save Report</a-->
@@ -122,15 +122,29 @@
 
 
     <div class="toprint ">
-        <ul id="" class="clearfix">
-            <li id="text_in_li" >
-                <p style="padding: 10px 0;"><?php echo strip_tags($strain['Strain']['description']); ?></p>
+
+                <p style="float:left;width: 72%;"><?php echo strip_tags($strain['Strain']['description']); ?>
 
 
-            </li>
+        </p>
+        <p class="" style="float: right;width: 20%;background: #F3F3F3;padding:1%;border:1px solid #f0f0f0;">
+
+            <?php
+                switch ($strain['Strain']['type_id']) {
+                    case 1:
+                        echo "Indica Cannabis: Best suited for night time use.";
+                        break;
+                    case 2:
+                        echo "Sativa Cannabis: Best suited for day time use.";
+                        break;
+                    case 3:
+                        echo "Hybrid Cannabis: Suited for day or night time use.";
+                        break;
+                }
+            ?>
 
 
-        </ul>
+        </p>
 
 
     </div>
@@ -191,10 +205,7 @@
             <div style="color:#FFF;text-align:center;position: relative;width: 100%;">
                 <!--h2>Dominant Flavors</h-->
 
-                <style>
-
-                </style>
-                <table width="100%" align="center" height="100">
+                <table width="100%" align="center" height="100" style="margin-top: 7px;">
                     <TR>
                         <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
                         <?php
@@ -229,7 +240,7 @@
                     </TR>
 
                 </table>
-                <p style="color: #999;margin-top: -10px;padding-top: 0;">Reported Flavours</p>
+                <p style="color: #999;margin-top: -15px;padding-top: 0;">Reported Flavours</p>
 
             </div>
 
@@ -656,7 +667,7 @@
 
                     <a style="" class="blue more" href="javascript:void(0)" onclick="window.print();">Print Report</a>
                     <a style="margin-top: 4px;" class="dark_blue more"
-                       href="<?php echo $this->webroot; ?>review/add/<?php echo $strain['Strain']['slug']; ?>">Review
+                       href="<?php echo $this->webroot; ?>review/add/<?php echo $strain['Strain']['slug']; ?>">Review this
                         Strain</a>
 
                     <div style="clear:both;"></div>
@@ -755,12 +766,12 @@
             ?>
 
 
-            <!--div style="border-top: 1px solid #dadada;padding: 5px 0px;"></div-->
+            <div style="border-top: 1px solid #dadada;padding: 5px 0px;"></div>
 
-            <!--a
+            <a
                 href="<?php echo $this->webroot; ?>strains/review/<?php echo $strain['Strain']['slug']; ?>"
                 class="viewall more blue noprint" style="float:right;font-size:12px;">See All Reviews
-                for <?php echo $strain['Strain']['name']; ?> &raquo;</a-->
+                for <?php echo $strain['Strain']['name']; ?> &raquo;</a>
         </li>
 
 
