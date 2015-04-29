@@ -213,6 +213,17 @@
                 $this->Strains->id =$id;
                 $count = $this->Review->find('count',array("conditions"=>array('strain_id'=>$id)));
                 $this->Strains->saveField("review",$count);
+                if($UpdateAverages){
+                    $rating=0;
+                    $ratingcount=0;
+                    $reviews = $this->Review->find('all',array("conditions"=>array('Review.strain_id'=>$id)));
+                    foreach($reviews as $review){
+                        $ratingcount++;
+                        $rating += $review['Review']['rate'];
+                    }
+                    if($ratingcount>0){ $rating = $rating / $ratingcount;}
+                    $this->Strains->saveField("rating",$rating);
+                }
             }
             echo "Updated review counts";
         }
