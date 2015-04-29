@@ -411,7 +411,7 @@ padding:25px 20px;
 								</div>
 								<?php
 								endif;
-								
+
                                 }
 								if($counter != 0){
 									echo "</div>";
