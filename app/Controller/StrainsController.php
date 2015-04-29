@@ -694,7 +694,7 @@ class StrainsController extends AppController
                                             GROUP BY review_id
                                             HAVING COUNT( symptom_id ) =' . $symptomscount . '))';
 */
-
+/*
                 //optimized new
                 $condition .= 'Strain.id IN (SELECT strain_id
                                             FROM symptom_ratings
@@ -702,7 +702,16 @@ class StrainsController extends AppController
                                             IN (' . $symptoms . ')
 
                                             )';
+*/
 
+            //super query
+            //$condition .= 'SELECT strain_id, COUNT(DISTINCT symptom_id) AS matched_symptoms FROM symptom_ratings WHERE symptom_id IN (' . $symptoms  . ') GROUP BY strain_id HAVING matched_symptoms = ' . $symptomscount;
+            $condition .= 'Strain.id IN (SELECT strain_id FROM (SELECT strain_id,
+                                        COUNT(DISTINCT symptom_id) AS matched_symptoms
+                                        FROM symptom_ratings
+                                        WHERE symptom_id IN (' . $symptoms  . ')
+                                        GROUP BY strain_id
+                                        HAVING matched_symptoms = ' . $symptomscount . ') as IDs)';
 
                 /*
                 $condition.= 'Strain.id IN (SELECT strain_id

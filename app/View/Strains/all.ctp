@@ -215,7 +215,8 @@
                                     ?>
                                     <div>
                                     <a style="color:white;padding:2px;" href="<?php
-                                        if ($_SERVER["SERVER_NAME"] == "localhost") {//LOOK FOR ME!!!!
+                                        $multiple = true;//disable for single queries only
+                                        if ($_SERVER["SERVER_NAME"] == "localhost" || $multiple) {//LOOK FOR ME!!!!
                                             echo "javascript:void(";
                                             echo $e['Symptom']['id'];
                                             echo ");";
