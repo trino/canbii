@@ -29,8 +29,11 @@
             $id =$this->Session->read('User.id');
             if (isset($_GET["delete"])){
                 $reviewid= $_GET["delete"];
-                $this->deletereviews($id,"",$reviewid);
-                $this->Session->setFlash('Review Deleted','default',array('class'=>'good'));
+                if($this->deletereviews($id,"",$reviewid)) {
+                    $this->Session->setFlash('Review deleted', 'default', array('class' => 'good'));
+                }else{
+                    $this->Session->setFlash('Unable to delete the review', 'default', array('class' => 'bad'));
+                }
             }
             if (isset($_GET["update"])){
                 $this->updatereviews($_GET["update"]);
@@ -237,6 +240,7 @@
             $this->loadModel('FlavorRating');
             if ($reviewid){
                 $review = $this->Review->find('first',array("conditions"=>array('Review.id'=>$reviewid)));
+                if(!$review){return false;}
                 $rate = $review['Review']['rate'];
                 $strainid = $review['Review']['strain_id'];
                 $reviewuserid = $review['Review']['user_id'];
@@ -265,6 +269,7 @@
                     $this->Strains->saveField("rating",$rate);
                 }
             }
+            return true;
         }
 
         function findreview($userid, $strainid){

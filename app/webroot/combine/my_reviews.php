@@ -106,7 +106,7 @@
             </script>
             <?php
                 }
-                if (count($reviews) == 0 or (count($reviews) == 1 and isset($_GET["delete"]))) {
+                if (count($reviews) == 0) {
                     echo '<a href="' . $this->webroot . 'review/">';
                     echo "No reviews yet. Feel free to add one. </a>";
                 } ?>

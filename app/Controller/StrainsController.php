@@ -774,7 +774,7 @@ class StrainsController extends AppController
         }
 
         $count = $model->find('count', $parameters);
-        if($count>0){$this->makesymptomslist($symptoms, $symptomscount);}
+        if($symptoms){$this->makesymptomslist($symptoms, $symptomscount);}
         $this->set('strains', $count);
         $parameters['limit'] = $limit;
         $parameters['offset'] = $offset;
