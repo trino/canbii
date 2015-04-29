@@ -733,7 +733,6 @@ class StrainsController extends AppController
 
 
                // $condition.= 'test Strain.id JOIN reviews.strain_id WHERE reviews.symptom_id IN (' . $symptoms . ')';
-
         }
         //echo( "<BR>RAN AT test: " . time() . " " . $condition);
 

@@ -61,8 +61,8 @@
 
         <form action="" method="post" id="dashboard" class="contact_form">
             <div class="page_left page_margin_top">
-                <div class="backgroundcolor"><p>Please ensure accuracy in your findings so
-                        we can further help personalize medication for other users.</p></div>
+                <div class="backgroundcolor"><p>Please ensure accuracy in your information so
+                        we can further help personalize medication for other patients.</p></div>
 
                 <?php include('combine/profile_filter_inc.php'); ?>
                 <div class="clearfix"></div>
