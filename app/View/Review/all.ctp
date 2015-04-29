@@ -43,7 +43,7 @@ if(!isset($_GET['user'])){
 					My Reviews
 				</li>
 			</ul>
-		</div>    
+		</div>
 <div class="page_header_right">
 <a style="margin-right:10px" title="Read more"  href="<?php  echo $this->webroot; ?>users/dashboard" class="more large dark_blue icon_small_arrow margin_right_white">My Account</a>
 <a style="margin-right:10px" title="Read more"  href="<?php  echo $this->webroot; ?>users/settings" class="more large dark_blue icon_small_arrow margin_right_white  ">Settings</a>
@@ -68,15 +68,15 @@ if(!isset($_GET['user'])){
     //echo $this->params['action'];?>
 <script>
 $(function(){
-    var more='<?php echo $limit?>';    
-    var spinnerVisible = false; 
-    var sort='<?php echo(isset($this->params['pass'][1]) && $this->params['pass'][1]!="")?$this->params['pass'][1]:"recent";?>';    
+    var more='<?php echo $limit?>';
+    var spinnerVisible = false;
+    var sort='<?php echo(isset($this->params['pass'][1]) && $this->params['pass'][1]!="")?$this->params['pass'][1]:"recent";?>';
     $('.loadmore a').live('click',function(){
         more=parseFloat(more)+8;
         var val = '';
         var user = '<?php echo (isset($_GET['user']))?$_GET['user']:"";?>';
         if(user !="")
-        {  
+        {
             user = "?user="+user;
         }
         else
@@ -98,7 +98,7 @@ $(function(){
             $('.morelist2').removeClass('morelist');
             $('.morelist2').html(res);
             $('.morelist2').removeClass('morelist2');
-           } 
+           }
         });
     });
 $('.rates img').each(function(){
@@ -114,9 +114,9 @@ elseif($this->params['controller']=='review' && $this->params['action']=='all')
 {?>
  <script>
 $(function(){
-    var more='<?php echo $limit?>';    
-    var spinnerVisible = false; 
-        
+    var more='<?php echo $limit?>';
+    var spinnerVisible = false;
+
     $('.loadmore a').live('click',function(){
         more=parseFloat(more)+8;
         var val = '';
@@ -137,7 +137,7 @@ $(function(){
             $('.morelist2').removeClass('morelist');
             $('.morelist2').html(res);
             $('.morelist2').removeClass('morelist2');
-           } 
+           }
         });
     });
 $('.rates img').each(function(){
@@ -147,7 +147,7 @@ $('.rates img').each(function(){
 });
 })
 </script>
-   
+
 <?php
 }
 ?>
