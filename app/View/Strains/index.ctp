@@ -13,7 +13,10 @@
         overflow: auto;
         white-space: nowrap;
     }
-    li{border 1px solid #999;}
+
+    li {
+        border 1px solid #999;
+    }
 </style>
 
 <?php
@@ -31,7 +34,8 @@
     //Acceptable colors:
     // Metronic: success (green), info (blue), warning (yellow), danger (red). Active does not work
     // Old: light-purple, light-red, light-blue, light-green
-    function progressbar($webroot, $value, $textL = "", $textR = "", $color = "success", $color2 = "", $striped = false, $active = false, $min = 0, $max = 100){
+    function progressbar($webroot, $value, $textL = "", $textR = "", $color = "success", $color2 = "", $striped = false, $active = false, $min = 0, $max = 100)
+    {
         if (false) {
             echo '<div class="left ratewrap"><img src="' . $webroot . 'images/bar_chart/' . $color2 . '.png" style="width: ';
             echo (round($value, 2) > 100) ? 100 : round($value, 2);
@@ -56,7 +60,8 @@
 
     }
 
-    function perc($scale){
+    function perc($scale)
+    {
         return round($scale / 20, 2) . "/5";
     }
 
@@ -106,7 +111,8 @@
 
 
             <a class="dark_blue more" style="margin-right: 10px;margin-top:10px;"
-               href="<?php echo $this->webroot; ?>review/add/<?php echo $strain['Strain']['slug']; ?>">Review this Strain</a>
+               href="<?php echo $this->webroot; ?>review/add/<?php echo $strain['Strain']['slug']; ?>">Review this
+                Strain</a>
             <a class="blue more" style="margin-top:10px;" href="javascript:void(0)" onclick="window.print();">Print
                 Report</a>
             <!--a style="margin-left: 10px;margin-top:10px;"  class="dark_blue more" href="javascript:void(0)" onclick="save();">Save Report</a-->
@@ -121,10 +127,11 @@
 
     <div class="toprint ">
 
-                <p style="float:left;width: 72%;"><?php echo strip_tags(html_entity_decode($strain['Strain']['description'])); ?>
+        <p style="float:left;width: 72%;"><?php echo strip_tags(html_entity_decode($strain['Strain']['description'])); ?>
 
 
         </p>
+
         <p class="" style="float: right;width: 20%;background: #F3F3F3;padding:1%;border:1px solid #f0f0f0;">
 
             <?php
@@ -176,7 +183,7 @@
                     {
                         if ($strain['Strain'][strtolower($acronym)] != "0") {
                             $chemical++;
-                            echo "<span class=' eff2' style='margin-right: 2px;border:1px solid white;padding:3px 5px;'><A target='new' href='" . $wikipedia . "'>" . strtoupper($acronym) . ":</A> " . $strain['Strain'][strtolower($acronym)] . "%</span>";
+                            echo "<span class=' eff2' style='margin-right: 2px;border:1px solid white;padding:1px 3px;'><A target='new' href='" . $wikipedia . "'>" . strtoupper($acronym) . ":</A> " . $strain['Strain'][strtolower($acronym)] . "%</span>";
                         };
                         return $chemical;
                     }
@@ -260,31 +267,18 @@
     <ul class="columns full_width clearfix page_margin_top">
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
         <li class="column_left">
 
             <div class="">
 
                 <h3 class="box_header slide clearfix">Symptoms</h3>
                 How does this strain help with my medical condition?
-                <br>  <br>
+                <br> <br>
 
 
                 <?php
-                    if(!isset($p_filter)){
-                        $p_filter=false;
+                    if (!isset($p_filter)) {
+                        $p_filter = false;
                     }
                     if (!$p_filter) {
                         foreach ($strain['OverallSymptomRating'] as $oer) {
@@ -327,7 +321,7 @@
                     foreach ($arrs as $e) {
                     $ars = explode('_', $e);
                     $i++;
-                    if ($i == 6)
+                    if ($i == 16)
                         break;
                     $rate = $ars[0];
                     $length = 20 * $rate;;
@@ -360,26 +354,6 @@
         </li>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         <li class="column_right">
 
 
@@ -387,12 +361,12 @@
 
                 <h3 class="box_header slide clearfix">General Ratings</h3>
                 What are the general ratings?
-                <br>  <br>
+                <br> <br>
                 <?php
                     $scale = 0;
                     $strength = 0;
                     $duration = 0;
-                    $count="";
+                    $count = "";
                     if (!$p_filter) {
                         $count = count($strain['Review']);
                         if ($count) {
@@ -467,77 +441,77 @@
 
                         </div>
 
-            <!--div class="">
+                        <!--div class="">
 
                 <h3>Effects:</h3>
                 <br>
 
                 <?php
-                $p_filter = 0;
-                if (isset($arr_filter)) {
-                    foreach ($arr_filter as $filterwith) {
-                        if (isset($_GET[$filterwith])) {
-                            $p_filter = 1;
-                        }
-                    }
-                }
-                if (!$p_filter) {
-                    foreach ($strain['OverallEffectRating'] as $oer) {
-                        if ($this->requestAction('/strains/getPosEff/' . $oer['effect_id']))
-                            $arr[] = $oer['rate'] . '_' . $oer['effect_id'];
-                        else
-                            $arr_neg[] = $oer['rate'] . '_' . $oer['effect_id'];
-                    }
-                } else {
-                    $effect_rate = $this->requestAction('/strains/getEffectRate/' . urlencode($profile_filter) . '/' . $strain['Strain']['id']);
-                    //var_dump($effect_rate);
-                    $cnt = 0;
-                    $eff_id = 0;
-                    $total_rate = 0;
-                    foreach ($effect_rate as $er) {
-
-                        $cnt++;
-                        if ($eff_id != $er['Effect_rating']['effect_id']) {
-
-                            if ($cnt != 1) {
-                                $tots = $total_rate;
-                                $total_rate = $er['Effect_rating']['rate'];
-
-                                $avg_rate = $tots / ($cnt - 1);
-                                $cnt = 0;
-                                if ($this->requestAction('/strains/getPosEff/' . $er['Effect_rating']['effect_id']))
-                                    $arr[] = $avg_rate . '_' . $eff_id;
-                                else
-                                    $arr_neg[] = $avg_rate . '_' . $eff_id;
-                                $total_rate = 0;
-                            } else {
-                                $total_rate = $er['Effect_rating']['rate'];
+                            $p_filter = 0;
+                            if (isset($arr_filter)) {
+                                foreach ($arr_filter as $filterwith) {
+                                    if (isset($_GET[$filterwith])) {
+                                        $p_filter = 1;
+                                    }
+                                }
                             }
+                            if (!$p_filter) {
+                                foreach ($strain['OverallEffectRating'] as $oer) {
+                                    if ($this->requestAction('/strains/getPosEff/' . $oer['effect_id']))
+                                        $arr[] = $oer['rate'] . '_' . $oer['effect_id'];
+                                    else
+                                        $arr_neg[] = $oer['rate'] . '_' . $oer['effect_id'];
+                                }
+                            } else {
+                                $effect_rate = $this->requestAction('/strains/getEffectRate/' . urlencode($profile_filter) . '/' . $strain['Strain']['id']);
+                                //var_dump($effect_rate);
+                                $cnt = 0;
+                                $eff_id = 0;
+                                $total_rate = 0;
+                                foreach ($effect_rate as $er) {
 
-                        } else {
-                            $total_rate = $total_rate + $er['Effect_rating']['rate'];
-                        }
-                        $eff_id = $er['Effect_rating']['effect_id'];
+                                    $cnt++;
+                                    if ($eff_id != $er['Effect_rating']['effect_id']) {
 
-                    }
+                                        if ($cnt != 1) {
+                                            $tots = $total_rate;
+                                            $total_rate = $er['Effect_rating']['rate'];
 
-                    //die('here');
-                }
-                //die('there');
-                if (isset($arr))
-                    rsort($arr);
-                else
-                    $arr = array();
-                $i = 0;
-                if ($arr) {
-                    foreach ($arr as $e) {
-                        $ar = explode('_', $e);
-                        $i++;
-                        if ($i == 6)
-                            break;
-                        $rate = $ar[0];
-                        $length = 20 * $rate;;
-                        ?>
+                                            $avg_rate = $tots / ($cnt - 1);
+                                            $cnt = 0;
+                                            if ($this->requestAction('/strains/getPosEff/' . $er['Effect_rating']['effect_id']))
+                                                $arr[] = $avg_rate . '_' . $eff_id;
+                                            else
+                                                $arr_neg[] = $avg_rate . '_' . $eff_id;
+                                            $total_rate = 0;
+                                        } else {
+                                            $total_rate = $er['Effect_rating']['rate'];
+                                        }
+
+                                    } else {
+                                        $total_rate = $total_rate + $er['Effect_rating']['rate'];
+                                    }
+                                    $eff_id = $er['Effect_rating']['effect_id'];
+
+                                }
+
+                                //die('here');
+                            }
+                            //die('there');
+                            if (isset($arr))
+                                rsort($arr);
+                            else
+                                $arr = array();
+                            $i = 0;
+                            if ($arr) {
+                                foreach ($arr as $e) {
+                                    $ar = explode('_', $e);
+                                    $i++;
+                                    if ($i == 6)
+                                        break;
+                                    $rate = $ar[0];
+                                    $length = 20 * $rate;;
+                                    ?>
                 <div class="eff">
                     <div class="label left"
                          style="position: relative; top: 50%; transform: translateY(20%);"><?php echo $this->requestAction('/strains/getEffect/' . $ar[1]); ?>
@@ -546,9 +520,9 @@
 
                     </div>
                     <?php
-                    }
-                } else {
-                    ?>
+                                }
+                            } else {
+                                ?>
 
 
                         <i>  <a href="<?php echo $this->webroot; ?>review/add/<?php echo $strain['Strain']['slug']; ?>"> No ratings yet. Review this
@@ -556,39 +530,22 @@
                                           class="fa fa-star-half-full"></i></a></i>
 
                     <?php
-                }
-            ?>
+                            }
+                        ?>
                 </div-->
 
         </li>
-
-
-
-
-
-
-
-
-
 
 
     </ul>
     <ul class="columns full_width page_margin_top clearfix">
 
 
-
-
-
-
-
-
-
-
         <li class="column_left">
             <div class="">
                 <h3 class="box_header slide clearfix">Negative Effects</h3>
                 What are the negative effects?
-                <br>  <br>
+                <br> <br>
                 <?php
                     if (isset($arr_neg))
                         rsort($arr_neg);
@@ -624,19 +581,12 @@
                 </div>
 
 
-
-
-
-
-
-
-
-
         </li>
         <li class="column_right">
 
             <h3 class=" box_header slide clearfix">Print Report</h3>
-           <p class="">Spread the word! The more we know, the more we can help.</p>
+
+            <p class="">Spread the word! The more we know, the more we can help.</p>
 
 
             <div class="print " style="margin-top: 13px;">
@@ -655,7 +605,8 @@
 
                     <a style="" class="blue more" href="javascript:void(0)" onclick="window.print();">Print Report</a>
                     <a style="margin-top: 4px;" class="dark_blue more"
-                       href="<?php echo $this->webroot; ?>review/add/<?php echo $strain['Strain']['slug']; ?>">Review this
+                       href="<?php echo $this->webroot; ?>review/add/<?php echo $strain['Strain']['slug']; ?>">Review
+                        this
                         Strain</a>
 
                     <div style="clear:both;"></div>
@@ -672,27 +623,7 @@
             </div>
 
 
-
-
-
-
         </li>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     </ul>
@@ -705,7 +636,7 @@
 
 
         <li class="column_left">
-            <h3 class="box_header slide clearfix"style="float:left:width:40%;"> Most Helpful User Review
+            <h3 class="box_header slide clearfix" style="float:left:width:40%;"> Most Helpful User Review
 
             </h3>
 

@@ -427,12 +427,14 @@ class StrainsController extends AppController
         return $q;
     }
 
-    function getSymptomRate($profile_filter, $strain)
+    function getSympto2mRate($profile_filter, $strain)
     {//$this->call(__METHOD__);
         //echo urlencode("SELECT id FROM users WHERE nationality='asian'");die();
         //echo $profile_filter;die();
         $this->loadModel('SymptomRating');
         $q = $this->SymptomRating->find('all', array('conditions' => array('user_id IN (' . $profile_filter . ') AND rate <> 0 AND strain_id = ' . $strain), 'order' => 'symptom_id'));
+
+
         return $q;
     }
 
@@ -787,14 +789,14 @@ class StrainsController extends AppController
             $symptomlist = $this->listsymptoms($symptoms);
             $delimeter = "";
             $index = 0;
-            echo "These strains should help with the following symptoms: ";
+            echo "These strains have been known to help with: ";
             foreach ($symptomlist as $symptom) {
                 echo $delimeter . $symptom['Symptom']['title'];
                 $index++;
                 if (!$delimeter) {$delimeter = ", ";}
                 if ($index == $symptomscount - 1) {$delimeter = " and ";}
             }
-            echo "<BR>";
+            echo "<BR><BR>";
         }
     }
     function listsymptoms($symptoms){
