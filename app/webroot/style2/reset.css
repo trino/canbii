@@ -23,8 +23,16 @@ body {
 	color: black;
 	background: white;
 }
-ol, ul {
+ol,ul{
 	list-style: none;
+}
+
+ol ol,ul ul{
+	padding: 0;
+	margin: 0;
+}
+ol.tabs_navigation2, ul.tabs_navigation2 {
+	
 	padding: 0;
 	margin: 0;
 }

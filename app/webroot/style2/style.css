@@ -2254,10 +2254,18 @@ a.social_icon:hover
 	float: left;
 	width: 310px;
 	margin-left: 30px;
+		list-style-type: none;
 }
-.columns_3 .column:first-child
+@media screen and (min-width:1009px)
 {
-	margin-left: 0;
+  .columns_3 .column:first-child
+  {
+      margin-left: 0;
+  }
+  .columns_3{
+    
+      padding-left:0;
+  }
 }
 .columns_3 .item_content .features_image, .columns_3 .features_image img,
 .features_icons_small .features_image, .features_icons_small .features_image img

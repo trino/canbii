@@ -445,7 +445,8 @@
 	.columns_3 .column
 	{
 		width: 234px;
-		margin-left: 23px;
+		margin-left: 23px;		
+		list-style-type: none;
 	}
 	.columns_3 .item_content .text
 	{
@@ -871,7 +872,7 @@
 	.columns_3 .column, .columns_4 .column
 	{
 		width: 462px;
-		margin-left: 0;
+		/*margin-left: 0;*/
 		margin-right: 0;
 	}
 	.columns_3 .column,.columns_4 .column
@@ -1077,7 +1078,7 @@
 	}
 }
 @media screen and (max-width:479px)
-{
+{	
 	#dashboard select {
 		width: 75%;
 		height: auto;
