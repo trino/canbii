@@ -1,5 +1,9 @@
 @media screen and (max-width:1009px)
 {
+	#search_filter{
+		display:none;		
+	}
+	
 	blockquote
 	{
 		padding-left: 23px;
@@ -646,6 +650,11 @@
 }
 @media screen and (max-width:767px)
 {
+	#search_filter{
+		display:none;		
+	}
+	
+	
     .hide767{display: none;}
     .one-third .rating img{
         width:25px;
@@ -1078,7 +1087,16 @@
 	}
 }
 @media screen and (max-width:479px)
-{	
+{
+	#search_filter{
+		display:inline-block;
+		float:right;
+		margin-left:5px;
+		height:100%;
+	}
+	#filterby{
+      display: none;
+  } 
 	#dashboard select {
 		width: 75%;
 		height: auto;
@@ -1116,7 +1134,7 @@
 		float: left;
 		clear: both;
 		margin-top: 25px;
-        width:75%
+        width:85%
 	}
     .page_header_right .search_input
 	{

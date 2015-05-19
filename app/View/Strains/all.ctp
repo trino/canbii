@@ -55,10 +55,46 @@
     var viewed_flag = 'ASC';
     var reviewed_flag = 'ASC';
 </script>
-
+<div id="filter_dialog" title="Filter Search">
+    <div>
+                <?php $effect = $this->requestAction('/pages/getSym');
+                    $counter = 0;
+                    foreach ($effect as $e) {
+                        $counter ++;
+                        if($counter ==1){
+                            echo "<div style='width: 50%;float:left;'>";
+                        }
+                        ?>
+                        <div>
+                        <a style="color:black;padding:2px;" href="<?php
+                            $multiple = true;//disable for single queries only
+                            if ($_SERVER["SERVER_NAME"] == "localhost" || $multiple) {//LOOK FOR ME!!!!
+                                echo "javascript:void(";
+                                echo $e['Symptom']['id'];
+                                echo ");";
+                            }else {
+                                echo "?symptoms=";
+                                echo $e['Symptom']['id'];
+                            }
+                        ?>" class="sym2 dialog_sym small-btn"
+                           id="sym_<?php echo $e['Symptom']['id']; ?>"><?php echo $e['Symptom']['title'] ?></a>
+                        </div>
+                    <?php
+                        if($counter == ceil(count($effect)/2)){
+                            echo "</div>";
+                            $counter = 0;
+                        }
+                    }
+                    if($counter != 0){
+                        echo "</div>";
+                    }
+                ?>
+                <p style="display: none;" class="symp"></p>
+    </div>
+</div>
 <div class="page_layout page_margin_top clearfix">
     <div style="padding-bottom: 10px;border-bottom:0;" class="page_header clearfix">
-        <div class="page_header_left">
+        <div class="page_header_left" id="filterby">
 
 
             <ul class="tabs_navigation2">
@@ -130,8 +166,13 @@
         <div class="page_header_right">
             <form class="search" method="get" action="<?php echo $this->webroot; ?>strains/all">
 
-
+                <?php if(isset($_GET['key'])): ?>
+                <a href='#' id='search_filter'>
+                    <img src="<?php echo $this->webroot; ?>images/gear.png" alt="Filter" title="Filter Search" />
+                </a>
+                <?php endif; ?>
                 <input id="BUTTON_17" type="submit" value="Search" class="more blue medium " style="float:right;"/>
+                
                 <input id="f" class="search_input hint" name="key" type="text"
 
                     <?php if (isset($_GET['key'])) {
@@ -168,6 +209,7 @@
         <!-- page right -->
 
         <div class="page_right" style="">
+            
             <!--div style="float:left;margin-left:-2px;" class="addthis_sharing_toolbox"></div-->
             <input id="BUTTON_18" type="reset" value="Reset Filter" class="more blue medium"
                    style="float: right; width: 40%;" onclick="window.location='<?php echo $this->webroot;?>strains/all';"/>
@@ -279,7 +321,11 @@
 
     $(function () {
 
-
+        $("#search_filter").on("click touch",function(){
+            document.body.style.overflow = "hidden";
+            $("#filter_dialog").show();
+        });
+        
         var profile = '';
         $('.hidden_filter select').change(function () {
             profile = '';
@@ -711,6 +757,12 @@
                 }
             });
 
+        });
+        
+        $(".dialog_sym").click(function(){
+            
+            document.body.style.overflow = "visible";
+            $("#filter_dialog").hide(); 
         });
 
         <?php
