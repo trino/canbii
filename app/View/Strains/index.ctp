@@ -160,9 +160,9 @@
 
 
         <li class="footer_banner_box super_light_blue printer"
-            style="position: relative;padding: 0;width:330px;height:120px;">
+            style="position: relative;padding: 0;width:300px;height:120px;">
             <img src="<?php echo $this->webroot ?>images/bg1.jpg"
-                 style=" height: 100px;position: absolute;width: 330px;z-index: -1;"/>
+                 style=" height: 100px;position: absolute;width: 300px;z-index: -1;"/>
             <center style="padding:20px 30px;color:#FFF;">
                 <h2>Overall Rating</h2>
 
@@ -171,9 +171,9 @@
 
         </li>
         <li class="footer_banner_box light_blue printer"
-            style="position: relative;padding: 0;width:330px;height:120px;">
+            style="position: relative;padding: 0;width:300px;height:120px;">
             <img src="<?php echo $this->webroot ?>images/bg2.jpg"
-                 style=" height: 100px;position: absolute;width: 330px;z-index: -1;"/>
+                 style=" height: 100px;position: absolute;width: 300px;z-index: -1;"/>
             <center style="padding:20px 30px;color:#FFF;">
                 <h2>Chemical Composition</h2>
                 <?php
@@ -203,9 +203,9 @@
             </center>
 
         </li>
-        <li class="footer_banner_box blue printer" style="position: relative;padding: 0;width:330px;height:120px;">
+        <li class="footer_banner_box blue printer" style="position: relative;padding: 0;width:300px;height:120px;">
             <img src="<?php echo $this->webroot ?>images/bg3.jpg"
-                 style=" height: 100px;position: absolute;width: 330px;z-index: -1;"/>
+                 style=" height: 100px;position: absolute;width: 300px;z-index: -1;"/>
 
             <div style="color:#FFF;text-align:center;position: relative;width: 100%;">
                 <!--h2>Dominant Flavors</h-->

@@ -1085,12 +1085,6 @@
 }
 @media screen and (max-width:479px)
 {
-	.contact_form #message{
-		width:275px !important;
-	}
-	#qf_review__other__comments{
-		width:255px;
-	}
 	#filter_desktop{
 		display: none;
 	}
@@ -1225,12 +1219,7 @@
 	}
 	.mobile_menu select
 	{
-		width: 300px;
-	}
-	.header_left a img{
-		display: block;
-		margin-left: auto;
-		margin-right: auto;
+		width: 100%;
 	}
 	.sf-menu li.submenu.wide ul
 	{

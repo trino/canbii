@@ -208,7 +208,7 @@
 
         <!-- page right -->
 
-        <div class="page_right" style="">
+        <div id="filter_desktop" class="page_right" style="">
             
             <!--div style="float:left;margin-left:-2px;" class="addthis_sharing_toolbox"></div-->
             <input id="BUTTON_18" type="reset" value="Reset Filter" class="more blue medium"
@@ -320,10 +320,42 @@
     }
 
     $(function () {
-
+        
+        $('div#filter_dialog div').bind('scroll', function(e) {
+            
+            if($(this).scrollTop() + $(this).innerHeight() >= this.scrollHeight) {
+                e.stopPropagation();
+                return false;
+            }
+        });
+        
         $("#search_filter").on("click touch",function(){
             document.body.style.overflow = "hidden";
             $("#filter_dialog").show();
+            $("body, html").bind('touchmove', function(e){
+                
+                if(!$("div#filter_dialog").has(e.target).length > 0){
+                    e.preventDefault();
+                }
+            });
+        });
+        
+        if ($(document).width() <= 479) {
+            $(".page_header_right").css({"width":"300px"});
+        }
+        
+        $(document).mouseup(function (e)
+        {
+            
+            var container = $("#filter_dialog > div");
+        
+            if (!container.is(e.target) // if the target of the click isn't the container...
+                && container.has(e.target).length === 0) // ... nor a descendant of the container
+            {
+                $("#filter_dialog").hide();
+                document.body.style.overflow = "visible";
+                $('body, html').unbind('touchmove')
+            }
         });
         
         var profile = '';
