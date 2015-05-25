@@ -184,6 +184,10 @@
 
     <script>
         $(function () {
+			if ($(document).width() <= 479) {
+				$("#home_cannibis_frontpage").css({"width":"375px"});
+			}
+			
             $('.mmenu').change(function () {
 
                 window.location = $(this).val();
@@ -360,7 +364,7 @@
             style="height:100%; background-image: url(<?= $this->webroot; ?>images/bg11.jpg);text-shadow: 0px 1px 0px rgba(0,0,0,1);padding:20px 0px; background-position:center; ">
 
 
-            <div class="page" style="border-top:0;padding-bottom:0px;width:375px">
+            <div class="page" id="home_cannibis_frontpage" style="border-top:0;padding-bottom:0px;">
                 <div class=" clearfix" style="
 background: #000;
 background: rgba(0,0,0,0.65);

@@ -85,7 +85,11 @@
                     include('combine/hexagon.php'); ?></a>
 
             <div style="white-space: nowrap;">
-                <h1 class=""><?php echo $strain['Strain']['name']; ?> - Medical Report</h1>
+                <h1 style=" white-space: pre-wrap; /* css-3 */    
+    white-space: -moz-pre-wrap; /* Mozilla, since 1999 */
+    white-space: -pre-wrap; /* Opera 4-6 */    
+    white-space: -o-pre-wrap; /* Opera 7 */    
+    word-wrap: break-word; /* Internet Explorer 5.5+ */"><?php echo $strain['Strain']['name']; ?> - Medical Report</h1>
 
 
                 <p style="white-space: nowrap;">
@@ -126,31 +130,34 @@
 
 
     <div class="toprint ">
-
-        <p style="float:left;width: 72%;"><?php echo strip_tags(html_entity_decode($strain['Strain']['description'])); ?>
-
-
-        </p>
-
-        <p class="" style="float: right;width: 20%;background: #F3F3F3;padding:1%;border:1px solid #f0f0f0;">
-
-            <?php
-                switch ($strain['Strain']['type_id']) {
-                    case 1:
-                        echo "Indica Cannabis: Best suited for night time use.";
-                        break;
-                    case 2:
-                        echo "Sativa Cannabis: Best suited for day time use.";
-                        break;
-                    case 3:
-                        echo "Hybrid Cannabis: Suited for day or night time use.";
-                        break;
-                }
-            ?>
-
-
-        </p>
-
+        <ul>
+            <li class="column_left">
+                <p><?php echo strip_tags(html_entity_decode($strain['Strain']['description'])); ?>
+                </p>
+    
+    
+            </li>
+    
+            <li class="column_right">
+                <p>
+                <?php
+                    switch ($strain['Strain']['type_id']) {
+                        case 1:
+                            echo "Indica Cannabis: Best suited for night time use.";
+                            break;
+                        case 2:
+                            echo "Sativa Cannabis: Best suited for day time use.";
+                            break;
+                        case 3:
+                            echo "Hybrid Cannabis: Suited for day or night time use.";
+                            break;
+                    }
+                ?>
+                </p>
+    
+    
+            </li>
+        </ul>
 
     </div>
 
@@ -589,9 +596,9 @@
             <p class="">Spread the word! The more we know, the more we can help.</p>
 
 
-            <div class="print " style="margin-top: 13px;">
+            <ul class="columns full_width page_margin_top clearfix">
 
-                <div style="float: left;width:35%;">
+                <li class="column_left">
 
                     <a style="" class="" href="javascript:void(0)" onclick="window.print();">
                         <img class="" src="<?php echo $this->webroot ?>images/print_report_small.jpg"
@@ -599,12 +606,12 @@
 
                     </a>
 
-                </div>
-                <div style="float: left;width:60%;padding-top: 6px;">
+                </li>
+                <li class="column_right">
 
 
                     <a style="" class="blue more" href="javascript:void(0)" onclick="window.print();">Print Report</a>
-                    <a style="margin-top: 4px;" class="dark_blue more"
+                    <a class="dark_blue more"
                        href="<?php echo $this->webroot; ?>review/add/<?php echo $strain['Strain']['slug']; ?>">Review
                         this
                         Strain</a>
@@ -615,12 +622,10 @@
                     <div style="" class="addthis_sharing_toolbox"></div>
 
 
-                </div>
+                </li>
 
 
-                <div style="clear:both;"></div>
-
-            </div>
+            </ul>
 
 
         </li>

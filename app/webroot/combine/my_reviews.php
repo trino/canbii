@@ -8,10 +8,12 @@
 
     <div class=" clearfix ">
         <?php if (count($reviews) > 0) { ?>
-        <div>
+        <ul class="columns full_width page_margin_top clearfix">
+					
             <?php
                 $j = 0;
                 $id = -1;
+                $count = 0;
                 if (isset($_GET["delete"])) {
                     $id = $_GET["delete"];
                 }
@@ -23,7 +25,7 @@
                         $j=$review['Review']['id'];
                         ?>
 
-                        <div class="" style="float:left;width:50%;">
+                        <li class="<?php if($count % 2 == 0):?>column_left<?php else: ?>column_right<?php endif; ?> page_margin_top">
                             <div class="comment_author_avatar">&nbsp;</div>
                             <div class="comment_details">
                                 <a href="<?php echo $this->webroot ?>strains/<?php echo $strain_hexagon['Strain']['slug']; ?>">
@@ -65,9 +67,12 @@
                                 <!--a href="<?php echo $this->webroot; ?>review/all?delete=<?php echo $review['Review']['strain_id']; ?>" onclick="return confirm('Are you sure you want to delete your review for <?= $review['Strain']['name'] ?>?');" class="more red">Delete</a-->
 
                             </div>
-                        </div>
+                        </li>
 
-                    <?php }
+                    <?php
+                        $count++;
+                    
+                        }
                 } ?>
 
 
