@@ -184,9 +184,6 @@
 
     <script>
         $(function () {
-			if ($(document).width() <= 479) {
-				$("#home_cannibis_frontpage").css({"width":"375px"});
-			}
 			
             $('.mmenu').change(function () {
 

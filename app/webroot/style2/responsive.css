@@ -1085,6 +1085,9 @@
 }
 @media screen and (max-width:479px)
 {
+	#home_cannibis_frontpage{
+		width:350px;
+	}
 	.contact_form #message{
 		width:275px !important;
 	}
