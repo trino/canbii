@@ -385,7 +385,35 @@ padding:25px 20px;
 
                                 //  debug($effect);
                                 $counter = 0;
-
+								$num_of_sys = count($effect);
+								
+                                foreach ($effect as $key => $e) {
+								$counter ++;
+                                if($counter == 1):
+								?>
+								<div style='width: 50%; text-align: left;float:left' class="show479_767">								
+								<?php
+								endif;
+								?>
+								<div>
+									<a class="A_6" style="" href="strains/all?symptoms=<?=$e['Symptom']['id']?>" onclick="highlightsym($(this))"
+									   id="sym_<?php echo $e['Symptom']['id']; ?>"><?php echo $e['Symptom']['title'] ?></a>
+	
+								</div>
+								<?php
+								if($counter == ceil($num_of_sys/2)):
+									$counter =0;
+									echo "</div>";
+								endif;
+								
+								}
+								
+								if($counter != 0){
+									echo "</div>";
+								}
+								
+								$counter = 0;
+								
                                 foreach ($effect as $key => $e) {
                                 $counter ++;
                                 if($counter == 1):

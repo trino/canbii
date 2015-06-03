@@ -17,6 +17,14 @@
     li {
         border 1px solid #999;
     }
+    
+    .page_header_left h1{
+        white-space: pre-wrap;    
+        white-space: -moz-pre-wrap;
+        white-space: -pre-wrap;     
+        white-space: -o-pre-wrap;    
+        word-wrap: break-word;        
+    }
 </style>
 
 <?php
@@ -85,11 +93,7 @@
                     include('combine/hexagon.php'); ?></a>
 
             <div style="white-space: nowrap;">
-                <h1 style=" white-space: pre-wrap; /* css-3 */    
-    white-space: -moz-pre-wrap; /* Mozilla, since 1999 */
-    white-space: -pre-wrap; /* Opera 4-6 */    
-    white-space: -o-pre-wrap; /* Opera 7 */    
-    word-wrap: break-word; /* Internet Explorer 5.5+ */"><?php echo $strain['Strain']['name']; ?> - Medical Report</h1>
+                <h1><?php echo $strain['Strain']['name']; ?> - Medical Report</h1>
 
 
                 <p style="white-space: nowrap;">
@@ -131,7 +135,7 @@
 
     <div class="toprint ">
         <ul>
-            <li class="column_left">
+            <li>
                 <p><?php echo strip_tags(html_entity_decode($strain['Strain']['description'])); ?>
                 </p>
     
@@ -166,7 +170,7 @@
     <ul class="page_margin_top clearfix">
 
 
-        <li class="footer_banner_box super_light_blue printer"
+        <li class="footer_banner_box super_light_blue printer strain_banner"
             style="position: relative;padding: 0;width:300px;height:120px;">
             <img src="<?php echo $this->webroot ?>images/bg1.jpg"
                  style=" height: 100px;position: absolute;width: 300px;z-index: -1;"/>
@@ -177,7 +181,7 @@
             </center>
 
         </li>
-        <li class="footer_banner_box light_blue printer"
+        <li class="footer_banner_box light_blue printer strain_banner"
             style="position: relative;padding: 0;width:300px;height:120px;">
             <img src="<?php echo $this->webroot ?>images/bg2.jpg"
                  style=" height: 100px;position: absolute;width: 300px;z-index: -1;"/>
@@ -210,7 +214,7 @@
             </center>
 
         </li>
-        <li class="footer_banner_box blue printer" style="position: relative;padding: 0;width:300px;height:120px;">
+        <li class="footer_banner_box blue printer strain_banner" style="position: relative;padding: 0;width:300px;height:120px;">
             <img src="<?php echo $this->webroot ?>images/bg3.jpg"
                  style=" height: 100px;position: absolute;width: 300px;z-index: -1;"/>
 

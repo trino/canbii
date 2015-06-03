@@ -1,35 +1,51 @@
 .hexagon {
-  position: relative;
-  width: 300px;
-  height: 173.21px;
-  background-color: #64C7CC;
-  margin: 86.60px 0;
+	position: relative;
+	width: 300px;
+	height: 173.21px;
+	background-color: #64C7CC;
+	margin: 86.60px 0;
 
 
 
 }
 
+.show479_767{
+	display:none;
+}
+
+#search_filter{
+	display:inline-block;
+	float:right;
+	margin-left:5px;
+	height:100%;
+	display:none;
+}
+
+.strain_banner{
+	width:330px !important;
+}
+
 #filter_dialog{
-      display: none;
-      position:absolute;
-      background-color:rgba(0,0,0,.5);
-      top:0px;left:0px;
-      width:100%;
-      height:100%;
-      z-index:999;
-      overflow-y:hidden;
-  }
-  #filter_dialog > div{
-      border:1px solid black;
-      background:white;
-      margin:20px;
-      padding:20px;
-      height:inherit;
-      overflow-y:scroll;
-  }
+	display: none;
+	position:absolute;
+	background-color:rgba(0,0,0,.5);
+	top:0px;left:0px;
+	width:100%;
+	height:100%;
+	z-index:999;
+	overflow-y:hidden;
+}
+#filter_dialog > div{
+	border:1px solid black;
+	background:white;
+	margin:20px;
+	padding:20px;
+	height:inherit;
+	overflow-y:scroll;
+}
 #filterby{
-      display: block;
-  }    
+	display: block;
+}    
 .error-message{color:red;}
 .hexagon:before,
 .hexagon:after {

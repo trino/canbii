@@ -89,7 +89,7 @@
                         echo "</div>";
                     }
                 ?>
-                <p style="display: none;" class="symp"></p>
+                <!--<p style="display: none;" class="symp"></p>-->
     </div>
 </div>
 <div class="page_layout page_margin_top clearfix">
@@ -167,8 +167,9 @@
             <form class="search" method="get" action="<?php echo $this->webroot; ?>strains/all">
 
                 <?php if(isset($_GET['key'])): ?>
-                <a href='#' id='search_filter'>
+                <a href="#" id="search_filter">
                     <img src="<?php echo $this->webroot; ?>images/gear.png" alt="Filter" title="Filter Search" />
+					<!--<span style="display:block;height:16px;white-space: pre-wrap;word-wrap: break-word;">Filter by Symptom</span>-->
                 </a>
                 <?php endif; ?>
                 <input id="BUTTON_17" type="submit" value="Search" class="more blue medium " style="float:right;"/>
@@ -573,6 +574,7 @@
                     }
                 }
             });
+            
             if (val) {
                 val = val + '&key=<?php if(isset($_GET['key']))echo $_GET['key'];?>';
             }

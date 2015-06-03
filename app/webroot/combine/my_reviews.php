@@ -1,4 +1,4 @@
-<div class="">
+<div class="" id="comments_list">
     <?php
         if (isset($reviewid)) {
             echo "DELETE review ID: " . $reviewid;
@@ -6,8 +6,8 @@
     ?>
 
 
-    <div class=" clearfix ">
-        <?php if (count($reviews) > 0) { ?>
+    <div class=" clearfix">
+        <?php if ($reviewz > 0) { ?>
         <ul class="columns full_width page_margin_top clearfix">
 					
             <?php

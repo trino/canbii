@@ -23,6 +23,13 @@
     #qf_review__aesthetics__flavor .review-slider {
         display: inline-block;
     }
+    .page_title{
+        white-space: pre-wrap;    
+        white-space: -moz-pre-wrap;
+        white-space: -pre-wrap;     
+        white-space: -o-pre-wrap;    
+        word-wrap: break-word;
+    }
 </style>
 
 <?php
@@ -73,8 +80,8 @@
     })
 </script>
 <div class="page_layout page_margin_top clearfix">
-    <div class="page_header clearfix">
-        <div class="page_header_left">
+    <div class="page_header clearfix" style="white-space: nowrap;">
+        <div class="page_header_left" style="white-space: nowrap;">
 
             <?php
                 // unset($strain_hexagon);
@@ -95,20 +102,24 @@
 
                 if ($this->params['action'] != 'add') {
                     echo '<a href="' . $this->webroot . 'strains/' . $review['Strain']['slug'] . '">';
-
+                
                 }
                 include('combine/hexagon.php');
+                if ($this->params['action'] != 'add') {
+                    echo '</a>';
+                
+                }
+                
             ?>
 
 
 
             <?php if ($this->params['action'] == 'add') { ?>
 
-                <div style="float:left;margin-left:10px;">
+                <div style="white-space: nowrap;">
+                    <h1 class="page_title" style=" float:none !important;"><?= $strain_name ?> Review</h1>
 
-                    <h1 class="page_title" style=""><?= $strain_name ?> Review</h1>
-
-                    <p>
+                    <p style="white-space: nowrap;">
                         <?php
                             switch ($strain['Strain']['type_id']) {
                                 case 1:
@@ -127,12 +138,11 @@
 
             <?php } else { ?>
 
-                <div style="float:left;">
+                <div style="white-space: nowrap;">
                     <h1 class="page_title" style="">
                         <?php echo ucfirst($review['Strain']['name']); ?> Review
                     </h1>
-                    </a>
-                    <p style="clear:both;">Reviewed
+                    <p style="white-space: nowrap;">Reviewed
                         by <?php echo $this->requestAction('/strains/getUserName/' . $review['Review']['user_id']); ?>
                         on <?php echo $review['Review']['on_date']; ?>
 

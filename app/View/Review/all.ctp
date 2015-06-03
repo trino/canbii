@@ -82,6 +82,7 @@ $(function(){
         else
             user = "";
         var i=0;
+		
        $.ajax({
            url:'<?php echo $this->webroot;?>strains/review_filter/<?php echo $slug;?>/'+sort+'/'+more+user,
            data:val,
@@ -118,7 +119,7 @@ $(function(){
     var spinnerVisible = false;
 
     $('.loadmore a').live('click',function(){
-        more=parseFloat(more)+8;
+        more=parseFloat(more)+4;
         var val = '';
         var i=0;
        $.ajax({
