@@ -76,7 +76,7 @@
                                 echo "?symptoms=";
                                 echo $e['Symptom']['id'];
                             }
-                        ?>" class="sym2 dialog_sym small-btn"
+                        ?>" class="sym2 dialog_sym small-btn" data-parent="#filter_dialog"
                            id="sym_<?php echo $e['Symptom']['id']; ?>"><?php echo $e['Symptom']['title'] ?></a>
                         </div>
                     <?php
@@ -166,12 +166,10 @@
         <div class="page_header_right">
             <form class="search" method="get" action="<?php echo $this->webroot; ?>strains/all">
 
-                <?php if(isset($_GET['key'])): ?>
                 <a href="#" id="search_filter">
                     <img src="<?php echo $this->webroot; ?>images/gear.png" alt="Filter" title="Filter Search" />
 					<!--<span style="display:block;height:16px;white-space: pre-wrap;word-wrap: break-word;">Filter by Symptom</span>-->
                 </a>
-                <?php endif; ?>
                 <input id="BUTTON_17" type="submit" value="Search" class="more blue medium " style="float:right;"/>
                 
                 <input id="f" class="search_input hint" name="key" type="text"
@@ -267,7 +265,7 @@
                                             echo "?symptoms=";
                                             echo $e['Symptom']['id'];
                                         }
-                                    ?>" class="sym2 small-btn"
+                                    ?>" class="sym2 small-btn"  data-parent="#filter_desktop"
                                        id="sym_<?php echo $e['Symptom']['id']; ?>"><?php echo $e['Symptom']['title'] ?></a>
                                     </div>
                                 <?php
@@ -533,15 +531,20 @@
             val = "";
             //var sort =0;
             more = 0;
+            
             if ($(this).attr('class').replace('searchact3', '') == $(this).attr('class')) {
 
-                $(this).addClass('searchact3');
+                $("#filter_desktop #"+$(this).attr("id")).addClass('searchact3');
+                $("#filter_dialog #"+$(this).attr("id")).addClass('searchact3');
                 $('.symp').append('<input type="hidden" name="symptoms[]" value="' + $(this).attr('id').replace('sym_', '') + '" class="symps check' + $(this).attr('id') + ' ' + $(this).attr('id') + '"  />')
             }
             else {
-                $(this).removeClass('searchact3');
+                $("#filter_desktop #"+$(this).attr("id")).removeClass('searchact3');
+                $("#filter_dialog #"+$(this).attr("id")).removeClass('searchact3');
                 $('.' + $(this).attr('id')).remove();
             }
+            
+            
             $('.key').val('');
 
             /*else
