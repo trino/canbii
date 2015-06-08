@@ -10,7 +10,7 @@ $count = 0;
 foreach($reviews as $review)
 {
 //$j++;
-    
+
     $strain_hexagon = $review;
     $j=$review['Review']['id'];
     ?>
@@ -19,7 +19,7 @@ foreach($reviews as $review)
     <div class="comment_author_avatar">
     &nbsp;
     </div>
-    
+
     <div class="comment_details">
         <!--<div class="posted_by">-->
         <!--Reviewed by <a class="author" href="<?php //echo $this->webroot;?>strains/review/all?user=<?php //echo $review['Review']['user_id'];?>" title="<?php //echo $this->requestAction('/strains/getUserName/'.$review['Review']['user_id']);?>"><?php echo $this->requestAction('/strains/getUserName/'.$review['Review']['user_id']);?></a> <?php if($review['Review']['on_date'] != "0000-00-00"){ echo " on " . $review['Review']['on_date'];} ?>-->

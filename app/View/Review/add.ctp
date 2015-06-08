@@ -24,10 +24,10 @@
         display: inline-block;
     }
     .page_title{
-        white-space: pre-wrap;    
+        white-space: pre-wrap;
         white-space: -moz-pre-wrap;
-        white-space: -pre-wrap;     
-        white-space: -o-pre-wrap;    
+        white-space: -pre-wrap;
+        white-space: -o-pre-wrap;
         word-wrap: break-word;
     }
 </style>
@@ -102,21 +102,21 @@
 
                 if ($this->params['action'] != 'add') {
                     echo '<a href="' . $this->webroot . 'strains/' . $review['Strain']['slug'] . '">';
-                
+
                 }
                 include('combine/hexagon.php');
                 if ($this->params['action'] != 'add') {
                     echo '</a>';
-                
+
                 }
-                
+
             ?>
 
 
 
             <?php if ($this->params['action'] == 'add') { ?>
 
-                <div style="white-space: nowrap;">
+                <div style="white-space: nowrap;float:none;">
                     <h1 class="page_title" style=" float:none !important;"><?= $strain_name ?> Review</h1>
 
                     <p style="white-space: nowrap;">
@@ -139,11 +139,10 @@
             <?php } else { ?>
 
                 <div style="white-space: nowrap;">
-                    <h1 class="page_title" style="">
+                    <h1 class="" style="">
                         <?php echo ucfirst($review['Strain']['name']); ?> Review
                     </h1>
-                    <p style="white-space: nowrap;">Reviewed
-                        by <?php echo $this->requestAction('/strains/getUserName/' . $review['Review']['user_id']); ?>
+                    <p style="white-space: nowrap;">By <?php echo $this->requestAction('/strains/getUserName/' . $review['Review']['user_id']); ?>
                         on <?php echo $review['Review']['on_date']; ?>
 
                     </p>

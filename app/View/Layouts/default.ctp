@@ -104,7 +104,6 @@
 
 <!-- //////////////////////////////////////////////////////////////////////////////////////////// NEW SITE-->
 
-
 <div class="site_container">
     <input type="hidden" id="canbii_userID" value="<?php echo $this->Session->read("User.id"); ?>" />
     <div class="header_container">
@@ -114,12 +113,10 @@
                     <div style="float:left;width:80%;">
                         <img src="<?php echo $this->webroot; ?>images/logo.png" style="margin-top:10px;" height=80 alt="logo"/>
                     </div>
-
                 </a>
             </div>
 
             <ul class="sf-menu header_right">
-
 
                 <li class="<?php if ($this->params['controller'] == 'pages' && $this->params['action'] == 'index') { ?>current_page_item<?php } ?>">
                     <a href="<?php echo $this->webroot; ?>" accesskey="1" title="">Home</a></li>
@@ -127,6 +124,10 @@
                     <a href="<?php echo $this->webroot ?>strains/all" accesskey="2" title="">Cannabis Strains</a></li>
                 <!--li class="<?php if ($this->params['controller'] == 'pages' && $this->params['action'] == 'about') { ?>current_page_item<?php } ?>">
                     <a href="<?php echo $this->webroot; ?>pages/about" accesskey="4" title="">About</a></li-->
+
+                <li class="<?php if ($this->params['controller'] == 'pages' && $this->params['action'] == 'doctors') { ?>current_page_item<?php } ?>">
+                    <a href="<?php echo $this->webroot; ?>pages/doctors" accesskey="4" title="">For Doctors</a></li>
+
                 <li class="<?php if ($this->params['controller'] == 'pages' && $this->params['action'] == 'contact_us') { ?>current_page_item<?php } ?>">
                     <a href="<?php echo $this->webroot; ?>pages/contact_us" accesskey="4" title="">Contact</a></li>
                 <?php if (!$this->Session->read('User')) { ?>
@@ -156,8 +157,10 @@
                     <option value = "<?php echo $this->webroot?>strains/all" <?php if($this->params['controller']=='strains' || $this->params['controller']=='review'){?>selected = "selected"<?php }?> >
                         Cannabis Strains </option>
                     <!--option value = "<?php echo $this->webroot;?>pages/about" <?php if($this->params['controller']=='pages' && $this->params['action']=='about'){?>selected = "selected"<?php }?> > About </option-->
-                    <option value = "<?php echo $this->webroot;?>pages/contact_us" <?php if($this->params['controller']=='pages' && $this->params['action']=='contact_us'){?>selected = "selected"<?php }?> > Contact </option>
 
+                    <option value = "<?php echo $this->webroot;?>pages/doctors" <?php if($this->params['controller']=='pages' && $this->params['action']=='doctors'){?>selected = "selected"<?php }?> > For Doctors </option>
+
+                    <option value = "<?php echo $this->webroot;?>pages/contact_us" <?php if($this->params['controller']=='pages' && $this->params['action']=='contact_us'){?>selected = "selected"<?php }?> > Contact </option>
 
                     <?php if(!$this->Session->read('User')){?>
                         <option value = "<?php echo $this->webroot;?>users/register"
@@ -168,19 +171,13 @@
                         <option value = "<?php echo $this->webroot;?>users/logout" > Logout </option>
                     <?php }?>
 
-
                 </select>
             </div>
-
         </div>
     </div>
 
     <!-- //////////////////////////////////////////////////////////////////////////////////////////// NEW SITE-->
-
-
     <!-- can you create a separate page for the following and include here? -->
-
-
 
     <script>
         $(function () {
@@ -358,7 +355,7 @@
     <? if (isset($homepage)) { ?>
 
         <div
-            style="height:100%; background-image: url(<?= $this->webroot; ?>images/bg11.jpg);text-shadow: 0px 1px 0px rgba(0,0,0,1);padding:20px 0px; background-position:center; ">
+            style="" class="background_image">
 
 
             <div class="page" id="home_cannibis_frontpage" style="border-top:0;padding-bottom:0px;">
@@ -371,13 +368,14 @@ padding:25px 20px;
 ">
 
 
-                    <h1 id="H1_4">Your Personalized Medical Cannabis Database</h1>
+                    <h1 id="H1_4">Raising the Profile of Cannabis as Medicine</h1>
+                    <h1 id="H1_4" style="font-size: 30px">What Do You Suffer From?</h1>
+
 
                     <form id="FORM_13" class="contact_form" action="<?php echo $this->webroot; ?>strains/all"
                           method="get" id="search" style="">
 
                         <p id="P_5">
-                            What Do You Suffer From?
 
                             <?php
 
@@ -496,7 +494,7 @@ padding:25px 20px;
                         <p style="display: none;" class="symp"></p>
 
                         <div class="main2" style="padding-top: 40px;clear:both;">
-                            <div class="div12"><input id="INPUT_16" type="text" placeholder="or search by strain..."
+                            <div class="div12"><input id="INPUT_16" type="text" placeholder="or Search by Strain Name"
                                                       name="key" class="key"
                                                       style=""/>
                                 <input id="BUTTON_17" type="submit" value="Search" class="more blue medium " style=""/>

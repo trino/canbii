@@ -15,7 +15,7 @@
     }
 
     li {
-        border 1px solid #999;
+        border 1px solid #111;
     }
     
     .page_header_left h1{
@@ -23,7 +23,8 @@
         white-space: -moz-pre-wrap;
         white-space: -pre-wrap;     
         white-space: -o-pre-wrap;    
-        word-wrap: break-word;        
+        word-wrap: break-word;
+        width:600px;
     }
 </style>
 
@@ -100,18 +101,43 @@
                     <?php
                         switch ($strain['Strain']['type_id']) {
                             case 1:
-                                echo "Indica";
+                                echo "Indica Cannabis: Best suited for night time use.";
                                 break;
                             case 2:
-                                echo "Sativa";
+                                echo "Sativa Cannabis: Best suited for day time use.";
                                 break;
                             case 3:
-                                echo "Hybrid";
+                                echo "Hybrid Cannabis";
                                 break;
                         }
-                    ?> Cannabis
+                    ?>
                 </p>
             </div>
+
+
+
+
+            <!--li class="column_left" style="border: 1px solid #dadada;padding:0 10px;">
+                <p>
+                    <?php
+                        switch ($strain['Strain']['type_id']) {
+                            case 1:
+                                echo "Indica Cannabis: Best suited for night time use.";
+                                break;
+                            case 2:
+                                echo "Sativa Cannabis: Best suited for day time use.";
+                                break;
+                            case 3:
+                                echo "Hybrid Cannabis: Suited for day or night time use.";
+                                break;
+                        }
+                    ?>
+                </p>
+
+
+            </li-->
+
+
 
 
         </div>
@@ -121,7 +147,7 @@
             <a class="dark_blue more" style="margin-right: 10px;margin-top:10px;"
                href="<?php echo $this->webroot; ?>review/add/<?php echo $strain['Strain']['slug']; ?>">Review this
                 Strain</a>
-            <a class="blue more" style="margin-top:10px;" href="javascript:void(0)" onclick="window.print();">Print
+            <a class="blue more" style="margin-top:10px;" href="javascript:void(0)" onclick="window.print();">Print this
                 Report</a>
             <!--a style="margin-left: 10px;margin-top:10px;"  class="dark_blue more" href="javascript:void(0)" onclick="save();">Save Report</a-->
 
@@ -141,26 +167,7 @@
     
     
             </li>
-    
-            <li class="column_right">
-                <p>
-                <?php
-                    switch ($strain['Strain']['type_id']) {
-                        case 1:
-                            echo "Indica Cannabis: Best suited for night time use.";
-                            break;
-                        case 2:
-                            echo "Sativa Cannabis: Best suited for day time use.";
-                            break;
-                        case 3:
-                            echo "Hybrid Cannabis: Suited for day or night time use.";
-                            break;
-                    }
-                ?>
-                </p>
-    
-    
-            </li>
+
         </ul>
 
     </div>
@@ -283,10 +290,8 @@
             <div class="">
 
                 <h3 class="box_header slide clearfix">Symptoms</h3>
-                How does this strain help with my medical condition?
-                <br> <br>
-
-
+                <p>How does this strain help with my medical condition?</p>
+                <br>
                 <?php
                     if (!isset($p_filter)) {
                         $p_filter = false;
@@ -362,6 +367,9 @@
                 <div class="clearfix"></div>
 
 
+
+
+
         </li>
 
 
@@ -371,8 +379,8 @@
             <div class="">
 
                 <h3 class="box_header slide clearfix">General Ratings</h3>
-                What are the general ratings?
-                <br> <br>
+                <p> What are the general ratings?</p>
+                <br>
                 <?php
                     $scale = 0;
                     $strength = 0;
@@ -545,91 +553,47 @@
                         ?>
                 </div-->
 
-        </li>
+
+                        <div class=""><br><br>
+                            <h3 class="box_header slide clearfix">Negative Effects</h3>
+                            <p>What are the negative effects?</p>
+                            <br>
+                            <?php
+                                if (isset($arr_neg))
+                                    rsort($arr_neg);
+                                else
+                                    $arr_neg = array();
+                                $i = 0;
+                                if ($arr_neg) {
+                                foreach ($arr_neg as $e) {
+                                $ar = explode('_', $e);
+                                $i++;
+                                if ($i == 6)
+                                    break;
+                                $rate = $ar[0];
+                                $length = 20 * $rate;
+                            ?>
+                            <div class="eff">
+                                <div
+                                    class="label left"
+                                    style="position: relative; top: 50%; transform: translateY(20%);"><?php echo $this->requestAction('/strains/getEffect/' . $ar[1]); ?>
+                                    <?php progressbar($this->webroot, $length, perc($length), "", "danger", "light-red"); ?>
+                                </div>
+                                <?php
+                                    }
+                                    } else {
+                                    ?>
+                                    <i> <a href="<?php echo $this->webroot; ?>review/add/<?php echo $strain['Strain']['slug']; ?>">
+                                            No ratings yet. Review this
+                                            strain <i style="font-size: 16px;padding-left:6px;"
+                                                      class="fa fa-star-half-full"></i></a></i>
+                                <?php
+                                }
+                                ?>
+                            </div>
 
 
-    </ul>
-    <ul class="columns full_width page_margin_top clearfix">
 
-
-        <li class="column_left">
-            <div class="">
-                <h3 class="box_header slide clearfix">Negative Effects</h3>
-                What are the negative effects?
-                <br> <br>
-                <?php
-                    if (isset($arr_neg))
-                        rsort($arr_neg);
-                    else
-                        $arr_neg = array();
-                    $i = 0;
-                    if ($arr_neg) {
-                    foreach ($arr_neg as $e) {
-                    $ar = explode('_', $e);
-                    $i++;
-                    if ($i == 6)
-                        break;
-                    $rate = $ar[0];
-                    $length = 20 * $rate;
-                ?>
-                <div class="eff">
-                    <div
-                        class="label left"
-                        style="position: relative; top: 50%; transform: translateY(20%);"><?php echo $this->requestAction('/strains/getEffect/' . $ar[1]); ?>
-                        <?php progressbar($this->webroot, $length, perc($length), "", "danger", "light-red"); ?>
-                    </div>
-                    <?php
-                        }
-                        } else {
-                        ?>
-                        <i> <a href="<?php echo $this->webroot; ?>review/add/<?php echo $strain['Strain']['slug']; ?>">
-                                No ratings yet. Review this
-                                strain <i style="font-size: 16px;padding-left:6px;"
-                                          class="fa fa-star-half-full"></i></a></i>
-                    <?php
-                    }
-                    ?>
-                </div>
-
-
-        </li>
-        <li class="column_right">
-
-            <h3 class=" box_header slide clearfix">Print Report</h3>
-
-            <p class="">Spread the word! The more we know, the more we can help.</p>
-
-
-            <ul class="columns full_width page_margin_top clearfix">
-
-                <li class="column_left">
-
-                    <a style="" class="" href="javascript:void(0)" onclick="window.print();">
-                        <img class="" src="<?php echo $this->webroot ?>images/print_report_small.jpg"
-                             style="width:100px;border:1px solid #efefef"/>
-
-                    </a>
-
-                </li>
-                <li class="column_right">
-
-
-                    <a style="" class="blue more" href="javascript:void(0)" onclick="window.print();">Print Report</a>
-                    <a class="dark_blue more"
-                       href="<?php echo $this->webroot; ?>review/add/<?php echo $strain['Strain']['slug']; ?>">Review
-                        this
-                        Strain</a>
-
-                    <div style="clear:both;"></div>
-                    <h3 class="" style="margin-top: 33px;">Share with care</h3>
-
-                    <div style="" class="addthis_sharing_toolbox"></div>
-
-
-                </li>
-
-
-            </ul>
 
 
         </li>
@@ -692,14 +656,58 @@
 
 
             ?>
-
-
-            <div style="border-top: 1px solid #dadada;padding: 5px 0px;"></div>
-
             <a
                 href="<?php echo $this->webroot; ?>strains/review/<?php echo $strain['Strain']['slug']; ?>"
                 class="viewall more blue noprint" style="float:right;font-size:12px;">See All Reviews
                 for <?php echo $strain['Strain']['name']; ?> &raquo;</a>
+
+
+
+            <div style="clear:both;border-bottom: 1px solid #dadada;padding: 5px 0px;">
+
+            </div>
+
+
+<div class="noprint">
+            <h3 class=" box_header slide clearfix page_margin_top">Print this Report</h3>
+
+            <p class="">Spread the word! The more we know, the more we can help.</p>
+
+
+            <ul class="columns full_width page_margin_top clearfix">
+
+                <li class="column_left">
+
+                    <a style="" class="" href="javascript:void(0)" onclick="window.print();">
+                        <img class="" src="<?php echo $this->webroot ?>images/print_report_small.jpg"
+                             style="width:140px;border:1px solid #efefef"/>
+
+                    </a>
+
+                </li>
+                <li class="column_right">
+
+
+                    <a style="" class="blue more" href="javascript:void(0)" onclick="window.print();">Print this Report</a>
+                    <a class="dark_blue more"
+                       href="<?php echo $this->webroot; ?>review/add/<?php echo $strain['Strain']['slug']; ?>">Review
+                        this
+                        Strain</a>
+
+                    <div style="clear:both;"></div>
+                    <h3 class="" style="margin-top: 10px;">Share with care</h3>
+
+                    <div style="" class="addthis_sharing_toolbox"></div>
+
+
+                </li>
+
+
+            </ul>
+
+</div>
+
+
         </li>
 
 
@@ -742,6 +750,29 @@
 
         </li>
     </ul>
+
+
+
+
+    <ul class="columns full_width page_margin_top clearfix">
+
+
+        <li class="column_left">
+
+
+        </li>
+        <li class="column_right">
+
+
+
+        </li>
+
+
+    </ul>
+
+
+
+
 </div>
 
 <div class="invite noprint" style="display: none; margin-top:10px">
