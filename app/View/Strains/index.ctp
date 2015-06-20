@@ -340,8 +340,16 @@
                 <div class="eff">
                     <div
                         class="label left"
-                        style="position: relative; top: 50%; transform: translateY(20%);"><?php echo $this->requestAction('/strains/getSymptom/' . $ars[1]); ?>
+                        style="position: relative; top: 50%; transform: translateY(20%);">
+                        <?php echo $this->requestAction('/strains/getSymptom/' . $ars[1]); ?>
+                        
                         <?php progressbar($this->webroot, $length, perc($length), "", "info", "light-blue"); ?>
+                        <div class="upvote" title="Was this helpful?">
+                            <input type="hidden" class="vote_symp" value="<?php echo $ars[1]; ?>" />
+                            <a class="upvote <?php if(isset($symptom_vote_user[$ars[1]])): echo (($symptom_vote_user[$ars[1]] == 1)?"upvote-on":""); endif; ?>"></a>
+                            <span class="count"><?php echo (isset($symptom_votes[$ars[1]])?$symptom_votes[$ars[1]]:0); ?></span>
+                            <a class="downvote <?php if(isset($symptom_vote_user[$ars[1]])): echo (($symptom_vote_user[$ars[1]] == -1)?"downvote-on":""); endif; ?>"></a>
+                        </div>
                         <div class="clear"></div>
                     </div>
                     <?php
@@ -831,8 +839,62 @@
     }
 </script>
 <script>
+    
+    
     $(function () {
-
+        
+        var makeVote =function(data){
+            symp = data.id;
+            
+            up= data.upvoted;
+            down= data.downvoted;
+            console.log(up);
+            
+            setZero = true;
+            
+            $.each(data.classList,function(i,e){
+                if (e.className.indexOf('downvote-on') != -1 || e.className.indexOf('upvote-on') != -1) {
+                    setZero = false;
+                    
+                    if (e.className.indexOf('downvote-on') != -1) {
+                        down = true;
+                        up = 0;
+                    }
+                    else if (e.className.indexOf('upvote-on') != -1) {
+                        up = true;
+                        down = 0;
+                    }
+                }
+            });
+            
+            if (setZero) {
+                up = 0;
+                down = 0;
+            }
+            console.log(up);
+            //
+            //if (access == true) {
+            $.ajax({
+                type: "POST",
+                url: "<?php echo Router::url(array('controller' => 'symptomvote', 'action' => 'sendVote'));?>/<?php echo $strain['Strain']['id'] ?>/"+symp,
+                data: {up: up, down: down},
+                success:function(response){
+                    console.log(response);
+                }
+            });
+            
+            //}
+        };
+        $('div.upvote').each(function(i,e){
+            $(this).upvote({ele:$(this),classList:$(this).find("a"),id:$(this).find(".vote_symp").val(),callback:makeVote});
+        })
+        
+        //$(".upvote a.upvote").click(function(){
+        //    makeVote($(this),1);
+        //});
+        //$(".upvote a.downvote").click(function(){
+        //    makeVote($(this),0);            
+        //});
         <?php
         if(!$p_filter)
         {

@@ -19,13 +19,36 @@ class StrainsController extends AppController
         $this->loadModel('OverallFlavorRating');
         $this->loadModel('Review');
         $this->loadModel('FlavorRating');
+        $this->loadModel('SymptomVote');
 
         $q = $this->Strain->find('first', array('conditions' => array('slug' => $slug)));
         //debug($q );
         $this->set('title', $q['Strain']['name']);
         $this->set('description', $q['Strain']['description']);
         $this->set('keyword', $q['Strain']['name'] . ' , Canbii , Medical , Marijuana , Medical Marijuana');
-
+        
+        $params_vote_sum = array(
+            "conditions"=>array("SymptomVote.strain_id"=>$q['Strain']['id']),
+            "group"=>array("SymptomVote.symptom_id"),  
+            'fields' => array('SymptomVote.symptom_id','SUM(SymptomVote.vote_yes) as sum'),
+        );
+        
+        $votes_sum = $this->SymptomVote->find("all",$params_vote_sum);
+        $votes_sum = Set::combine($votes_sum, '{n}.SymptomVote.symptom_id', '{n}.0.sum');
+        
+        $this->set("symptom_votes",$votes_sum);
+        
+        $params_vote_user = array(
+                 "conditions"=>array("SymptomVote.strain_id"=>$q['Strain']['id'],
+                                     "SymptomVote.client_http"=>md5($_SERVER['REMOTE_ADDR'].$_SERVER['HTTP_USER_AGENT']))
+        );
+        
+        $vote_user = $this->SymptomVote->find("all",$params_vote_user);
+        $vote_user = Set::combine($vote_user, '{n}.SymptomVote.symptom_id', '{n}.SymptomVote.vote_yes');
+        
+        //die(var_dump($vote_user));
+        
+        $this->set("symptom_vote_user",$vote_user);
 
         $u_cond = '';
         if (isset($_GET['nationality'])) {
@@ -239,6 +262,11 @@ class StrainsController extends AppController
             return true;
         else
             return false;
+    }
+    
+    function symptomVote($strain_id,$symp){
+        die($this->request->data('symp'));
+       die(var_dump($this->params));
     }
 
     function getUserName($id)

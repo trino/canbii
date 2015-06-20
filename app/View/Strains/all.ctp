@@ -55,14 +55,23 @@
     var viewed_flag = 'ASC';
     var reviewed_flag = 'ASC';
 </script>
-<div id="filter_dialog" title="Filter Search">
-    <div>
+<div id="filter_dialog" class="modal" title="Filter Search">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+        
                 <?php $effect = $this->requestAction('/pages/getSym');
                     $counter = 0;
+                    $second_div = 0;
                     foreach ($effect as $e) {
                         $counter ++;
                         if($counter ==1){
-                            echo "<div style='width: 50%;float:left;'>";
+                            echo "<div style='";
+                            if($second_div == 1){
+                                echo "float:right;";
+                                $second_div = 0;
+                            }
+                            echo "width: 50%;display:inline-block;'>";
                         }
                         ?>
                         <div>
@@ -76,13 +85,14 @@
                                 echo "?symptoms=";
                                 echo $e['Symptom']['id'];
                             }
-                        ?>" class="sym2 dialog_sym small-btn" data-parent="#filter_dialog"
+                        ?>" class="sym2 dialog_sym small-btn" data-parent="#dialog"
                            id="sym_<?php echo $e['Symptom']['id']; ?>"><?php echo $e['Symptom']['title'] ?></a>
                         </div>
                     <?php
                         if($counter == ceil(count($effect)/2)){
                             echo "</div>";
                             $counter = 0;
+                            $second_div = 1;
                         }
                     }
                     if($counter != 0){
@@ -90,11 +100,13 @@
                     }
                 ?>
                 <!--<p style="display: none;" class="symp"></p>-->
+            </div>
+        </div>
     </div>
 </div>
-<div class="page_layout page_margin_top clearfix">
+<div class="page_layout page_margin_top clearx">
     <div style="padding-bottom: 10px;border-bottom:0;" class="page_header clearfix">
-        <div class="page_header_left" id="filterby">
+        <div class="page_header_left" id="by">
 
 
             <ul class="tabs_navigation2">
@@ -166,8 +178,8 @@
         <div class="page_header_right">
             <form class="search" method="get" action="<?php echo $this->webroot; ?>strains/all">
 
-                <a href="#" id="search_filter">
-                    <img src="<?php echo $this->webroot; ?>images/gear.png" alt="Filter" title="Filter Search" />
+                <a href="#" id="search_filter" data-toggle="modal" data-target="#filter_dialog">
+                    <img src="<?php echo $this->webroot; ?>images/gear.png"  alt="Filter" title="Filter Search" />
 					<!--<span style="display:block;height:16px;white-space: pre-wrap;word-wrap: break-word;">Filter by Symptom</span>-->
                 </a>
                 <input id="BUTTON_17" type="submit" value="Search" class="more blue medium " style="float:right;"/>
@@ -196,7 +208,7 @@
     <div class="clearfix page_margin_top ">
 
 
-        <!--php include('combine/profile_filter.php');?-->
+        <!--php include('combine/proe_er.php');?-->
 
         <!-- page left -->
 
@@ -320,42 +332,38 @@
 
     $(function () {
         
-        $('div#filter_dialog div').bind('scroll', function(e) {
-            
-            if($(this).scrollTop() + $(this).innerHeight() >= this.scrollHeight) {
-                e.stopPropagation();
-                return false;
-            }
-        });
         
-        $("#search_filter").on("click touch",function(){
-            document.body.style.overflow = "hidden";
-            $("#filter_dialog").show();
-            $("body, html").bind('touchmove', function(e){
-                
-                if(!$("div#filter_dialog").has(e.target).length > 0){
-                    e.preventDefault();
-                }
-            });
-        });
+        
+        //$("#search_filter").on("click touch",function(e){
+        //    //e.preventDefault();
+        //    //document.body.style.overflow = "hidden";
+        //    $("#filter_dialog").modal("show");
+        //    //$("body, html").bind('touchmove', function(e){
+        //    //    
+        //    //    if(!$("div#filter_dialog").has(e.target).length > 0){
+        //    //        e.preventDefault();
+        //    //    }
+        //    //});
+        //});
+        
         
         if ($(document).width() <= 479) {
             $(".page_header_right").css({"width":"300px"});
         }
         
-        $(document).mouseup(function (e)
-        {
-            
-            var container = $("#filter_dialog > div");
-        
-            if (!container.is(e.target) // if the target of the click isn't the container...
-                && container.has(e.target).length === 0) // ... nor a descendant of the container
-            {
-                $("#filter_dialog").hide();
-                document.body.style.overflow = "visible";
-                $('body, html').unbind('touchmove')
-            }
-        });
+        //$(document).mouseup(function (e)
+        //{
+        //    
+        //    var container = $("#filter_dialog > div");
+        //
+        //    if (!container.is(e.target) // if the target of the click isn't the container...
+        //        && container.has(e.target).length === 0) // ... nor a descendant of the container
+        //    {
+        //        $("#filter_dialog").hide();
+        //        document.body.style.overflow = "visible";
+        //        $('body, html').unbind('touchmove')
+        //    }
+        //});
         
         var profile = '';
         $('.hidden_filter select').change(function () {
@@ -543,7 +551,9 @@
                 $("#filter_dialog #"+$(this).attr("id")).removeClass('searchact3');
                 $('.' + $(this).attr('id')).remove();
             }
-            
+            if (($("#filter_dialog").data('bs.modal') || {}).isShown) {
+                $("#filter_dialog").modal('hide');
+            }
             
             $('.key').val('');
 
@@ -621,7 +631,9 @@
                     }
                     $('.listing').html(res);
                 }
-            });
+            })
+           
+            
 
         });
 
@@ -817,7 +829,7 @@ if($symptoms)
     foreach($symptoms as $eff)
     {
         ?>
-        $('#sym_<?php echo $eff;?>').click();
+        $('#filter_dialog #sym_<?php echo $eff;?>').click();
         <?php
     }
 }

@@ -89,6 +89,10 @@
     <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-53333c8154cd758d" async="async"></script>
 
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="<?php echo $this->webroot; ?>upvote/upvote.css">
+    <script src="<?php echo $this->webroot; ?>upvote/jquery.upvote.js"></script>
+    <script src="<?php echo $this->webroot; ?>js2/bootstrap-modal.min.js"></script>
+	
 
     <!-- Debugger -->
     <?php if($this->Session->check("User.id")): ?>
