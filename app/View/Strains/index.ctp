@@ -24,7 +24,14 @@
         white-space: -pre-wrap;     
         white-space: -o-pre-wrap;    
         word-wrap: break-word;
-        width:600px;
+    }
+    
+    .page_header_left .strain_info{
+        white-space: pre-wrap;    
+        white-space: -moz-pre-wrap;
+        white-space: -pre-wrap;     
+        white-space: -o-pre-wrap;    
+        word-wrap: break-word;
     }
 </style>
 
@@ -96,9 +103,8 @@
             <div style="white-space: nowrap;">
                 <h1><?php echo $strain['Strain']['name']; ?> - Medical Report</h1>
 
-
-                <p style="white-space: nowrap;">
-                    <?php
+                <br />
+                <p class="strain_info"><?php
                         switch ($strain['Strain']['type_id']) {
                             case 1:
                                 echo "Indica Cannabis: Best suited for night time use.";
