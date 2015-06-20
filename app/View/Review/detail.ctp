@@ -10,13 +10,13 @@
     #qf_review__aesthetics__flavor .review-slider {
         display: inline-block;
     }
-    
+
     .page_title{
-        white-space: pre-wrap;    
+        white-space: pre-wrap;
         white-space: -moz-pre-wrap;
-        white-space: -pre-wrap;     
-        white-space: -o-pre-wrap;    
-        word-wrap: break-word;        
+        white-space: -pre-wrap;
+        white-space: -o-pre-wrap;
+        word-wrap: break-word;
     }
 </style>
 

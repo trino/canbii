@@ -25,3 +25,4 @@ ehthumbs.db
 Thumbs.db
 app/webroot/debugger/controlpanel.php
 app/webroot/debugger/controlpanel.php
+*.tar

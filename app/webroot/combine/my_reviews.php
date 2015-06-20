@@ -9,7 +9,7 @@
     <div class=" clearfix">
         <?php if ($reviewz > 0) { ?>
         <ul class="columns full_width page_margin_top clearfix">
-					
+
             <?php
                 $j = 0;
                 $id = -1;
@@ -71,7 +71,7 @@
 
                     <?php
                         $count++;
-                    
+
                         }
                 } ?>
 

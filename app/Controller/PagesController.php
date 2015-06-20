@@ -105,7 +105,41 @@ class PagesController extends AppController {
             $this->redirect('contact_us');
         }
     }
-	
+
+
+
+    function doctors()
+    {
+        if(isset($_POST['name'])&&$_POST['name'])
+        {
+            $name = $_POST['name'];
+            $email = $_POST['email'];
+            $sub = $_POST['subject'];
+            $msg = $_POST['message'];
+            $emails = new CakeEmail();
+            $emails->from(array('info@canbii.com'=>'Canbii'));
+            $emails->emailFormat('html');
+            $emails->template('default');
+            $emails->subject('New Contact Message');
+
+
+            $message="
+
+            You've received a new message from Canbii<br/><br/>
+
+            <b>From</b> : ".$name."<br/>
+            <b>Email</b> : ".$email."<br/>
+            <b>Subject</b> : ".$sub."<br/>
+            <b>Message</b> : ".$msg."<br/><br/>Thank you, <br/>The Canbii Team";
+            $emails->to('info@canbii.com');
+            $emails->send($message);
+            $this->Session->setFlash('Message Sent Successfully!', 'default', array('class' => 'good'));
+            $this->redirect('doctors');
+        }
+    }
+
+
+
 		function about()
     {
 

@@ -4,9 +4,13 @@
 	height: 173.21px;
 	background-color: #64C7CC;
 	margin: 86.60px 0;
+}
 
-
-
+.background_image{
+    background-size: cover;    padding:20px 0px;
+    background-position:center;
+    width: 100%;
+    background-image: url("../images/b2.jpg");
 }
 
 .show479_767{
