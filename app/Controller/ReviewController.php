@@ -13,6 +13,23 @@
                 $this->redirect('/users/register?url='.$url);
             }
         }
+        function showAll($offset=0)
+        {
+            $this->set('offset',$offset);
+            $limit = 8;
+            $reviews = $this->Review->find('all',array('limit'=>$limit,'offset'=>$offset));
+            $this->set("reviews",$reviews);
+            $this->set('reviewz', $this->Review->find('count')); 
+        }
+        function show_all_blank($offset)
+        {
+            
+            $this->layout = 'blank';
+            $limit = 8;
+            $reviews = $this->Review->find('all',array('limit'=>$limit,'offset'=>$offset));
+            $this->set("reviews",$reviews);
+            $this->set('reviewz', $this->Review->find('count')); 
+        }
 
         function all($limit=0){
             $this->set('limit',$limit);

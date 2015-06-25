@@ -644,6 +644,7 @@ padding:25px 20px;
 
 
                     </ul>
+                    <a class="more blue" style="float:left;margin-top:10px;" title="" accesskey="3" href="<?php echo $this->webroot;?>review/showAll">View All</a>
                 </div>
             </div>
             <div class="footer_box last">
