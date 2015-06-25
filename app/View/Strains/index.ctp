@@ -86,7 +86,8 @@
 
 
 
-<div class="page_layout page_margin_top clearfix">
+<div class="page_layout page_margin_top clearfix" style="position: relative;">
+<img src="<?php echo $this->webroot;?>img/light.jpg" style="position: absolute;top:0;" />
     <div class="page_header clearfix" style="border-bottom: none;white-space: nowrap;">
 
         <div class="page_header_left" style="white-space: nowrap;">
@@ -355,7 +356,7 @@
                         style="position: relative; top: 50%; transform: translateY(20%);display: inline-block;
     margin-top: 9px;">
                         <span style="float: left;width:130px;display:inline-block"><?php echo $this->requestAction('/strains/getSymptom/' . $ars[1]); ?></span>
-                        
+
                         <?php progressbar($this->webroot, $length, perc($length), "", "info", "light-blue"); ?>
                         <div class="upvote" title="Was this helpful?">
                             <input type="hidden" class="vote_symp" value="<?php echo $ars[1]; ?>" />
