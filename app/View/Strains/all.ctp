@@ -633,8 +633,8 @@
                 }
             })
            
-            
-
+            $('#rated').click();
+        
         });
 
         $('.eff2').click(function () {
