@@ -354,7 +354,7 @@
                         class="label left"
                         style="position: relative; top: 50%; transform: translateY(20%);">
                         <?php echo $this->requestAction('/strains/getSymptom/' . $ars[1]); ?>
-                        
+
                         <?php progressbar($this->webroot, $length, perc($length), "", "info", "light-blue"); ?>
                         <div class="upvote" title="Was this helpful?">
                             <input type="hidden" class="vote_symp" value="<?php echo $ars[1]; ?>" />
