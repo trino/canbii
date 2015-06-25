@@ -86,8 +86,8 @@
 
 
 
-<div class="page_layout page_margin_top clearfix" style="position: relative;">
-<img src="<?php echo $this->webroot;?>img/light.jpg" style="position: absolute;top:0;" />
+<div class="page_layout page_margin_top clearfix" style="">
+
     <div class="page_header clearfix" style="border-bottom: none;white-space: nowrap;">
 
         <div class="page_header_left" style="white-space: nowrap;">
@@ -809,6 +809,10 @@
 <style>
 
     @media print {
+        .page_layout{border:2px solid #e5e5e5;padding:10px}
+        .strain_banner{width:320px!important;}
+        li.column_left{width:464px!important;}
+        li.column_right{width:464px!important;}
         .header_container {
             display: none;
             margin-left: auto;
