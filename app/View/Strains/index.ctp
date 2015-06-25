@@ -349,11 +349,12 @@
                     $rate = $ars[0];
                     $length = 20 * $rate;;
                 ?>
-                <div class="eff">
+                <div class="eff symps">
                     <div
                         class="label left"
-                        style="position: relative; top: 50%; transform: translateY(20%);">
-                        <?php echo $this->requestAction('/strains/getSymptom/' . $ars[1]); ?>
+                        style="position: relative; top: 50%; transform: translateY(20%);display: inline-block;
+    margin-top: 9px;">
+                        <span style="float: left;width:130px;display:inline-block"><?php echo $this->requestAction('/strains/getSymptom/' . $ars[1]); ?></span>
                         
                         <?php progressbar($this->webroot, $length, perc($length), "", "info", "light-blue"); ?>
                         <div class="upvote" title="Was this helpful?">

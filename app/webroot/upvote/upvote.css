@@ -1,4 +1,6 @@
 div.upvote {
+    display: inline-block;
+    margin-left: 10px;
     text-align: center;
 }
 

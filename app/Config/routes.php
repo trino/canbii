@@ -41,6 +41,7 @@
     Router::connect('/strains/getUserName/*', array('controller' => 'strains', 'action' => 'getUserName'));
     Router::connect('/strains/helpful/*', array('controller' => 'strains', 'action' => 'helpful'));
     Router::connect('/strains/all/*', array('controller' => 'strains', 'action' => 'all'));
+    Router::connect('/strains/showAll', array('controller' => 'strains', 'action' => 'showAll'));
     Router::connect('/strains/search/*', array('controller' => 'strains', 'action' => 'search'));
     Router::connect('/strains/review/*', array('controller' => 'strains', 'action' => 'review'));
     Router::connect('/strains/review_filter/*', array('controller' => 'strains', 'action' => 'review_filter'));

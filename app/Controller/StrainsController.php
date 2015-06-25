@@ -360,6 +360,19 @@ class StrainsController extends AppController
             $this->set('strain',$this->Paginator->paginate('Strain'));
         }*/
     }
+    
+    function showAll($type = '', $limit = 0)
+    {
+        $this->loadModel('Country');
+        $this->set('countries', $this->Country->find('all'));
+        $this->set('type', $type);
+        $this->set('limit', $limit);
+        
+
+        $this->set('strain', $this->Strain->find('all', array('order' => 'Strain.viewed DESC ,Strain.id DESC')));
+        $this->set('strains', $this->Strain->find('count'));
+
+    }
 
     function search($type = '', $limit = 0)
     {//$this->call(__METHOD__);
