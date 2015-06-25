@@ -1,5 +1,5 @@
 <?php
-
+//include(APP.'webroot/html2pdf.class.php');
 class StrainsController extends AppController
 {
 
@@ -1187,6 +1187,26 @@ class StrainsController extends AppController
         }
         return implode(",", array_keys($SymptomList));
     }
+    /*function generateImage($slug)
+    {
+        if($_SERVER['SERVER_NAME']=='localhost')
+        $html_content = file_get_contents('http://127.0.0.1'.$this->webroot.'strains/'.$slug);
+        else
+        $html_content = file_get_contents('http://www.charlieschopsticks.com/strains/'.$slug);
+         $html2pdf = new HTML2PDF('P', 'A4');
+         $html2pdf->writeHTML($html_content);
+         $rand = rand(1000000000,9999999999).'.pdf';
+         $file = $html2pdf->Output(APP.'webroot/pdfs/'.$rand,'F');
+         
+         $im = new imagick(APP.'webroot/pdfs/'.$rand);
+        $im->setImageFormat( "jpg" );
+        $img_name = str_replace('.pdf','',$rand).'.jpg';
+        $im->setSize(800,600);
+        $im->writeImage($img_name);
+        $im->clear();
+        $im->destroy();
+        die();
+    }*/
 }
 
 ?>

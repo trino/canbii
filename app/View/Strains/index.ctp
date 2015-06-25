@@ -155,6 +155,7 @@
                 Strain</a>
             <a class="blue more" style="margin-top:10px;" href="javascript:void(0)" onclick="window.print();">Print this
                 Report</a>
+            <!--<a style="" class="blue more" href="<?php echo $this->webroot;?>strains/generateImage/<?php echo $strain['Strain']['slug']; ?>">Print as Image</a>-->
             <!--a style="margin-left: 10px;margin-top:10px;"  class="dark_blue more" href="javascript:void(0)" onclick="save();">Save Report</a-->
 
 
@@ -701,7 +702,7 @@
                 </li>
                 <li class="column_right">
 
-
+                    <!--<a style="" class="blue more" href="<?php echo $this->webroot;?>strain/generateImage/<?php echo $strain['Strain']['slug']; ?>">Print as Image</a>-->
                     <a style="" class="blue more" href="javascript:void(0)" onclick="window.print();">Print this Report</a>
                     <a class="dark_blue more"
                        href="<?php echo $this->webroot; ?>review/add/<?php echo $strain['Strain']['slug']; ?>">Review
