@@ -182,7 +182,7 @@
 
     <div class="clearfix"></div>
 
-    <ul class="page_margin_top clearfix">
+    <ul class="page_margin_top clearfix" style="margin-top: 7px!important;">
 
 
         <li class="footer_banner_box super_light_blue printer strain_banner"
@@ -1028,6 +1028,7 @@
 
 
 <style>
+.page_header{padding-bottom:10px!important;}
     .eff .left {
         position: relative;
     }
