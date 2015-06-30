@@ -44,6 +44,28 @@ if(!isset($_GET['user'])){
 				</li>
 			</ul>
 		</div>
+<div class="clearfix"></div>        
+<div class="page_header_left"><br />
+<?php
+if(!isset($_GET['sort']))
+{
+    $sort = 'desc';
+}
+else
+$sort = $_GET['sort'];
+
+if($sort=='asc')
+$sort = 'desc';
+else
+$sort = 'asc';
+
+if(!isset($_GET['filter']))
+$filter = '';
+else
+$filter = $_GET['filter'];
+?>
+			<strong>Filter By: </strong><a class="filter_by" href="<?php echo $this->request->webroot;?>review/showAll/?filter=rate&sort=<?php echo $sort;?>">Most Rated</a> <a class="filter_by" href="<?php echo $this->request->webroot;?>review/showAll/?filter=on_date&sort=<?php echo $sort;?>">Most Recent</a> 
+		</div>
 
 
 <?php
@@ -64,13 +86,14 @@ if(!isset($_GET['user'])){
 <script>
 $(function(){
     var more='<?php echo $offset?>';
+    
     var spinnerVisible = false;
     
     $('.loadmore a').live('click',function(){
-        alert('test');
+        //alert('test');
         more=parseFloat(more)+8;
        $.ajax({
-           url:'<?php echo $this->webroot;?>review/show_all_blank/'+more,
+           url:'<?php echo $this->webroot;?>review/show_all_blank/'+more+'<?php if($filter){echo '?filter='.$filter.'&sort='.$sort;}?>',
            success:function(res){
              if (spinnerVisible) {
         var spinner = $("div#spinner");
@@ -93,3 +116,8 @@ $('.rates img').each(function(){
 });
 })
 </script>
+<style>
+.filter_by{
+    display:inline-block;padding:6px 12px;margin-left: 10px;background:#e5e5e5;color:#666;
+}
+</style>

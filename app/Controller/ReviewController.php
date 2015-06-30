@@ -15,9 +15,13 @@
         }
         function showAll($offset=0)
         {
+            
             $this->set('offset',$offset);
             $limit = 8;
+            if(!isset($_GET['filter']))
             $reviews = $this->Review->find('all',array('limit'=>$limit,'offset'=>$offset));
+            else
+            $reviews = $this->Review->find('all',array('limit'=>$limit,'offset'=>$offset,'order'=>$_GET['filter'].' '.$_GET['sort']));            
             $this->set("reviews",$reviews);
             $this->set('reviewz', $this->Review->find('count')); 
         }
@@ -26,7 +30,10 @@
             
             $this->layout = 'blank';
             $limit = 8;
+            if(!isset($_GET['filter']))
             $reviews = $this->Review->find('all',array('limit'=>$limit,'offset'=>$offset));
+            else
+            $reviews = $this->Review->find('all',array('limit'=>$limit,'offset'=>$offset,'order'=>$_GET['filter'].' '.$_GET['sort']));
             $this->set("reviews",$reviews);
             $this->set('reviewz', $this->Review->find('count')); 
         }

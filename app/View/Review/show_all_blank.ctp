@@ -13,7 +13,7 @@ foreach ($reviews as $review) {
                         $j=$review['Review']['id'];
                         ?>
 
-                        <li class="<?php if($count % 2 == 0):?>column_left<?php else: ?>column_right<?php endif; ?> page_margin_top">
+                        <li class="page_margin_top" style="margin: 15px;">
                             <div class="comment_author_avatar">&nbsp;</div>
                             <div class="comment_details">
                                 <a href="<?php echo $this->webroot ?>strains/<?php echo $strain_hexagon['Strain']['slug']; ?>">
@@ -55,6 +55,7 @@ foreach ($reviews as $review) {
                                 <!--a href="<?php echo $this->webroot; ?>review/all?delete=<?php echo $review['Review']['strain_id']; ?>" onclick="return confirm('Are you sure you want to delete your review for <?= $review['Strain']['name'] ?>?');" class="more red">Delete</a-->
 
                             </div>
+                            <div style="clear: both;"></div>
                         </li>
 
                     <?php
