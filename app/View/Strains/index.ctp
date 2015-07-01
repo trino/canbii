@@ -809,6 +809,7 @@
 <style>
 
     @media print {
+        .eff.symps{margin-bottom:0px!important;}
         .page_layout{border:2px solid #e5e5e5;padding:10px}
         .strain_banner{width:320px!important;}
         li.column_left{width:464px!important;}
