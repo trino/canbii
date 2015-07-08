@@ -50,10 +50,26 @@
                class="active more large dark_blue icon_small_arrow margin_right_white dashboarditem">My Account</a>
             <a style="margin-right:10px;" title="Read more" href="<?php echo $this->webroot; ?>users/settings"
                class="more large dark_blue icon_small_arrow margin_right_white  ">Settings</a>
-            <a style="margin-right:10px;" title="Read more" href="<?php echo $this->webroot; ?>review"
+            <?php if($this->Session->read('User.doctor'))
+            {
+               ?>
+               <a style="margin-right:10px;" title="Read more" href="<?php echo $this->webroot; ?>users/myPatients"
+               class="more large dark_blue icon_small_arrow margin_right_white  ">My Patients</a>
+                <a style="" title="Read more" href="<?php echo $this->webroot; ?>strains/<?php echo $this->Session->read('User.id');?>/mergedReport"
+               class="more large dark_blue icon_small_arrow margin_right_white">Merged Report</a>
+               <?php 
+            }
+            else
+            {
+                ?>
+                <a style="margin-right:10px;" title="Read more" href="<?php echo $this->webroot; ?>review"
                class="more large dark_blue icon_small_arrow margin_right_white  ">Add Review</a>
             <a style="" title="Read more" href="<?php echo $this->webroot; ?>review/all"
                class="more large dark_blue icon_small_arrow margin_right_white">My Reviews</a>
+                <?php
+            }
+            ?>
+            
         </div>
 
         <div class="clearfix">
@@ -61,8 +77,12 @@
 
         <form action="" method="post" id="dashboard" class="contact_form">
             <div class="page_left page_margin_top">
+             <?php if(!$this->Session->read('User.doctor'))
+            {
+               ?>
                 <div class="backgroundcolor"><p>Please ensure accuracy in your information so
                         we can further help personalize medication for other patients.</p></div>
+                        <?php }?>
 
                 <?php include('combine/profile_filter_inc.php'); ?>
                 <div class="clearfix"></div>
@@ -74,10 +94,26 @@
             <div class="page_right page_margin_top"
             ">
 
+<?php
+if($this->Session->read('User.doctor'))
+{
+    ?>
+    
+            <a style="width:100%;padding:0px;" title="Add A Patient" href="<?php echo $this->webroot; ?>users/addPatient"
+               class="more dark_blue icon_small_arrow margin_right_white  "><h1 style="padding:20px;color:white;">Add A Patient</h1></a>
 
-<h3>The more we know, the more we can help.</h3>
-            <a style="width:100%;padding:0px;" title="Read more" href="<?php echo $this->webroot; ?>review"
+    <?php
+}
+else
+{
+    ?>
+    <h3>The more we know, the more we can help.</h3>
+            <a style="width:100%;padding:0px;" title="Add A Review" href="<?php echo $this->webroot; ?>review"
                class="more dark_blue icon_small_arrow margin_right_white  "><h1 style="padding:20px;color:white;">Add A Review</h1></a>
+
+    <?php
+}
+?>
 
 
 
