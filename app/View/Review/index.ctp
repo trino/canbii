@@ -17,7 +17,7 @@
 			</ul>
 		</div>
 		<div class="page_header_right">
-<a style="margin-right:10px;" title="Read more"  href="<?php  echo $this->webroot; ?>users/dashboard" class="more large dark_blue icon_small_arrow margin_right_white">Dashboard</a>
+<a style="margin-right:10px;" title="Read more"  href="<?php  echo $this->webroot; ?>users/dashboard" class="more large dark_blue icon_small_arrow margin_right_white">My Account</a>
 <a style="margin-right:10px;"  title="Read more"  href="<?php  echo $this->webroot; ?>users/settings" class="more large dark_blue icon_small_arrow margin_right_white  ">Settings</a>
 <a style="margin-right:10px;" title="Read more" href="<?php  echo $this->webroot; ?>review"  class="active more large dark_blue icon_small_arrow margin_right_white  ">Add Review</a>
 <a style="" title="Read more" href="<?php  echo $this->webroot; ?>review/all"  class="more large dark_blue icon_small_arrow margin_right_white  ">My Reviews</a>
@@ -35,13 +35,10 @@
 
 
 <div class="clearfix"></div>
-<div class="backgroundcolor page_margin_top"><p>
-We value your opinion. Share your experience with others to help guide them towards the strain that will benefit them the most. Thank you!</p>
-</div>
 
 <form class="contact_form page_margin_top" action="" method="post">
-<h1>Cannabis Name:</h1>
-<input type="text" id="searchName" value="" placeholder="Type at least 3 characters" />
+<h2>Cannabis Name:</h2>
+<input type="text" id="searchName" value="" placeholder="3 characters minimum" />
 <span class="extra">(e.g. Purple Kush, AK47, Blue Dream)</span>
 <div class="results" style="display: none;">
 <label>Select Item to Review:</label><br />
@@ -58,47 +55,54 @@ We value your opinion. Share your experience with others to help guide them towa
 
 
 
+            <div class="backgroundcolor page_margin_top">
+                <h2>
+                    Best Suited Time of Use</h2>
+
+
+                <ul class=" page_margin_top clearfix">
+                    <li class="column"  style="">
+                        <div style="float:left;">
+                            <img src="<?php echo $this->webroot;?>images/IndicaIcon.png" alt="" style="">
+                        </div>
+                        <div style="float:left;margin-left: 15px;">
+                            <h1>Indica</h1>
+                            Best for Night Time Use
+                        </div>
+                    </li>
+                    <li class="column" style="clear:both;">
+
+                        <div style="float:left;">
+                            <img src="<?php echo $this->webroot;?>images/SativaIcon.png" alt="" style="">
+                        </div>
+                        <div style="float:left;margin-left: 15px;">
+                            <h1>Sativa</h1>
+                            Best for Day Time Use
+                        </div>
+                    </li>
+                    <li class="column" style="clear:both;">
+                        <div style="float:left;">
+                            <img src="<?php echo $this->webroot;?>images/HybridIcon.png" alt="">
+                        </div>
+                        <div style="float:left;margin-left: 15px;">
+                            <h1>Hybrid</h1>
+                            Best of Both Worlds
+                        </div>
+                    </li>
+                </ul>
 
 
 
-        <ul class=" page_margin_top clearfix">
-            <li class="column"  style="">
-                <div style="float:left;">
-                    <img src="<?php echo $this->webroot;?>images/IndicaIcon.png" alt="" style="">
-                </div>
-                <div style="float:left;margin-left: 15px;">
-                    <h1>Indica</h1>
-                    Night Time Use
-                </div>
-            </li>
-            <li class="column" style="clear:both;">
+            </div>
 
-                <div style="float:left;">
-                    <img src="<?php echo $this->webroot;?>images/SativaIcon.png" alt="" style="">
-                </div>
-                <div style="float:left;margin-left: 15px;">
-                    <h1>Sativa</h1>
-                    Day Time Use
-                </div>
-            </li>
-            <li class="column" style="clear:both;">
-                <div style="float:left;">
-                    <img src="<?php echo $this->webroot;?>images/HybridIcon.png" alt="">
-                </div>
-                <div style="float:left;margin-left: 15px;">
-                    <h1>Hybrid</h1>
-                    Best of Both Worlds
-                </div>
-            </li>
-        </ul>
-
-		
 		
 
 </div>
 </div>
 </div>
 <script>
+    var lastsearch;
+
 $(function(){
 $('.opt').live('click',function(){
 	$("#strainz").val($(this).attr("title"));
@@ -115,7 +119,9 @@ $('.opt').live('click',function(){
 })
 $('#searchName').on('keydown keyup click input submit mouseenter', function(){
 	var txt = $(this).val();
-    if (txt.length > 2) {
+    if (txt.length > 2 && txt !=lastsearch) {
+        lastsearch=txt;
+        $('.butt').html("Now loading...");
         $.ajax({
             type: "post",
             url: "<?php echo $this->webroot;?>strains/ajax_search",
@@ -127,5 +133,14 @@ $('#searchName').on('keydown keyup click input submit mouseenter', function(){
         })
     }
 });
+});
+
+$(document).ready(function() {
+    $(window).keydown(function(event){
+        if(event.keyCode == 13) {
+            event.preventDefault();
+            return false;
+        }
+    });
 });
 </script>

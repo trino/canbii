@@ -32,7 +32,7 @@
  * In development mode, you need to click the flash message to continue.
  */
 
-	Configure::write('debug', 0);
+	Configure::write('debug', 2);
 
 /**
  * Configure the Error handler used to handle errors for your application. By default
@@ -168,7 +168,14 @@
  * or in each action using $this->cacheAction = true.
  *
  */
-	//Configure::write('Cache.check', true);
+	Configure::write('Cache.check', true);
+Cache::config('short', array(
+    'engine' => 'File',
+    'duration'=> '+5 minutes',
+    'probability'=> 100,
+    'path' => CACHE,
+    'prefix' => 'cache_short_'
+));
 
 /**
  * Enable cache view prefixes.

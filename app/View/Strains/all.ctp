@@ -38,9 +38,11 @@
         $effects = array();
 
     if (isset($_GET['symptoms']) && $_GET['symptoms']) {
-        foreach ($_GET['symptoms'] as $ef) {
-            $symptoms[] = $ef;
-        }
+        $symptoms = $_GET['symptoms'] ;
+        if (!is_array($symptoms)){$symptoms = explode(",", $symptoms);}
+        //foreach ($_GET['symptoms'] as $ef) {
+         //   $symptoms[] = $ef;
+        //}
     } else
         $symptoms = array();
 
@@ -53,10 +55,58 @@
     var viewed_flag = 'ASC';
     var reviewed_flag = 'ASC';
 </script>
-
-<div class="page_layout page_margin_top clearfix">
-    <div style="padding-bottom: 10px;" class="page_header clearfix">
-        <div class="page_header_left">
+<div id="filter_dialog" class="modal" title="Filter Search">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+        
+                <?php $effect = $this->requestAction('/pages/getSym');
+                    $counter = 0;
+                    $second_div = 0;
+                    foreach ($effect as $e) {
+                        $counter ++;
+                        if($counter ==1){
+                            echo "<div style='";
+                            if($second_div == 1){
+                                echo "float:right;";
+                                $second_div = 0;
+                            }
+                            echo "width: 50%;display:inline-block;'>";
+                        }
+                        ?>
+                        <div>
+                        <a style="color:black;padding:2px;" href="<?php
+                            $multiple = true;//disable for single queries only
+                            if ($_SERVER["SERVER_NAME"] == "localhost" || $multiple) {//LOOK FOR ME!!!!
+                                echo "javascript:void(";
+                                echo $e['Symptom']['id'];
+                                echo ");";
+                            }else {
+                                echo "?symptoms=";
+                                echo $e['Symptom']['id'];
+                            }
+                        ?>" class="sym2 dialog_sym small-btn" data-parent="#dialog"
+                           id="sym_<?php echo $e['Symptom']['id']; ?>"><?php echo $e['Symptom']['title'] ?></a>
+                        </div>
+                    <?php
+                        if($counter == ceil(count($effect)/2)){
+                            echo "</div>";
+                            $counter = 0;
+                            $second_div = 1;
+                        }
+                    }
+                    if($counter != 0){
+                        echo "</div>";
+                    }
+                ?>
+                <!--<p style="display: none;" class="symp"></p>-->
+            </div>
+        </div>
+    </div>
+</div>
+<div class="page_layout page_margin_top clearx">
+    <div style="padding-bottom: 10px;border-bottom:0;" class="page_header clearfix">
+        <div class="page_header_left" id="by">
 
 
             <ul class="tabs_navigation2">
@@ -126,10 +176,14 @@
 
         </div>
         <div class="page_header_right">
-            <form class="search" method="get" action="<?php echo $this->webroot; ?>strains/search">
+            <form class="search" method="get" action="<?php echo $this->webroot; ?>strains/all">
 
-
+                <a href="#" id="search_filter" data-toggle="modal" data-target="#filter_dialog">
+                    <img src="<?php echo $this->webroot; ?>images/gear.png"  alt="Filter" title="Filter Search" />
+					<!--<span style="display:block;height:16px;white-space: pre-wrap;word-wrap: break-word;">Filter by Symptom</span>-->
+                </a>
                 <input id="BUTTON_17" type="submit" value="Search" class="more blue medium " style="float:right;"/>
+                
                 <input id="f" class="search_input hint" name="key" type="text"
 
                     <?php if (isset($_GET['key'])) {
@@ -154,7 +208,7 @@
     <div class="clearfix page_margin_top ">
 
 
-        <!--php include('combine/profile_filter.php');?-->
+        <!--php include('combine/proe_er.php');?-->
 
         <!-- page left -->
 
@@ -165,13 +219,18 @@
 
         <!-- page right -->
 
-        <div class="page_right" style="">
-            <div style="float:left;margin-left:-2px;" class="addthis_sharing_toolbox"></div>
+        <div id="filter_desktop" class="page_right" style="">
+            
+            <!--div style="float:left;margin-left:-2px;" class="addthis_sharing_toolbox"></div-->
             <input id="BUTTON_18" type="reset" value="Reset Filter" class="more blue medium"
-                   style="float: right; width: 40%;" onclick="location.reload();"/>
+                   style="float: right; width: 40%;" onclick="window.location='<?php echo $this->webroot;?>strains/all';"/>
             <ul>
 
+<<<<<<< HEAD
                 <!--<li class="home_box light_blue animated_element animation-fadeIn duration-500" style="z-index: 3;">
+=======
+                <!--li class="home_box light_blue animated_element animation-fadeIn duration-500" style="z-index: 3;">
+>>>>>>> f26778815442bee13a79311d72d3d3e830558c5d
                     <h2>
                         Filter by Effects
                     </h2>
@@ -194,21 +253,50 @@
                         </div>
 
                     </div>
+<<<<<<< HEAD
                 </li>-->
                 <li class="home_box blue animated_element animation-slideDown duration-800 delay-250"
+=======
+                </li-->
+                <li class="home_box blue "
+>>>>>>> f26778815442bee13a79311d72d3d3e830558c5d
                     style="z-index: 2;">
                     <h2>
-                        Filter by Symptoms
+                        FILTER BY SYMPTOMS
                     </h2>
-
+                    <br>
                     <div class=" clearfix">
                         <div class="choose_sym">
                             <?php $effect = $this->requestAction('/pages/getSym');
+                                $counter = 0;
                                 foreach ($effect as $e) {
+                                    $counter ++;
+                                    if($counter ==1){
+                                        echo "<div style='width: 50%;float:left;'>";
+                                    }
                                     ?>
-                                    <a style="color:white;" href="javascript:void(0)" class="sym2 small-btn"
+                                    <div>
+                                    <a style="color:white;padding:2px;" href="<?php
+                                        $multiple = true;//disable for single queries only
+                                        if ($_SERVER["SERVER_NAME"] == "localhost" || $multiple) {//LOOK FOR ME!!!!
+                                            echo "javascript:void(";
+                                            echo $e['Symptom']['id'];
+                                            echo ");";
+                                        }else {
+                                            echo "?symptoms=";
+                                            echo $e['Symptom']['id'];
+                                        }
+                                    ?>" class="sym2 small-btn"  data-parent="#filter_desktop"
                                        id="sym_<?php echo $e['Symptom']['id']; ?>"><?php echo $e['Symptom']['title'] ?></a>
+                                    </div>
                                 <?php
+                                    if($counter == ceil(count($effect)/2)){
+                                        echo "</div>";
+                                        $counter = 0;
+                                    }
+                                }
+                                if($counter != 0){
+                                    echo "</div>";
                                 }
                             ?>
                             <p style="display: none;" class="symp"></p>
@@ -233,12 +321,59 @@
 <div class="clearfix"></div>
 
 <script>
+    var loading = '<DIV ALIGN="CENTER">Now Loading...<P><IMG SRC="<?php echo $this->webroot;?>img/spinner.gif"></DIV>';
     var more = '<?php echo $limit?>';
     var spinnerVisible = false;
     var val = '';
+    function showspinner(){
+        $('.listing').html(loading);
+        //$("div#spinner").fadeIn("fast");
+        //spinnerVisible = true;
+    }
+    function hidespinner(){
+        /*
+        var spinner = $("div#spinner");
+        spinner.stop();
+        spinner.fadeOut("fast");
+        spinnerVisible = false;
+        */
+    }
+
     $(function () {
-
-
+        
+        
+        
+        //$("#search_filter").on("click touch",function(e){
+        //    //e.preventDefault();
+        //    //document.body.style.overflow = "hidden";
+        //    $("#filter_dialog").modal("show");
+        //    //$("body, html").bind('touchmove', function(e){
+        //    //    
+        //    //    if(!$("div#filter_dialog").has(e.target).length > 0){
+        //    //        e.preventDefault();
+        //    //    }
+        //    //});
+        //});
+        
+        
+        if ($(document).width() <= 479) {
+            $(".page_header_right").css({"width":"300px"});
+        }
+        
+        //$(document).mouseup(function (e)
+        //{
+        //    
+        //    var container = $("#filter_dialog > div");
+        //
+        //    if (!container.is(e.target) // if the target of the click isn't the container...
+        //        && container.has(e.target).length === 0) // ... nor a descendant of the container
+        //    {
+        //        $("#filter_dialog").hide();
+        //        document.body.style.overflow = "visible";
+        //        $('body, html').unbind('touchmove')
+        //    }
+        //});
+        
         var profile = '';
         $('.hidden_filter select').change(function () {
             profile = '';
@@ -260,8 +395,7 @@
 
             });
             if (!spinnerVisible) {
-                $("div#spinner").fadeIn("fast");
-                spinnerVisible = true;
+               showspinner();
             }
             var i = 0;
 
@@ -307,12 +441,14 @@
                 }
                 val = val + '&sort=' + id + '&order=' + sort;
             });
-            if (profile && val)
+            if (profile && val) {
                 val = val + '&' + profile;
-            else
+            }else {
                 val = profile;
+            }
+            showspinner();//$('.listing').html(loading);
             $.ajax({
-                url: '<?php echo $this->webroot;?>strains/filter/0<?php if($type)echo '/'.$type?>',
+                url: '<?php echo $this->webroot . "strains/filter/0"; if($type){echo '/'.$type;} ?>',
                 data: val,
                 type: 'get',
                 success: function (res) {
@@ -380,7 +516,8 @@
                 val = val + '&sort=' + id + '&order=' + sort;
             });
             if (profile)
-                val = val + '&' + profile;
+                val = val + '&' + profile
+            //showspinner();//$('.listing').html(loading);
             $.ajax({
                 url: '<?php echo $this->webroot;?>strains/filter/' + more + '<?php if($type)echo '/'.$type?>',
                 data: val,
@@ -408,19 +545,27 @@
 
         $('.sym2').click(function () {
             //alert(profile);
-
+            val = "";
             //var sort =0;
             more = 0;
+            
             if ($(this).attr('class').replace('searchact3', '') == $(this).attr('class')) {
 
-                $(this).addClass('searchact3');
+                $("#filter_desktop #"+$(this).attr("id")).addClass('searchact3');
+                $("#filter_dialog #"+$(this).attr("id")).addClass('searchact3');
                 $('.symp').append('<input type="hidden" name="symptoms[]" value="' + $(this).attr('id').replace('sym_', '') + '" class="symps check' + $(this).attr('id') + ' ' + $(this).attr('id') + '"  />')
             }
             else {
-                $(this).removeClass('searchact3');
+                $("#filter_desktop #"+$(this).attr("id")).removeClass('searchact3');
+                $("#filter_dialog #"+$(this).attr("id")).removeClass('searchact3');
                 $('.' + $(this).attr('id')).remove();
             }
+            if (($("#filter_dialog").data('bs.modal') || {}).isShown) {
+                $("#filter_dialog").modal('hide');
+            }
+            
             $('.key').val('');
+
             /*else
              var sort = 1;*/
             if (!spinnerVisible) {
@@ -432,24 +577,26 @@
             $('.effs').each(function () {
                 if ($(this).val()) {
                     i++;
-                    if (i == 1)
-                        val = 'effects[]=' + $(this).val();
-                    else
-                        val = val + '&effects[]=' + $(this).val();
+                    if (i == 1) {
+                        val = 'effects=' + $(this).val();
+                    }else {
+                        val = val + ',' + $(this).val();
+                    }
                 }
 
 
             });
             $('.symp .symps').each(function () {
-
                 if ($(this).val()) {
                     i++;
-                    if (i == 1)
-                        val = 'symptoms[]=' + $(this).val();
-                    else
-                        val = val + '&symptoms[]=' + $(this).val();
+                    if (i == 1) {
+                        val = 'symptoms=' + $(this).val();
+                    }else {
+                        val = val + ',' + $(this).val();
+                    }
                 }
             });
+            
             if (val) {
                 val = val + '&key=<?php if(isset($_GET['key']))echo $_GET['key'];?>';
             }
@@ -474,6 +621,7 @@
             if (profile)
                 val = val + '&' + profile;
 
+            showspinner();//$('.listing').html(loading);
             $.ajax({
                 url: '<?php echo $this->webroot;?>strains/filter/0<?php if($type)echo '/'.$type?>',
                 data: val,
@@ -492,9 +640,10 @@
                     }
                     $('.listing').html(res);
                 }
-            });
-            // val='';
-
+            })
+           
+            $('#rated').click();
+        
         });
 
         $('.eff2').click(function () {
@@ -561,6 +710,7 @@
             });
             if (profile)
                 val = val + '&' + profile;
+            showspinner();//$('.listing').html(loading);
             $.ajax({
                 url: '<?php echo $this->webroot;?>strains/filter<?php if($type)echo '/0/'.$type?>',
                 data: val,
@@ -571,10 +721,7 @@
                     $('#hybrid').attr('href', '<?php echo $this->webroot;?>strains/all/hybrid?' + val);
                     $('#all_breed').attr('href', '<?php echo $this->webroot;?>strains/all?' + val);
                     if (spinnerVisible) {
-                        var spinner = $("div#spinner");
-                        spinner.stop();
-                        spinner.fadeOut("fast");
-                        spinnerVisible = false;
+                        hidespinner();
                     }
                     $('.listing').html(res);
                 }
@@ -613,8 +760,7 @@
 
 
             if (!spinnerVisible) {
-                $("div#spinner").fadeIn("fast");
-                spinnerVisible = true;
+                showspinner();
             }
             var i = 0;
             var val = '';
@@ -648,6 +794,7 @@
             }
             if (profile)
                 val = val + '&' + profile;
+            showspinner();//$('.listing').html(loading);
             $.ajax({
 
                 url: '<?php echo $this->webroot;?>strains/filter<?php if($type)echo '/0/'.$type?>',
@@ -669,6 +816,12 @@
             });
 
         });
+        
+        $(".dialog_sym").click(function(){
+            
+            document.body.style.overflow = "visible";
+            $("#filter_dialog").hide(); 
+        });
 
         <?php
         if($effects)
@@ -685,7 +838,7 @@ if($symptoms)
     foreach($symptoms as $eff)
     {
         ?>
-        $('#sym_<?php echo $eff;?>').click();
+        $('#filter_dialog #sym_<?php echo $eff;?>').click();
         <?php
     }
 }

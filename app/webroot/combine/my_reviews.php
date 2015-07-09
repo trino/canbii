@@ -1,4 +1,4 @@
-<div class="">
+<div class="" id="comments_list">
     <?php
         if (isset($reviewid)) {
             echo "DELETE review ID: " . $reviewid;
@@ -6,12 +6,14 @@
     ?>
 
 
-    <div class=" clearfix ">
-        <?php if (count($reviews) > 0) { ?>
-        <div>
+    <div class=" clearfix">
+        <?php if ($reviewz > 0) { ?>
+        <ul class="columns full_width page_margin_top clearfix">
+
             <?php
                 $j = 0;
                 $id = -1;
+                $count = 0;
                 if (isset($_GET["delete"])) {
                     $id = $_GET["delete"];
                 }
@@ -23,7 +25,7 @@
                         $j=$review['Review']['id'];
                         ?>
 
-                        <div class="" style="float:left;width:50%;">
+                        <li class="<?php /*if($count % 2 == 0):?>column_left<?php else: ?>column_right<?php endif; */?> page_margin_top" style="margin-bottom: 15px;">
                             <div class="comment_author_avatar">&nbsp;</div>
                             <div class="comment_details">
                                 <a href="<?php echo $this->webroot ?>strains/<?php echo $strain_hexagon['Strain']['slug']; ?>">
@@ -53,7 +55,7 @@
                                     reviewed by <a class="author"
                                                    href="<?php echo $this->webroot; ?>strains/review/all?user=<?php echo $review['Review']['user_id']; ?>"
                                                    title="<?php echo $this->requestAction('/strains/getUserName/' . $review['Review']['user_id']); ?>"><?php echo $this->requestAction('/strains/getUserName/' . $review['Review']['user_id']); ?></a>                                    <?php if ($review['Review']['on_date'] != "0000-00-00") {
-                                        echo " on " . $review['Review']['on_date'];
+                                        echo " on <strong>" . $review['Review']['on_date']."</strong>";
                                     } ?>
                                 </div>
 
@@ -65,9 +67,13 @@
                                 <!--a href="<?php echo $this->webroot; ?>review/all?delete=<?php echo $review['Review']['strain_id']; ?>" onclick="return confirm('Are you sure you want to delete your review for <?= $review['Strain']['name'] ?>?');" class="more red">Delete</a-->
 
                             </div>
-                        </div>
+                            <div style="clear:both"></div>
+                        </li>
 
-                    <?php }
+                    <?php
+                        $count++;
+
+                        }
                 } ?>
 
 
@@ -106,7 +112,7 @@
             </script>
             <?php
                 }
-                if (count($reviews) == 0 or (count($reviews) == 1 and isset($_GET["delete"]))) {
+                if (count($reviews) == 0) {
                     echo '<a href="' . $this->webroot . 'review/">';
                     echo "No reviews yet. Feel free to add one. </a>";
                 } ?>

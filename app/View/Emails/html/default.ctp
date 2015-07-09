@@ -35,10 +35,10 @@
 
         <td style="text-align:left;font-family: Gotham, 'Helvetica Neue', Helvetica, Arial, 'sans-serif'; "
             valign="middle">
-            <A href="<?= $url ?>"><img src="http://canbii.com/blog/wp-content/uploads/2013/04/logo.png"
+            <A href="<?= $url ?>"><img src="http://canbii.com/HiResLogoMedium1.png"
                                        width="200px"><span style="text-align: right;"></A>
 
-            <div style="float: right;color:#dadada;"><h1>Personalized Medical Marijuana</h1></div>
+            <div style="float: right;color:#dadada;"><h1>Your Personalized Medical Cannabis Database</h1></div>
         </td>
     </tr>
     <tr>

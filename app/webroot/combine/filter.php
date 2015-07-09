@@ -173,7 +173,7 @@ include('combine/hexagon.php');?>
 
 <ul class="post_footer_details">
 <li class="">
-<?php echo $s['StrainType']['title'];?>
+<?php if(isset( $s['StrainType'])){echo  $s['StrainType']['title'];}?>
 </li>
 <li class="" style="">
 <?php if($s['Strain']['review']){
@@ -209,7 +209,7 @@ $('.rating<?php echo $j;?>').raty({number:5,readOnly:true,score:<?php echo $s['S
 echo '</ul>';
 }
 if($count==0){
-    echo "No results found";
+    echo "No results found.";
     if (isset($_GET["key"])){
         if (strlen($_GET["key"])>0){ echo " for '" . $_GET["key"] . "'";}
     }

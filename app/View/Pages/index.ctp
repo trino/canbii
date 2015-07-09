@@ -13,7 +13,7 @@
             <li class="column_right">
                 <div class="vertical_align">
                     <div class="vertical_align_cell">
-                        <a title="Make an Appointment" href="strains/all" class="more blue large animated_element animation-slideLeft slideLeft" style="-webkit-animation: 600ms 0ms; transition: 0ms; -webkit-transition: 0ms;">View the Strains</a>
+                        <a title="Make an Appointment" href="strains/all" class="more blue large animated_element animation-slideLeft slideLeft" style="">View Strains</a>
                     </div>
                 </div>
             </li>

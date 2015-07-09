@@ -30,7 +30,7 @@
 <div class="page_layout page_margin_top clearfix">
     <div class="page_header clearfix">
         <div class="page_header_left">
-            <h1 class="page_title">My Dashboard</h1>
+            <h1 class="page_title">My Account</h1>
             <ul class="bread_crumb">
                 <li>
                     <a href="<?php echo $this->webroot ?>" title="Home">
@@ -41,19 +41,35 @@
                     &nbsp;
                 </li>
                 <li>
-                    My Dashboard
+                    My Account
                 </li>
             </ul>
         </div>
         <div class="page_header_right"><!-- float:right;-->
             <a style="margin-right:10px;" title="Read more" href="<?php echo $this->webroot; ?>users/dashboard"
-               class="active more large dark_blue icon_small_arrow margin_right_white dashboarditem">Dashboard</a>
+               class="active more large dark_blue icon_small_arrow margin_right_white dashboarditem">My Account</a>
             <a style="margin-right:10px;" title="Read more" href="<?php echo $this->webroot; ?>users/settings"
                class="more large dark_blue icon_small_arrow margin_right_white  ">Settings</a>
-            <a style="margin-right:10px;" title="Read more" href="<?php echo $this->webroot; ?>review"
+            <?php if($this->Session->read('User.doctor'))
+            {
+               ?>
+               <a style="margin-right:10px;" title="Read more" href="<?php echo $this->webroot; ?>users/myPatients"
+               class="more large dark_blue icon_small_arrow margin_right_white  ">My Patients</a>
+                <a style="" title="Read more" href="<?php echo $this->webroot; ?>strains/<?php echo $this->Session->read('User.id');?>/mergedReport"
+               class="more large dark_blue icon_small_arrow margin_right_white">Merged Report</a>
+               <?php 
+            }
+            else
+            {
+                ?>
+                <a style="margin-right:10px;" title="Read more" href="<?php echo $this->webroot; ?>review"
                class="more large dark_blue icon_small_arrow margin_right_white  ">Add Review</a>
             <a style="" title="Read more" href="<?php echo $this->webroot; ?>review/all"
                class="more large dark_blue icon_small_arrow margin_right_white">My Reviews</a>
+                <?php
+            }
+            ?>
+            
         </div>
 
         <div class="clearfix">
@@ -61,9 +77,12 @@
 
         <form action="" method="post" id="dashboard" class="contact_form">
             <div class="page_left page_margin_top">
-                <div class="backgroundcolor"><p>Welcome to your dashboard. Please enter ensure accuracy in your information so
-                        we can further help personalize medication for other users. We thank you for your help and
-                        support.</p></div>
+             <?php if(!$this->Session->read('User.doctor'))
+            {
+               ?>
+                <div class="backgroundcolor"><p>Please ensure accuracy in your information so
+                        we can further help personalize medication for other patients.</p></div>
+                        <?php }?>
 
                 <?php include('combine/profile_filter_inc.php'); ?>
                 <div class="clearfix"></div>
@@ -75,9 +94,31 @@
             <div class="page_right page_margin_top"
             ">
 
-            <h3>What do you suffer from?</h3>
+<?php
+if($this->Session->read('User.doctor'))
+{
+    ?>
+    
+            <a style="width:100%;padding:0px;" title="Add A Patient" href="<?php echo $this->webroot; ?>users/addPatient"
+               class="more dark_blue icon_small_arrow margin_right_white  "><h1 style="padding:20px;color:white;">Add A Patient</h1></a>
 
-            <div id="dashboard_symptom" style="background:#42B3E5; padding:15px;">
+    <?php
+}
+else
+{
+    ?>
+    <h3>The more we know, the more we can help.</h3>
+            <a style="width:100%;padding:0px;" title="Add A Review" href="<?php echo $this->webroot; ?>review"
+               class="more dark_blue icon_small_arrow margin_right_white  "><h1 style="padding:20px;color:white;">Add A Review</h1></a>
+
+    <?php
+}
+?>
+
+
+
+
+            <!--div id="dashboard_symptom" style="background:#42B3E5; padding:15px;">
                 <p id="P_5">
                     <?php
                         $effect = $this->requestAction('/pages/getSym');
@@ -104,7 +145,7 @@
                 </p>
 
                 <div class="clearfix"></div>
-            </div>
+            </div-->
 
 
         </form>

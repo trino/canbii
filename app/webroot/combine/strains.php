@@ -1,11 +1,11 @@
-<div class="  page_margin_top" style="text-align: center;  padding: 20px 30px 20px 80px;
+<div class="  page_margin_top" style="text-align: center;  padding: 20px 30px 20px 30px;
   line-height: 150%;background: #42B3E5;">
     <h1 style="color: white;">
         What Strain is Right for You? <i style="color: white;" class="fa fa-user-md"></i>
     </h1>
 
     <h3 style="color: white;">
-        Cannabis is broken down into <strong>three</strong> main categories, each with different <strong>effects</strong> and <strong>medical</strong> properties.
+        We've broken down Cannabis into three main categories, each with a different purpose of use.
     </h3>
 
 </div>
@@ -24,9 +24,9 @@
         </div>
 
         <p style="clear:both;" align="">
-            Indica dominant strains tend to have a sweet or sour odor to the buds providing a
-            very relaxing and strong body high that is helpful in treating general anxiety, body pain, and sleeping
-            disorders. Because of these properties indica is best suited for night time use.
+            Indica dominant strains tend to have a sweet or sour odor providing a
+            relaxing and strong body high that is helpful in treating anxiety, body pain and sleeping
+            disorders. Due to these medical properties; indica cannabis it's best suited for night time use.
         </p><br>
         <a title="Browse Strains" href="<?php echo $this->webroot; ?>strains/all/indica" class="more blue">
             Indica Strains →
@@ -47,7 +47,7 @@
         <p style="clear:both;" align="">
             Sativa dominant strains tend to have a more grassy type odor providing an uplifting, energetic and
             'cerebral' high that is best suited for daytime use. A sativa high is filled with creativity and
-            energy as being it can spark new ideas and creations.
+            energy best suited for people suffering from depression.
         </p><br>
         <a title="Browse Strains" href="<?php echo $this->webroot; ?>strains/all/sativa" class="more blue">
             Sativa Strains →

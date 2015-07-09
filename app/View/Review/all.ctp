@@ -43,9 +43,9 @@ if(!isset($_GET['user'])){
 					My Reviews
 				</li>
 			</ul>
-		</div>    
+		</div>
 <div class="page_header_right">
-<a style="margin-right:10px" title="Read more"  href="<?php  echo $this->webroot; ?>users/dashboard" class="more large dark_blue icon_small_arrow margin_right_white">Dashboard</a>
+<a style="margin-right:10px" title="Read more"  href="<?php  echo $this->webroot; ?>users/dashboard" class="more large dark_blue icon_small_arrow margin_right_white">My Account</a>
 <a style="margin-right:10px" title="Read more"  href="<?php  echo $this->webroot; ?>users/settings" class="more large dark_blue icon_small_arrow margin_right_white  ">Settings</a>
 <a style="margin-right:10px" title="Read more" href="<?php  echo $this->webroot; ?>review"  class="more large dark_blue icon_small_arrow margin_right_white  ">Add Review</a>
 <a style="" title="Read more" href="<?php  echo $this->webroot; ?>review/all"  class="active more large dark_blue icon_small_arrow margin_right_white  ">My Reviews</a>
@@ -68,20 +68,21 @@ if(!isset($_GET['user'])){
     //echo $this->params['action'];?>
 <script>
 $(function(){
-    var more='<?php echo $limit?>';    
-    var spinnerVisible = false; 
-    var sort='<?php echo(isset($this->params['pass'][1]) && $this->params['pass'][1]!="")?$this->params['pass'][1]:"recent";?>';    
+    var more='<?php echo $limit?>';
+    var spinnerVisible = false;
+    var sort='<?php echo(isset($this->params['pass'][1]) && $this->params['pass'][1]!="")?$this->params['pass'][1]:"recent";?>';
     $('.loadmore a').live('click',function(){
         more=parseFloat(more)+8;
         var val = '';
         var user = '<?php echo (isset($_GET['user']))?$_GET['user']:"";?>';
         if(user !="")
-        {  
+        {
             user = "?user="+user;
         }
         else
             user = "";
         var i=0;
+		
        $.ajax({
            url:'<?php echo $this->webroot;?>strains/review_filter/<?php echo $slug;?>/'+sort+'/'+more+user,
            data:val,
@@ -98,7 +99,7 @@ $(function(){
             $('.morelist2').removeClass('morelist');
             $('.morelist2').html(res);
             $('.morelist2').removeClass('morelist2');
-           } 
+           }
         });
     });
 $('.rates img').each(function(){
@@ -114,11 +115,11 @@ elseif($this->params['controller']=='review' && $this->params['action']=='all')
 {?>
  <script>
 $(function(){
-    var more='<?php echo $limit?>';    
-    var spinnerVisible = false; 
-        
+    var more='<?php echo $limit?>';
+    var spinnerVisible = false;
+
     $('.loadmore a').live('click',function(){
-        more=parseFloat(more)+8;
+        more=parseFloat(more)+4;
         var val = '';
         var i=0;
        $.ajax({
@@ -137,7 +138,7 @@ $(function(){
             $('.morelist2').removeClass('morelist');
             $('.morelist2').html(res);
             $('.morelist2').removeClass('morelist2');
-           } 
+           }
         });
     });
 $('.rates img').each(function(){
@@ -147,7 +148,7 @@ $('.rates img').each(function(){
 });
 })
 </script>
-   
+
 <?php
 }
 ?>

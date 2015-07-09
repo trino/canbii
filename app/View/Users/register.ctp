@@ -58,7 +58,7 @@
                             </p>
 <p></p>
                             <p class="text" align="">
-                                Contributions in ways of strain reviews will be tallied up into one single report, providing a universal standard for cannabis effects and properties.
+                                Contributions in ways of strain reviews will be tallied up into a single report; providing an industry standard for cannabis' medical effects and properties.
                             </p>
 
 
@@ -122,6 +122,12 @@
                         </div>
                         <?php //echo $this->Form->input('password',array('div'=>array('class'=>'form-row'))); ?>
                         <?php echo $this->Form->input('confirm_password', array('div' => array('class' => 'form-row'), 'type' => 'password')); ?>
+                        
+                        <div class="form-row required">
+                        <label for="UserConfirmPassword">Are you a</label>
+                        <input id="" type="radio" checked="checked" required="required" name="data[User][user_type]" value="2"> Regular User &nbsp; <input id="" type="radio" required="required" name="data[User][user_type]" value="3"> Doctor
+                        </div>
+                        <div style="margin: 15px 0;height:1px;background:#e5e5e5;"></div>
                         <label class="checkbox" style=""><input type="checkbox" name="check_field" class="chh"/>&nbsp; I
                             have read and agree to the <a href="<?php echo $this->webroot . 'pages/privacy'; ?>"
                                                           target="_blank">Privacy Policy</a> and <a

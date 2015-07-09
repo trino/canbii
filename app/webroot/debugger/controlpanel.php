@@ -67,19 +67,35 @@ if ($_SERVER["SERVER_NAME"] == "localhost") {
                                 ?>
 							<div class='datebuggroup'>
 								<h2><?php echo $dt['dateMod']?>:</h2> <h3><?php echo $dt['cnt']; ?> bug<?php if($dt['cnt'] != 1) {echo "s";} ?></h3><br />
-								<?php foreach($bugs[$dt['dateMod']] as $b): ?>
-								<div class='commentbox' style='position:relative;display:inline-block;height:100px'>
-									<div class='commenttext'><?php echo substr($b['comment'], 0, 20).'...'; ?></div>
-									<?php if($isadmin): ?>
-									<div class='buguserlbl'>
-										<?php echo $b['username']; ?>
-									</div>
-									<?php endif; ?>
-									<span class='bugtime'><?php echo date("m-d-Y g:i a",strtotime($b['bugDate'])); ?></span>
-									<a class='seebug' target='_blank' href='<?php echo $b['url'];
-                                    if(!strpos($b['url'], "?debug")) { echo "?debug"; } ?>'>(See Bug)</a>
-								</div>
-								<?php endforeach; ?>
+                                <?php
+                                //print_r($bugs);
+                                //die();
+
+                                foreach($bugs as $b){
+                                    print_r( $b[6]);
+                                    echo "<P>" .  $b[6]['comment'];
+/*
+foreach($b as $key => $value){
+    print_r($key);
+    echo "<P>";
+    //echo "<BR>" . $key . " (" . ($key=="comment") . ") =" . $value . "</BR>";
+} */
+
+
+                                    if (false) {?>
+
+                                    <div class='commentbox' style='position:relative;display:inline-block;height:100px'>
+                                        <div class='commenttext'><?php echo substr($b['comment'], 0, 20).'...'; ?></div>
+                                        <?php if($isadmin): ?>
+                                            <div class='buguserlbl'>
+                                                <?php echo $b['username']; ?>
+                                            </div>
+                                        <?php endif; ?>
+                                        <span class='bugtime'><?php echo date("m-d-Y g:i a",strtotime($b['bugDate'])); ?></span>
+                                        <a class='seebug' target='_blank' href='<?php echo $b['url'];
+                                        if(!strpos($b['url'], "?debug")) { echo "?debug"; } ?>'>(See Bug)</a>
+                                    </div>
+                                <?php }} ?>
 							</div>
 							<?
 							}

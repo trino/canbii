@@ -66,7 +66,7 @@ Home
 </div>
 <div class="page_header_right noprint">
 
-<a class="blue more" style="margin-right: 10px;margin-top:10px;" href="<?php echo $this->webroot;?>review/add/<?php echo $strain['Strain']['slug'];?>">Review Strain</a><a class="blue more" style="margin-top:10px;" href="javascript:void(0)" onclick="window.print();">Print Report</a>
+<a class="blue more" style="margin-right: 10px;margin-top:10px;" href="<?php echo $this->webroot;?>review/add/<?php echo $strain['Strain']['slug'];?>">Review this Strain</a><a class="blue more" style="margin-top:10px;" href="javascript:void(0)" onclick="window.print();">Print Report</a>
 </div>
 
 </div>

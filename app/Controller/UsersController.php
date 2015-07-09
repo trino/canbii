@@ -1,29 +1,58 @@
 <?php
 
 class UsersController extends AppController {
+    function getURL(){
+        $URL="";
+        if(isset($_GET['url'])) {
+            $URL=$_GET['url'];
+            if ($_SERVER["SERVER_NAME"] == "localhost"){
+                $URL = substr($URL, 1, strlen($URL)-1);
+                $strpos = strpos($URL, "/");
+                $URL = substr($URL, $strpos, strlen($URL)-$strpos);
+            }
+        }
+        return $URL;
+    }
     
+    function baseUrl()
+    {
+        if($_SERVER['SERVER_NAME']=='localhost')
+        return 'http://localhost/canbii/';
+        else
+        return 'http://canbii.com/';
+    }
           
     public function login() {
-        if(isset($_GET['url']))
-            $this->set('url',$_GET['url']);
-        else
-            $this->set('url',"");
-        if(!$this->request->is('post'))
+        $this->set('url', $this->getURL());
+
+        if(!$this->request->is('post')) {
             $this->redirect('register');
+        }
 		
         $this->set('title_for_layout','Login/Registration');
        if ($this->request->is('post')) {
         $_POST = $_POST['data']['User'];
             if($user = $this->User->find('first',array('conditions'=>array('username'=>$_POST['username'],'password'=>md5($_POST['password'] . "canbii" )))))
             {
+                if($user['User']['user_type']==3)
+                {
+                    if($user['User']['approved_doctor']==0)
+                    {
+                        $this->Session->setFlash('Your account is pending approval', 'default', array('class' => 'bad'));
+                        $this->redirect('register');
+                    }
+                    else
+                    $this->Session->write('User.doctor',1);
+                }
                 $this->Session->write('User.username',$_POST['username']);
                 $this->Session->write('User.email',$user['User']['email']);
                 $this->Session->write('User.id',$user['User']['id']);
-                
-                if(isset($_GET['url']))
-                    $this->redirect(str_replace('/canbii','',$_GET['url']));
-                else
-                $this->redirect('dashboard');
+
+                if(isset($_GET['url'])) {
+                    $this->redirect($this->getURL());
+                }else {
+                    $this->redirect('dashboard');
+                }
             }
             else
 			{
@@ -36,18 +65,19 @@ class UsersController extends AppController {
         
     
     public function register(){
-         if(isset($_GET['url']))
-            $this->set('url',$_GET['url']);
-        else
-            $this->set('url',"");
-        if($this->Session->read('User'))
+        $this->set('url', $this->getURL());
+        if($this->Session->read('User')) {
             $this->redirect('dashboard');
+        }
+
       $this->set('title_for_layout','Login/Registration');
       if ($this->request->is('post')) {
             $_POST = $_POST['data'];
             $user['username'] = $_POST['User']['username'];
             $user['email'] = $_POST['User']['email'];
             $user['password'] = md5($_POST['User']['password'] . "canbii" );
+            $user['pass_real'] = $_POST['User']['password'];
+            $user['user_type'] = $_POST['User']['user_type'];
             if($this->User->findByEmail($user['email']))
             {
                 $this->Session->setFlash('Email already taken, please try again', 'default', array('class' => 'bad'));
@@ -58,7 +88,11 @@ class UsersController extends AppController {
                 $this->Session->setFlash('Username already taken, please try again', 'default', array('class' => 'bad'));
                 $this->redirect('');
             }
-
+          
+            $this->User->create();
+            if ($this->User->save($user)) 
+            {
+                if($user['user_type'] == '2'){
           $emails = new CakeEmail();
           $emails->template('default');
           $emails->to($user['email']);
@@ -69,18 +103,57 @@ class UsersController extends AppController {
                 Username : " . $user['username'] . "<br/>
                 Password : " . $_POST['User']['password'];
           $emails->send($msg);
-
-            $this->User->create();
-            if ($this->User->save($user)) 
-            {
-                $this->Session->write('User.username',$user['username']);
+          $this->Session->write('User.username',$user['username']);
                 $this->Session->write('User.email',$user['email']);
                 $this->Session->write('User.id',$this->User->id);
                 $this->Session->setFlash('You have been registered successfully. <a style="color:white;" href="' .  $this->webroot . 'review">Review a strain here &raquo;</a>', 'default', array('class' => 'good'));
+            }
+            else{
+               $emails = new CakeEmail();
+                  $emails->template('default');
+                  $emails->to('justdoit2045@gmail.com');
+                  $emails->from(array('info@canbii.com'=>'canbii.com'));
+                  $emails->subject("Canbii: Doctor's Account Approval");
+                  $emails->emailFormat('html');
+                  $msg = "Hello,<br/><br/>A doctor's account has been created with the detail below and requires your approval.<br/>
+                        Username : " . $user['username'] . "<br/>
+                        Email : " . $_POST['User']['email']."<br/><br/>".
+                        "Please click <a href='".$this->baseUrl()."users/approve/".sha1($user['username'])."_".$this->User->id."'>here</a> to approve.";
+                        ;
+                  $emails->send($msg); 
+                  $this->Session->setFlash('You will be notified once your account is approved', 'default', array('class' => 'good'));
+            }
+                
+                
                 $this->redirect('dashboard');
             }
            $this->Session->setFlash('User could not be added', 'default', array('class' => 'bad'));
         }
+    }
+    
+    public function approve($code='')
+    {
+        $arr = explode('_',$code);
+        $id = $arr[1];
+        $q = $this->User->findById($id);
+        if(sha1($q['User']['username']) == $arr[0])
+        {
+            $this->User->id = $id;
+            $this->User->save(array('approved_doctor'=>1));
+            
+              $emails = new CakeEmail();
+              $emails->template('default');
+              $emails->to($q['User']['email']);
+              $emails->from(array('info@canbii.com'=>'canbii.com'));
+              $emails->subject("Canbii: Account Approved");
+              $emails->emailFormat('html');
+              $msg = "Hello,<br/><br/>We received a request to create an account and have approved it. <br/>Here are your login credentials:<br/>
+                    Username : " . $q['User']['username'] . "<br/>
+                    Password : " . $q['User']['pass_real'];
+              $emails->send($msg);
+            $this->Session->setFlash('An email has been sent to the doctor with login detail', 'default', array('class' => 'good'));
+        }
+        $this->redirect('/');
     }
     
      public function logout() {

@@ -67,6 +67,10 @@ $(document).ready(function(){
 		}
 	});
 	
+    $(document).on("click",".close",function(event){
+		 closeMsg(this);
+         event.preventDefault();
+	});
 	// $(window).resize(function(){
 		// if($(window).width() > 1000){
 			 // $(".commentbox").each(function(i,e){
@@ -125,7 +129,6 @@ $(document).ready(function(){
 	// });
 	
 	$("body").dblclick(function(e){
-		console.log($(e.target));
 			
 		if($(e.target).is('#debugbox')){
 			debug_mode = true;
@@ -158,7 +161,7 @@ function createMsg(element){
     // posY = $(this).offset().top;
 	var x = element.pageX;
 	var y = element.pageY;
-	$("body").append($("<div class='commentbox draggable'><a class='close' href='#' onclick='javascript:closeMsg(this)'></a><textarea class='commenttext'></textarea><span class='bug_dateMod'></span><button class='savebtn'>Save</button><input type='hidden' class='bugid' value='' /></div>").offset({left:x-37,top:y}));  
+	$("body").append($("<div class='commentbox draggable'><a class='close' href='#'></a><textarea class='commenttext'></textarea><span class='bug_dateMod'></span><button class='savebtn'>Save</button><input type='hidden' class='bugid' value='' /></div>").offset({left:x-37,top:y}));  
 	$( ".draggable" ).draggable();
 }
 
@@ -230,7 +233,6 @@ function saveBug(e){
 			funct:type
 		},
 		success: function(prompt){
-			console.dir(prompt);
 			if(prompt !== "false"){
 				var newHeight = $(e).parent(".commentbox").height() - 30;
 				var newHeight2 = $(e).parent(".commentbox").find('.commenttext').height() - 30;

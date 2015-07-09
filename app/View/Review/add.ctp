@@ -23,6 +23,13 @@
     #qf_review__aesthetics__flavor .review-slider {
         display: inline-block;
     }
+    .page_title{
+        white-space: pre-wrap;
+        white-space: -moz-pre-wrap;
+        white-space: -pre-wrap;
+        white-space: -o-pre-wrap;
+        word-wrap: break-word;
+    }
 </style>
 
 <?php
@@ -73,8 +80,8 @@
     })
 </script>
 <div class="page_layout page_margin_top clearfix">
-    <div class="page_header clearfix">
-        <div class="page_header_left">
+    <div class="page_header clearfix" style="white-space: nowrap;">
+        <div class="page_header_left" style="white-space: nowrap;">
 
             <?php
                 // unset($strain_hexagon);
@@ -98,17 +105,21 @@
 
                 }
                 include('combine/hexagon.php');
+                if ($this->params['action'] != 'add') {
+                    echo '</a>';
+
+                }
+
             ?>
 
 
 
             <?php if ($this->params['action'] == 'add') { ?>
 
-                <div style="float:left;margin-left:10px;">
+                <div style="white-space: nowrap;float:none;">
+                    <h1 class="page_title" style=" float:none !important;"><?= $strain_name ?> Review</h1>
 
-                    <h1 class="page_title" style=""><?= $strain_name ?> Review</h1>
-
-                    <p>
+                    <p style="white-space: nowrap;">
                         <?php
                             switch ($strain['Strain']['type_id']) {
                                 case 1:
@@ -127,13 +138,11 @@
 
             <?php } else { ?>
 
-                <div style="float:left;">
-                    <h1 class="page_title" style="">
+                <div style="white-space: nowrap;">
+                    <h1 class="" style="">
                         <?php echo ucfirst($review['Strain']['name']); ?> Review
                     </h1>
-                    </a>
-                    <p style="clear:both;">Reviewed
-                        by <?php echo $this->requestAction('/strains/getUserName/' . $review['Review']['user_id']); ?>
+                    <p style="white-space: nowrap;">By <?php echo $this->requestAction('/strains/getUserName/' . $review['Review']['user_id']); ?>
                         on <?php echo $review['Review']['on_date']; ?>
 
                     </p>
@@ -159,7 +168,7 @@
 
 
                     <a style="margin-right:10px;" title="Read more" href="<?php echo $this->webroot; ?>users/dashboard"
-                       class=" more large dark_blue icon_small_arrow margin_right_white">Dashboard</a>
+                       class=" more large dark_blue icon_small_arrow margin_right_white">My Account</a>
 
 
                     <a style="margin-right:10px;" title="Read more" href="<?php echo $this->webroot; ?>users/settings"
@@ -228,7 +237,7 @@
                         <?php if (isset($review) && $review['Review']['eff_strength'] == 0) {
                             echo "<strong>No Review</strong><br/>";
                         } elseif (isset($review)) {
-                            $strengths = array("Very weak", "Weak", "Average", "Strong", "Very Strong");
+                            $strengths = array("", "Very weak", "Weak", "Average", "Strong", "Very Strong");
                             progressbar($this->webroot, $review['Review']['eff_strength'], $strengths[$review['Review']['eff_strength']]);
                         } else {
                             ?>
@@ -281,6 +290,15 @@
 
 <span id="qf_review__effects__medical__inner">
 <?php
+    function findsymptom($symptoms, $ID, $Field = 'Symptom')
+    {
+        foreach ($symptoms as $symptom) {
+            if ($symptom[$Field]['id'] == $ID) {
+                return $symptom[$Field];
+            }
+        }
+    }
+
     if ($this->params['action'] == 'add') {
     foreach ($symptoms as $effect) {
         ?>
@@ -288,16 +306,15 @@
            onclick="($(this).hasClass('sel'))?$(this).removeClass('sel'):$(this).addClass('sel');"
            title="<?php echo $effect['Symptom']['id']; ?>"
            class="eff3 btn qf_review__effects__medical"><?php echo ucfirst($effect['Symptom']['title']); ?></a>
-    <?php
+        <?php
         }
-        }
-        else
-        {
+        }else {
         if (count($review['SymptomRating']) > 0){
 
         foreach ($review['SymptomRating'] as $effect){
         if (count($symptoms) > $effect['symptom_id'] - 1) {
-        progressbar($this->webroot, $effect['rate'], $symptoms[$effect['symptom_id'] - 1]['Symptom']['title'], "", "info", "light-blue");
+        $symptom = findsymptom($symptoms, $effect['symptom_id']);
+        progressbar($this->webroot, $effect['rate'], $symptom['title'], "", "info", "light-blue");
     ?>
 
         <!--div id="efft_<?php echo $effect['id']; ?>er" class="review-slider">
@@ -308,6 +325,8 @@
 
             <div class="clear"></div>
         </div-->
+
+
 
 
         <script>
@@ -337,7 +356,7 @@
 </span>
 
                         <div class="clear"></div>
-                        <div style="border-bottom: 1px solid #dadada;margin:10px 0;"></div>
+                        <!--div style="border-bottom: 1px solid #dadada;margin:10px 0;"></div>
 
                         <h3>
                             Positive Effects
@@ -347,32 +366,33 @@
 
 <span id="qf_review__effects__positive__inner">
 <?php
-    if ($this->params['action'] == 'add') {
-    foreach ($effects as $effect) {
-        ?> <a href="javascript:void(0);"
-              onclick="($(this).hasClass('sel'))?$(this).removeClass('sel'):$(this).addClass('sel')"
-              title="<?php echo $effect['Effect']['id']; ?>"
-              class="eff3 btn qf_review__effects__positive"><?php echo ucfirst($effect['Effect']['title']); ?></a>
-    <?php
-        }
-        }
-        else
-        {
-        $pos = array();
-        foreach ($effects as $e) {
-            array_push($pos, $e['Effect']['id']);
-        }
-        $cnt = 0;
-        foreach ($review['EffectRating'] as $effect) {
-            if (in_array($effect['effect_id'], $pos))
-                $cnt++;
-        }
-        if ($cnt > 0){
-        foreach ($review['EffectRating'] as $effect){
-        if (in_array($effect['effect_id'], $pos) and count($effects) > $effect['effect_id'] - 1){
+                            if ($this->params['action'] == 'add') {
+                                foreach ($effects as $effect) {
+                                    ?> <a href="javascript:void(0);"
+                  onclick="($(this).hasClass('sel'))?$(this).removeClass('sel'):$(this).addClass('sel')"
+                  title="<?php echo $effect['Effect']['id']; ?>"
+                  class="eff3 btn qf_review__effects__positive"><?php echo ucfirst($effect['Effect']['title']); ?></a>
+        <?php
+                                }
+                            }else{
 
-        progressbar($this->webroot, $effect['rate'], $effects[$effect['effect_id'] - 1]['Effect']['title'], "", "success", "light-green");
-    ?>
+                            $pos = array();
+                            foreach ($effects as $e) {
+                                array_push($pos, $e['Effect']['id']);
+                            }
+                            $cnt = 0;
+                            foreach ($review['EffectRating'] as $effect) {
+                                if (in_array($effect['effect_id'], $pos)) {
+                                    $cnt++;
+                                }
+                            }
+                            if ($cnt > 0){
+                            foreach ($review['EffectRating'] as $effect){
+                            if (in_array($effect['effect_id'], $pos) and count($effects) > $effect['effect_id'] - 1){
+                            $theeffect = findsymptom($effects, $effect['effect_id'], 'Effect');
+                           // progressbar($this->webroot, $effect['rate'], $theeffect['title'], "", "success", "light-green");
+                        ?>
+
 
         <!--div id="efft_<?php echo $effect['id'];?>pe" class="review-slider">
             <label><?php echo $effects[$effect['effect_id'] - 1]['Effect']['title'];?></label>
@@ -383,28 +403,28 @@
             <div class="clear"></div>
         </div-->
 
-        <script>
-            $('#<?php echo $effect['id'];?>pe').slider({
-                range: "min",
-                disabled: true,
-                value: <?php echo $effect['rate'];?>,
-                min: 0,
-                max: 5,
-                slide: function (event, ui) {
-                    $('#' + id + 'p').html('' + ui.value + '/5');
-                    $('#' + id + 'i').val(ui.value);
-                }
-            });
-        </script>
-    <?php }
-    }
-    }
-    else {
-        echo "<strong>No Review For Positive Effects</strong>";
-    }
-    }
-?>
-</span>
+                        <script>
+                            $('#<?php echo $effect['id'];?>pe').slider({
+                                range: "min",
+                                disabled: true,
+                                value: <?php echo $effect['rate'];?>,
+                                min: 0,
+                                max: 5,
+                                slide: function (event, ui) {
+                                    $('#' + id + 'p').html('' + ui.value + '/5');
+                                    $('#' + id + 'i').val(ui.value);
+                                }
+                            });
+                        </script>
+                        <?php }
+                            }
+                            }
+                            else {
+                                echo "<strong>No Review For Positive Effects</strong>";
+                            }
+                            }
+                        ?>
+                        </span-->
 
                         <div style="border-bottom: 1px solid #dadada;margin:10px 0;"></div>
 
@@ -423,11 +443,9 @@
               onclick="($(this).hasClass('sel'))?$(this).removeClass('sel'):$(this).addClass('sel')"
               title="<?php echo $effect['Effect']['id']; ?>"
               class="eff3 btn btn-info qf_review__effects__negative"><?php echo ucfirst($effect['Effect']['title']); ?></a>
-    <?php
+        <?php
         }
-        }
-        else
-        {
+        }else{
         $pos = array();
         foreach ($negative as $e) {
             array_push($pos, $e['Effect']['id']);
@@ -440,8 +458,8 @@
         if ($cnt > 0){
         foreach ($review['EffectRating'] as $effect){
         if (in_array($effect['effect_id'], $pos)){
-        progressbar($this->webroot, $effect['rate'], $effectz[$effect['effect_id'] - 1]['Effect']['title'], "", "danger", "light-red");
-
+        $theeffect = findsymptom($effectz, $effect['effect_id'], 'Effect');
+        progressbar($this->webroot, $effect['rate'], $theeffect['title'], "", "danger", "light-red");
     ?>
 
         <!--div id="efft_<?php echo $effect['id'];?>ne" class="review-slider">
@@ -452,6 +470,8 @@
 
             <div class="clear"></div>
         </div-->
+
+
 
         <script>
             $('#<?php echo $effect['id'];?>ne').slider({
@@ -480,7 +500,7 @@
                 </fieldset>
                 <?php */?>
 
-                <? if(false){?>
+
                 <fieldset id="qf_review__aesthetics" class="qf-fieldset">
 
                     <h2 class="slide page_margin_top">
@@ -488,14 +508,14 @@
                     </h2>
 
                     <div class="backgroundcolor">
+                        <? if (false) { ?>
+                            <h3>
+                                Color
+                            </h3>
 
-                        <h3>
-                            Color
-                        </h3>
+                            <p>What color(s) stand out in this bud?</p>
 
-                        <p>What color(s) stand out in this bud?</p>
-
-<span id="qf_review__aesthetics__color__inner">
+                            <span id="qf_review__aesthetics__color__inner">
 
 <?php
     if ($this->params['action'] == 'add') {
@@ -529,9 +549,11 @@
     }
 ?>
 </span>
+                            <div class="clear"></div>
+                            <div style="border-bottom: 1px solid #dadada;margin:10px 0;"></div>
 
-                        <div class="clear"></div>
-                        <div style="border-bottom: 1px solid #dadada;margin:10px 0;"></div>
+
+                        <? } ?>
 
                         <h3>
                             Flavor & Scent
@@ -569,7 +591,6 @@
 
                 </fieldset>
 
-                <? } ?>
                 <h2 class="slide page_margin_top">
                     Rating & Comment <?php if ($this->params['action'] == 'add') echo '(Required)'; ?>
                 </h2>
@@ -590,7 +611,7 @@
 
                     <div class="qf-slider-bar" score="4" id="qf_review__other__overall__slider"></div>
 
-                    <h3 class="page_margin_top">Final Thoughts</h3>
+                    <h3 class="page_margin_top">Comments</h3>
                     <?php
                         if (isset($_GET["review"])) {
                             $score = getdata($editreview, 'rate');
@@ -610,7 +631,7 @@
                         } else {
                             ?>
                             <br/>
-                            <em><?php echo $review['Review']['review']; ?></em>
+                            <?php echo $review['Review']['review']; ?>
                         <?php
                         }
                     ?>
@@ -634,6 +655,8 @@
             <?
                 $breaker = 0;
                 if (isset($strain)) {
+
+                    ECHO "<h2>Strain Images</h2>";
                     include('combine/images.php');
                     /*
                     for ($i = 1; $i < 5; $i++) {
@@ -690,15 +713,27 @@
                 ?>
 
             <?php
-            } elseif ($this->Session->read('User')['id'] <> $review['Review']['user_id']) {
+            } elseif ($this->Session->read('User')['id'] == $review['Review']['user_id']) {//http://localhost/marijuana/
+                ?>
+
+            <div class="clearfix"></div>
+            <div class="vote" style="position:fixed;bottom: 0;right:0;background:#e5e5e5;padding:20px;z-index:100000;" align="center">
+            <strong>Would you like to delete this review?</strong><br/><br/>
+                <a href="<?php echo $this->webroot;?>review/all?delete=<?= $review['Review']['id']; ?>"
+                   class="btns yes"
+                   onclick="return confirm('Are you sure you want to delete your review?');"
+                   style="background-color: #40b2e2; padding-left:6px; padding-right:6px; padding-top: 5px; padding-bottom: 5px; margin-right:5px"><strong
+                        style="color: white">YES</strong></a>
+
+                <?php
+            } else {
                 ?>
                 <div class="clearfix"></div>
-                <div class="vote"
-                     style="position:fixed;bottom: 0;right:0;background:#e5e5e5;padding:20px;z-index:100000;">
+                <div class="vote" style="position:fixed;bottom: 0;right:0;background:#e5e5e5;padding:20px;z-index:100000;">
                     <?php
                         $ip = $_SERVER['REMOTE_ADDR'];
                         $rand1 = rand(100, 999);
-                        $rand2 = rand(100, 999);
+                        //$rand2 = rand(100, 999);
                         $q5 = $vip->find('first', array('conditions' => array('review_id' => $review['Review']['id'], 'ip' => $ip)));
 
                         if ($q5) {
@@ -722,16 +757,18 @@
                                style="background-color: #1e84c6; padding-left:10px; padding-right:10px; padding-top: 5px; padding-bottom: 5px; margin-right:5px"><strong
                                     style="color: white">NO<?php if ($review['Review']['not_helpful']) { ?> (<?php echo $review['Review']['not_helpful']; ?>)<?php } ?></strong></a>
                         <?php }else{
+                            $lightcolor = ':#CCC;';
+                            $darkcolor = ':#aaa;';
                             if ($yes == 1) {
                                 $y1 = 'padding-left:10px; padding-right:10px; padding-top: 5px; padding-bottom: 5px; margin-right:5px;background:#e5e5e5;cursor:default;';
-                                $y2 = 'color:#fff';
-                                $n1 = 'background:#FFF;color:#CCC;cursor: default;padding:4px 7px;';
-                                $n2 = 'color:#CCC;';
+                                $y2 = 'color' . $darkcolor;//'color:#fff';
+                                $n1 = 'background' . $darkcolor . 'color' . $lightcolor . 'cursor: default;padding:4px 7px;';
+                                $n2 = 'color' . $lightcolor;//:#CCC;';
                             } else {
-                                $y1 = 'background:#FFF;color:#CCC;cursor: default;padding:4px 7px;';
-                                $y2 = 'color:#CCC;';
+                                $y1 = 'background' . $darkcolor . 'color' . $lightcolor . 'cursor: default;padding:4px 7px;';
+                                $y2 = 'color' . $lightcolor;//:#CCC;';
                                 $n1 = 'padding-left:10px; padding-right:10px; padding-top: 5px; padding-bottom: 5px; margin-right:5px;background:#e5e5e5;cursor:default;';
-                                $n2 = 'color:#fff';
+                                $n2 = 'color' . $darkcolor;//'color:#fff';
                             }
                         ?>
                         <a href="javascript:void(0);" id="" class="faded" style="<?php echo $y1; ?>">
