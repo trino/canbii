@@ -226,11 +226,7 @@
                    style="float: right; width: 40%;" onclick="window.location='<?php echo $this->webroot;?>strains/all';"/>
             <ul>
 
-<<<<<<< HEAD
-                <!--<li class="home_box light_blue animated_element animation-fadeIn duration-500" style="z-index: 3;">
-=======
                 <!--li class="home_box light_blue animated_element animation-fadeIn duration-500" style="z-index: 3;">
->>>>>>> f26778815442bee13a79311d72d3d3e830558c5d
                     <h2>
                         Filter by Effects
                     </h2>
@@ -253,13 +249,8 @@
                         </div>
 
                     </div>
-<<<<<<< HEAD
-                </li>-->
-                <li class="home_box blue animated_element animation-slideDown duration-800 delay-250"
-=======
                 </li-->
                 <li class="home_box blue "
->>>>>>> f26778815442bee13a79311d72d3d3e830558c5d
                     style="z-index: 2;">
                     <h2>
                         FILTER BY SYMPTOMS

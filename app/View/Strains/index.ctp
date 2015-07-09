@@ -286,110 +286,13 @@
         <div style="float:right;"class="addthis_sharing_toolbox"></div>
         <div style="float:right;">
             Share
-<<<<<<< HEAD
-        </div-->
-    </h2>
-
-
-    <ul class="columns full_width clearfix">
-        <!--<li class="column_right">
-
-
-            <div class="">
-
-                <h3>Effects:</h3>
-                <br>
-
-                <?php
-                    $p_filter = 0;
-                    if (isset($arr_filter)) {
-                        foreach ($arr_filter as $filterwith) {
-                            if (isset($_GET[$filterwith])) {
-                                $p_filter = 1;
-                            }
-                        }
-                    }
-                    if (!$p_filter) {
-                        foreach ($strain['OverallEffectRating'] as $oer) {
-                            if ($this->requestAction('/strains/getPosEff/' . $oer['effect_id']))
-                                $arr[] = $oer['rate'] . '_' . $oer['effect_id'];
-                            else
-                                $arr_neg[] = $oer['rate'] . '_' . $oer['effect_id'];
-                        }
-                    } else {
-                        $effect_rate = $this->requestAction('/strains/getEffectRate/' . urlencode($profile_filter) . '/' . $strain['Strain']['id']);
-                        //var_dump($effect_rate);
-                        $cnt = 0;
-                        $eff_id = 0;
-                        $total_rate = 0;
-                        foreach ($effect_rate as $er) {
-
-                            $cnt++;
-                            if ($eff_id != $er['Effect_rating']['effect_id']) {
-
-                                if ($cnt != 1) {
-                                    $tots = $total_rate;
-                                    $total_rate = $er['Effect_rating']['rate'];
-
-                                    $avg_rate = $tots / ($cnt - 1);
-                                    $cnt = 0;
-                                    if ($this->requestAction('/strains/getPosEff/' . $er['Effect_rating']['effect_id']))
-                                        $arr[] = $avg_rate . '_' . $eff_id;
-                                    else
-                                        $arr_neg[] = $avg_rate . '_' . $eff_id;
-                                    $total_rate = 0;
-                                } else {
-                                    $total_rate = $er['Effect_rating']['rate'];
-                                }
-
-                            } else {
-                                $total_rate = $total_rate + $er['Effect_rating']['rate'];
-                            }
-                            $eff_id = $er['Effect_rating']['effect_id'];
-
-                        }
-
-                        //die('here');
-                    }
-                    //die('there');
-                    if (isset($arr))
-                        rsort($arr);
-                    else
-                        $arr = array();
-                    $i = 0;
-                    if ($arr) {
-                    foreach ($arr as $e) {
-                    $ar = explode('_', $e);
-                    $i++;
-                    if ($i == 6)
-                        break;
-                    $rate = $ar[0];
-                    $length = 20 * $rate;;
-                ?>
-                <div class="eff">
-                    <div class="label left"
-                         style="position: relative; top: 50%; transform: translateY(20%);"><?php echo $this->requestAction('/strains/getEffect/' . $ar[1]); ?>
-                        <?php progressbar($this->webroot, $length, perc($length), "", "success", "light-green"); ?>
-
-
-                    </div>
-                    <?php
-                        }
-                        } else {
-                        ?>
-=======
         </div>
     </h2-->
->>>>>>> f26778815442bee13a79311d72d3d3e830558c5d
 
 
     <ul class="columns full_width clearfix page_margin_top">
 
 
-<<<<<<< HEAD
-        </li>-->
-=======
->>>>>>> f26778815442bee13a79311d72d3d3e830558c5d
         <li class="column_left">
 
             <div class="">
@@ -481,51 +384,6 @@
                 <div class="clearfix"></div>
 
 
-<<<<<<< HEAD
-        </li>
-    </ul>
-    <ul class="columns full_width page_margin_top clearfix">
-        <!--<li class="column_left">
-            <div class="">
-                <h3>Negative Effects:</h3>
-                <br>
-                <?php
-                    if (isset($arr_neg))
-                        rsort($arr_neg);
-                    else
-                        $arr_neg = array();
-                    $i = 0;
-                    if ($arr_neg) {
-                    foreach ($arr_neg as $e) {
-                    $ar = explode('_', $e);
-                    $i++;
-                    if ($i == 6)
-                        break;
-                    $rate = $ar[0];
-                    $length = 20 * $rate;
-                ?>
-                <div class="eff">
-                    <div
-                        class="label left"
-                        style="position: relative; top: 50%; transform: translateY(20%);"><?php echo $this->requestAction('/strains/getEffect/' . $ar[1]); ?>
-                        <?php progressbar($this->webroot, $length, perc($length), "", "danger", "light-red"); ?>
-                    </div>
-                    <?php
-                        }
-                        } else {
-                        ?>
-                        <i>  <a href="<?php echo $this->webroot; ?>review/add/<?php echo $strain['Strain']['slug']; ?>"> No ratings yet. Review this
-                                strain <i style="font-size: 16px;padding-left:6px;"
-                                          class="fa fa-star-half-full"></i></a></i>
-                    <?php
-                    }
-                    ?>
-                </div>
-
-
-        </li>-->
-        <li class="column_left">
-=======
 
 
 
@@ -533,7 +391,6 @@
 
 
         <li class="column_right">
->>>>>>> f26778815442bee13a79311d72d3d3e830558c5d
 
 
             <div class="">
