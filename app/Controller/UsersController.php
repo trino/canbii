@@ -44,9 +44,12 @@ class UsersController extends AppController {
                     else
                     $this->Session->write('User.doctor',1);
                 }
+                elseif($user['User']['user_type']=='2')
+                    $this->Session->write('User.strain',$user['User']['strain']);
                 $this->Session->write('User.username',$_POST['username']);
                 $this->Session->write('User.email',$user['User']['email']);
                 $this->Session->write('User.id',$user['User']['id']);
+                $this->Session->write('User.type',$user['User']['user_type']);
 
                 if(isset($_GET['url'])) {
                     $this->redirect($this->getURL());
@@ -311,6 +314,94 @@ class UsersController extends AppController {
                 $this->Session->setFlash('A test email has been sent', 'default', array('class' => 'good'));
                 $this->redirect('forgot');
             }
+        }
+    }
+    
+    function addPatient()
+    {
+        $this->checkSess();
+        $this->checkDoc();
+        $this->loadModel('Strain');
+        $strains = $this->Strain->find('all',array('order'=>'Strain.id'));
+        $this->set('strains', $strains);
+        $this->set('title_for_layout','Add Patient');
+      if ($this->request->is('post')) {
+            $_POST = $_POST['data'];
+            $user['username'] = $_POST['User']['username'];
+            $user['email'] = $_POST['User']['email'];
+            $user['password'] = md5($_POST['User']['password'] . "canbii" );
+            $user['pass_real'] = $_POST['User']['password'];
+            $user['strain'] = $_POST['User']['strain'];
+            $user['doctor_id'] = $this->Session->read('User.id');
+            $user['user_type'] = '2';
+            if($this->User->findByEmail($user['email']))
+            {
+                $this->Session->setFlash('Email already registered, please try again', 'default', array('class' => 'bad'));
+                $this->redirect('');
+            }
+            if($this->User->findByUsername($user['username']))
+            {
+                $this->Session->setFlash('Username already registered, please try again', 'default', array('class' => 'bad'));
+                $this->redirect('');
+            }
+          
+            $this->User->create();
+            if ($this->User->save($user)) 
+            {
+                if($user['user_type'] == '2'){
+                  $emails = new CakeEmail();
+                  $emails->template('default');
+                  $emails->to($user['email']);
+                  $emails->from(array('info@canbii.com'=>'canbii.com'));
+                  $emails->subject("Canbii: User Registration");
+                  $emails->emailFormat('html');
+                  $msg = "Hello,<br/><br/>We received a request to create an account. <br/>Here are your login credentials:<br/>
+                        Username : " . $user['username'] . "<br/>
+                        Password : " . $_POST['User']['password'];
+                  $emails->send($msg);
+                  
+                $this->Session->setFlash('Your Patient has been registered successfully.', 'default', array('class' => 'good'));
+            }
+            /*
+            else{
+               $emails = new CakeEmail();
+                  $emails->template('default');
+                  $emails->to('justdoit2045@gmail.com');
+                  $emails->from(array('info@canbii.com'=>'canbii.com'));
+                  $emails->subject("Canbii: Doctor's Account Approval");
+                  $emails->emailFormat('html');
+                  $msg = "Hello,<br/><br/>A doctor's account has been created with the detail below and requires your approval.<br/>
+                        Username : " . $user['username'] . "<br/>
+                        Email : " . $_POST['User']['email']."<br/><br/>".
+                        "Please click <a href='".$this->baseUrl()."users/approve/".sha1($user['username'])."_".$this->User->id."'>here</a> to approve.";
+                        ;
+                  $emails->send($msg); 
+                  $this->Session->setFlash('You will be notified once your account is approved', 'default', array('class' => 'good'));
+            }*/
+                
+                
+                $this->redirect('dashboard');
+            }
+           $this->Session->setFlash('Patient could not be added', 'default', array('class' => 'bad'));
+        }
+        
+    }
+    
+    function checkSess(){
+        if(!$this->Session->read('User'))
+        {
+            $url = $this->here;
+            $this->Session->setFlash('Please log in or register to add a review','default',array('class'=>'bad'));
+            $this->redirect('/users/register?url='.$url);
+        }
+    }
+    
+    function checkDoc(){
+        if(!$this->Session->read('User.doctor'))
+        {
+            $url = $this->here;
+            $this->Session->setFlash('Only Doctors can add patient.','default',array('class'=>'bad'));
+            $this->redirect('/users/dashboard');
         }
     }
     

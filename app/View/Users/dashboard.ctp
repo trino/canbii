@@ -11,6 +11,7 @@
         $symptoms = $user['User']['symptoms'];
         $card_id = $user['User']['card_id'];
         $country = $user['User']['country'];
+        $strain = $user['User']['strain'];
     } else {
         $nationality = "";
         $gender = '';
@@ -23,6 +24,7 @@
         $symptoms = "";
         $card_id = "";
         $country = "";
+        $strain ='';
     }
     ?>
 <div class="page_layout page_margin_top clearfix">
@@ -60,10 +62,17 @@
             else
             {
                 ?>
-                <a style="margin-right:10px;" title="Read more" href="<?php echo $this->webroot; ?>review"
-               class="more large dark_blue icon_small_arrow margin_right_white  ">Add Review</a>
-            <a style="" title="Read more" href="<?php echo $this->webroot; ?>review/all"
-               class="more large dark_blue icon_small_arrow margin_right_white">My Reviews</a>
+                <?php if(!$this->Session->read('User.doctor')){
+                        if($this->Session->read('User.type')=='2'){?>
+                            <a style="margin-right:10px;" title="Read more" href="<?php echo $this->webroot; ?>review/add/<?php echo $this->Session->read('User.strain');?>"
+                               class="more large dark_blue icon_small_arrow margin_right_white  ">Add Review</a>
+                    <?php }else{?>
+                            <a style="margin-right:10px;" title="Read more" href="<?php echo $this->webroot; ?>review"
+                               class="more large dark_blue icon_small_arrow margin_right_white  ">Add Review</a>
+                    <?php }
+                    }?>
+                <a style="" title="Read more" href="<?php echo $this->webroot; ?>review/all"
+                   class="more large dark_blue icon_small_arrow margin_right_white">My Reviews</a>
                 <?php
             }
             ?>
@@ -99,6 +108,15 @@ if($this->Session->read('User.doctor'))
                class="more dark_blue icon_small_arrow margin_right_white  "><h1 style="padding:20px;color:white;">Add A Patient</h1></a>
 
     <?php
+}
+elseif($this->Session->read('User.type')=='2')
+{
+   ?>
+    <h3>The more we know, the more we can help.</h3>
+            <a style="width:100%;padding:0px;" title="Add A Review" href="<?php echo $this->webroot; ?>review/add/<?php echo $strain;?>"
+               class="more dark_blue icon_small_arrow margin_right_white  "><h1 style="padding:20px;color:white;">Add A Review</h1></a>
+
+    <?php 
 }
 else
 {

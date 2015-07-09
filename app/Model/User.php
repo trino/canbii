@@ -57,6 +57,12 @@ class User extends AppModel {
         'rule'    => array('checkEmail'),
         'message' => 'Not a valid email address.' 
         ),
+        'strain_id' => array(
+            'notEmpty'=>array(
+                'rule'=>array('notEmpty'),
+            ),
+        ),
+        
 	2);
 
 function equaltofield($check,$otherfield)

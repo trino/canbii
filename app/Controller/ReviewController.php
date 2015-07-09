@@ -13,6 +13,14 @@
                 $this->redirect('/users/register?url='.$url);
             }
         }
+        function checkDoc(){
+            if($this->Session->read('User.doctor'))
+            {
+                //$url = $this->here;
+                $this->Session->setFlash('Only patient can submit review.','default',array('class'=>'bad'));
+                $this->redirect('/users/dashboard');
+            }
+        }
         function showAll($offset=0)
         {
             
@@ -132,16 +140,24 @@
                     $this->redirect("index/" . $slug);
                 }
             }
+
+            if($this->Session->read('User.type')=='2')
+                $this->redirect('add/'.$this->Session->read('User.strain'));
+               
+                   
         }
 
         function add($slug){
             $this->checkSess();
+            $this->checkDoc();
             $this->loadModel('Effect');
             $this->loadModel("Strain");
             $this->loadModel("Colour");
             $this->loadModel("Flavor");
             $this->loadModel('EffectRating');
             $this->loadModel('SymptomRating');
+            
+            
             $this->loadModel('ColourRating');
             $this->loadModel('FlavorRating');
             $this->loadModel('ReviewColor');

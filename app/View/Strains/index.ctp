@@ -150,10 +150,11 @@
         </div>
         <div class="page_header_right noprint">
 
-
+            <?php if(!$this->Session->read('User.doctor')&&($this->Session->read('User.type')==2 &&$this->Session->read('User.strain')==$strain['Strain']['slug'])){?>
             <a class="dark_blue more" style="margin-right: 10px;margin-top:10px;"
                href="<?php echo $this->webroot; ?>review/add/<?php echo $strain['Strain']['slug']; ?>">Review this
                 Strain</a>
+                <?php }?>
             <a class="blue more" style="margin-top:10px;" href="javascript:void(0)" onclick="window.print();">Print this
                 Report</a>
             <!--<a style="" class="blue more" href="<?php echo $this->webroot;?>strains/generateImage/<?php echo $strain['Strain']['slug']; ?>">Print as Image</a>-->

@@ -173,10 +173,15 @@
 
                     <a style="margin-right:10px;" title="Read more" href="<?php echo $this->webroot; ?>users/settings"
                        class="more large dark_blue icon_small_arrow margin_right_white">Settings</a>
-
-                    <a style="margin-right:10px;" title="Read more" href="<?php echo $this->webroot; ?>review"
-                       class="more large dark_blue icon_small_arrow margin_right_white  active">Add Review</a>
-
+                    <?php if(!$this->Session->read('User.doctor')){
+                        if($this->Session->read('User.type')=='2'){?>
+                            <a style="margin-right:10px;" title="Read more" href="<?php echo $this->webroot; ?>review/add/<?php echo $this->Session->read('User.strain');?>"
+                               class="more large dark_blue icon_small_arrow margin_right_white  active">Add Review</a>
+                    <?php }else{?>
+                            <a style="margin-right:10px;" title="Read more" href="<?php echo $this->webroot; ?>review"
+                               class="more large dark_blue icon_small_arrow margin_right_white  active">Add Review</a>
+                    <?php }
+                    }?>
 
                     <a title="Read more" href="<?php echo $this->webroot; ?>review/all"
                        class="more large dark_blue icon_small_arrow margin_right_white  ">My Reviews</a>
