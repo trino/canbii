@@ -148,7 +148,7 @@
 
 
         </div>
-        <div class="page_header_right noprint">
+        <div class="page_header_right">
 
             <?php if(!$this->Session->read('User.doctor')&&($this->Session->read('User.type')==2 &&$this->Session->read('User.strain')==$strain['Strain']['slug'])){?>
             <a class="dark_blue more" style="margin-right: 10px;margin-top:10px;"
@@ -157,6 +157,7 @@
                 <?php }?>
             <a class="blue more" style="margin-top:10px;" href="javascript:void(0)" onclick="window.print();">Print this
                 Report</a>
+            <img height="50" alt="logo" style="margin-top:10px;display:none;" src="<?php echo $this->webroot;?>images/logo.png" class="toprint" />
             <!--<a style="" class="blue more" href="<?php echo $this->webroot;?>strains/generateImage/<?php echo $strain['Strain']['slug']; ?>">Print as Image</a>-->
             <!--a style="margin-left: 10px;margin-top:10px;"  class="dark_blue more" href="javascript:void(0)" onclick="save();">Save Report</a-->
 
@@ -1031,6 +1032,7 @@
 
 <style>
 .page_header{padding-bottom:10px!important;}
+    
     .eff .left {
         position: relative;
     }
@@ -1062,6 +1064,9 @@
     }
 
     @media print {
+        .page_layout{font-size:15px!important;}
+        .page_header_right a{display:none;}
+        .toprint{display: block!important;}
         .noprint {
             display: none;
         }
