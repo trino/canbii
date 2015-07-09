@@ -1,6 +1,5 @@
 <?php
-
-    if (isset($user)) {
+ if (isset($user)) {
         $nationality = $user['User']['nationality'];
         $gender = $user['User']['gender'];
         $age_group = $user['User']['age_group'];
@@ -25,8 +24,7 @@
         $card_id = "";
         $country = "";
     }
-
-?>
+    ?>
 <div class="page_layout page_margin_top clearfix">
     <div class="page_header clearfix">
         <div class="page_header_left">
@@ -45,7 +43,7 @@
                 </li>
             </ul>
         </div>
-        <div class="page_header_right"><!-- float:right;-->
+        <div class="page_header_right">
             <a style="margin-right:10px;" title="Read more" href="<?php echo $this->webroot; ?>users/dashboard"
                class="active more large dark_blue icon_small_arrow margin_right_white dashboarditem">My Account</a>
             <a style="margin-right:10px;" title="Read more" href="<?php echo $this->webroot; ?>users/settings"
@@ -71,7 +69,6 @@
             ?>
             
         </div>
-
         <div class="clearfix">
         </div>
 
@@ -91,8 +88,7 @@
 
             </div>
 
-            <div class="page_right page_margin_top"
-            ">
+            <div class="page_right page_margin_top">
 
 <?php
 if($this->Session->read('User.doctor'))
@@ -114,39 +110,6 @@ else
     <?php
 }
 ?>
-
-
-
-
-            <!--div id="dashboard_symptom" style="background:#42B3E5; padding:15px;">
-                <p id="P_5">
-                    <?php
-                        $effect = $this->requestAction('/pages/getSym');
-                        $symp = explode(',', $symptoms);
-                        foreach ($effect as $e) {
-                            ?>
-                            <a class="A_6 <?php if (in_array($e['Symptom']['id'], $symp)) { ?>searchact<?php } ?>"
-                               style="font-size: 15px;" href="javascript:void(0)" onclick="highlightsym($(this))" class=""
-                               id="sym_<?php echo $e['Symptom']['id']; ?>"><?php echo $e['Symptom']['title'] ?></a>
-                        <?php
-                        } ?>
-                </p>
-
-                <p style="display: none;" class="symp">
-                    <?php
-                        if ($symp) {
-                            foreach ($symp as $sy) {
-                                ?>
-                                <input class="sym_<?php echo $sy; ?>" type="hidden" value="<?php echo $sy; ?>"
-                                       name="symptoms[]">
-                            <?php
-                            }
-                        } ?>
-                </p>
-
-                <div class="clearfix"></div>
-            </div-->
-
 
         </form>
 

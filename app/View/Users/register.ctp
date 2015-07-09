@@ -32,9 +32,7 @@
             </ul>
         </div>
         <div class="page_header_right">
-            <!--form class="search">
-                <input class="search_input hint" type="text" value="To search type and hit enter..." placeholder="To search type and hit enter...">
-            </form-->
+            
         </div>
     </div>
 
@@ -64,21 +62,7 @@
 
                         </div>
                     </li>
-                    <!--li class="home_box blue animated_element animation-slideDown duration-800 delay-250 slideDown"
-                        style="z-index: 2; -webkit-animation: 800ms 250ms; transition: 250ms; -webkit-transition: 250ms;">
-                        <h2>
-                            Why Sign Up?
-                        </h2>
-
-                        <div class="news clearfix"><p></p>
-
-                            <p class="text" align="">
-                                Here at medicenter we have individual doctor's lists. Click read more below to see
-                                services and current timetable for our doctors.
-                            </p>
-
-                        </div>
-                    </li-->
+                    
 
                 </ul>
 
