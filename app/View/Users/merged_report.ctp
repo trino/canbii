@@ -58,35 +58,21 @@
 
 <div class="page_left">
 
+<h2>View Report for</h2>
 
-
-
-
-<form class="contact_form" id="myform" action="" method="post" >
-<fieldset class="left">
-	<label>Username</label>
-	<div class="block">
-		<input class="text_input" type="text" name="username" value="<?php echo $user['User']['username'];?>">
-	</div>
-	<label>Email</label>
-	<div class="block">
-		<input class="text_input" name="email" id="email" value="<?php echo $user['User']['email'];?>" type="text" >
-	</div>
-		<label>Old Password</label>
-	<div class="block">
-		<input class="text_input required"  type="password" name="old_password" id="old_password" >
-	</div>
-	<label>New Password</label>
-	<div class="block">
-		<input class="text_input"  type="password" id="passw" name="password">
-	</div>
-	<label>New Password Again</label>
-	<div class="block">
-		<input class="text_input" type="password" id="npassw" name="npassword">
-	</div>
-	<input type="submit" name="submit" value="Save" class="more blue">
-</fieldset>
-</form>
+<?php
+foreach($model as $q)
+{
+    $strain = $this->requestAction('/strains/getStrain/'.$q['DoctorStrain']['strain_id']);
+    ?>
+    <p style="width: 30%;float: left;">
+    <a href="#" class="more blue"><?php echo $strain['Strain']['name'];?></a>
+    
+    </p>
+    
+    <?php
+}
+?><div class="clearfix"></div>
 
 
 		</div>
@@ -111,48 +97,5 @@
 	</div>
 
 </div>
-
-
-<script>
-$(function(){
-   $('#passw').val('');
-   $('#old_password').val('');
-   $('#myform').validate({
-    rules:{
-     npassword:{
-        equalTo:'#passw'
-     }   
-    },
-    messages:{
-        npassword:{
-            equalTo:'Please enter same password'
-        }
-    }
-   });
-   /*
-   $('#old_password').keyup(function(){
-    if($(this).val() == '')
-    {
-        $('#passw').removeClass('required');
-    }
-    else
-    {
-        if($('#passw').attr('class').replace('required','') == $('#passw').attr('class'))
-        $('#passw').addClass('required');
-    }
-    
-   });*/  
-   $('#old_password').change(function(){
-    if($(this).val() == '')
-    {
-        $('#passw').removeClass('required');
-    }    
-   });
-   $('#passw').change(function(){
-    $('#passw').removeClass('error');
-   });
-   
-});
-</script>
 
 

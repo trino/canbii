@@ -1200,6 +1200,11 @@ class StrainsController extends AppController
         }
         return implode(",", array_keys($SymptomList));
     }
+    function getStrain($id)
+    {
+        return $this->Strain->findById($id);
+    }
+    
     /*function generateImage($slug)
     {
         if($_SERVER['SERVER_NAME']=='localhost')

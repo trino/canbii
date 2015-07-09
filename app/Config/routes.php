@@ -48,6 +48,7 @@
     Router::connect('/strains/filter/*', array('controller' => 'strains', 'action' => 'filter'));
     Router::connect('/strains/getEffectRate/*', array('controller' => 'strains', 'action' => 'getEffectRate'));
     Router::connect('/strains/getSymptomRate/*', array('controller' => 'strains', 'action' => 'getSymptomRate'));
+    Router::connect('/strains/getStrain/*', array('controller' => 'strains', 'action' => 'getStrain'));
     //Router::connect('/strains/generateImage/*', array('controller' => 'strains', 'action' => 'generateImage'));
     Router::connect('/strains/getEffectReview/*', array('controller' => 'strains', 'action' => 'getEffectReview'));
 	Router::connect('/strains/*', array('controller' => 'strains', 'action' => 'index'));

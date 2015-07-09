@@ -55,7 +55,7 @@
                ?>
                <a style="margin-right:10px;" title="Read more" href="<?php echo $this->webroot; ?>users/myPatients"
                class="more large dark_blue icon_small_arrow margin_right_white  ">My Patients</a>
-                <a style="" title="Read more" href="<?php echo $this->webroot; ?>strains/<?php echo $this->Session->read('User.id');?>/mergedReport"
+                <a style="" title="Read more" href="<?php echo $this->webroot; ?>users/mergedReport/<?php echo $this->Session->read('User.id');?>"
                class="more large dark_blue icon_small_arrow margin_right_white">Merged Report</a>
                <?php 
             }

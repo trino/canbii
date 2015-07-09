@@ -355,12 +355,25 @@ class UsersController extends AppController {
                   $emails->from(array('info@canbii.com'=>'canbii.com'));
                   $emails->subject("Canbii: User Registration");
                   $emails->emailFormat('html');
-                  $msg = "Hello,<br/><br/>We received a request to create an account. <br/>Here are your login credentials:<br/>
+                  $msg = "Hello,<br/><br/>A new account has been created for you by your doctor in Canbii.com. <br/>Here are your login credentials:<br/>
                         Username : " . $user['username'] . "<br/>
                         Password : " . $_POST['User']['password'];
                   $emails->send($msg);
                   
                 $this->Session->setFlash('Your Patient has been registered successfully.', 'default', array('class' => 'good'));
+                
+                $this->loadModel('DoctorStrain');
+                $arr['doctor_id'] = $user['doctor_id'];
+                $arr['user_id'] = $this->User->id;
+                $this->loadModel('Strain');
+                if(!is_numeric($user['strain'])){
+                $qq = $this->Strain->findBySlug($user['strain']);
+                $arr['strain_id'] = $qq['Strain']['id'];
+                }
+                else
+                $arr['strain_id'] = $user['strain'];
+                $this->DoctorStrain->create();
+                $this->DoctorStrain->save($arr);
             }
             /*
             else{
@@ -403,6 +416,13 @@ class UsersController extends AppController {
             $this->Session->setFlash('Only Doctors can add patient.','default',array('class'=>'bad'));
             $this->redirect('/users/dashboard');
         }
+        
+    }
+    function mergedReport($doctor)
+    {
+        $this->loadModel('DoctorStrain');
+        $q = $this->DoctorStrain->find('all',array('conditions'=>array('doctor_id'=>$doctor)));
+        $this->set('model',$q);
     }
     
     
