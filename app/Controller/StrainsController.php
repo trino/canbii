@@ -368,9 +368,9 @@ class StrainsController extends AppController
         $this->set('type', $type);
         $this->set('limit', $limit);
         
-
-        $this->set('strain', $this->Strain->find('all', array('order' => 'Strain.viewed DESC ,Strain.id DESC')));
-        $this->set('strains', $this->Strain->find('count'));
+        $this->Strain->unbindModel(array('hasMany'=>array('OverallEffectRating','OverallSymptomRating','Flavorstrain','Review','StrainImage')));
+        $this->set('strain', $this->Strain->find('all', array('order' => 'Strain.id')));
+        //$this->set('strains', $this->Strain->find('count'));
 
     }
 

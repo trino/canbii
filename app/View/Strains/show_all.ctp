@@ -3,33 +3,7 @@
 <link href="<?php echo $this->webroot; ?>css/raty.css" rel="stylesheet" type="text/css"/>
 
 <?php
-    //if(isset($user))    {
-    //debug($user);
-    //  $nationality = $user['User']['nationality'];
-    //    $gender = $user['User']['gender'];
-    //    $age_group = $user['User']['age_group'];
-    //    $health = $user['User']['health'];
-    ////    $weight = $user['User']['weight'];
-    //    $exp = $user['User']['years_of_experience'];
-    //    $frequency = $user['User']['frequency'];
-    //    $body_type = $user['User']['body_type'];
-    //    $symptoms = $user['User']['symptoms'];
-    //    $card_id = $user['User']['card_id'];
-    //    $country = $user['User']['country'];
-    //} else    {
-    //    $nationality = "";
-    //  $gender = '';
-    //  $age_group = "";
-    // $health = "";
-    // $weight = "";
-    //    $exp = "";
-    //    $frequency = "";
-    ////    $body_type = "";
-    //    $symptoms = "";
-    //    $card_id = "";
-    //    $country = "";
-    //}
-
+    
     if (isset($_GET['effects']) && $_GET['effects']) {
         foreach ($_GET['effects'] as $ef) {
             $effects[] = $ef;
@@ -115,7 +89,7 @@
         <!-- page left -->
 
         <div class="page_left listing ">
-            <?php include_once('combine/filter.php'); ?>
+            <?php include_once('combine/filter2.php'); ?>
         </div>
         <!-- end page left -->
 
