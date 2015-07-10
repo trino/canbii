@@ -46,13 +46,13 @@
         <div class="clearfix">
         </div>
 
-        <form action="" method="post" id="dashboard" class="contact_form">
+        
             <div class="page_left page_margin_top">
             
                    <div class="dropcap" style="border:1px solid #e8e8e8;padding: 0px 20px 10px 20px;">
 
                     <h2 class="box_header page_margin_top">Add Patient</h2>
-                    <?php echo $this->Form->create('User', array('action' => 'addPatient', 'class' => 'contact_form', 'onsubmit' => "if($('.chh').is(':checked'))return true;else{ $('.check_error').show(); $('.check_error').fadeOut(5000); return false;}")); ?>
+                    <?php echo $this->Form->create('User', array('action' => 'addPatient', 'class' => 'contact_form', 'onsubmit' => "if($('#strainz').val()!='')return true;else{ $('.check_error').show(); $('.check_error').fadeOut(5000); return false;}")); ?>
                     <fieldset>
                         <?php echo $this->Form->input('email', array('div' => array('class' => 'form-row'), 'label' => 'Email Address', 'type' => 'email')); ?>
                         <?php echo $this->Form->input('username', array('div' => array('class' => 'form-row'))); ?>
@@ -65,15 +65,31 @@
                         
                         <div class="form-row required">
                         <label for="UserStrain">Strain</label>
-                            <select  required="required" name="data[User][strain]">
+                            <input type="hidden" name="data[User][strain]" id="strain_slug" />
+                            <!--<select  required="required" name="data[User][strain]">
                                 <option value="">Select Strain</option>
                             <?php foreach($strains as $s)
                             {?>
                                <option value="<?php echo $s['Strain']['slug'];?>"><?php echo $s['Strain']['name'];?></option> 
                             <?php
                             }?>
-                            </select>
+                            </select>-->
+                        
+                       
+                        
+                            <input type="text" id="searchName" value="" placeholder="3 characters minimum" required="required" />
+                            <span class="extra">(e.g. Purple Kush, AK47, Blue Dream)</span>
+                            <div class="results" style="display: none;">
+                            
+                            <input type="hidden" name="data[User][strain_id]" value="" id="strainz"  />
+                            <div class="butt" style="color:red;"></div>
+                            </div>
+                            
+                            
                         </div>
+                        <label class="check_error" style="color: red; display:none;clear: both;"> Please select a strain.</label>
+                        <div class="clearfix"></div>
+                        
                         <div style="margin: 15px 0;height:1px;background:#e5e5e5;"></div>
                      
                         <?php echo $this->Form->submit('Add', array('class' => 'more blue sbmt', 'style' => 'float:left;margin-top:0px;')) ?>
@@ -111,9 +127,27 @@ else
 ?>
 
 
-
-        </form>
-
     </div>
 </div>
 </div>
+<script>
+var lastsearch;
+$(function(){
+    $('#searchName').on('keydown keyup click input submit mouseenter', function(){
+	var txt = $(this).val();
+    if (txt.length > 2 && txt !=lastsearch) {
+        lastsearch=txt;
+        $('.butt').html("Now loading...");
+        $.ajax({
+            type: "post",
+            url: "<?php echo $this->webroot;?>strains/ajax_search/patient",
+            data: "str=" + txt,
+            success: function (msg) {
+                $('.results').show();
+                $('.butt').html(msg);
+            }
+        })
+    }
+});
+})
+</script>

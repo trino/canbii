@@ -1141,7 +1141,7 @@ class StrainsController extends AppController
 
     }
 
-    function ajax_search(){
+    function ajax_search($patient=""){
         //$this->call(__METHOD__);
         $str = $_POST['str'];
         if (substr($str,0,3) == "CMD"){
@@ -1151,8 +1151,16 @@ class StrainsController extends AppController
             if (count($search) == 0) {
                 echo "No results found for '" . $str . "'";
             }
-            foreach ($search as $s) {
-                echo "<a href='" . $this->webroot . "review/add/" . $s['Strain']['slug'] . "' class='more blue icon_small_arrow margin_right_white page_margin_top' style='margin-right:10px;' title='" . $s['Strain']['slug'] . "'>" . $s['Strain']['name'] . "</a>";
+            if($patient!=""){
+                foreach ($search as $s) {
+                    echo "<a href='javascript:void(0);' class='more blue icon_small_arrow margin_right_white page_margin_top' onclick=\"$('#searchName').val('".$s['Strain']['name']."');$('#strainz').val('".$s['Strain']['id']."');$('.results').hide();$('#strain_slug').val('".$s['Strain']['slug']."')\" style='margin-right:10px;' title='" . $s['Strain']['id'] . "'>" . $s['Strain']['name'] . "</a>";
+                }
+            }
+            else
+            {
+                foreach ($search as $s) {
+                    echo "<a href='" . $this->webroot . "review/add/" . $s['Strain']['slug'] . "' class='more blue icon_small_arrow margin_right_white page_margin_top' style='margin-right:10px;' title='" . $s['Strain']['slug'] . "'>" . $s['Strain']['name'] . "</a>";
+                }
             }
         }
         die();

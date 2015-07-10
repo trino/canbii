@@ -21,6 +21,14 @@
                 $this->redirect('/users/dashboard');
             }
         }
+        function checkPatient($slug)
+        {
+            if($this->Session->read('User.type')=='2' && $this->Session->read('User.strain')!=$slug)
+            {
+                $this->Session->setFlash('Sorry, you cannot add a review for this strain.','default',array('class'=>'bad'));
+                $this->redirect('/users/dashboard');
+            }
+        }
         function showAll($offset=0)
         {
             
@@ -150,6 +158,7 @@
         function add($slug){
             $this->checkSess();
             $this->checkDoc();
+            $this->checkPatient($slug);
             $this->loadModel('Effect');
             $this->loadModel("Strain");
             $this->loadModel("Colour");

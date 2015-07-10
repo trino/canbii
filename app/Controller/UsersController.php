@@ -24,13 +24,13 @@ class UsersController extends AppController {
           
     public function login() {
         $this->set('url', $this->getURL());
-
+       
         if(!$this->request->is('post')) {
             $this->redirect('register');
         }
 		
         $this->set('title_for_layout','Login/Registration');
-       if ($this->request->is('post')) {
+       if($this->request->is('post')) {
         $_POST = $_POST['data']['User'];
             if($user = $this->User->find('first',array('conditions'=>array('username'=>$_POST['username'],'password'=>md5($_POST['password'] . "canbii" )))))
             {
@@ -52,7 +52,8 @@ class UsersController extends AppController {
                 $this->Session->write('User.type',$user['User']['user_type']);
 
                 if(isset($_GET['url'])) {
-                    $this->redirect($this->getURL());
+                    //$this->redirect($this->getURL());
+                    $this->redirect( $_GET['url']);
                 }else {
                     $this->redirect('dashboard');
                 }
@@ -334,6 +335,7 @@ class UsersController extends AppController {
             $user['strain'] = $_POST['User']['strain'];
             $user['doctor_id'] = $this->Session->read('User.id');
             $user['user_type'] = '2';
+            $user['strainz_id'] = $_POST['User']['strain_id'];
             if($this->User->findByEmail($user['email']))
             {
                 $this->Session->setFlash('Email already registered, please try again', 'default', array('class' => 'bad'));
