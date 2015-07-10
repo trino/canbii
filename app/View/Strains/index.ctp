@@ -439,7 +439,7 @@
                 ?>
 
                 <div class="eff">
-                    <div class="label left" style="position: relative; top: 50%; transform: translateY(20%);">Sedative
+                    <div class="label left" style="position: relative; top: 50%; transform: translateY(20%);width:244px;">Sedative
                         <?php progressbar($this->webroot, $scale, perc($scale), "", "warning", "light-purple"); ?>
                     </div>
                     <?php
@@ -449,7 +449,7 @@
                         if ($strength) {
                     ?>
                     <div class="eff aaloo">
-                        <div class="label left" style="position: relative; top: 50%; transform: translateY(20%);">
+                        <div class="label left" style="position: relative; top: 50%; transform: translateY(20%);width:244px;">
                             Strength
                             <?php progressbar($this->webroot, $strength, perc($strength), "", "warning", "light-purple"); ?>
                         </div>
@@ -460,7 +460,7 @@
                             if ($duration) {
                         ?>
                         <div class="eff">
-                            <div class="label left" style="position: relative; top: 50%; transform: translateY(20%);">
+                            <div class="label left" style="position: relative; top: 50%; transform: translateY(20%);width:244px;">
                                 Duration
                                 <?php progressbar($this->webroot, $duration, perc($duration), "", "warning", "light-purple"); ?>
                             </div>
@@ -596,7 +596,8 @@
                             <div class="eff">
                                 <div
                                     class="label left"
-                                    style="position: relative; top: 50%; transform: translateY(20%);"><?php echo $this->requestAction('/strains/getEffect/' . $ar[1]); ?>
+                                    style="position: relative; top: 50%; transform: translateY(20%);width:244px;">
+                                    <span style="float: left;width:185px;display:inline-block"><?php echo $this->requestAction('/strains/getEffect/' . $ar[1]); ?></span>
                                     <?php progressbar($this->webroot, $length, perc($length), "", "danger", "light-red"); ?>
                                 </div>
                                 <?php
