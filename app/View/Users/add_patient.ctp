@@ -46,23 +46,43 @@
         <div class="clearfix">
         </div>
 
-        
+            <?php
+            if(isset($user))
+            {
+               $email= $user['User']['email']; 
+               $username = $user['User']['username'];
+               $strain = $user['User']['strain'];
+               
+            }
+            else
+            {
+                $email= '';
+               $username = '';
+               $strain = '';
+            }?>
             <div class="page_left page_margin_top">
             
                    <div class="dropcap" style="border:1px solid #e8e8e8;padding: 0px 20px 10px 20px;">
 
                     <h2 class="box_header page_margin_top">Add Patient</h2>
+                    
                     <?php echo $this->Form->create('User', array('action' => 'addPatient', 'class' => 'contact_form', 'onsubmit' => "if($('#strainz').val()!='')return true;else{ $('.check_error').show(); $('.check_error').fadeOut(5000); return false;}")); ?>
                     <fieldset>
-                        <?php echo $this->Form->input('email', array('div' => array('class' => 'form-row'), 'label' => 'Email Address', 'type' => 'email')); ?>
-                        <?php echo $this->Form->input('username', array('div' => array('class' => 'form-row'))); ?>
+                    <?php if(isset($user)){?>
+                        <?php echo $this->Form->input('email', array('div' => array('class' => 'form-row'), 'label' => 'Email Address', 'type' => 'email', 'value'=>$email, 'disabled'=>'disabled')); ?>
+                        <?php echo $this->Form->input('username', array('div' => array('class' => 'form-row'),'value'=>$username, 'disabled'=>'disabled')); ?>
+                        <?php }
+                            else{?>
+                        <?php echo $this->Form->input('email', array('div' => array('class' => 'form-row'), 'label' => 'Email Address', 'type' => 'email', 'value'=>$email, )); ?>
+                        <?php echo $this->Form->input('username', array('div' => array('class' => 'form-row'),'value'=>$username, )); ?>
+                        
                         <div class="form-row required">
                             <label for="UserPassword1">Password</label>
                             <input id="UserPassword1" type="password" required="required" name="data[User][password]"/>
                         </div>
                         <?php //echo $this->Form->input('password',array('div'=>array('class'=>'form-row'))); ?>
                         <?php echo $this->Form->input('confirm_password', array('div' => array('class' => 'form-row'), 'type' => 'password')); ?>
-                        
+                        <?php }?>
                         <div class="form-row required">
                         <label for="UserStrain">Strain</label>
                             <input type="hidden" name="data[User][strain]" id="strain_slug" />
@@ -77,7 +97,7 @@
                         
                        
                         
-                            <input type="text" id="searchName" value="" placeholder="3 characters minimum" required="required" />
+                            <input type="text" id="searchName" value="<?php if(isset($user))echo $strain;?>" placeholder="3 characters minimum" required="required" />
                             <span class="extra">(e.g. Purple Kush, AK47, Blue Dream)</span>
                             <div class="results" style="display: none;">
                             

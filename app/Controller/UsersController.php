@@ -318,12 +318,16 @@ class UsersController extends AppController {
         }
     }
     
-    function addPatient()
+    function addPatient($user_id ="")
     {
         $this->checkSess();
         $this->checkDoc();
         $this->loadModel('Strain');
         $strains = $this->Strain->find('all',array('order'=>'Strain.id'));
+        if($user_id !=""){
+            $user = $this->User->findById($user_id);
+            $this->set('user', $user);
+        }
         $this->set('strains', $strains);
         $this->set('title_for_layout','Add Patient');
       if ($this->request->is('post')) {
@@ -411,11 +415,14 @@ class UsersController extends AppController {
         }
     }
     
-    function checkDoc(){
+    function checkDoc($doc=''){
         if(!$this->Session->read('User.doctor'))
         {
             $url = $this->here;
-            $this->Session->setFlash('Only Doctors can add patient.','default',array('class'=>'bad'));
+            if($doc!="")
+                $this->Session->setFlash('You are not a doctor.','default',array('class'=>'bad'));
+            else
+                $this->Session->setFlash('Only Doctors can add patient.','default',array('class'=>'bad'));
             $this->redirect('/users/dashboard');
         }
         
@@ -425,6 +432,14 @@ class UsersController extends AppController {
         $this->loadModel('DoctorStrain');
         $q = $this->DoctorStrain->find('all',array('conditions'=>array('doctor_id'=>$doctor)));
         $this->set('model',$q);
+    }
+    
+    function myPatients()
+    {
+        $this->loadModel('User');
+        $this->checkDoc('doc');
+        $patients = $this->User->find('all',array('conditions'=>array('doctor_id'=>$this->Session->read('User.id'))));
+        $this->set('patients',$patients);
     }
     
     
