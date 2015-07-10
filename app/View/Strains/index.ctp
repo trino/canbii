@@ -1066,7 +1066,7 @@
     }
 
     @media print {
-        .page_layout{font-size:15px!important;}
+        .page_layout{font-size:18px!important;}
         .page_header_right a{display:none;}
         .toprint{display: block!important;}
         .noprint {
