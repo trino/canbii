@@ -684,12 +684,12 @@
 
 
 
-            <div style="clear:both;border-bottom: 1px solid #dadada;padding: 5px 0px;">
+            <div style="clear:both;padding: 5px 0px;">
 
             </div>
 
 
-<div class="noprint">
+<div class="noprint" style="border-top: 1px solid #dadada;">
             <h3 class=" box_header slide clearfix page_margin_top">Print this Report</h3>
 
             <p class="">Spread the word! The more we know, the more we can help.</p>
@@ -1067,7 +1067,7 @@
     }
 
     @media print {
-        .page_layout{font-size:20px!important;}
+        .page_layout{font-size:24px!important;}
         .page_header_right a{display:none;}
         .toprint{display: block!important;}
         .noprint {
