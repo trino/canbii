@@ -404,6 +404,19 @@ class StrainsController extends AppController
             $q5 = $this->Review->find('all', array('conditions' => array('strain_id' => $q['Strain']['id'], 'user_id IN (' . $profile_filter . ')','user_id IN (SELECT user_id FROM doctor_strains WHERE doctor_id = '.$this->Session->read('User.id').')'), 'order' => 'Review.id DESC'));
         else
             $q5 = $this->Review->find('all', array('conditions' => array('strain_id' => $q['Strain']['id'],'user_id IN (SELECT user_id FROM doctor_strains WHERE doctor_id = '.$this->Session->read('User.id').')'), 'order' => 'Review.id DESC'));
+            
+            $this->loadModel('DoctorStrain');
+            
+            $q6 = $this->DoctorStrain->find('all',array('conditions'=>array('doctor_id'=>$this->Session->read('User.id'))));
+            $arr_user = array();
+            if($q6)
+            {
+                foreach($q6 as $d)
+                {
+                    $arr_user[] = $d['DoctorStrain']['user_id'];
+                }
+            }
+            $this->set('arr_user',$arr_user); 
         $this->set('strain', $q);
         $this->set('flavor', $q2);
         $this->set('helpful', $q3);
@@ -429,9 +442,9 @@ class StrainsController extends AppController
         
         
         $this->set('avg',$avg);
-        $this->set('scale',$scale*20);
-        $this->set('strength',$strength*20);
-        $this->set('duration',$duration*20);
+         $this->set('scale',$scale*10/($cou));
+        $this->set('strength',$strength*10/($cou));
+        $this->set('duration',$duration*10/($cou));
         
         if ($q['Strain']['id']) {
             $this->Strain->id = $q['Strain']['id'];

@@ -307,12 +307,16 @@
                     if (!isset($p_filter)) {
                         $p_filter = false;
                     }
+                    //var_dump($arr_user);
                     if (!$p_filter) {
-                        foreach ($strain['OverallSymptomRating'] as $oer) {
-                            $arrs[] = $oer['rate'] . '_' . $oer['symptom_id'];
+                        foreach ($strain['UserSymptomRating'] as $oer) {
+                            
+                            if(in_array($oer['user_id'],$arr_user))
+                            $arrs[] = $oer['rating'] . '_' . $oer['symptom_id'];
+                            
                         }
                     } else {
-                        $symptom_rate = $this->requestAction('/strains/getSymptomRate/' . urlencode($profile_filter) . '/' . $strain['Strain']['id']);
+                        $symptom_rate = $this->requestAction('/strains/getSymptomRate2/' . urlencode($profile_filter) . '/' . $strain['Strain']['id']);
                         //var_dump($symptom_rate);
                         $cnt = 0;
                         $eff_id = 0;
@@ -464,13 +468,19 @@
                                 }
                             }
                             if (!$p_filter) {
-                                foreach ($strain['OverallEffectRating'] as $oer) {
-                                    if ($this->requestAction('/strains/getPosEff/' . $oer['effect_id']))
-                                        $arr[] = $oer['rate'] . '_' . $oer['effect_id'];
-                                    else
-                                        $arr_neg[] = $oer['rate'] . '_' . $oer['effect_id'];
+                                foreach ($strain['UserEffectRating'] as $oer) {
+                                    if ($this->requestAction('/strains/getPosEff/' . $oer['effect_id'])){
+                                        if(in_array($oer['user_id'],$arr_user))
+                                        $arr[] = $oer['rating'] . '_' . $oer['effect_id'];
+                                        }
+                                    else{
+                                        if(in_array($oer['user_id'],$arr_user))
+                                        $arr_neg[] = $oer['rating'] . '_' . $oer['effect_id'];
+                                        }
                                 }
+                                //var_dump($arr_neg);
                             } else {
+                                var_dump($arr_neg);
                                 $effect_rate = $this->requestAction('/strains/getEffectRate/' . urlencode($profile_filter) . '/' . $strain['Strain']['id']);
                                 //var_dump($effect_rate);
                                 $cnt = 0;
@@ -548,6 +558,7 @@
                             <p>What are the negative effects?</p>
                             <br>
                             <?php
+                            //var_dump($oer['UserEffectRating']['user_id']);
                                 if (isset($arr_neg))
                                     rsort($arr_neg);
                                 else

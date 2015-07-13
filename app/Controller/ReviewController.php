@@ -346,6 +346,7 @@
             if($table == 'effect'){
                 
                 $this->loadModel('UserEffectRatings');
+                $arr =explode("_",$id);
                 $uer['strain_id'] = $arr[0];
                 $uer['effect_id'] =$arr[1];
                 $uer['user_id'] = $this->Session->read('User.id');
@@ -353,7 +354,7 @@
                 $this->UserEffectRatings->create();
                 $this->UserEffectRatings->save($uer);
                 
-                $arr =explode("_",$id);
+                
                 $eff['strain_id'] =$arr[0];
                 $eff['effect_id'] =$arr[1];
                 if($st = $this->OverallEffectRating->find('first',array('conditions'=>array("strain_id"=>$eff['strain_id'],"effect_id"=>$eff['effect_id']))))                {
@@ -368,7 +369,7 @@
                 }
             }
             if($table == 'symptom'){
-                
+                $arr =explode("_",$id);
                 $this->loadModel('UserSymptomRatings');
                 $usr['strain_id'] = $arr[0];
                 $usr['symptom_id'] =$arr[1];
@@ -377,7 +378,7 @@
                 $this->UserSymptomRatings->create();
                 $this->UserSymptomRatings->save($usr);
                 
-                $arr =explode("_",$id);
+                
                 $eff['strain_id'] =$arr[0];
                 $eff['symptom_id'] =$arr[1];
                 if($st = $this->OverallSymptomRating->find('first',array('conditions'=>array("strain_id"=>$eff['strain_id'],"symptom_id"=>$eff['symptom_id']))))                {

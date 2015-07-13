@@ -278,7 +278,7 @@
                 </fieldset>
 
                 <div class="clear"></div>
-                 <?php /*  ?>
+                 <?php   ?>
                 <fieldset id="qf_review__effects" class="qf-fieldset">
 
                     <h2 class="slide page_margin_top">
@@ -503,7 +503,7 @@
 </span>
                     </div>
                 </fieldset>
-                <?php */?>
+                <?php ?>
 
 
                 <fieldset id="qf_review__aesthetics" class="qf-fieldset">
