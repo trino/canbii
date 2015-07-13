@@ -453,7 +453,7 @@ class UsersController extends AppController {
     function mergedReport($doctor)
     {
         $this->loadModel('DoctorStrain');
-        $q = $this->DoctorStrain->find('all',array('conditions'=>array('doctor_id'=>$doctor)));
+        $q = $this->DoctorStrain->find('all',array('conditions'=>array('doctor_id'=>$doctor),'group'=>'strain_id'));
         $this->set('model',$q);
     }
     
