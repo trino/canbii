@@ -323,6 +323,7 @@ class UsersController extends AppController {
         $this->checkSess();
         $this->checkDoc();
         $this->loadModel('Strain');
+        $this->loadModel('DoctorStrain');
         $strains = $this->Strain->find('all',array('order'=>'Strain.id'));
         if($user_id !=""){
             $user = $this->User->findById($user_id);
@@ -332,74 +333,96 @@ class UsersController extends AppController {
         $this->set('title_for_layout','Add Patient');
       if ($this->request->is('post')) {
             $_POST = $_POST['data'];
-            $user['username'] = $_POST['User']['username'];
-            $user['email'] = $_POST['User']['email'];
-            $user['password'] = md5($_POST['User']['password'] . "canbii" );
-            $user['pass_real'] = $_POST['User']['password'];
             $user['strain'] = $_POST['User']['strain'];
             $user['doctor_id'] = $this->Session->read('User.id');
             $user['user_type'] = '2';
             $user['strainz_id'] = $_POST['User']['strain_id'];
-            if($this->User->findByEmail($user['email']))
+            if($user_id=="")
             {
-                $this->Session->setFlash('Email already registered, please try again', 'default', array('class' => 'bad'));
-                $this->redirect('');
+                $user['username'] = $_POST['User']['username'];
+                $user['email'] = $_POST['User']['email'];
+                $user['password'] = md5($_POST['User']['password'] . "canbii" );
+                $user['pass_real'] = $_POST['User']['password'];
+                if($this->User->findByEmail($user['email']))
+                {
+                    $this->Session->setFlash('Email already registered, please try again', 'default', array('class' => 'bad'));
+                    $this->redirect('');
+                }
+                if($this->User->findByUsername($user['username']))
+                {
+                    $this->Session->setFlash('Username already registered, please try again', 'default', array('class' => 'bad'));
+                    $this->redirect('');
+                }
+              
+                $this->User->create();
+                if ($this->User->save($user)) 
+                {
+                    if($user['user_type'] == '2'){
+                      $emails = new CakeEmail();
+                      $emails->template('default');
+                      $emails->to($user['email']);
+                      $emails->from(array('info@canbii.com'=>'canbii.com'));
+                      $emails->subject("Canbii: User Registration");
+                      $emails->emailFormat('html');
+                      $msg = "Hello,<br/><br/>A new account has been created for you by your doctor in Canbii.com. <br/>Here are your login credentials:<br/>
+                            Username : " . $user['username'] . "<br/>
+                            Password : " . $_POST['User']['password'];
+                      $emails->send($msg);
+                      
+                    $this->Session->setFlash('Your Patient has been registered successfully.', 'default', array('class' => 'good'));
+                    
+                    
+                    $arr['doctor_id'] = $user['doctor_id'];
+                    $arr['user_id'] = $this->User->id;
+                    $this->loadModel('Strain');
+                    if(!is_numeric($user['strain'])){
+                        $qq = $this->Strain->findBySlug($user['strain']);
+                        $arr['strain_id'] = $qq['Strain']['id'];
+                    }
+                    else
+                        $arr['strain_id'] = $user['strain'];
+                    $this->DoctorStrain->create();
+                    $this->DoctorStrain->save($arr);
+                }
+                /*
+                else{
+                   $emails = new CakeEmail();
+                      $emails->template('default');
+                      $emails->to('justdoit2045@gmail.com');
+                      $emails->from(array('info@canbii.com'=>'canbii.com'));
+                      $emails->subject("Canbii: Doctor's Account Approval");
+                      $emails->emailFormat('html');
+                      $msg = "Hello,<br/><br/>A doctor's account has been created with the detail below and requires your approval.<br/>
+                            Username : " . $user['username'] . "<br/>
+                            Email : " . $_POST['User']['email']."<br/><br/>".
+                            "Please click <a href='".$this->baseUrl()."users/approve/".sha1($user['username'])."_".$this->User->id."'>here</a> to approve.";
+                            ;
+                      $emails->send($msg); 
+                      $this->Session->setFlash('You will be notified once your account is approved', 'default', array('class' => 'good'));
+                }*/
+                    
+                    
+                    $this->redirect('dashboard');
+                }
             }
-            if($this->User->findByUsername($user['username']))
+            else
             {
-                $this->Session->setFlash('Username already registered, please try again', 'default', array('class' => 'bad'));
-                $this->redirect('');
-            }
-          
-            $this->User->create();
-            if ($this->User->save($user)) 
-            {
-                if($user['user_type'] == '2'){
-                  $emails = new CakeEmail();
-                  $emails->template('default');
-                  $emails->to($user['email']);
-                  $emails->from(array('info@canbii.com'=>'canbii.com'));
-                  $emails->subject("Canbii: User Registration");
-                  $emails->emailFormat('html');
-                  $msg = "Hello,<br/><br/>A new account has been created for you by your doctor in Canbii.com. <br/>Here are your login credentials:<br/>
-                        Username : " . $user['username'] . "<br/>
-                        Password : " . $_POST['User']['password'];
-                  $emails->send($msg);
-                  
-                $this->Session->setFlash('Your Patient has been registered successfully.', 'default', array('class' => 'good'));
-                
-                $this->loadModel('DoctorStrain');
-                $arr['doctor_id'] = $user['doctor_id'];
-                $arr['user_id'] = $this->User->id;
-                $this->loadModel('Strain');
-                if(!is_numeric($user['strain'])){
-                $qq = $this->Strain->findBySlug($user['strain']);
-                $arr['strain_id'] = $qq['Strain']['id'];
+                 if(!is_numeric($user['strain'])){
+                    $qq = $this->Strain->findBySlug($user['strain']);
+                    $arr['strain_id'] = $qq['Strain']['id'];
                 }
                 else
-                $arr['strain_id'] = $user['strain'];
+                    $arr['strain_id'] = $user['strain'];
+                $this->User->id = $user_id;
+                $this->User->saveField('strain',$user['strain']);
+                $this->User->saveField('strainz_id',$user['strainz_id']);
+                
+                $arr['doctor_id'] = $user['doctor_id'];
+                $arr['user_id'] = $this->User->id;
                 $this->DoctorStrain->create();
                 $this->DoctorStrain->save($arr);
-            }
-            /*
-            else{
-               $emails = new CakeEmail();
-                  $emails->template('default');
-                  $emails->to('justdoit2045@gmail.com');
-                  $emails->from(array('info@canbii.com'=>'canbii.com'));
-                  $emails->subject("Canbii: Doctor's Account Approval");
-                  $emails->emailFormat('html');
-                  $msg = "Hello,<br/><br/>A doctor's account has been created with the detail below and requires your approval.<br/>
-                        Username : " . $user['username'] . "<br/>
-                        Email : " . $_POST['User']['email']."<br/><br/>".
-                        "Please click <a href='".$this->baseUrl()."users/approve/".sha1($user['username'])."_".$this->User->id."'>here</a> to approve.";
-                        ;
-                  $emails->send($msg); 
-                  $this->Session->setFlash('You will be notified once your account is approved', 'default', array('class' => 'good'));
-            }*/
-                
-                
-                $this->redirect('dashboard');
+                $this->Session->setFlash('Strain succesfully changed.', 'default', array('class' => 'good'));
+                $this->redirect('myPatients');
             }
            $this->Session->setFlash('Patient could not be added', 'default', array('class' => 'bad'));
         }

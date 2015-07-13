@@ -55,7 +55,7 @@
                     
                     <fieldset>
                       <table class="table" width="100%">
-                        <thead><th>S.No</th><th>Username</th><th>Email</th><th>Action</th></thead>
+                        <thead><th>S.No</th><th>Username</th><th>Email</th><th>Selected Strain</th><th>Action</th></thead>
                         <?php foreach($patients as $k=>$p)
                             {
                             ?>
@@ -63,6 +63,10 @@
                                     <td><?php echo ++$k;?></td>
                                     <td><?php echo $p['User']['username'];?></td>
                                     <td><?php echo $p['User']['email'];?></td>
+                                    <td><?php $st = $this->requestAction("strains/getStrain/".$p['User']['strainz_id']);
+                                                //var_dump($st);
+                                                echo $st['Strain']['name'];?>
+                                    </td>
                                     <td>
                                         <a href="<?php echo $this->webroot;?>users/addPatient/<?php echo $p['User']['id'];?>" class="more blue">Change Strain</a>
                                     </td>

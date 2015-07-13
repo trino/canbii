@@ -45,20 +45,24 @@
 
         <div class="clearfix">
         </div>
-
+           
             <?php
             if(isset($user))
             {
-               $email= $user['User']['email']; 
-               $username = $user['User']['username'];
-               $strain = $user['User']['strain'];
-               
+                $st = $this->requestAction("strains/getStrain/".$user['User']['strainz_id']);
+                $strain= $st['Strain']['name'];
+                $email= $user['User']['email']; 
+                $username = $user['User']['username'];
+                
+                $user_id = $user['User']['id'];
+
             }
             else
             {
                 $email= '';
                $username = '';
                $strain = '';
+               $user_id = "";
             }?>
             <div class="page_left page_margin_top">
             
@@ -66,7 +70,7 @@
 
                     <h2 class="box_header page_margin_top">Add Patient</h2>
                     
-                    <?php echo $this->Form->create('User', array('action' => 'addPatient', 'class' => 'contact_form', 'onsubmit' => "if($('#strainz').val()!='')return true;else{ $('.check_error').show(); $('.check_error').fadeOut(5000); return false;}")); ?>
+                    <?php echo $this->Form->create('User', array('action' => 'addPatient/'.$user_id, 'class' => 'contact_form', 'onsubmit' => "if($('#strainz').val()!='')return true;else{ $('.check_error').show(); $('.check_error').fadeOut(5000); return false;}")); ?>
                     <fieldset>
                     <?php if(isset($user)){?>
                         <?php echo $this->Form->input('email', array('div' => array('class' => 'form-row'), 'label' => 'Email Address', 'type' => 'email', 'value'=>$email, 'disabled'=>'disabled')); ?>
