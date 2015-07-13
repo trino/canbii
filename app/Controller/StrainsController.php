@@ -212,6 +212,247 @@ class StrainsController extends AppController
 
 
     }
+    
+    public function mergedReport($slug)
+    {
+        if(isset($_GET['doc'])){
+        if($this->Session->read('User.id') && $this->Session->read('User.id')== $_GET['doc'])
+        {
+            $doc = $_GET['doc'];
+        }
+        else
+        {
+            $this->Session->setFlash('You are not logged in as the doctor who is authorized to view this report', 'default', array('class' => 'bad'));
+            $this->redirect('/strains/'.$slug);
+        }
+        }
+        else
+        $this->redirect('/strains/'.$slug);
+        $this->loadModel('Country');
+        $this->set('countries', $this->Country->find('all'));
+        $this->loadModel('OverallFlavorRating');
+        $this->loadModel('Review');
+        $this->loadModel('FlavorRating');
+        $this->loadModel('SymptomVote');
+
+        $q = $this->Strain->find('first', array('conditions' => array('slug' => $slug)));
+        //debug($q );
+        $this->set('title', $q['Strain']['name']);
+        $this->set('description', $q['Strain']['description']);
+        $this->set('keyword', $q['Strain']['name'] . ' , Canbii , Medical , Marijuana , Medical Marijuana');
+        
+        $params_vote_sum = array(
+            "conditions"=>array("SymptomVote.strain_id"=>$q['Strain']['id']),
+            "group"=>array("SymptomVote.symptom_id"),  
+            'fields' => array('SymptomVote.symptom_id','SUM(SymptomVote.vote_yes) as sum'),
+        );
+        
+        $votes_sum = $this->SymptomVote->find("all",$params_vote_sum);
+        $votes_sum = Set::combine($votes_sum, '{n}.SymptomVote.symptom_id', '{n}.0.sum');
+        
+        $this->set("symptom_votes",$votes_sum);
+        
+        $params_vote_user = array(
+                 "conditions"=>array("SymptomVote.strain_id"=>$q['Strain']['id'],
+                                     "SymptomVote.client_http"=>md5($_SERVER['REMOTE_ADDR'].$_SERVER['HTTP_USER_AGENT']))
+        );
+        
+        $vote_user = $this->SymptomVote->find("all",$params_vote_user);
+        $vote_user = Set::combine($vote_user, '{n}.SymptomVote.symptom_id', '{n}.SymptomVote.vote_yes');
+        
+        //die(var_dump($vote_user));
+        
+        $this->set("symptom_vote_user",$vote_user);
+
+        $u_cond = '';
+        if (isset($_GET['nationality'])) {
+            $u_cond = 'nationality = "' . $_GET['nationality'] . '"';
+        }
+        if (isset($_GET['country'])) {
+            if (!$u_cond)
+                $u_cond = 'country = "' . $_GET['country'] . '"';
+            else
+                $u_cond = $u_cond . ' AND country = "' . $_GET['country'] . '"';
+        }
+        if (isset($_GET['gender'])) {
+            if (!$u_cond)
+                $u_cond = 'gender = "' . $_GET['gender'] . '"';
+            else
+                $u_cond = $u_cond . ' AND gender = "' . $_GET['gender'] . '"';
+        }
+        if (isset($_GET['age_group_from'])) {
+            if (isset($_GET['age_group_from']))
+                $to = $_GET['age_group_to'];
+            else
+                $to = 100;
+            if (!$to)
+                $to = 100;
+            $from = $_GET['age_group_from'];
+            if ($from < 20)
+                $from = 20;
+            $from++;
+            $counter = 0;
+            for ($i = $from; $i <= $to; $i++) {
+                $counter++;
+                $j = $i + 9;
+                $group = $i . '-' . $j;
+                $i = $j;
+                if ($counter == 1) {
+                    if (!$u_cond)
+                        $u_cond = '(age_group = "' . $group . '"';
+                    else
+                        $u_cond = $u_cond . ' AND (age_group = "' . $group . '"';
+                } else {
+                    ' OR age_group = "' . $group . '"';
+                }
+            }
+            $u_cond = $u_cond . ')';
+
+        }
+        if (isset($_GET['health'])) {
+            if (!$u_cond)
+                $u_cond = 'health = "' . $_GET['health'] . '"';
+            else
+                $u_cond = $u_cond . ' AND health = "' . $_GET['health'] . '"';
+        }
+
+        if (isset($_GET['weight_from'])) {
+            if (isset($_GET['weight_from']))
+                $to = $_GET['weight_to'];
+            else
+                $to = 280;
+            if (!$to)
+                $to = 280;
+
+            $from = $_GET['weight_from'];
+            if ($from > 100)
+                $from++;
+            $counter = 0;
+            for ($i = $from; $i <= $to; $i++) {
+                $counter++;
+                if ($i > 100)
+                    $j = $i + 9;
+                else
+                    $j = $i + 10;
+                $group = $i . '-' . $j;
+                $i = $j;
+                if ($counter == 1) {
+                    if (!$u_cond)
+                        $u_cond = '(weight = "' . $group . '"';
+                    else
+                        $u_cond = $u_cond . ' AND (weight = "' . $group . '"';
+                } else {
+                    ' OR weight = "' . $group . '"';
+                }
+            }
+            $u_cond = $u_cond . ')';
+
+        }
+
+        if (isset($_GET['years_of_experience_from'])) {
+            if (isset($_GET['years_of_experience_from']))
+                $to = $_GET['years_of_experience_to'];
+            else
+                $to = 50;
+            if (!$to)
+                $to = 50;
+            $from = $_GET['years_of_experience_from'];
+
+
+            if (!$u_cond)
+                $u_cond = 'years_of_experience >= ' . $from . ' AND years_of_experience <= ' . $to;
+            else
+                $u_cond = $u_cond . ' AND years_of_experience >= ' . $from . ' AND years_of_experience <= ' . $to;
+
+
+        }
+        if (isset($_GET['frequency'])) {
+            if (!$u_cond)
+                $u_cond = 'frequency = "' . $_GET['frequency'] . '"';
+            else
+                $u_cond = $u_cond . ' AND frequency = "' . $_GET['frequency'] . '"';
+        }
+        if (isset($_GET['body_type'])) {
+            if (!$u_cond)
+                $u_cond = 'body_type = "' . $_GET['body_type'] . '"';
+            else
+                $u_cond = $u_cond . ' AND body_type = "' . $_GET['body_type'] . '"';
+        }
+        if ($u_cond) {
+            $profile_filter = 'SELECT id FROM users WHERE ' . $u_cond;
+        } else
+            $profile_filter = '';
+
+
+        if ($profile_filter)
+            $q2 = $this->FlavorRating->find('all', array('conditions' => array('strain_id' => $q['Strain']['id'], 'user_id IN (' . $profile_filter . ')','user_id IN (SELECT user_id FROM doctor_strains WHERE doctor_id = '.$this->Session->read('User.id').')'), 'order' => 'COUNT(flavor_id) DESC', 'group' => 'flavor_id', 'limit' => 3));
+        else
+            $q2 = $this->FlavorRating->find('all', array('conditions' => array('strain_id' => $q['Strain']['id'],'user_id IN (SELECT user_id FROM doctor_strains WHERE doctor_id = '.$this->Session->read('User.id').')'), 'order' => 'COUNT(flavor_id) DESC', 'group' => 'flavor_id', 'limit' => 3));
+
+
+        if ($profile_filter)
+            $q3 = $this->Review->find('first', array('conditions' => array('strain_id' => $q['Strain']['id'], 'user_id IN (' . $profile_filter . ')','user_id IN (SELECT user_id FROM doctor_strains WHERE doctor_id = '.$this->Session->read('User.id').')'), 'order' => 'Review.helpful DESC'));
+        else
+            $q3 = $this->Review->find('first', array('conditions' => array('strain_id' => $q['Strain']['id'],'user_id IN (SELECT user_id FROM doctor_strains WHERE doctor_id = '.$this->Session->read('User.id').')'), 'order' => 'Review.helpful DESC'));
+
+        if ($profile_filter)
+            $q4 = $this->Review->find('first', array('conditions' => array('strain_id' => $q['Strain']['id'], 'user_id IN (' . $profile_filter . ')','user_id IN (SELECT user_id FROM doctor_strains WHERE doctor_id = '.$this->Session->read('User.id').')'), 'order' => 'Review.id DESC'));
+        else
+            $q4 = $this->Review->find('first', array('conditions' => array('strain_id' => $q['Strain']['id'],'user_id IN (SELECT user_id FROM doctor_strains WHERE doctor_id = '.$this->Session->read('User.id').')'), 'order' => 'Review.id DESC'));
+        
+        if ($profile_filter)
+            $q5 = $this->Review->find('all', array('conditions' => array('strain_id' => $q['Strain']['id'], 'user_id IN (' . $profile_filter . ')','user_id IN (SELECT user_id FROM doctor_strains WHERE doctor_id = '.$this->Session->read('User.id').')'), 'order' => 'Review.id DESC'));
+        else
+            $q5 = $this->Review->find('all', array('conditions' => array('strain_id' => $q['Strain']['id'],'user_id IN (SELECT user_id FROM doctor_strains WHERE doctor_id = '.$this->Session->read('User.id').')'), 'order' => 'Review.id DESC'));
+        $this->set('strain', $q);
+        $this->set('flavor', $q2);
+        $this->set('helpful', $q3);
+        $this->set('recent', $q4);
+        $avg = 0;
+        $cou = 0;
+        $scale = 0;
+        $strength = 0;
+        $duration = 0;
+        //echo count($q5);
+        foreach($q5 as $r)
+        {
+            //echo $r['Review']['eff_scale'];
+            $cou++;
+            $avg = $avg+$r['Review']['rate'];
+            $scale = $scale+$r['Review']['eff_scale'];
+            $strength = $strength+$r['Review']['eff_strength'];
+            $duration = $duration+$r['Review']['eff_duration'];
+        }
+        if($avg!=0)
+        $avg = $avg/$cou;
+        
+        
+        
+        $this->set('avg',$avg);
+        $this->set('scale',$scale*20);
+        $this->set('strength',$strength*20);
+        $this->set('duration',$duration*20);
+        
+        if ($q['Strain']['id']) {
+            $this->Strain->id = $q['Strain']['id'];
+            $viewed = $q['Strain']['viewed'] + 1;
+            $this->Strain->saveField('viewed', $viewed);
+        }
+
+        $ip = $_SERVER['REMOTE_ADDR'];
+        $this->loadModel('VoteIp');
+        $q5 = false;
+        if (isset($q3['Review'])) {
+            $q5 = $this->VoteIp->find('first', array('conditions' => array('review_id' => $q3['Review']['id'], 'ip' => $ip)));
+        }
+        if ($q5) {
+            $this->set('vote', 1);
+            $this->set('yes', $q5['VoteIp']['vote_yes']);
+
+        } else
+            $this->set('vote', 0);
+        $this->set('profile_filter', $profile_filter);
+    }
 
     function download($slug = null)
     {//$this->call(__METHOD__);

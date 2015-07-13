@@ -185,11 +185,9 @@
             }
 
             if(isset($_POST['submit'])) {
-                //var_dump($_POST);die();
+                
                 $ar['user_id'] = $this->Session->read('User.id');
                 $ar['strain_id'] = $strain['Strain']['id'];
-                //$this->deletereviews($ar['user_id'],  $ar['strain_id'] );//only needs 1 review per strain
-
                 $ar['on_date'] = date("y-m-d");
                foreach($_POST as $k=>$v){
                     $ar[$k]=$v;
@@ -345,7 +343,16 @@
                 $this->Strain->id = $st['Strain']['id'];
                 $this->Strain->saveField('rating',$overallrate);
             }
-            if($table == 'effect')            {
+            if($table == 'effect'){
+                
+                $this->loadModel('UserEffectRatings');
+                $uer['strain_id'] = $arr[0];
+                $uer['effect_id'] =$arr[1];
+                $uer['user_id'] = $this->Session->read('User.id');
+                $uer['rating'] = $rate;
+                $this->UserEffectRatings->create();
+                $this->UserEffectRatings->save($uer);
+                
                 $arr =explode("_",$id);
                 $eff['strain_id'] =$arr[0];
                 $eff['effect_id'] =$arr[1];
@@ -360,7 +367,16 @@
                     $this->OverallEffectRating->save($eff); 
                 }
             }
-            if($table == 'symptom')            {
+            if($table == 'symptom'){
+                
+                $this->loadModel('UserSymptomRatings');
+                $usr['strain_id'] = $arr[0];
+                $usr['symptom_id'] =$arr[1];
+                $usr['user_id'] = $this->Session->read('User.id');
+                $usr['rating'] = $rate;
+                $this->UserSymptomRatings->create();
+                $this->UserSymptomRatings->save($usr);
+                
                 $arr =explode("_",$id);
                 $eff['strain_id'] =$arr[0];
                 $eff['symptom_id'] =$arr[1];

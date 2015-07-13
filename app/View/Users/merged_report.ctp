@@ -66,7 +66,7 @@ foreach($model as $q)
     $strain = $this->requestAction('/strains/getStrain/'.$q['DoctorStrain']['strain_id']);
     ?>
     <p style="width: 30%;float: left;">
-    <a href="<?php echo $this->webroot;?>strains/<?php echo $strain['Strain']['slug'];?>?doc=<?php echo $q['DoctorStrain']['doctor_id'];?>" class="more blue"><?php echo $strain['Strain']['name'];?></a>
+    <a href="<?php echo $this->webroot;?>strains/mergedReport/<?php echo $strain['Strain']['slug'];?>?doc=<?php echo $q['DoctorStrain']['doctor_id'];?>" class="more blue"><?php echo $strain['Strain']['name'];?></a>
     
     </p>
     

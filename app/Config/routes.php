@@ -50,6 +50,8 @@
     Router::connect('/strains/getSymptomRate/*', array('controller' => 'strains', 'action' => 'getSymptomRate'));
     Router::connect('/strains/getStrain/*', array('controller' => 'strains', 'action' => 'getStrain'));
     //Router::connect('/strains/generateImage/*', array('controller' => 'strains', 'action' => 'generateImage'));
+    Router::connect('/strains/mergedReport', array('controller' => 'strains', 'action' => 'mergedReport'));
+    Router::connect('/strains/mergedReport/*', array('controller' => 'strains', 'action' => 'mergedReport'));
     Router::connect('/strains/getEffectReview/*', array('controller' => 'strains', 'action' => 'getEffectReview'));
 	Router::connect('/strains/*', array('controller' => 'strains', 'action' => 'index'));
     Router::connect('/pages/getEff',array('controller'=>'pages', 'action'=>'getEff'));
