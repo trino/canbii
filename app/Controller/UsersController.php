@@ -113,7 +113,18 @@ class UsersController extends AppController {
                 $this->Session->setFlash('You have been registered successfully. <a style="color:white;" href="' .  $this->webroot . 'review">Review a strain here &raquo;</a>', 'default', array('class' => 'good'));
             }
             else{
-               $emails = new CakeEmail();
+                  $emails = new CakeEmail();
+                  $emails->template('default');
+                  $emails->to($user['email']);
+                  $emails->from(array('info@canbii.com'=>'canbii.com'));
+                  $emails->subject("Canbii: User Registration");
+                  $emails->emailFormat('html');
+                  $msg = "Hello,<br/><br/>Thankyou for registering as a doctor/dispensary with canbii.com. <br/>You will soon receive an email from the admin after your account is approved.<br/><br/> Regards,<br/>Canbii.com";
+                        
+                  $emails->send($msg);
+                  unset($emails);
+                
+                  $emails = new CakeEmail();
                   $emails->template('default');
                   $emails->to('justdoit2045@gmail.com');
                   $emails->from(array('info@canbii.com'=>'canbii.com'));
@@ -153,7 +164,7 @@ class UsersController extends AppController {
               $emails->emailFormat('html');
               $msg = "Hello,<br/><br/>We received a request to create an account and have approved it. <br/>Here are your login credentials:<br/>
                     Username : " . $q['User']['username'] . "<br/>
-                    Password : " . $q['User']['pass_real'];
+                    Password : " . $q['User']['pass_real']."<br/><br/>Please click <a href='http://canbii.com/'>here</a> to login.";
               $emails->send($msg);
             $this->Session->setFlash('An email has been sent to the doctor with login detail', 'default', array('class' => 'good'));
         }
@@ -324,12 +335,12 @@ class UsersController extends AppController {
         $this->checkDoc();
         $this->loadModel('Strain');
         $this->loadModel('DoctorStrain');
-        $strains = $this->Strain->find('all',array('order'=>'Strain.id'));
+        //$strains = $this->Strain->find('all',array('order'=>'Strain.id'));
         if($user_id !=""){
             $user = $this->User->findById($user_id);
             $this->set('user', $user);
         }
-        $this->set('strains', $strains);
+        //$this->set('strains', $strains);
         $this->set('title_for_layout','Add Patient');
       if ($this->request->is('post')) {
             $_POST = $_POST['data'];

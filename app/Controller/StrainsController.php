@@ -442,9 +442,18 @@ class StrainsController extends AppController
         
         
         $this->set('avg',$avg);
+        if($cou)
          $this->set('scale',$scale*10/($cou));
+         else
+         $this->set('scale',0);
+         if($cou)
         $this->set('strength',$strength*10/($cou));
+        else
+        $this->set('strength',0);
+        if($cou)
         $this->set('duration',$duration*10/($cou));
+        else
+        $this->set('duration',0);
         
         if ($q['Strain']['id']) {
             $this->Strain->id = $q['Strain']['id'];

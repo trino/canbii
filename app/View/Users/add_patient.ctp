@@ -90,15 +90,7 @@
                         <div class="form-row required">
                         <label for="UserStrain">Strain</label>
                             <input type="hidden" name="data[User][strain]" id="strain_slug" />
-                            <!--<select  required="required" name="data[User][strain]">
-                                <option value="">Select Strain</option>
-                            <?php foreach($strains as $s)
-                            {?>
-                               <option value="<?php echo $s['Strain']['slug'];?>"><?php echo $s['Strain']['name'];?></option> 
-                            <?php
-                            }?>
-                            </select>-->
-                        
+                            
                        
                         
                             <input type="text" id="searchName" value="<?php if(isset($user))echo $strain;?>" placeholder="3 characters minimum" required="required" />
