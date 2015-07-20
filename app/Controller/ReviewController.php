@@ -54,7 +54,7 @@
             $this->set('reviewz', $this->Review->find('count')); 
         }
 
-        function all($limit=0){
+                function all($limit=0, $uid=''){
             $this->set('limit',$limit);
             $this->checkSess();
             
@@ -65,8 +65,10 @@
                 $limit = 8;
                 $offset = 0;
             }
-            
-            $id =$this->Session->read('User.id');
+            if($uid != "") 
+                $id = $uid;
+            else
+                $id =$this->Session->read('User.id');
             if (isset($_GET["delete"])){
                 $reviewid= $_GET["delete"];
                 if($this->deletereviews($id,"",$reviewid)) {

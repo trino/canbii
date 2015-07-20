@@ -29,7 +29,7 @@ User Reviews
 if(!isset($_GET['user'])){
     ?>
 <div class="page_header_left">
-			<h1 class="page_title">My Reviews</h1>
+			<h1 class="page_title"><?php echo ($this->params['pass'][1]!="")?'Patient Review': 'My Reviews';?></h1>
 			<ul class="bread_crumb">
 				<li>
 					<a href="<?php echo $this->webroot;?>" title="Home">
@@ -40,16 +40,39 @@ if(!isset($_GET['user'])){
 					&nbsp;
 				</li>
 				<li>
-					My Reviews
+					<?php echo ($this->params['pass'][1]!="")?'Patient Review': 'My Reviews';?>
 				</li>
 			</ul>
 		</div>
 <div class="page_header_right">
 <a style="margin-right:10px" title="Read more"  href="<?php  echo $this->webroot; ?>users/dashboard" class="more large dark_blue icon_small_arrow margin_right_white">My Account</a>
 <a style="margin-right:10px" title="Read more"  href="<?php  echo $this->webroot; ?>users/settings" class="more large dark_blue icon_small_arrow margin_right_white  ">Settings</a>
-<a style="margin-right:10px" title="Read more" href="<?php  echo $this->webroot; ?>review"  class="more large dark_blue icon_small_arrow margin_right_white  ">Add Review</a>
-<a style="" title="Read more" href="<?php  echo $this->webroot; ?>review/all"  class="active more large dark_blue icon_small_arrow margin_right_white  ">My Reviews</a>
-</div>
+      <?php if($this->Session->read('User.doctor'))
+            {
+               ?>
+               <a style="margin-right:10px;" title="Read more" href="<?php echo $this->webroot; ?>users/myPatients"
+               class="more large dark_blue icon_small_arrow margin_right_white  ">My Patients</a>
+                <a style="" title="Read more" href="<?php echo $this->webroot; ?>users/mergedReport/<?php echo $this->Session->read('User.id');?>"
+               class="more large dark_blue icon_small_arrow margin_right_white">Merged Report</a>
+               <?php 
+            }
+            else
+            {
+                ?>
+                <?php if(!$this->Session->read('User.doctor')){
+                        if($this->Session->read('User.type')=='2'){?>
+                            <a style="margin-right:10px;" title="Read more" href="<?php echo $this->webroot; ?>review/add/<?php echo $this->Session->read('User.strain');?>"
+                               class="more large dark_blue icon_small_arrow margin_right_white  ">Add Review</a>
+                    <?php }else{?>
+                            <a style="margin-right:10px;" title="Read more" href="<?php echo $this->webroot; ?>review"
+                               class="more large dark_blue icon_small_arrow margin_right_white  ">Add Review</a>
+                    <?php }
+                    }?>
+                <a style="" title="Read more" href="<?php echo $this->webroot; ?>review/all"
+                   class="more large dark_blue icon_small_arrow margin_right_white">My Reviews</a>
+                <?php
+            }
+            ?></div>
 
 <?php
 }

@@ -68,7 +68,8 @@
                                                 echo $st['Strain']['name'];?>
                                     </td>
                                     <td>
-                                        <a href="<?php echo $this->webroot;?>users/addPatient/<?php echo $p['User']['id'];?>" class="more blue">Change Strain</a>
+                                        <a href="<?php echo $this->webroot;?>users/addPatient/<?php echo $p['User']['id'];?>" class="more blue" style="margin-right: 10px;">Change Strain</a>
+                                        <a href="<?php echo $this->webroot;?>review/all/0/<?php echo $p['User']['id'];?>" class="more blue">View Review</a>
                                     </td>
                                 </tr>
                         <?php

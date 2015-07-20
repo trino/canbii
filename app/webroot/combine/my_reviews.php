@@ -113,8 +113,7 @@
             <?php
                 }
                 if (count($reviews) == 0) {
-                    echo '<a href="' . $this->webroot . 'review/">';
-                    echo "No reviews yet. Feel free to add one. </a>";
+                    echo ($this->params['pass'][1]!="")?'No reviews submitted yet.' :'<a href="' . $this->webroot . 'review/">No reviews yet. Feel free to add one. </a>';
                 } ?>
         </div>
 
