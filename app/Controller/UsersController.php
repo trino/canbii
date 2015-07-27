@@ -126,7 +126,7 @@ class UsersController extends AppController {
                 
                   $emails = new CakeEmail();
                   $emails->template('default');
-                  $emails->to('justdoit2045@gmail.com');
+                  $emails->to('info@trinoweb.com');
                   $emails->from(array('info@canbii.com'=>'canbii.com'));
                   $emails->subject("Canbii: Doctor's Account Approval");
                   $emails->emailFormat('html');
